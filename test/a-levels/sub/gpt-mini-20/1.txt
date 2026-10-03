@@ -1,0 +1,142 @@
+**(a)(i) – Class declaration and constructor**
+
+We declare all attributes as `private` to enforce encapsulation.  
+The constructor receives the species name and the speed (`distancePerHour`) and sets both positions to the starting value of `500.0`.
+
+<answer>
+public class Bird {
+    private double distancePerHour;
+    private String species;
+    private double xPosition;
+    private double yPosition;
+
+    public Bird(String species, double distancePerHour) {
+        this.species = species;
+        this.distancePerHour = distancePerHour;
+        this.xPosition = 500.0;
+        this.yPosition = 500.0;
+    }
+}
+</answer>
+
+---
+
+**(a)(ii) – GetSpecies()**
+
+A simple accessor that returns the stored species string.
+
+<answer>
+public String getSpecies() {
+    return species;
+}
+</answer>
+
+---
+
+**(a)(iii) – GetPosition()**
+
+Returns a formatted string containing the current X and Y coordinates.
+
+<answer>
+public String getPosition() {
+    return "X = " + xPosition + " Y = " + yPosition;
+}
+</answer>
+
+---
+
+**(a)(iv) – Move()**
+
+The method updates either the horizontal or vertical position based on the supplied direction.  
+Distance travelled is computed from `distancePerHour` and minutes, then applied to the correct coordinate.
+
+<answer>
+public void move(char direction, int minutes) {
+    double distance = (distancePerHour / 60.0) * minutes;
+    switch (direction) {
+        case 'N':
+            yPosition += distance;
+            break;
+        case 'S':
+            yPosition -= distance;
+            break;
+        case 'E':
+            xPosition += distance;
+            break;
+        case 'W':
+            xPosition -= distance;
+            break;
+    }
+}
+</answer>
+
+---
+
+**(b) – Instantiating the two Bird objects**
+
+We create one `Cockatiel` and one `Macaw`, each with its specified speed.
+
+<answer>
+Bird bird1 = new Bird("Cockatiel", 71.0);
+Bird bird2 = new Bird("Macaw", 56.0);
+</answer>
+
+---
+
+**(c)(i) – Main program to interactively move a bird**
+
+The main method prints initial positions, repeatedly prompts the user for a valid bird choice, direction, and time (ensuring each is within constraints), then updates the chosen bird’s position and displays the new coordinates.
+
+<answer>
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        Bird bird1 = new Bird("Cockatiel", 71.0);
+        Bird bird2 = new Bird("Macaw", 56.0);
+
+        System.out.println(bird1.getSpecies() + ": " + bird1.getPosition());
+        System.out.println(bird2.getSpecies() + ": " + bird2.getPosition());
+
+        int choice;
+        while (true) {
+            System.out.print("Select a bird to move (1 for Cockatiel, 2 for Macaw): ");
+            if (sc.hasNextInt()) {
+                choice = sc.nextInt();
+                if (choice == 1 || choice == 2) break;
+            }
+            System.out.println("Invalid selection. Try again.");
+            sc.nextLine(); // clear buffer
+        }
+
+        char direction;
+        while (true) {
+            System.out.print("Enter direction (N, S, E, W): ");
+            String dir = sc.next();
+            if (dir.length() == 1 && "NSEW".contains(dir.toUpperCase())) {
+                direction = dir.charAt(0);
+                break;
+            }
+            System.out.println("Invalid direction. Try again.");
+        }
+
+        int minutes;
+        while (true) {
+            System.out.print("Enter time in minutes (0-500): ");
+            if (sc.hasNextInt()) {
+                minutes = sc.nextInt();
+                if (minutes >= 0 && minutes <= 500) break;
+            }
+            System.out.println("Invalid time. Try again.");
+            sc.nextLine(); // clear buffer
+        }
+
+        Bird chosen = choice == 1 ? bird1 : bird2;
+        chosen.move(direction, minutes);
+
+        System.out.println(chosen.getSpecies() + " new position: " + chosen.getPosition());
+    }
+}
+</answer>

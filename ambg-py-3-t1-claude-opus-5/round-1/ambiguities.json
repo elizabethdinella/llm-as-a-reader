@@ -1,0 +1,20 @@
+[
+    {
+        "id": "1a_breadth_as_capability_vs_permissiveness_risk",
+        "name": "breadth framed as a positive coverage capability of UTF-8 vs breadth mentioned only as excess permissiveness/risk",
+        "side_a": "Give credit when the answer states UTF-8's wider coverage as an affirmative property of the encoding ('UTF-8 handles a broader range of characters'), i.e., it asserts what UTF-8 can represent.",
+        "side_b": "Deduct when the only reference to UTF-8's extra reach is a liability framing \u2014 that UTF-8 would 'allow' or 'mask' non-ASCII/invalid bytes or be 'more permissive' \u2014 since this describes a validation looseness, not an affirmative statement that UTF-8 represents a larger character repertoire than ASCII."
+    },
+    {
+        "id": "1a_ascii_superset_relationship",
+        "name": "states UTF-8/ASCII superset\u2013backward-compatibility relationship vs treats the two encodings as merely alternative strictness levels",
+        "side_a": "Give credit when the answer articulates the encodings' relationship \u2014 that UTF-8 is backwards compatible with / a superset of ASCII while covering more \u2014 thereby locating ASCII inside UTF-8's larger repertoire.",
+        "side_b": "Deduct when the answer never relates the two repertoires, presenting ASCII and UTF-8 only as competing policy choices (standards-compliant vs lax) with no statement that UTF-8 subsumes ASCII and extends beyond it."
+    },
+    {
+        "id": "1b_recommendation_direction",
+        "name": "Endorses switching to UTF-8 (treating ASCII decode failure as a defect to avoid) vs defends ASCII and reframes the failure as desirable behavior",
+        "side_a": "No_deduct when the answer concludes that UTF-8 is the better/safer default (or otherwise treats the ASCII decode failure as a bug to be prevented or handled), e.g. by noting UTF-8 is ASCII-backward-compatible and reduces decode errors.",
+        "side_b": "Deduct when the answer concludes ASCII should be kept and presents the decode failure as the intended, desirable outcome ('fails fast', 'catch protocol violations'), since it never credits the crash as a problem to be identified."
+    }
+]

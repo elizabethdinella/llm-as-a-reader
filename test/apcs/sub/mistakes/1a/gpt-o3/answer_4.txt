@@ -1,0 +1,6 @@
+<answer>
+public Account(String requestedName)
+{
+    username = requestedName;
+}
+</answer>

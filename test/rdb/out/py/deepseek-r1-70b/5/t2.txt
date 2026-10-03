@@ -1,0 +1,2 @@
+
+Yes, the check for `if not build_directory` is needed to ensure that the build directory exists before proceeding with corpus pruning.

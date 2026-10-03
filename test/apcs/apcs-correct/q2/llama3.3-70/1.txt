@@ -1,0 +1,27 @@
+To implement the `Bottle` class as described, we need to follow these steps:
+
+1. Create a constructor that initializes the bottle with a given capacity and fills it to that capacity.
+2. Implement the `updateAmount` method that reduces the amount of liquid in the bottle by a specified amount, and refills the bottle if the remaining amount falls below 25% of its capacity.
+
+Here's the Java code for the `Bottle` class:
+
+```java
+public class Bottle {
+    private double capacity;
+    private double amount;
+
+    public Bottle(double capacity) {
+        this.capacity = capacity;
+        this.amount = capacity;
+    }
+
+    public double updateAmount(double amountToRemove) {
+        this.amount -= amountToRemove;
+        if (this.amount < 0.25 * this.capacity) {
+            this.amount = this.capacity;
+        }
+        return this.amount;
+    }
+}
+```
+

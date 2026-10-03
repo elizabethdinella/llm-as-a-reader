@@ -1,0 +1,2 @@
+
+`F.cross_entropy` is the correct call to the cross-entropy loss function from the `torch.nn.functional` module (aliased as `F`). It returns a tensor that is part of the computation graph, which is necessary for backpropagation. The standalone call `cross_entropy(...)` is a bug in the code; it is an undefined function that would cause a `NameError`. The author clearly intended to write `val_loss = F.cross_entropy(...)` to calculate and store the validation loss, but the typo causes the program to crash.

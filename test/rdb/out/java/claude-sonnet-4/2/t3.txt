@@ -1,0 +1,2 @@
+
+The main difference is mutability and efficiency. Collections.singletonMap() creates an immutable, memory-efficient map with exactly one entry, while new HashMap<>(singletonMap) creates a mutable copy with additional memory overhead. The current code suggests that messageParams() likely needs to modify the map internally, which requires the mutable HashMap version. If the method only reads from the map, using singletonMap() directly would be more efficient.

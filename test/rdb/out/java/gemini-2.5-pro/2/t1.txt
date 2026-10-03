@@ -1,0 +1,4 @@
+
+The primary difference is that `Collections.singletonMap` creates a lightweight, **immutable** map containing exactly one entry, whereas `new HashMap` creates a general-purpose, **mutable** map.
+
+In this code, a new mutable `HashMap` is being created from the contents of the immutable `singletonMap`. This is a defensive programming technique. It ensures the `UidFetchCommand` receives a mutable copy of the map, which it can safely modify internally without causing an `UnsupportedOperationException` and without affecting any other part of the program.

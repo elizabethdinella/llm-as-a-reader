@@ -1,0 +1,37 @@
+[
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly and correctly identifies mutability as the primary distinction, stating that a HashMap is mutable and can have entries added or removed after creation, while Collections.singletonMap is immutable and throws an exception on modification attempts. It further explains the purpose of wrapping the singletonMap in `new HashMap<>(...)` \u2014 producing a mutable copy in case the builder/command needs to modify the map. The explicit rubric requirement (that the answer state a singletonMap is immutable) is satisfied; the size/fixed-single-entry aspect is at least implicitly covered by the discussion of not being able to add or remove entries. Therefore no deduction.",
+        "item": "1a"
+    },
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly states that a HashMap is mutable and can be modified after creation (adding/removing entries), contrasting it with singletonMap's immutability which throws on modification attempts. It also touches on the fixed single-entry nature implicitly ('singletonMap directly would be more efficient') and explains why the mutable copy is created here. The core required condition \u2014 stating that a HashMap is mutable \u2014 is satisfied.",
+        "item": "1b"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate answer focuses exclusively on mutability (HashMap mutable vs. Collections.singletonMap immutable, throwing exceptions on modification) and efficiency. It never mentions the size/capacity distinction \u2014 namely that singletonMap holds only a single key-value mapping (and thus cannot hold more than one entry, whereas a HashMap can grow to hold arbitrarily many message params). Since the rubric explicitly requires stating that a singletonMap returns only a single key-value mapping, and that point is absent, the point is deducted.",
+        "item": "1c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate answer only discusses the general mutability distinction between HashMap and Collections.singletonMap. It never references the actual signature of the messageParams method (e.g., that it accepts a FetchProfile and a Map<String, Message> of message parameters), nor does it discuss what the declared parameter type implies for whether an immutable singletonMap would be acceptable. It vaguely says 'if the builder or command needs to alter the map internally,' which is speculation rather than an identification of messageParams' signature. Therefore the required mention of the messageParams method signature is absent and the point is deducted.",
+        "item": "2a"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate answer frames the entire difference in terms of mutability (mutable HashMap vs. immutable singletonMap) and speculates that a mutable copy 'may be necessary if the builder or command needs to alter the map internally.' It even suggests that 'using singletonMap directly would be more efficient' if mutability isn't required, which implies singletonMap could be passed directly. It never states that messageParams' signature actually takes a HashMap (i.e., the wrapping in a new HashMap<> is required for type compatibility, since Collections.singletonMap returns a Map, not a HashMap). Per the rubric, stating only that a mutable map is needed is not specific enough, so the point is deducted.",
+        "item": "2b"
+    },
+    {
+        "deducted": true,
+        "feedback": "The answer only discusses the general mutability distinction between HashMap and Collections.singletonMap. It does not examine how the map argument is actually used within messageParams (or downstream in UidFetchCommand), and it does not determine whether those usages modify the map. Instead, it hedges with 'which may be necessary if the builder or command needs to alter the map internally', leaving the key question unresolved rather than establishing that the usages are read-only. This fails the rubric requirement to clearly determine whether the map is modified.",
+        "item": "2c"
+    },
+    {
+        "deducted": false,
+        "feedback": "The answer does discuss messageParams and its map argument, correctly identifying the core difference as mutability (HashMap is mutable; Collections.singletonMap is immutable and throws on modification), and correctly notes that wrapping the singletonMap in a new HashMap produces a mutable copy. Regarding the deduction condition: the answer does not assert that the code/usages of the map actually modify it. It only hedges speculatively \u2014 'which may be necessary if the builder or command needs to alter the map internally' \u2014 and immediately balances this with 'using singletonMap directly would be more efficient ... if mutability isn't required.' Since it does not incorrectly claim that the consumers of messageParams mutate the map, the 2-point deduction does not apply.",
+        "item": "2d"
+    }
+]

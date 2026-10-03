@@ -1,0 +1,1 @@
+Yes, because the code calls methods on the `drawer` object which must be non-null for those operations.

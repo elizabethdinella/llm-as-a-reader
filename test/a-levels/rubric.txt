@@ -1,0 +1,177 @@
+## Question 1(a)(i) — [4 marks]
+
+1 mark each:
+- Class header (and end)
+- 4 private attributes with correct data types
+- Constructor header (and end) taking 2 parameters within class …
+- … within constructor assigning parameters to `Species` and `DistancePerHour` and assigning 500.0 to `XPosition` and `YPosition`
+
+**Example program code — Java**
+
+```java
+class Bird{
+    private String Species;
+    private Double DistancePerHour;
+    private Double XPosition;
+    private Double YPosition;
+
+    public Bird(Double pDistancePerHour, String pSpecies){
+        Species = pSpecies;
+        DistancePerHour = pDistancePerHour;
+        XPosition = 500.0;
+        YPosition = 500.0;
+    }
+}
+```
+
+---
+
+## Question 1(a)(ii) — [2 marks]
+
+1 mark each:
+- Get method header (and end) with no parameter …
+- … returning `Species`
+
+**Example program code — Java**
+
+```java
+public String GetSpecies(){
+    return Species;
+}
+```
+
+---
+
+## Question 1(a)(iii) — [3 marks]
+
+1 mark each:
+- Get method header (and end) with no parameter, returning a value
+- Creating **correct** string using **attributes** …
+- … returning this string
+
+**Example program code — Java**
+
+```java
+public String GetPosition(){
+    String ReturnValue = "X = " + XPosition + " Y = " + YPosition;
+    return ReturnValue;
+}
+```
+
+---
+
+## Question 1(a)(iv) — [5 marks]
+
+1 mark each:
+- Method header (and end) taking direction and minutes flying as parameters
+- Calculation of distance using minutes flying parameter and attribute `DistancePerHour`
+- Selection based on direction parameter …
+- … north adding to `YPosition` and south subtracting from `YPosition`
+- … east adding to `XPosition` and west subtracting from `XPosition`
+
+**Example program code — Java**
+
+```java
+public Boolean Move(String Direction, Integer MinsFlying){
+    if(Direction.compareTo("E") == 0){
+        XPosition = XPosition + ((DistancePerHour / 60) * MinsFlying);
+    }else if(Direction.compareTo("W") == 0){
+        XPosition = XPosition - ((DistancePerHour / 60) * MinsFlying);
+    }else if(Direction.compareTo("N") == 0){
+        YPosition = YPosition + ((DistancePerHour / 60) * MinsFlying);
+    }else if(Direction.compareTo("S") == 0){
+        YPosition = YPosition - ((DistancePerHour / 60) * MinsFlying);
+    }
+}
+```
+
+---
+
+## Question 1(b) — [3 marks]
+
+1 mark each:
+- Cockatiel 71.0 instance of `Bird` created …
+- Macaw 56.0 instance of `Bird` created …
+- … both stored in variables/structures
+
+**Example program code — Java**
+
+```java
+Bird FirstBird = new Bird(71.0, "Cockatiel");
+Bird SecondBird = new Bird(56.0, "Macaw");
+```
+
+---
+
+## Question 1(c)(i) — [8 marks]
+
+1 mark each:
+- Output species, X and Y position for both `Bird` objects in appropriate message(s)
+- Prompt **and** input of bird choice, time and direction …
+- … validating all **three** inputs …
+- … looping until all **three** are valid
+- Calling `Move()` for chosen bird …
+- … with **only** input direction and input time as arguments
+- Outputting new position for the bird moved
+- Using get methods throughout where appropriate
+
+**Example program code — Java**
+
+```java
+Integer Choice;
+Integer Time;
+String Direction;
+Scanner scanner = new Scanner(System.in);
+
+Choice = 0;
+while(Choice != 1 && Choice != 2){
+    System.out.println("Which bird do you want to move");
+    System.out.println("Enter 1 for " + FirstBird.GetSpecies() + " is currently at " +
+        FirstBird.GetPosition());
+    System.out.println("Enter 2 for " + SecondBird.GetSpecies() + " is currently at " +
+        SecondBird.GetPosition());
+    Choice = Integer.parseInt(scanner.nextLine());
+}
+
+Time = -1;
+while(Time < 0 or Time > 500){
+    System.out.println("To the nearest minute how long as the bird been flying?");
+    Time = Integer.parseInt(scanner.nextLine());
+}
+
+Boolean Valid = false;
+while(Valid == false){
+    Valid = true;
+    System.out.println("Which direction has the bird been flying, North, South, East or West?");
+    Direction = scanner.nextLine().toUpperCase();
+    if(Direction.compareTo("NORTH") == 0 || Direction.compareTo("N") == 0){
+        if(Choice == 1){
+            FirstBird.Move("N",Time);
+        }else{
+            SecondBird.Move("N", Time);
+        }
+    } else if(Direction.compareTo("SOUTH")== 0 || Direction.compareTo("S") == 0){
+        if(Choice == 1){
+            FirstBird.Move("S",Time);
+        }else{
+            SecondBird.Move("S", Time);
+        }
+    } else if(Direction.compareTo("EAST")== 0 || Direction.compareTo("E") == 0){
+        if(Choice == 1){
+            FirstBird.Move("E",Time);
+        }else{
+            SecondBird.Move("E", Time);
+        }
+    } else if(Direction.compareTo("WEST")== 0 || Direction.compareTo("W") == 0){
+        if(Choice == 1){
+            FirstBird.Move("W",Time);
+        }else{
+            SecondBird.Move("W", Time);
+        }
+    }else{
+        Valid = false;
+    }
+}
+System.out.println(FirstBird.GetSpecies() + " is currently at " + FirstBird.GetPosition());
+System.out.println(SecondBird.GetSpecies() + " is currently at " + SecondBird.GetPosition());
+```

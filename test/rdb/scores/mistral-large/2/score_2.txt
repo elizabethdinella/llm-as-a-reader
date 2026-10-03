@@ -1,0 +1,9 @@
+[
+  {"item": "1a", "deducted": false, "feedback": "The answer explicitly states that Collections.singletonMap creates an immutable map that cannot be modified after creation (no adding or removing elements)."},
+  {"item": "1b", "deducted": false, "feedback": "The answer explicitly states that HashMap is mutable and that entries can be added, removed, and modified after creation."},
+  {"item": "1c", "deducted": false, "feedback": "The answer states that singletonMap creates a map with a single key-value pair, and repeats that only a single entry is provided."},
+  {"item": "2a", "deducted": true, "feedback": "The answer never mentions or discusses the actual signature of messageParams (e.g., that it accepts a FetchProfile and a HashMap<String, Message> parameter). It only refers to messageParams generically as 'the method'."},
+  {"item": "2b", "deducted": true, "feedback": "The answer never states that messageParams requires a HashMap specifically. In fact, it misreads the code by claiming that Collections.singletonMap is what is passed to messageParams and that this 'precisely fits the requirement', ignoring that the singletonMap is wrapped in a new HashMap<> precisely because the parameter type is HashMap."},
+  {"item": "2c", "deducted": true, "feedback": "The answer contains no discussion of how the map argument is actually used inside messageParams (e.g., lookups/reads only, no structural modification). It only speculates generally about avoiding 'unintended side effects' without determining whether the usages read or modify the map."},
+  {"item": "2d", "deducted": false, "feedback": "The answer does not affirmatively claim that messageParams modifies the map; it instead suggests a mutable map is 'not required here', so it does not commit the specific error described."}
+]

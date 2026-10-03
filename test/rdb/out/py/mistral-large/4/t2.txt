@@ -1,0 +1,1 @@
+ You do not need to call `deepcopy(result)` before modifying `result[DATA]` unless you specifically want to avoid side effects on the original `result`. The existing logic already handles deep copying for certain transaction types, implying that modification of the original object is acceptable in other cases. 

@@ -1,0 +1,2 @@
+
+Yes, we need the check for 'if not build_directory'. Even if build_setup_result indicates success, the BUILD_DIR environment variable could still be None or empty, which would cause problems when passed to the Runner constructor. This check ensures we have both a successful build setup AND a valid build directory path before proceeding with corpus pruning operations.

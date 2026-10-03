@@ -1,0 +1,21 @@
+<answer>
+```java
+public void Move(char direction, int minutes) {
+    double distanceTravelled = (this.DistancePerHour / 60.0) * minutes;
+    
+    switch (direction) {
+        case 'N':
+            this.YPosition += distanceTravelled;
+            break;
+        case 'S':
+            this.YPosition -= distanceTravelled;
+            break;
+        case 'E':
+            this.XPosition += distanceTravelled;
+            break;
+        case 'W':
+            this.XPosition -= distanceTravelled;
+            break;
+    }
+}
+</answer>

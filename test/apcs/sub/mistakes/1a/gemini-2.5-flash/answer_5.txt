@@ -1,0 +1,8 @@
+<answer>
+```java
+public Account(String requestedName)
+{
+    this.username = requestedName;
+}
+```
+</answer>

@@ -1,0 +1,3 @@
+
+    `Collections.singletonMap` creates an immutable map with a single entry, while `HashMap` creates a mutable map that can be modified. The code uses `HashMap` initialized with the single entry from `singletonMap`, suggesting the possibility of adding more entries later, even though it's not immediately apparent in this snippet. If only one entry is ever intended, `singletonMap` would be more efficient and safer against unintended modifications.
+    

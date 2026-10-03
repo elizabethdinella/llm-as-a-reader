@@ -1,0 +1,21 @@
+**Rubric Item 1 – Mutability and size differences (3 points)**
+
+- *singletonMap is immutable*: The answer explicitly states "`Collections.singletonMap()` returns an immutable map, meaning its contents cannot be changed after creation." ✔ (no deduction)
+- *HashMap is mutable*: The answer states the wrapper "creates a new, mutable `HashMap` instance" allowing additions/removals/modifications. ✔ (no deduction)
+- *singletonMap returns only a single key-value mapping*: The answer refers to the map being "initialized with the single entry from the singleton map," which conveys that the singleton map holds only one mapping. ✔ (no deduction, though only implicitly stated)
+
+Score: 3/3
+
+**Rubric Item 2 – Discussion of `messageParams` (4 points)**
+
+- *Message signature of `messageParams`*: The answer never mentions `messageParams` at all, let alone its signature. −1
+- *States that `messageParams` takes a `HashMap`*: Not mentioned; the answer only talks generically about mutable vs. immutable maps and never identifies the declared parameter type. −1
+- *Discusses usages of the map argument within `messageParams` and determines they are read-only*: The answer does not examine the method body at all and gives no determination about whether the map is read or written. It instead vaguely implies that modification "would occur," but never analyzes the actual usages. −1
+- *Incorrectly states that the usages modify the map*: The answer's phrasing is conditional ("which would occur if the immutable `singletonMap` were passed directly and then modified") rather than an affirmative claim that the method's usages mutate the map. This is misleading in implication but not an explicit incorrect assertion, so the full 2-point lie deduction is not applied.
+
+Score: 4 − 3 = 1/4
+
+<scores>
+	<score> 3/3 </score>
+	<score> 1/4 </score>
+</scores>

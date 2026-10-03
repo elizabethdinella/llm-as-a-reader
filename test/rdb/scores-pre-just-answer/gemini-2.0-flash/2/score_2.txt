@@ -1,0 +1,37 @@
+[
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly states that `Collections.singletonMap` creates an immutable map with a single entry, while `HashMap` is mutable and can be modified/grown. This covers both the mutability distinction (with the required statement that singletonMap is immutable) and the size difference (single entry vs. arbitrary entries), and it correctly explains why the code wraps the singletonMap in a HashMap. The rubric condition is satisfied, so no deduction.",
+        "item": "1a"
+    },
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly states that `Collections.singletonMap` creates an immutable map with a single entry while `HashMap` creates a mutable map that can be modified. This directly addresses both mutability (HashMap is mutable, singletonMap is immutable) and size differences (singletonMap holds exactly one entry, HashMap can hold more, with the note that HashMap suggests the possibility of adding more entries later). The required statement that a HashMap is mutable is present, so no deduction applies.",
+        "item": "1b"
+    },
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly states that `Collections.singletonMap` creates an immutable map with a single entry, while `HashMap` is mutable and can be modified/extended. This addresses both the mutability difference and the size difference (singletonMap holds only a single key-value mapping), and further notes the code wraps the singleton entry in a HashMap to allow adding more entries later. The rubric condition is satisfied.",
+        "item": "1c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate answer only contrasts immutability/mutability of `Collections.singletonMap` versus `HashMap` in general terms. It never discusses the `messageParams` method itself, nor does it mention or reference its signature (e.g., that it accepts a `FetchProfile` and a `Map<String, Message>`), which would be the key to explaining whether a mutable `HashMap` is required or whether an immutable `singletonMap` would satisfy the parameter type. Since the message/method signature of `messageParams` is not mentioned, the point is deducted.",
+        "item": "2a"
+    },
+    {
+        "deducted": true,
+        "feedback": "The rubric requires the answer to state that the `messageParams` method's parameter type is specifically a `HashMap` (which is why `Collections.singletonMap` cannot be passed directly and must be wrapped). The candidate answer never discusses the method signature of `messageParams` at all. It only contrasts immutability vs. mutability of `singletonMap` vs. `HashMap`, and speculates that the `HashMap` was used to allow adding more entries later, even suggesting `singletonMap` would be preferable if only one entry is needed \u2014 which misses the actual reason (the API demands a `HashMap` type). Since the answer does not mention that `messageParams` takes a `HashMap`, and merely alludes to mutability (explicitly called out as insufficient by the rubric), the point is deducted.",
+        "item": "2b"
+    },
+    {
+        "deducted": true,
+        "feedback": "The answer only compares the general properties of `Collections.singletonMap` (immutable, single entry) with `HashMap` (mutable), and speculates that the HashMap was used to allow adding entries later. It never examines how the map argument is actually used inside `messageParams` (or downstream in the UidFetchCommand builder/command), and therefore never determines whether those usages mutate the map or merely read from it. Since the answer fails to establish that the usages are read-only (which would mean the HashMap wrapper is unnecessary and singletonMap would suffice), the rubric condition is not met.",
+        "item": "2c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The rubric requires the answer to discuss messageParams (i.e., what the receiving method/builder actually does with the map), and penalizes claims that the map gets modified by its usages. The candidate answer never actually discusses messageParams or the builder's handling of the map at all \u2014 it only gives a generic Java explanation of the immutability difference between Collections.singletonMap and HashMap. Furthermore, it asserts that the HashMap wrapping 'suggest[s] the possibility of adding more entries later,' i.e., implying the map argument is (or may be) mutated downstream, which is not supported by the provided code context and is exactly the incorrect inference the rubric flags. On both counts the subitem's points are lost.",
+        "item": "2d"
+    }
+]

@@ -1,0 +1,1 @@
+Yes, you need to call `deepcopy(result)` before modifying `result[DATA]`, especially for transaction types like `SCHEMA` or `ISSUER_KEY`, to ensure that the original `result` object remains unchanged and avoid any unintended side effects.

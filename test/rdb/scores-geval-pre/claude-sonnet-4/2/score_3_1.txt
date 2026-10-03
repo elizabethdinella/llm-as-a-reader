@@ -1,0 +1,30 @@
+[
+    {
+        "justification": "The answer explicitly states that Collections.singletonMap() creates an immutable, memory-efficient map with exactly one entry, satisfying the requirement to mention singletonMap's immutability.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that 'new HashMap<>(singletonMap) creates a mutable copy', clearly mentioning that HashMap is mutable.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that Collections.singletonMap() creates an immutable, memory-efficient map with exactly one entry, which conveys that a singletonMap contains only a single key-value mapping.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer never states or describes the method signature of messageParams (e.g., its parameter types such as FetchProfile and Map<String, Message>); it only refers to 'messageParams()' generically and speculates about its behavior. Therefore the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "Rubric 2c requires the answer to state that messageParams' parameter type is specifically a HashMap. The candidate never mentions the method signature or that the parameter is declared as HashMap; it only speculates that messageParams 'likely needs to modify the map internally, which requires the mutable HashMap version.' Per the rubric, stating that it requires a mutable map is not specific enough, so the point is deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer does not examine actual usages of the map within messageParams. It merely speculates that the method 'likely needs to modify the map internally' and hedges with 'If the method only reads from the map...'. It fails to clearly determine whether the usages are read-only, so the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer asserts that 'The current code suggests that messageParams() likely needs to modify the map internally, which requires the mutable HashMap version.' This incorrectly implies the usages of the map argument within messageParams modify it, when in fact they are read-only. Although hedged with 'likely', it is the answer's primary conclusion about the method's behavior and is incorrect.",
+        "deducted": true
+    }
+]

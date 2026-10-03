@@ -1,0 +1,19 @@
+<answer>
+```java
+public Account(String requestedName) {
+    if (isAvailable(requestedName)) {
+        this.username = requestedName;
+    } else {
+        String counter = "1";
+        String newUsername = requestedName + counter;
+        while (!isAvailable(newUsername)) {
+            int intCounter = Integer.parseInt(counter);
+            intCounter++;
+            counter = Integer.toString(intCounter);
+            newUsername = requestedName + counter;
+        }
+        this.username = newUsername;
+    }
+}
+```
+</answer>

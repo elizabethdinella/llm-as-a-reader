@@ -1,0 +1,2 @@
+
+No, UTF-8 should not be used as the default encoding for decoding the `Host` header. The `Host` header, as per HTTP specifications (RFC 7230), is expected to contain ASCII characters. Internationalized Domain Names (IDNs) are represented in the `Host` header using Punycode, which also results in an ASCII string. Using `ascii` for decoding ensures compliance with the standard; if non-ASCII bytes are encountered, it correctly flags the header as malformed.

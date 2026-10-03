@@ -1,0 +1,14 @@
+{"deducted": false}
+{"deducted": false}
+{"deducted": false}
+{"deducted": true}
+
+**Reasoning:**
+
+- **A1:** The response calls `isAvailable(requestedName)` and `isAvailable(requestedName + suffix)` — both are static calls with `String` arguments, made correctly (despite the missing parentheses around the `if` condition, the call itself is well-formed and correct). Point earned.
+
+- **A2:** Availability is checked on a potential username (`requestedName + suffix`), and in the body of the loop the potential username is updated (via incrementing `suffix`, which is concatenated in the condition). The reversed logic of the check is explicitly excused ("call isAvailable incorrectly", "update potential usernames incorrectly"). Point earned.
+
+- **A3:** `suffix` is initialized to 1 and incremented (`suffix = suffix + 1;`) inside the while loop. Point earned.
+
+- **A4:** The algorithm is incorrect: the loop condition is inverted (loops *while available*), and more decisively, in the `else` branch the code assigns `username = requestedName;` without appending the integer suffix — a listed disqualifier ("fail to append correct integer to username, when necessary"). Point not earned.

@@ -1,0 +1,55 @@
+## Part B: Implementing the `getShortenedName` Method
+
+To implement the `getShortenedName` method, we will iterate through the `username` string, checking for hyphens. When a hyphen is found, we will skip the character before it and the hyphen itself.
+
+### Code
+
+```java
+public String getShortenedName() {
+    StringBuilder shortenedName = new StringBuilder();
+    for (int i = 0; i < username.length(); i++) {
+        if (username.charAt(i) == '-' && i > 0) {
+            continue; // Skip the character before the hyphen and the hyphen
+        }
+        shortenedName.append(username.charAt(i));
+    }
+    return shortenedName.toString();
+}
+```
+
+### Explanation
+
+- We use a `StringBuilder` to efficiently build the shortened name.
+- We iterate through each character in the `username`.
+- If the current character is a hyphen and it's not the first character in the string, we skip this character and the one before it by using `continue`.
+- Otherwise, we append the current character to the `shortenedName`.
+- Finally, we return the shortened name as a string.
+
+### Example Usage
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        Account account1 = new Account("Amy- Marie- Lin"); // Assuming a constructor that sets username
+        System.out.println(account1.getShortenedName()); // Outputs: AmMariLin
+
+        Account account2 = new Account("SammyB3");
+        System.out.println(account2.getShortenedName()); // Outputs: SammyB3
+    }
+}
+```
+
+## Final Answer
+
+```java
+public String getShortenedName() {
+    StringBuilder shortenedName = new StringBuilder();
+    for (int i = 0; i < username.length(); i++) {
+        if (username.charAt(i) == '-' && i > 0) {
+            continue; 
+        }
+        shortenedName.append(username.charAt(i));
+    }
+    return shortenedName.toString();
+}
+```

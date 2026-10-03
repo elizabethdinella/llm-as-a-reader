@@ -1,0 +1,1 @@
+Yes, we should use UTF-8 instead of ASCII as the default encoding when decoding `host`. This is because UTF-8 can handle a broader set of characters, including internationalized domain names (IDNs), which may contain non-ASCII characters.

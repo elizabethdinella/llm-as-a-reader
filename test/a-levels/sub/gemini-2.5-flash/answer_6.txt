@@ -1,0 +1,127 @@
+<answer>
+```java
+import java.util.Scanner;
+import java.util.InputMismatchException;
+
+// This would be the complete Bird class, including all methods from (a)
+class Bird {
+    private double DistancePerHour;
+    private String Species;
+    private double XPosition;
+    private double YPosition;
+
+    public Bird(String species, double distancePerHour) {
+        this.Species = species;
+        this.DistancePerHour = distancePerHour;
+        this.XPosition = 500.0;
+        this.YPosition = 500.0;
+    }
+
+    public String GetSpecies() {
+        return this.Species;
+    }
+
+    public String GetPosition() {
+        return "X = " + String.format("%.1f", this.XPosition) + " Y = " + String.format("%.1f", this.YPosition);
+    }
+
+    public void Move(char direction, int minutesFlying) {
+        double distanceTravelled = (this.DistancePerHour / 60.0) * minutesFlying;
+
+        switch (Character.toUpperCase(direction)) {
+            case 'N':
+                this.YPosition += distanceTravelled;
+                break;
+            case 'S':
+                this.YPosition -= distanceTravelled;
+                break;
+            case 'E':
+                this.XPosition += distanceTravelled;
+                break;
+            case 'W':
+                this.XPosition -= distanceTravelled;
+                break;
+        }
+    }
+}
+
+// Main program class
+public class Main {
+    public static void main(String[] args) {
+        // Declare and initialise two instances of Bird (from part b)
+        Bird bird1 = new Bird("Cockatiel", 71.0);
+        Bird bird2 = new Bird("Macaw", 56.0);
+
+        Scanner scanner = new Scanner(System.in);
+
+        // Output initial positions for each bird
+        System.out.println("--- Initial Bird Positions ---");
+        System.out.println("Bird 1: Species = " + bird1.GetSpecies() + ", " + bird1.GetPosition());
+        System.out.println("Bird 2: Species = " + bird2.GetSpecies() + ", " + bird2.GetPosition());
+        System.out.println("------------------------------\n");
+
+        // Prompt user to select one of the birds to move and take this as an input
+        int selectedBirdChoice = 0;
+        do {
+            System.out.print("Select a bird to move (1 for Cockatiel, 2 for Macaw): ");
+            try {
+                selectedBirdChoice = scanner.nextInt();
+                if (selectedBirdChoice < 1 || selectedBirdChoice > 2) {
+                    System.out.println("Invalid selection. Please enter 1 or 2.");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter a number (1 or 2).");
+                scanner.next(); // Consume the invalid input to prevent infinite loop
+            }
+        } while (selectedBirdChoice < 1 || selectedBirdChoice > 2);
+
+        Bird chosenBird = (selectedBirdChoice == 1) ? bird1 : bird2;
+        System.out.println("You have selected: " + chosenBird.GetSpecies() + "\n");
+
+        // Prompt the user to enter the direction the bird has been travelling
+        char direction = ' ';
+        boolean validInput = false;
+        do {
+            System.out.print("Enter direction (N for North, S for South, E for East, W for West): ");
+            String directionInput = scanner.next().trim().toUpperCase();
+            if (directionInput.length() == 1) {
+                direction = directionInput.charAt(0);
+                if (direction == 'N' || direction == 'S' || direction == 'E' || direction == 'W') {
+                    validInput = true;
+                } else {
+                    System.out.println("Invalid direction. Please enter N, S, E, or W.");
+                }
+            } else {
+                System.out.println("Invalid input. Please enter a single character (N, S, E, or W).");
+            }
+        } while (!validInput);
+
+        // Prompt the user to enter the time to the nearest minute
+        int minutesFlying = -1;
+        do {
+            System.out.print("Enter time flying in minutes (between 0 and 500 inclusive): ");
+            try {
+                minutesFlying = scanner.nextInt();
+                if (minutesFlying < 0 || minutesFlying > 500) {
+                    System.out.println("Invalid time. Please enter a value between 0 and 500.");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter an integer.");
+                scanner.next(); // Consume the invalid input
+            }
+        } while (minutesFlying < 0 || minutesFlying > 500);
+
+        // Call the appropriate method to update the chosen bird's position
+        chosenBird.Move(direction, minutesFlying);
+
+        // Output an update on the bird's new position
+        System.out.println("\n--- Update ---");
+        System.out.println(chosenBird.GetSpecies() + "'s new position:");
+        System.out.println(chosenBird.GetPosition());
+        System.out.println("--------------");
+
+        scanner.close();
+    }
+}
+```
+</answer>

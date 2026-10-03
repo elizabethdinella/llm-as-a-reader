@@ -1,0 +1,7 @@
+{"justification": "The answer explicitly states that singletonMap 'creates an immutable map with a single entry' and that modifying it throws UnsupportedOperationException.", "deducted": false}
+{"justification": "The answer states that wrapping in a new HashMap gives 'a mutable map that can be altered after construction.'", "deducted": false}
+{"justification": "The answer notes singletonMap creates a map 'with a single entry,' covering the single key-value mapping.", "deducted": false}
+{"justification": "The answer never mentions or discusses the method signature of messageParams (its parameter types/declaration).", "deducted": true}
+{"justification": "The answer does not state that messageParams specifically requires/takes a HashMap; it only speaks generically about mutability.", "deducted": true}
+{"justification": "The answer does not examine how the map argument is used inside messageParams; it merely hedges with 'if messageParams or later code needs to modify the map,' failing to determine that the usages are read-only.", "deducted": true}
+{"justification": "The answer does not affirmatively claim that messageParams modifies the map; it only speculates conditionally, so no false assertion is made.", "deducted": false}

@@ -1,0 +1,38 @@
+[
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly states that singletonMap is immutable and contains exactly one entry, while HashMap is mutable and general-purpose (variable size). It also correctly explains that wrapping in a HashMap yields a mutable copy that avoids UnsupportedOperationException. Both the mutability and size aspects are addressed, satisfying the rubric.",
+        "item": "1a"
+    },
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly states that `Collections.singletonMap` creates an immutable map with exactly one entry, while `new HashMap<>` creates a mutable, general-purpose map that can grow. It further explains the practical implication (the command can modify the copy without an UnsupportedOperationException). This covers both the mutability requirement (HashMap is mutable) and the size/capacity difference (single fixed entry vs. arbitrary entries), so the rubric condition is satisfied and no deduction applies.",
+        "item": "1b"
+    },
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly states that `Collections.singletonMap` creates an immutable map containing exactly one entry (a single key-value mapping), while `new HashMap` creates a general-purpose mutable map. It further explains the practical consequence in this code context: wrapping the singletonMap in a HashMap yields a mutable copy that the UidFetchCommand can modify without throwing UnsupportedOperationException. This covers both the mutability and the single-mapping/size aspects required by the rubric.",
+        "item": "1c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate answer focuses solely on the general distinction between an immutable `Collections.singletonMap` and a mutable `HashMap`, and speculates about defensive copying. It never discusses the `messageParams` method itself nor states its signature (i.e., that it accepts a `FetchProfile` and a `Map<String, Message>` of message IDs to messages), which would explain why a Map is required and why the map type matters. Since the message/method signature of `messageParams` is not mentioned, the point is deducted.",
+        "item": "2a"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate answer only explains the general distinction between immutable `singletonMap` and mutable `HashMap`, and claims the wrapping is 'defensive programming' so the command can modify the map internally. It never states that the `messageParams` method signature itself takes a `HashMap` (i.e., the declared parameter type requires a HashMap, so a `Map` returned by `singletonMap` would not compile). Per the rubric, framing it merely as needing a 'mutable map' is not specific enough, so the point is deducted.",
+        "item": "2b"
+    },
+    {
+        "deducted": true,
+        "feedback": "The answer does not examine how the map argument is actually used inside messageParams / UidFetchCommand. Instead of determining whether the map is read or mutated, it merely speculates that the command 'can safely modify [it] internally,' which both fails to identify the usages as read-only and asserts the opposite (mutation) without any support from the code context. The rubric requires a clear determination that the map usages are read-only; the answer provides no such analysis.",
+        "item": "2c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate does discuss the messageParams argument, but it explicitly asserts that the wrapping in a `new HashMap<>` is a defensive measure so that \"the `UidFetchCommand` receives a mutable copy of the map, which it can safely modify internally without causing an `UnsupportedOperationException`.\" This claims that the consumer of the map argument mutates it, which is not supported by the provided code context (this is test helper code constructing a command; nothing shown indicates the command mutates the passed map). Per the rubric, incorrectly stating that the usages of the map argument to messageParams modify it results in the deduction.",
+        "deducted_points": 2,
+        "item": "2d"
+    }
+]

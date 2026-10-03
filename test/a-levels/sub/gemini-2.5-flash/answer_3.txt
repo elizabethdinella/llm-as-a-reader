@@ -1,0 +1,8 @@
+<answer>
+```java
+    // Inside the Bird class
+    public String GetPosition() {
+        return "X = " + String.format("%.1f", this.XPosition) + " Y = " + String.format("%.1f", this.YPosition);
+    }
+```
+</answer>

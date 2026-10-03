@@ -1,0 +1,35 @@
+<answer>
+```java
+public String getShortenedName()
+{
+    StringBuilder shortenedName = new StringBuilder();
+
+    for (int i = 0; i < username.length(); i++) {
+        char currentChar = username.charAt(i);
+
+        // We only consider appending if the current character is not a hyphen.
+        // Hyphens are implicitly skipped if the character before them causes an 'i++'.
+        if (currentChar != '-') {
+            // Check if the next character is a hyphen.
+            // If it is, then 'currentChar' is the character immediately before a hyphen.
+            // Both 'currentChar' and the hyphen should be removed.
+            if (i + 1 < username.length() && username.charAt(i + 1) == '-') {
+                i++; // Skip 'currentChar' and advance 'i' one more position to also skip the hyphen.
+                     // The loop's 'i++' will then execute, moving to the character after the hyphen.
+            } else {
+                // 'currentChar' is not a hyphen, and it's not immediately followed by one.
+                // So, it should be included in the shortened name.
+                shortenedName.append(currentChar);
+            }
+        }
+        // If currentChar IS a hyphen, it means the character before it was not followed by a hyphen,
+        // so it was appended. This hyphen should not be appended, so we do nothing here.
+        // However, given the logic of 'i++' inside the if-block, the loop counter 'i' will always
+        // jump past a hyphen if its preceding character was caught by the 'if (i + 1 < ...)' condition.
+        // So this 'if (currentChar != '-')' effectively processes only non-hyphen characters that are to be kept.
+    }
+
+    return shortenedName.toString();
+}
+```
+</answer>

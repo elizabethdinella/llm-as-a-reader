@@ -1,0 +1,2 @@
+
+Yes, a ClassCastException can occur at the marked line if the fragment found with id R.id.main_view doesn't implement or extend OnKeyListenerForFragments. The code checks for null after the cast, but doesn't verify the fragment is the correct type before casting.

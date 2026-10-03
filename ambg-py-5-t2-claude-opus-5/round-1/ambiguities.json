@@ -1,0 +1,62 @@
+[
+    {
+        "id": "1a_verdict_keep_vs_redundant",
+        "name": "Answer endorses the `if not build_directory` guard (necessary / keep it as defense) vs. declares it redundant or unneeded",
+        "side_a": "Do not deduct if the answer's bottom line supports retaining the check \u2014 either stating it is necessary, or conceding it isn't strictly required but explicitly recommending keeping it as a guard against BUILD_DIR being unset/empty. The required BUILD_DIR identification is credited when it is used to justify why the guard matters.",
+        "side_b": "Deduct 1 point if the answer's bottom line is that the check is redundant / not needed (including 'harmless but redundant' or 'replace it with a different check'), or if it gives a bare negative verdict with no BUILD_DIR content at all. In that framing BUILD_DIR is only cited as setup_build's responsibility, never as the value `build_directory` holds."
+    },
+    {
+        "id": "1b_committed_verdict_vs_hedged_both_ways",
+        "name": "Single committed verdict (yes or no) vs. hedged answer that argues both sides",
+        "side_a": "no_deduct \u2014 the answer states one unambiguous verdict on whether the check is necessary and does not reverse or qualify it into the opposite conclusion (a bare 'No' or a bare 'Yes' both count).",
+        "side_b": "deduct \u2014 the answer gives a split verdict: it concedes the check is not strictly required/redundant AND simultaneously endorses keeping it, so no single position is committed to."
+    },
+    {
+        "id": "2a_keep_vs_drop_recommendation",
+        "name": "Bottom-line recommendation: endorses keeping the guard vs declares it redundant/removable",
+        "side_a": "no_deduct \u2014 the answer's final position endorses retaining the `if not build_directory` guard (even if it first concedes it is not strictly required, it ends by recommending it be kept as protection).",
+        "side_b": "deduct \u2014 the answer's final position is that the guard is unnecessary/redundant given the setup_build contract, or that it should be dropped or replaced by a different check."
+    },
+    {
+        "id": "2a_code_specific_grounding",
+        "name": "Affirmative answers grounded in the actual surrounding code vs generic defensive-programming boilerplate",
+        "side_a": "no_deduct \u2014 the answer anchors its justification in concrete elements of the given code (e.g., the downstream consumer of `build_directory`, or the `build_manager.setup_build()` contract that would have to guarantee the variable).",
+        "side_b": "deduct \u2014 the answer only asserts generic 'extra safeguard / fail early with a clear error' reasoning about hypothetical edge cases, without referencing where the value is consumed or which function is supposed to set it."
+    },
+    {
+        "id": "2h_no_emptiness_claim",
+        "name": "Answer never asserts emptiness (argues the check is redundant, or gives a bare verdict) vs. requiring an affirmative statement that the value is non-empty",
+        "side_a": "No deduct when the answer makes no affirmative claim that the build directory can be empty \u2014 including answers that assert the opposite (setup_build's contract guarantees BUILD_DIR is set, so the guard is redundant) and bare verdicts with no reasoning. The sub-item only fires on an incorrect emptiness claim; silence or a correct 'it's guaranteed set' claim cannot trigger it.",
+        "side_b": "Deduct 2 whenever the answer fails to explicitly state that `build_dir` in `_setup_application_path` is non-empty, treating an answer that is silent on emptiness (or that merely says the check is unnecessary without justifying non-emptiness) as not meeting the requirement."
+    },
+    {
+        "id": "2h_cause_attribution",
+        "name": "Emptiness posited only as an upstream contract violation / misconfiguration vs. as a normal outcome of the current code",
+        "side_a": "No deduct when the only emptiness scenario the answer raises is an external failure of the contract \u2014 the BUILD_DIR environment variable being unset/misconfigured despite setup_build reporting success, or a future 'subtle bug' \u2014 since this concedes the current code's guarantee and only argues for robustness against a broken caller/environment.",
+        "side_b": "Deduct 2 when the answer presents an empty build directory as something the current code can actually produce on a success path (a live possibility in the code as written), rather than as a violation of setup_build's contract or an environment misconfiguration."
+    },
+    {
+        "id": "3a_contract_vs_gap",
+        "name": "Treats 'setup succeeded but BUILD_DIR unset' as impossible under setup_build's contract vs. asserts it is a real reachable gap",
+        "side_a": "Do not deduct if the answer appeals to setup_build's contract/guarantee (it sets BUILD_DIR and returns False otherwise) to conclude the truthiness check adds nothing \u2014 i.e., it treats 'success with empty build_directory' as not a reachable state, even if it then recommends keeping the guard.",
+        "side_b": "Deduct if the answer affirms the check is necessary on the grounds that setup can report success while BUILD_DIR is unset/empty \u2014 i.e., it posits the gap as a genuine reachable edge case rather than an impossible one, since it never concedes the check is logically redundant."
+    },
+    {
+        "id": "3a_conditional_redundancy",
+        "name": "Conditional/premised 'not required if X holds' counts as stating not needed vs. requires an unconditional verdict",
+        "side_a": "Do not deduct when the 'not needed' conclusion is stated under an explicit premise about the code's actual contract (e.g., 'isn't strictly required if setup_build guarantees BUILD_DIR is set'), where that premise is the real behavior of the code; hedged phrasing like 'not strictly' does not void the claim.",
+        "side_b": "Deduct when the answer's bottom line is an affirmative 'yes, it is necessary' with no conditional branch in which the check is redundant."
+    },
+    {
+        "id": "3b_conclusion_polarity_check_unnecessary",
+        "name": "Concludes the second check is unnecessary/can never fire vs concludes it is necessary and defends it as a real safeguard",
+        "side_a": "Credit only if the answer's bottom-line conclusion is that the `not build_directory` test cannot change behavior \u2014 i.e., it comes down on the side that the check is unnecessary/redundant because build_directory is guaranteed set whenever build_setup_result is truthy.",
+        "side_b": "Deduct if the answer concludes the check IS necessary (or recommends keeping it) on the grounds that build setup could succeed while BUILD_DIR is unset/empty \u2014 i.e., it affirms the very divergence case the correct answer says is impossible, treating it as a live possibility ('defensive programming', 'fail early')."
+    },
+    {
+        "id": "3b_invariant_asserted_vs_hypothesized",
+        "name": "Asserts as fact that setup_build sets BUILD_DIR on success vs merely hypothesizes that contract conditionally",
+        "side_a": "Credit if the answer states the guarantee as an established fact about this code \u2014 setup_build sets BUILD_DIR and returns False otherwise \u2014 so the second test provably never fires.",
+        "side_b": "Deduct if the guarantee is only entertained hypothetically or hedged ('if setup_build guarantees...', 'under that contract', 'it would be more meaningful to check os.path.isdir'), leaving open that the invariant may not hold and so never committing to the impossibility of divergence."
+    }
+]

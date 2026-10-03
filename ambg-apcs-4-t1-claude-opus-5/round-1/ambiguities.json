@@ -1,0 +1,62 @@
+[
+    {
+        "id": "1_loop_presence",
+        "name": "Has any repetition construct over the row vs. a single hard-coded element access with no loop",
+        "side_a": "No_deduct if the response contains an actual loop (indexed or enhanced for) whose range covers the elements of board[targetRow] \u2014 the traversal exists, regardless of what the body computes.",
+        "side_b": "Deduct if the response never iterates at all and instead reads one hard-coded element (e.g., `board[0][0]`), since no traversal of board[targetRow]'s elements occurs even though a dereference does."
+    },
+    {
+        "id": "1_static_range_vs_runtime_completion",
+        "name": "Loop header statically spans the whole row (counts) vs. must be guaranteed at runtime to visit every element",
+        "side_a": "No_deduct when the loop's declared bounds cover every index of board[targetRow], even if a conditional `return`/`break` inside the body can cut the traversal short at runtime.",
+        "side_b": "Deduct only if the loop's own range omits elements of board[targetRow]; early-exit control flow inside the body is not treated as failing to access the row."
+    },
+    {
+        "id": "3_operator_equals_vs_reference",
+        "name": "colors compared with equals() vs. compared with ==/!= reference operators",
+        "side_a": "Do not deduct when the two color values are compared using the String equals() method (including the negated form !x.equals(y)), regardless of indexing or operand-source issues.",
+        "side_b": "Deduct when the colors are compared with the reference operators == or != instead of equals(), even if the getColor() calls themselves are on valid Space objects and the result drives the logic \u2014 the sub-item's whole point is the non-reference comparison."
+    },
+    {
+        "id": "3_comparison_present_at_all",
+        "name": "some color comparison exists vs. no comparison of colors anywhere",
+        "side_a": "Do not deduct when the code actually contains an expression that compares two color values (even a flawed or inconsequential one).",
+        "side_b": "Deduct when the response never calls getColor() or compares colors at all \u2014 e.g., it merely declares a boolean flag such as `allSameColor = true` and branches on it without ever evaluating any Space's color."
+    },
+    {
+        "id": "4_compilability_of_surrounding_method",
+        "name": "Sum point survives a non-compiling method vs compile errors (missing return path) void the point",
+        "side_a": "Do not deduct for the summation point as long as the init + in-loop accumulation of point values is textually present, even if the enclosing method does not compile (e.g., no return statement on every path). The sum sub-item is judged on the summation code alone, independent of whether the method body is legal Java.",
+        "side_b": "Deduct when the method as written would not compile, since the summation code can never execute as part of a valid method; a method missing a return on some path (or otherwise failing to compile) earns no credit for the sum."
+    },
+    {
+        "id": "4_traversal_completeness",
+        "name": "Partial/early-terminated traversal of the row still earns the sum vs full-row traversal required",
+        "side_a": "Do not deduct when the loop may exit before visiting every space in the target row (early `return`/`break` inside the loop body), as long as each visited space's point value is added to the initialized accumulator; a truncated sum is just an incorrect sum built from obtained point values.",
+        "side_b": "Deduct unless the loop is capable of visiting every space of the target row and adding each one's points; an early return/break that abandons the remaining spaces means the response never actually sums the row's point values."
+    },
+    {
+        "id": "5_wrong_dimension_traversal",
+        "name": "Traversal of the wrong dimension / transposed indices: counts as accessing all spaces vs. fails to access the target row's spaces",
+        "side_a": "No deduct when the loop walks a transposed or otherwise mis-chosen dimension of the 2-D array (e.g., `board[col][targetRow]` bounded by `board.length` instead of `board[targetRow][col]` bounded by `board[targetRow].length`), as long as it iterates over a full line of distinct Space objects and compares each one's color to a reference color. The row/column mix-up is an indexing defect charged elsewhere, not a failure to loop over the spaces.",
+        "side_b": "Deduct when the indices do not actually enumerate the spaces of the target row, since the loop then never accesses the spaces whose colors must be compared."
+    },
+    {
+        "id": "5_sum_accumulation_defects_irrelevant",
+        "name": "Broken point accumulation / missing return path inside the same loop: ignored for this sub-item vs. taints the traversal",
+        "side_a": "No deduct for defects that live outside the color-comparison logic \u2014 resetting the accumulator inside the loop (`sum = 0;` as the first statement of the body), or a method with a missing return on one path \u2014 provided the loop still visits every space and compares each color to the reference color.",
+        "side_b": "Deduct when the loop body contains logic that destroys the running computation or leaves the method incomplete, treating the traversal as not genuinely 'considering all spaces'."
+    },
+    {
+        "id": "6_full_row_accumulation_vs_partial_sum",
+        "name": "sum truly accumulates every space in the row vs sum is reset/single-space/truncated before the row is finished",
+        "side_a": "Award sub-item 6 when the running total is accumulated across the whole row (`sum += ...` once per space, with `sum` initialized to 0 outside the loop and the loop allowed to visit every space) so the value returned is the total of all the row's points, even if indices or the color test are flawed.",
+        "side_b": "Deduct sub-item 6 when the returned value is not the total of the row's points because the accumulator is re-initialized inside the loop, is taken from a single hard-coded space with no loop at all, or the method returns out of the middle of the loop so only a prefix of the row has been added."
+    },
+    {
+        "id": "6_missing_return_on_one_path",
+        "name": "both outcomes are actually returned vs one control path returns nothing at all",
+        "side_a": "Award sub-item 6 when every path out of the method returns a value, so the plain sum is returned in one case and the doubled sum in the other (regardless of which condition selects which).",
+        "side_b": "Deduct sub-item 6 when a control path falls off the end with no return statement (e.g., only the doubled-sum branch returns), so the non-doubled total is never produced."
+    }
+]

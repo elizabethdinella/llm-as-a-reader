@@ -1,0 +1,37 @@
+[
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly states that `Collections.singletonMap` returns an immutable map that cannot be modified (throwing `UnsupportedOperationException` on attempts), while `HashMap` is mutable and supports add/remove/update. It also covers the size difference, noting singletonMap holds exactly one key-value pair and is optimized for that, whereas HashMap is a general-purpose map able to hold multiple entries with dynamic resizing. It further ties this to the code context (a HashMap wrapping a singletonMap to obtain a mutable copy). The rubric condition is satisfied, so no deduction.",
+        "item": "1a"
+    },
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly addresses mutability, stating that `Collections.singletonMap` returns an immutable map (attempts to modify throw `UnsupportedOperationException`) while `HashMap` is mutable and allows adding, removing, or updating entries. It also covers the size difference, noting singletonMap holds exactly one key-value pair and is optimized/lightweight for that, whereas HashMap is a general-purpose map that can hold multiple entries and resize dynamically. The required statement that a HashMap is mutable is present both in the analysis and the final answer, so no deduction applies.",
+        "item": "1b"
+    },
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly states that `Collections.singletonMap` \"creates an immutable map containing only one key-value pair\" and reiterates that it \"is optimized for a single key-value pair,\" while `HashMap` is \"a general-purpose map implementation designed to handle multiple entries.\" It also thoroughly discusses the mutability difference (immutable singletonMap throwing UnsupportedOperationException vs. mutable HashMap allowing add/remove/update), and ties this to the code context where the singletonMap is copied into a mutable HashMap. Both required elements\u2014mutability and the single key-value mapping/size limitation\u2014are addressed, so no deduction applies.",
+        "item": "1c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The answer does reference `messageParams` several times (e.g., speculating that \"the `messageParams` method or the `UidFetchCommand.Builder` might require a mutable map\" and \"if `messageParams` accepts an immutable map\"), but it never states or discusses the actual method signature of `messageParams`. It never identifies that `messageParams` takes a `FetchProfile` and a `Map<String, Message>` (i.e., the declared parameter type that determines whether an immutable `singletonMap` would be acceptable). The only related detail given is that the map maps a UID String to a `Message` object, which describes the constructed argument rather than the method's declared signature. Since the rubric requires mentioning the signature of `messageParams`, and the answer only vaguely speculates about what the method \"might require\" without specifying its parameter types, the condition is not met.",
+        "item": "2a"
+    },
+    {
+        "deducted": true,
+        "feedback": "The rubric requires the answer to state that `messageParams` takes a `HashMap` (i.e., the method signature/parameter type is specifically `HashMap`, which is why the immutable `singletonMap` must be wrapped). The candidate never asserts this. Instead, it only speculates: \"the `messageParams` method or the `UidFetchCommand.Builder` might require a mutable map\" and \"if `messageParams` accepts an immutable map\" \u2014 framing the constraint as mutability rather than the concrete declared type `HashMap`, and even then only tentatively. The rubric explicitly states that referring to a mutable map requirement is not specific enough. The final answer likewise attributes the wrapping to \"potential modifications or ... API requirements\" without identifying the `HashMap` parameter type, and it even suggests passing `singletonMap` directly as an improvement, which would not compile if the parameter is a `HashMap`. Therefore the point is deducted.",
+        "item": "2b"
+    },
+    {
+        "deducted": true,
+        "feedback": "The answer never examines how the map argument is actually used inside `messageParams` (or the resulting `UidFetchCommand`). Instead of determining that the map's usages are read-only (i.e., only read from, never mutated, so passing an immutable `singletonMap` would be safe), the candidate only speculates: 'the `messageParams` method or the `UidFetchCommand.Builder` might require a mutable map', 'there might be a possibility of adding more entries', and hedges with 'if no further modifications are needed... if `messageParams` accepts an immutable map'. This is precisely the failure the rubric penalizes \u2014 the answer does not clearly determine whether the usages modify the map, leaving the central question unresolved and giving only a generic HashMap-vs-singletonMap mutability/performance comparison.",
+        "item": "2c"
+    },
+    {
+        "deducted": false,
+        "feedback": "The answer clearly discusses `messageParams`, addressing what kind of map it receives and whether it could accept an immutable map directly. Regarding the deduction condition, the answer does not assert as fact that the consumers of the map argument modify it. Its statements are consistently hedged and conditional: \"the `messageParams` method or the `UidFetchCommand.Builder` **might** require a mutable map\", \"**if** the map passed to `messageParams` is not modified later, it would be better to pass `Collections.singletonMap` directly\", and \"**likely** to allow potential modifications or due to API requirements\". It explicitly raises the possibility that no modification occurs and that the `HashMap` wrapper is therefore unnecessary (\"if no further modifications are intended, wrapping it in a `HashMap` might be unnecessary\"). Since it never incorrectly claims that the usages actually mutate the map, the 2-point deduction does not apply, though the speculation leaning toward mutability is weakly supported by the context.",
+        "item": "2d"
+    }
+]

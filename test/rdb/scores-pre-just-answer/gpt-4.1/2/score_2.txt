@@ -1,0 +1,37 @@
+[
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly states that Collections.singletonMap returns an immutable map containing only a single mapping (throwing UnsupportedOperationException on modification attempts), while new HashMap<>(...) creates a mutable map initialized with that single entry that can be freely modified. It also explains the relevance to the code context (messageParams receiving a mutable map). This covers both the mutability and size differences and explicitly notes singletonMap's immutability, so no deduction applies.",
+        "item": "1a"
+    },
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly states that `new HashMap<>(Collections.singletonMap(...))` creates a mutable HashMap that can be freely added to, removed from, or modified, and contrasts this with the immutable, single-entry singletonMap. Both mutability and size (single mapping vs. arbitrary entries) differences are discussed, satisfying the rubric requirement that HashMap be described as mutable.",
+        "item": "1b"
+    },
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly addresses both required aspects: it states that `Collections.singletonMap(key, value)` returns an immutable map containing only one mapping (size/single key-value mapping), and it contrasts mutability, noting that wrapping in `new HashMap<>(...)` produces a mutable map that can be added to, removed from, or modified, whereas the singletonMap would throw `UnsupportedOperationException`. It also correctly ties this to the code context, explaining that the HashMap wrapper gives `messageParams` a modifiable map. The rubric's requirement that the answer state singletonMap returns only a single key-value mapping is satisfied.",
+        "item": "1c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate answer references `messageParams` only in passing (stating that it receives a mutable map), but never mentions or describes the method's signature \u2014 e.g., that it accepts a `FetchProfile` and a `Map<String, Message>` (the message map keyed by UID string). There is no discussion of the declared parameter type that would explain why either map implementation is acceptable/required at the API level. Since the rubric requires mentioning the message signature of `messageParams`, the point is deducted.",
+        "item": "2a"
+    },
+    {
+        "deducted": true,
+        "feedback": "The rubric requires the answer to state that `messageParams` specifically takes a `HashMap` (i.e., its parameter type is declared as HashMap, so a `singletonMap` would not even compile/type-check). The candidate answer only frames the distinction in terms of mutability: it says `singletonMap` is immutable, `new HashMap<>(...)` is mutable, and that the wrapper is used 'so that messageParams receives a mutable map.' The rubric explicitly states that saying it requires a mutable map is not specific enough. The answer never asserts that the method signature demands a `HashMap` type. Therefore the point is deducted.",
+        "item": "2b"
+    },
+    {
+        "deducted": true,
+        "feedback": "The answer only explains the generic difference between an immutable `singletonMap` and a mutable `HashMap` copy. It never examines how the map argument is actually used inside `messageParams` (or downstream in the UidFetchCommand builder/command), and does not determine whether those usages mutate the map. Instead it merely speculates that the HashMap wrapper is used 'so that messageParams receives a mutable map' and that passing singletonMap 'would restrict future modifications' \u2014 a claim unsupported by the code context. Since the usages are in fact read-only (meaning either map would work), the answer fails to clearly determine whether the map is modified, so the point is deducted.",
+        "item": "2c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate does discuss messageParams, but frames the entire rationale around mutability requirements of the callee: it claims the HashMap wrapper is used 'so that messageParams receives a mutable map' and that 'passing singletonMap directly would restrict future modifications to the map within messageParams.' This asserts/implies that the consumer of the map argument modifies it, which is not supported by the code context (the map is simply used as a lookup of uid -> Message in the fetch command; no mutation is shown or implied). The answer thus makes the error described in the rubric, so the points are deducted.",
+        "item": "2d"
+    }
+]

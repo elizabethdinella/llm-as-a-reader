@@ -1,0 +1,28 @@
+<answer>
+public class Bottle {
+    private final double capacity;
+    private double amount;
+
+    public Bottle(double capacity) {
+        this.capacity = capacity;
+        this.amount = capacity;
+    }
+
+    /**
+     * Removes the specified amount of liquid from the bottle.
+     * Precondition: remove > 0 && remove ≤ amount.
+     * If the remaining amount after removal is less than 25 % of the capacity,
+     * the bottle is refilled to full capacity.
+     *
+     * @param remove amount to remove in mL
+     * @return the amount of liquid remaining after the update (after possible refill)
+     */
+    public double updateAmount(double remove) {
+        amount -= remove;
+        if (amount < 0.25 * capacity) {
+            amount = capacity;
+        }
+        return amount;
+    }
+}
+</answer>

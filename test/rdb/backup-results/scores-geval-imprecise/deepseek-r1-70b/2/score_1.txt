@@ -1,0 +1,19 @@
+**Rubric Item 1 — Mutability and size differences (3 points):**
+- The answer explicitly states that `Collections.singletonMap()` provides an **immutable** map ✓ (no deduction)
+- The answer explicitly states that `HashMap` creates a **mutable** map that can be modified ✓ (no deduction)
+- The answer states singletonMap is a "**single-entry** map... when only one entry is needed," conveying the single key-value mapping ✓ (no deduction)
+
+Score: 3/3
+
+**Rubric Item 2 — Discussion of `messageParams` (4 points):**
+- The method signature of `messageParams` is never mentioned (−1)
+- The answer never states that `messageParams` takes a `HashMap` (it doesn't even state a mutability requirement) (−1)
+- The answer does not discuss any usages of the map argument inside `messageParams`, and thus does not determine whether they are read-only (−1)
+- The answer does not incorrectly claim the usages modify the map (it makes no claim at all), so the 2-point lie deduction does not apply
+
+Score: 4 − 3 = 1/4
+
+<scores>
+	<score> 3/3 </score>
+	<score> 1/4 </score>
+</scores>

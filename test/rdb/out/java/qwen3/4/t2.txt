@@ -1,0 +1,1 @@
+Yes, the null check is needed to ensure the database is queried when cached data is missing, preventing stale results.

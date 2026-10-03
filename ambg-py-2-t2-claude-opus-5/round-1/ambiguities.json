@@ -1,0 +1,62 @@
+[
+    {
+        "id": "1a_property_vs_bare_label",
+        "name": "Attributes an accumulation property to the cumulative set vs. uses 'cumulative' only as a category label",
+        "side_a": "Do not deduct when the answer states some concrete property of the cumulative KPISet \u2014 that it keeps accumulating samples across the whole run, that its list grows without bound, that it is not reset \u2014 even if the explanation is brief and embedded in the compaction argument.",
+        "side_b": "Deduct when the word 'cumulative' appears only as a bare category name (e.g., contrasting 'individual and cumulative KPIsets' or proposing to 'restrict it to cumulative KPIsets') with no statement of what makes such a set cumulative."
+    },
+    {
+        "id": "1a_asserted_vs_hypothetical",
+        "name": "Cumulative behavior asserted as fact vs. raised only as a conditional/speculative possibility",
+        "side_a": "Do not deduct when the answer states the cumulative set's behavior as a definite claim about how the system works, even if it also recommends calling compaction everywhere.",
+        "side_b": "Deduct when any reference to cumulative sets is purely hypothetical or inferential hedging ('if compact_times() is primarily for memory optimization...', 'suggesting that...'), so no claim about what cumulative means is actually committed to."
+    },
+    {
+        "id": "1b_unbounded_growth_memory_rationale",
+        "name": "Justifies the answer purely from what the code does vs. attributes unbounded growth / memory pressure to cumulative KPISets",
+        "side_a": "If the answer recommends compacting based on the observable behaviour of the code (e.g. 'the code does not differentiate between individual and cumulative KPIsets in the recalculate method', 'as it is currently implemented in the recalculate() method') and never asserts that cumulative KPISets keep accumulating samples or grow without bound, give the 3 points \u2014 no characterization of cumulative KPISets has been made, so nothing can be wrong.",
+        "side_b": "If the answer asserts that cumulative KPISets continuously accumulate response-time samples / 'grow without bound' / keep appending to the same list so that compaction is needed for memory reasons, deduct the 3 points: that is an incorrect characterization of what a cumulative KPISet is, regardless of whether the words 'whole test run' or 'duplicates' are used."
+    },
+    {
+        "id": "1b_compaction_alters_correctness",
+        "name": "Compaction treated as a neutral preprocessing step vs. claimed to affect statistical correctness or to destroy needed data",
+        "side_a": "If the answer treats compact_times() as a neutral/preparatory step (and any doubt about its role is raised only as a hedged conditional, e.g. 'if compact_times() is primarily for memory optimization and not critical for data correctness'), do not deduct.",
+        "side_b": "If the answer asserts a factual consequence for correctness \u2014 that omitting compaction makes the statistics wrong, or that compacting a per-interval set would throw away data still needed for that interval \u2014 deduct the 3 points; these are incorrect claims about the cumulative/non-cumulative distinction."
+    },
+    {
+        "id": "2a_hedged_permissive_fallback",
+        "name": "Commits to an exclusive restriction vs. hedges by also endorsing calling it on every KPIset",
+        "side_a": "No deduct: the answer commits to a single exclusive recommendation \u2014 compact only the cumulative KPIset \u2014 and does not offer 'but you can also call it everywhere' as an acceptable alternative.",
+        "side_b": "Deduct: the answer undercuts or blurs its recommendation by also saying it is fine/harmless/consistent to call compact_times() on all KPIsets (including when it correctly notes it is only strictly required for the cumulative set)."
+    },
+    {
+        "id": "2a_rationale_source",
+        "name": "Rationale from data/memory semantics vs. deference to current code behavior or 'consistency'",
+        "side_a": "No deduct: the answer justifies the choice from the data lifecycle (cumulative sets accumulate unboundedly; per-interval sets reset and would lose needed samples).",
+        "side_b": "Deduct: the answer justifies calling it everywhere by appealing to how recalculate() is currently written or to uniformity/consistency across KPIset types, rather than to accumulation of response-time samples."
+    },
+    {
+        "id": "2b_universal_necessity",
+        "name": "Treats compaction as conditionally needed (cumulative only, harmless elsewhere) vs asserts it is a required preprocessing step for every KPISet",
+        "side_a": "No deduction when the answer presents _compact_times() as optional/no-op for per-interval KPISets and strictly needed only for the cumulative one \u2014 i.e. it may note that calling it everywhere is harmless, as long as necessity is scoped to the cumulative set.",
+        "side_b": "Deduct the 2 points when the answer asserts that compaction is a necessary/mandatory preprocessing step for all KPISets before recalculate(), or claims recalculate() assumes/requires already-compacted data and does not distinguish set types \u2014 this misstates when and why the method runs."
+    },
+    {
+        "id": "2b_harmful_loss_claim",
+        "name": "Claiming compaction would destroy data still needed for interval statistics vs only claiming it enables statistics",
+        "side_a": "No deduction when the answer's only rationale for skipping compaction on per-interval sets is that the list never grows large / the call is unnecessary (a size argument).",
+        "side_b": "Deduct the 2 points when the answer claims compaction would discard or corrupt information that is still needed for a KPISet's metrics \u2014 e.g. that compacting per-interval data would lose data required for that interval's statistics \u2014 since this misdescribes the effect of _compact_times()."
+    },
+    {
+        "id": "2c_cost_denial_vs_openness",
+        "name": "Direction of the cost claim: leaves open / asserts a performance cost of the repeated call vs. affirmatively declares the call cheap or harmless",
+        "side_a": "No deduction if the answer treats the repeated invocation as something that may carry a real runtime cost worth weighing (e.g., says the call could be restricted once its performance impact is known), i.e., it does not neutralize the cost question.",
+        "side_b": "Deduct if the answer affirmatively denies any cost of the repeated call \u2014 calling it 'harmless', 'inexpensive', 'returns immediately', or otherwise asserting it is free \u2014 since this negates rather than identifies the per-KPISet cost."
+    },
+    {
+        "id": "2c_profiling_vs_flat_verdict",
+        "name": "Empirical check recommended (profile/measure before narrowing the call) vs. flat verdict asserted from reading the code",
+        "side_a": "No deduction if the answer conditions its recommendation on actually measuring the call's impact (profiling/benchmarking) before deciding whether to keep calling it on every KPISet.",
+        "side_b": "Deduct if the answer issues a categorical rule ('always call it', 'only on cumulative sets') justified solely by code reading or by memory-growth reasoning, with no suggestion of measuring the call's runtime impact."
+    }
+]

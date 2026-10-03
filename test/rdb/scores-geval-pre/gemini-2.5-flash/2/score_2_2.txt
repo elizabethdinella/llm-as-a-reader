@@ -1,0 +1,30 @@
+[
+    {
+        "justification": "The answer explicitly states that `Collections.singletonMap()` creates an **immutable** map whose contents cannot be changed after creation, satisfying the requirement to mention that singletonMap is immutable.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that `new HashMap<>(Collections.singletonMap(...))` creates a **mutable** `HashMap` that allows modification (adding/removing entries) without throwing UnsupportedOperationException. This satisfies sub-item 1c.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that `Collections.singletonMap()` creates an immutable map with a single entry, satisfying the requirement that singletonMap contains only a single key-value mapping.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer never mentions the method signature of `messageParams` (e.g., its parameter types such as `FetchProfile` and `HashMap<String, Message>`). It only speculates that the Builder or command 'needs a modifiable map instance' without referencing the actual declared signature. Therefore the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer never states that `messageParams` takes a `HashMap` as its declared parameter type. It only says the Builder or command \"needs a modifiable map instance\" \u2014 i.e., a mutable map \u2014 which the rubric explicitly deems not specific enough. Therefore the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer does not examine how the map argument is actually used within messageParams. Instead, it merely speculates that the Builder or resulting command 'needs a modifiable map instance,' without determining whether the usages are read-only. It therefore fails to discuss the actual usages and fails to clearly determine whether they modify the map.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer asserts that the use of `new HashMap` 'implies that the `UidFetchCommand.Builder` or the resulting `UidFetchCommand` needs a modifiable map instance.' This incorrectly claims that the map passed to messageParams is (or needs to be) modified downstream, when in fact the usages within messageParams are read-only. This constitutes an incorrect statement that the usages modify the map, so the deduction applies.",
+        "deducted": true
+    }
+]

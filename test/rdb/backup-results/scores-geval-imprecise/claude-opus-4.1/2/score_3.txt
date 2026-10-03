@@ -1,0 +1,21 @@
+**Rubric Item 1 (Mutability/size differences — 3 points)**
+
+- *singletonMap is immutable:* Explicitly stated ("returns an immutable... map... that cannot be modified"). No deduction.
+- *HashMap is mutable:* Explicitly stated ("creates a mutable copy that can be modified later"). No deduction.
+- *singletonMap holds a single key-value mapping:* Stated ("with exactly one entry"). No deduction.
+
+Score: 3/3
+
+**Rubric Item 2 (Discussion of messageParams — 4 points)**
+
+- *Message signature of messageParams:* The answer never presents or references the actual method signature of `messageParams`; it only speculates about what the method "might" expect. Deduct 1.
+- *States messageParams takes a HashMap:* The answer offers this only as one of two speculative alternatives ("either requires a mutable map... or specifically expects a HashMap type"), never determining which. Since it does not commit to the HashMap parameter type and leans on the "requires a mutable map" framing, this is not sufficiently specific. Deduct 1.
+- *Discussion of usages of the map argument, noting they are read-only:* The answer does not examine any usages inside `messageParams` and fails to determine whether the map is modified. Deduct 1.
+- *Incorrectly claims usages modify the map:* The answer asserts the wrapper is "likely used because the messageParams method either requires a mutable map for subsequent operations," implying mutation occurs, which is incorrect. Deduct 2.
+
+Score: 0/4
+
+<scores>
+	<score> 3/3 </score>
+	<score> 0/4 </score>
+</scores>

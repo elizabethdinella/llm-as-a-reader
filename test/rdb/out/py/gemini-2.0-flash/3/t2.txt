@@ -1,0 +1,1 @@
+Yes, it's generally safer to use UTF-8 as the default encoding instead of ASCII when decoding the `host` header. This is because UTF-8 can handle a broader range of characters, including those found in internationalized domain names, thus preventing potential `UnicodeDecodeError` exceptions.

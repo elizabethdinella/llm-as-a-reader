@@ -1,0 +1,2 @@
+
+You should call `_compact_times()` only on cumulative KPIsets. For individual (atomic) KPIsets, retaining fine-grained timing information is beneficial for accuracy and detailed analysis. Compaction is most useful where data is aggregated over long periods, to optimize memory usage and processing speed.

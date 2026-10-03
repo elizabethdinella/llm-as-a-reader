@@ -1,0 +1,62 @@
+[
+    {
+        "id": "2b_npe_despite_null_guard",
+        "name": "Respects the explicit null guard vs. lists NullPointerException as a live risk at that line",
+        "side_a": "No deduction when the answer confines the exception to the cast (ClassCastException) and does not claim a NullPointerException can occur on that line \u2014 i.e. it accounts for (or at least does not contradict) the explicit null check that already guards the fragment reference.",
+        "side_b": "Deduct when the answer asserts a NullPointerException as a possible exception at that line, since the code's `if (... != null)` guard rules it out; naming NPE shows the answer is listing generic exception types rather than reading the actual control flow."
+    },
+    {
+        "id": "2b_mechanism_vs_type_list",
+        "name": "States the causal mechanism of the exception vs. enumerates exception type names",
+        "side_a": "No deduction when the answer ties the exception to a concrete mechanism in the code \u2014 which value is cast, to what, and under what condition it fails.",
+        "side_b": "Deduct when the answer only enumerates exception class names (optionally with boilerplate advice) without explaining what in the code would produce them."
+    },
+    {
+        "id": "2e_null_npe_mention",
+        "name": "Acknowledges the null/NPE branch vs. mentions only the cast-type failure",
+        "side_a": "no_deduct \u2014 the answer explicitly raises the null case: either names NullPointerException as a possible exception at the line, or reasons about the null-returning/null-check behavior of findFragmentById.",
+        "side_b": "deduct \u2014 the answer conditions the exception solely on the fragment being the wrong type (interface not implemented) and never mentions null, a missing fragment, or NullPointerException, pushing all other possibilities into vague 'other runtime exceptions'."
+    },
+    {
+        "id": "2f_speculative_hedge_vs_named_extra_exception",
+        "name": "Vague/hedged mention of 'other possible' exceptions vs concretely naming a specific extra exception (SecurityException) with a cause",
+        "side_a": "Give credit if, beyond the fragment-cast exception, the answer only gestures vaguely at unspecified further possibilities (e.g., 'other runtime exceptions could occur depending on the implementation / system constraints') without naming a concrete exception type tied to a different API call \u2014 the hedge adds no false claim about this line.",
+        "side_b": "Deduct 2 points if the answer concretely names an additional exception type and attributes it to a specific other operation or simply lists it as an outcome of this line (e.g., 'SecurityException if foreground service start fails due to permission issues', or a flat list 'RuntimeException, or SecurityException'), since this asserts a specific wrong exception for the asked line."
+    },
+    {
+        "id": "2g_ranked_primary_vs_shotgun_enumeration",
+        "name": "correct type singled out as the primary/attributed cause vs flat undifferentiated shotgun list of types",
+        "side_a": "No deduction when the answer identifies ClassCastException as the primary/most-likely exception at the lookup-and-cast site (ranked with words like 'most likely', 'particularly', 'will be thrown if...', or leading a short list of types that are each plausible at that same lookup), with any extra types subordinated or tied to a stated cause/other operation. The extra names then read as secondary caveats rather than competing claims about the asked line.",
+        "side_b": "Deduct when the answer just sprays an undifferentiated list of exception classes over 'this code' with no ranking, no mechanism, and no attribution \u2014 so each named type (NullPointerException, RuntimeException, SecurityException) stands as an equal claim about what the asked line throws, including catch-all/irrelevant types."
+    },
+    {
+        "id": "3a_trigger_condition_vs_exception_list",
+        "name": "States the triggering condition for the exception vs merely enumerates exception class names",
+        "side_a": "No deduct as long as the answer states the condition that produces the failure \u2014 i.e., an 'if/when the fragment returned is not of that type / does not implement that interface' style clause attached to the cast. The answer may additionally list other speculative exceptions without losing the point, provided one candidate is tied to a stated triggering condition.",
+        "side_b": "Deduct when the answer only enumerates exception class names (e.g. 'ClassCastException or NullPointerException', 'NullPointerException, ClassCastException, RuntimeException, or SecurityException') with no stated condition under which any of them would arise; an undifferentiated laundry list of possible exception types does not count as identifying the failure."
+    },
+    {
+        "id": "3b_npe_named",
+        "name": "Names NullPointerException (alongside ClassCastException) as a possible exception vs confines the answer to ClassCastException only",
+        "side_a": "Credit if the answer explicitly names NullPointerException (or an equivalent null-dereference failure) among the exceptions that can occur at this line, in addition to the cast failure.",
+        "side_b": "Deduct if the answer identifies only ClassCastException as the concrete exception, leaving null-dereference either unmentioned or dismissed/relegated to vague 'other runtime exceptions'."
+    },
+    {
+        "id": "4a_single_committed_vs_shotgun_list",
+        "name": "Commits to one correct exception (ClassCastException) vs shotgun-lists several speculative exception types",
+        "side_a": "No deduct if the answer names ClassCastException as the exception and confines itself to that mechanism, without appending a list of other possible exception types.",
+        "side_b": "Deduct if the answer, in addition to ClassCastException, enumerates other speculative exception types (NullPointerException, SecurityException, RuntimeException, etc.) as things that 'could also' happen."
+    },
+    {
+        "id": "4a_npe_claim_vs_null_guard",
+        "name": "Treats the null check as excluding NPE vs claims NullPointerException is still possible",
+        "side_a": "No deduct if the answer accounts for the existing null check and does not claim a NullPointerException can occur at this line.",
+        "side_b": "Deduct if the answer asserts NullPointerException as a possible exception at this line even though the code null-checks the fragment before use."
+    },
+    {
+        "id": "5a_null_case_addressed",
+        "name": "Addresses the null/NullPointerException possibility of findFragmentById vs. only the wrong-type cast",
+        "side_a": "No deduction if the answer engages with the null-return/NullPointerException branch of `findFragmentById` \u2014 either by naming NullPointerException as a possible exception or by explicitly reasoning about the null check \u2014 in addition to the ClassCastException.",
+        "side_b": "Deduct if the answer treats the wrong-type cast as the only concretely identified failure and never mentions a null fragment / NullPointerException, filling the remainder with an unnamed catch-all (\"other runtime exceptions could occur\") pinned to downstream calls."
+    }
+]

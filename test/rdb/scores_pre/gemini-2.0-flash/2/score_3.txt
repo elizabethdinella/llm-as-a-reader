@@ -1,0 +1,37 @@
+[
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly states that Collections.singletonMap creates an immutable map containing only one entry, while HashMap is mutable and can hold multiple entries. It also notes that attempting to modify a singletonMap would throw UnsupportedOperationException. Both the mutability and size differences are addressed, satisfying the rubric item.",
+        "item": "1a"
+    },
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly states that Collections.singletonMap creates an immutable, single-entry map while HashMap is mutable and can hold multiple entries, and notes that modifying a singletonMap would throw UnsupportedOperationException. This directly addresses both mutability and size differences, including the required statement that HashMap is mutable.",
+        "item": "1b"
+    },
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly states that Collections.singletonMap creates an immutable map containing only one entry (a single key-value mapping of UID to Message), while HashMap is mutable and can hold multiple entries. It also notes that attempting to modify a singletonMap would throw UnsupportedOperationException. This satisfies the rubric requirement of discussing mutability and size differences and stating that singletonMap returns only a single key-value mapping.",
+        "item": "1c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The answer only references `messageParams` in passing (\"if required by the logic within `messageParams`\") and never states or discusses its method signature. It does not indicate that `messageParams` accepts a `FetchProfile` and a `Map<String, Message>` (i.e., a mutable `Map` parameter type), which is the crux of why a `HashMap` rather than an immutable `singletonMap` might be passed. The mention of \"mapping the UID to a `Message`\" describes the contents of the constructed map, not the declared parameter signature of `messageParams`. The final boxed answer omits `messageParams` entirely. Therefore the rubric condition is not met and the point is deducted.",
+        "item": "2a"
+    },
+    {
+        "deducted": true,
+        "feedback": "The rubric requires the answer to state that the `messageParams` method signature takes a `HashMap` (so passing a `Collections.singletonMap` directly would not compile / would not satisfy the parameter type). The candidate only discusses the general immutability/mutability distinction between `singletonMap` and `HashMap`, speculating that the wrapping in a `HashMap` allows for 'potential modification or addition of more entries later on'. It only vaguely references 'the logic within `messageParams`' as a possible reason for needing mutability, and the final answer omits `messageParams` entirely. Per the rubric, stating a mutable map is required is explicitly not specific enough, and the candidate does not even go that far in specifying that `messageParams` declares a `HashMap` parameter type. Deduction applies.",
+        "item": "2b"
+    },
+    {
+        "deducted": true,
+        "feedback": "The answer only speculates about messageParams (\"if required by the logic within `messageParams` or elsewhere\") and never examines or describes the actual usages of the map argument inside messageParams. It does not establish whether those usages are read-only or mutate the map; instead it vaguely suggests the HashMap wrapper exists to \"allow potential modification,\" leaving the key question unresolved. Since the rubric requires discussing the map's usages within messageParams and clearly determining that they are read-only (i.e., do not modify the map), the point is deducted.",
+        "item": "2c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The answer does mention messageParams, but its central claim is that the `HashMap` wrapper exists so that the map can be mutated \u2014 'the use of `HashMap` allows for potential modification or addition of more entries later on, if required by the logic within `messageParams` or elsewhere', and the final answer repeats that 'HashMap is used to allow potential modification or addition of entries to the map later on'. Nothing in the provided context supports the notion that `messageParams` (or the resulting `UidFetchCommand`) mutates the supplied map; the builder simply stores/consumes the message map. By asserting that the mutable-map choice is motivated by downstream modification of the argument, the answer incorrectly implies the usages of the map argument modify it, which is precisely the error the rubric penalizes. The hedging ('potential', 'if required') does not rescue it, since this speculative mutation is offered as the sole explanation for the difference rather than, e.g., a type/API requirement or defensive copying by the caller.",
+        "item": "2d"
+    }
+]

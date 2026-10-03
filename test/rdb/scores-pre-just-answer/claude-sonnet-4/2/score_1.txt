@@ -1,0 +1,37 @@
+[
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly states that Collections.singletonMap returns an immutable map optimized for one entry (size difference implied by 'single entry'/'one entry'), while new HashMap creates a mutable copy that can be modified. This addresses both mutability and the fixed single-entry size, satisfying the rubric requirement that singletonMap be described as immutable.",
+        "item": "1a"
+    },
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly states that the code creates a 'mutable HashMap' and contrasts it with Collections.singletonMap being 'immutable' and 'optimized for one entry' (size difference implied by single entry restriction). The requirement that the answer state a HashMap is mutable is clearly satisfied.",
+        "item": "1b"
+    },
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly contrasts mutability ('Collections.singletonMap returns an immutable map... while new HashMap creates a mutable copy that can be modified later') and notes the size restriction of singletonMap ('optimized for one entry', 'initialized with a single entry from singletonMap'), thereby conveying that singletonMap holds only a single key-value mapping. Both required elements \u2014 mutability and the single-entry limitation \u2014 are addressed, so no deduction applies.",
+        "item": "1c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate answer discusses only the general difference between Collections.singletonMap (immutable, single-entry) and a HashMap copy (mutable). It never names or discusses messageParams itself, and it does not reference the method's signature (i.e., that messageParams accepts a FetchProfile and a Map<String, Message>, which is why the singletonMap must be wrapped/typed as it is). It only vaguely alludes to 'the receiving method' needing a mutable map, without tying this to messageParams or its declared parameter types. Therefore the requirement to mention the message signature of messageParams is not met.",
+        "item": "2a"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate answer explains the general distinction between Collections.singletonMap (immutable, single-entry) and a HashMap copy (mutable), and states the pattern is used 'when the receiving method needs a mutable map or might modify the map after receiving it.' However, it never states that messageParams specifically takes/requires a HashMap as its parameter type. The rubric explicitly notes that saying it requires a mutable map is not specific enough, which is exactly what the candidate does. The answer also does not name messageParams' signature or type requirement at all. Therefore the point is deducted.",
+        "item": "2b"
+    },
+    {
+        "deducted": true,
+        "feedback": "The answer only describes the general difference between an immutable singletonMap and a mutable HashMap copy. It does not examine or discuss how the map argument is actually used inside messageParams (e.g., whether the builder/command merely reads from the map, such as looking up messages by UID, which would make the mutable copy unnecessary). Instead it vaguely speculates that 'this pattern is typically used when the receiving method needs a mutable map or might modify the map after receiving it,' which neither identifies the real usages nor clearly determines whether those usages modify the map. Therefore the rubric condition is not satisfied and the point is deducted.",
+        "item": "2c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The answer never names or examines `messageParams` (or `UidFetchCommand.Builder`) specifically; it only refers vaguely to 'the receiving method'. More importantly, it asserts that the mutable copy is used because 'the receiving method needs a mutable map or might modify the map after receiving it.' Nothing in the provided code context supports the claim that `messageParams` mutates the map it is given \u2014 the map is simply passed into the builder. Making this unsupported claim that the consumer of the argument modifies the map is exactly the error the rubric penalizes, so points are deducted.",
+        "item": "2d"
+    }
+]

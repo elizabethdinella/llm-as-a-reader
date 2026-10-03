@@ -1,0 +1,14 @@
+[
+  {
+    "deducted": false
+  },
+  {
+    "deducted": true
+  },
+  {
+    "deducted": true
+  },
+  {
+    "deducted": true
+  }
+]

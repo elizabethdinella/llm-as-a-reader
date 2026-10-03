@@ -1,0 +1,1 @@
+Yes, the code at the end depends on `drawer` being non-null, as it only executes when `drawer` is initialized.

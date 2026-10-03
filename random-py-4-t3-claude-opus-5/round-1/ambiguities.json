@@ -1,0 +1,38 @@
+[
+    {
+        "id": "1a_affirms_deepcopy_vs_recommends_shallow",
+        "name": "Affirms deepcopy is needed vs. argues shallow copy suffices",
+        "side_a": "No deduct: the answer answers 'yes' \u2014 a deepcopy (or at minimum a copy) of result must be made before assigning the serialized value, because reply.result is reused afterwards and must stay unmodified.",
+        "side_b": "Deduct: the answer concludes deepcopy is unnecessary and recommends a shallow copy (dict(result)/result.copy()) instead, on the grounds that only the top-level DATA key is rebound and no nested object is mutated."
+    },
+    {
+        "id": "1b_hypothetical_other_txn_types",
+        "name": "Analysis confined to the given SCHEMA/ISSUER_KEY branch vs speculation about hypothetical other transaction types needing the same copy",
+        "side_a": "No deduction if the answer explains the need (or non-need) for the copy purely in terms of the code path actually shown \u2014 the SCHEMA/ISSUER_KEY branch and the later uses of reply.result \u2014 without asserting or supposing anything about other transaction types.",
+        "side_b": "Deduct 2 points if the answer invokes hypothetical or unspecified other transaction types as a reason to restructure the copy \u2014 e.g., 'if there are other transaction types that also need to modify DATA', 'regardless of the transaction type' \u2014 since this asserts requirements for transaction types outside the two in scope without any evidence from the code."
+    },
+    {
+        "id": "2a_dual_destination_split",
+        "name": "names two distinct downstream consumers receiving different payloads (serialized copy vs unserialized original) vs mentions only one downstream use or a vague 'later use'",
+        "side_a": "No deduction when the answer lays out the split: the modified/serialized object goes to one consumer (the ledger/txn store) while the untouched original goes to the other (the graph). Explicitly pairing each object with its own destination satisfies the item.",
+        "side_b": "Deduct when the answer names only a single downstream consumer (e.g. only storeTxnInGraph / 'the graph' / 'later operations') or speaks generically of 'storage operations' without separating which consumer gets the serialized version and which gets the original."
+    },
+    {
+        "id": "2a_premise_accepted",
+        "name": "accepts that a (deep) copy is needed so a serialized version can exist separately vs rejects the copy premise outright",
+        "side_a": "No deduction when the answer accepts that a copy must carry the serialized DATA to its consumer, so a claim about where the serialized data ends up is actually made.",
+        "side_b": "Deduct when the answer denies the need for the copy (argues shallow copy / no copy is sufficient) and therefore never asserts that a serialized version is handed to any consumer, discussing only reference semantics of the DATA key."
+    },
+    {
+        "id": "2b_concrete_downstream_use_vs_hypothetical_risk",
+        "name": "reason anchored in the actual later use of reply.result in this function vs generic/hypothetical side-effect worry",
+        "side_a": "No deduction when the answer points to the concrete downstream consumer of the untouched reply.result inside this same function (storing it in the graph / later lines using reply.result), i.e. the copy is justified by what actually happens next in the code.",
+        "side_b": "Deduct when the justification is only generic or hypothetical \u2014 'other transaction types might also modify DATA', 'to be safe', 'avoid unintended side effects', 'protect the original' \u2014 with no reference to the actual later consumer of reply.result in the function."
+    },
+    {
+        "id": "2b_deepcopy_affirmed_vs_declared_unnecessary",
+        "name": "affirms the deepcopy is needed vs argues deepcopy is unnecessary (shallow copy suffices)",
+        "side_a": "No deduction when the answer endorses the deepcopy as required/appropriate before modifying result[DATA], so the preserved original is what reaches the graph.",
+        "side_b": "Deduct when the answer concludes the deepcopy is not needed (e.g. recommends dict(result)/result.copy() instead), since it then has no occasion to state what the graph receives as the preserved, unserialized data."
+    }
+]

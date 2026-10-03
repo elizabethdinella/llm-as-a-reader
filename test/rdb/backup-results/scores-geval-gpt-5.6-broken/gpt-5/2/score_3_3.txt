@@ -1,0 +1,7 @@
+{"justification": "The answer explicitly states that Collections.singletonMap returns an 'immutable, fixed-size map' and notes UnsupportedOperationException on modification.", "deducted": false}
+{"justification": "The answer states that new HashMap<>(...) 'creates a mutable copy' which can be safely modified, so HashMap mutability is covered.", "deducted": false}
+{"justification": "The answer says singletonMap returns a map 'with one entry' / 'containing that single entry', covering the single key-value mapping point.", "deducted": false}
+{"justification": "The answer never mentions or reproduces the actual method signature of messageParams (e.g., its parameter types such as FetchProfile and Map<String, Message>). Deduct.", "deducted": true}
+{"justification": "The answer only speaks generically about needing 'a mutable HashMap' in hypothetical terms; it never states that messageParams' signature actually requires/takes a HashMap. Deduct.", "deducted": true}
+{"justification": "The answer only offers conditional speculation ('If messageParams only reads the map...', 'if it needs to add/replace entries...') and never inspects or determines the actual usages of the map inside messageParams, so it fails to clearly establish that they are read-only. Deduct.", "deducted": true}
+{"justification": "The answer does not assert that messageParams actually mutates the map; its statements about modification are hypothetical/conditional, so no false claim was made.", "deducted": false}

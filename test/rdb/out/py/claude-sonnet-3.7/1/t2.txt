@@ -1,0 +1,2 @@
+
+The difference is that `F.cross_entropy` is PyTorch's built-in cross entropy loss function from the torch.nn.functional module, while `cross_entropy` (without the F prefix) appears to be a custom function defined elsewhere in the code. The PyTorch version returns a loss tensor which is used for backpropagation, while the custom function seems to calculate the validation loss and store it in a variable for reporting purposes, rather than for gradient computation.

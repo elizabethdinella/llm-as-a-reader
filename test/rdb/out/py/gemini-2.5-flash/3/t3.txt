@@ -1,0 +1,2 @@
+
+No, `ascii` should be used for decoding the `Host` header. HTTP specifications dictate that the `Host` header's value, including Punycode for internationalized domains, must be composed of US-ASCII characters. Decoding with `ascii` correctly enforces this standard; any non-ASCII bytes would indicate a malformed header and lead to an error, which is the appropriate behavior. Using `utf-8` would incorrectly assume the header can contain arbitrary Unicode and could hide invalid or malicious input.

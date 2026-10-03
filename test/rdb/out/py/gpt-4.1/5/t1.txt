@@ -1,0 +1,2 @@
+
+Yes, the check for `if not build_directory` is needed. Even if the build setup succeeds, a missing or misconfigured build directory could lead to downstream errors. This check ensures that the function fails early and clearly if the build directory is not properly set.

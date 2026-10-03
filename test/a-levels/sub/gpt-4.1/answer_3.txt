@@ -1,0 +1,5 @@
+<answer>
+public String GetPosition() {
+    return "X = " + this.XPosition + " Y = " + this.YPosition;
+}
+</answer>

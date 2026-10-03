@@ -1,0 +1,8 @@
+[
+    {
+        "id": "1a_null_check_necessity",
+        "name": "optional\u2011null\u2011check vs mandatory\u2011null\u2011check",
+        "side_a": "Answers that say a null\u2011check for `mPrefix` is optional or not required (e.g., \u201cyou don\u2019t necessarily need to add a null check\u201d) \u2192 credit.",
+        "side_b": "Answers that say a null\u2011check for `mPrefix` is required/mandatory (e.g., \u201cyou should add a null check\u201d) \u2192 deduction."
+    }
+]

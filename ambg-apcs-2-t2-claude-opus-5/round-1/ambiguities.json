@@ -1,0 +1,56 @@
+[
+    {
+        "id": "2_explicit_declaration_required",
+        "name": "Variable must be explicitly declared in the class body vs. being used in a method counts as having the variable",
+        "side_a": "No_deduct only when BOTH required variables appear as actual declarations with `private <type> name;` in the class body. If a needed variable (e.g. the current-amount field) never appears in a declaration and is only referenced inside a method, the point is lost \u2014 a reference is not a declaration.",
+        "side_b": "No_deduct when the class shows evidence of tracking both quantities, even if one of them is only used (assigned/read) inside a method and never formally declared; the grader infers the intended instance variable from its use and credits the declaration point."
+    },
+    {
+        "id": "3_constructor_return_type",
+        "name": "Header written with a return type (`public void Bottle(double)`) vs true constructor header: no_deduct vs deduct",
+        "side_a": "no_deduct \u2014 Judge only the name, access modifier, and parameter list. If the header is `public void Bottle(double capacity)` (a return type mistakenly added, making it technically a method rather than a constructor), still award the point because the required pieces `public`, `Bottle`, and one `double ____` parameter are all present.",
+        "side_b": "deduct \u2014 Require a legal constructor declaration with no return type. Deduct if the header specifies any return type (e.g., `public void Bottle(double capacity)`), since such a declaration is a method, not the required constructor."
+    },
+    {
+        "id": "3_field_type_mismatch",
+        "name": "Instance variable declared int while the double parameter is assigned to it: no_deduct vs deduct",
+        "side_a": "no_deduct \u2014 Judge the header's parameter type independently of the field declarations. If the parameter is correctly `double` but the instance variable is declared `int` (so `this.capacity = capacity;` would not compile), still award the point.",
+        "side_b": "deduct \u2014 Require the stored state to be type-compatible with the double parameter. Deduct if the capacity/amount fields are declared `int` and a `double` parameter is assigned to them, since the resulting narrowing assignment does not compile."
+    },
+    {
+        "id": "4_unrelated_compile_errors_outside_capacity_assignment",
+        "name": "Non-capacity compile errors elsewhere in the class (undeclared field, missing semicolon, bare expression statement): ignore vs. deduct because the class won't compile",
+        "side_a": "No deduct: judge only the capacity assignment line. If the constructor assigns the double parameter to a compatibly declared capacity instance variable, award the point even though other parts of the class do not compile \u2014 e.g., the remaining-amount field is never declared, a statement is missing its semicolon, or a method body contains a bare expression and no return.",
+        "side_b": "Deduct: treat the class as a whole and withhold the point when the file contains compile-blocking defects anywhere (undeclared variables, missing semicolons, non-statement expressions), on the theory that the capacity assignment never actually executes in a compilable program."
+    },
+    {
+        "id": "5_void_return_type",
+        "name": "`void updateAmount(double)` \u2014 `void` counts as an incorrect return type vs only non-double *value* types are penalized",
+        "side_a": "Deduct when the header declares `void` (or any non-value return) instead of `double`. `public void updateAmount(double used)` fails the 'incorrect return type' condition outright, regardless of what the body does.",
+        "side_b": "Do not deduct for `void` as long as the visibility is `public`, the name is `updateAmount`, and the single parameter is `double`; treat the declared return type as satisfied because the method's job (updating the amount) is performed, and only an incorrect non-void value type (e.g., `int`, `String`) would lose the point."
+    },
+    {
+        "id": "5_header_vs_body_return",
+        "name": "Declared `double` header with a body that never returns \u2014 header text alone is graded vs body must actually return a value",
+        "side_a": "Do not deduct when the header reads `public double updateAmount(double ...)` even if the body contains no `return` statement or is otherwise non-compiling; this sub-item grades only the declared header.",
+        "side_b": "Deduct when the method declared to return `double` never returns a value, since the header's `double` return type is not realized by the implementation."
+    },
+    {
+        "id": "6_amount_update_assignment",
+        "name": "Remaining amount actually re-assigned by subtraction vs. not stored / wrong operation",
+        "side_a": "No deduct if the method decreases the stored amount field by the parameter and stores the result back into the field (e.g. `amount = amount - used;` or `this.currentAmount -= amountRemoved;`).",
+        "side_b": "Deduct if the update is not a subtraction stored into the field \u2014 i.e. the arithmetic is a bare expression statement with no assignment (`amount - used;`), or the parameter is added rather than subtracted (`amount = amount + used;`)."
+    },
+    {
+        "id": "6_refill_threshold_strictness",
+        "name": "Refill condition strictly below 25% vs. at-or-below 25%",
+        "side_a": "No deduct if the refill test uses a strict comparison against a quarter of capacity (`amount < 0.25 * capacity`), so an amount exactly at 25% is not refilled.",
+        "side_b": "Deduct if the test includes equality (`amount <= 0.25 * capacity`) or compares to the wrong quantity (`25 * capacity`), refilling on the wrong boundary."
+    },
+    {
+        "id": "7_no_return_statement_at_all",
+        "name": "Method body contains no `return` keyword at all vs. some return statement is present",
+        "side_a": "No deduct when the method body actually contains a return statement that hands back the computed/updated amount (e.g., `return amount;` or `return this.currentAmount;`), regardless of declared type mismatches or how the value was computed.",
+        "side_b": "Deduct whenever `updateAmount` contains no `return` statement anywhere in its body \u2014 the method just falls off the end after updating (or failing to update) `amount`, so nothing is ever returned to the caller. This applies whether the header says `void` or `double`; the missing return itself costs item 7."
+    }
+]

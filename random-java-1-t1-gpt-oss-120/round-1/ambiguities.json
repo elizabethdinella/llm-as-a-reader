@@ -1,0 +1,20 @@
+[
+    {
+        "id": "1a_guard_contingent_explanation",
+        "name": "explicit\u2011guard\u2011contingent\u2011explanation vs no\u2011guard\u2011link",
+        "side_a": "Credit if the answer explicitly states that the actionBarSubTitle.setVisibility line (or \u201cfinal line\u201d) is skipped or its execution is contingent on the early\u2011return guard (drawer\u2011null check). This shows the author understands why the line does not use drawer.",
+        "side_b": "Deduct if the answer mentions the early\u2011return guard or drawer null\u2011check but does not link it to the visibility line, i.e., it gives a generic dependency on drawer without explaining the guard\u2019s effect on that specific line."
+    },
+    {
+        "id": "3a_final_line_mention",
+        "name": "mentions final visibility line skipped vs does not mention it",
+        "side_a": "Credit answers that explicitly say the final `actionBarSubTitle` visibility line is skipped because of the early\u2011return guard (or that its execution is contingent on `drawer` being non\u2011null).",
+        "side_b": "Deduct answers that never mention the final visibility line or its relation to the early return."
+    },
+    {
+        "id": "3b_early_return_mention",
+        "name": "explicit early\u2011return guard mention vs no mention",
+        "side_a": "If the answer explicitly states that the method returns early when `drawer` is null (i.e., mentions the early\u2011return guard clause), it should receive credit (no deduction).",
+        "side_b": "If the answer does not mention the early\u2011return guard clause (or implies the later code runs regardless of `drawer`), it should be deducted."
+    }
+]

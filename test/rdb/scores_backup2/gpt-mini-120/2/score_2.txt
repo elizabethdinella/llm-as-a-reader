@@ -1,0 +1,11 @@
+```json
+[
+  { "item": "1a", "deducted": false, "feedback": "The answer explicitly states that `Collections.singletonMap(key, value)` 'returns an immutable map ... cannot be changed (no put/remove)', clearly identifying singletonMap's immutability." },
+  { "item": "1b", "deducted": false, "feedback": "The answer states that wrapping in `new HashMap<>(...)` 'creates a mutable `HashMap` copy', and later refers to a 'mutable object', so HashMap mutability is addressed." },
+  { "item": "1c", "deducted": false, "feedback": "The answer describes the singletonMap as 'optimised for a single entry' containing 'the same entry', conveying that singletonMap holds only one key-value mapping." },
+  { "item": "2a", "deducted": true, "feedback": "The answer never mentions the signature of `messageParams` (e.g., that it accepts a FetchProfile plus a map of message id to Message, or the declared parameter types). It only talks generically about 'the called method'." },
+  { "item": "2b", "deducted": true, "feedback": "The answer does not state that `messageParams` declares/requires a `HashMap` parameter. In fact it implies the opposite by suggesting the singletonMap could be passed directly ('passing the `singletonMap` directly to `messageParams` gives a read-only, lightweight map'), which would not compile if the parameter type is HashMap." },
+  { "item": "2c", "deducted": true, "feedback": "The answer does not examine how the map argument is actually used inside `messageParams`, and it fails to determine that the usages are read-only; instead it vaguely says the called method 'allows' modification, leaving the question unresolved." },
+  { "item": "2d", "deducted": false, "feedback": "The answer does not affirmatively assert that the internal usages within `messageParams` mutate the map; it only says a HashMap 'allows' the called method or later code to modify it, which is a statement of possibility rather than an incorrect factual claim about the usages." }
+]
+```

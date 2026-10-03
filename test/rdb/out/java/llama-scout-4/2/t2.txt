@@ -1,0 +1,2 @@
+
+The main difference between using `HashMap` and `singletonMap` is performance and immutability. `singletonMap` is more efficient and returns an immutable map, whereas `HashMap` is mutable and has more overhead. Use `singletonMap` for single-entry maps that don't need to be modified.

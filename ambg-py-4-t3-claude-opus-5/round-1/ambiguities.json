@@ -1,0 +1,32 @@
+[
+    {
+        "id": "1a_bottom_line_verdict",
+        "name": "answer affirms the deepcopy is needed to protect reply.result vs. concludes the unconditional mutation of result[DATA] is safe/intentional",
+        "side_a": "Credit when the answer's bottom-line verdict is that the copy is needed (or that result is an alias of reply.result that must be copied before mutating), so that serializing result[DATA] is kept out of reply.result[DATA]. This holds even if the answer also observes that the existing deepcopy is only triggered for certain transaction types, as long as it still concludes the copy should be taken before the DATA modification.",
+        "side_b": "Deduct when the answer's verdict is that no deepcopy is needed for the DATA path \u2014 e.g. it restricts the need for deepcopy to the SCHEMA/ISSUER_KEY branches and declares the unconditional modification of result[DATA] 'intentional and safe'. Such an answer asserts the opposite of the rubric fact: it implies the serialization of result[DATA] may freely show up in reply.result[DATA]."
+    },
+    {
+        "id": "1b_conditional_need_verdict",
+        "name": "Unconditional 'yes, copy is needed' vs making the need conditional on transaction type",
+        "side_a": "No deduction when the answer affirms the copy is needed purely on aliasing grounds, keeping the justification about `result` being the same object as `reply.result` and never tying the need (or non-need) for the copy to which transaction type is being handled.",
+        "side_b": "Deduct 2 points when the answer makes the necessity of the deepcopy conditional on transaction type \u2014 e.g. answering 'No, you only need deepcopy for SCHEMA or ISSUER_KEY' and declaring the mutation safe/intentional for everything else \u2014 since this is a behavioral claim scoping the copy to some types and licensing mutation for the rest."
+    },
+    {
+        "id": "1b_code_flaw_diagnosis",
+        "name": "Plain aliasing explanation vs diagnosing a type-conditional bug in the surrounding code",
+        "side_a": "No deduction when the answer stays within the semantics of the copy itself (reference vs independent copy) and does not audit the surrounding control flow for correctness.",
+        "side_b": "Deduct 2 points when the answer diagnoses a 'logic flaw' arising from the copy being gated on certain transaction types while the DATA write is not, i.e. reasons about what goes wrong when the type is something else."
+    },
+    {
+        "id": "2a_aliasing_mechanism_named",
+        "name": "explains the shared-reference/aliasing mechanism (same object, two names) vs asserts deepcopy is needed for 'data integrity' without stating the aliasing",
+        "side_a": "No deduct when the answer explicitly states that `result` and `reply.result` are the same object (one reference/alias), so that a write through one is visible through every other holder of that reference; this mechanical statement is what makes the downstream-consumption claim count.",
+        "side_b": "Deduct when the answer only asserts that modification would 'affect the original'/'cause side effects'/'maintain data integrity' without saying that `result` is the very same dictionary object that other holders reference."
+    },
+    {
+        "id": "2a_external_holder_vs_same_function_use",
+        "name": "names external components that still hold the reference vs describes only later use inside the same function",
+        "side_a": "No deduct when the answer identifies consumers outside the current call that retain the reference and would see the mutated value (e.g., 'the ledger, graph, or other code that still holds a reference').",
+        "side_b": "Deduct when the only downstream use mentioned is framed as something this same function does later with `reply.result` (e.g., 'the function later uses reply.result for storing data in the graph'), i.e., a local sequencing concern rather than propagation to other components."
+    }
+]

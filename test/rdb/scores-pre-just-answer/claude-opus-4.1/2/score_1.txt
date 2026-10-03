@@ -1,0 +1,37 @@
+[
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly states that Collections.singletonMap() returns an immutable map that cannot be modified and would throw UnsupportedOperationException on modification, contrasting it with the mutable HashMap. It also implicitly addresses size by noting the HashMap is initialized with a single entry but can be modified/expanded afterward. The core requirement\u2014stating that singletonMap is immutable\u2014is clearly met.",
+        "item": "1a"
+    },
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly states that `new HashMap<>(Collections.singletonMap(...))` creates a mutable HashMap, contrasting it with the immutable singletonMap which throws UnsupportedOperationException on modification. It also implicitly addresses size (singletonMap holds a single entry, while the HashMap is initialized with that single entry but can grow). The core required point \u2014 that a HashMap is mutable \u2014 is clearly mentioned, so no deduction.",
+        "item": "1b"
+    },
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly addresses mutability, the core difference: singletonMap is immutable (throws UnsupportedOperationException on modification) while the HashMap copy is mutable and can be modified/expanded after creation. It also conveys the size aspect by noting that the HashMap is 'initialized with that single entry' from the singletonMap, thereby acknowledging that singletonMap holds only a single key-value mapping, and that the mutable HashMap can accept further modifications. While the size/capacity contrast is somewhat implicit rather than spelled out, both required elements (mutability discussion and the single key-value mapping of singletonMap) are present, so no deduction is warranted.",
+        "item": "1c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate answer focuses solely on the mutability distinction between an immutable singletonMap and a mutable HashMap copy. While it references messageParams in passing ('the messageParams method likely requires a mutable map'), it never states or discusses the method's signature \u2014 e.g., that messageParams accepts a FetchProfile and a Map<String, Message> (mapping message UID strings to Message objects). The answer even hedges with 'likely,' showing it did not examine or state what parameter types the method declares. Since the rubric requires mentioning the signature of messageParams, the point is deducted.",
+        "item": "2a"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate answer discusses messageParams only in terms of it 'likely requir[ing] a mutable map that can be modified after creation.' It never states that messageParams' parameter type is specifically a HashMap. Per the rubric, describing it merely as requiring a mutable map is explicitly deemed not specific enough, so the point is deducted.",
+        "item": "2b"
+    },
+    {
+        "deducted": true,
+        "feedback": "The answer only speculates about messageParams (\"the messageParams method likely requires a mutable map that can be modified after creation\") without examining or describing any actual usages of the map argument inside messageParams. It does not establish whether the map is read-only or actually mutated; instead it asserts an unsupported assumption of mutation. Since the rubric requires discussing the usages within messageParams and clearly determining that they are read-only (non-modifying), the answer fails this criterion.",
+        "item": "2c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The answer does mention messageParams, but it asserts that \"the messageParams method likely requires a mutable map that can be modified after creation.\" This is precisely the error the rubric penalizes: claiming that usages of the map argument to messageParams modify it. Nothing in the provided context supports that the map is mutated downstream; the HashMap wrapper here is more plausibly needed to match the expected parameter type/equality semantics or general test convention, not because the map is written to. The hedge \"likely\" does not save it, since the answer presents this as the reason for the pattern. Therefore the deduction applies.",
+        "item": "2d"
+    }
+]

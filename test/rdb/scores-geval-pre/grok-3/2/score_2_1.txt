@@ -1,0 +1,30 @@
+[
+    {
+        "justification": "The answer explicitly states that 'singletonMap is immutable and optimized for a single key-value pair,' satisfying the requirement to mention singletonMap's immutability.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that `HashMap` is mutable and allows modifications, satisfying sub-item 1c.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that singletonMap is 'immutable and optimized for a single key-value pair,' which conveys that it holds only a single key-value mapping. This satisfies sub-item 1d.",
+        "deducted": false
+    },
+    {
+        "justification": "The candidate answer only discusses the general mutability/immutability differences between HashMap and singletonMap. It never mentions or describes the method signature of `messageParams` (e.g., that it accepts a FetchProfile and a HashMap<String, Message> parameter). Therefore, the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer never mentions the actual signature or parameter type of messageParams. It does not state that messageParams takes (requires) a HashMap; in fact it suggests singletonMap could be used instead, implying no HashMap requirement. Therefore the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer never examines how the map argument is actually used inside messageParams. It only speaks generally about HashMap being mutable and posing a 'risk of unintended changes' and says singletonMap would be fine 'if no modifications are needed' \u2014 which leaves it ambiguous rather than clearly determining that the usages are read-only. Therefore the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer never claims that the usages of the map inside messageParams modify it. It only makes a general remark that HashMap is mutable and carries a 'risk of unintended changes,' and suggests singletonMap would suffice 'if no modifications are needed' \u2014 it does not assert that messageParams' internal usages mutate the map. Therefore the specific incorrect claim targeted by sub-item 2e is absent, and no deduction applies here.",
+        "deducted": false
+    }
+]

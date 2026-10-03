@@ -1,0 +1,1 @@
+Yes, an exception can occur here. Specifically, a ClassCastException may be thrown if the fragment returned by getSupportFragmentManager().findFragmentById(R.id.main_view) is not an instance of OnKeyListenerForFragments.

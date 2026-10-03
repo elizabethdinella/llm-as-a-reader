@@ -1,0 +1,33 @@
+<answer>
+```java
+import java.util.Scanner;
+
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    Bird b1 = new Bird("Cockatiel", 71.0);
+    Bird b2 = new Bird("Macaw", 56.0);
+    System.out.println(b1.GetSpecies() + ": " + b1.GetPosition());
+    System.out.println(b2.GetSpecies() + ": " + b2.GetPosition());
+
+    Bird chosen = null;
+    while (chosen == null) {
+        System.out.print("Select bird (1=Cockatiel, 2=Macaw): ");
+        int sel = sc.nextInt();
+        if (sel == 1) chosen = b1;
+        else if (sel == 2) chosen = b2;
+    }
+    char dir = ' ';
+    while (dir != 'N' && dir != 'S' && dir != 'E' && dir != 'W') {
+        System.out.print("Direction (N/S/E/W): ");
+        dir = sc.next().toUpperCase().charAt(0);
+    }
+    int mins = -1;
+    while (mins < 0 || mins > 500) {
+        System.out.print("Minutes (0-500): ");
+        mins = sc.nextInt();
+    }
+    chosen.Move(dir, mins);
+    System.out.println("New position: " + chosen.GetPosition());
+}
+```
+</answer>

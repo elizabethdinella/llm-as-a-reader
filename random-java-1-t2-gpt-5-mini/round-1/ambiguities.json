@@ -1,0 +1,14 @@
+[
+    {
+        "id": "2b_controlflow_vs_value_dependency",
+        "name": "control-flow/method-call dependency vs claiming value (singleFolderMode) depends on drawer",
+        "side_a": "no_deduct: The answer attributes the dependency to drawer via control-flow or direct method calls (e.g., early return preventing execution or calls to drawer.selectFolder()) and either explicitly states or does not claim that singleFolderMode's value depends on drawer.",
+        "side_b": "deduct: The answer explicitly asserts that the value of singleFolderMode (or the computed visibility) depends on drawer (i.e., claims a data/value dependency), rather than only a control-flow or call-site dependency."
+    },
+    {
+        "id": "3a_claims_npe_vs_correct_early_return",
+        "name": "correctly states early-return prevents execution vs claims NullPointerException/logical inconsistency",
+        "side_a": "No deduction: answer correctly explains that the initial null-check/early-return prevents the later actionBarSubTitle.setVisibility call from executing when drawer is null (i.e., no NPE risk for that call).",
+        "side_b": "Deduct: answer asserts a logical inconsistency or that a NullPointerException would occur (claims the code would still call drawer methods / cause NPE despite the early-return), indicating a mistaken reading of the control flow."
+    }
+]

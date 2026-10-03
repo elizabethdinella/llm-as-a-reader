@@ -1,0 +1,7 @@
+{"justification": "The answer explicitly states that the map returned by Collections.singletonMap() is immutable (cannot be modified). No deduction.", "deducted": false}
+{"justification": "The answer explicitly states that HashMap is mutable (can be modified). No deduction.", "deducted": false}
+{"justification": "The answer never mentions that singletonMap holds only a single key-value mapping (and thus is limited in size). Deduction applies.", "deducted": true}
+{"justification": "The answer does not mention the method signature of messageParams at all. Deduction applies.", "deducted": true}
+{"justification": "The answer does not state that messageParams takes a HashMap (it doesn't discuss the parameter type requirement at all). Deduction applies.", "deducted": true}
+{"justification": "The answer does not discuss how the map argument is used inside messageParams, nor whether those usages are read-only. Deduction applies.", "deducted": true}
+{"justification": "The answer does not claim that the usages of the map argument modify it, so this deduction does not apply.", "deducted": false}

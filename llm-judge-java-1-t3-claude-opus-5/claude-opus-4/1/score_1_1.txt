@@ -1,0 +1,23 @@
+**Rubric 1 – data dependency between `drawer` and `actionBarSubTitle.setVisibility`**
+
+- Sub-item 1 (should state `setVisibility` has no usages of `drawer`): The answer only discusses control flow / early return; it never states that the `setVisibility` call itself makes no use of `drawer` (its argument depends on `singleFolderMode`). Only implicitly hinted at, not stated.
+{"deducted": true}
+
+- Sub-item 2 (incorrectly states `setVisibility` uses `drawer`): The answer does not claim this.
+{"deducted": false}
+
+**Rubric 2 – data dependency between `drawer` and `singleFolderMode`**
+
+- Sub-item 1 (should discuss that `singleFolderMode`'s value is independent of `drawer`): `singleFolderMode` is never mentioned in the answer.
+{"deducted": true}
+
+- Sub-item 2 (incorrectly states `singleFolderMode` depends on `drawer`): Not claimed.
+{"deducted": false}
+
+**Rubric 3 – reachability of `actionBarSubTitle.setVisibility` based on `drawer`**
+
+- Sub-item 1 (should state the call is only reachable if `drawer` is non-null): The answer states the null check returns early, preventing subsequent code from executing, and notes the last line would execute regardless *only if the early return weren't there* — correctly conveying it is unreachable when `drawer` is null.
+{"deducted": false}
+
+- Sub-item 2 (incorrectly claims it executes regardless / `drawer` always non-null): The counterfactual phrasing is correctly qualified, so no incorrect claim is made.
+{"deducted": false}

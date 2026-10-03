@@ -1,0 +1,7 @@
+{"justification": "The answer explicitly states that `singletonMap` 'returns an immutable map', satisfying this criterion.", "deducted": false}
+{"justification": "The answer explicitly states that `HashMap` is mutable.", "deducted": false}
+{"justification": "The answer says 'Use `singletonMap` for single-entry maps', which conveys that singletonMap holds/returns only a single key-value mapping.", "deducted": false}
+{"justification": "The answer never mentions the method signature of `messageParams` at all; it only discusses generic differences between HashMap and singletonMap.", "deducted": true}
+{"justification": "The answer does not state that `messageParams` requires/takes a `HashMap` parameter type; it makes no reference to the parameter type at all.", "deducted": true}
+{"justification": "The answer does not discuss how the map argument is used inside `messageParams`, nor whether those usages are read-only.", "deducted": true}
+{"justification": "The answer does not claim that the usages of the map inside `messageParams` modify it, so no deduction for this incorrect statement.", "deducted": false}

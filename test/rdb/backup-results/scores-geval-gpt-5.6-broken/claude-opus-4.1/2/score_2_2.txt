@@ -1,0 +1,7 @@
+{"justification": "The answer explicitly states that `Collections.singletonMap()` alone 'would return an immutable map', satisfying this criterion.", "deducted": false}
+{"justification": "The answer explicitly describes creating 'a mutable HashMap with one initial entry', so HashMap mutability is covered.", "deducted": false}
+{"justification": "The answer indicates the HashMap is built with 'one initial entry' from the singletonMap, conveying that the singletonMap holds only a single key-value mapping.", "deducted": true}
+{"justification": "The answer never examines or mentions the actual signature of the `messageParams` method (its parameter types/return), only speculating about what it might require.", "deducted": true}
+{"justification": "The answer only speculates ('likely', 'either ... or') that messageParams 'specifically requires a mutable/HashMap type'; it does not definitively state that the parameter type is a HashMap, and it offers mutability-need as an equally likely alternative, which the rubric says is not specific enough.", "deducted": true}
+{"justification": "The answer does not examine how the map argument is used inside messageParams at all, and explicitly leaves open whether it is modified, failing to determine that the usages are read-only.", "deducted": true}
+{"justification": "The answer does not assert that the usages modify the map; it only raises modification as one hedged possibility among alternatives, so no definitive incorrect claim is made (this hedging is already penalized above).", "deducted": false}

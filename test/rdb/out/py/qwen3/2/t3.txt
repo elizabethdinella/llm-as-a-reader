@@ -1,0 +1,1 @@
+Call `compact_times()` only on cumulative `KPIset` objects, as it is likely responsible for merging data from multiple sources, which is unnecessary for individual `KPIset` instances.

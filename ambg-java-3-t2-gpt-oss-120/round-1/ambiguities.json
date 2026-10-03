@@ -1,0 +1,8 @@
+[
+    {
+        "id": "2a_null_check_advice",
+        "name": "advocates no\u2011null\u2011check vs recommends adding null check",
+        "side_a": "Answers that say a null\u2011check for `mPrefix` is not required (or only optional).",
+        "side_b": "Answers that say a null\u2011check for `mPrefix` should be added."
+    }
+]

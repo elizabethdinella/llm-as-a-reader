@@ -1,0 +1,38 @@
+[
+    {
+        "id": "1_loop_bound_source",
+        "name": "traversal that inherently covers every element (for-each) vs. indexed loop whose bound comes from the *other* list",
+        "side_a": "Do not deduct when the candidate reaches the elements by iterating the list itself \u2014 an enhanced for-each over `historyList` (and/or `mathList`), or an indexed loop whose bound is that same list's own `size()`. Such traversal inherently touches every element, so the 'accesses all elements' point is earned.",
+        "side_b": "Deduct when the index used to access one list is bounded by a different list's size (e.g., `for (int i = 0; i < mathList.size(); i++) { ... historyList.get(i) ... }`), since the access is only valid under an unstated parallel-lists assumption and is not guaranteed to visit every element of the accessed list."
+    },
+    {
+        "id": "2_field_access_vs_accessor_call",
+        "name": "Direct instance-variable/array access substituted for accessor calls vs. actual method invocation on a CourseRecord element",
+        "side_a": "No_deduct when the student actually invokes the accessors with call syntax on a CourseRecord element (e.g., `hist.getStudentID()`, `math.getAbsences()`), regardless of how the element was obtained (enhanced for-loop, indexed `get(i)`, nested loops) or whether the surrounding comparison logic (`>=`, `==` on Strings, missing break) is correct.",
+        "side_b": "Deduct when the response reaches the data by naming the private fields directly or by array syntax instead of calling the methods \u2014 e.g., `historyList[i].studentID`, `mathList[j].absences`, `historyList.length` \u2014 since no invocation of getStudentID/getAbsences ever appears, even though the intent is clear and the element referenced is a CourseRecord."
+    },
+    {
+        "id": "3_strict_operator_required",
+        "name": "operator must be strict `>` vs. any relational operator on absences counts",
+        "side_a": "deduct if the only absences comparison in the response uses a non-strict or non-ordering operator (`>=`, `<=`, `==`, `!=`); 'more history than math absences' requires a strict greater-than, so `hist.getAbsences() >= math.getAbsences()` does not earn the point.",
+        "side_b": "no_deduct if the response compares the two absences values with any relational operator that distinguishes magnitude, treating `>=` as a trivial off-by-one that still shows the intended comparison."
+    },
+    {
+        "id": "3_absences_actually_retrieved",
+        "name": "absence values must actually be accessed and compared vs. matching students alone suffices",
+        "side_a": "deduct if the response never retrieves the absences values (no `getAbsences()`/`.absences` access) and instead only matches student IDs and increments a counter, since no absences comparison exists at all.",
+        "side_b": "no_deduct if the response identifies the matching student pairs, treating the ID match plus counting as implicitly addressing the comparison requirement."
+    },
+    {
+        "id": "5_string_id_equality_method",
+        "name": "Student IDs compared with .equals() vs compared with == (reference equality)",
+        "side_a": "No deduction if the response matches records by comparing the String student IDs with .equals() (e.g., `hist.getStudentID().equals(math.getStudentID())`), which is a valid String comparison.",
+        "side_b": "Deduct if the response matches records by comparing String student IDs with `==`, which compares references rather than String contents and so does not reliably identify the same student."
+    },
+    {
+        "id": "5_absence_counts_compared",
+        "name": "Actually compares the two absence counts vs only tests for a matching student",
+        "side_a": "No deduction if, after matching a student in both lists, the response compares the two absence values (e.g., `hist.getAbsences() >= math.getAbsences()`) before incrementing the counter.",
+        "side_b": "Deduct if the response increments the counter merely because the student appears in both lists, never retrieving or comparing absence counts."
+    }
+]

@@ -1,0 +1,19 @@
+<answer>
+```java
+public String getShortenedName() {
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < username.length(); i++) {
+        char c = username.charAt(i);
+        if (c == '-') {
+            // remove the character that precedes this hyphen
+            if (sb.length() > 0) {
+                sb.deleteCharAt(sb.length() - 1);
+            }
+        } else {
+            sb.append(c);
+        }
+    }
+    return sb.toString();
+}
+```
+</answer>

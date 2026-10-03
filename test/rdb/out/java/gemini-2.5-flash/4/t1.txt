@@ -1,0 +1,2 @@
+
+Yes, you absolutely need the `roleInfoList == null` check. It is crucial for correctly handling cache misses when caching is enabled. If `authConfigs.isCachingEnabled()` is true and the user's roles are not found in the `roleInfoMap` (meaning `roleInfoList` is `null`), this check ensures that the system falls back to fetching the roles from the database instead of returning `null` directly. Without it, if caching is enabled and an entry is missing, the method would incorrectly return `null` instead of attempting to retrieve the data.

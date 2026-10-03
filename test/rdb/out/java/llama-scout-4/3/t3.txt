@@ -1,0 +1,2 @@
+
+You should add a null check for `mPrefix` to prevent `NullPointerException`. This can be achieved by checking if `mPrefix` is not null before calling `length()` on it. 

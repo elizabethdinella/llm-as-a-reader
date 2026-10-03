@@ -1,0 +1,9 @@
+[
+  { "item": "1a", "deducted": false, "feedback": "The answer explicitly states under 'Immutability' that `singletonMap` returns an immutable map, and reiterates this in the conclusion. Requirement met." },
+  { "item": "1b", "deducted": false, "feedback": "The answer explicitly states that a `HashMap` is mutable ('whereas a HashMap is mutable') and advises using HashMap when you plan to modify the map. Requirement met." },
+  { "item": "1c", "deducted": false, "feedback": "The answer states that `Collections.singletonMap()` returns a Map containing a single key-value pair and is a specialized implementation for single-entry maps. Requirement met." },
+  { "item": "2a", "deducted": true, "feedback": "The answer never references the signature of `messageParams` (e.g., that it accepts a FetchProfile and a Map/HashMap of message identifiers to Message objects). It only discusses generic HashMap vs singletonMap differences, with no mention of the method's declared parameter types at all." },
+  { "item": "2b", "deducted": true, "feedback": "The answer does not state that `messageParams` specifically takes a `HashMap` (rather than a general `Map`), which is the actual reason the code wraps the singletonMap in `new HashMap<>(...)`. It even wrongly suggests singletonMap could be passed directly, showing it did not identify the HashMap parameter requirement." },
+  { "item": "2c", "deducted": true, "feedback": "The answer contains no discussion of how the map argument is used inside `messageParams` (e.g., lookups/reads only, never mutated). It provides only generic advice and never determines whether the usages modify the map." },
+  { "item": "2d", "deducted": false, "feedback": "The answer does not claim that usages of the map inside `messageParams` modify it; it makes no claim about internal usage at all, so this incorrect-statement deduction does not apply." }
+]

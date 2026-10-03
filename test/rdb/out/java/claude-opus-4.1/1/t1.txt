@@ -1,0 +1,2 @@
+
+Yes, the code at the end of initializeFromLocalSearch depends on drawer. If drawer is null, the method returns early and the code at the end (including the actionBarSubTitle visibility setting) never executes. The code after the null check only runs when drawer is not null.

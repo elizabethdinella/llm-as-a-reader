@@ -1,0 +1,2 @@
+
+The `null` check for `roleInfoList` is necessary because `roleInfoMap.get(username)` may return `null` if no data exists for the given `username` in the cache. Without this check, the method would not attempt to fetch data from the database when caching is enabled but no cached data exists, potentially returning `null` incorrectly. Thus, the check ensures the method falls back to querying the database when needed.

@@ -1,0 +1,2 @@
+
+Yes, you need to call `deepcopy(result)` before modifying `result[DATA]`. Without the deep copy, modifying `result[DATA]` would directly modify the original `reply.result[DATA]` since `result` is initially just a reference to `reply.result`. The deep copy ensures that the serialization for ledger storage doesn't affect the original reply object, which may be used elsewhere in the system in its original format.

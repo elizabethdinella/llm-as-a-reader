@@ -1,0 +1,9 @@
+[
+  { "item": "1a", "deducted": false, "feedback": "The answer explicitly states that singletonMap 'is immutable', satisfying this requirement." },
+  { "item": "1b", "deducted": false, "feedback": "The answer states that wrapping in a HashMap 'unnecessarily allows mutability', which conveys that HashMap is mutable. This is a minimal but sufficient mention." },
+  { "item": "1c", "deducted": false, "feedback": "The answer refers to singletonMap being 'lightweight for a single entry', which conveys that it holds only one key-value mapping." },
+  { "item": "2a", "deducted": true, "feedback": "The answer never mentions or discusses the signature of messageParams (e.g., its parameter types such as FetchProfile and the map type). It only speaks generically about HashMap vs singletonMap." },
+  { "item": "2b", "deducted": true, "feedback": "The answer does not state that messageParams requires/takes a HashMap specifically. In fact it implies singletonMap could be passed directly ('Using singletonMap directly is more efficient'), which contradicts a HashMap-typed parameter." },
+  { "item": "2c", "deducted": true, "feedback": "There is no discussion of how the map argument is used inside messageParams, and no determination that those usages are read-only. The answer merely asserts that mutability is unnecessary without examining the actual usages." },
+  { "item": "2d", "deducted": false, "feedback": "The answer does not claim that messageParams modifies the map; it says mutability is unnecessary, so this incorrect-statement deduction does not apply." }
+]

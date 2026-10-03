@@ -1,0 +1,50 @@
+[
+    {
+        "id": "1a_label_vs_defining_property",
+        "name": "Names the cumulative/per-interval categories vs. states what actually makes a KPISet cumulative",
+        "side_a": "Credit when the answer states the defining property of a cumulative KPISet \u2014 that its data persists and keeps being appended to across the whole test run (as opposed to per-interval sets that are reset/recreated each second) \u2014 even if the words 'merge' or 'aggregate' never appear. The scope/lifetime statement is what counts as discussing the meaning.",
+        "side_b": "Deduct when 'cumulative' appears only as a category label or contrast term (e.g., 'individual vs. cumulative KPIsets', 'restrict it to cumulative KPIsets') with no statement of what distinguishes it \u2014 no mention of spanning the whole run, accumulating samples, or persisting across intervals. Merely naming the two kinds is not discussing the meaning."
+    },
+    {
+        "id": "1b_silence_on_cumulative_semantics",
+        "name": "Answer never characterizes what a cumulative KPISet is (nothing to be wrong) vs answer volunteers a description of cumulative-set behavior",
+        "side_a": "No deduction when the answer makes no substantive claim about the nature of cumulative KPISets \u2014 e.g. it only says the code treats all sets alike, or discusses compact_times() as a generic preprocessing/memory-optimization step without asserting how cumulative sets accumulate. Silence on the cumulative-set semantics cannot be a mischaracterization, so credit it.",
+        "side_b": "Deduct the 3 points whenever the answer volunteers its own account of cumulative KPISet behavior (continuous accumulation of samples, unbounded growth of the response-time list, same list appended to across the run, contrasted with per-interval sets that reset), since that account departs from the correct 'merge of two or more KPISets' definition \u2014 even if the claim is hedged or only used as rationale."
+    },
+    {
+        "id": "2a_exclusive_cumulative_scope",
+        "name": "Final recommendation restricts the call to cumulative sets only vs. recommends/permits calling it on every KPIset",
+        "side_a": "no_deduct: the answer's actual recommendation is exclusive \u2014 compact_times() is called ONLY on cumulative KPIsets, and per-interval sets are explicitly excluded from the call.",
+        "side_b": "deduct: the answer's operative recommendation is to call compact_times() on every KPIset (even if it concedes it is only 'strictly required' or 'mandatory' for cumulative ones), or defers to the current code's uniform behavior."
+    },
+    {
+        "id": "2a_cost_of_compacting_interval_sets",
+        "name": "Asserts compacting per-interval sets is actively undesirable vs. asserts it is harmless/free",
+        "side_a": "no_deduct: the answer gives a positive reason not to compact non-cumulative sets (loses needed per-interval data / resets each interval anyway), treating the call as inappropriate there.",
+        "side_b": "deduct: the answer characterizes compacting non-cumulative sets as harmless, cheap, a no-op, or a consistency nicety, so nothing rules out applying it everywhere."
+    },
+    {
+        "id": "2b_prerequisite_ordering",
+        "name": "Framing _compact_times() as a prerequisite that recalculate()/metric computation depends on vs as an independent housekeeping step",
+        "side_a": "No deduct when the answer treats _compact_times() as an independent, self-contained operation on the stored times (it bounds the list / returns early when small) and never asserts that the rest of recalculate() depends on it having run \u2014 i.e. no claim that the data must be 'prepared', 'preprocessed' or 'already compacted' before metrics are produced.",
+        "side_b": "Deduct the 2 points whenever the answer asserts an ordering/data dependency \u2014 that recalculate() assumes or requires compacted data, that compaction is a 'necessary preprocessing step', or that it 'prepares the data' for subsequent calculations \u2014 since this invents a dependency that does not exist; the step is purely a size-bounding optimisation that the rest of recalculate() does not rely on."
+    },
+    {
+        "id": "2b_harm_of_compacting_small_sets",
+        "name": "Compacting a per-interval set is a harmless no-op vs it would destroy data still needed",
+        "side_a": "No deduct when the answer explains that for small/per-interval sets compaction simply does nothing (early return, harmless, merely unnecessary) \u2014 this matches the threshold guard in the real method.",
+        "side_b": "Deduct the 2 points when the answer claims that compacting a per-interval KPIset would be destructive \u2014 e.g. that it 'would discard information you still need' for that interval's statistics \u2014 since this misstates both the guard behaviour and the effect of compaction on the interval's reported metrics."
+    },
+    {
+        "id": "2c_cost_affirmed_vs_dismissed",
+        "name": "Treats the repeated call as a real performance concern (worth measuring) vs. explicitly dismisses it as harmless/cheap",
+        "side_a": "No deduction when the answer treats the repeated invocation as a genuine performance concern \u2014 i.e., it flags a possible performance impact and/or recommends profiling/measuring before deciding. Credit is given even if the answer ultimately keeps the call on every KPISet, because it acknowledges there is something costly to weigh.",
+        "side_b": "Deduct when the answer affirmatively neutralizes the cost \u2014 saying the call is 'harmless', 'inexpensive', 'returns immediately', or otherwise asserting there is no penalty to calling it everywhere. Explicitly denying overhead cannot count as identifying overhead."
+    },
+    {
+        "id": "2c_cost_of_calling_vs_benefit_of_compacting",
+        "name": "Locates the burden in performing the call vs. only in the data growth that compaction prevents",
+        "side_a": "No deduction when the burden discussed is attributable to executing _compact_times itself (runtime/performance impact of invoking it on every KPISet), so the trade-off is 'calling it costs something'.",
+        "side_b": "Deduct when the only resource talk is about the benefit side \u2014 unbounded response-time lists, memory growth, percentile computation being 'manageable' \u2014 i.e., what compaction saves rather than what running it costs. Framing compaction purely as a memory-saving necessity does not identify a cost of invoking it."
+    }
+]

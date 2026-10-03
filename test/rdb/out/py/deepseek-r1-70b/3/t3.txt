@@ -1,0 +1,2 @@
+
+No, we should stick with ASCII because the Host header is required to be in ASCII format according to HTTP standards.

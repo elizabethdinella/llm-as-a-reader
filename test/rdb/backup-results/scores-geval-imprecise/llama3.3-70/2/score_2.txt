@@ -1,0 +1,19 @@
+**Rubric Item 1 (Mutability & size differences):**
+- Immutability of `singletonMap`: Not mentioned anywhere — the answer only frames the difference in terms of memory efficiency and number of entries. **−1**
+- Mutability of `HashMap`: Not mentioned; only says it's "suitable for storing multiple key-value pairs." **−1**
+- Single key-value mapping for `singletonMap`: Mentioned ("optimized for storing only one entry," "create a map with a single entry"). **No deduction**
+
+Score: 1/3
+
+**Rubric Item 2 (messageParams discussion):**
+- Method signature of `messageParams`: Never given or described. **−1**
+- States that `messageParams` takes a `HashMap`: Not stated; the answer treats it as a generic map-accepting method and even implies either could be passed depending on needs. **−1**
+- Discussion of usages of the map argument inside `messageParams` and whether they are read-only: Entirely absent; no analysis of what the method does with the map. **−1**
+- Incorrectly claiming the usages modify the map: The answer makes no such claim, so no additional deduction. **No deduction**
+
+Score: 1/4
+
+<scores>
+	<score> 1/3 </score>
+	<score> 1/4 </score>
+</scores>

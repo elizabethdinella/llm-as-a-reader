@@ -1,0 +1,2 @@
+
+Yes, the null check `roleInfoList == null` is necessary. It ensures that the code fetches roles from the database when caching is disabled or when there's a cache miss, and prevents potentially returning outdated cached data when no roles are found for a user.

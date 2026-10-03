@@ -1,0 +1,126 @@
+The solution is implemented in Java, matching the required OOP structure, data types (Real → `double`), access modifiers, and method behaviours exactly as specified in the question. Each sub-question is addressed in turn below with a brief explanation of the design choices.
+
+**(a)(i)**  
+The class is declared with all four attributes private. The constructor receives the two values that must be supplied by the caller, stores them, and initialises the two position fields to the constant 500.0 required by the specification.
+
+**(a)(ii)**  
+A simple getter that returns the private `Species` field.
+
+**(a)(iii)**  
+String concatenation produces the exact format demanded by the question (including spaces and the labels “X =” / “Y =”).
+
+**(a)(iv)**  
+The distance formula is evaluated once. A multi-way selection then adds or subtracts that distance from the appropriate coordinate according to the direction character. No validation is performed, as instructed.
+
+**(b)**  
+Two distinct objects are created with the exact species strings and speed values given in the question.
+
+**(c)(i)**  
+A complete `main` method is supplied. It  
+- prints a meaningful line for each bird,  
+- repeatedly prompts until a valid bird number (1 or 2), direction character, and minute value (0–500) are obtained,  
+- calls `Move` on the chosen object, and  
+- finally prints the updated position.  
+`Scanner` is used for console input; a do-while loop realises the “repeat until valid” requirement for every input.
+
+<answer>
+```java
+public class Bird {
+    private double DistancePerHour;
+    private String Species;
+    private double XPosition;
+    private double YPosition;
+
+    public Bird(String species, double distancePerHour) {
+        Species = species;
+        DistancePerHour = distancePerHour;
+        XPosition = 500.0;
+        YPosition = 500.0;
+    }
+}
+```
+</answer>
+
+<answer>
+```java
+public String GetSpecies() {
+    return Species;
+}
+```
+</answer>
+
+<answer>
+```java
+public String GetPosition() {
+    return "X = " + XPosition + " Y = " + YPosition;
+}
+```
+</answer>
+
+<answer>
+```java
+public void Move(char direction, int minutes) {
+    double distance = (DistancePerHour / 60.0) * minutes;
+    if (direction == 'N') {
+        YPosition += distance;
+    } else if (direction == 'S') {
+        YPosition -= distance;
+    } else if (direction == 'E') {
+        XPosition += distance;
+    } else if (direction == 'W') {
+        XPosition -= distance;
+    }
+}
+```
+</answer>
+
+<answer>
+```java
+Bird bird1 = new Bird("Cockatiel", 71.0);
+Bird bird2 = new Bird("Macaw", 56.0);
+```
+</answer>
+
+<answer>
+```java
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Bird bird1 = new Bird("Cockatiel", 71.0);
+        Bird bird2 = new Bird("Macaw", 56.0);
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println(bird1.GetSpecies() + " position: " + bird1.GetPosition());
+        System.out.println(bird2.GetSpecies() + " position: " + bird2.GetPosition());
+
+        int choice;
+        do {
+            System.out.print("Enter 1 to move Cockatiel or 2 to move Macaw: ");
+            choice = sc.nextInt();
+        } while (choice != 1 && choice != 2);
+
+        char dir;
+        do {
+            System.out.print("Enter direction (N/S/E/W): ");
+            dir = sc.next().toUpperCase().charAt(0);
+        } while (dir != 'N' && dir != 'S' && dir != 'E' && dir != 'W');
+
+        int mins;
+        do {
+            System.out.print("Enter flying time in minutes (0-500): ");
+            mins = sc.nextInt();
+        } while (mins < 0 || mins > 500);
+
+        if (choice == 1) {
+            bird1.Move(dir, mins);
+            System.out.println(bird1.GetSpecies() + " new position: " + bird1.GetPosition());
+        } else {
+            bird2.Move(dir, mins);
+            System.out.println(bird2.GetSpecies() + " new position: " + bird2.GetPosition());
+        }
+        sc.close();
+    }
+}
+```
+</answer>

@@ -1,0 +1,2 @@
+
+You should call `_compact_times()` on every KPIset recalculation, not just cumulative ones. This ensures consistent memory usage across all KPIsets and guarantees that percentile and standard deviation calculations are performed on properly prepared data structures. Without seeing the implementation of `_compact_times()`, it's safer to maintain consistency and call it for all KPIsets, as it likely optimizes the internal data structure (possibly removing duplicates, sorting, or aggregating response times) before the statistical calculations are performed.

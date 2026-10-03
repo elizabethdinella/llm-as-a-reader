@@ -1,0 +1,30 @@
+[
+    {
+        "justification": "The answer explicitly states that Collections.singletonMap(...) returns an immutable, single-entry Map and that attempts to put/remove/clear will throw UnsupportedOperationException. This satisfies the requirement to state that singletonMap is immutable.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that `new HashMap<>(Collections.singletonMap(...))` creates a mutable copy, and further notes that you must pass a mutable Map (e.g., new HashMap<>) if mutation occurs. HashMap mutability is clearly mentioned.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that Collections.singletonMap(...) returns an 'immutable, single-entry Map', which conveys that it contains only a single key-value mapping.",
+        "deducted": false
+    },
+    {
+        "justification": "The candidate answer never mentions the actual method signature of messageParams (e.g., its parameter types such as FetchProfile and Map/HashMap). It only speculates conditionally ('If messageParams only reads the map...'), without stating the declared signature. It also only says a 'mutable Map' is needed rather than specifying HashMap. Therefore the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer never states that messageParams' parameter type is specifically a HashMap. It only speaks generally about needing to pass a mutable Map if the map is mutated, which the rubric explicitly says is not specific enough.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer only speculates conditionally ('If messageParams only reads the map... If messageParams mutates the map...') and never inspects or determines the actual usages of the map argument within messageParams, nor states that they are read-only. It fails to clearly determine whether the usages modify the map.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer does not assert that messageParams modifies the map. It only presents conditional statements ('If messageParams only reads the map...', 'If messageParams (or later code) mutates the map...'), leaving the actual behavior undetermined rather than incorrectly claiming mutation occurs. Therefore the 2-point deduction for incorrectly stating the map is modified does not apply.",
+        "deducted": false
+    }
+]

@@ -1,0 +1,2 @@
+
+Using `singletonMap` directly is more efficient as it's immutable and lightweight for a single entry, whereas wrapping it in a `HashMap` unnecessarily allows mutability without adding any entries.

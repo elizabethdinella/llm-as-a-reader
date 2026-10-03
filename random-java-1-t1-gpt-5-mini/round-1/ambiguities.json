@@ -1,0 +1,32 @@
+[
+    {
+        "id": "1a_suggests_repair",
+        "name": "explicitly proposes moving/isolating the subtitle update vs only states dependence",
+        "side_a": "No deduct \u2014 The answer explicitly recommends moving the subtitle/setVisibility line before the early return or otherwise guarding only the drawer-specific calls (i.e., proposes a concrete fix that separates the independent subtitle update from the drawer guard).",
+        "side_b": "Deduct \u2014 The answer only describes that execution is gated by the drawer check or that methods on drawer are called, and offers no suggestion to move/isolate the subtitle update (no remediation indicating the author distinguished the independent call)."
+    },
+    {
+        "id": "2b_mentions_early_return",
+        "name": "explicitly-cites-early-return vs does-not-mention-early-return",
+        "side_a": "no_deduct \u2014 The answer explicitly cites the 'if (drawer == null) { return; }' / early-return control flow as the reason the later code only runs when drawer is non-null.",
+        "side_b": "deduct \u2014 The answer does not mention the early-return/control-flow check as the mechanism tying later code to drawer (even if it otherwise says code uses drawer)."
+    },
+    {
+        "id": "2b_notes_skipped_non_drawer_code",
+        "name": "explicitly-states-non-drawer-code-is-skipped vs does-not-state-this",
+        "side_a": "no_deduct \u2014 The answer explicitly states that code which does not reference drawer (e.g., actionBarSubTitle.setVisibility) is nevertheless skipped due to the early return, thus establishing a dependency.",
+        "side_b": "deduct \u2014 The answer does not make the point that non-drawer statements are skipped (so it may miss that control-flow causes those lines to depend on drawer)."
+    },
+    {
+        "id": "3b_guard_skips_unrelated_line",
+        "name": "Acknowledges early-return skips the subtitle line vs ignores/claims the subtitle runs regardless",
+        "side_a": "No deduct \u2014 the answer explicitly states that the final actionBarSubTitle.setVisibility line is skipped because of the early return (i.e., that the visibility call will only run when drawer is non-null).",
+        "side_b": "Deduct \u2014 the answer either treats the subtitle-setting as independent of the drawer or fails to acknowledge that the early return prevents that line from running (i.e., implies the visibility call still executes or is unaffected)."
+    },
+    {
+        "id": "3b_explicit_nullcheck_mention",
+        "name": "Cites the explicit null-check/return vs only makes a general or vague statement about drawer nullity",
+        "side_a": "No deduct \u2014 the answer explicitly cites or quotes the null-check/early-return (e.g., 'if (drawer == null) { return; }') as the reason for skipping subsequent code.",
+        "side_b": "Deduct \u2014 the answer only gives a general statement (e.g., 'checks for drawer's existence' or 'calls methods on drawer must be non-null') without explicitly identifying the early-return control flow that prevents later lines from running."
+    }
+]

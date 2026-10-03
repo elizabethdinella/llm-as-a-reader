@@ -1,0 +1,30 @@
+[
+    {
+        "justification": "The answer explicitly states that `Collections.singletonMap()` creates an immutable, lightweight map that throws an exception if modification is attempted, satisfying the requirement to mention singletonMap's immutability.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that `new HashMap<>(...)` creates a 'brand new, fully mutable HashMap instance', clearly mentioning that HashMap is mutable.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that `Collections.singletonMap()` creates an immutable, lightweight map that 'contains exactly one entry', which satisfies the requirement that a singletonMap returns only a single key-value mapping.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer never mentions or discusses the method signature of `messageParams` (e.g., its declared parameter types such as `FetchProfile` and `HashMap<String, Message>`). It only speaks generally about mutability and defensive copying, so the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer never states that `messageParams` declares a `HashMap` parameter type. It only speaks generally about the command receiving a 'modifiable/mutable map' as defensive programming, which the rubric explicitly says is not specific enough. No mention of the method's declared parameter type as HashMap.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer never examines how the map argument is actually used inside messageParams. It only speculates that the command's internal logic 'needs to alter the map', which is a vague/incorrect assumption rather than a clear determination that the usages are read-only. Therefore the requirement of sub-item 2d is not met.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer only speculates conditionally ('preventing potential UnsupportedOperationException errors if the command's internal logic needs to alter the map'), framing the HashMap as defensive programming. It does not affirmatively claim that messageParams' usages of the map actually modify it \u2014 it never inspects or asserts the internal usages as mutating. Its failing is vagueness/omission (relevant to sub-item 2d) rather than an incorrect assertion of mutation, so no deduction under 2e.",
+        "deducted": false
+    }
+]

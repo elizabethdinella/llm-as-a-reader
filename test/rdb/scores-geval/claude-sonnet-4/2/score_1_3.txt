@@ -1,0 +1,7 @@
+{"justification": "The answer explicitly states that Collections.singletonMap returns an immutable map, satisfying this criterion.", "deducted": false}
+{"justification": "The answer states that 'new HashMap creates a mutable copy' and describes it as a mutable map, satisfying this criterion.", "deducted": false}
+{"justification": "The answer describes singletonMap as 'an immutable map optimized for one entry' and 'initialized with a single entry', conveying that it holds only a single key-value mapping.", "deducted": true}
+{"justification": "The answer never mentions or examines the method signature of messageParams (e.g., its parameter types such as FetchProfile and Map/HashMap).", "deducted": true}
+{"justification": "The answer only vaguely says the 'receiving method needs a mutable map'; it never states that messageParams specifically declares/requires a HashMap parameter type, which the rubric says is not specific enough.", "deducted": true}
+{"justification": "The answer does not examine how the map argument is actually used inside messageParams; it merely speculates that the method 'might modify the map', failing to determine that the usages are read-only.", "deducted": true}
+{"justification": "The answer hedges ('might modify the map after receiving it', 'typically used when') rather than affirmatively asserting that messageParams modifies the map, so the full 2-point penalty for an incorrect claim is not applied.", "deducted": false}

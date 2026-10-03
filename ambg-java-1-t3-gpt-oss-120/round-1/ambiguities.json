@@ -1,0 +1,8 @@
+[
+    {
+        "id": "2a_singleFolderMode_order",
+        "name": "explicit singleFolderMode\u2011pre\u2011drawer order vs no mention of order",
+        "side_a": "Credit when the answer explicitly states that `singleFolderMode` is computed before any use of `drawer`, showing that the final line has no data dependency on `drawer` (even if a control dependency exists).",
+        "side_b": "Deduct when the answer never mentions the computation order of `singleFolderMode` and simply claims the code at the end depends on `drawer`."
+    }
+]

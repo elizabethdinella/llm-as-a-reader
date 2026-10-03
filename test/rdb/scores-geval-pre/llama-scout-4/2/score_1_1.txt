@@ -1,0 +1,30 @@
+[
+    {
+        "justification": "The answer explicitly states that singletonMap is 'an immutable map with a single entry', satisfying the requirement that singletonMap's immutability be mentioned. No deduction.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer contrasts singletonMap as 'an immutable map with a single entry' with HashMap as 'a general-purpose, resizable map.' While it does not use the word 'mutable' verbatim for HashMap, describing it as resizable in direct contrast to the immutable singletonMap conveys that HashMap can be modified (entries added/removed). This adequately communicates HashMap's mutability.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that singletonMap is 'an immutable map with a single entry,' which conveys that it contains only a single key-value mapping. Therefore no deduction is warranted for sub-item 1d.",
+        "deducted": false
+    },
+    {
+        "justification": "The candidate answer only discusses generic differences between HashMap and Collections.singletonMap (immutability, single entry, performance, thread safety). It never mentions the messageParams method at all, let alone its signature. Therefore the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer only discusses the general differences between HashMap and Collections.singletonMap (immutability, single entry, performance, thread safety). It never mentions messageParams at all, let alone that its signature/parameter type is specifically a HashMap. Therefore the requirement of sub-item 2c is not met.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer only discusses general differences between HashMap and singletonMap (immutability, single entry, performance, thread safety). It never mentions messageParams, its signature, or how the map argument is used within it (i.e., whether the map is read-only or modified). Therefore sub-item 2d's criteria are not met.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer only compares HashMap and singletonMap generally; it never discusses how messageParams uses the map argument, and therefore does not incorrectly claim that the usages modify the map. No deduction applies for this sub-item.",
+        "deducted": false
+    }
+]

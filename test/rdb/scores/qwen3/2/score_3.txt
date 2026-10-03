@@ -1,0 +1,9 @@
+[
+  { "item": "1a", "deducted": false, "feedback": "The answer clearly states that `Collections.singletonMap` creates an immutable map whose contents cannot be modified after creation." },
+  { "item": "1b", "deducted": false, "feedback": "The answer clearly states that wrapping in a `HashMap` results in a mutable map that allows modifications." },
+  { "item": "1c", "deducted": false, "feedback": "The answer notes that `singletonMap` creates a map 'with a single entry', satisfying the single key-value mapping point." },
+  { "item": "2a", "deducted": true, "feedback": "The answer never states or discusses the actual signature of `messageParams` (i.e., that it accepts a FetchProfile and a HashMap<String, Message>). It only speculates conditionally ('If `messageParams` expects a `HashMap`...') without establishing the signature." },
+  { "item": "2b", "deducted": true, "feedback": "The answer does not definitively state that `messageParams` takes a `HashMap`; it only hedges ('If `messageParams` expects a `HashMap`, using `singletonMap` directly would not compile unless cast'). Its actual conclusion frames the requirement in terms of mutability ('The code uses `HashMap` to ensure mutability'), which the rubric explicitly deems insufficiently specific." },
+  { "item": "2c", "deducted": true, "feedback": "The answer contains no discussion of how the map argument is actually used inside `messageParams`; it never examines the usages nor determines that they are read-only. It merely speculates that mutability might be needed and vaguely notes the map 'isn't altered later', without analyzing the method body's usages." },
+  { "item": "2d", "deducted": false, "feedback": "The answer does not claim that the usages inside `messageParams` modify the map; it in fact states the map 'is not modified later'/'isn't altered later', so this incorrect assertion is not made." }
+]

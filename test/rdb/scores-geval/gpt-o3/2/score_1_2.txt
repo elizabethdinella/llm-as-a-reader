@@ -1,0 +1,7 @@
+{"justification": "The answer explicitly states that Collections.singletonMap returns a 'special, read-only Map implementation' and that attempts to modify it throw UnsupportedOperationException, clearly identifying it as immutable.", "deducted": false}
+{"justification": "The answer states that new HashMap<>(...) creates 'an ordinary, mutable HashMap' where you can freely add, remove, or replace entries.", "deducted": false}
+{"justification": "The answer states the singletonMap 'contains exactly one key/value pair', satisfying the single key-value mapping requirement.", "deducted": false}
+{"justification": "The answer never mentions or discusses the method signature of messageParams (its declared parameter types), so this point is deducted.", "deducted": true}
+{"justification": "The answer never states that messageParams specifically requires/takes a HashMap type; it only speaks generically about passing a map and mutability.", "deducted": true}
+{"justification": "The answer does not examine how the map argument is used inside messageParams and explicitly leaves it open ('The choice depends on whether messageParams ... needs to modify the map'), failing to determine that the usages are read-only.", "deducted": true}
+{"justification": "The answer does not assert that messageParams modifies the map; it only raises the possibility hypothetically, so the penalty for an incorrect claim does not apply.", "deducted": false}

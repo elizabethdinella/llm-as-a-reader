@@ -1,0 +1,49 @@
+### Part A: Completing the Account Constructor
+To complete the `Account` constructor, we will first check if the `requestedName` is available using the `isAvailable` method. If it's available, we assign it to the instance variable `username`. If not, we will try different variations of `requestedName` until an available username is found.
+
+```java
+public Account(String requestedName)
+{
+    String tempName = requestedName;
+    int counter = 1;
+
+    // Check if the requested name is available
+    while (!isAvailable(tempName))
+    {
+        // If not, try a variation of the requested name with a number appended
+        tempName = requestedName + counter;
+        counter++;
+    }
+
+    // Once an available username is found, assign it to the instance variable username
+    this.username = tempName;
+}
+```
+
+### Part B: Completing the getShortenedName Method
+To complete the `getShortenedName` method, we will iterate over each character in the `username`. If a hyphen is encountered, we will skip the previous character and the hyphen itself. This process continues until all characters have been processed.
+
+```java
+public String getShortenedName()
+{
+    StringBuilder shortened = new StringBuilder();
+
+    // Iterate over each character in username
+    for (int i = 0; i < this.username.length(); i++)
+    {
+        char currentChar = this.username.charAt(i);
+
+        if (currentChar == '-')
+        {
+            continue;
+        }
+        else if (i > 0 && this.username.charAt(i - 1) == '-')
+        {
+            continue;
+        }
+        shortened.append(currentChar);
+    }
+
+    return shortened.toString();
+}
+```

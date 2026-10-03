@@ -1,0 +1,2 @@
+
+It is generally good practice to check for `if not build_directory` unless you are absolutely certain that a successful `build_manager.setup_build()` call will always set a valid build directory. Keeping the check adds robustness and protects against unexpected misconfigurations or partial failures. Unless this guarantee exists and is well-documented, you should keep the check.

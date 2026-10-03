@@ -1,0 +1,2 @@
+
+Yes, you should add a null check for mPrefix. The current code calls mPrefix.length() which will throw a NullPointerException if mPrefix is null. To make the code more robust, change the condition to "if (mPrefix != null && mPrefix.length() > 0)" to handle both null and empty string cases properly.

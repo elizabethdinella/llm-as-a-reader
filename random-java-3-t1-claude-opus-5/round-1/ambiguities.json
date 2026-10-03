@@ -1,0 +1,8 @@
+[
+    {
+        "id": "1a_applied_to_call_site",
+        "name": "Answer applies the immutability/mutability contrast to this call site (messageParams / the command) vs gives only a generic textbook contrast of the two map types",
+        "side_a": "Credit when the answer connects the singletonMap-vs-HashMap difference to the actual code under discussion \u2014 e.g. names messageParams / UidFetchCommand, or states what happens when this particular map is handed downstream ('if messageParams needs to modify it...', 'ensures the command receives its own modifiable map'). The consequence for this code is what the item asks for, so a context-tied answer earns the point even if it hedges on whether mutation is really needed.",
+        "side_b": "Deduct when the answer stays entirely at the level of a general API comparison \u2014 immutable one-entry map vs mutable copy, memory/allocation trade-off \u2014 and never relates the choice to the surrounding call (messageParams / the command object) or to what downstream code would do with the map."
+    }
+]

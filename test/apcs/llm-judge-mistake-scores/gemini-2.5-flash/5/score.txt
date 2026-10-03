@@ -1,0 +1,4 @@
+{"DECISION": "NO", "FEEDBACK": "The response never calls isAvailable at all; it simply assigns requestedName to username. No call to isAvailable with a String argument is present, so the point cannot be earned."}
+{"DECISION": "NO", "FEEDBACK": "There is no loop and no call to the availability check method, so potential usernames are never updated until an available one is found. The rubric explicitly withholds the point when the response fails to call the availability check method."}
+{"DECISION": "NO", "FEEDBACK": "No counter variable exists and there is no loop, so no count is incremented in the context of a loop."}
+{"DECISION": "NO", "FEEDBACK": "Although username is initialized to requestedName (handling the available case), the response fails to check availability, fails to initialize/increment a count, and never appends an integer when requestedName is unavailable \u2014 all conditions that the rubric states prevent earning this point."}

@@ -1,0 +1,104 @@
+# Attempt 1 (Baseline - Correct Submission)
+
+This is my original, correct submission. The constructor first checks if the requested name is available. If so, it's used directly. Otherwise, it iterates through suffixes starting at 1, using `isAvailable` to test each candidate, until an available one is found.
+
+<answer>
+public Account(String requestedName)
+{
+    if (isAvailable(requestedName))
+    {
+        username = requestedName;
+    }
+    else
+    {
+        int suffix = 1;
+        while (!isAvailable(requestedName + suffix))
+        {
+            suffix++;
+        }
+        username = requestedName + suffix;
+    }
+}
+</answer>
+
+# Attempt 2 (Minor Mistake: Off-by-one error)
+
+Here I mistakenly started the suffix counter at 0 instead of 1. The code still compiles and terminates, but it violates the spec's example (which requires starting from 1), so the first alternate username tried would be "Luis-Cruz0" instead of "Luis-Cruz1".
+
+<answer>
+public Account(String requestedName)
+{
+    if (isAvailable(requestedName))
+    {
+        username = requestedName;
+    }
+    else
+    {
+        int suffix = 0;
+        while (!isAvailable(requestedName + suffix))
+        {
+            suffix++;
+        }
+        username = requestedName + suffix;
+    }
+}
+</answer>
+
+# Attempt 3 (Moderate Mistake: Missing initial availability check)
+
+In this version, I removed the check for whether `requestedName` itself is available, and always enter the suffix loop. This means even if "PSmith" were available, this code would still append a suffix, producing "PSmith1" instead of "PSmith" — violating the spec.
+
+<answer>
+public Account(String requestedName)
+{
+    int suffix = 1;
+    while (!isAvailable(requestedName + suffix))
+    {
+        suffix++;
+    }
+    username = requestedName + suffix;
+}
+</answer>
+
+# Attempt 4 (Severe Mistake: Infinite loop)
+
+Here I forgot to increment the suffix variable inside the loop. Since `suffix` never changes, `requestedName + suffix` never changes either, so if the first suffixed name is unavailable, the loop will never terminate, causing the program to hang.
+
+<answer>
+public Account(String requestedName)
+{
+    if (isAvailable(requestedName))
+    {
+        username = requestedName;
+    }
+    else
+    {
+        int suffix = 1;
+        while (!isAvailable(requestedName + suffix))
+        {
+            username = requestedName + suffix;
+        }
+    }
+}
+</answer>
+
+# Attempt 5 (Most Severe Mistake: Code does not compile / broken logic)
+
+In this final, most severe attempt, I introduced multiple syntax errors (missing parentheses around the `if` condition, missing semicolon) and also inverted the loop condition and ignored the suffix entirely when assigning `username`. This code will not compile, and even if the syntax were fixed, the logic no longer correctly determines an available username.
+
+<answer>
+public Account(String requestedName)
+{
+    int suffix = 1;
+    if isAvailable(requestedName)
+    {
+        username = requestedName
+    }
+    else
+    {
+        while (isAvailable(requestedName + suffix))
+        suffix = suffix + 1;
+        username = requestedName;
+    }
+}
+</answer>

@@ -1,0 +1,1 @@
+ You should call compact_times() on every KPIset if the method optimizes storage without altering the nature of non-cumulative data, but only on cumulative KPIsets if compact_times() modifies data in a way specific to cumulative calculations. The decision depends on the implementation details of compact_times(), which are not provided here. 

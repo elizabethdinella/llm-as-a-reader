@@ -1,0 +1,67 @@
+To solve this problem, we need to iterate through the `historyList` and for each student, find their corresponding record in the `mathList`. We then compare the absences in both courses.
+
+```java
+public int moreHistoryThanMathAbsences() {
+    int count = 0;
+    for (CourseRecord historyRecord : historyList) {
+        String studentID = historyRecord.getStudentID();
+        int historyAbsences = historyRecord.getAbsences();
+        
+        for (CourseRecord mathRecord : mathList) {
+            if (mathRecord.getStudentID().equals(studentID)) {
+                int mathAbsences = mathRecord.getAbsences();
+                if (historyAbsences > mathAbsences) {
+                    count++;
+                }
+                break; // No need to continue searching once the student is found
+            }
+        }
+    }
+    return count;
+}
+```
+
+However, this approach has a time complexity of O(n*m) where n and m are the sizes of `historyList` and `mathList` respectively. A more efficient approach would be to use a HashMap to store the math records, allowing us to find a student's math record in constant time.
+
+```java
+public int moreHistoryThanMathAbsences() {
+    int count = 0;
+    HashMap<String, CourseRecord> mathMap = new HashMap<>();
+    for (CourseRecord mathRecord : mathList) {
+        mathMap.put(mathRecord.getStudentID(), mathRecord);
+    }
+    
+    for (CourseRecord historyRecord : historyList) {
+        String studentID = historyRecord.getStudentID();
+        CourseRecord mathRecord = mathMap.get(studentID);
+        if (mathRecord != null) {
+            if (historyRecord.getAbsences() > mathRecord.getAbsences()) {
+                count++;
+            }
+        }
+    }
+    return count;
+}
+```
+
+<answer>
+public int moreHistoryThanMathAbsences() {
+    int count = 0;
+    HashMap<String, CourseRecord> mathMap = new HashMap<>();
+    for (CourseRecord mathRecord : mathList) {
+        mathMap.put(mathRecord.getStudentID(), mathRecord);
+    }
+    
+    for (CourseRecord historyRecord : historyList) {
+        String studentID = historyRecord.getStudentID();
+        CourseRecord mathRecord = mathMap.get(studentID);
+        if (mathRecord != null) {
+            if (historyRecord.getAbsences() > mathRecord.getAbsences()) {
+                count++;
+            }
+        }
+    }
+    return count;
+}
+</answer>
+```

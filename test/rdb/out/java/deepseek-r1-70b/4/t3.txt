@@ -1,0 +1,1 @@
+Yes, you need the null check to ensure that roles are fetched from the database when there's no cached data, even if caching is enabled.

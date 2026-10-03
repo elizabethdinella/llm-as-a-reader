@@ -1,0 +1,2 @@
+
+The primary difference between using `HashMap` and `Collections.singletonMap` as a parameter to `messageParams` lies in mutability: `HashMap` is mutable and allows modifications, while `singletonMap` is immutable and cannot be changed after creation. In this code, a `HashMap` is created from a `singletonMap`, likely to allow potential modifications or due to API requirements, though if no changes are needed, passing `singletonMap` directly would be more efficient and clearer in intent.

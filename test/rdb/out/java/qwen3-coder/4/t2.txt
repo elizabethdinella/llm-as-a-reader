@@ -1,0 +1,2 @@
+
+Yes, you need this null check for roleInfoList. The null check is essential because it determines whether to fetch roles from the database when caching is enabled but no cached data exists for the username. Without this check, the method might return null instead of fetching the required data from the database, which would break the expected behavior of always returning a valid list of roles (even if empty) rather than null.

@@ -1,0 +1,38 @@
+[
+    {
+        "id": "2_missing_private_modifier",
+        "name": "instance variables declared with explicit `private` vs declared with no access modifier (default/package-private)",
+        "side_a": "No_deduct when both required instance variables carry an explicit `private` access modifier at class level (e.g. `private double capacity;`), regardless of naming, extra locals, or `this.` usage.",
+        "side_b": "Deduct when a required instance variable is declared at class level with no access modifier (or a non-private one), e.g. `double capacity;` \u2014 the rubric requires the variables be *private*, so default/package-private visibility fails this point even though the fields otherwise exist and are of the right type."
+    },
+    {
+        "id": "5_header_only_scope",
+        "name": "Sub-item scope: header signature only vs. body/return-value correctness also counted",
+        "side_a": "Do not deduct as long as the declared header is `public double updateAmount(double <param>)`. Errors in the method body \u2014 returning the wrong value, omitting or mis-writing the refill check \u2014 belong to other sub-items and must not cost this signature point.",
+        "side_b": "Deduct if the method does not actually behave as specified (e.g., returns `capacity` instead of the remaining amount, or returns the pre-refill amount), treating a wrong return *value* as failing the 'returns double' requirement."
+    },
+    {
+        "id": "5_field_declaration_visibility",
+        "name": "Instance-variable visibility: irrelevant to the method-header bullet vs. non-private fields taint the 'public' check",
+        "side_a": "Do not deduct for how the instance variables are declared (missing `private`, package-private, or different names); only the `updateAmount` declaration is evaluated here.",
+        "side_b": "Deduct if the class's instance variables are not declared `private`, treating sloppy access modifiers anywhere in the class as a violation of the modifier requirement."
+    },
+    {
+        "id": "6_returned_value_is_post_update_amount",
+        "name": "Returns the object's updated amount (post-refill) vs returns some other value (pre-refill snapshot or capacity)",
+        "side_a": "no_deduct: on every path the method returns the instance field holding the current amount as it stands after the subtraction and any refill (e.g. `return amount;` / `return this.currentAmount;` as the single exit after the if-block).",
+        "side_b": "deduct: at least one return path yields a value other than the final stored amount \u2014 e.g. unconditionally `return capacity;`, or returning a saved pre-refill value (`return amountBeforeRefillCheck;`) when a refill occurred."
+    },
+    {
+        "id": "6_refill_threshold_strictness",
+        "name": "Strict `< 0.25*capacity` refill test vs inclusive `<= 0.25*capacity`",
+        "side_a": "no_deduct: the refill condition triggers only when the remaining amount is strictly below one quarter of capacity (`if (amount < 0.25 * capacity)`).",
+        "side_b": "deduct: the refill condition also fires when the amount equals exactly one quarter of capacity (`if (amount <= 0.25 * capacity)`), an off-by-one boundary error."
+    },
+    {
+        "id": "7_returned_value_correctness",
+        "name": "Any state-derived amount returned from updateAmount counts vs. the returned value must be exactly the post-update remaining amount",
+        "side_a": "No deduct: award the point whenever updateAmount ends in a `return` of a value drawn from the bottle's tracked state (the amount field, the capacity field, or a snapshot of the amount taken during the method), even if it is the wrong quantity or a stale/pre-refill value \u2014 choosing the wrong quantity is a logic error scored under a different rubric point, not under 'returns the remaining amount'.",
+        "side_b": "Deduct: award the point only if the value actually returned is the correctly updated remaining amount on every execution path, so returning the capacity field or a pre-refill snapshot loses the point."
+    }
+]

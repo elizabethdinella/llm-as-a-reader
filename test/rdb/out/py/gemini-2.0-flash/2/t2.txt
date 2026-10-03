@@ -1,0 +1,2 @@
+
+You should call `compact_times()` on every `KPIset`. The recalculation process depends on the updated time data provided by `compact_times()`, and omitting it for non-cumulative sets would result in inaccurate statistics.

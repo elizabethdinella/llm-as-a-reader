@@ -1,0 +1,18 @@
+[
+{
+"DECISION": "YES",
+"FEEDBACK": "The response calls isAvailable(requestedName) and isAvailable(newUsername), both with String arguments and as static calls within the Account class. These are correct calls, so the point is earned."
+},
+{
+"DECISION": "NO",
+"FEEDBACK": "The while loop condition checks isAvailable(newUsername), but the body of the loop only increments counter; newUsername is never recomputed inside the loop. Therefore the potential username is never updated in the body of the loop, resulting in an infinite loop when requestedName+1 is unavailable. The rubric explicitly withholds this point when the response fails to update a potential username in the body of the loop."
+},
+{
+"DECISION": "YES",
+"FEEDBACK": "The variable counter is initialized to 1 and is incremented with counter++ inside the while loop, satisfying the requirement of incrementing a count in the context of a loop (even though the count is not used to rebuild the username inside the loop)."
+},
+{
+"DECISION": "NO",
+"FEEDBACK": "The overall algorithm is incorrect: because newUsername is computed only once before the loop, the loop never appends successive integers. If requestedName and requestedName+\"1\" are both unavailable, the code loops forever and never assigns username; if requestedName+\"1\" is available, it happens to work, but the general case of appending 2, 3, ... is never performed. The response fails to append the correct integer to the username when necessary, so the algorithm point is not earned."
+}
+]

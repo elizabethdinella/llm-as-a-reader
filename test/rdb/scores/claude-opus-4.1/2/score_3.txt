@@ -1,0 +1,37 @@
+[
+  {
+    "item": "1a",
+    "deducted": false,
+    "feedback": "The answer explicitly states that Collections.singletonMap returns an immutable map and throws UnsupportedOperationException on modification attempts."
+  },
+  {
+    "item": "1b",
+    "deducted": false,
+    "feedback": "The answer explicitly states that the HashMap created from the singletonMap is mutable and allows subsequent add/remove/update operations."
+  },
+  {
+    "item": "1c",
+    "deducted": false,
+    "feedback": "The answer states that singletonMap contains 'exactly one key-value pair' / 'exactly one entry'."
+  },
+  {
+    "item": "2a",
+    "deducted": true,
+    "feedback": "The answer never gives the actual signature of messageParams (e.g., messageParams(FetchProfile fetchProfile, HashMap<String, Message> messageMap)). It only speculates that 'the method signature specifically requires a HashMap type rather than just a Map interface' without stating the parameter types or the declared signature."
+  },
+  {
+    "item": "2b",
+    "deducted": true,
+    "feedback": "The answer does not definitively state that messageParams takes a HashMap. It offers this only as one of several speculative possibilities ('likely expects a mutable map ... Or the method signature specifically requires a HashMap type'), and its primary framing is the insufficiently specific 'requires a mutable map' explanation. It fails to commit to the concrete fact that the parameter is declared as a HashMap."
+  },
+  {
+    "item": "2c",
+    "deducted": true,
+    "feedback": "The answer does not examine or discuss any usages of the map argument inside messageParams, and does not determine whether those usages are read-only. It merely guesses that the map 'might be modified later', leaving the question unresolved."
+  },
+  {
+    "item": "2d",
+    "deducted": true,
+    "feedback": "The answer asserts as its leading explanation that messageParams 'likely expects a mutable map that might be modified later' and that the HashMap is used to 'ensure the map is mutable for potential future operations within the UidFetchCommand', incorrectly implying that the map argument is modified when the usages are in fact read-only."
+  }
+]

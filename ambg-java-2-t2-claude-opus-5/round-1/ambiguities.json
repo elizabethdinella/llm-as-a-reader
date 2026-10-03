@@ -1,0 +1,44 @@
+[
+    {
+        "id": "1c_capacity_vs_content_phrasing",
+        "name": "cardinality stated as design/capacity ('fixed-size, for a single entry', contrasted with 'allows multiple entries') counts vs only a content-count assertion ('contains exactly one entry') counts",
+        "side_a": "No_deduct if the answer conveys the one-mapping limit in any form, including capacity/design framing ('fixed-size map designed for a single entry', 'allows only one entry') or an explicit contrast with HashMap's multi-entry capability, even if it never says the map 'contains' exactly one pair.",
+        "side_b": "Deduct unless the answer asserts the actual content count of the singletonMap ('contains exactly one entry', 'has one key-value pair'); design/capacity phrasing such as 'fixed-size map designed for a single entry' or contrasting 'HashMap allows multiple entries' is treated as describing intent/structure rather than stating cardinality and is deducted."
+    },
+    {
+        "id": "2a_ties_to_messageparams_context",
+        "name": "Grounds the wrapping in this code's downstream use (messageParams needs a mutable map) vs. generic Map-class comparison only",
+        "side_a": "No deduct if the answer explains WHY this particular call site wraps the singletonMap \u2014 i.e. names the consuming code (messageParams) and infers it needs/expects a mutable (HashMap) map.",
+        "side_b": "Deduct if the answer only contrasts the two map types in the abstract (immutable one-entry vs. mutable resizable) without connecting the wrapping to the method that consumes the map in this snippet."
+    },
+    {
+        "id": "2a_reads_code_correctly",
+        "name": "Accurate reading of the snippet (singletonMap wrapped in HashMap) vs. misstated/contradicted code behavior",
+        "side_a": "No deduct if the answer correctly states the code builds a mutable HashMap *from* the immutable singletonMap and keeps its claims about the snippet consistent.",
+        "side_b": "Deduct if the answer mischaracterizes the snippet \u2014 e.g. treats singletonMap as a not-taken alternative, misdescribes HashMap's implementation, or asserts the mutability is pointless/unused."
+    },
+    {
+        "id": "2b_names_the_consuming_method",
+        "name": "Ties the HashMap requirement to the specific `messageParams` parameter vs. speaks only about maps/APIs in general",
+        "side_a": "Award credit when the answer explicitly identifies `messageParams` (the receiving method/parameter) as the thing that takes a HashMap \u2014 i.e., the requirement is attached to the actual declared parameter under discussion.",
+        "side_b": "Deduct when the answer never names the consuming method and only compares HashMap vs singletonMap in the abstract, or attributes the need to unnamed 'APIs' / 'the code' \u2014 a generic mutability/implementation discussion does not identify the parameter requirement."
+    },
+    {
+        "id": "2b_hedged_disjunctive_guess",
+        "name": "Asserts the HashMap parameter requirement vs. offers it as one speculative option among alternatives",
+        "side_a": "Award credit when the answer asserts, without alternatives, that messageParams's parameter is/must be a HashMap.",
+        "side_b": "Deduct when the HashMap-parameter claim is presented as a hedged guess or as one branch of a disjunction ('likely ... either requires X or expects a HashMap'), since the answer does not commit to the declared parameter type as the reason."
+    },
+    {
+        "id": "2c_hedged_speculation_vs_determination",
+        "name": "Definite verdict that the map is never altered vs. hedged speculation ('likely', 'either...or') that mutability might be needed",
+        "side_a": "Do not deduct when the answer makes a definite, unhedged statement about what actually happens to the map in this code \u2014 e.g., that it is never altered/modified after being passed \u2014 even if the answer is brief and doesn't name call sites. A committed 'it isn't altered' verdict satisfies the read-only requirement.",
+        "side_b": "Deduct when the answer only speculates about why a mutable map might be wanted \u2014 hedging with 'likely', 'probably', 'may', or offering a disjunction of possible reasons ('either the method modifies it or it expects a HashMap') \u2014 without ever committing to whether the map is actually read or written in messageParams. Hedged guessing leaves the read/write question unresolved and does not count as determining the usages are read-only."
+    },
+    {
+        "id": "2c_api_type_requirement_excuse",
+        "name": "Read-only usage identified vs. wrapping justified by a supposed mutable/HashMap API requirement",
+        "side_a": "Do not deduct when the answer's account of why the copy exists still asserts the map itself is not written to in the actual code.",
+        "side_b": "Deduct when the answer explains the wrapping by appeal to a generic API/type requirement \u2014 claiming the receiving method 'expects a HashMap type' or 'APIs that expect a mutable HashMap implementation' \u2014 since this substitutes a hypothetical signature constraint for any finding about how the map is used inside messageParams."
+    }
+]

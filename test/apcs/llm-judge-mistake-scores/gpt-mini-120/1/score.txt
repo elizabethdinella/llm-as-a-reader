@@ -1,0 +1,18 @@
+[
+{
+"DECISION": "YES",
+"FEEDBACK": "The constructor calls isAvailable(candidate), passing a String variable, as an unqualified call within the Account class. This is a correct call with a String argument, so the point is earned."
+},
+{
+"DECISION": "YES",
+"FEEDBACK": "The while loop condition calls isAvailable with a potential username (candidate), and the body of the loop updates the potential username (candidate = requestedName + suffix). Even though the suffix never changes (so the update is effectively incorrect/non-progressing), the rubric allows the point when potential usernames are updated incorrectly, as long as availability is checked with a potential username and an update occurs in the loop body."
+},
+{
+"DECISION": "NO",
+"FEEDBACK": "The variable suffix is initialized to 1 but is never incremented anywhere in the loop (or elsewhere). There is no statement such as suffix++ or suffix = suffix + 1, so no count is ever incremented in the context of the loop. This results in an infinite loop when requestedName + 1 is unavailable, and the increment point cannot be awarded."
+},
+{
+"DECISION": "NO",
+"FEEDBACK": "Although the instance variable username is assigned and the case where requestedName is available is handled correctly, the algorithm fails because the count is never incremented. Only 'requestedName1' is ever tested after the initial name, so successive integers (2, 3, ...) are never appended, and the code loops forever if 'requestedName1' is unavailable. The rubric explicitly states the point is not earned if the response fails to increment a count or fails to append the correct integer when necessary."
+}
+]

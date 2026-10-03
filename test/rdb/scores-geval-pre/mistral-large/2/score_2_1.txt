@@ -1,0 +1,30 @@
+[
+    {
+        "justification": "The candidate answer explicitly states that using `Collections.singletonMap` ensures the map is 'immutable and cannot be altered after its creation.' This satisfies the requirement that the answer mention singletonMap's immutability, so no point should be deducted for this sub-item.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that 'a `HashMap` would allow for modification', which conveys that a HashMap is mutable. Although the answer misreads the code (the singletonMap is actually wrapped in a HashMap), the specific requirement of sub-item 1c \u2014 mentioning HashMap's mutability \u2014 is satisfied.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer notes that a `HashMap` is unnecessary here because 'only a single key-value pair is needed, making `singletonMap` more appropriate,' which conveys that singletonMap holds/returns only a single key-value mapping. This satisfies the requirement of sub-item 1d.",
+        "deducted": false
+    },
+    {
+        "justification": "The candidate answer never mentions or describes the method signature of `messageParams` (e.g., its parameter types such as FetchProfile and Map<String, Message>). It only vaguely refers to 'the map passed to messageParams' without stating the declared signature or parameter types. Therefore the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer never states that messageParams' signature takes a HashMap. It only discusses immutability/mutability generally and even claims singletonMap is more appropriate here, which contradicts the requirement. The specific requirement that the parameter type is HashMap is not mentioned.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer only compares immutability of singletonMap vs HashMap in general terms. It never examines how the map argument is actually used inside messageParams (e.g., whether it is only read from/iterated over versus modified). Therefore the requirement to discuss the read-only usages of the map within messageParams is unmet.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer never claims that messageParams (or its internal usages) modifies the map. In fact, it implies the opposite by saying a HashMap 'would allow for modification but is not necessary here.' Since no incorrect assertion about the map being modified is made, the deduction criterion for sub-item 2e is not triggered.",
+        "deducted": false
+    }
+]

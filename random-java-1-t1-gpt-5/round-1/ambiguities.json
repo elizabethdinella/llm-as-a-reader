@@ -1,0 +1,14 @@
+[
+    {
+        "id": "1a_gating_vs_reference",
+        "name": "distinguishes control-flow gating from actual reference/requirement vs conflates gating with dependency",
+        "side_a": "no_deduct: Credit if the answer explicitly notes that, although execution is gated by the early return (drawer == null), the actionBarSubTitle.setVisibility call itself does not use/require/reference drawer.",
+        "side_b": "deduct: Deduct if the answer treats the early-return gate as proof of dependency or speaks generically about 'the code' depending on drawer without acknowledging that the setVisibility line does not actually use drawer."
+    },
+    {
+        "id": "2a_gating_vs_true_dependency",
+        "name": "distinguishes control\u2011flow gating (no) vs asserts dependency from gating (yes)",
+        "side_a": "no_deduct: The answer explicitly separates control-flow gating from true/data dependency and states the end-of-method logic does not depend on drawer (e.g., says the subtitle line doesn\u2019t use drawer and any relation is only due to the early return).",
+        "side_b": "deduct: The answer claims the end-of-method code 'depends on' drawer solely because of the early return (i.e., equates gated execution with dependency)."
+    }
+]

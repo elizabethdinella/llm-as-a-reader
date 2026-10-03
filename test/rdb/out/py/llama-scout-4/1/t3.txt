@@ -1,0 +1,2 @@
+
+In PyTorch, `F.cross_entropy` is a built-in function for computing cross-entropy loss, whereas `cross_entropy` might be a custom function with potentially different behavior. 

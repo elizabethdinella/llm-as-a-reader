@@ -1,0 +1,30 @@
+[
+  {
+    "justification": "The answer correctly states that Collections.singletonMap() creates an immutable map.",
+    "deducted": false
+  },
+  {
+    "justification": "The answer correctly states that the copied HashMap is mutable.",
+    "deducted": false
+  },
+  {
+    "justification": "The answer correctly states that singletonMap contains exactly one key-value entry.",
+    "deducted": false
+  },
+  {
+    "justification": "The answer does not provide or describe the signature of messageParams.",
+    "deducted": true
+  },
+  {
+    "justification": "The answer does not explicitly state that messageParams takes a HashMap; it only says the command receives a modifiable map.",
+    "deducted": true
+  },
+  {
+    "justification": "The answer does not examine the actual usages of the map inside messageParams or establish that they are read-only.",
+    "deducted": true
+  },
+  {
+    "justification": "The answer only speculates about modification ('if the command's internal logic needs to alter the map') and does not explicitly claim that messageParams actually modifies it, so the incorrect-modification penalty does not apply.",
+    "deducted": false
+  }
+]

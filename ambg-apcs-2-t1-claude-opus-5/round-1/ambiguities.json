@@ -1,0 +1,50 @@
+[
+    {
+        "id": "2_declared_vs_merely_used",
+        "name": "variable must appear in an actual declaration vs being inferable from use in the method body",
+        "side_a": "No_deduct only when each required variable appears in an explicit declaration statement with the `private` modifier and a type at class level (e.g. `private double amount;`). Credit is given for the declaration itself, regardless of how correctly the variable is later used.",
+        "side_b": "Deduct when a required variable is never declared anywhere and only shows up as a bare identifier inside a method (`amount = amount + used;`), even though its intended role as the remaining-amount field is obvious; an undeclared identifier is not a private instance variable."
+    },
+    {
+        "id": "3_errors_outside_header",
+        "name": "Compile errors / type mismatches outside the constructor header: ignore (credit) vs propagate (deduct)",
+        "side_a": "no_deduct \u2014 Award the point based solely on the constructor header matching `Bottle(double ____)`. Ignore errors located elsewhere: missing semicolons, undeclared fields used in other methods, or assigning the double parameter into an `int` field. These do not affect whether the required constructor header was written.",
+        "side_b": "deduct \u2014 Withhold the point if the class contains any compile-breaking defect connected to the constructor, e.g. the parameter is a double but the field it is assigned to is declared `int` (lossy conversion), or the field assigned in the constructor is never declared."
+    },
+    {
+        "id": "3_return_type_on_constructor",
+        "name": "Header declared with a return type (`public void Bottle(double)`): treat as satisfying the header (credit) vs treat as a method, not a constructor (deduct)",
+        "side_a": "no_deduct \u2014 Credit the point as long as the declaration names `Bottle` and takes a single `double` parameter, even if a return type such as `void` is written before the name, since the required parameter list and name are present.",
+        "side_b": "deduct \u2014 Withhold the point when a return type is declared (`public void Bottle(double capacity)`), because that is a method declaration rather than the required constructor."
+    },
+    {
+        "id": "4_missing_amount_field_entirely",
+        "name": "Remaining-amount field never declared / never assigned in the constructor: credit capacity anyway vs. deduct for an incomplete constructor",
+        "side_a": "Award the point as long as the constructor assigns the parameter to a properly declared capacity instance variable, even if the class never declares a remaining-amount instance variable at all and the constructor makes no assignment to it (the undeclared/uninitialized amount is penalized only under the instance-variable/method items, not here).",
+        "side_b": "Deduct if the constructor does not initialize the full object state \u2014 i.e., if the remaining-amount instance variable is missing from the class or left unassigned by the constructor \u2014 on the grounds that the constructor is incomplete even though the capacity line itself is correct."
+    },
+    {
+        "id": "5_void_return_type",
+        "name": "`void updateAmount(double x)` \u2014 `void` is an incorrect return type vs header otherwise acceptable",
+        "side_a": "Deduct whenever the method is declared with a return type other than `double` in the literal sense of a non-numeric/no-value type \u2014 specifically `void`. `public void updateAmount(double used)` fails the 'returns double' requirement outright, regardless of the correct visibility, name, and single `double` parameter. Award the point only when the token immediately before `updateAmount` is `double`.",
+        "side_b": "Do not deduct for `void` as long as `public`, the name `updateAmount`, and a single `double` parameter are present; treat the return-type requirement as satisfied by the method's intent to update the amount, and penalize the absent return value under the return/logic sub-item instead."
+    },
+    {
+        "id": "6_amount_update_stored",
+        "name": "Subtraction actually assigned back to the amount field vs. no/incorrect stored update",
+        "side_a": "If the method updates the field with a real assignment that subtracts the used quantity (e.g. `amount = amount - used;` or `this.currentAmount -= amountRemoved;`), give credit for the update step.",
+        "side_b": "If the subtraction result is never stored in the field \u2014 a bare expression statement such as `amount - used;` \u2014 or the field is changed by the wrong operation (`amount = amount + used;`), withhold credit."
+    },
+    {
+        "id": "6_refill_strict_boundary",
+        "name": "Refill test uses strict `<` one-quarter threshold vs. inclusive `<=`",
+        "side_a": "If the refill condition compares strictly below a quarter of capacity (`amount < 0.25 * capacity`), give credit.",
+        "side_b": "If the condition includes the boundary (`amount <= 0.25 * capacity`), so the bottle is refilled when exactly one quarter remains, withhold credit."
+    },
+    {
+        "id": "7_missing_return_statement",
+        "name": "Body contains an actual return statement vs. method body never returns anything (falls off the end / declared void)",
+        "side_a": "Do not deduct when the body of updateAmount contains an explicit return statement that hands back a numeric remaining-amount expression or variable (e.g., `return amount;`, `return this.currentAmount;`), regardless of whether the arithmetic or the update logic elsewhere in the method is correct.",
+        "side_b": "Deduct when updateAmount contains no return statement at all \u2014 the method is declared `void` and simply mutates state, or it is declared to return a numeric type but the body ends after the if/else with no `return` \u2014 since no remaining amount is ever returned to the caller."
+    }
+]

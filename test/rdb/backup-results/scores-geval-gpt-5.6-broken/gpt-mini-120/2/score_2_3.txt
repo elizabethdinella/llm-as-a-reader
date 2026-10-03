@@ -1,0 +1,9 @@
+[
+  {"justification": "The answer explicitly states that Collections.singletonMap creates a 'compact, immutable' map that cannot be changed (no put/remove). Requirement met.", "deducted": false},
+  {"justification": "The answer explicitly states that new HashMap<>(...) yields a 'regular, mutable' HashMap that can be modified later. Requirement met.", "deducted": false},
+  {"justification": "The answer states the singletonMap 'contains exactly one entry' and is a 'one-element map'. Requirement met.", "deducted": false},
+  {"justification": "The answer never mentions or discusses the actual method signature of messageParams (e.g., its parameter types such as FetchProfile and Map/HashMap). Deduct.", "deducted": true},
+  {"justification": "The answer never states that messageParams specifically declares/takes a HashMap parameter; it only talks generically about 'the called method'. Deduct.", "deducted": true},
+  {"justification": "The answer does not examine how the map argument is used inside messageParams; it concludes vaguely that 'the choice depends on whether the method needs to modify the map', failing to determine that the usages are read-only. Deduct.", "deducted": true},
+  {"justification": "The answer does not affirmatively claim that messageParams modifies the map; it merely leaves it open, so this incorrect-statement deduction does not apply.", "deducted": false}
+]

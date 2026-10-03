@@ -1,0 +1,53 @@
+Here are the solutions for both parts of the question, along with explanations for each implementation.
+
+---
+
+### **Part A**
+
+#### **Explanation:**
+To implement the `Account` constructor:
+1. We initialize a temporary `String` variable (or directly work with `requestedName`) to track the candidate username.
+2. We check if the candidate username is available using the static helper method `isAvailable`.
+3. If `requestedName` is unavailable, we use a loop to repeatedly append incrementing integers starting from `1` (e.g., `requestedName + 1`, `requestedName + 2`, etc.) to `requestedName` until `isAvailable` returns `true`.
+4. Once an available username is found, we assign it to the instance variable `username`.
+
+#### **Code:**
+<answer>
+public Account(String requestedName)
+{
+    String name = requestedName;
+    int count = 1;
+    while (!isAvailable(name))
+    {
+        name = requestedName + count;
+        count++;
+    }
+    username = name;
+}
+</answer>
+
+---
+
+### **Part B**
+
+#### **Explanation:**
+To implement the `getShortenedName` method:
+1. We can search for the first occurrence of a hyphen `"-"` in a local copy of `username` using `indexOf("-")`.
+2. As long as a hyphen is found (i.e., `index != -1`), we remove both the character preceding the hyphen (at `index - 1`) and the hyphen itself (at `index`) by taking the substring before `index - 1` and concatenating it with the substring starting after the hyphen at `index + 1`.
+3. Since the preconditions state that `username` does not start or end with a hyphen and has no consecutive hyphens, `index - 1` will always be a valid character index within the string and never a hyphen itself.
+4. We continue this process in a loop until no hyphens remain, then return the resulting string.
+
+#### **Code:**
+<answer>
+public String getShortenedName()
+{
+    String result = username;
+    int index = result.indexOf("-");
+    while (index != -1)
+    {
+        result = result.substring(0, index - 1) + result.substring(index + 1);
+        index = result.indexOf("-");
+    }
+    return result;
+}
+</answer>

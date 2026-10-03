@@ -1,0 +1,2 @@
+
+The primary difference between using `HashMap` and `singletonMap` as a parameter to `messageParams` is that `HashMap` is mutable and allows modifications, while `singletonMap` is immutable and optimized for a single key-value pair. Using `HashMap` in this code introduces unnecessary overhead and the risk of unintended changes, whereas `singletonMap` would better convey the intent of a fixed mapping and ensure data integrity if no modifications are needed.

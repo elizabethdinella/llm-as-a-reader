@@ -1,0 +1,22 @@
+<answer>
+
+```java
+public String getShortenedName() {
+    StringBuilder shortened = new StringBuilder();
+    boolean skipNextChar = false;
+
+    for (int i = 0; i < username.length(); i++) {
+        if (skipNextChar) {
+            skipNextChar = false;
+        } else if (i < username.length() - 1 && username.charAt(i + 1) == '-') {
+            skipNextChar = true;
+        } else {
+            shortened.append(username.charAt(i));
+        }
+    }
+
+    return shortened.toString();
+}
+```
+
+</answer>

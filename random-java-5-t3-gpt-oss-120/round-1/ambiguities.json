@@ -1,0 +1,56 @@
+[
+    {
+        "id": "2b_extra_exceptions",
+        "name": "mentions extra unrelated exceptions vs sticks to primary exception only",
+        "side_a": "Credit answers limit their diagnosis to the exception directly caused by the cast (ClassCastException) and do not list other possible exceptions.",
+        "side_b": "Deduct answers add speculation about additional exceptions that are not directly caused by the line, e.g., NullPointerException or SecurityException."
+    },
+    {
+        "id": "2b_trycatch_recommendation",
+        "name": "suggests generic try\u2011catch wrapping vs purely diagnostic description",
+        "side_a": "Credit answers describe the exception risk without recommending additional try\u2011catch blocks.",
+        "side_b": "Deduct answers explicitly recommend wrapping the code in try\u2011catch for robustness."
+    },
+    {
+        "id": "2f_extra_exceptions",
+        "name": "only\u2011ClassCastException mentioned vs mentions other exception types",
+        "side_a": "Credit the answer when it mentions only ClassCastException as the possible failure (no other exception types are listed).",
+        "side_b": "Deduct when the answer lists additional exception types (e.g., NullPointerException, SecurityException) or suggests generic try\u2011catch handling."
+    },
+    {
+        "id": "3b_interface_label",
+        "name": "calls target an interface vs calls target a type",
+        "side_a": "Credit the answer when it refers to\u202fOnKeyListenerForFragments\u202fas a *type* (e.g., \u201ccast \u2026 to\u202fOnKeyListenerForFragments\u202ftype\u201d) without labeling it an interface.",
+        "side_b": "Deduct when the answer explicitly calls\u202fOnKeyListenerForFragments\u202fan *interface* (e.g., \u201cimplement \u2026 interface\u201d, \u201cdoesn\u2019t implement the\u202fOnKeyListenerForFragments\u202finterface\u201d)."
+    },
+    {
+        "id": "4a_null_cast_safe_vs_unspecified",
+        "name": "explicitly\u2011states\u2011null\u2011cast\u2011safe vs no/incorrect mention of null\u2011cast safety",
+        "side_a": "Credit the answer when it explicitly says that casting a null fragment is allowed and will not throw a ClassCastException (e.g., \u201cthe cast is still valid (as casting null is allowed)\u201d).",
+        "side_b": "Deduct when the answer either omits any comment on casting null or suggests that null could cause a ClassCastException or does not clarify that casting null is safe."
+    },
+    {
+        "id": "4b_null_cast_allowed",
+        "name": "mentions null\u2011cast\u2011allowed vs does not mention it",
+        "side_a": "Credit the answer when it never says that casting a null fragment is allowed or safe. No deduction.",
+        "side_b": "Deduct when the answer explicitly states that casting a null result from\u202ffindFragmentById\u202fis allowed (e.g., \u201ccasting null is allowed\u201d)."
+    },
+    {
+        "id": "4b_null_check_mitigation",
+        "name": "mentions null\u2011check mitigation vs no null\u2011check mention",
+        "side_a": "Credit the answer when it does not claim any mitigation for a missing fragment (no null\u2011check discussion).",
+        "side_b": "Deduct when the answer points out that a subsequent null\u2011check prevents a NullPointerException after a missing fragment."
+    },
+    {
+        "id": "5a_explicit_cast_location",
+        "name": "explicit cast location vs vague/no location",
+        "side_a": "Credit when the answer explicitly identifies the cast of the fragment returned by `findFragmentById(R.id.main_view)` (e.g., \u201cwhen casting the fragment to OnKeyListenerForFragments\u201d) as the spot where an exception may be thrown.",
+        "side_b": "Deduct when the answer does not mention the cast operation or the specific line, speaking only in generic terms about an exception."
+    },
+    {
+        "id": "5a_named_classcastexception",
+        "name": "named ClassCastException vs unnamed/other exception",
+        "side_a": "Credit when the answer explicitly names `ClassCastException` as the likely exception caused by the cast.",
+        "side_b": "Deduct when the answer either only says \u201cexception\u201d without naming it, or names a different exception (e.g., NullPointerException) as the primary risk."
+    }
+]

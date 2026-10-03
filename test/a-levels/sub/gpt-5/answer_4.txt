@@ -1,0 +1,22 @@
+<answer>
+public void Move(char direction, int minutes) {
+    double distance = (this.DistancePerHour / 60.0) * minutes;
+    switch (Character.toUpperCase(direction)) {
+        case 'N':
+            this.YPosition += distance;
+            break;
+        case 'S':
+            this.YPosition -= distance;
+            break;
+        case 'E':
+            this.XPosition += distance;
+            break;
+        case 'W':
+            this.XPosition -= distance;
+            break;
+        default:
+            // No validation required per specification
+            break;
+    }
+}
+</answer>

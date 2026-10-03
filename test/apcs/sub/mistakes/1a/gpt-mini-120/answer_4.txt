@@ -1,0 +1,11 @@
+<answer>
+public Account(String requestedName) {
+    String candidate = requestedName;
+    while (!isAvailable(candidate)) {
+        int suffix = 1; 
+        candidate = requestedName + suffix;
+        suffix++;
+    }
+    this.username = candidate;
+}
+</answer>

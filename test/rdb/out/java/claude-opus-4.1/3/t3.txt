@@ -1,0 +1,2 @@
+
+Yes, you should add a null check for mPrefix (and mTopic as well). Without seeing how these fields are initialized, there's no guarantee they won't be null, and calling length() on a null reference will throw a NullPointerException. Adding a null check like `if(mPrefix != null && mPrefix.length() > 0)` is a defensive programming practice that will make your code more robust and prevent potential runtime crashes.

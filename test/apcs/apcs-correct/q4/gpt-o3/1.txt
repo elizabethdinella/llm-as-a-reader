@@ -1,0 +1,25 @@
+<answer>
+public int getPointsForRow(int targetRow)
+{
+    int sum = 0;
+    String firstColor = board[targetRow][0].getColor();
+    boolean allSame = true;
+
+    for (int col = 0; col < board[targetRow].length; col++)
+    {
+        Space current = board[targetRow][col];
+        sum += current.getPoints();
+        if (!current.getColor().equals(firstColor))
+        {
+            allSame = false;
+        }
+    }
+
+    if (allSame)
+    {
+        sum *= 2;
+    }
+
+    return sum;
+}
+</answer>

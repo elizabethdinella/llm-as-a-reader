@@ -1,0 +1,61 @@
+
+
+To solve this problem, we need to implement two methods in the Account class: a constructor that assigns a unique username based on availability and a method that shortens the username by removing specific characters. Let's break down each part and provide the solution.
+
+### Part A: Implementing the Constructor
+The goal is to create an `Account` object with a username. The constructor should check if the requested username is available using the provided helper method `isAvailable()`. If it's unavailable, the constructor appends successive integers starting from 1 until an available username is found.
+
+#### Approach
+1. **Check Availability**: Use the `isAvailable()` method to determine if the requested username is available.
+2. **Assign Directly or Append Integer**: If the requested username is available, assign it directly. If not, incrementally append integers (starting from 1) to the requested name and check each new variation until an available one is found.
+
+#### Solution Code
+```java
+public Account(String requestedName) {
+    String nameToCheck = requestedName;
+    if (isAvailable(nameToCheck)) {
+        this.username = nameToCheck;
+    } else {
+        int i = 1;
+        while (true) {
+            nameToCheck = requestedName + i;
+            if (isAvailable(nameToCheck)) {
+                this.username = nameToCheck;
+                break;
+            }
+            i++;
+        }
+    }
+}
+```
+
+### Part B: Implementing the getShortenedName Method
+This method shortens the username by removing each hyphen and the character immediately before it. If there are no hyphens, the original username is returned.
+
+#### Approach
+1. **StringBuilder for Efficiency**: Use a `StringBuilder` to construct the shortened name efficiently.
+2. **Iterate Through Characters**: Loop through each character of the username. When encountering a hyphen, remove the preceding character and skip adding the hyphen itself. If no hyphens are found, the original string is returned.
+
+#### Solution Code
+```java
+public String getShortenedName() {
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < username.length(); i++) {
+        char c = username.charAt(i);
+        if (c != '-') {
+            sb.append(c);
+        } else {
+            if (sb.length() > 0) {
+                sb.deleteCharAt(sb.length() - 1);
+            }
+        }
+    }
+    return sb.toString();
+}
+```
+
+### Explanation
+- **Constructor**: The constructor ensures that each account gets a unique username by checking availability and appending integers as necessary. This guarantees that the system can handle multiple users with similar requested usernames.
+- **getShortenedName Method**: This method processes the username to remove hyphens and their preceding characters, creating a shorter version according to specific rules. It efficiently handles this using a `StringBuilder` for better performance.
+
+These implementations ensure that user accounts are created with unique names and can be shortened as specified without altering the original username data.

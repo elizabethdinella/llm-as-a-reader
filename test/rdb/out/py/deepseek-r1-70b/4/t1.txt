@@ -1,0 +1,2 @@
+
+No, you only need to call deepcopy when handling SCHEMA or ISSUER_KEY transactions; otherwise, modifying result[DATA] is intentional and safe.

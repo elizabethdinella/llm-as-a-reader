@@ -1,0 +1,32 @@
+[
+    {
+        "id": "1b_npe_mention",
+        "name": "mentions NullPointerException vs does not mention NullPointerException",
+        "side_a": "Do not mention NullPointerException as a reason for the null\u2011check. Credit the answer.",
+        "side_b": "Mention NullPointerException (e.g., that omitting the check could cause an NPE). Deduct points."
+    },
+    {
+        "id": "1c_null_check_caching_disabled_claim",
+        "name": "null\u2011check\u2011needed\u2011for\u2011caching\u2011disabled vs not\u2011claimed",
+        "side_a": "Credit answers that do **not** claim the null\u2011check is required because caching is disabled. They either limit the justification to cache\u2011misses or mention caching\u2011disabled only as an alternative path that does not depend on the null\u2011check.",
+        "side_b": "Deduct answers that explicitly claim the null\u2011check is needed to work with the caching\u2011disabled condition (i.e., say the null\u2011check is required *because* or *in conjunction with* caching being disabled)."
+    },
+    {
+        "id": "2a_alternative_cache",
+        "name": "mentions alternative caching strategy vs no mention of it",
+        "side_a": "The answer explicitly mentions an alternative caching strategy that would make the null\u2011check unnecessary (e.g., storing an empty list or never storing null).",
+        "side_b": "The answer does not mention any alternative caching strategy; it simply states the null\u2011check is required."
+    },
+    {
+        "id": "2b_null_caller_impact",
+        "name": "mentions caller\u2011null\u2011handling / NPE risk vs no mention",
+        "side_a": "The answer warns that returning null would force callers to handle it or could cause a NullPointerException.",
+        "side_b": "The answer makes no reference to caller\u2011null\u2011handling or NPE risk."
+    },
+    {
+        "id": "3a_null_check_reason",
+        "name": "DB\u2011fetch justification vs NPE\u2011risk justification",
+        "side_a": "Credit the answer when it explicitly states that the null\u2011check is needed to trigger a database fetch (e.g., \u201censure the database is queried\u201d, \u201cfetch fresh data from the database\u201d).",
+        "side_b": "Deduct the answer when it justifies the null\u2011check by mentioning only caller\u2011side null handling or NPE risk and does not mention fetching from the database."
+    }
+]

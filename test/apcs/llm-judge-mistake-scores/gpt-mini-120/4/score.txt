@@ -1,0 +1,18 @@
+[
+{
+"DECISION": "YES",
+"FEEDBACK": "The student calls isAvailable(candidate) where candidate is a String (initially requestedName, later requestedName + suffix). The call is made unqualified within the Account class, which is a correct static call, and the returned boolean is used as the loop condition. This satisfies A1."
+},
+{
+"DECISION": "YES",
+"FEEDBACK": "There is a loop whose condition checks availability of a potential username (candidate), and within the loop body the potential username is reassigned (candidate = requestedName + suffix). Although the update is logically flawed (suffix is re-declared and reset to 1 on each iteration, so the same candidate is generated repeatedly), the rubric explicitly allows the point even when potential usernames are updated incorrectly. The response calls the availability check with a potential username and does update a potential username in the loop body, so A2 is earned."
+},
+{
+"DECISION": "YES",
+"FEEDBACK": "The statement suffix++ appears inside the while loop, so a count is incremented in the context of a loop. The rubric permits earning this point even if the count is not properly initialized or is not effectively used as part of the username, so the re-declaration/reset of suffix each iteration does not prevent earning A3."
+},
+{
+"DECISION": "NO",
+"FEEDBACK": "The algorithm is incorrect. Because int suffix = 1; is declared inside the loop body, the counter is reset to 1 on every iteration, so the candidate is always requestedName + \"1\". If requestedName and requestedName + \"1\" are both unavailable, the loop never produces requestedName2, requestedName3, etc., resulting in an infinite loop. This constitutes incorrectly initializing the count and failing to append the correct successive integers to the username, both of which the rubric lists as disqualifying, so A4 is not earned."
+}
+]

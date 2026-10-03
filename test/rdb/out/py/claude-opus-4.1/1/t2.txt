@@ -1,0 +1,2 @@
+
+`F.cross_entropy` is the PyTorch functional API for cross-entropy loss (torch.nn.functional.cross_entropy), while the bare `cross_entropy` call appears to be a bug in the code - there's no such function defined or imported. The line should likely be `val_loss = F.cross_entropy(logits[val_idx], labels[val_idx])` to properly compute the validation loss that's referenced later in the print statement.

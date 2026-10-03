@@ -1,0 +1,1 @@
+The main difference is that Collections.singletonMap() creates an immutable, optimized single-entry map while new HashMap<>(...) creates a mutable HashMap instance. Using singletonMap is more efficient and appropriate here since there's only one entry, and it prevents accidental modifications to the map.

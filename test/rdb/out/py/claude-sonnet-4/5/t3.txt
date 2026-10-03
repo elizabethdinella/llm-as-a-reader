@@ -1,0 +1,2 @@
+
+Yes, we need the check for 'if not build_directory'. Even if build_manager.setup_build() succeeds, the BUILD_DIR environment variable could still be unset, empty, or None. These are independent failure modes - the build setup could complete successfully but the environment variable retrieval could still fail. Since build_directory is used later to create the Runner object, it's essential to validate that it contains a valid value before proceeding with corpus pruning operations.

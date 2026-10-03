@@ -1,0 +1,19 @@
+public int moreHistoryThanMathAbsences()
+{
+    int count = 0;
+    for (int i = 0; i < historyList.length; i++)
+    {
+        for (int j = 0; j < mathList.length; j++)
+        {
+            if (historyList[i].studentID == mathList[j].studentID)
+            {
+                if (historyList[i].absences > mathList[j].absences)
+                {
+                    count++;
+                }
+                break;
+            }
+        }
+    }
+    return count;
+}

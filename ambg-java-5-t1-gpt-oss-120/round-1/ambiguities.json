@@ -1,0 +1,32 @@
+[
+    {
+        "id": "1b_classcast_mention",
+        "name": "explicit\u2011ClassCastException\u2011mention vs no\u2011mention",
+        "side_a": "Credit the answer when it explicitly calls out that the cast to `OnKeyListenerForFragments` can throw a `ClassCastException` (or mentions this specific risk). This shows the answer recognises the actual failure mode.",
+        "side_b": "Deduct when the answer never mentions the `ClassCastException` risk (even if it talks about other exceptions or says the code is safe). Absence of this mention typically reflects a misunderstanding of the primary danger."
+    },
+    {
+        "id": "2b_extra_exception_claims",
+        "name": "only\u2011code\u2011derived exception claims vs extra/unrelated exception claims",
+        "side_a": "Credit the answer when it mentions only exceptions that can be directly inferred from the shown code (e.g., ClassCastException, possibly IllegalStateException related to the fragment cast). Do **not** deduct for this.",
+        "side_b": "Deduct when the answer lists additional exception types that are not evident from the snippet (e.g., generic NullPointerException, IllegalArgumentException about volume flags, RuntimeException about starting a foreground service)."
+    },
+    {
+        "id": "2d_exception_tie",
+        "name": "explicit cast\u2011exception tie vs generic exception list",
+        "side_a": "Answer explicitly ties a possible exception to the fragment cast (or the immediately preceding line). No deduction.",
+        "side_b": "Answer merely lists possible exception types without linking them to a specific line of code. Deduction."
+    },
+    {
+        "id": "2g_specificity_vs_generic",
+        "name": "code\u2011specific causal explanation vs generic exception list",
+        "side_a": "Credit the answer when every exception it mentions is tied to a concrete reason in the shown code (e.g., the cast, a method call, or a lifecycle condition) or when it limits itself to the single exception that the code can actually produce. No deduction.",
+        "side_b": "Deduct when the answer lists several exceptions with vague, generic reasons that are not directly linked to the given code fragment (e.g., \u201cif any object is null\u201d, \u201cinvalid flags\u201d, \u201cstarting a service\u201d)."
+    },
+    {
+        "id": "3a_precise_location",
+        "name": "identifies exact cast line vs vague code\u2011segment reference",
+        "side_a": "Credit the answer when it explicitly states that the exception originates at the cast to\u202f`OnKeyListenerForFragments` (i.e., points to the specific line of code).",
+        "side_b": "Deduct when the answer only says an exception may occur \u201cin this code segment\u201d or \u201csomewhere here\u201d without naming the cast line as the source."
+    }
+]

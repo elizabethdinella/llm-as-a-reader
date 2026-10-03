@@ -1,0 +1,9 @@
+[
+  {"justification": "The answer explicitly states that Collections.singletonMap creates a lightweight, **immutable** map.", "deducted": false},
+  {"justification": "The answer explicitly states that new HashMap creates a general-purpose, **mutable** map.", "deducted": false},
+  {"justification": "The answer states the singletonMap contains 'exactly one entry', which covers the single key-value mapping point.", "deducted": false},
+  {"justification": "The answer never mentions or shows the method signature of messageParams.", "deducted": true},
+  {"justification": "The answer only says the command receives a 'mutable copy'; it never states that messageParams specifically requires/declares a HashMap parameter type.", "deducted": true},
+  {"justification": "The answer does not examine how the map argument is actually used inside messageParams; it speculates it may be modified rather than determining that the usages are read-only.", "deducted": true},
+  {"justification": "The answer incorrectly claims the UidFetchCommand 'can safely modify [the map] internally', implying the usages modify the map, which is not the case.", "deducted": true}
+]

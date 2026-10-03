@@ -1,0 +1,20 @@
+[
+    {
+        "id": "2a_final_line_dependency_claim",
+        "name": "final-line\u2011no\u2011dependency vs final-line\u2011dependency claim",
+        "side_a": "No deduction when the answer explicitly says the **final line** does **not** depend on `drawer` (it may note only a control\u2011dependency).",
+        "side_b": "Deduction when the answer claims that the **final line** (or the code at the end) **does** depend on `drawer` (data\u2011 or control\u2011dependency), even if the claim is general or inaccurate."
+    },
+    {
+        "id": "3a_final_line_guard_mention",
+        "name": "explicit final\u2011line guard mention vs. no mention of final\u2011line guard",
+        "side_a": "Credit the answer when it explicitly states that the *final* visibility\u2011setting line (or the code at the end of the method) is executed only if `drawer` is non\u2011null \u2013 i.e., it mentions the early\u2011return/null\u2011check that guards that specific line.",
+        "side_b": "Deduct when the answer never refers to the final line being guarded; it may talk about `drawer` being non\u2011null for other method calls but does not link the null\u2011check to the visibility\u2011setting statement."
+    },
+    {
+        "id": "3b_guard_awareness",
+        "name": "mentions null\u2011check guard vs omits guard",
+        "side_a": "Credit the answer when it explicitly references the null\u2011check guard (e.g., early return, \u201conly executes when drawer is non\u2011null\u201d, or similar), showing awareness that execution depends on drawer being non\u2011null.",
+        "side_b": "Deduct when the answer never mentions the null\u2011check guard, leaving the dependence on drawer implicit or suggesting the code runs regardless of drawer\u2019s nullness."
+    }
+]

@@ -1,0 +1,2 @@
+
+The key difference is that Collections.singletonMap() creates an immutable, memory-efficient map with exactly one entry, while new HashMap() creates a mutable map that can be modified after creation. In this code, wrapping the singletonMap in a HashMap converts an immutable single-entry map into a mutable HashMap, likely because the messageParams method requires a modifiable map or the map needs to be changed later in the execution flow.

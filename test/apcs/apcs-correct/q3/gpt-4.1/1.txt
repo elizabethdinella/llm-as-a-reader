@@ -1,0 +1,22 @@
+<answer>
+public int moreHistoryThanMathAbsences() {
+    int count = 0;
+    // Create a map from studentID to absences for mathList
+    HashMap<String, Integer> mathAbsencesMap = new HashMap<>();
+    for (CourseRecord cr : mathList) {
+        mathAbsencesMap.put(cr.getStudentID(), cr.getAbsences());
+    }
+    // Iterate through historyList and check existence in mathAbsencesMap
+    for (CourseRecord cr : historyList) {
+        String id = cr.getStudentID();
+        if (mathAbsencesMap.containsKey(id)) {
+            int historyAbs = cr.getAbsences();
+            int mathAbs = mathAbsencesMap.get(id);
+            if (historyAbs > mathAbs) {
+                count++;
+            }
+        }
+    }
+    return count;
+}
+</answer>

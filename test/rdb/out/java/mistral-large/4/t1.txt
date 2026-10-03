@@ -1,0 +1,1 @@
+The null check for `roleInfoPage` is necessary to prevent a `NullPointerException` and ensure that the application can handle cases where the database fetch operation fails or returns an unexpected result.

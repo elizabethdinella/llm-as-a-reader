@@ -1,0 +1,30 @@
+[
+    {
+        "justification": "The candidate answer explicitly states that `Collections.singletonMap()` creates an 'immutable, pre-optimized single-entry map', which satisfies the requirement that the answer mention singletonMap's immutability.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer mentions that singletonMap is immutable and criticizes the HashMap copy as redundant overhead, but it never states that a HashMap is mutable (nor implies mutability as a relevant distinction). Therefore the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer explicitly describes `Collections.singletonMap()` as creating an 'immutable, pre-optimized single-entry map', which conveys that it holds only a single key-value mapping. Thus the sub-item requirement is met.",
+        "deducted": false
+    },
+    {
+        "justification": "The candidate answer only discusses the general efficiency/immutability differences between singletonMap and HashMap. It never mentions the signature of the messageParams method (e.g., its parameter types such as FetchProfile and HashMap<String, Message>), nor does it reference how messageParams is declared. Therefore the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer never mentions the signature or parameter type of `messageParams`, and does not state that it requires/takes a `HashMap`. In fact, it implies the opposite by claiming `singletonMap` could be used directly. The point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer only discusses general efficiency/immutability differences between singletonMap and HashMap. It never examines how the map argument is used inside messageParams, and therefore does not determine whether those usages are read-only or mutate the map. Since the required discussion of the map's usage within messageParams (and its read-only nature) is absent, the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer never claims that the usages of the map argument inside messageParams modify or mutate the map. Instead, it argues that the immutable singletonMap would be sufficient and more efficient, implying no mutation occurs. Since it does not incorrectly state that the map is modified, the 2-point deduction under sub-item 2e does not apply.",
+        "deducted": false
+    }
+]

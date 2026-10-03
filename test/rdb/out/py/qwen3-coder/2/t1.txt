@@ -1,0 +1,2 @@
+
+You should only call compact_times() on cumulative KPIsets, not on every KPIset. The compact_times() method appears to consolidate time-based data by removing duplicates and aggregating values, which is only necessary for cumulative KPI sets that accumulate data over time. Non-cumulative KPI sets don't require timestamp consolidation and would benefit from avoiding this unnecessary operation.

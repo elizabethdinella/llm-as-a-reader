@@ -1,0 +1,2 @@
+
+You should call `_compact_times()` on every KPIset, not just cumulative ones. The compaction ensures accurate calculations of averages, percentiles, and standard deviations by eliminating duplicates or consolidating data points before statistical computations. This is especially important for percentile calculations which require sorted data and can be affected by duplicate entries. Whether the KPIset is cumulative or represents a time window, having clean, compacted data is essential for correct metrics.

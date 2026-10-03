@@ -1,0 +1,2 @@
+
+The `HashMap` allows for modifications and multiple entries, whereas `singletonMap` creates a single, immutable entry. Using `HashMap` ensures mutability, which is necessary if changes are expected later.

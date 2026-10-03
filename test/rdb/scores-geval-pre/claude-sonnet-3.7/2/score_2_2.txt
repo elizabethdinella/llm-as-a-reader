@@ -1,0 +1,30 @@
+[
+    {
+        "justification": "The answer explicitly states that `Collections.singletonMap()` creates an immutable map with exactly one entry, satisfying the requirement that singletonMap's immutability be mentioned (and it also notes HashMap is mutable). No deduction is warranted.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that wrapping the singletonMap in a new HashMap 'creates a mutable map', thereby mentioning that a HashMap is mutable.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that `Collections.singletonMap()` creates an immutable map with 'exactly one entry', which satisfies the requirement of mentioning that singletonMap returns only a single key-value mapping.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer never states or references the actual method signature of `messageParams` (e.g., its parameter types such as FetchProfile and HashMap<String, Message>). It only vaguely alludes to 'unless the called method specifically requires a HashMap implementation,' which is a hedged speculation rather than mentioning the signature. Therefore the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer never states that messageParams takes a HashMap. It only speculates conditionally: 'unless the called method specifically requires a HashMap implementation or mutability.' This is a hedge rather than an assertion about the actual signature, and it also lumps in the vaguer 'mutability' option, which the rubric says is not specific enough. Therefore the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer does not examine how the map argument is actually used inside `messageParams`. It vaguely asserts \"the map isn't modified afterward\" but then hedges with \"unless the called method specifically requires a `HashMap` implementation or mutability,\" failing to clearly determine whether the usages are read-only. No discussion of the actual internal usages is provided.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer explicitly states that the map isn't modified afterward, and only hedges with a conditional 'unless the called method specifically requires... mutability'. It does not incorrectly assert that the usages of the map within messageParams modify it, so the 2-point deduction for this sub-item does not apply.",
+        "deducted": false
+    }
+]

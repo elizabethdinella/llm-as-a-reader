@@ -1,0 +1,30 @@
+[
+    {
+        "justification": "The candidate answer explicitly states that SingletonMap 'is a fixed-size map designed for a single entry and is immutable,' which directly satisfies the requirement that the answer state a singletonMap is immutable. Therefore no point should be deducted for this sub-item.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that singletonMap is 'fixed-size ... and is immutable', but never states that HashMap is mutable. It only describes HashMap as 'a resizable array implementation' that 'allows multiple entries' \u2014 which is an inaccurate description and only indirectly hints at resizing rather than clearly stating mutability (ability to add/modify/remove entries). Since the explicit mutability of HashMap is not mentioned, the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer explicitly states that SingletonMap is 'a fixed-size map designed for a single entry', which conveys that it contains only a single key-value mapping (contrasted with HashMap allowing multiple entries). This satisfies rubric sub-item 1d.",
+        "deducted": false
+    },
+    {
+        "justification": "The candidate answer only compares HashMap and singletonMap generally (mutability, size) and suggests singletonMap could be used. It never mentions the messageParams method or its signature/parameter types at all. Therefore the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer only compares HashMap and singletonMap generally; it never mentions the signature of messageParams or that messageParams specifically requires/takes a HashMap parameter. In fact, it suggests singletonMap could be a better choice, implying no awareness that a HashMap is required.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer only compares HashMap and singletonMap generically (resizable vs fixed-size, mutable vs immutable). It never examines the messageParams method or how the map argument is used within it, and therefore does not determine whether those usages modify the map or are read-only. In fact, it wrongly suggests singletonMap could be a better choice without any analysis of the method's internal usage.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer never discusses how the map argument is used inside messageParams; it makes no claim that the usages modify the map. It only compares HashMap and singletonMap generally and suggests singletonMap could be preferable. Since no incorrect claim about mutation within messageParams is made, the 2-point deduction for sub-item 2e does not apply.",
+        "deducted": false
+    }
+]

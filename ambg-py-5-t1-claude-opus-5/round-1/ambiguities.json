@@ -1,0 +1,50 @@
+[
+    {
+        "id": "1b_single_verdict_vs_both_ways",
+        "name": "Commits to one unambiguous verdict (yes OR no) vs. answers both ways (\"not strictly needed, but keep it\")",
+        "side_a": "no_deduct \u2014 the answer states a single, unhedged verdict on whether the check is necessary (either \"Yes, it is necessary\" or a flat \"No, it is not needed\") and does not simultaneously endorse the opposite position.",
+        "side_b": "deduct \u2014 the answer refuses to settle, giving a conditional/split verdict that asserts the check is not strictly required under the function's contract while also recommending it be kept as defensive protection, so no single answer is actually delivered."
+    },
+    {
+        "id": "2a_concrete_code_grounding",
+        "name": "Justifies the guard by pointing to the actual downstream use in this code vs. generic 'defensive programming' boilerplate",
+        "side_a": "No deduct when the answer ties the need for the guard to a concrete fact about this snippet \u2014 e.g. naming what consumes `build_directory` right after (the Runner construction) \u2014 so the reasoning is anchored in the code rather than in a general principle.",
+        "side_b": "Deduct when the answer only asserts the generic value of an extra safeguard ('edge cases', 'fail early', 'clear error message', 'defensive') without naming anything specific in the code that would break, or gives no reasoning at all."
+    },
+    {
+        "id": "2a_hedge_resolution",
+        "name": "Hedged answer resolves to keeping the guard vs. resolves to calling it redundant/replaceable",
+        "side_a": "No deduct when an answer that concedes the check may be unnecessary in theory still lands on retaining it, treating the setup contract as an unverified assumption ('if ... guarantees').",
+        "side_b": "Deduct when the answer asserts the setup contract as established fact and lands on the check being redundant, or proposes swapping it for a different check."
+    },
+    {
+        "id": "2d_defensive_rationale_vs_behavioral_claim",
+        "name": "Defensive-programming justification for the guard vs a factual claim about what the code actually does",
+        "side_a": "Do not deduct when the answer frames a possibly-unset BUILD_DIR as a generic robustness/defensive-programming rationale for keeping the guard ('protects against subtle bugs', 'fail early with a clear error message', 'edge cases'). Such framing argues about what the guard buys you, not about an actual code path that skips _setup_application_path, so it is not an incorrect assertion.",
+        "side_b": "Deduct 2 when the answer grounds the guard in a stated fact about this codebase's control flow \u2014 e.g., asserting that setup_build can return True while BUILD_DIR is left unset, or that a particular branch reaches the Runner without having gone through _setup_application_path \u2014 rather than offering it as generic defensive practice."
+    },
+    {
+        "id": "2d_enclosing_caller_attribution",
+        "name": "Attributing BUILD_DIR setting to an enclosing/calling function that contains _setup_application_path vs to an unrelated component",
+        "side_a": "Do not deduct when the answer attributes the setting of BUILD_DIR to the enclosing entry point that delegates to _setup_application_path (e.g., 'build_manager.setup_build is responsible for setting BUILD_DIR'). Naming the outer function is consistent with _setup_application_path doing the work and is not a denial that it happens there.",
+        "side_b": "Deduct 2 when the answer places the setting of BUILD_DIR in a component outside the setup_build/_setup_application_path call chain (e.g., the Runner, the CLI, or the user's environment) or explicitly says _setup_application_path does not set it."
+    },
+    {
+        "id": "3a_contract_gap_vs_contract_trust",
+        "name": "Accepts setup_build's contract (success \u21d2 BUILD_DIR set) and concedes redundancy vs posits a real gap where success coexists with unset BUILD_DIR and affirms the check is necessary",
+        "side_a": "Do not deduct when the answer accepts that `setup_build()` returning True guarantees BUILD_DIR is set \u2014 whether stated flatly ('No, the check is not needed'), via the contract ('returns False if the build setup (including BUILD_DIR) fails ... so the extra check is redundant'), or conditionally ('it isn't strictly required if setup_build guarantees BUILD_DIR will be set') \u2014 even if it then recommends keeping the guard.",
+        "side_b": "Deduct when the answer's bottom-line verdict is that the check IS necessary because it posits a live scenario in which build_setup_result is truthy yet BUILD_DIR is unset/empty ('there could be a scenario where the BUILD_DIR environment variable wasn't properly set'); invoking defensive programming here is used to establish necessity, not to qualify an admitted redundancy, so the 'not needed' claim is never made."
+    },
+    {
+        "id": "3b_conclusion_direction_necessary_vs_redundant",
+        "name": "Concludes the guard is logically unnecessary vs affirms it is necessary/meaningful protection",
+        "side_a": "Credit only if the answer's bottom line is that the `if not build_directory` check is NOT needed \u2014 i.e., it cannot change behavior given that `setup_build()` returning truthy implies BUILD_DIR is set. Hedged wording is fine as long as the verdict lands on 'redundant/unnecessary'.",
+        "side_b": "Deduct 1 point if the answer concludes the check IS necessary, or asserts there is a real scenario in which `build_setup_result` is truthy while `BUILD_DIR` is unset/empty, so the guard genuinely catches something (e.g. 'necessary as it provides an additional safeguard against edge cases'). Treating it as a live defensive need rather than dead logic earns the deduction regardless of how clearly it is argued."
+    },
+    {
+        "id": "3b_reasoning_present_vs_bare_verdict",
+        "name": "Verdict backed by a reason tied to setup_build/BUILD_DIR vs bare one-line verdict",
+        "side_a": "Credit only if the answer supplies at least some supporting reasoning for its verdict \u2014 e.g. that `build_manager.setup_build()` is what sets BUILD_DIR and returns falsy when it fails, so the second test adds nothing.",
+        "side_b": "Deduct 1 point if the answer is a bare verdict with no supporting argument at all (e.g. 'No, the check is not needed.'), leaving the grader nothing to check the claim against."
+    }
+]

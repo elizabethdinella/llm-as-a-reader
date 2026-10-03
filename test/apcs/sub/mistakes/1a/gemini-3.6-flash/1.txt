@@ -1,0 +1,104 @@
+Here are five exam attempts, starting with a fully correct solution and making increasingly severe, realistic mistakes in subsequent attempts.
+
+---
+
+## Attempt 1
+
+### Explanation
+To implement the `Account` constructor, I first initialize a local string variable `name` with `requestedName` and an integer `count` set to `1`. I then use a `while` loop that checks whether `name` is available using the static helper method `isAvailable(name)`. If `isAvailable(name)` returns `false` (meaning the name is unavailable), the loop body executes, updating `name` to `requestedName + count` and incrementing `count` by 1. Once an available username is found, the loop terminates, and `name` is assigned to the instance variable `username`.
+
+<answer>
+public Account(String requestedName)
+{
+    String name = requestedName;
+    int count = 1;
+    while (!isAvailable(name))
+    {
+        name = requestedName + count;
+        count++;
+    }
+    username = name;
+}
+</answer>
+
+---
+
+## Attempt 2
+
+### Explanation
+I initialize a variable `name` to hold `requestedName` and set `count` to `0`. A `while` loop checks whether `isAvailable(name)` is false. If `name` is taken, `name` is updated to `requestedName + count`, and `count` is incremented. Once the loop finds an available name, it exits and assigns `name` to the instance variable `username`.
+
+<answer>
+public Account(String requestedName)
+{
+    String name = requestedName;
+    int count = 0;
+    while (!isAvailable(name))
+    {
+        name = requestedName + count;
+        count++;
+    }
+    username = name;
+}
+</answer>
+
+---
+
+## Attempt 3
+
+### Explanation
+I set `name` to `requestedName` and set `count` to `1`. I use a `while` loop to check if `requestedName` is available using `!isAvailable(requestedName)`. Inside the loop, `name` is updated by appending `count` to `requestedName`, and `count` is incremented. After the loop completes, `username` is assigned the value of `name`.
+
+<answer>
+public Account(String requestedName)
+{
+    String name = requestedName;
+    int count = 1;
+    while (!isAvailable(requestedName))
+    {
+        name = requestedName + count;
+        count++;
+    }
+    username = name;
+}
+</answer>
+
+---
+
+## Attempt 4
+
+### Explanation
+I assign `requestedName` to `name`. I then check if `name` is available using an `if` statement with `!isAvailable(name)`. If it is not available, I update `name` by appending `1` to `requestedName`. Finally, I store `name` in the instance variable `username`.
+
+<answer>
+public Account(String requestedName)
+{
+    String name = requestedName;
+    if (!isAvailable(name))
+    {
+        name = requestedName + 1;
+    }
+    username = name;
+}
+</answer>
+
+---
+
+## Attempt 5
+
+### Explanation
+I check if `requestedName` is available using `isAvailable(requestedName)`. If `isAvailable` returns true, I return `requestedName`. Otherwise, I append `1` to `requestedName` and return the result.
+
+<answer>
+public Account(String requestedName)
+{
+    if (isAvailable(requestedName))
+    {
+        return requestedName;
+    }
+    else
+    {
+        return requestedName + 1;
+    }
+}
+</answer>

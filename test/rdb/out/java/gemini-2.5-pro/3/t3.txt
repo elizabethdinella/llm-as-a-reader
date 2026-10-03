@@ -1,0 +1,2 @@
+
+Yes, you absolutely should add a null check. Without it, your code will throw a `NullPointerException` if `mPrefix` is `null` when this method is called. The most robust and readable approach, given your use of `StringUtils`, is to replace the check with `if (StringUtils.isNotEmpty(mPrefix))`. This single method call safely checks for both null and empty strings, making your code more concise and less error-prone.

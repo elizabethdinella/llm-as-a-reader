@@ -1,0 +1,672 @@
+grok-3 Trial 2
+auto eval  2a,2b,2c
+manual     2a,2b
+score error? True
+error?     True
+recall     1.0
+precision  0.6666666666666667
+f1         0.8
+==================================================
+
+grok-3 Trial 1
+auto eval  2a,2b,2c
+manual     2a,2b,2c
+score error? False
+error?     False
+recall     1.0
+precision  1.0
+f1         1.0
+==================================================
+
+grok-3 Trial 3
+auto eval  1c,2a,2b,2c
+manual     1c,2a,2b,2c
+score error? False
+error?     False
+recall     1.0
+precision  1.0
+f1         1.0
+==================================================
+
+deepseek-r1-70b Trial 2
+auto eval  2a,2b,2c
+manual     2a,2b,2c
+score error? False
+error?     False
+recall     1.0
+precision  1.0
+f1         1.0
+==================================================
+
+deepseek-r1-70b Trial 1
+auto eval  2a,2b,2c
+manual     2a,2b,2c
+score error? False
+error?     False
+recall     1.0
+precision  1.0
+f1         1.0
+==================================================
+
+deepseek-r1-70b Trial 3
+auto eval  2a,2b,2c
+manual     2a,2b,2c
+score error? False
+error?     False
+recall     1.0
+precision  1.0
+f1         1.0
+==================================================
+
+grok-4 Trial 2
+auto eval  2a,2b,2c
+manual     2a,2b,2c
+score error? False
+error?     False
+recall     1.0
+precision  1.0
+f1         1.0
+==================================================
+
+grok-4 Trial 1
+auto eval  1c,2a,2b,2c
+manual     1c,2a,2b,2c
+score error? False
+error?     False
+recall     1.0
+precision  1.0
+f1         1.0
+==================================================
+
+grok-4 Trial 3
+auto eval  1c,2a,2b,2c
+manual     1c,2a,2b,2c
+score error? False
+error?     False
+recall     1.0
+precision  1.0
+f1         1.0
+==================================================
+
+claude-sonnet-3.7 Trial 2
+auto eval  2a,2b,2c
+manual     2b,2c
+score error? True
+error?     True
+recall     1.0
+precision  0.6666666666666667
+f1         0.8
+==================================================
+
+claude-sonnet-3.7 Trial 1
+auto eval  2b,2c
+manual     2b,2c
+score error? False
+error?     False
+recall     1.0
+precision  1.0
+f1         1.0
+==================================================
+
+claude-sonnet-3.7 Trial 3
+auto eval  2a,2b,2c
+manual     2a,2b,2c
+score error? False
+error?     False
+recall     1.0
+precision  1.0
+f1         1.0
+==================================================
+
+gemini-2.5-pro Trial 2
+auto eval  2a,2b,2c
+manual     2b,2c
+score error? True
+error?     True
+recall     1.0
+precision  0.6666666666666667
+f1         0.8
+==================================================
+
+gemini-2.5-pro Trial 1
+auto eval  2a,2b,2c
+manual     2b,2d
+score error? False
+error?     True
+recall     0.5
+precision  0.33333333333333337
+f1         0.4
+==================================================
+
+gemini-2.5-pro Trial 3
+auto eval  2a,2b,2c
+manual     2a,2b,2c
+score error? False
+error?     False
+recall     1.0
+precision  1.0
+f1         1.0
+==================================================
+
+gpt-4.1 Trial 2
+auto eval  2a,2b,2c
+manual     2b,2d
+score error? False
+error?     True
+recall     0.5
+precision  0.33333333333333337
+f1         0.4
+==================================================
+
+gpt-4.1 Trial 1
+auto eval  2a,2b,2c
+manual     2b,2c
+score error? True
+error?     True
+recall     1.0
+precision  0.6666666666666667
+f1         0.8
+==================================================
+
+gpt-4.1 Trial 3
+auto eval  2a,2b,2c
+manual     2b,2c
+score error? True
+error?     True
+recall     1.0
+precision  0.6666666666666667
+f1         0.8
+==================================================
+
+qwen3-coder Trial 2
+auto eval  2a,2b,2c
+manual     2a,2b,2c
+score error? False
+error?     False
+recall     1.0
+precision  1.0
+f1         1.0
+==================================================
+
+qwen3-coder Trial 1
+auto eval  1b,2a,2b,2c
+manual     1b,2a,2b,2c
+score error? False
+error?     False
+recall     1.0
+precision  1.0
+f1         1.0
+==================================================
+
+qwen3-coder Trial 3
+auto eval  1c,2a,2b,2c
+manual     1c,2a,2b,2c
+score error? False
+error?     False
+recall     1.0
+precision  1.0
+f1         1.0
+==================================================
+
+claude-opus-4 Trial 2
+auto eval  2a,2b,2c
+manual     2a,2b,2c
+score error? False
+error?     False
+recall     1.0
+precision  1.0
+f1         1.0
+==================================================
+
+claude-opus-4 Trial 1
+auto eval  2a,2b,2c
+manual     2a,2b,2c
+score error? False
+error?     False
+recall     1.0
+precision  1.0
+f1         1.0
+==================================================
+
+claude-opus-4 Trial 3
+auto eval  2a,2b,2c
+manual     2b,2c
+score error? True
+error?     True
+recall     1.0
+precision  0.6666666666666667
+f1         0.8
+==================================================
+
+llama-scout-4 Trial 2
+auto eval  2a,2b,2c
+manual     2a,2b,2c
+score error? False
+error?     False
+recall     1.0
+precision  1.0
+f1         1.0
+==================================================
+
+llama-scout-4 Trial 1
+auto eval  1b,2a,2b,2c
+manual     2a,2b,2c
+score error? True
+error?     True
+recall     1.0
+precision  0.75
+f1         0.8571428571428571
+==================================================
+
+llama-scout-4 Trial 3
+auto eval  1b,2a,2b,2c
+manual     2a,2b,2c
+score error? True
+error?     True
+recall     1.0
+precision  0.75
+f1         0.8571428571428571
+==================================================
+
+gpt-mini-120 Trial 2
+auto eval  2a,2b,2c
+manual     2a,2b,2c
+score error? False
+error?     False
+recall     1.0
+precision  1.0
+f1         1.0
+==================================================
+
+gpt-mini-120 Trial 1
+auto eval  2a,2b,2c
+manual     2b,2c
+score error? True
+error?     True
+recall     1.0
+precision  0.6666666666666667
+f1         0.8
+==================================================
+
+gpt-mini-120 Trial 3
+auto eval  2a,2b,2c
+manual     2a,2b,2c
+score error? False
+error?     False
+recall     1.0
+precision  1.0
+f1         1.0
+==================================================
+
+claude-sonnet-4 Trial 2
+auto eval  2a,2b,2c,2d
+manual     2b,2d
+score error? True
+error?     True
+recall     1.0
+precision  0.5
+f1         0.6666666666666666
+==================================================
+
+claude-sonnet-4 Trial 1
+auto eval  2a,2b,2c
+manual     2a,2b,2c
+score error? False
+error?     False
+recall     1.0
+precision  1.0
+f1         1.0
+==================================================
+
+claude-sonnet-4 Trial 3
+auto eval  2a,2b,2c
+manual     2b,2d
+score error? False
+error?     True
+recall     0.5
+precision  0.33333333333333337
+f1         0.4
+==================================================
+
+qwen3 Trial 2
+auto eval  
+manual     
+score error? False
+error?     False
+recall     0
+precision  0
+f1         0
+==================================================
+
+qwen3 Trial 1
+auto eval  1c,2a,2b,2c
+manual     1c,2a,2b,2c
+score error? False
+error?     False
+recall     1.0
+precision  1.0
+f1         1.0
+==================================================
+
+qwen3 Trial 3
+auto eval  1c,2a,2b
+manual     1c,2a,2b
+score error? False
+error?     False
+recall     1.0
+precision  1.0
+f1         1.0
+==================================================
+
+gpt-mini-20 Trial 2
+auto eval  2a,2b,2c
+manual     2a,2b,2c
+score error? False
+error?     False
+recall     1.0
+precision  1.0
+f1         1.0
+==================================================
+
+gpt-mini-20 Trial 1
+auto eval  2a,2b,2c
+manual     2a,2b,2c
+score error? False
+error?     False
+recall     1.0
+precision  1.0
+f1         1.0
+==================================================
+
+gpt-mini-20 Trial 3
+auto eval  2a,2b,2c
+manual     2a,2b,2c
+score error? False
+error?     False
+recall     1.0
+precision  1.0
+f1         1.0
+==================================================
+
+gpt-5 Trial 2
+auto eval  2a,2b,2c
+manual     2b,2c
+score error? True
+error?     True
+recall     1.0
+precision  0.6666666666666667
+f1         0.8
+==================================================
+
+gpt-5 Trial 1
+auto eval  2a,2b,2c
+manual     2b,2c
+score error? True
+error?     True
+recall     1.0
+precision  0.6666666666666667
+f1         0.8
+==================================================
+
+gpt-5 Trial 3
+auto eval  2a,2b,2c
+manual     2b,2c
+score error? True
+error?     True
+recall     1.0
+precision  0.6666666666666667
+f1         0.8
+==================================================
+
+gemini-2.5-flash Trial 2
+auto eval  2a,2b,2c
+manual     2a,2b,2d
+score error? True
+error?     True
+recall     0.6666666666666667
+precision  0.6666666666666667
+f1         0.6666666666666667
+==================================================
+
+gemini-2.5-flash Trial 1
+auto eval  2a,2b,2c
+manual     2b,2c
+score error? True
+error?     True
+recall     1.0
+precision  0.6666666666666667
+f1         0.8
+==================================================
+
+gemini-2.5-flash Trial 3
+auto eval  2a,2b,2c
+manual     2a,2b,2c
+score error? False
+error?     False
+recall     1.0
+precision  1.0
+f1         1.0
+==================================================
+
+mistral-large Trial 2
+auto eval  2a,2b,2c
+manual     2a,2b
+score error? True
+error?     True
+recall     1.0
+precision  0.6666666666666667
+f1         0.8
+==================================================
+
+mistral-large Trial 1
+auto eval  2a,2b,2c
+manual     2a,2b,2c
+score error? False
+error?     False
+recall     1.0
+precision  1.0
+f1         1.0
+==================================================
+
+mistral-large Trial 3
+auto eval  1b,2a,2b,2c
+manual     1b,2a,2b,2c
+score error? False
+error?     False
+recall     1.0
+precision  1.0
+f1         1.0
+==================================================
+
+gpt-o3 Trial 2
+auto eval  2a,2b,2c
+manual     2a,2b,2c
+score error? False
+error?     False
+recall     1.0
+precision  1.0
+f1         1.0
+==================================================
+
+gpt-o3 Trial 1
+auto eval  2a,2b,2c
+manual     2a,2b,2c
+score error? False
+error?     False
+recall     1.0
+precision  1.0
+f1         1.0
+==================================================
+
+gpt-o3 Trial 3
+auto eval  2a,2b,2c
+manual     2a,2b,2c
+score error? False
+error?     False
+recall     1.0
+precision  1.0
+f1         1.0
+==================================================
+
+gemini-2.0-flash Trial 2
+auto eval  2a,2b,2c
+manual     2a,2b,2c
+score error? False
+error?     False
+recall     1.0
+precision  1.0
+f1         1.0
+==================================================
+
+gemini-2.0-flash Trial 1
+auto eval  2a,2b,2c
+manual     2a,2b
+score error? True
+error?     True
+recall     1.0
+precision  0.6666666666666667
+f1         0.8
+==================================================
+
+gemini-2.0-flash Trial 3
+auto eval  2a,2b,2c
+manual     2a,2b,2d
+score error? True
+error?     True
+recall     0.6666666666666667
+precision  0.6666666666666667
+f1         0.6666666666666667
+==================================================
+
+llama3.3-70 Trial 2
+auto eval  1a,1b,2a,2b,2c
+manual     1a,1b,2a,2b,2c
+score error? False
+error?     False
+recall     1.0
+precision  1.0
+f1         1.0
+==================================================
+
+llama3.3-70 Trial 1
+auto eval  1a,1b,2a,2b,2c
+manual     1a,1b,2a,2b,2c
+score error? False
+error?     False
+recall     1.0
+precision  1.0
+f1         1.0
+==================================================
+
+llama3.3-70 Trial 3
+auto eval  1a,1b,2a,2b,2c
+manual     1a,1b,2a,2b,2c
+score error? False
+error?     False
+recall     1.0
+precision  1.0
+f1         1.0
+==================================================
+
+claude-opus-4.1 Trial 2
+auto eval  2a,2c
+manual     2b,2c
+score error? False
+error?     True
+recall     0.5
+precision  0.5
+f1         0.5
+==================================================
+
+claude-opus-4.1 Trial 1
+auto eval  2a,2b,2c
+manual     2b,2d
+score error? False
+error?     True
+recall     0.5
+precision  0.33333333333333337
+f1         0.4
+==================================================
+
+claude-opus-4.1 Trial 3
+auto eval  2c
+manual     2b,2c
+score error? True
+error?     True
+recall     0.5
+precision  1.0
+f1         0.6666666666666666
+==================================================
+
+==================================================
+Per trial:
+	Score Accuracy: 0.6833333333333333
+	Total Accuracy: 0.6
+Per rubric item:
+	Total Recall 0.9222222222222222
+	Total Precision 0.8305555555555554
+	Total F1 score: 0.8646825396825394
+1a
+	fn 0
+	tp 3
+	tn 57
+	fp 0
+acc:  1.0
+recall:  1.0
+precision:  1.0
+F1:  1.0
+1b
+	fn 0
+	tp 5
+	tn 53
+	fp 2
+acc:  0.9666666666666667
+recall:  1.0
+precision:  0.7142857142857143
+F1:  0.8333333333333333
+1c
+	fn 0
+	tp 6
+	tn 54
+	fp 0
+acc:  1.0
+recall:  1.0
+precision:  1.0
+F1:  1.0
+2a
+	fn 0
+	tp 41
+	tn 3
+	fp 16
+acc:  0.7333333333333333
+recall:  1.0
+precision:  0.7192982456140351
+F1:  0.8367346938775511
+2b
+	fn 2
+	tp 57
+	tn 1
+	fp 0
+acc:  0.9666666666666667
+recall:  0.9661016949152542
+precision:  1.0
+F1:  0.9827586206896551
+2c
+	fn 0
+	tp 48
+	tn 2
+	fp 10
+acc:  0.8333333333333334
+recall:  1.0
+precision:  0.8275862068965517
+F1:  0.9056603773584906
+2d
+	fn 6
+	tp 1
+	tn 53
+	fp 0
+acc:  0.9
+recall:  0.14285714285714285
+precision:  1.0
+F1:  0.25
+grok-3 {'2': {'1': ['2a', '2b', '2c'], '2': None, '3': None}, '1': {'1': ['2a', '2b', '2c'], '2': None, '3': None}, '3': {'1': ['1c', '2a', '2b', '2c'], '2': None, '3': None}}

@@ -1,0 +1,11 @@
+<answer>
+```java
+public void Move(char direction, int minutes) {
+    double distance = (DistancePerHour / 60.0) * minutes;
+    if (direction == 'N') YPosition += distance;
+    else if (direction == 'S') YPosition -= distance;
+    else if (direction == 'E') XPosition += distance;
+    else if (direction == 'W') XPosition -= distance;
+}
+```
+</answer>

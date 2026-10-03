@@ -1,0 +1,37 @@
+[
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly states that `Collections.singletonMap(key, value)` returns an immutable map and that entries cannot be added, removed, or modified, while `new HashMap<>(...)` produces a mutable copy. It also addresses the size aspect by noting the singleton map contains only the single mapping provided and that a HashMap allows adding further entries, and correctly notes an UnsupportedOperationException would result from attempting modification of the singleton map. The required statement about singletonMap immutability is clearly present, so no deduction.",
+        "item": "1a"
+    },
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly addresses mutability, stating that `Collections.singletonMap` returns an immutable map that cannot be added to, removed from, or modified, while `new HashMap<>(...)` creates a new mutable HashMap that is populated with the single entry and can be freely modified. It also implicitly covers the size difference by noting the singleton map contains only one mapping whereas the HashMap can have entries added or removed, and it explains the practical consequence (UnsupportedOperationException if modification is attempted on the singleton map). The required statement that a HashMap is mutable is clearly present, so no deduction applies.",
+        "item": "1b"
+    },
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly addresses mutability (singletonMap is immutable; wrapping in a HashMap yields a mutable map that can be added to/removed from, and modifying the singleton map would throw UnsupportedOperationException). It also conveys the size/single-mapping aspect, stating that Collections.singletonMap 'returns an immutable map containing only the mapping you provide' and that the HashMap is 'initially populated with the single entry from the immutable singleton map,' while the HashMap can grow with additional entries. Both required points of the rubric are covered.",
+        "item": "1c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate answer does discuss messageParams, but only in terms of what kind of map object it would receive (mutable vs. immutable). It never states or references the actual method signature of messageParams \u2014 i.e., that it accepts a FetchProfile and a Map<String, Message> (e.g., messageParams(FetchProfile fetchProfile, Map<String, Message> messageMap)). There is no mention of the declared parameter types, which is what the rubric requires. Since the required signature detail is absent, the point is deducted.",
+        "item": "2a"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate answer discusses messageParams only in terms of mutability, stating that passing the singleton map directly would give messageParams an immutable map that throws UnsupportedOperationException on modification, while wrapping it in a HashMap yields a mutable map. It never states that messageParams' parameter type is specifically a HashMap (which would make passing a Map returned by Collections.singletonMap a compile-time type mismatch rather than a runtime mutability issue). Per the rubric, describing it merely as requiring a mutable map is explicitly deemed not specific enough, so the point is deducted.",
+        "item": "2b"
+    },
+    {
+        "deducted": true,
+        "feedback": "The answer only explains the generic mutability distinction between `Collections.singletonMap` and a `HashMap` copy. It does not examine how the map argument is actually used inside `messageParams` (e.g., whether the builder merely stores/reads the entries or mutates them). Instead of determining that the usages are read-only, it explicitly leaves the question open: 'The correct usage depends on whether `messageParams` or subsequent code needs to modify the map.' Since the answer fails to clearly establish whether the usages modify the map, the point is deducted.",
+        "item": "2c"
+    },
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly discusses messageParams, explaining that passing a singletonMap would give it an immutable map while wrapping in a HashMap gives it a mutable one. Crucially, it never asserts that messageParams (or downstream code) actually does mutate the map; the statements are conditional/capability-based ('can safely add or remove entries', 'any attempt to modify it will throw'), and it closes with the appropriately hedged 'The correct usage depends on whether messageParams or subsequent code needs to modify the map.' Since no incorrect claim is made that the usages of the map argument modify it, no deduction applies.",
+        "item": "2d"
+    }
+]

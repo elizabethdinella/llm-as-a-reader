@@ -1,0 +1,7 @@
+{"justification": "The answer explicitly states that Collections.singletonMap returns a map that is 'unmodifiable', satisfying this requirement.", "deducted": false}
+{"justification": "The answer states that the HashMap copy 'is fully mutable', satisfying this requirement.", "deducted": false}
+{"justification": "The answer states the singletonMap 'contains exactly one entry', satisfying this requirement.", "deducted": false}
+{"justification": "The answer never mentions or examines the actual signature of messageParams (e.g., its declared parameter types); it only speculates generically about what messageParams might do.", "deducted": true}
+{"justification": "The answer does not state that messageParams specifically declares/requires a HashMap parameter; it only speaks in general terms of mutability, which the rubric says is not specific enough.", "deducted": true}
+{"justification": "The answer does not examine how the map argument is actually used inside messageParams; it merely hypothesizes ('if messageParams ... tries to add, remove or clear entries'), failing to determine whether the usages are read-only.", "deducted": true}
+{"justification": "The answer only conditionally speculates ('if ... tries to add, remove or clear'), and does not affirmatively claim that messageParams modifies the map, so no deduction for a false statement.", "deducted": false}

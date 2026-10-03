@@ -1,0 +1,20 @@
+[
+    {
+        "id": "1a_affirms_necessity_vs_denies_or_defers",
+        "name": "Affirms the null check is required vs denies/conditionalizes its necessity",
+        "side_a": "Give credit when the answer affirmatively concludes the `roleInfoList == null` check is needed and ties that conclusion to the cache-miss-falls-through-to-database behavior (e.g., 'Yes, you need the null check to ensure that roles are fetched from the database when there's no cached data').",
+        "side_b": "Deduct when the answer concludes the check is not (necessarily) needed, or makes its necessity contingent on unstated/other code (e.g., 'depends on how getRolesFromDatabase is implemented'), without ever stating that removing it would skip the database lookup on a cache miss."
+    },
+    {
+        "id": "2a_names_cache_lookup_mechanism",
+        "name": "Names the concrete cache-lookup mechanism (roleInfoMap.get(username) returning null) vs. generic 'no cached data / cache is empty'",
+        "side_a": "Credit when the answer points to the actual lookup that can yield null \u2014 i.e. that `roleInfoMap.get(username)` returns null on a cache miss, so `roleInfoList` is null and the DB fetch must still run.",
+        "side_b": "Deduct when the answer only speaks generically about 'no cached data' / 'the cache is empty' without identifying the map lookup that produces the null, leaving the mechanism unstated."
+    },
+    {
+        "id": "2a_hedged_necessity",
+        "name": "Unqualified assertion that the check is required vs. hedged/conditional necessity",
+        "side_a": "Credit when the answer states flatly that the null check is required ('crucial', 'necessary') with no escape clause about implementation details or intent.",
+        "side_b": "Deduct when the necessity is hedged or made contingent \u2014 'not necessarily... depends on how X is implemented', or 'would return null, which might not be intended'."
+    }
+]

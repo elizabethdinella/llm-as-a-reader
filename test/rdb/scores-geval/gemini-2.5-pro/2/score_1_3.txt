@@ -1,0 +1,7 @@
+{"justification": "The answer explicitly states that `Collections.singletonMap` creates an **immutable** map, satisfying this sub-item.", "deducted": false}
+{"justification": "The answer explicitly states that `new HashMap` creates a general-purpose, **mutable** map, satisfying this sub-item.", "deducted": false}
+{"justification": "The answer states the singletonMap contains 'exactly one entry', which conveys the single key-value mapping.", "deducted": false}
+{"justification": "The answer never mentions or examines the method signature of `messageParams` (e.g., its declared parameter types); it only speculates generally.", "deducted": true}
+{"justification": "The answer does not state that `messageParams` specifically declares/requires a `HashMap` parameter; it only vaguely refers to needing a 'mutable copy', which the rubric says is not specific enough.", "deducted": true}
+{"justification": "The answer does not examine how the map argument is actually used inside `messageParams`, and fails to determine that the usages are read-only \u2014 instead it wrongly implies modification.", "deducted": true}
+{"justification": "The answer asserts the `UidFetchCommand` 'can safely modify internally' the map, incorrectly implying the usages modify the map when they are in fact read-only.", "deducted": true}

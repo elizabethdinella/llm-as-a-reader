@@ -1,0 +1,37 @@
+<answer>
+public Account(String requestedName)
+{
+    if (isAvailable(requestedName))
+    {
+        username = requestedName;
+    }
+    else
+    {
+        int num = 1;
+        while (!isAvailable(requestedName + num))
+        {
+            num++;
+        }
+        username = requestedName + num;
+    }
+}
+</answer>
+
+<answer>
+public String getShortenedName()
+{
+    String result = "";
+    for (int i = 0; i < username.length(); i++)
+    {
+        if (username.charAt(i) == '-')
+        {
+            result = result.substring(0, result.length() - 1);
+        }
+        else
+        {
+            result += username.charAt(i);
+        }
+    }
+    return result;
+}
+</answer>

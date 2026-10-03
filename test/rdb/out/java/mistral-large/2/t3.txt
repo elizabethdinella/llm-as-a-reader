@@ -1,0 +1,1 @@
+Using `Collections.singletonMap` is more appropriate in this context because it is designed for maps with exactly one entry, making it more memory-efficient compared to a `HashMap`, which is intended for dynamic and potentially larger collections.

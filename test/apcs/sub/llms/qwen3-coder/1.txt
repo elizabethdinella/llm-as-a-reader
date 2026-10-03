@@ -1,0 +1,44 @@
+Part A:
+
+<answer>
+public Account(String requestedName)
+{
+    if (isAvailable(requestedName))
+    {
+        username = requestedName;
+    }
+    else
+    {
+        int counter = 1;
+        String newName = requestedName + counter;
+        while (!isAvailable(newName))
+        {
+            counter++;
+            newName = requestedName + counter;
+        }
+        username = newName;
+    }
+}
+</answer>
+
+Part B:
+
+<answer>
+public String getShortenedName()
+{
+    StringBuilder result = new StringBuilder();
+    for (int i = 0; i < username.length(); i++)
+    {
+        if (username.charAt(i) == '-')
+        {
+            // Skip the hyphen and the character before it
+            i++; // Skip the hyphen
+        }
+        else
+        {
+            result.append(username.charAt(i));
+        }
+    }
+    return result.toString();
+}
+</answer>

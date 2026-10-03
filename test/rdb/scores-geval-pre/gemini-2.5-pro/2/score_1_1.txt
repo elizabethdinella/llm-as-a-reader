@@ -1,0 +1,30 @@
+[
+    {
+        "justification": "The answer explicitly states that `Collections.singletonMap` creates a lightweight, immutable map containing exactly one entry, and later refers to it as 'the immutable singletonMap'. This satisfies the requirement that the answer state a singletonMap is immutable.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that `new HashMap` creates a general-purpose, **mutable** map, satisfying the requirement to mention HashMap's mutability.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that `Collections.singletonMap` creates a map 'containing exactly one entry', which conveys that it holds only a single key-value mapping. This satisfies sub-item 1d.",
+        "deducted": false
+    },
+    {
+        "justification": "The candidate answer never mentions or discusses the method signature of `messageParams` (e.g., its parameter types such as FetchProfile and Map<String, Message>). It only discusses HashMap vs singletonMap generally and speculates about defensive copying. Therefore the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer never states that the `messageParams` method's parameter is declared as a `HashMap` (or references its signature). It only speaks generally about providing a 'mutable copy' of the map, which the rubric explicitly says is not specific enough.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer does not examine the actual usages of the map argument within `messageParams`. Instead of noting that the map is only read (read-only usage), it speculates that the `UidFetchCommand` 'can safely modify' the map internally, which both fails to correctly characterize the usages and implies mutation occurs. Therefore the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer claims that a mutable HashMap copy is passed so that `UidFetchCommand` 'can safely modify [it] internally without causing an UnsupportedOperationException.' This asserts that the code's usage of the map involves mutation, which is incorrect since the map argument is only read within messageParams. This constitutes an incorrect statement that the usages modify the map.",
+        "deducted": true
+    }
+]

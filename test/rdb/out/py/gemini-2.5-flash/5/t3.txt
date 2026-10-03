@@ -1,0 +1,2 @@
+
+Yes, the check `if not build_directory` is needed for robustness. While `build_manager.setup_build` is expected to populate the `BUILD_DIR` environment variable upon success, explicitly checking `build_directory` provides a defensive safeguard against unexpected scenarios where `setup_build` might return `True` but the directory is not properly set or retrieved. This ensures an early and clear `CorpusPruningException` if a critical dependency for subsequent operations is missing, preventing more obscure errors downstream.

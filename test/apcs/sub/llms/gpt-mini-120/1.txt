@@ -1,0 +1,45 @@
+**Part A – Constructor**
+
+The constructor must keep trying `requestedName` followed by successive integers until an available username is found.  
+We start with the original name; if it isn’t available we append “1”, then “2”, etc., testing each candidate with `isAvailable`. When a free name is discovered we store it in the instance variable `username`.
+
+<answer>
+```java
+public Account(String requestedName) {
+    String candidate = requestedName;
+    int suffix = 1;
+    while (!isAvailable(candidate)) {
+        candidate = requestedName + suffix;
+        suffix++;
+    }
+    this.username = candidate;
+}
+```
+</answer>
+
+---
+
+**Part B – getShortenedName**
+
+We need to return a version of `username` where each hyphen and the character immediately before it are omitted.  
+Scanning the string left‑to‑right, we add every non‑hyphen character to a `StringBuilder`. When a hyphen is encountered we delete the last character that was added (the one right before the hyphen) and do **not** append the hyphen itself.
+
+<answer>
+```java
+public String getShortenedName() {
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < username.length(); i++) {
+        char c = username.charAt(i);
+        if (c == '-') {
+            // remove the character that precedes this hyphen
+            if (sb.length() > 0) {
+                sb.deleteCharAt(sb.length() - 1);
+            }
+        } else {
+            sb.append(c);
+        }
+    }
+    return sb.toString();
+}
+```
+</answer>

@@ -1,0 +1,2 @@
+
+You should call `compact_times()` only on cumulative KPIsets. The purpose of this function is to manage memory consumption by compressing the large, ever-growing list of response times. This is a critical problem for a cumulative KPIset that aggregates data over a long duration. For interval-based KPIsets, which represent a small and bounded time window, the list of response times does not grow large enough to be a memory concern, and calling `compact_times()` would add unnecessary CPU overhead for minimal benefit.

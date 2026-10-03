@@ -1,0 +1,2 @@
+
+The main difference is that `Collections.singletonMap()` creates an immutable, pre-optimized single-entry map that's more efficient than creating a new HashMap and copying the data. Using `singletonMap` directly avoids unnecessary object creation overhead, while `new HashMap<>(singletonMap(...))` creates redundant HashMap instantiation and copying. In this context, `singletonMap` is more efficient and appropriate since it achieves the same result with better performance characteristics.

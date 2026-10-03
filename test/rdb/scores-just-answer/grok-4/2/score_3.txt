@@ -1,0 +1,9 @@
+[
+  { "item": "1a", "deducted": false, "feedback": "The answer explicitly states that a singletonMap (from Collections.singletonMap) is immutable and throws an exception if modification is attempted. Condition satisfied." },
+  { "item": "1b", "deducted": false, "feedback": "The answer explicitly states that a HashMap is mutable and can be modified after creation (adding/removing entries). Condition satisfied." },
+  { "item": "1c", "deducted": true, "feedback": "The answer never mentions that Collections.singletonMap holds/returns only a single key-value mapping (fixed size of one). It only discusses mutability, not the size/single-entry constraint." },
+  { "item": "2a", "deducted": true, "feedback": "The answer never states or references the method signature of messageParams (e.g., messageParams(FetchProfile, HashMap<String, Message>) or similar). No signature details are provided at all." },
+  { "item": "2b", "deducted": true, "feedback": "The answer does not state that messageParams specifically takes a HashMap parameter type (which is why the singletonMap must be wrapped). It only vaguely speculates about needing a 'mutable copy', which the rubric explicitly says is not specific enough." },
+  { "item": "2c", "deducted": true, "feedback": "The answer does not examine or discuss how the map argument is actually used inside messageParams, and does not determine that these usages are read-only. It merely speculates ('may be necessary if the builder or command needs to alter the map internally'), failing to clearly determine whether the map is modified." },
+  { "item": "2d", "deducted": false, "feedback": "The answer hedges ('may be necessary if ... needs to alter the map internally') rather than affirmatively asserting that messageParams modifies the map, so it does not make the outright incorrect claim described by this condition (the vagueness is already penalized under 2c)." }
+]

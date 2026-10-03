@@ -1,0 +1,2 @@
+
+No, we should not use UTF-8 instead of ASCII as the default encoding for decoding the `host`. The `Host` header in HTTP requests is expected to contain only ASCII characters (or Punycode for internationalized domain names), per the HTTP specification. Using ASCII ensures strict compliance with the standard and helps catch invalid data early, while UTF-8 could allow non-ASCII data to pass through, potentially leading to errors or security issues.

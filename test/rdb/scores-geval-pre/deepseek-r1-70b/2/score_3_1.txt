@@ -1,0 +1,30 @@
+[
+    {
+        "justification": "The answer explicitly states that `singletonMap` creates a single, immutable entry, thereby mentioning the immutability of singletonMap. No deduction is warranted.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that HashMap 'allows for modifications' and 'ensures mutability', which clearly conveys that a HashMap is mutable. Therefore no deduction for sub-item 1c.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer states that `singletonMap` creates a single, immutable entry, and contrasts it with HashMap allowing multiple entries. This conveys that singletonMap contains only one key-value mapping, satisfying sub-item 1d.",
+        "deducted": false
+    },
+    {
+        "justification": "The candidate answer only briefly contrasts HashMap and singletonMap in general terms. It never mentions the method signature of messageParams (e.g., its parameter types such as FetchProfile and Map/HashMap), nor does it discuss messageParams at all. Therefore the point for sub-item 2b should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer never mentions the messageParams method or its signature, and does not state that messageParams takes a HashMap parameter. It only vaguely says HashMap 'ensures mutability, which is necessary if changes are expected later,' which is not specific enough per the rubric.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer only compares HashMap and singletonMap generally; it never examines how the map argument is used inside messageParams, nor does it determine whether those usages read from or modify the map. It merely speculates that mutability is 'necessary if changes are expected later,' which fails to clearly determine the actual behavior.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer only makes a generic statement that HashMap ensures mutability 'if changes are expected later.' It never asserts that messageParams (or its internal usages) actually modifies the map \u2014 it is a conditional, generic remark rather than an incorrect claim about the method's behavior. Therefore the specific error described in sub-item 2e (incorrectly stating that usages of the map argument within messageParams modify it) is not present. (It would lose the point under 2c for failing to determine this, but that is a separate sub-item.)",
+        "deducted": false
+    }
+]

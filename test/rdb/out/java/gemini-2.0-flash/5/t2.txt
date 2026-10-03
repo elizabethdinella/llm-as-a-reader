@@ -1,0 +1,4 @@
+
+```text
+Yes, a ClassCastException can happen if the Fragment returned by getSupportFragmentManager().findFragmentById(R.id.main_view) is not of type OnKeyListenerForFragments. A NullPointerException can also happen later if the fragment is null.
+```

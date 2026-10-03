@@ -1,0 +1,44 @@
+[
+    {
+        "id": "1a_correct_variable",
+        "name": "roleInfoList\u2011named vs wrong\u2011variable\u2011named",
+        "side_a": "Credit answers that explicitly name the variable being checked as **roleInfoList** (or an equivalent synonym).",
+        "side_b": "Deduct answers that name a different variable (e.g., *roleInfoPage*) or never name the variable."
+    },
+    {
+        "id": "1a_functional_justification",
+        "name": "cache\u2011miss/DB\u2011fetch reasoning vs generic NPE reasoning",
+        "side_a": "Credit answers that justify the null check by explaining that it triggers a database fetch when the cache entry is missing (i.e., cache\u2011aside behavior).",
+        "side_b": "Deduct answers that justify the null check only in terms of preventing a NullPointerException or handling generic errors, without reference to cache\u2011miss or DB fetch logic."
+    },
+    {
+        "id": "1b_necessity_correctness",
+        "name": "correct functional necessity vs incorrect claim of unnecessary null\u2011check",
+        "side_a": "Credit the answer when it correctly states that the null check is needed because omitting it would cause the method to return\u202fnull or skip the required database fetch (i.e., it gives a valid functional reason).",
+        "side_b": "Deduct when the answer claims the null check is unnecessary or that the map/value can never be null, thereby providing an incorrect functional explanation of the code\u2019s behavior."
+    },
+    {
+        "id": "1d_cache_context",
+        "name": "caching\u2011context mention vs no caching mention",
+        "side_a": "Credit answers that explicitly reference a caching mechanism (e.g., \u201ccaching is enabled\u201d, \u201ccache\u2011aside\u201d, \u201ccache miss\u201d) when explaining the null\u2011check.",
+        "side_b": "Deduct answers that do not mention caching at all and discuss the null\u2011check only in generic terms (e.g., only NPE prevention)."
+    },
+    {
+        "id": "2b_variable_name",
+        "name": "roleInfoList name vs other identifier",
+        "side_a": "Uses the exact variable name `roleInfoList` when referring to the null\u2011check (credits the answer).",
+        "side_b": "Uses a different identifier (e.g., `roleInfoPage`) when referring to the null\u2011check (deducts the answer)."
+    },
+    {
+        "id": "2c_null_check_rationale",
+        "name": "cache\u2011miss DB\u2011load rationale vs generic NPE/empty\u2011list rationale",
+        "side_a": "Frames the null\u2011check as needed to detect a missing cache entry and trigger a database load (credits the answer).",
+        "side_b": "Frames the null\u2011check as a generic safeguard against NullPointerException or to guarantee a non\u2011null/empty list, without focusing on the cache\u2011miss\u2011to\u2011DB pattern (deducts the answer)."
+    },
+    {
+        "id": "3c_caching_disabled_mention",
+        "name": "mentions caching disabled vs does not mention caching disabled",
+        "side_a": "Credit answers that do **not** mention caching being disabled as a reason for the null\u2011check. These answers focus on the cache\u2011miss (no entry or null value) and the need to load from the DB.",
+        "side_b": "Deduct answers that explicitly bring up caching being disabled as a justification for the null\u2011check. This claim is extraneous and was judged incorrect for this code."
+    }
+]

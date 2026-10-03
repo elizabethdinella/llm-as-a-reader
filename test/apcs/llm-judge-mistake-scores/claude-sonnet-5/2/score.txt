@@ -1,0 +1,18 @@
+[
+{
+"DECISION": "YES",
+"FEEDBACK": "The response calls isAvailable(requestedName) and isAvailable(requestedName + suffix), both of which pass a String argument (String + int yields a String). The calls are made from within the Account class without a qualifying object other than the implicit this, which is acceptable. Point earned."
+},
+{
+"DECISION": "YES",
+"FEEDBACK": "The while loop condition calls isAvailable with a potential username (requestedName + suffix), and the loop body updates the count (suffix++), which changes the potential username tested on each iteration. The loop continues until an available username is found. Even though the starting value produces 'name0' first, the rubric allows incorrect updating of potential usernames for this point. Point earned."
+},
+{
+"DECISION": "YES",
+"FEEDBACK": "The variable suffix is incremented inside the body of the while loop (suffix++), satisfying the requirement to increment a count in the context of a loop, regardless of its initial value. Point earned."
+},
+{
+"DECISION": "NO",
+"FEEDBACK": "The count is initialized to 0 rather than 1, so the first appended variation checked is requestedName + \"0\" (e.g., 'Luis-Cruz0') instead of 'Luis-Cruz1'. This means the algorithm may assign an incorrect username (appending 0 when the specification requires successive integers beginning with 1). The rubric explicitly states responses will not earn the point if they incorrectly initialize the count or fail to append the correct integer to the username. Although the available case for requestedName itself is handled correctly and username is assigned in all cases, the incorrect initialization prevents this point from being earned."
+}
+]

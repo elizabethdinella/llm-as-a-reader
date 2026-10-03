@@ -1,0 +1,38 @@
+[
+    {
+        "id": "A1_calls_isAvailable_check",
+        "name": "Constructor consults isAvailable before assigning vs. assigns requestedName unconditionally",
+        "side_a": "no_deduct: the constructor actually invokes isAvailable on a candidate name (in an if and/or loop condition) so that the assignment to username is contingent on an availability test \u2014 even if the loop logic is buggy/infinite or the suffix is never updated.",
+        "side_b": "deduct: the constructor never calls isAvailable at all and simply assigns the requested name straight to the instance variable, so no availability logic exists to grade."
+    },
+    {
+        "id": "A2_condition_recomputes_candidate",
+        "name": "The string handed to isAvailable is rebuilt from the current counter each iteration vs it is a snapshot computed once before the loop",
+        "side_a": "No deduct: the concatenation `requestedName + <counter>` is evaluated freshly each iteration \u2014 either it appears directly inside the loop's test (e.g. `while (!isAvailable(requestedName + suffix))`) or the candidate variable is re-assigned/re-declared with the current counter inside the loop before being tested \u2014 so bumping the counter actually changes what is tested.",
+        "side_b": "Deduct: the loop tests a variable whose value was computed once before the loop (or is just `requestedName`), so incrementing the counter can never change the tested candidate; the loop's test is frozen even though a counter exists."
+    },
+    {
+        "id": "A3_assign_guarded_by_successful_check",
+        "name": "In-loop assignment happens only after the candidate passes isAvailable (then break) vs in-loop assignment of a name that just failed isAvailable",
+        "side_a": "no_deduct: if `username`/`this.username` is set inside the loop, the assignment is reached only on the branch where `isAvailable(nameToCheck)` returned true and is immediately followed by `break`/`return`, so the stored name is a verified-available one.",
+        "side_b": "deduct: the assignment inside the loop executes on the failure path (the loop condition `!isAvailable(...)` was true for that very string), so the instance variable is repeatedly set to names already known to be taken."
+    },
+    {
+        "id": "A3_search_loop_present",
+        "name": "Some availability-retry loop exists vs no loop/search at all",
+        "side_a": "no_deduct: the response contains a loop (`while (!isAvailable(...))` or `while (true)`) that repeatedly tests candidate names, so a search for an available username is attempted.",
+        "side_b": "deduct: the constructor contains no loop and no numeric-suffix candidate at all, just a direct assignment of the requested name, so there is nothing to increment or check."
+    },
+    {
+        "id": "A4_candidate_sequence_starts_correctly",
+        "name": "Candidate sequence starts with requestedName then requestedName+1 vs. starts at a wrong first candidate (skips the plain name, or begins at +0)",
+        "side_a": "No deduct if the names tried begin with the plain requestedName and the first numbered alternative is requestedName + 1 (counter initialized to 1 before any name is built).",
+        "side_b": "Deduct if the first candidate(s) are wrong: either the plain requestedName is never tested/assignable because a number is appended from the very start, or the numbering begins at 0 so the first alternative is requestedName + 0."
+    },
+    {
+        "id": "A4_counter_scope_outside_loop",
+        "name": "Counter declared/initialized outside the loop (persists) vs. declared inside the loop body (re-initialized every iteration)",
+        "side_a": "No deduct if the suffix/counter variable is declared and initialized before the loop, so it is at least capable of carrying state across iterations.",
+        "side_b": "Deduct if the suffix/counter is declared (and reset to its start value) inside the loop body, so any increment is discarded and the same candidate is rebuilt forever."
+    }
+]

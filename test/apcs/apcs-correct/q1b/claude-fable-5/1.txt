@@ -1,0 +1,31 @@
+# Part B Solution
+
+The approach: iterate through `username`, and for each character, check whether the **next** character is a hyphen. If so, skip both the current character and the hyphen. Otherwise, append the current character to the result.
+
+Tracing with `"Amy-Marie-Lin"`:
+- "A", "m" are appended; "y" is followed by "-", so skip both → "Am"
+- "M", "a", "r", "i" appended; "e" followed by "-", skip both → "AmMari"
+- "L", "i", "n" appended → "AmMariLin" ✓
+
+If there are no hyphens (e.g., "SammyB3"), every character is simply appended, returning the original username.
+
+<answer>
+public String getShortenedName()
+{
+    String result = "";
+    int i = 0;
+    while (i < username.length())
+    {
+        if (i < username.length() - 1 && username.substring(i + 1, i + 2).equals("-"))
+        {
+            i += 2;  // skip this character and the hyphen after it
+        }
+        else
+        {
+            result += username.substring(i, i + 1);
+            i++;
+        }
+    }
+    return result;
+}
+</answer>

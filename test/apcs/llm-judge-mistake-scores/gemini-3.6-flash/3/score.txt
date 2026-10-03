@@ -1,0 +1,18 @@
+[
+{
+"DECISION": "YES",
+"FEEDBACK": "The response calls isAvailable(requestedName) in the while-loop condition, which is a valid, unqualified call to the static helper method with a String argument. The call is syntactically and semantically correct (no call on an object other than the Account class/this), so A1 is earned."
+},
+{
+"DECISION": "YES",
+"FEEDBACK": "A loop is present whose condition uses the availability check, and inside the loop body a potential username is updated (name = requestedName + count). Thus the response repeatedly generates new candidate usernames while checking availability. Although the argument passed to isAvailable is never the updated candidate (an incorrect update of the potential username being tested), the rubric explicitly allows the point even when isAvailable is called incorrectly or potential usernames are updated incorrectly, as long as an availability check occurs with a potential username (requestedName is a potential username) and a candidate is updated in the loop body. A2 is earned."
+},
+{
+"DECISION": "YES",
+"FEEDBACK": "The variable count is initialized to 1 before the loop and incremented with count++ inside the loop body, so a count is incremented in the context of a loop. A3 is earned."
+},
+{
+"DECISION": "YES",
+"FEEDBACK": "The count is correctly initialized to 1 and incremented, the candidate names are formed by appending successive integers to requestedName (requestedName + count), the case where requestedName itself is available is handled (name remains requestedName and is assigned), the instance variable username is assigned in all paths, and nothing is printed or returned instead of assigning. The only flaw is that the updated candidate is never passed to isAvailable (the loop always re-checks requestedName), but the rubric explicitly states the point can still be earned when a response fails to pass the updated username to isAvailable or uses an incorrect availability check. A4 is earned."
+}
+]

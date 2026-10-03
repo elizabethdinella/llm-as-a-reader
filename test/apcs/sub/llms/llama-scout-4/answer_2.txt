@@ -1,0 +1,5 @@
+<answer>
+public String getShortenedName() { 
+    return username.replaceAll("-[a-zA-Z]", ""); 
+}
+</answer>

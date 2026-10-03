@@ -1,0 +1,21 @@
+<answer>
+public int moreHistoryThanMathAbsences() {
+    int count = 0;
+
+    // Map each math student ID to its number of absences
+    java.util.HashMap<String, Integer> mathAbsences = new java.util.HashMap<>();
+    for (CourseRecord cr : mathList) {
+        mathAbsences.put(cr.getStudentID(), cr.getAbsences());
+    }
+
+    // Compare history records with the corresponding math record (if any)
+    for (CourseRecord cr : historyList) {
+        Integer mathAbs = mathAbsences.get(cr.getStudentID());
+        if (mathAbs != null && cr.getAbsences() > mathAbs) {
+            count++;
+        }
+    }
+
+    return count;
+}
+</answer>

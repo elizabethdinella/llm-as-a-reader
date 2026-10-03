@@ -1,0 +1,2 @@
+
+No, you don't need this specific null check for `roleInfoList` because it's already handled by the condition `!authConfigs.isCachingEnabled() || roleInfoList == null`. However, there is a logical flaw in the code - if `getRolesFromDatabase()` returns null, then `roleInfoList` will still be null and returned. The null check is actually redundant since the method will always proceed to fetch from database when needed, but it's good defensive programming to ensure you don't return null from this method.

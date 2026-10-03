@@ -1,0 +1,8 @@
+
+The key difference lies in mutability and efficiency:
+
+- **HashMap**: Creates a mutable map that can be modified. It's more flexible but slightly less efficient due to the object creation overhead.
+
+- **SingletonMap**: Provides an immutable, single-entry map that's lightweight and optimal when only one entry is needed without any modifications.
+
+In this context, using `Collections.singletonMap()` directly is more efficient as it avoids unnecessary object creation and ensures immutability.

@@ -1,0 +1,30 @@
+[
+    {
+        "justification": "The answer explicitly states that `Collections.singletonMap` returns an **immutable** map that cannot be changed (no puts, removes), satisfying the requirement.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly describes the HashMap copy as a 'mutable copy' and 'a separate, mutable map that ... allows further modifications', satisfying the requirement that a HashMap is mutable.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that `Collections.singletonMap` returns an immutable map that 'contains exactly one entry' and later reiterates it is 'a lightweight, read-only map with a single entry.' This satisfies the requirement that a singletonMap returns only a single key-value mapping.",
+        "deducted": false
+    },
+    {
+        "justification": "The candidate answer only discusses the general differences between Collections.singletonMap and HashMap (immutability, single entry, mutable copy, allocation overhead). It never mentions the method signature of `messageParams` (e.g., its declared parameter types such as FetchProfile and HashMap<String, Message>). Therefore the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer never mentions `messageParams` or its signature. It only vaguely notes that a mutable copy could be 'passed to APIs that expect a mutable HashMap implementation,' which is a generic statement rather than identifying that `messageParams` specifically declares a `HashMap` parameter type. This fails to satisfy the requirement of stating that messageParams takes a HashMap.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer only discusses general differences between Collections.singletonMap and HashMap (immutability, mutability, overhead). It never examines the messageParams method or how the map argument is used inside it, and therefore does not determine whether those usages are read-only or modifying. The point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer only describes general properties of HashMap vs singletonMap (immutability, mutability, single entry) and notes that a mutable copy 'can later be modified... or be passed to APIs that expect a mutable HashMap implementation.' It never inspects or claims that the usages of the map argument inside messageParams modify the map. Since it makes no incorrect assertion that messageParams mutates the map, the 2-point deduction for this sub-item does not apply.",
+        "deducted": false
+    }
+]

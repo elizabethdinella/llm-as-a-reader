@@ -1,0 +1,2 @@
+
+No, using ASCII is appropriate here. The Host header in HTTP is defined to contain ASCII characters, as per RFC 7230. While UTF-8 can encode ASCII, the Host header's value is expected to be a valid domain name (which is ASCII-compliant). Decoding with ASCII ensures compatibility with standard HTTP semantics and avoids potential issues with non-ASCII characters in the Host header. UTF-8 would only be necessary if the Host header explicitly contained non-ASCII characters, which is not standard practice.

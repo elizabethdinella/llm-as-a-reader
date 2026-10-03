@@ -1,0 +1,21 @@
+<answer>
+```java
+public void Move(char direction, int minutesFlying) {
+    double distanceTravelled = (distancePerHour / 60) * minutesFlying;
+    switch (direction) {
+        case 'N':
+            yPosition += distanceTravelled;
+            break;
+        case 'S':
+            yPosition -= distanceTravelled;
+            break;
+        case 'E':
+            xPosition += distanceTravelled;
+            break;
+        case 'W':
+            xPosition -= distanceTravelled;
+            break;
+    }
+}
+```
+</answer>

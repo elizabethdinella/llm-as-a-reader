@@ -1,0 +1,30 @@
+[
+    {
+        "justification": "The answer explicitly states that `Collections.singletonMap(key, value)` returns an immutable map and that attempting to modify it throws `UnsupportedOperationException`. This satisfies the requirement that the answer mention singletonMap's immutability.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that `new HashMap<>(Collections.singletonMap(key, value))` creates a mutable HashMap where you can freely add, remove, or modify entries, and refers to it as a 'modifiable version'. The mutability of HashMap is clearly mentioned.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that `Collections.singletonMap(key, value)` returns an immutable map containing only one mapping, satisfying the requirement that a singletonMap returns only a single key-value mapping.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer never mentions the method signature of `messageParams` (e.g., its declared parameter types such as `FetchProfile` and `HashMap<String, Message>`). It only speaks generically about passing a 'mutable map' to `messageParams`, without citing the actual signature or the declared parameter type. Therefore the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer only states that messageParams receives a 'mutable map' and does not mention that the method signature specifically requires a HashMap type. Per the rubric, stating that it requires a mutable map is not specific enough, so the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer never examines how the map argument is actually used inside messageParams. It only speculates generically about mutability, and even suggests that passing a singletonMap 'would restrict future modifications to the map within messageParams', implying possible modification rather than clearly determining that the usages are read-only. Therefore the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer asserts that the HashMap wrapper exists 'so that messageParams receives a mutable map' and that 'passing singletonMap directly would restrict future modifications to the map within messageParams.' This incorrectly implies/states that messageParams (its internal usages of the map) modifies the map, when in fact the usages are read-only. Since the answer conveys that the map is or would be modified within messageParams, the deduction applies.",
+        "deducted": true
+    }
+]

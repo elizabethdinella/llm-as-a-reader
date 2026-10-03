@@ -1,0 +1,37 @@
+[
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly states that Collections.singletonMap() creates an immutable map containing exactly one key-value pair, that it throws UnsupportedOperationException on modification attempts, and contrasts it with HashMap being mutable and general-purpose with larger memory footprint. Both mutability and size (single entry vs arbitrary size, memory efficiency) differences are discussed, and immutability of singletonMap is clearly mentioned. Rubric condition satisfied.",
+        "item": "1a"
+    },
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly states that `new HashMap(Collections.singletonMap(...))` \"Creates a mutable HashMap\" and that it \"Can be modified after creation (add, remove, update entries)\", while singletonMap is immutable and holds exactly one key-value pair. It also discusses size/memory differences (singletonMap is more memory efficient for single entries; HashMap uses more memory due to default capacity/load factor). Thus the mutability requirement and the size discussion are both covered.",
+        "item": "1b"
+    },
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly states that Collections.singletonMap() 'creates an immutable map containing exactly one key-value pair' and contrasts it with a HashMap that is mutable and can hold/modify multiple entries. Both the mutability distinction and the single key-value mapping limitation of singletonMap are clearly mentioned, satisfying the rubric requirement.",
+        "item": "1c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate mentions `messageParams` only in speculative terms: it says the method \"likely expects a mutable map that it might modify later, or the API design requires a HashMap specifically rather than just any Map implementation.\" It never states or reasons from the actual signature of `messageParams` (i.e., that it accepts a FetchProfile plus a Map<String, Message> parameter type), which is the determining factor for whether a singletonMap could be passed directly. Instead, the answer offers two mutually contradictory guesses (needs a mutable map vs. requires HashMap type) without identifying the declared parameter type. Since the required mention of the method's signature is absent, the point is deducted.",
+        "item": "2a"
+    },
+    {
+        "deducted": true,
+        "feedback": "The rubric requires the answer to state that `messageParams` takes a `HashMap` (a mutability-based explanation is explicitly deemed insufficient). The candidate's final answer only says the HashMap wrapper 'suggests the messageParams method likely needs to modify the map after receiving it' \u2014 i.e., it frames the requirement purely in terms of needing a mutable map, which the rubric says is not specific enough. The only mention of a HashMap-specific signature appears in the reasoning as a hedged alternative ('likely expects a mutable map ... or the API design requires a HashMap specifically'), and it is not committed to nor carried into the final answer. Since the answer does not clearly state that the parameter type is `HashMap`, the point is deducted.",
+        "item": "2b"
+    },
+    {
+        "deducted": true,
+        "feedback": "The answer does not examine the actual usages of the map argument inside messageParams. Instead of determining whether the map is modified, it merely speculates ('likely expects a mutable map that it might modify later', 'suggests the messageParams method likely needs to modify the map'), which is both unsupported by the code context and contrary to the expected finding that the usages are read-only. The answer therefore fails to clearly determine whether the usages modify the map, and reaches the wrong conclusion, so the point is deducted.",
+        "item": "2c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate explicitly asserts that the map argument is modified by its consumer: \"This suggests that the `messageParams` method likely expects a mutable map that it might modify later\" and, in the final answer, \"the HashMap wrapper suggests the messageParams method likely needs to modify the map after receiving it, since otherwise using just the singletonMap would be more efficient.\" Nothing in the provided context supports the claim that messageParams (or downstream usages) mutates the passed map; the answer speculates this as the reason for the HashMap copy. This is exactly the error described in the rubric item, so the points are deducted. The answer does mention messageParams, but the incorrect mutation claim triggers the deduction.",
+        "item": "2d"
+    }
+]

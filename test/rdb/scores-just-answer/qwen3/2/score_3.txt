@@ -1,0 +1,9 @@
+[
+  { "item": "1a", "deducted": false, "feedback": "The answer explicitly states that `singletonMap` creates an immutable map, satisfying this requirement." },
+  { "item": "1b", "deducted": false, "feedback": "The answer states that `HashMap` allows modifications and that the code uses it 'to ensure mutability', which conveys that HashMap is mutable." },
+  { "item": "1c", "deducted": true, "feedback": "The answer never mentions that `Collections.singletonMap` contains/returns only a single key-value mapping (fixed size of one). It only addresses immutability, not the size constraint." },
+  { "item": "2a", "deducted": true, "feedback": "The answer does not mention or reference the method signature of `messageParams` (e.g., that it accepts a FetchProfile and a HashMap<String, Message> parameter). There is no discussion of the declared parameter types at all." },
+  { "item": "2b", "deducted": true, "feedback": "The answer only says the code uses HashMap 'to ensure mutability' — i.e., it frames the requirement as needing a mutable map rather than stating that `messageParams` is declared to take a `HashMap` specifically. Per the rubric, framing it as a mutability requirement is not specific enough." },
+  { "item": "2c", "deducted": true, "feedback": "The answer asserts only that 'the map isn't altered later' but does not discuss how the map argument is actually used inside `messageParams` (e.g., that it is stored and only read from). There is no examination of the usages themselves, so the read-only nature is asserted rather than discussed/justified." },
+  { "item": "2d", "deducted": false, "feedback": "The answer does not incorrectly claim that the map is modified; it correctly notes the map isn't altered, so no deduction applies here." }
+]

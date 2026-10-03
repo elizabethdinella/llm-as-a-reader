@@ -1,0 +1,50 @@
+[
+    {
+        "id": "1a_commits_vs_hedges_on_cumulative",
+        "name": "Asserts a definite claim about cumulative KPISets vs. merely names 'cumulative' as a hypothetical branch without asserting anything about it",
+        "side_a": "Credit when the answer makes an affirmative, committed claim about cumulative KPISets \u2014 i.e., it states as fact what a cumulative KPISet does or why it is special (accumulates over the whole run, grows unbounded, aggregates interval data) and takes a position on the question. The substance of the claim can be brief; what matters is that something is actually predicated of 'cumulative'.",
+        "side_b": "Deduct when 'cumulative' appears only inside an unresolved conditional or a both-sides-have-tradeoffs framing, so that nothing is ever asserted about what a cumulative KPISet is or why it differs \u2014 e.g., 'if it is specific to cumulative data, do X; otherwise do Y', or 'limiting it to cumulative sets could help but might hurt; it depends'. Naming the term while deferring the decision to the reader is not discussion of the meaning."
+    },
+    {
+        "id": "1b_silence_vs_substantive_claim",
+        "name": "Answer makes no substantive claim about what a cumulative KPISet is (non-committal/conditional) vs it asserts a positive characterization",
+        "side_a": "If the answer never actually characterizes cumulative KPISets \u2014 it only names them, hedges ('depends on your needs'), or frames the choice conditionally ('if it is specific to cumulative data...') \u2014 there is no incorrect characterization to penalize, so do not deduct the 3 points. Silence or pure hedging is not an error.",
+        "side_b": "Treat the absence of a correct description of cumulative KPISets as itself a failure: if the answer does not explicitly and correctly explain what a cumulative KPISet is (fixed-period/no-duplicate aggregation), deduct the 3 points even when the answer merely hedges or stays conditional."
+    },
+    {
+        "id": "2a_explanation_tied_to_cumulative_only_scope",
+        "name": "Explanation must be attached to a cumulative-only recommendation vs explanation credited regardless of which sets the answer says to compact",
+        "side_a": "Give the point only when the memory/compaction rationale is offered as the reason to restrict the call to cumulative KPIsets (i.e., the answer says compact the cumulative set and not every interval set). If the answer instead recommends compacting every KPIset, or leaves the scope open, the 'why' is not the required explanation and the point is deducted.",
+        "side_b": "Credit any correct memory/compaction rationale wherever it appears, even if the answer concludes that compact_times() should be run on all KPIsets or declines to restrict it to cumulative ones; the scope recommendation is scored separately and does not affect this point."
+    },
+    {
+        "id": "2a_committed_vs_deferred_reasoning",
+        "name": "Answer asserts a definite reason vs defers the decision back to the reader/conditions",
+        "side_a": "Deduct when the answer gives no asserted rationale and instead punts the decision ('depends on your needs', 'if X then A, if Y then B'), since no explanation of the function's purpose is actually supplied.",
+        "side_b": "Credit a conditional or 'it depends' answer as long as it lists the considerations (consistency, performance, data type) that could motivate compaction."
+    },
+    {
+        "id": "2b_stats_coupling",
+        "name": "Compaction framed as pure memory/storage reduction vs framed as needed for (or affecting) the percentile/stddev computation",
+        "side_a": "No deduction when the answer attributes _compact_times() solely to memory/storage reduction (e.g., turning a long raw list into a smaller, approximate structure) and mentions statistics only as a precision trade-off of the compacted data. Describing the mechanism as 'compacting/combining raw response times' without tying it to the math is clean.",
+        "side_b": "Deduct the 2 points when the answer couples compaction to the statistics step itself \u2014 claiming recalculate()/percentiles/stddev require, assume, or are made correct or performant by prior compaction. This is a wrong model of the function (it is purely a memory optimization) regardless of whether 'cumulative only' is the recommendation."
+    },
+    {
+        "id": "2b_noncommittal_content",
+        "name": "Non-committal answer that makes no factual claim about what compaction does vs one that asserts correctness/consistency consequences",
+        "side_a": "No deduction when an answer declines to choose and states only that the decision depends on the function's role, without asserting any effect of compacting or not compacting. An empty/deferring answer loses credit elsewhere but triggers no incorrect-claim deduction here.",
+        "side_b": "Deduct the 2 points when a deferring answer nonetheless asserts that running compaction 'ensures data consistency/integrity' or that restricting it to cumulative sets causes 'discrepancies' \u2014 compaction has no bearing on data consistency, so the hedged framing of the recommendation does not shield the false factual claim embedded in it."
+    },
+    {
+        "id": "2c_scope_vs_redesign",
+        "name": "Answers only the scoping question vs. asserts extra mechanism/restructuring claims about how compaction feeds recalculate",
+        "side_a": "No deduct if the answer confines itself to WHICH KPIsets should get compact_times() and why (memory/performance/consistency), without asserting additional unverified mechanics about the pipeline.",
+        "side_b": "Deduct if the answer bolts on invented mechanism or redesign claims \u2014 e.g. that recalculate() presupposes already-compacted data and would otherwise be 'incorrect', or that interval sets' raw data should be aggregated into the cumulative set and compacted there."
+    },
+    {
+        "id": "2c_substantive_tradeoff_vs_tautology",
+        "name": "Hedged answer backed by concrete consequences vs. hedge that merely restates the question",
+        "side_a": "No deduct if an answer that declines to pick one option still names the concrete consequences of each choice (consistency/integrity vs. efficiency/discrepancies).",
+        "side_b": "Deduct if the hedge is circular \u2014 it says the choice 'depends on whether compact_times() is needed for all or only cumulative sets' without supplying any criterion or consequence."
+    }
+]

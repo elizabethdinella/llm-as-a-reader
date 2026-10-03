@@ -1,0 +1,14 @@
+[
+    {
+        "id": "1a_wrong_symbol_undefined",
+        "name": "undefinedness is asserted of `cross_entropy` itself vs. attributed to a different symbol (`val_loss`) while `cross_entropy` is assumed to exist",
+        "side_a": "Give credit when the answer's 'not defined / NameError' statement targets `cross_entropy` itself (the called name is missing from scope), even if it also discusses other downstream problems such as the missing `val_loss` assignment.",
+        "side_b": "Deduct 1 point when the answer treats the bare `cross_entropy` call as an existing function resolvable in the current scope and relocates the undefinedness/NameError claim onto a different symbol (e.g., 'val_loss would be undefined'), since no claim that `cross_entropy` is undefined has been made."
+    },
+    {
+        "id": "1b_bare_call_is_error_vs_legit_custom_fn",
+        "name": "Treats the bare `cross_entropy` as undefined/ambiguous (error or unresolved) vs. asserts it is a real user-defined function with its own distinct role",
+        "side_a": "no_deduct \u2014 the answer states or allows that the bare `cross_entropy` is not a defined/resolvable name (NameError, bug, typo) or leaves its identity explicitly ambiguous, without inventing a working alternate function with distinct behavior.",
+        "side_b": "deduct \u2014 the answer asserts that the bare `cross_entropy` is an actual separate user-defined function that works and performs a different job (e.g., validation metrics) than `F.cross_entropy`, fabricating a functional role the code does not support."
+    }
+]

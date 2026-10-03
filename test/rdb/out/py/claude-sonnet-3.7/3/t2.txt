@@ -1,0 +1,2 @@
+
+No, we should not use UTF-8 instead of ASCII. The Host header in HTTP must conform to ASCII-compatible encoding according to HTTP standards (RFC 7230). Even internationalized domain names (IDNs) are transmitted in Punycode, which is ASCII-compatible. Using ASCII decoding ensures compliance with the standard and prevents potential security issues that could arise from accepting non-standard characters in hostnames.

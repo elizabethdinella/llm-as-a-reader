@@ -1,0 +1,2 @@
+
+`F.cross_entropy` refers to the cross entropy loss function from PyTorch's `torch.nn.functional` module, which is a standard implementation provided by the framework. In contrast, `cross_entropy` (without the `F.` prefix) appears to be a custom function defined elsewhere in the codebase. The code has a bug since the result of the `cross_entropy` call is not assigned to any variable, yet `val_loss` is referenced later in a print statement, suggesting a missing assignment.

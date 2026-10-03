@@ -1,0 +1,37 @@
+[
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly states that `Collections.singletonMap()` creates an 'immutable, pre-optimized single-entry map', which covers both the immutability requirement and the size (single-entry) distinction versus a general-purpose, resizable HashMap. Although the answer's conclusion that singletonMap would be 'more appropriate' here is questionable (the HashMap wrapper is likely used precisely because a mutable map is needed downstream), the rubric item only requires that the immutability/size difference be mentioned, which it is. No deduction for this subitem.",
+        "item": "1a"
+    },
+    {
+        "deducted": true,
+        "feedback": "The rubric requires the answer to explicitly state that a HashMap is mutable (and to discuss the mutability/size distinctions). The candidate answer only mentions that `Collections.singletonMap()` creates an 'immutable, pre-optimized single-entry map' and focuses primarily on performance/object-creation overhead. It never states that a HashMap is mutable (i.e., that entries can be added, removed, or modified), which is the crucial functional difference relevant to whether the code can later modify the message params map. It also does not address the fixed single-entry size limitation of singletonMap versus HashMap's arbitrary capacity in terms of functional consequences. Therefore the required condition is not met and the point is deducted.",
+        "item": "1b"
+    },
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly describes `Collections.singletonMap()` as creating an 'immutable, pre-optimized single-entry map', which addresses both the mutability difference (immutable singletonMap vs. mutable HashMap) and the size limitation (a single key-value mapping). This satisfies the rubric requirement, even though the answer's conclusion that singletonMap would be 'more appropriate' here is debatable given that the wrapping HashMap may be intentionally used to obtain a mutable map.",
+        "item": "1c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate answer never discusses the `messageParams` method or its signature. It only compares `HashMap` and `Collections.singletonMap` in general terms (immutability, allocation overhead, performance), without noting that `messageParams` accepts a `FetchProfile` and a `Map<String, Message>` (i.e., what the second parameter's declared type is and whether the callee might mutate it). Since the required mention of the messageParams signature is absent, the point is deducted. Additionally, the answer's claim that `singletonMap` would achieve 'the same result' ignores that the mutable HashMap wrapper may be required if the receiving code modifies the map \u2014 a determination that would require the signature/contract the rubric asks about.",
+        "item": "2a"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate answer never addresses the signature of `messageParams`. It only compares `singletonMap` and `HashMap` in terms of general efficiency/immutability, claiming the `new HashMap<>(...)` wrapper is 'redundant' and that `singletonMap` would be 'more efficient and appropriate'. It fails to state that `messageParams` accepts (requires) a `HashMap` parameter type, which is the actual reason the singleton map must be wrapped. Since the required point about `messageParams` taking a HashMap is not mentioned (and the answer in fact asserts the opposite conclusion), the point is deducted.",
+        "item": "2b"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate answer never examines what `messageParams` actually does with the map argument. It only compares the general properties of `Collections.singletonMap` (immutable, single-entry, efficient) versus wrapping it in a `new HashMap<>()` (extra allocation/copy). It asserts that `singletonMap` is 'more efficient and appropriate' and 'achieves the same result' without ever verifying whether `messageParams` (or downstream code such as the UidFetchCommand builder/command) only reads from the map or mutates it \u2014 which is precisely the determining factor for whether an immutable singletonMap could be substituted safely. Since the usages within messageParams are not discussed and the answer fails to clearly establish that the map is used read-only, the rubric condition is not met.",
+        "item": "2c"
+    },
+    {
+        "deducted": false,
+        "feedback": "The rubric deducts only if the answer incorrectly asserts that the code consuming the map passed to messageParams mutates it. The candidate makes no such claim: it argues only that `Collections.singletonMap()` is an immutable, pre-sized single-entry map and that wrapping it in `new HashMap<>(...)` adds unnecessary allocation/copying overhead, concluding singletonMap would be sufficient here. There is no statement that the map is modified downstream by messageParams or its usages, so the deduction condition is not triggered. The answer does reference the messageParams parameter context (albeit superficially, without explaining what the map is used for beyond efficiency), but it does not commit the specific error described in the rubric.",
+        "item": "2d"
+    }
+]

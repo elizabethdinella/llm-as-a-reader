@@ -1,0 +1,2 @@
+
+You should call `_compact_times()` on every KPIset that accumulates timing data over time, not just cumulative ones. Since the method is called at the start of `recalculate()` and appears to optimize/prepare the timing data for statistical calculations, any KPIset that collects response time samples would benefit from this data compaction. The overhead is likely minimal compared to the performance benefits of working with optimized data structures during percentile and standard deviation calculations.

@@ -1,0 +1,2 @@
+
+No, we should not use UTF-8 instead of ASCII as the default encoding when decoding host in this context. The Host header in HTTP requests is defined to contain ASCII-compatible content (DNS names), and using ASCII decoding maintains compatibility with existing HTTP implementations. While UTF-8 would be more permissive for internationalized domain names, it's not necessary here since the Host header typically contains standard ASCII domain names, and changing to UTF-8 could break existing functionality that expects ASCII-compatible content.

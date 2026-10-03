@@ -1,0 +1,5 @@
+<answer>
+public Account(String requestedName) {
+    this.username = requestedName;   
+}
+</answer>

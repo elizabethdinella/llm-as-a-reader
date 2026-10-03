@@ -1,0 +1,14 @@
+[
+    {
+        "id": "1a_names_the_exception",
+        "name": "Answer must explicitly name the NullPointerException/crash vs generic null-safety advice suffices",
+        "side_a": "Deduct 1 point if the answer only talks about null-safety in generic terms (e.g., 'guard against null', 'add a null check', 'if mPrefix can ever be null') and never names a NullPointerException / NPE / crash-on-null consequence anywhere in prose or code. Credit only when the exception itself is actually named.",
+        "side_b": "Do not deduct when the answer recommends a null check or discusses the possibility that mPrefix is null, even if it never names NullPointerException; proposing the guard implicitly conveys the NPE risk."
+    },
+    {
+        "id": "2b_conditional_premise",
+        "name": "nullability framed as a conditional premise handed to the reader vs asserted as a fact about this code",
+        "side_a": "If the answer only raises non-nullness as a conditional/hypothetical premise for the reader to verify ('if you are certain...', 'unless you can guarantee...', 'if you're confident...'), it has not itself decided that mPrefix cannot be null \u2014 do not deduct, even if it then says the check could be omitted.",
+        "side_b": "If the answer asserts as a fact about this code that mPrefix is non-null (e.g., 'mPrefix is initialized in the constructor, so it is never null') and uses that to dismiss the check, deduct."
+    }
+]

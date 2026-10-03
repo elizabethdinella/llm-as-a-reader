@@ -1,0 +1,2 @@
+
+`F.cross_entropy` is the standard loss function from `torch.nn.functional` which computes the cross-entropy loss and returns a tensor used for backpropagation. In contrast, `cross_entropy` is a non-standard, presumably user-defined function. Its usage in the code is a bug; the function is called without assigning its return value to a variable, and a subsequent line tries to use a `val_loss` variable that was never defined, which would cause the program to crash.

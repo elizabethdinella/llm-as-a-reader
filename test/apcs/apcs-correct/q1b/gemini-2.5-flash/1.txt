@@ -1,0 +1,30 @@
+```java
+public String getShortenedName()
+{
+    StringBuilder shortenedNameBuilder = new StringBuilder();
+
+    for (int i = 0; i < username.length(); i++)
+    {
+        char currentChar = username.charAt(i);
+
+        if (currentChar == '-')
+        {
+            // If the current character is a hyphen,
+            // we need to remove the character immediately before it
+            // (which was the last character added to shortenedNameBuilder)
+            // and then skip adding the hyphen itself.
+            // The preconditions (username does not start with a hyphen,
+            // and username.length() >= 2) ensure that shortenedNameBuilder
+            // will have at least one character when a hyphen is encountered.
+            shortenedNameBuilder.deleteCharAt(shortenedNameBuilder.length() - 1);
+        }
+        else
+        {
+            // If the current character is not a hyphen, append it to the builder.
+            shortenedNameBuilder.append(currentChar);
+        }
+    }
+
+    return shortenedNameBuilder.toString();
+}
+```

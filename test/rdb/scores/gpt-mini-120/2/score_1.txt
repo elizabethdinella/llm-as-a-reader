@@ -1,0 +1,9 @@
+[
+  {"item": "1a", "deducted": false, "feedback": "The answer explicitly states that `Collections.singletonMap(key, value)` returns an immutable map that cannot be changed (no put/remove), satisfying the immutability requirement."},
+  {"item": "1b", "deducted": false, "feedback": "The answer states that wrapping in `new HashMap<>(...)` creates a mutable `HashMap` copy, and later refers to it as a 'mutable object', satisfying this requirement."},
+  {"item": "1c", "deducted": false, "feedback": "The answer notes the singletonMap is 'optimised for a single entry' and that the HashMap copy contains 'the same entry', conveying that singletonMap holds only a single key-value mapping."},
+  {"item": "2a", "deducted": true, "feedback": "The answer never mentions or examines the signature of `messageParams` (e.g. its parameter types such as FetchProfile and the map type). It only speaks generically about 'the called method'."},
+  {"item": "2b", "deducted": true, "feedback": "The answer does not state that `messageParams` declares a `HashMap` parameter (which is the actual reason the singletonMap must be wrapped). It only frames the difference in terms of mutability, which the rubric explicitly says is not specific enough."},
+  {"item": "2c", "deducted": true, "feedback": "The answer does not examine any usages of the map inside `messageParams` and does not determine whether they are read-only. It instead hedges, saying the HashMap 'allows the called method (or later code) to modify the map', leaving the question unresolved."},
+  {"item": "2d", "deducted": false, "feedback": "The answer does not affirmatively claim that the usages inside `messageParams` mutate the map; it only says a HashMap 'allows' modification, which is a statement of capability rather than an incorrect assertion about actual usage. No deduction under this specific condition (the failure to determine is penalized under 2c)."}
+]

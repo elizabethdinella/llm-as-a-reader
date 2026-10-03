@@ -1,0 +1,26 @@
+[
+    {
+        "id": "2a_commits_to_why_copy_made",
+        "name": "Commits to the mutable copy being the needed/justified choice vs. ends by recommending singletonMap as the better option",
+        "side_a": "If the answer lands on a definite reading that the HashMap wrapper exists because the receiving code needs a mutable map (i.e., the copy is the justified/necessary choice), give credit.",
+        "side_b": "If the answer's bottom line is that singletonMap would have been the better/more efficient choice and the wrapper is merely 'potential'/'might be' useful, withhold credit."
+    },
+    {
+        "id": "2a_tied_to_callsite_consumer",
+        "name": "Explains the choice in terms of the receiving code (messageParams/builder) vs. a generic HashMap-vs-singletonMap class comparison",
+        "side_a": "If the answer ties the mutability difference to what the called method does with the map (can it put/remove, can it retain it), give credit.",
+        "side_b": "If the answer only contrasts the two map types in the abstract (general-purpose/resizable, performance, thread safety) without reference to the consuming code, withhold credit."
+    },
+    {
+        "id": "2c_commits_to_code_rationale",
+        "name": "Commits to why THIS code wraps in HashMap (callee will mutate) vs. leaves it conditional / recommends singletonMap instead",
+        "side_a": "No deduct if the answer takes a definite position on the actual call site \u2014 reading the HashMap wrapper as evidence that the receiving code (messageParams / the builder) needs a mutable map, i.e. treating the wrapper as deliberate and justified.",
+        "side_b": "Deduct if the answer only states the generic mutable/immutable contrast and leaves the choice conditional ('if it only reads\u2026 if it needs to modify\u2026'), or concludes that singletonMap would be the better/more efficient choice here, or never connects the distinction to this call site at all."
+    },
+    {
+        "id": "2d_hedged_conditional_vs_asserted_inference",
+        "name": "Mutation framed as a conditional/hypothetical possibility vs asserted as the likely actual behavior of messageParams",
+        "side_a": "No deduction when the answer keeps any mutation talk purely conditional, hypothetical, or capability-level \u2014 e.g. 'if it needs to modify', 'might be necessary if', 'allows for potential future changes', or explaining only the general Java semantics of mutable vs immutable maps \u2014 without committing to a claim that messageParams actually (or probably) mutates the passed map.",
+        "side_b": "Deduct 2 points when the answer converts the HashMap wrapper into an affirmative inference about this code's real behavior, asserting that messageParams likely/presumably does modify the map it receives, even if softened with 'suggests' or 'likely'."
+    }
+]

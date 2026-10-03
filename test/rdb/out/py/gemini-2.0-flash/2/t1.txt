@@ -1,0 +1,2 @@
+
+It depends on what `compact_times()` is doing. If compact_times is aggregating all the data in the KPIset, then it should be called only on cumulative KPIsets. Otherwise, if compact_times is discarding data, then it should only be called on cumulative KPIsets if the final calculations should be done using data across all KPISets.

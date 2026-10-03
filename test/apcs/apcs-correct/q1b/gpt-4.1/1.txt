@@ -1,0 +1,21 @@
+<answer>
+public String getShortenedName()
+{
+    StringBuilder result = new StringBuilder();
+    int i = 0;
+    while (i < username.length()) {
+        if (username.charAt(i) == '-') {
+            // Remove character before hyphen, so skip back one in result
+            if (result.length() > 0) {
+                result.deleteCharAt(result.length() - 1);
+            }
+            // Skip the hyphen itself
+            i++;
+        } else {
+            result.append(username.charAt(i));
+            i++;
+        }
+    }
+    return result.toString();
+}
+</answer>

@@ -1,0 +1,9 @@
+[
+  { "item": "1a", "deducted": false, "feedback": "The answer explicitly states that Collections.singletonMap() returns an immutable map that cannot be modified after creation." },
+  { "item": "1b", "deducted": false, "feedback": "The answer explicitly states that new HashMap<>(singletonMap) creates a mutable HashMap copy." },
+  { "item": "1c", "deducted": false, "feedback": "The answer notes singletonMap is 'a lightweight implementation designed for exactly one key-value pair' and 'a map with exactly one entry', satisfying the single mapping point." },
+  { "item": "2a", "deducted": true, "feedback": "The answer never mentions or examines the actual signature/declaration of messageParams (e.g., its declared parameter types such as FetchProfile and Map/HashMap<String, Message>). It only speculates generically about the method's behavior." },
+  { "item": "2b", "deducted": true, "feedback": "The answer only asserts that messageParams 'requires the mutable HashMap version' based on mutability reasoning; it never states that the parameter type is declared as a HashMap. Per the rubric, referring to a mutable map rather than the specific HashMap type is not specific enough." },
+  { "item": "2c", "deducted": true, "feedback": "The answer does not examine any actual usages of the map inside messageParams. It only offers a conditional speculation ('If messageParams() needs to modify the map...'), failing to clearly determine whether the usages are read-only." },
+  { "item": "2d", "deducted": true, "feedback": "The answer incorrectly concludes that 'the current code suggests that messageParams() likely needs to modify the map internally, which requires the mutable HashMap version' — asserting mutation where the usages are actually read-only." }
+]

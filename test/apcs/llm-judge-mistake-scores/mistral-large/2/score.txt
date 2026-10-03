@@ -1,0 +1,18 @@
+[
+{
+"DECISION": "YES",
+"FEEDBACK": "The student calls isAvailable(requestedName) and isAvailable(newUsername) with String arguments, using the static helper directly within the class (no incorrect receiver object). Both calls are syntactically and semantically valid calls with String parameters, so the point is earned."
+},
+{
+"DECISION": "YES",
+"FEEDBACK": "The response uses a while loop whose condition checks availability of a potential username (newUsername), and inside the loop body it reassigns newUsername = requestedName + counter, which constitutes an update of the potential username within the loop body. Although the update is ineffective because counter never changes (making the loop non-terminating), the rubric explicitly allows the point even when potential usernames are updated incorrectly, so long as availability is checked with a potential username and an update appears in the loop body. Both requirements are met."
+},
+{
+"DECISION": "NO",
+"FEEDBACK": "The variable counter is initialized to 1 but is never incremented anywhere—there is no counter++, counter = counter + 1, or equivalent operation inside (or outside) the loop. Therefore no count is incremented in the context of a loop, and the point cannot be awarded."
+},
+{
+"DECISION": "NO",
+"FEEDBACK": "The overall algorithm is not correct. While the case where requestedName is available is handled properly and username is assigned, the else branch never increments counter, so newUsername remains permanently requestedName + \"1\". If that name is unavailable, the loop iterates forever and no correct appended integer (2, 3, ...) is ever tested or assigned. The rubric explicitly states the point is not earned if the response fails to increment a count or fails to append the correct integer to the username when necessary, both of which apply here."
+}
+]

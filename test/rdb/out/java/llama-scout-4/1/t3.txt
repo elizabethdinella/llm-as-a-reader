@@ -1,0 +1,1 @@
+ The code at the end of `initializeFromLocalSearch` depends on `drawer` being non-null to execute certain blocks of code. If `drawer` is null, the method will return early. 

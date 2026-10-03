@@ -1,0 +1,30 @@
+[
+    {
+        "justification": "The answer explicitly states that `Collections.singletonMap` creates an **immutable** map with a single entry, and reiterates that `singletonMap` does not allow modifications. This satisfies the requirement that the answer mention singletonMap's immutability.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly describes creating a 'mutable HashMap' and states 'HashMap allows future modifications', clearly stating that HashMap is mutable.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that `Collections.singletonMap` creates an immutable map with a single entry, which satisfies the requirement to mention that singletonMap returns only a single key-value mapping.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer never states the actual signature of `messageParams` (e.g., that it accepts a FetchProfile and a HashMap<String, Message>). It only speculates conditionally: \"if the `messageParams` method expects a `HashMap` (mutable)\" and refers vaguely to \"the method's expected parameter type\" without ever specifying the declared parameter types or signature. Therefore the requirement to mention the method signature is not satisfied.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer explicitly raises that `messageParams` expects a `HashMap` (\"if the `messageParams` method expects a `HashMap` (mutable), using `singletonMap` directly would not compile\") and then affirms that the code wraps the singleton map in a `new HashMap<>()` \"to satisfy the method's expected parameter type\" / \"ensures compatibility with the method's parameter type\". Although somewhat hedged with an \"if\", the answer does identify HashMap as the declared parameter type rather than merely saying a mutable map is needed.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer never examines how the map argument is actually used inside `messageParams`. It only makes a passing, generic remark that \"the underlying data is not modified in this case\" and \"the data remains static,\" without identifying any usages (e.g., lookups/reads) within the method or demonstrating that they are read-only. Since the required discussion of the map's usages within `messageParams` is absent, the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer states that the map's data 'is not modified in this case' and remains static, so it does not incorrectly claim that usages within messageParams modify the map. No deduction applies for sub-item 2e.",
+        "deducted": false
+    }
+]

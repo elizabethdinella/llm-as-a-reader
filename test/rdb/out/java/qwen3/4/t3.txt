@@ -1,0 +1,1 @@
+Yes, the null check is necessary to prevent returning a null value, ensuring the method always returns a non-null list, even if the database call returns null.

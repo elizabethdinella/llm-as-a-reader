@@ -1,0 +1,26 @@
+[
+    {
+        "id": "2a_exception_specificity",
+        "name": "names concrete failure on modifying singletonMap vs only generic mutability",
+        "side_a": "Credit if the answer explicitly states the concrete failure mode (e.g., that modifying a singletonMap will throw UnsupportedOperationException / it's fixed-size and put/remove will fail).",
+        "side_b": "Deduct if the answer only contrasts immutable vs mutable without naming the specific exception or concrete failure behavior when modified."
+    },
+    {
+        "id": "2a_thread_safety_claim",
+        "name": "avoids unfounded thread-safety claim vs asserts 'thread safety' benefit",
+        "side_a": "Credit if the answer does not attribute thread-safety benefits to singletonMap in this context.",
+        "side_b": "Deduct if the answer claims singletonMap provides thread safety (an unwarranted/irrelevant claim here)."
+    },
+    {
+        "id": "2c_high_level_vs_invented_wrapping",
+        "name": "Stays high-level about mutability vs invents specific wrapping/copy details",
+        "side_a": "no_deduct if the answer sticks to the general mutability/immutability contrast without introducing unprompted construction details (e.g., just contrasts HashMap vs singletonMap or references the code's stated non-modification).",
+        "side_b": "deduct if the answer speculates or asserts a specific wrapping/copy pattern (e.g., new HashMap<>(singletonMap) or 'wrapping it') that isn't given, and builds reasoning on that."
+    },
+    {
+        "id": "2c_no_thread_safety_claim_vs_claims_thread_safety",
+        "name": "Avoids thread-safety claims vs asserts thread-safety benefit",
+        "side_a": "no_deduct if the answer does not claim a thread-safety advantage for singletonMap/HashMap in this context.",
+        "side_b": "deduct if the answer asserts 'thread safety' as a differentiator/benefit of singletonMap here."
+    }
+]

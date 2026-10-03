@@ -1,0 +1,2 @@
+
+Yes, the `deepcopy` call is necessary. It creates an independent copy of the transaction data so that the `DATA` field can be serialized before being passed to `storeTxnInLedger`. This is crucial because it preserves the original, unserialized `reply.result` object, which is required later by `storeTxnInGraph`. Without the deep copy, the original object would be mutated, leading to incorrect data being passed to the graph storage.

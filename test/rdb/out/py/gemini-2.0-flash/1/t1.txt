@@ -1,0 +1,2 @@
+
+`F.cross_entropy` is a PyTorch function call that calculates the cross-entropy loss, which is then used for backpropagation. The unqualified call to `cross_entropy(logits[val_idx], labels[val_idx])` does nothing; its return value is not stored or used, so the loss calculation is effectively discarded.

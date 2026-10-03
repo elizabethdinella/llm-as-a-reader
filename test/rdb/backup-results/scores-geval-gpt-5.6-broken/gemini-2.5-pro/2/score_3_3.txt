@@ -1,0 +1,7 @@
+{"justification": "The answer explicitly states that `Collections.singletonMap()` creates an immutable map that throws an exception if modification is attempted. No deduction.", "deducted": false}
+{"justification": "The answer explicitly states that `new HashMap<>(...)` creates a 'fully mutable HashMap instance'. No deduction.", "deducted": false}
+{"justification": "The answer states the singletonMap 'contains exactly one entry', which conveys the single key-value mapping. No deduction.", "deducted": false}
+{"justification": "The answer never mentions or examines the method signature of `messageParams` (e.g., its parameter types such as FetchProfile and Map/HashMap). Deduct 1 point.", "deducted": true}
+{"justification": "The answer never states that `messageParams` specifically declares/requires a `HashMap` parameter; it only speaks generically about needing a mutable map. Deduct 1 point.", "deducted": true}
+{"justification": "The answer does not examine how the map argument is actually used inside `messageParams`, and fails to determine that those usages are read-only \u2014 instead it vaguely speculates the internal logic might need to alter the map. Deduct 1 point.", "deducted": true}
+{"justification": "The answer does not definitively assert that the usages modify the map; it only hypothetically mentions 'if the command's internal logic needs to alter the map' as a defensive-programming rationale. While misleading, it does not incorrectly state as fact that the map is modified, so the 2-point deduction is not applied.", "deducted": false}

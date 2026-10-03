@@ -1,0 +1,14 @@
+<answer>
+public void Move(char direction, int minutesFlying) {
+    double distanceTravelled = (DistancePerHour / 60) * minutesFlying;
+    if (direction == 'N') {
+        YPosition = YPosition + distanceTravelled;
+    } else if (direction == 'S') {
+        YPosition = YPosition - distanceTravelled;
+    } else if (direction == 'E') {
+        XPosition = XPosition + distanceTravelled;
+    } else if (direction == 'W') {
+        XPosition = XPosition - distanceTravelled;
+    }
+}
+</answer>

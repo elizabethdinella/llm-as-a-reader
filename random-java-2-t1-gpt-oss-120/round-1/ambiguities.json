@@ -1,0 +1,32 @@
+[
+    {
+        "id": "2a_mutability_preference",
+        "name": "prefers\u2011immutable\u2011singletonMap vs prefers\u2011mutable\u2011HashMap",
+        "side_a": "Credit answers that state a mutable\u202fHashMap is appropriate (or required) for `messageParams`, emphasizing that the method expects a map that can be modified.",
+        "side_b": "Deduct answers that argue an immutable\u202fsingletonMap is preferable, focusing on immutability, efficiency or \u201cno\u2011overhead\u201d benefits."
+    },
+    {
+        "id": "2b_explicit_requirement",
+        "name": "explicit HashMap requirement statement vs no such statement",
+        "side_a": "Answer explicitly states that the method requires a HashMap (e.g., \u201cmessageParams takes a HashMap\u201d or \u201cyou must pass a HashMap\u201d). This satisfies the requirement and should not be deducted.",
+        "side_b": "Answer does not explicitly say that a HashMap is required; it only talks about mutability, efficiency, or other characteristics without naming the required type. This leads to deduction."
+    },
+    {
+        "id": "2c_intent_vs_surface",
+        "name": "explicit intent/overhead rationale vs superficial mutability statement",
+        "side_a": "Credit answers provide a reasoned justification (e.g., mention overhead, intent, data\u2011integrity, or a specific need for a mutable map).",
+        "side_b": "Deducted answers merely state the mutability difference (or generic efficiency) without deeper rationale."
+    },
+    {
+        "id": "2d_mutability-necessity",
+        "name": "mutability\u2011unnecessary vs mutability\u2011required",
+        "side_a": "Answers that describe mutability as unnecessary, a source of overhead or risk, and therefore favour an immutable `singletonMap` (no\u2011deduct).",
+        "side_b": "Answers that state mutability is required (e.g., for later modifications or to satisfy an API), justifying the use of a mutable `HashMap` (deduct)."
+    },
+    {
+        "id": "2d_builder\u2011needs\u2011mutable\u2011map",
+        "name": "explicit builder requirement vs none",
+        "side_a": "Answers that do not mention any external API or builder needing a mutable map (no\u2011deduct).",
+        "side_b": "Answers that explicitly cite a builder or other component that requires a mutable map instance (deduct)."
+    }
+]

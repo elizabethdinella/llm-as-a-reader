@@ -1,0 +1,9 @@
+[
+  { "item": "1a", "deducted": true, "feedback": "The answer never mentions that Collections.singletonMap returns an immutable map. It only discusses memory efficiency and number of entries, never immutability, which is the actual reason the code wraps the singletonMap in a new HashMap<>()." },
+  { "item": "1b", "deducted": true, "feedback": "The answer does not state that a HashMap is mutable (supports put/remove/modification). It only says HashMap is 'suitable for storing multiple key-value pairs', which addresses size, not mutability." },
+  { "item": "1c", "deducted": false, "feedback": "The answer does state that singletonMap holds only one entry ('optimized for storing only one entry', 'used to create a map with a single entry'), satisfying the single key-value mapping point." },
+  { "item": "2a", "deducted": true, "feedback": "The answer makes no reference to the signature of messageParams (its parameter types, e.g. FetchProfile and Map/HashMap of String to Message). It discusses only generic HashMap vs singletonMap tradeoffs." },
+  { "item": "2b", "deducted": true, "feedback": "The answer never states that messageParams requires/accepts a HashMap specifically (nor even that it needs a mutable map). It gives no information about the parameter type at all." },
+  { "item": "2c", "deducted": true, "feedback": "The answer does not discuss how the map argument is used inside messageParams and does not determine whether those usages are read-only or modifying; it only speculates about application requirements." },
+  { "item": "2d", "deducted": false, "feedback": "The answer does not claim that usages of the map inside messageParams modify it; it makes no claim about internal usage, so this incorrect-statement deduction does not apply." }
+]

@@ -1,0 +1,4 @@
+
+The primary difference is **mutability**. `Collections.singletonMap()` creates an immutable, lightweight map that contains exactly one entry and will throw an exception if modification is attempted. In contrast, `new HashMap<>(Collections.singletonMap(...))` uses that immutable map to create a brand new, fully **mutable** `HashMap` instance.
+
+In this context, the code creates a mutable `HashMap` as a defensive programming practice. This ensures the `UidFetchCommand` receives its own modifiable map, preventing potential `UnsupportedOperationException` errors if the command's internal logic needs to alter the map.

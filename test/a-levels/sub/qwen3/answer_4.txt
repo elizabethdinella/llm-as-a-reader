@@ -1,0 +1,19 @@
+<answer>
+public void Move(String direction, int minutes) {
+    double distance = (DistancePerHour / 60.0) * minutes;
+    switch (direction) {
+        case "N":
+            YPosition += distance;
+            break;
+        case "S":
+            YPosition -= distance;
+            break;
+        case "E":
+            XPosition += distance;
+            break;
+        case "W":
+            XPosition -= distance;
+            break;
+    }
+}
+</answer>

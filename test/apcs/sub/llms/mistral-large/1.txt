@@ -1,0 +1,79 @@
+### Part A
+To implement the `Account` constructor, we need to check if the requested username is available using the `isAvailable` method. If it's not available, we append successive integers starting from 1 until an available username is found. Here’s how you can do that:
+
+1. Check if `requestedName` is available.
+2. If not, incrementally append integers to `requestedName` and check each new name for availability.
+3. Once an available username is found, assign it to the instance variable `username`.
+
+Here’s the implementation:
+
+```java
+public Account(String requestedName) {
+    if (isAvailable(requestedName)) {
+        this.username = requestedName;
+    } else {
+        int counter = 1;
+        String newUsername = requestedName + counter;
+        while (!isAvailable(newUsername)) {
+            counter++;
+            newUsername = requestedName + counter;
+        }
+        this.username = newUsername;
+    }
+}
+```
+<answer>
+public Account(String requestedName) {
+    if (isAvailable(requestedName)) {
+        this.username = requestedName;
+    } else {
+        int counter = 1;
+        String newUsername = requestedName + counter;
+        while (!isAvailable(newUsername)) {
+            counter++;
+            newUsername = requestedName + counter;
+        }
+        this.username = newUsername;
+    }
+}
+</answer>
+
+### Part B
+To implement the `getShortenedName` method, we need to iterate through the characters of the username and construct a new string by removing each hyphen ("-") along with the character immediately preceding it. Here’s how you can do that:
+
+1. Initialize an empty `StringBuilder`.
+2. Iterate through the characters of the username.
+3. If the current character is not followed by a hyphen, append it to the `StringBuilder`.
+4. Skip over any character that is immediately followed by a hyphen and also skip the hyphen itself.
+5. Return the constructed string from the `StringBuilder`.
+
+Here’s the implementation:
+
+```java
+public String getShortenedName() {
+    StringBuilder shortened = new StringBuilder();
+    for (int i = 0; i < username.length(); i++) {
+        if (i + 1 < username.length() && username.charAt(i + 1) == '-') {
+            // Skip this character and the next hyphen
+            i++;
+        } else {
+            shortened.append(username.charAt(i));
+        }
+    }
+    return shortened.toString();
+}
+```
+<answer>
+public String getShortenedName() {
+    StringBuilder shortened = new StringBuilder();
+    for (int i = 0; i < username.length(); i++) {
+        if (i + 1 < username.length() && username.charAt(i + 1) == '-') {
+            // Skip this character and the next hyphen
+            i++;
+        } else {
+            shortened.append(username.charAt(i));
+        }
+    }
+    return shortened.toString();
+}
+</answer>

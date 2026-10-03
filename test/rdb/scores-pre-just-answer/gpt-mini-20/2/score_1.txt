@@ -1,0 +1,37 @@
+[
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly states that `Collections.singletonMap(...)` creates an immutable one-entry map, while wrapping it in `new HashMap<>(...)` yields a mutable copy. It also touches on size/overhead differences (singleton map is smaller/fixed at one entry; HashMap costs more memory and allocation). This satisfies the rubric requirement of discussing mutability and size differences and explicitly noting singletonMap's immutability.",
+        "item": "1a"
+    },
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly contrasts the two: it states that `Collections.singletonMap(...)` creates an immutable one-entry map while `new HashMap<>(...)` creates a mutable copy, satisfying the requirement to state that a HashMap is mutable. It also touches on size/memory differences (singleton map is smaller, HashMap costs more memory and allocation time). Both required aspects\u2014mutability and size\u2014are addressed, so no deduction.",
+        "item": "1b"
+    },
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly contrasts mutability ('Collections.singletonMap(...) creates an *immutable* one-entry map, while new HashMap<>(...) creates a *mutable* copy') and addresses size ('The immutable map is smaller', 'the HashMap ... costs a bit of memory and allocation time'). It also states that singletonMap holds only one entry ('one-entry map'), satisfying the requirement that a singletonMap returns only a single key-value mapping. Both required aspects \u2014 mutability and the single-entry/size distinction \u2014 are covered, so no deduction applies.",
+        "item": "1c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate answer only compares immutability/mutability and memory costs of `Collections.singletonMap` vs `new HashMap<>(...)`. It never references the `messageParams` method itself, nor its signature (i.e., that it accepts a FetchProfile and a Map<String, Message>, and how that parameter type/expected mutability affects the choice). Since the rubric requires mentioning the message signature of `messageParams`, and the answer omits any discussion of it, the point is deducted.",
+        "item": "2a"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate answer only contrasts immutability vs. mutability of the two map implementations and their memory/allocation costs. It never discusses the `messageParams` method itself, and specifically never states that `messageParams` accepts/requires a `HashMap` parameter type (which is why the singletonMap must be wrapped). At best it implies a mutable map is needed, which the rubric explicitly says is not specific enough. Therefore the point is deducted.",
+        "item": "2b"
+    },
+    {
+        "deducted": true,
+        "feedback": "The answer only contrasts the general properties of `Collections.singletonMap` (immutable, one entry) with `new HashMap<>(...)` (mutable copy), plus vague remarks about memory/allocation cost. It never examines how the map argument is actually used inside `messageParams` (or downstream in the builder/`UidFetchCommand`), and therefore never determines whether those usages mutate the map or merely read from it. Since the map is only read (e.g., looked up by UID), the mutable HashMap wrapper is unnecessary here \u2014 a conclusion the answer fails to reach or even address. The rubric requirement to discuss the usages within `messageParams` and clearly establish that they are read-only is not met.",
+        "item": "2c"
+    },
+    {
+        "deducted": false,
+        "feedback": "The candidate's answer addresses the map argument passed to messageParams, correctly identifying that Collections.singletonMap returns an immutable single-entry map while wrapping it in new HashMap<>() produces a mutable copy. Crucially, it does not assert that the downstream usage inside messageParams (or the UidFetchCommand) actually mutates the map; it only makes the general observation that a HashMap *can* be changed whereas the singletonMap cannot. Since the specific error targeted by this rubric item \u2014 incorrectly claiming that the consumers of the map modify it \u2014 is not committed, no deduction applies.",
+        "item": "2d"
+    }
+]

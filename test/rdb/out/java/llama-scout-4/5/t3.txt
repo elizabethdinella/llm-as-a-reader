@@ -1,0 +1,2 @@
+
+Yes, exceptions can happen here, specifically NullPointerException and ClassCastException. These can occur when trying to access or manipulate objects that may be null or of an unexpected type.

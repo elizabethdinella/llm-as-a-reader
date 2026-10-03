@@ -1,0 +1,9 @@
+[
+  { "item": "1a", "deducted": false, "feedback": "The answer explicitly states that Collections.singletonMap creates an immutable map and that any attempt to modify it throws an exception." },
+  { "item": "1b", "deducted": false, "feedback": "The answer states that `new HashMap<>(...)` creates a new, mutable HashMap by copying the single entry, clearly noting HashMap mutability." },
+  { "item": "1c", "deducted": false, "feedback": "The answer says singletonMap contains 'exactly one entry', which conveys that it holds only a single key-value mapping." },
+  { "item": "2a", "deducted": true, "feedback": "The answer never mentions or reproduces the signature of messageParams (e.g., its parameter types such as FetchProfile and Map/HashMap). It only refers to the method by name in a hypothetical clause." },
+  { "item": "2b", "deducted": true, "feedback": "The answer does not state that messageParams takes a HashMap parameter type. It only speculates that a modifiable map might be needed ('only necessary if the messageParams method ... needs to alter the map'), which is a mutability argument rather than identifying the declared HashMap parameter type — and it is framed conditionally rather than asserted." },
+  { "item": "2c", "deducted": true, "feedback": "The answer does not examine any actual usages of the map inside messageParams and does not determine whether they are read-only. It merely says the wrapping is 'only necessary if' modification occurs, leaving the question unresolved." },
+  { "item": "2d", "deducted": false, "feedback": "The answer does not assert that the usages modify the map; it phrases it conditionally ('which is only necessary if ... needs to alter the map'), so no false claim of mutation is made." }
+]

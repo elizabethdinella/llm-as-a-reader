@@ -1,0 +1,7 @@
+{"justification": "The answer explicitly states that Collections.singletonMap returns a 'tiny, immutable Map' and that every mutative operation throws UnsupportedOperationException.", "deducted": false}
+{"justification": "The answer states that new HashMap<>(...) copies the map into 'a normal HashMap that is fully mutable' and can accept more entries.", "deducted": false}
+{"justification": "The answer says the singletonMap 'contains exactly one entry', satisfying the single key-value mapping requirement.", "deducted": false}
+{"justification": "The answer never states or examines the actual method signature of messageParams (its parameter types/return type); it only refers to it generically as 'UidFetchCommand.Builder.messageParams'.", "deducted": true}
+{"justification": "The answer does not state that messageParams specifically takes a HashMap parameter; it only speaks generically about passing 'the map' and about mutability requirements.", "deducted": true}
+{"justification": "The answer does not examine how the map argument is actually used inside messageParams; it presents only a hypothetical ('if it only reads... but if it needs to add...') and thus fails to determine that the usages are read-only.", "deducted": true}
+{"justification": "The answer does not assert that the usages modify the map; it only raises the possibility conditionally, so no incorrect claim was made.", "deducted": false}

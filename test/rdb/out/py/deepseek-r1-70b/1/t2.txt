@@ -1,0 +1,2 @@
+
+The difference is that F.cross_entropy is a function from torch.nn.functional, while cross_entropy (without F) is undefined in this context unless explicitly imported. Therefore, using cross_entropy without F would result in an error.

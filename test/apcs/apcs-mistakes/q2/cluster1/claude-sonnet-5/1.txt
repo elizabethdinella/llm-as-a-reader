@@ -1,0 +1,113 @@
+# Exam Attempt 1
+
+My first attempt had a subtle boundary condition issue. I changed the comparison operator from strict less-than to less-than-or-equal, which causes the bottle to reset one mL too early at exactly the 25% threshold.
+
+<answer>
+public class Bottle {
+    private double capacity;
+    private double amount;
+
+    public Bottle(double capacity) {
+        this.capacity = capacity;
+        this.amount = capacity;
+    }
+
+    public double updateAmount(double used) {
+        amount -= used;
+        if (amount <= 0.25 * capacity) {
+            amount = capacity;
+        }
+        return amount;
+    }
+}
+</answer>
+
+# Exam Attempt 2
+
+In this attempt, I mistakenly hardcoded the threshold value as 0.25 instead of calculating it relative to the bottle's capacity. This means the reset logic only works correctly for bottles with a capacity of 1.0, and fails for all other capacities like 1000.0 or 40.0.
+
+<answer>
+public class Bottle {
+    private double capacity;
+    private double amount;
+
+    public Bottle(double capacity) {
+        this.capacity = capacity;
+        this.amount = capacity;
+    }
+
+    public double updateAmount(double used) {
+        amount -= used;
+        if (amount < 0.25) {
+            amount = capacity;
+        }
+        return amount;
+    }
+}
+</answer>
+
+# Exam Attempt 3
+
+Here, I forgot to initialize the amount field in the constructor entirely. This means every new Bottle object starts with amount at its default value of 0.0 instead of being set to capacity, so the bottle is effectively always empty from the start.
+
+<answer>
+public class Bottle {
+    private double capacity;
+    private double amount;
+
+    public Bottle(double capacity) {
+        this.capacity = capacity;
+    }
+
+    public double updateAmount(double used) {
+        amount -= used;
+        if (amount < 0.25 * capacity) {
+            amount = capacity;
+        }
+        return amount;
+    }
+}
+</answer>
+
+# Exam Attempt 4
+
+This attempt has more severe logic errors. I removed the reset condition entirely, and the method now incorrectly returns capacity instead of the actual amount remaining, meaning the returned value will never reflect liquid usage at all.
+
+<answer>
+public class Bottle {
+    private double capacity;
+    private double amount;
+
+    public Bottle(double capacity) {
+        this.capacity = capacity;
+        this.amount = capacity;
+    }
+
+    public double updateAmount(double used) {
+        amount = amount - used;
+        return capacity;
+    }
+}
+</answer>
+
+# Exam Attempt 5
+
+This final attempt contains severe, compile-breaking errors. I accidentally gave the constructor a return type (making it a regular method instead of a constructor, so amount is never properly initialized via construction), wrote a statement that computes a value but never assigns it, and left out the return statement needed to satisfy the method's declared double return type.
+
+<answer>
+public class Bottle {
+    private double capacity;
+    private double amount;
+
+    public void Bottle(double capacity) {
+        this.capacity = capacity;
+        amount = capacity;
+    }
+
+    public double updateAmount(double used) {
+        amount - used;
+        if (amount < 0.25 * capacity)
+            amount = capacity;
+    }
+}
+</answer>

@@ -1,0 +1,37 @@
+[
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly states that Collections.singletonMap returns an immutable map containing a single key-value pair that throws UnsupportedOperationException on modification, while the HashMap copy is mutable and can hold additional entries. This covers both mutability and size differences, satisfying the rubric requirement.",
+        "item": "1a"
+    },
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly states that wrapping the singletonMap in `new HashMap<>(...)` creates a mutable copy allowing additions, removals, or changes, while singletonMap is immutable and throws UnsupportedOperationException on modification. It also touches on the size aspect (singletonMap holds a single key-value pair, HashMap can grow, and singletonMap is more lightweight for a single entry). The required claim that a HashMap is mutable is clearly mentioned, so no deduction.",
+        "item": "1b"
+    },
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly states that `Collections.singletonMap` returns an immutable map containing a single key-value pair, satisfying the requirement to mention that singletonMap holds only one key-value mapping. It also addresses mutability differences: singletonMap throws UnsupportedOperationException on modification, whereas wrapping in `new HashMap<>(...)` produces a mutable copy allowing additions/removals/changes, and notes that mutability may be required if the builder/messageParams modifies the map. Both the size (single entry) and mutability aspects of the rubric are covered.",
+        "item": "1c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate answer does discuss the general mutability distinction between `Collections.singletonMap` and `new HashMap<>(...)`, and it does reference `messageParams` in passing (\"if the `messageParams` method or the `UidFetchCommand.Builder` internally modifies the map\"). However, it never mentions or describes the actual signature of `messageParams` \u2014 i.e., that it accepts a `FetchProfile` and a `Map<String, Message>` (mutable Map type) as parameters. Because the declared parameter type is what actually determines whether a `singletonMap` would be accepted/appropriate, the omission of the method signature means the answer fails the specific rubric condition. It only speculates about internal behavior rather than referring to the declared parameter type. Therefore the point is deducted.",
+        "item": "2a"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate answer discusses messageParams only in terms of mutability \u2014 that a HashMap is mutable while Collections.singletonMap is immutable, and speculates that the builder 'might' internally modify the map. It never states that the messageParams method signature actually takes a HashMap (rather than a general Map), which is the reason singletonMap cannot be passed directly. In fact, the answer wrongly suggests that 'using singletonMap directly would be more efficient' if no modifications are needed, implying it would be a valid alternative. Per the rubric, framing the issue as merely requiring a mutable map is not specific enough, so the point is deducted.",
+        "item": "2b"
+    },
+    {
+        "deducted": true,
+        "feedback": "The answer only speculates conditionally (\"This mutability might be necessary if the `messageParams` method or the `UidFetchCommand.Builder` internally modifies the map\") and never investigates or states how the map argument is actually used inside `messageParams`/the builder. It fails to note that the usages are read-only (i.e., the map is never mutated), and therefore fails to clearly determine whether a mutable HashMap is actually needed. It also does not mention any specific usage sites within `messageParams`. Hence the rubric condition is not met.",
+        "item": "2c"
+    },
+    {
+        "deducted": false,
+        "feedback": "The answer does discuss messageParams explicitly, correctly identifying that the wrapping in `new HashMap<>(...)` produces a mutable copy while `Collections.singletonMap` is immutable. Regarding the deduction condition, the answer does not assert that the code consuming the map inside messageParams/UidFetchCommand.Builder actually modifies it; it only offers a hedged possibility (\"This mutability *might* be necessary if the messageParams method or the Builder internally modifies the map\") and immediately balances it with \"if no modifications are needed, using singletonMap directly would be more efficient.\" Since this is presented as a conditional hypothesis rather than an incorrect factual claim about the actual usage, the error described by the rubric is not committed, so no points are deducted.",
+        "item": "2d"
+    }
+]

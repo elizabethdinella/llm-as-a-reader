@@ -1,0 +1,2 @@
+
+Yes, we need the check for `if not build_directory`. The environment.get_value('BUILD_DIR') call could return None or an empty string if the environment variable is not set or improperly configured. Since build_directory is required to initialize the Runner object later in the code, we need to ensure it contains a valid value before proceeding, otherwise the code would fail downstream with a less informative error.

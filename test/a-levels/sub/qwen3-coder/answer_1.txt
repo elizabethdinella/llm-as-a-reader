@@ -1,0 +1,16 @@
+<answer>
+```java
+public class Bird {
+    private double DistancePerHour;
+    private String Species;
+    private double XPosition;
+    private double YPosition;
+    
+    public Bird(String species, double distancePerHour) {
+        this.Species = species;
+        this.DistancePerHour = distancePerHour;
+        this.XPosition = 500.0;
+        this.YPosition = 500.0;
+    }
+}
+</answer>

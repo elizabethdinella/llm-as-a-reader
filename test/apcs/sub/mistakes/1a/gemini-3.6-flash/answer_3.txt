@@ -1,0 +1,13 @@
+<answer>
+public Account(String requestedName)
+{
+    String name = requestedName;
+    int count = 1;
+    while (!isAvailable(requestedName))
+    {
+        name = requestedName + count;
+        count++;
+    }
+    username = name;
+}
+</answer>

@@ -1,0 +1,20 @@
+[
+    {
+        "id": "1b_justification_presence",
+        "name": "provides-explanation vs provides-no-explanation",
+        "side_a": "Credit when the answer includes any rationale or explanation for why the null\u2011check is required (e.g., mentions a cache\u2011miss, the need to query the database, or the purpose of the check).",
+        "side_b": "Deduct when the answer gives only a bare yes/no statement with no supporting explanation."
+    },
+    {
+        "id": "2b_cache_lookup_null",
+        "name": "explicit cache\u2011lookup null mention vs no mention",
+        "side_a": "Answer explicitly states that the cache lookup (e.g., `roleInfoMap.get(...)`) can return `null`, identifying the cache\u2011miss scenario.",
+        "side_b": "Answer does not mention that the cache lookup can return `null` (or only mentions the variable without the lookup behavior)."
+    },
+    {
+        "id": "3c_null_source",
+        "name": "null\u2011from\u2011missing\u2011key vs null\u2011stored\u2011value",
+        "side_a": "Credit answers that either do not mention null at all **or** explicitly state that a `null` result comes from a missing cache entry (e.g., \u201croleInfoMap.get() returns null because the key is absent\u201d, \u201ccached data is missing\u201d).",
+        "side_b": "Deduct answers that discuss the possibility that the map *stores* a null value for a username key (e.g., \u201cunless you guarantee the map never holds a null value\u201d, \u201cnever store `null`\u201d)."
+    }
+]

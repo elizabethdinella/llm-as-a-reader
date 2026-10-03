@@ -1,0 +1,8 @@
+<answer>
+```java
+    // Inside the Bird class
+    public String GetSpecies() {
+        return this.Species;
+    }
+```
+</answer>

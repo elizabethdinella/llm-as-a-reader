@@ -1,0 +1,38 @@
+[
+    {
+        "id": "1b_scope_targets_setvisibility",
+        "name": "Generic 'the trailing code depends on drawer' grounded in drawer.* calls vs a claim specifically attached to the actionBarSubTitle.setVisibility statement",
+        "side_a": "Do not deduct when the answer's affirmative dependency claim is anchored to the statements that actually call drawer (e.g., `drawer.selectFolder()`, `drawer.selectUnifiedInbox()`), and the answer never attributes that dependency to the `actionBarSubTitle.setVisibility` call \u2014 including when it says nothing at all about setVisibility. A blanket 'the code at the end depends on drawer' that is immediately justified by naming drawer method calls is read as about those calls, not about setVisibility.",
+        "side_b": "Deduct when the answer explicitly carries the dependency onto the `actionBarSubTitle.setVisibility` statement itself \u2014 naming that call (or 'the visibility argument/value') as the thing that uses or reads drawer."
+    },
+    {
+        "id": "1b_offtopic_factual_error",
+        "name": "Errors about unrelated code facts (ordering of the null check, flow structure) vs errors about the drawer\u2192setVisibility dependency",
+        "side_a": "Do not deduct for inaccuracies that concern something other than whether setVisibility uses drawer \u2014 e.g., misdescribing where the null check sits relative to the return, or hypothesizing a runtime NPE. Those are outside this sub-item's scope and are penalized, if at all, elsewhere.",
+        "side_b": "Deduct only for inaccuracy in the specific claim that drawer is used by `actionBarSubTitle.setVisibility`."
+    },
+    {
+        "id": "2a_subtitle_line_scope",
+        "name": "Scopes the drawer dependency to the drawer-selection calls only vs extends it (as control dependency) to the trailing singleFolderMode/subtitle line",
+        "side_a": "If the answer confines the drawer dependency to the `selectFolder`/`selectUnifiedInbox` calls and explicitly says the trailing subtitle/`singleFolderMode` statement is not drawer-related, give credit.",
+        "side_b": "If the answer asserts that the final subtitle-visibility line itself depends on drawer (e.g., a 'control dependency' from the early `return`), deduct \u2014 this is the wrong characterization of the singleFolderMode line even though it is not silent about it."
+    },
+    {
+        "id": "2a_false_control_flow_claim",
+        "name": "Accurate account of the null-check/early-return structure vs fabricated claim about its ordering or a resulting bug",
+        "side_a": "If the answer describes the `if (drawer == null) return;` guard correctly (guard precedes the drawer calls, so calls are safe), do not deduct on this ground.",
+        "side_b": "If the answer invents a structural/control-flow error (e.g., claims the null check comes after the return, or that drawer could be null at the call sites), deduct."
+    },
+    {
+        "id": "3a_guard_clause_mechanism_vs_bare_null_check_mention",
+        "name": "Names the early-return guard mechanism and its consequence for subsequent code vs. only says the call happens 'after a null check'",
+        "side_a": "Give credit (no deduction) when the answer identifies the early-exit guard itself \u2014 i.e. that `if (drawer == null) { return; }` causes the method to exit \u2014 and draws the consequence that the code following it runs only when drawer is non-null. This counts even if the answer attaches that consequence to the post-guard block in general (e.g. the selectFolder/selectUnifiedInbox calls) rather than naming the setVisibility line, and even if it goes on to claim the subtitle lines themselves use only singleFolderMode.",
+        "side_b": "Deduct 2 when the answer only reports that drawer is used 'after checking if it is null' / 'after checking for its existence', without stating the early-return/exit behaviour or that execution of the later code is conditioned on the check's outcome."
+    },
+    {
+        "id": "3a_control_flow_accuracy",
+        "name": "Correct description of guard ordering vs. asserting the guard is misplaced/ineffective",
+        "side_a": "Give credit when the answer's account of the control flow is accurate: the null test precedes and gates the later code.",
+        "side_b": "Deduct 2 when the answer misstates the control flow \u2014 e.g. claims the null check comes after the return, or that the later code could run with a null drawer \u2014 since this denies rather than establishes the control dependency."
+    }
+]

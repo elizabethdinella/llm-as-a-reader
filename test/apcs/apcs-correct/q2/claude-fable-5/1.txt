@@ -1,0 +1,30 @@
+Looking at the specification:
+- Constructor takes capacity, bottle starts full
+- `updateAmount` subtracts the parameter; if the result is strictly less than 25% of capacity, refill to capacity
+- Returns the resulting amount
+
+Note from the shampoo example: when the amount equals exactly 25% (10 mL out of 40), the bottle is **not** refilled — so the comparison must be strictly less than (`<`).
+
+<answer>
+public class Bottle
+{
+    private double capacity;
+    private double amount;
+
+    public Bottle(double cap)
+    {
+        capacity = cap;
+        amount = cap;
+    }
+
+    public double updateAmount(double used)
+    {
+        amount -= used;
+        if (amount < 0.25 * capacity)
+        {
+            amount = capacity;
+        }
+        return amount;
+    }
+}
+</answer>

@@ -1,0 +1,15 @@
+**Rubric Item 1 (Mutability/size differences) — 3/3**
+- States singletonMap is immutable (throws UnsupportedOperationException on put/remove/clear) ✓
+- States `new HashMap<>(...)` creates a mutable copy ✓
+- States it is a single-entry map ✓
+
+**Rubric Item 2 (messageParams) — 1/4**
+- Does not mention the method signature of `messageParams` → −1
+- Does not state that `messageParams` takes a `HashMap`; only says "you must pass a mutable Map" if it mutates, which is not specific enough → −1
+- Does not examine actual usages of the map inside `messageParams`; it remains purely conditional ("If messageParams only reads... If messageParams mutates...") and never determines whether the usages modify the map → −1
+- It does not affirmatively (incorrectly) claim the usages mutate the map, so no additional 2-point deduction.
+
+<scores>
+	<score> 3/3 </score>
+	<score> 1/4 </score>
+</scores>

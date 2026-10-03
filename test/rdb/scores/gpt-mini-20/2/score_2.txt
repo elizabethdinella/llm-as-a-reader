@@ -1,0 +1,9 @@
+[
+  { "item": "1a", "deducted": false, "feedback": "The answer explicitly states that `Collections.singletonMap(...)` creates an immutable map, satisfying this requirement." },
+  { "item": "1b", "deducted": false, "feedback": "The answer states that `new HashMap<>(...)` creates a normal, mutable `HashMap` copy, satisfying this requirement." },
+  { "item": "1c", "deducted": false, "feedback": "The answer states the singletonMap 'contains exactly one entry' / is a one-entry map, which conveys the single key-value mapping restriction." },
+  { "item": "2a", "deducted": true, "feedback": "The answer never mentions or discusses the method signature of `messageParams` (e.g., its declared parameter types such as FetchProfile and Map/HashMap). No signature information is given at all." },
+  { "item": "2b", "deducted": true, "feedback": "The answer never states that `messageParams` requires/declares a `HashMap` parameter. It only speaks generically about mutability being needed 'if' the map might be modified, which is even weaker than the 'requires a mutable map' phrasing that the rubric already deems insufficient." },
+  { "item": "2c", "deducted": true, "feedback": "The answer does not examine actual usages of the map inside `messageParams`; it only speculates conditionally ('If messageParams ... might add or change entries'). It fails to clearly determine whether the usages are read-only, so the deduction applies." },
+  { "item": "2d", "deducted": false, "feedback": "The answer does not affirmatively claim that the usages inside `messageParams` modify the map; it merely poses a hypothetical condition, so this error is not committed." }
+]

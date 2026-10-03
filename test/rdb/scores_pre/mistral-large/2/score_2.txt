@@ -1,0 +1,38 @@
+[
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly addresses immutability, stating that `Collections.singletonMap(key, value)` creates an immutable map with a single key-value pair that cannot be modified after creation, while `HashMap` is mutable and allows adding/removing/modifying entries. It also touches on the size difference by noting singletonMap holds exactly one entry (and is optimized for that single-entry case), whereas HashMap is general-purpose and can grow (resizing, load factors). Both the required statement about singletonMap immutability and the size distinction are present, so no deduction applies for this rubric item (its misreading of which map is actually passed to messageParams is a separate concern).",
+        "item": "1a"
+    },
+    {
+        "deducted": false,
+        "feedback": "The rubric requires the answer to discuss mutability (and size) differences and explicitly to state that a HashMap is mutable. The candidate answer does this directly: under 'Immutability' it states that `Collections.singletonMap(key, value)` creates an immutable single-entry map that cannot be modified, while 'HashMap, on the other hand, is mutable. You can add, remove, and modify entries after its creation.' It also touches on the size aspect by noting singletonMap holds exactly one key-value pair and is optimized for that case, whereas HashMap handles resizing/load factors and arbitrary numbers of entries. Although the answer misinterprets the code context (the code actually wraps the singletonMap in a HashMap to obtain a mutable copy, rather than passing singletonMap directly), that inaccuracy is outside the scope of this particular rubric subitem, which is satisfied.",
+        "confidence": "high",
+        "item": "1b"
+    },
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly addresses both required aspects: it states that `Collections.singletonMap(key, value)` 'creates an immutable map with a single key-value pair' that cannot be modified after creation, and contrasts this with `HashMap` being mutable (entries can be added, removed, modified) and general-purpose with resizing. The single key-value mapping restriction is mentioned multiple times ('only a single entry is needed', 'immutable single-entry map'). Thus the mutability and size/cardinality differences are both covered, satisfying this rubric item. (Note: the answer misreads the code as passing singletonMap directly rather than wrapping it in a mutable HashMap, but that is outside the scope of this particular subitem.)",
+        "item": "1c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The answer does mention `messageParams` several times, but only in passing (\"providing an immutable single-entry map to the `messageParams` method\", \"the map passed to `messageParams`\"). It never states or discusses the actual method signature of `messageParams` \u2014 i.e., that it accepts a `FetchProfile` plus a `Map<String, Message>` (mapping message UID strings to Message objects), and whether that parameter type requires/permits a mutable map. Without any reference to the declared parameter types, the requirement to mention the signature of `messageParams` is unmet. (Notably, the answer also misreads the context, since the code wraps the `singletonMap` in a `new HashMap<>(...)`, which further suggests the signature/mutability requirement was not analyzed.) Therefore the point is deducted.",
+        "item": "2a"
+    },
+    {
+        "deducted": true,
+        "feedback": "The rubric requires the answer to state that messageParams takes a HashMap (specifically typed parameter), not merely that a mutable map is needed. The candidate answer does the opposite: it claims that `Collections.singletonMap` is what is passed to `messageParams` ('providing an immutable single-entry map to the `messageParams` method', and in the final answer, 'the map passed to `messageParams` is immutable'). This misreads the code, which actually wraps the singletonMap in `new HashMap<>(...)` precisely because the method signature accepts a HashMap. Nowhere does the answer state that messageParams takes/requires a HashMap; it instead argues a HashMap is unnecessary. Therefore the required point is not earned.",
+        "item": "2b"
+    },
+    {
+        "deducted": true,
+        "feedback": "The answer only provides generic Java differences between HashMap and Collections.singletonMap (immutability, thread safety, performance). It never examines how the map argument is actually used inside `messageParams` \u2014 it does not identify whether the method (or downstream code, e.g., the UidFetchCommand builder/command) reads from or writes to the map, and therefore never establishes that the usages are read-only. In fact, it misreads the code entirely: the snippet wraps the singletonMap in a `new HashMap<>(...)`, meaning a mutable copy is being passed, yet the answer asserts that `Collections.singletonMap` is what is passed to `messageParams` and that immutability is guaranteed. This is exactly the failure the rubric penalizes: no discussion of the map's usages within `messageParams` and no clear determination of whether those usages modify the map.",
+        "item": "2c"
+    },
+    {
+        "deducted": false,
+        "feedback": "The answer does discuss messageParams, explicitly framing the comparison in terms of what map is passed to the `messageParams` method (\"providing an immutable single-entry map to the `messageParams` method\", \"the map passed to `messageParams` is immutable\"). Regarding the error condition: the answer never claims that the consumers/usages of the map argument inside `messageParams` (or downstream) mutate the map. On the contrary, it argues that immutability is fine here and merely notes generically that a `HashMap` \"would allow for modification but is not necessary here.\" It also mentions preventing \"accidental\" modification elsewhere, which is a hypothetical safety statement rather than an assertion that the actual usages modify the map. Therefore the specific error described in the rubric item is not made, and no deduction applies (the answer's misreading of which construct the code actually passes is outside the scope of this rubric item).",
+        "item": "2d"
+    }
+]

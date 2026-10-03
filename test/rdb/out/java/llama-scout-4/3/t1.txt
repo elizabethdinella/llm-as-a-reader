@@ -1,0 +1,2 @@
+
+No, you don't necessarily need to add a null check for `mPrefix` if you're confident it won't be null, but adding one can make the code more robust. 

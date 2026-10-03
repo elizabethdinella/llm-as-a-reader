@@ -1,0 +1,1 @@
+ The check for 'if not build_directory' is necessary as it provides an early and explicit failure point with a meaningful error message if the required environment variable 'BUILD_DIR' is not set. This can aid in debugging and setup verification, ensuring that the corpus pruning process has all necessary prerequisites met before proceeding. 

@@ -1,0 +1,8 @@
+[
+    {
+        "id": "1a_explicit_npe_naming",
+        "name": "Must explicitly name the NullPointerException vs generic null-safety language (guard/robustness) suffices",
+        "side_a": "Credit only if the answer explicitly names the exception (e.g., 'NullPointerException' / 'NPE') as the consequence of the null access; generic advice to 'guard against null' or make the code 'robust against null assignments' without naming the exception does not count as discussing the possible NPE \u2014 deduct 1 point.",
+        "side_b": "Credit any answer that raises the null-dereference risk in substance, even if it never names NullPointerException \u2014 recommending a null guard or saying the field 'can be null' implies the exception, so no deduction."
+    }
+]

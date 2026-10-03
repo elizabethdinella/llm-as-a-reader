@@ -1,0 +1,17 @@
+<answer>
+public class Bird
+{
+    private double DistancePerHour;
+    private String Species;
+    private double XPosition;
+    private double YPosition;
+
+    public Bird(String NewSpecies, double NewDistancePerHour)
+    {
+        Species = NewSpecies;
+        DistancePerHour = NewDistancePerHour;
+        XPosition = 500.0;
+        YPosition = 500.0;
+    }
+}
+</answer>

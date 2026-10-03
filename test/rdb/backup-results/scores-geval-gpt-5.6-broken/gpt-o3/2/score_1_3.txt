@@ -1,0 +1,7 @@
+{"justification": "The answer explicitly states that Collections.singletonMap returns a 'special, read-only Map implementation' and calls it 'immutable', so immutability is clearly mentioned.", "deducted": false}
+{"justification": "The answer states that wrapping in new HashMap<>(...) creates 'an ordinary, mutable HashMap' where you can freely add, remove or replace entries.", "deducted": false}
+{"justification": "The answer states the singletonMap 'contains exactly one key/value pair' and refers to it as a 'single-entry map'.", "deducted": false}
+{"justification": "The answer never mentions or discusses the method signature of messageParams (e.g., its parameter types such as FetchProfile and Map/HashMap).", "deducted": true}
+{"justification": "The answer does not state that messageParams specifically takes/requires a HashMap; it only speculates generically about whether a mutable map might be needed.", "deducted": true}
+{"justification": "The answer does not examine any usages of the map argument inside messageParams and explicitly leaves it open ('depends on whether messageParams ... needs to modify the map'), failing to determine that the usages are read-only.", "deducted": true}
+{"justification": "The answer does not incorrectly assert that the usages modify the map; it merely says the choice depends on whether modification is needed, so no false claim is made.", "deducted": false}

@@ -1,0 +1,22 @@
+<answer>
+public void move(char direction, int minutes) {
+    double distanceTravelled = (distancePerHour / 60.0) * minutes;
+
+    switch (Character.toUpperCase(direction)) {
+        case 'N':
+            yPosition += distanceTravelled;
+            break;
+        case 'S':
+            yPosition -= distanceTravelled;
+            break;
+        case 'E':
+            xPosition += distanceTravelled;
+            break;
+        case 'W':
+            xPosition -= distanceTravelled;
+            break;
+        default:
+            // no update for invalid direction
+    }
+}
+</answer>

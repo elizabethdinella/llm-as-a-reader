@@ -1,0 +1,44 @@
+[
+    {
+        "id": "1_foreach_vs_indexed_traversal",
+        "name": "enhanced for-each traversal of the list vs. index-based loop with get()/[] access",
+        "side_a": "No deduct when the response traverses the ArrayList with an enhanced for loop (`for (CourseRecord cr : historyList)`), since the construct itself guarantees every element of the list is reached and no index/bounds expression can go wrong.",
+        "side_b": "Deduct when the response uses an index-based loop to reach elements and any part of that indexing apparatus is wrong (bound taken from the wrong list, array `[]` subscripting, `.length` on an ArrayList), because then the response has not demonstrated correct access to every element."
+    },
+    {
+        "id": "1_bound_from_wrong_list",
+        "name": "loop bound matches the list being indexed vs. bound taken from a different list",
+        "side_a": "No deduct when the traversal's extent is governed by the very list whose elements are being accessed, so all of its elements are covered.",
+        "side_b": "Deduct when the loop bound comes from a different ArrayList than the one being indexed (e.g., `i < mathList.size()` controlling `historyList.get(i)`), since this neither visits all of historyList's elements nor guarantees a legal index."
+    },
+    {
+        "id": "2_field_access_vs_accessor_call",
+        "name": "Direct public-field access on CourseRecord vs. actual accessor method invocation",
+        "side_a": "No_deduct when the response retrieves the ID and absence data by actually invoking the accessor methods on a CourseRecord element (e.g., hist.getStudentID(), math.getAbsences()), regardless of loop style, comparison operator (== vs .equals), or logical errors elsewhere.",
+        "side_b": "Deduct when the response reads the data via direct instance-field/attribute access instead of a method call (e.g., historyList[i].studentID, mathList[j].absences); bare field references are not credited as calls to getStudentID/getAbsences even though the intent and the receiver type are clear."
+    },
+    {
+        "id": "3_absences_actually_read",
+        "name": "the comparison must read absence values vs. identifying matching students suffices",
+        "side_a": "deduct unless the method actually retrieves and compares the `absences` fields of CourseRecord objects; code that only matches student IDs and increments a counter (never calling getAbsences) earns no credit for this item, since the required comparison is absent entirely.",
+        "side_b": "no_deduct if the method correctly identifies the students common to both lists and produces a count from them, treating the ID-matching/count structure as satisfying the comparison sub-item even though absence values are never accessed."
+    },
+    {
+        "id": "3_strictness_of_operator",
+        "name": "operator must be strictly greater-than vs. any ordering comparison of absences counts",
+        "side_a": "deduct if the only absences comparison in the response uses a non-strict operator (>=, <=), because counting students with equal absences does not establish that one has MORE absences than the other.",
+        "side_b": "no_deduct if the response compares the two absence values with any ordering operator (including >=), on the grounds that it still shows the intended 'history vs. math absences' comparison and only the boundary case is wrong."
+    },
+    {
+        "id": "5_string_id_equality_method",
+        "name": "Student-ID matching: .equals()/collection-based string comparison vs == reference comparison",
+        "side_a": "If the answer matches records by comparing student IDs with .equals() (or an equivalent String-aware collection lookup), the matching step counts as correct \u2014 no deduction.",
+        "side_b": "If the answer matches records by comparing the String student IDs with ==, the match is not reliably performed \u2014 deduct."
+    },
+    {
+        "id": "5_absence_comparison_present",
+        "name": "Absence counts actually compared vs only ID membership counted",
+        "side_a": "If the answer retrieves and compares the two absence values for the matched student before incrementing the counter, credit.",
+        "side_b": "If the answer only checks that the student appears in both lists and increments without ever reading/comparing absences, deduct."
+    }
+]

@@ -1,0 +1,66 @@
+## Part A: Account Constructor
+
+To implement the `Account` constructor, we need to check if the `requestedName` is available using the `isAvailable` method. If it is available, we assign it to the instance variable `username`. If not, we append successive integers to `requestedName` until an available username is found.
+
+```java
+public Account(String requestedName) {
+    int counter = 1;
+    String baseUsername = requestedName;
+
+    if (isAvailable(requestedName)) {
+        this.username = requestedName;
+    } else {
+        while (!isAvailable(baseUsername + counter)) {
+            counter++;
+        }
+        this.username = baseUsername + counter;
+    }
+}
+```
+
+<answer>
+public Account(String requestedName) { 
+    int counter = 1; 
+    String baseUsername = requestedName; 
+
+    if (isAvailable(requestedName)) { 
+        this.username = requestedName; 
+    } else { 
+        while (!isAvailable(baseUsername + counter)) { 
+            counter++; 
+        } 
+        this.username = baseUsername + counter; 
+    } 
+}
+</answer>
+
+## Part B: getShortenedName Method
+
+To implement the `getShortenedName` method, we need to iterate through the `username` string and remove each hyphen and the character before it.
+
+```java
+public String getShortenedName() {
+    StringBuilder shortenedName = new StringBuilder();
+    for (int i = 0; i < username.length(); i++) {
+        if (username.charAt(i) != '-' || i == 0) {
+            shortenedName.append(username.charAt(i));
+        } else {
+            continue;
+        }
+    }
+    return shortenedName.toString().replace("--", "");
+}
+```
+However, this can be optimized. Instead of using `StringBuilder` and manually handling the index and character appends or skips based on hyphen presence:
+
+```java
+public String getShortenedName() {
+    return username.replaceAll("-[a-zA-Z]", "");
+}
+```
+
+<answer>
+public String getShortenedName() { 
+    return username.replaceAll("-[a-zA-Z]", ""); 
+}
+</answer>

@@ -1,0 +1,2 @@
+
+You should call `_compact_times()` on every KPIset before recalculating statistics, not just cumulative ones. The method is designed as a prerequisite for accurate calculations, ensuring the time-related data is properly prepared before computing averages, percentiles, and other statistics. Since it's already positioned at the beginning of the `recalculate()` method, the code is structured to perform this compaction for any KPIset being recalculated.

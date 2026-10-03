@@ -1,0 +1,121 @@
+Let's tackle each sub-part step by step with explanations, followed by the necessary code in `<answer>` tags.
+
+---
+
+### Part (a): Account Constructor
+
+**Explanation:**
+
+- We are to create a username:
+  - If `requestedName` is available, assign it directly.
+  - If not, try `requestedName1`, `requestedName2`, ..., incrementally, until an available username is found.
+- We must use the provided static `isAvailable` helper appropriately for checking each trial username.
+
+**Approach:**
+1. Check if `requestedName` is available with `isAvailable`.
+2. If yes: assign it to the instance variable `username`.
+3. If not: loop beginning with `1`, and for each integer `i`, check if `requestedName + i` is available; assign the first available one.
+
+**Code:**
+```java
+public Account(String requestedName)
+{
+    if (isAvailable(requestedName)) {
+        username = requestedName;
+    } else {
+        int i = 1;
+        while (!isAvailable(requestedName + i)) {
+            i++;
+        }
+        username = requestedName + i;
+    }
+}
+```
+
+**Required code only:**
+<answer>
+public Account(String requestedName)
+{
+    if (isAvailable(requestedName)) {
+        username = requestedName;
+    } else {
+        int i = 1;
+        while (!isAvailable(requestedName + i)) {
+            i++;
+        }
+        username = requestedName + i;
+    }
+}
+</answer>
+
+---
+
+### Part (b): getShortenedName
+
+**Explanation:**
+
+- For each hyphen in `username`, remove both the hyphen and the character *immediately before* it.
+- Preconditions:
+  - `username` does **not** start or end with a hyphen.
+  - `username` has no consecutive hyphens.
+  - `username.length() >= 2`
+- If there are no hyphens, return `username`.
+
+**Approach:**
+- Loop through the username, examining characters.
+- If we find '-', we skip that hyphen and also skip the character before it.
+- If not, we include the character in the result.
+
+**Implementation plan:**
+- Use a for-loop. If found a hyphen at position `i`, skip characters at (i-1) and `i`.
+- As we can't build result from right to left easily (because removing left neighbor), an easier approach is:
+    - Build a new string (say, use a StringBuilder).
+    - Walk through `username` left-to-right.
+    - Whenever we hit a '-', remove the last character added to StringBuilder (the char before '-') and skip adding the hyphen itself.
+
+**Example:**  
+"Amy-Marie-Lin"  
+Walk through:
+- Add 'A', 'm', 'y' → [A, m, y]
+- See '-' at position 3:
+  - Remove 'y' → [A, m], skip '-'
+- Add 'M', 'a', 'r', 'i' → [A, m, M, a, r, i]
+- See '-' at next position:
+  - Remove 'i' → [A, m, M, a, r], skip '-'
+- Add 'L', 'i', 'n' → [A, m, M, a, r, L, i, n]
+- Join result: "AmMariLin"
+
+**Code:**
+```java
+public String getShortenedName() {
+    StringBuilder sb = new StringBuilder();
+    int len = username.length();
+    for (int i = 0; i < len; i++) {
+        char c = username.charAt(i);
+        if (c == '-') {
+            // Remove previous character from sb
+            if (sb.length() > 0) sb.deleteCharAt(sb.length() - 1);
+            // Do not add '-'
+        } else {
+            sb.append(c);
+        }
+    }
+    return sb.toString();
+}
+```
+**Required code only:**
+<answer>
+public String getShortenedName() {
+    StringBuilder sb = new StringBuilder();
+    int len = username.length();
+    for (int i = 0; i < len; i++) {
+        char c = username.charAt(i);
+        if (c == '-') {
+            if (sb.length() > 0) sb.deleteCharAt(sb.length() - 1);
+        } else {
+            sb.append(c);
+        }
+    }
+    return sb.toString();
+}
+</answer>

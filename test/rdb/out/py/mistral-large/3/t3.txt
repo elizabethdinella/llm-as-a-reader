@@ -1,0 +1,1 @@
+Yes, we should use UTF-8 instead of ASCII as the default encoding when decoding host. This change will make the code more robust and capable of handling a broader set of domain names, including those with non-ASCII characters.

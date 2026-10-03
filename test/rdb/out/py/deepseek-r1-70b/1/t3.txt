@@ -1,0 +1,2 @@
+
+The difference is that `F.cross_entropy` directly computes cross-entropy loss, while `cross_entropy` likely refers to an uninitialized module or function. In this context, using `cross_entropy()` without proper initialization is incorrect and should be `F.cross_entropy()`.

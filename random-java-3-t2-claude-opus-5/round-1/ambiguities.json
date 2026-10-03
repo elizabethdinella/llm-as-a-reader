@@ -1,0 +1,8 @@
+[
+    {
+        "id": "1a_names_the_exception",
+        "name": "Must explicitly name the NullPointerException/crash vs recommending a null guard is enough",
+        "side_a": "Do not deduct when the answer explicitly names the NullPointerException (or an equivalent explicit statement that the code will crash/throw) anywhere \u2014 in the analysis, the rationale, or the fix.",
+        "side_b": "Deduct 1 point when the answer only advises guarding against null / adding a null check for robustness and never names a NullPointerException or any thrown-exception/crash consequence, since the possible NPE itself is never discussed."
+    }
+]

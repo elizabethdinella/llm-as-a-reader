@@ -1,0 +1,4 @@
+
+Yes. If the fragment returned by findFragmentById(R.id.main_view) does not implement OnKeyListenerForFragments, the explicit cast will throw a ClassCastException. Casting null is safe (it results in null), so the null case won’t throw; the risk is only when a different fragment type is present. To avoid this, first get the Fragment and check instanceof before casting:
+- Fragment f = ...findFragmentById(...);
+- if (f instanceof OnKeyListenerForFragments) { ((OnKeyListenerForFragments) f).onKeyUp(keyCode); }

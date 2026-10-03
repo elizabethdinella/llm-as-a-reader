@@ -1,0 +1,2 @@
+
+You should call `compact_times()` on every KPIset, not just cumulative ones. The method is called at the beginning of the `recalculate()` function and appears to be a standard preprocessing step that prepares time-series data for calculation of averages, percentiles, and other metrics. Since it's part of the core recalculation logic and runs regardless of KPIset type, it should be applied consistently across all KPIsets to ensure proper data consolidation and optimization before metric calculations.

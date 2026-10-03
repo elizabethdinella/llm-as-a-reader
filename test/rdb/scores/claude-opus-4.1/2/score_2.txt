@@ -1,0 +1,9 @@
+[
+  { "item": "1a", "deducted": false, "feedback": "The answer explicitly states that Collections.singletonMap returns an immutable map and throws UnsupportedOperationException on modification attempts." },
+  { "item": "1b", "deducted": false, "feedback": "The answer explicitly states that the HashMap created from the singletonMap is mutable and allows add/remove/update operations." },
+  { "item": "1c", "deducted": false, "feedback": "The answer states singletonMap returns a map with 'exactly one key-value pair' / 'one mapping', satisfying this requirement." },
+  { "item": "2a", "deducted": true, "feedback": "The answer never mentions the actual signature of messageParams (e.g., its parameter types such as FetchProfile and Map<String, Message> / HashMap<String, Message>). It only speculates about what the method 'likely expects' without citing the declaration." },
+  { "item": "2b", "deducted": true, "feedback": "The answer only speculates: 'the messageParams method either needs to modify the map later or specifically requires a mutable/HashMap type'. It does not assert that messageParams declares a HashMap parameter; the hedged mention of 'mutable map' as the primary explanation is not specific enough and no determination is made." },
+  { "item": "2c", "deducted": true, "feedback": "The answer does not examine or discuss how the map argument is used inside messageParams, and it fails to determine whether the usages modify the map — instead it says the method 'might modify the map later', leaving it undetermined and incorrect." },
+  { "item": "2d", "deducted": true, "feedback": "The answer asserts (albeit hedged with 'likely') that messageParams 'needs to modify the map later' / 'might be modified later', which incorrectly implies the usages mutate the map, when the usages are read-only." }
+]

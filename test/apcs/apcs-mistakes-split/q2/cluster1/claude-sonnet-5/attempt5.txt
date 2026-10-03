@@ -1,0 +1,15 @@
+public class Bottle {
+    private double capacity;
+    private double amount;
+
+    public void Bottle(double capacity) {
+        this.capacity = capacity;
+        amount = capacity;
+    }
+
+    public double updateAmount(double used) {
+        amount - used;
+        if (amount < 0.25 * capacity)
+            amount = capacity;
+    }
+}

@@ -1,0 +1,1 @@
+ You should consider calling compact_times() on every KPIset if the method is essential for ensuring data integrity and calculation accuracy across all types of KPIsets. If specific requirements dictate that only cumulative KPIsets need this operation, then call it only on those. The decision depends on the universal necessity of _compact_times() for accurate KPI calculations. 

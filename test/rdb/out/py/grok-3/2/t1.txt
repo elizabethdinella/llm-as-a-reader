@@ -1,0 +1,2 @@
+
+You should call `compact_times()` on every `KPIset` as it is currently implemented in the `recalculate()` method, ensuring data is properly prepared for subsequent calculations like averages and percentiles. However, if `compact_times()` is primarily for memory optimization and not critical for data correctness, you could consider restricting it to cumulative `KPIsets` after profiling for performance impacts.

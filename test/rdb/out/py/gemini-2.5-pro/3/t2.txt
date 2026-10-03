@@ -1,0 +1,2 @@
+
+No, we should not use UTF-8. According to the relevant RFCs, the HTTP `Host` header value must be ASCII-compatible. Internationalized Domain Names (IDNs) containing non-ASCII characters are converted to an ASCII-compatible format called Punycode (e.g., `xn--...`) before being placed in the header. Therefore, decoding with `ascii` is the correct approach as it enforces the standard. Using `utf-8` could mask a malformed header and lead to downstream errors.

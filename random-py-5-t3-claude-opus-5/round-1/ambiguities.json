@@ -1,0 +1,38 @@
+[
+    {
+        "id": "1a_names_env_source",
+        "name": "Ties build_directory to the BUILD_DIR environment variable / environment lookup vs. treats it as a generic unset variable",
+        "side_a": "Do not deduct if the answer explicitly identifies the source of build_directory as the BUILD_DIR environment variable or the environment.get_value('BUILD_DIR') call (e.g., it could be unset/empty/None at the environment level), even briefly.",
+        "side_b": "Deduct if the answer only speaks of build_directory being 'not set' / 'misconfigured' in the abstract and never names BUILD_DIR, the environment variable, or the environment lookup as where the value comes from."
+    },
+    {
+        "id": "1b_committed_vs_hedged_verdict",
+        "name": "Commits to a definite 'the check is needed' verdict with a concrete failure mode vs. hedged answer that concedes the check may be redundant",
+        "side_a": "No deduct: the answer opens with an unqualified affirmative verdict ('Yes, we need the check...') and backs it with a concrete scenario in which build_directory would be falsy (BUILD_DIR unset/empty/None, misconfigured environment), without undercutting its own claim.",
+        "side_b": "Deduct: the answer gives no explicit yes/no verdict and/or hedges by conceding the check could be redundant given build_setup_result, justifying it only in generic terms (defensive programming, future changes), so it never commits to the required conclusion."
+    },
+    {
+        "id": "2a_named_downstream_consumer",
+        "name": "Identifies the specific downstream consumer that needs build_directory (Runner construction) vs. only generic 'later operations will fail'",
+        "side_a": "no_deduct \u2014 the answer points to the concrete later use of build_directory in this function (e.g., it is passed to / required to initialize the Runner object), showing it traced where the value is actually consumed.",
+        "side_b": "deduct \u2014 the answer only gestures at unspecified downstream use ('subsequent operations', 'when the build_directory is used', 'before proceeding with corpus pruning') without naming what consumes the value."
+    },
+    {
+        "id": "2a_real_failure_vs_futureproofing",
+        "name": "Asserts an actual reachable failure mode vs. justifies the check as hypothetical defensive/future-proofing padding",
+        "side_a": "no_deduct \u2014 the answer claims the bad state can genuinely occur now (BUILD_DIR unset/empty/None despite setup succeeding) and treats the check as real validation.",
+        "side_b": "deduct \u2014 the answer justifies the check as defensive programming for 'edge cases', 'future changes', or an 'additional safeguard', i.e., value that is speculative rather than a concrete present failure path."
+    },
+    {
+        "id": "2h_emptiness_source_attribution",
+        "name": "Source of the possible emptiness: external environment lookup (BUILD_DIR env var / misconfiguration) vs. the code's own build-setup path producing an empty build dir",
+        "side_a": "No deduct when the answer attributes the possible empty/unset value solely to an external source \u2014 the `environment.get_value('BUILD_DIR')` lookup, an unset/misconfigured environment variable, or general environment misconfiguration. Reading an unset env var genuinely can yield None/'' , so this is a true statement about the lookup and is not a claim that the code assigns an empty build dir.",
+        "side_b": "Deduct 2 when the answer attributes the possible emptiness to the program's own build-setup machinery \u2014 i.e. claims the build setup / `_setup_application_path` can itself return or assign an empty build dir on a success path \u2014 since that is a false claim about the code rather than about an external env lookup."
+    },
+    {
+        "id": "3b_conclusion_redundant_vs_necessary",
+        "name": "Concludes the two conditions are equivalent / check is redundant vs asserts BUILD_DIR could still be unset or empty so the check is needed",
+        "side_a": "Do not deduct if the answer concludes that, at the point of the check, `build_directory` cannot be falsy (it is always a set, non-empty path once the build has been set up), so `if not build_directory` adds nothing and the two conditions are equivalent \u2014 i.e., the answer denies the independent-failure scenario rather than inventing it.",
+        "side_b": "Deduct if the answer concludes the check is still needed by positing that `BUILD_DIR`/`build_directory` could be None, empty, or unset even after a successful build setup (environment issues, partial setup, misconfiguration), or justifies it purely as defensive programming / protection against future changes \u2014 this treats the two conditions as non-equivalent and contradicts the fact that `build_directory` is always truthy there."
+    }
+]

@@ -1,0 +1,2 @@
+
+No, we should keep ASCII as the encoding for the Host header. HTTP specifications require the Host header to contain only ASCII characters (with IDNs being Punycode-encoded). Using UTF-8 would be more permissive but could mask protocol violations and potentially create invalid URLs. If non-ASCII bytes are present in the Host header, it indicates a protocol error that should be caught rather than silently handled.

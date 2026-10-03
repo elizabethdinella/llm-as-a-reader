@@ -1,0 +1,1 @@
+ Yes, an exception can happen here if the fragment does not implement the OnKeyListenerForFragments interface or if its onKeyUp method throws an exception. A ClassCastException would be thrown in the former case. 

@@ -1,0 +1,2 @@
+
+Yes, the deepcopy is necessary. Without it, modifying result[DATA] would also modify reply.result[DATA] since they would reference the same object. Since the original reply.result is used later in self.storeTxnInGraph(reply.result), preserving its original state is important for the proper functioning of the code. The deepcopy creates an independent copy that can be safely modified without side effects.

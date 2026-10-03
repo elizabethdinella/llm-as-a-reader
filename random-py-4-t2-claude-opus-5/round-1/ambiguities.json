@@ -1,0 +1,38 @@
+[
+    {
+        "id": "1a_aliasing_mechanism_vs_hedged_stylistic_advice",
+        "name": "Asserts the shared-reference mechanism (result IS reply.result, so mutation propagates) vs. hedged 'maybe copy for consistency' advice that never names the aliasing",
+        "side_a": "No deduct: the answer affirmatively states the mechanism \u2014 that `result` and `reply.result` are the same object, so mutating/serializing `result[DATA]` would also change `reply.result[DATA]` unless deepcopied. Any phrasing of that identity/propagation fact, even conditioned on 'if the original is needed later', earns credit.",
+        "side_b": "Deduct: the answer only gives hedged or stylistic advice about copying (e.g. 'to be consistent', 'you might need to if you're unsure about the type'), grounding the need for deepcopy in something other than the aliasing between `result` and `reply.result`, and never asserts that mutation would propagate to `reply.result[DATA]`."
+    },
+    {
+        "id": "1b_generalizing_beyond_inscope_path",
+        "name": "Confines the deepcopy claim to the in-scope code path vs. asserts behavior/consequences for the un-copied 'other transaction types'",
+        "side_a": "Do not deduct when the answer keeps its reasoning inside the SCHEMA/ISSUER_KEY branch \u2014 i.e., it explains aliasing of `result` with `reply.result` and the downstream uses of the original, and at most neutrally observes that the copy is made 'for certain types' without claiming anything about what happens on the other branches.",
+        "side_b": "Deduct when the answer extends the analysis outward and makes substantive assertions about the transaction types that are NOT deep-copied (e.g., stating that for other types direct modification mutates `reply.result`, or inferring why only SCHEMA/ISSUER_KEY are reused), since that imports un-grounded claims about out-of-scope branches rather than answering about the copied path."
+    },
+    {
+        "id": "2a_unconditional_vs_conditional_yes",
+        "name": "Commits to an unconditional 'yes, deepcopy is needed' vs. makes the need conditional/hedged ('if ...', 'might', 'if you don't need it, it isn't required')",
+        "side_a": "No deduction when the answer asserts flatly that the deepcopy is required and explains why, without attaching an escape clause that would make it optional.",
+        "side_b": "Deduct when the answer frames the need as conditional or uncertain \u2014 gating it on an 'if' (if referenced elsewhere / if you need the original unchanged), on speculation ('might', 'likely'), or explicitly saying it is not required under some condition."
+    },
+    {
+        "id": "2a_named_downstream_consumer",
+        "name": "Points to a concrete downstream user of the un-mutated result vs. only vague 'somewhere else / later in the program'",
+        "side_a": "No deduction when the answer identifies the actual code that consumes the original result (e.g. the ledger-storing call) as the reason the copy matters.",
+        "side_b": "Deduct when the justification stays abstract \u2014 'elsewhere in the program', 'other parts of the code', or no consumer named at all \u2014 so the answer never grounds the risk in this function."
+    },
+    {
+        "id": "2b_copy_role_split",
+        "name": "states which copy goes where (serialized copy \u2192 ledger, untouched copy \u2192 later storage) vs only 'keep the original intact for use elsewhere'",
+        "side_a": "No deduction if the answer assigns distinct roles to the two copies \u2014 i.e. says the copied/serialized object is what gets passed on to the ledger write while the unmodified original is what is retained for the subsequent storage step. The data flow must be split, not just 'the original survives'.",
+        "side_b": "Deduct if the answer only asserts that the original `reply.result` stays unmutated for unspecified later use ('may be needed in its original form later', 'other parts of the code depend on the unmodified data') without ever saying that the serialized version goes to one destination and the unserialized one to another."
+    },
+    {
+        "id": "2b_consumer_direction_correctness",
+        "name": "correct attribution of the ledger as recipient of the serialized copy vs reversed attribution (ledger as the thing needing the pristine original)",
+        "side_a": "No deduction if the named downstream consumer of the *unmodified* data is something other than the ledger write (graph/storage/later field additions), i.e. the direction of the data flow is stated correctly.",
+        "side_b": "Deduct if the answer names a consumer but gets the direction backwards \u2014 presenting `storeTxnInLedger`/the ledger as the place that relies on the original unserialized structure \u2014 since that misses that the ledger is precisely what receives the serialized copy."
+    }
+]

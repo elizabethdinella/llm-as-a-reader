@@ -1,0 +1,7 @@
+{"justification": "The answer explicitly states that `Collections.singletonMap()` returns an immutable map whose contents cannot be changed after creation.", "deducted": false}
+{"justification": "The answer explicitly states that `new HashMap<>(...)` creates a new, mutable HashMap allowing additions, removals, and modifications.", "deducted": false}
+{"justification": "The answer refers to 'the single entry from the singleton map', conveying that singletonMap holds only one key-value mapping.", "deducted": false}
+{"justification": "The answer never mentions or examines the method signature of `messageParams` (e.g., its parameter types such as FetchProfile and HashMap<String, Message>). It discusses only the generic HashMap vs singletonMap distinction.", "deducted": true}
+{"justification": "The answer never states that `messageParams` specifically declares/requires a `HashMap` parameter type; it only speaks generically about mutability, which is not the required specificity.", "deducted": true}
+{"justification": "The answer does not discuss how the map argument is actually used inside `messageParams` at all, and therefore fails to determine that those usages are read-only.", "deducted": true}
+{"justification": "While the answer implies mutability may be needed, it does not explicitly claim that the usages within `messageParams` modify the map; the statement about UnsupportedOperationException is phrased hypothetically ('if ... were passed directly and then modified'). No clear incorrect assertion is made.", "deducted": false}

@@ -1,0 +1,2 @@
+
+You should call deepcopy only when you need to preserve the original data in reply.result and avoid unintended side effects elsewhere. In this code, it's done conditionally for specific transaction types.

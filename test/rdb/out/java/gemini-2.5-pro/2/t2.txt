@@ -1,0 +1,2 @@
+
+The primary difference is mutability. `Collections.singletonMap` creates an immutable, memory-efficient map containing exactly one entry; any attempt to modify it will throw an exception. The code `new HashMap<>(Collections.singletonMap(...))` creates a new, mutable `HashMap` by copying the single entry. This approach provides a modifiable map, which is only necessary if the `messageParams` method or the resulting command object needs to alter the map's contents. If modifications are not required, using `singletonMap` directly is safer and more performant.

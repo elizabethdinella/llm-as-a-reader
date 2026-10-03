@@ -1,0 +1,8 @@
+<scores>
+	<score> 3/3 </score>
+	<score> 0/4 </score>
+</scores>
+
+**Rubric Item 1 (3/3):** The answer states that `singletonMap` creates a "single, immutable entry," covering both the immutability point and the single key-value mapping point. It also states that `HashMap` "allows for modifications" and "ensures mutability," covering the mutability point.
+
+**Rubric Item 2 (0/4):** The answer never mentions `messageParams` at all. It does not give the method signature (−1), does not state that `messageParams` takes a `HashMap` parameter (−1), and does not discuss how the map argument is used inside `messageParams` or establish that those usages are read-only (−1). Furthermore, the claim that "using `HashMap` ensures mutability, which is necessary if changes are expected later" incorrectly implies that mutation of the passed map is required/occurring, which is misleading given the usages are read-only (additional deduction, floored at 0).

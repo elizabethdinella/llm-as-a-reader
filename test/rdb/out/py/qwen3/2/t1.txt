@@ -1,0 +1,1 @@
+Call `compact_times()` on every `KPIset` because it is a required preprocessing step for all statistical calculations, regardless of whether the set is cumulative or not.

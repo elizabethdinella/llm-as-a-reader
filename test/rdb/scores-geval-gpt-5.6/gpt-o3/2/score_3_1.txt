@@ -1,0 +1,30 @@
+[
+  {
+    "justification": "The answer correctly states that Collections.singletonMap returns an immutable map whose mutative operations throw UnsupportedOperationException.",
+    "deducted": false
+  },
+  {
+    "justification": "The answer correctly states that the copied HashMap is fully mutable.",
+    "deducted": false
+  },
+  {
+    "justification": "The answer correctly states that singletonMap contains exactly one key-value entry.",
+    "deducted": false
+  },
+  {
+    "justification": "The answer does not provide the method signature of messageParams.",
+    "deducted": true
+  },
+  {
+    "justification": "The answer does not specifically state that messageParams takes a HashMap; it only discusses whether the builder might require mutation.",
+    "deducted": true
+  },
+  {
+    "justification": "The answer presents map usage inside messageParams conditionally and does not establish that the actual usages are read-only.",
+    "deducted": true
+  },
+  {
+    "justification": "The answer does not incorrectly claim that messageParams modifies the map; it merely explains what would happen if modification were required.",
+    "deducted": false
+  }
+]

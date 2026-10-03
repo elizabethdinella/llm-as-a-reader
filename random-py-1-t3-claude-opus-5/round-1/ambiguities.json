@@ -1,0 +1,14 @@
+[
+    {
+        "id": "1b_symbol_fidelity",
+        "name": "Names the actual symbols in the code correctly vs. garbles/hallucinates the identifiers being compared",
+        "side_a": "No deduction when the answer quotes the two call sites as they actually appear in the code (`F.cross_entropy` and the bare `cross_entropy`) and reasons about those exact symbols, even if it speculates about why the bare call is there.",
+        "side_b": "Deduct when the answer misnames or corrupts the identifiers under discussion (e.g., inventing `F.helic_entropy`, `\u0443\u0442\u0432\u0435\u0440\u0436\u0434_entropy`, or writing `F cross_entropy` without the attribute access), since the comparison is then not about the code in question and the stated facts are about nonexistent symbols."
+    },
+    {
+        "id": "2b_function_misidentified",
+        "name": "Answer analyzes the actual `F.cross_entropy` / `cross_entropy` pair vs. analyzes a garbled/hallucinated function name so no claim about `F.cross_entropy` is ever made",
+        "side_a": "If the answer explicitly names and discusses `F.cross_entropy` (the real symbol in the code) and attributes it to PyTorch/`torch.nn.functional`, treat the validity claim as made and do not deduct \u2014 e.g., 'F.cross_entropy is a function from the torch.nn.functional module', 'F.cross_entropy is PyTorch's built-in cross entropy loss function'.",
+        "side_b": "If the answer substitutes corrupted, hallucinated, or non-existent symbol names for the functions under discussion (e.g., 'F.helic_entropy', '\u0443\u0442\u0432\u0435\u0440\u0436\u0434_entropy'), it never asserts that `F.cross_entropy` itself is a valid PyTorch function \u2014 and indeed asserts the named symbol 'does not exist in PyTorch'. Deduct 2 points, even if a correct function name appears only as a speculative correction."
+    }
+]

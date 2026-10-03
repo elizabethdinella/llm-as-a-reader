@@ -1,0 +1,2 @@
+
+You should call `_compact_times()` primarily on cumulative KPIsets to manage memory growth over long-running accumulation periods. For non-cumulative/snapshot KPIsets that represent fixed time windows, compacting is likely unnecessary since their data is already bounded, and you may want to preserve the full detail for that specific period. Consider making this conditional based on a KPIset type flag or the expected usage pattern.

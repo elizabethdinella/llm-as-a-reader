@@ -1,0 +1,7 @@
+{"justification": "The answer explicitly states that SingletonMap 'Provides an immutable, single-entry map' — immutability of singletonMap is mentioned.", "deducted": false}
+{"justification": "The answer explicitly states 'HashMap: Creates a mutable map that can be modified.'", "deducted": false}
+{"justification": "The answer describes singletonMap as a 'single-entry map,' capturing that it holds only one key-value mapping.", "deducted": false}
+{"justification": "The answer never mentions or discusses the signature of the messageParams method.", "deducted": true}
+{"justification": "The answer does not state that messageParams requires/takes a HashMap; in fact it wrongly suggests passing Collections.singletonMap() directly would be better, which contradicts the required HashMap parameter type.", "deducted": true}
+{"justification": "The answer does not examine how the map argument is used inside messageParams, and thus fails to determine that the usages are read-only.", "deducted": true}
+{"justification": "The answer does not claim that the usages within messageParams modify the map, so this deduction does not apply.", "deducted": false}

@@ -1,0 +1,62 @@
+[
+    {
+        "id": "1a_necessity_verdict",
+        "name": "affirms the null check is functionally required vs declares it unnecessary/redundant",
+        "side_a": "Credit when the answer concludes the null check is needed \u2014 i.e., it is the thing that detects the uncached case and triggers the DB fetch, so dropping it changes behavior (returning null / skipping the query).",
+        "side_b": "Deduct when the answer's verdict is that the check is not needed, redundant, or merely optional defensive programming \u2014 even if it quotes the condition \u2014 since it denies rather than states the behavioral consequence of removal."
+    },
+    {
+        "id": "1b_cachemiss_vs_robustness",
+        "name": "Explains the check as cache-miss/control-flow logic vs. as a generic 'safeguard against errors / robustness' benefit",
+        "side_a": "No deduction if the answer explains the null check in terms of its actual control-flow role \u2014 detecting a cache miss, deciding whether to hit the database, interacting with the `!isCachingEnabled()` disjunct, or whether the method may return null \u2014 even if other parts of the answer are shaky.",
+        "side_b": "Deduct if the answer justifies the check only with generic software-quality framing ('safeguard against potential errors', 'maintains robustness and reliability', 'handles cases that could break the code') instead of naming the concrete cache-miss / DB-fetch decision the check actually drives."
+    },
+    {
+        "id": "1b_direct_stance",
+        "name": "Gives an explicit yes/no answer to 'do I need this null check' vs. only asserting necessity in prose",
+        "side_a": "No deduction when the answer opens with a direct verdict ('Yes, you need\u2026' / 'No, you don't need\u2026') that the user can act on, before or instead of elaboration.",
+        "side_b": "Deduct when the answer never takes an explicit yes/no stance on the question asked and instead delivers an unanchored paragraph asserting the check is 'necessary'/'essential'."
+    },
+    {
+        "id": "1c_misattributing_caching_flag_role",
+        "name": "Keeps the null check's job scoped to the cache-miss/null case vs. credits the null check with the caching-disabled branch's job",
+        "side_a": "No deduct if the answer explains the null check only in terms of what it actually does (detects that no/`null` entry came back from the map, i.e. a cache miss, or guards against NPE), or simply judges it redundant/unnecessary, without assigning it responsibility for the `!authConfigs.isCachingEnabled()` behaviour.",
+        "side_b": "Deduct if the answer enumerates as a purpose of the null check something that is really the job of the separate `isCachingEnabled()` operand of the OR (e.g. 'when caching is disabled it ensures you always fetch fresh data'), thereby conflating the two operands and over-claiming that removing the null check breaks the caching logic."
+    },
+    {
+        "id": "1f_bare_assertion_vs_mechanism",
+        "name": "Bare unsupported 'no' vs 'no' backed by a mechanism claim that other code already handles the check",
+        "side_a": "Do NOT deduct if the answer merely asserts the check isn't needed (a bare conclusion) without supplying any mechanism \u2014 i.e., it never explains how/why the code would still work, never attributes the check's job to another piece of code, and never describes the resulting control flow.",
+        "side_b": "Deduct 2 if the answer supports the 'not needed' conclusion with a mechanism claim that the check's function is already covered elsewhere (e.g., by the surrounding condition, or 'the method will always fetch from the database when needed'), since this positively asserts the control flow is unaffected."
+    },
+    {
+        "id": "3a_db_null_return_vs_user_absent",
+        "name": "DB call may return null (mechanism only) vs the username has no record in the database (cause)",
+        "side_a": "Credit the point when the answer names the *cause* of the null as the username having no entry/record in the underlying database/data source (e.g., 'the user isn't in the DB', 'no row for that username'), i.e., it identifies who/what is missing, not just which call returned null.",
+        "side_b": "Deduct the point when the answer only notes that the database lookup itself can hand back null/empty (e.g., 'getRolesFromDatabase() returns null', 'return an empty list from the DB call') without ever attributing that null to the username being absent from the database \u2014 this is a statement about the method's return contract, not about a nonexistent user."
+    },
+    {
+        "id": "3b_affirms_vs_denies_need_for_check",
+        "name": "answer affirms the null check is needed and explains the stale-cache path vs answer concludes the check is unneeded/redundant",
+        "side_a": "Give the point when the answer treats the null check as genuinely needed and uses that to walk through the state in which roleInfoMap.get(username) yields null (entry never loaded / cache not refreshed since the data changed), i.e. the staleness scenario is the reason the check must stay.",
+        "side_b": "Deduct the point when the answer's conclusion is that the null check is not needed, is redundant, or is merely 'good defensive programming', since such an answer never argues from \u2014 and therefore never discusses \u2014 a concrete state of the cache (outdated / not yet reloaded) that produces a null lookup."
+    },
+    {
+        "id": "3b_caching_disabled_vs_cache_contents_stale",
+        "name": "null attributed to the cache's contents being out of date vs null attributed to caching being disabled / the isCachingEnabled flag",
+        "side_a": "Give the point when the answer locates the null in the state of the cached data itself \u2014 the map was populated before this user/role existed, or has not been reloaded since the database changed \u2014 so the lookup finds nothing.",
+        "side_b": "Deduct the point when the answer explains the null branch primarily via the caching feature being switched off (\"when the cache is empty or disabled\", \"when caching is disabled the OR condition ensures you always fetch fresh data\"), since the disabled-cache path is a different condition from the cache being outdated relative to the database and is handled by the isCachingEnabled flag, not by the staleness of the map."
+    },
+    {
+        "id": "3c_value_invariant_vs_key_presence",
+        "name": "Null framed as a property of the map's stored values (non-null-value guarantee / 'cache never stores nulls') vs framed purely as key absence / cache miss",
+        "side_a": "No deduct when the answer explains the null only in terms of the key not being in the map or there being no cached entry yet \u2014 'username is not found', 'no cached value', 'cache is empty' \u2014 and never makes a statement about what values the map holds.",
+        "side_b": "Deduct 2 points when the answer makes a claim or precondition about the map's *values* being (or needing to be) non-null \u2014 e.g. demanding a guarantee that every username maps to a non-null value, or advising that the cache 'never store nulls'. This puts a null-valued username entry on the table even though it is framed as an invariant to maintain rather than as an observed cause."
+    },
+    {
+        "id": "3c_null_source_db_vs_cache",
+        "name": "Null attributed to the database call returning null vs to the cache holding a null",
+        "side_a": "No deduct when the only null-value discussion concerns something other than the map's entries \u2014 e.g. getRolesFromDatabase() returning null, or the method returning null to its caller. Nulls originating downstream of the cache are not the forbidden scenario.",
+        "side_b": "Deduct 2 points when the remedy or risk discussed is about the cache itself holding nulls (e.g. recommending computeIfAbsent / storing empty lists so the map never holds a null for a username)."
+    }
+]

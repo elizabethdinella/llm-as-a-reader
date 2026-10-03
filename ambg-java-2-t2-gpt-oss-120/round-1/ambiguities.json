@@ -1,0 +1,8 @@
+[
+    {
+        "id": "2c_contextual_relevance",
+        "name": "explicit\u2011code\u2011reference vs generic\u2011pros\u2011cons",
+        "side_a": "Credit answers that explicitly state that, in the given code, the map argument is never mutated (e.g., \u201cthe map isn\u2019t altered later\u201d).",
+        "side_b": "Deduct answers that only discuss generic advantages/disadvantages of immutable vs mutable maps or speculate about possible downstream mutations without linking to the actual usage in the code."
+    }
+]

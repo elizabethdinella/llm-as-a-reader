@@ -1,0 +1,15 @@
+<answer>
+public String getShortenedName() {
+    StringBuilder sb = new StringBuilder();
+    int len = username.length();
+    for (int i = 0; i < len; i++) {
+        char c = username.charAt(i);
+        if (c == '-') {
+            if (sb.length() > 0) sb.deleteCharAt(sb.length() - 1);
+        } else {
+            sb.append(c);
+        }
+    }
+    return sb.toString();
+}
+</answer>

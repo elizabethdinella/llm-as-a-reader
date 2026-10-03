@@ -1,0 +1,32 @@
+[
+    {
+        "id": "1b_downstream_mention",
+        "name": "explicit downstream NPE mention vs no location mentioned",
+        "side_a": "If the answer explicitly says that a NullPointerException would occur downstream (e.g., after the method returns), credit the answer (no deduction).",
+        "side_b": "If the answer mentions a possible NullPointerException but gives no location (neither \u201cdownstream\u201d nor any other context), deduct points as an unlocated NPE claim."
+    },
+    {
+        "id": "1d_robustness_vs_functionality",
+        "name": "defensive\u2011robustness justification vs functional\u2011necessity justification",
+        "side_a": "Answers that justify keeping the null\u2011check on the basis of functional behavior (e.g., cache\u2011miss handling, avoiding skipping the DB fetch, or stating that the check is required for correct operation). These answers receive credit.",
+        "side_b": "Answers that justify the null\u2011check mainly as a defensive or robustness measure (e.g., \u201cin case the method\u2019s contract changes\u201d or \u201cto be safe if the method might return null\u201d), without tying it to the functional requirement of the code. These answers are deducted."
+    },
+    {
+        "id": "2b_conditional_removal",
+        "name": "explicitly mentions possible removal of the null\u2011check vs never mentions removal",
+        "side_a": "Award the point when the answer not only asserts that roleInfoList may be null but also states a concrete condition or alternative under which the null\u2011check could be omitted (e.g., switching to a loading cache or storing an empty list).",
+        "side_b": "Deduct when the answer asserts nullability (or discusses it) but never mentions that the null\u2011check could be removed under any alternative design."
+    },
+    {
+        "id": "3b_null_check_necessity",
+        "name": "null\u2011check optional vs required",
+        "side_a": "Answer says the null check is *not* required (optional or unnecessary).",
+        "side_b": "Answer says the null check *is* required (necessary to avoid errors)."
+    },
+    {
+        "id": "3c_null_allowed_map",
+        "name": "mentions map may hold null values vs does not mention it",
+        "side_a": "Credit answers that never say the map can store a null value (i.e., they treat a null return solely as a missing key).",
+        "side_b": "Deduct answers that state or imply that the map may return null because it can contain null\u2011valued entries, even as a hypothetical possibility."
+    }
+]

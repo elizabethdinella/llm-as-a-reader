@@ -1,0 +1,23 @@
+PASS           claude-fable-5/1.txt  
+PASS           claude-opus-4.8/1.txt  
+PASS           claude-opus-5/1.txt  
+PASS           claude-sonnet-5/1.txt  
+PASS           deepseek-r1-70b/1.txt  
+PASS           gemini-2.5-flash/1.txt  
+PASS           gemini-2.5-pro/1.txt  
+PASS           gemini-3.6-flash/1.txt  
+PASS           gpt-4.1/1.txt  
+PASS           gpt-5/1.txt  
+PASS           gpt-mini-120/1.txt  
+PASS           gpt-mini-20/1.txt  
+PASS           gpt-o3/1.txt  
+PASS           grok-3/1.txt  
+PASS           grok-4/1.txt  
+PASS           grok-4.5/1.txt  
+WRONG          llama-scout-4/1.txt  "Bo-Tran": got "BoTran", expected "BTran"; "Jo-Ann-Lu-Kim": got "JoAnnLuKim", expected "JAnLKim"; "a-b": got "ab", expected "b"; "Q-Rx": got "QRx", expected "Rx"; "ab-cd-ef": got "abcdef", expected "acef"; "Sam9-Lee8": got "Sam9Lee8", expected "SamLee8"; "longname-x": got "longnamex", expected "longnamx"; "z-yz-y": got "zyzy", expected "yy"
+WRONG          llama3.3-70/1.txt  "Bo-Tran": got "Boran", expected "BTran"; "Jo-Ann-Lu-Kim": got "Jonnuim", expected "JAnLKim"; "a-b": got "a", expected "b"; "Q-Rx": got "Qx", expected "Rx"; "ab-cd-ef": got "abdf", expected "acef"; "Sam9-Lee8": got "Sam9ee8", expected "SamLee8"; "longname-x": got "longname", expected "longnamx"; "z-yz-y": got "zz", expected "yy"
+PASS           mistral-large/1.txt  
+NO ANSWER      qwen3/1.txt  
+PASS           qwen3-coder/1.txt  
+
+NO ANSWER: 1, PASS: 18, WRONG: 2

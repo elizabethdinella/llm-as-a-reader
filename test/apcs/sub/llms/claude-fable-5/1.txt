@@ -1,0 +1,101 @@
+# Part A: The Account Constructor
+
+**Approach:** First check if `requestedName` itself is available. If not, loop with an integer counter starting at 1, appending it to `requestedName` until `isAvailable` returns true.
+
+**Explanation:**
+- If `isAvailable(requestedName)` is true, assign it directly.
+- Otherwise, use a counter starting at 1 and build candidate strings like `requestedName + counter`. Keep incrementing until an available name is found.
+- A `while` loop that continues as long as the candidate is *not* available works cleanly.
+
+```java
+public Account(String requestedName)
+{
+    if (isAvailable(requestedName))
+    {
+        username = requestedName;
+    }
+    else
+    {
+        int num = 1;
+        while (!isAvailable(requestedName + num))
+        {
+            num++;
+        }
+        username = requestedName + num;
+    }
+}
+```
+
+Trace: For "Luis-Cruz" (unavailable), it tries "Luis-Cruz1", "Luis-Cruz2", ... until one is available. For "PSmith" (available), it assigns immediately.
+
+# Part B: getShortenedName
+
+**Approach:** Build a result string character by character. For each character, only include it if it is not a hyphen AND the *next* character is not a hyphen (since the character before each hyphen must also be removed).
+
+**Explanation:**
+- Loop through all characters except the last one; skip a character if it is a hyphen or if the character after it is a hyphen.
+- The last character is always kept (precondition says username doesn't end with a hyphen), so append it after the loop.
+- This preserves `username` (postcondition satisfied — we never modify it).
+
+Trace with "Amy-Marie-Lin": 'A' kept, 'm' kept, 'y' skipped (next is '-'), '-' skipped, 'M','a','r','i' kept, 'e' skipped (next is '-'), '-' skipped, 'L','i' kept, then final 'n' appended → "AmMariLin". ✓
+
+```java
+public String getShortenedName()
+{
+    String result = "";
+    for (int i = 0; i < username.length() - 1; i++)
+    {
+        String current = username.substring(i, i + 1);
+        String next = username.substring(i + 1, i + 2);
+        if (!current.equals("-") && !next.equals("-"))
+        {
+            result += current;
+        }
+    }
+    result += username.substring(username.length() - 1);
+    return result;
+}
+```
+
+If there are no hyphens (e.g., "SammyB3"), every character passes the check, so the full username is returned unchanged.
+
+<answer>
+**Part A:**
+```java
+public Account(String requestedName)
+{
+    if (isAvailable(requestedName))
+    {
+        username = requestedName;
+    }
+    else
+    {
+        int num = 1;
+        while (!isAvailable(requestedName + num))
+        {
+            num++;
+        }
+        username = requestedName + num;
+    }
+}
+```
+
+**Part B:**
+```java
+public String getShortenedName()
+{
+    String result = "";
+    for (int i = 0; i < username.length() - 1; i++)
+    {
+        String current = username.substring(i, i + 1);
+        String next = username.substring(i + 1, i + 2);
+        if (!current.equals("-") && !next.equals("-"))
+        {
+            result += current;
+        }
+    }
+    result += username.substring(username.length() - 1);
+    return result;
+}
+```
+</answer>

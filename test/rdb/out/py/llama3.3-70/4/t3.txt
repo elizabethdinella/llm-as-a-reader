@@ -1,0 +1,1 @@
+Yes, you need to call deepcopy(result) before modifying result[DATA] if you want to ensure that the original reply.result remains unchanged. The code already does this for certain transaction types (SCHEMA and ISSUER_KEY), indicating an awareness of potential issues with shared references to mutable objects.

@@ -1,0 +1,30 @@
+[
+    {
+        "justification": "The candidate answer explicitly states that `Collections.singletonMap` creates a 'single-entry, immutable map', satisfying the requirement that the answer mention singletonMap's immutability. No deduction.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that `HashMap` creates a mutable map that can contain multiple entries, satisfying the requirement to mention HashMap's mutability.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that `Collections.singletonMap` creates a single-entry map, which conveys that it holds only a single key-value mapping. This satisfies rubric sub-item 1d.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer only discusses the general differences between HashMap and Collections.singletonMap. It never mentions the messageParams method or its signature (parameter types such as FetchProfile and Map/HashMap<String, Message>). Therefore the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer only compares HashMap and singletonMap generally. It never mentions the messageParams method signature or states that messageParams requires/takes a HashMap parameter type. It merely speculates that HashMap is used 'to allow potential modification', which is neither the specific claim required nor even the mutability claim tied to the signature.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer only compares HashMap and singletonMap generally, speculating that HashMap 'is used to allow potential modification or addition of entries later on.' It never examines how the map argument is actually used inside messageParams, and does not determine whether those usages are read-only. Therefore the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer only discusses general differences between HashMap and singletonMap, and vaguely says HashMap is used 'to allow potential modification or addition of entries to the map later on.' It never examines or asserts anything about how messageParams itself uses the map argument, and does not explicitly claim that those usages modify the map. Since the answer makes no incorrect assertion that messageParams' usages mutate the map (it merely fails to address it, which is covered by sub-item 2d), the 2-point deduction for 2e does not apply.",
+        "deducted": false
+    }
+]

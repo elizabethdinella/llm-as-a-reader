@@ -1,0 +1,63 @@
+# Part A
+
+I need to write a constructor that checks if `requestedName` is available. If it is, assign it directly. If not, append successive integers (1, 2, 3, ...) until an available username is found.
+
+**Logic:**
+1. First check if `requestedName` itself is available using `isAvailable`.
+2. If available, assign it to `username`.
+3. If not, loop starting at count = 1, testing `requestedName + count` each time, incrementing until `isAvailable` returns true.
+
+<answer>
+public Account(String requestedName)
+{
+    if (isAvailable(requestedName))
+    {
+        username = requestedName;
+    }
+    else
+    {
+        int count = 1;
+        while (!isAvailable(requestedName + count))
+        {
+            count++;
+        }
+        username = requestedName + count;
+    }
+}
+</answer>
+
+# Part B
+
+I need to remove each hyphen and the character immediately before it. 
+
+**Logic:**
+1. Build a result string by iterating through `username`.
+2. When I encounter a hyphen, I should skip it AND remove the character before it (which I already added). One clean way is to look ahead: for each character, check if the *next* character is a hyphen. If it is, skip the current character (and let the hyphen itself be skipped too).
+3. Alternatively, iterate and append each character, but when the next character is a hyphen, don't append the current one; and never append the hyphen itself.
+
+I'll use the look-ahead approach: append character `i` only if the next character isn't a hyphen, and never append a hyphen. Since preconditions guarantee no leading/trailing hyphens and no consecutive hyphens, this works cleanly.
+
+- "Amy-Marie-Lin": remove 'y' (before first '-') and '-', remove 'e' (before second '-') and '-' → "AmMariLin" ✓
+
+<answer>
+public String getShortenedName()
+{
+    String result = "";
+    for (int i = 0; i < username.length(); i++)
+    {
+        char current = username.charAt(i);
+        if (current == '-')
+        {
+            // skip the hyphen itself
+            continue;
+        }
+        if (i + 1 < username.length() && username.charAt(i + 1) == '-')
+        {
+            // skip the character before a hyphen
+            continue;
+        }
+        result += current;
+    }
+    return result;
+}
+</answer>

@@ -1,0 +1,37 @@
+[
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly states that `Collections.singletonMap` creates an **immutable** map with a single entry, and contrasts it with `new HashMap<>(...)` which produces a mutable map that allows future modifications. This directly satisfies the rubric's requirement that the answer state singletonMap is immutable, and it also touches on the size aspect (single entry vs. general-purpose resizable map). No deduction is warranted.",
+        "item": "1a"
+    },
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly identifies mutability as the key difference, stating that `Collections.singletonMap` creates an immutable map with a single entry while `new HashMap<>(...)` produces a mutable map that allows future modifications. It also touches on the size aspect by noting singletonMap holds only one entry whereas the HashMap can be modified/extended. The required statement that a HashMap is mutable is clearly present, so no deduction applies.",
+        "item": "1b"
+    },
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly discusses mutability ('Collections.singletonMap creates an immutable map... HashMap allows future modifications, while singletonMap does not') and also notes the size constraint by stating that singletonMap 'creates an immutable map with a single entry,' which conveys that it holds only a single key-value mapping. Both required elements of the rubric item are addressed, so no deduction applies.",
+        "item": "1c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The rubric requires the answer to mention the actual signature of `messageParams` (i.e., that it takes a FetchProfile and a Map<String, Message> of message parameters). The candidate only vaguely refers to \"the method's parameter type\" and speculates that `messageParams` \"expects a HashMap (mutable)\" \u2014 it never states or reasons about the real signature. Moreover, this speculation is likely incorrect: the parameter is almost certainly declared as a `Map`, in which case a `singletonMap` would compile fine and the distinction would be purely about mutability, not compile-time compatibility. Since the message signature of `messageParams` is not mentioned, the point is deducted.",
+        "item": "2a"
+    },
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly discusses `messageParams` and ties the use of `new HashMap<>(...)` to the method's parameter type, stating that 'if the `messageParams` method expects a `HashMap` (mutable), using `singletonMap` directly would not compile' and that the wrapping 'ensures compatibility with the method's parameter type.' While the answer leans heavily on the mutability framing (which alone would be too vague), it does specifically identify HashMap as the expected parameter type of messageParams rather than merely saying 'a mutable map.' This satisfies the rubric requirement, so no deduction, though the hedged phrasing ('if ... expects') makes it weaker than an unambiguous statement.",
+        "item": "2b"
+    },
+    {
+        "deducted": true,
+        "feedback": "The rubric requires the answer to examine how the map argument is actually used inside `messageParams` and to clearly establish that those usages are read-only. The candidate does not inspect or reference any usage within `messageParams`; instead it speculates that the method \"expects a HashMap (mutable)\" as its declared parameter type, which is unsupported by the code context (and would be unusual API design). Its only nod toward mutation is the vague, unsubstantiated aside that \"the underlying data is not modified in this case\" / \"the data remains static\" \u2014 an assertion made without any analysis of the method body, and it simultaneously claims `HashMap` \"allows future modifications,\" leaving ambiguity about whether the method modifies the map. Therefore the answer fails to clearly determine, based on the code, that the usages within `messageParams` are read-only. Point deducted.",
+        "item": "2c"
+    },
+    {
+        "deducted": false,
+        "feedback": "The answer does discuss messageParams, addressing why a HashMap wrapper is used around Collections.singletonMap when passing the map argument. Regarding the deduction condition: the answer does not claim that the usages of the map argument inside messageParams modify it. In fact, it explicitly notes 'even though the underlying data is not modified in this case' and 'the data remains static,' only mentioning that a HashMap would *allow* future modification in general. Its speculation that the parameter type might be HashMap (a compile-type argument) is questionable, but that is not the error targeted by this rubric item. Therefore no points are deducted for this subitem.",
+        "item": "2d"
+    }
+]

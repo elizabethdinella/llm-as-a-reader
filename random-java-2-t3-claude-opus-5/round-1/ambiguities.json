@@ -1,0 +1,38 @@
+[
+    {
+        "id": "2a_explains_wrapping_vs_criticizes_it",
+        "name": "Justifies the HashMap wrapper as serving a required mutability need vs. dismisses the wrapper as unnecessary overhead and recommends singletonMap instead",
+        "side_a": "No deduct if the answer accounts for why the code wraps the singletonMap in a HashMap \u2014 i.e., states that the receiving code needs a mutable map that may be modified after construction (ideally naming the concrete consequence of immutability, e.g. UnsupportedOperationException).",
+        "side_b": "Deduct if the answer treats the wrapping as pointless/wasteful \u2014 framing the difference mainly as efficiency/overhead and asserting that using Collections.singletonMap() directly would be better/more appropriate here \u2014 instead of explaining the mutability purpose the wrapper serves."
+    },
+    {
+        "id": "2b_recommends_singletonmap_instead",
+        "name": "Identifies the HashMap wrapper as required by the API vs. frames it as unnecessary overhead and recommends passing singletonMap directly",
+        "side_a": "Award credit when the answer treats the `new HashMap<>(...)` wrapper as needed for the call \u2014 i.e., it points to what `messageParams` accepts (its declared concrete `HashMap` parameter type) as the reason the wrapper exists \u2014 rather than second-guessing it.",
+        "side_b": "Deduct when the answer concludes the wrapper is unnecessary/inefficient and that `Collections.singletonMap()` should be passed directly (or 'would be more efficient/appropriate here'), since this shows the answer never recognized that the method signature forces the HashMap and so cannot have given the required reason."
+    },
+    {
+        "id": "2b_hedged_requirement",
+        "name": "Asserts the requirement from the declared signature vs. speculates about it with hedges",
+        "side_a": "Award credit when the answer states the requirement as a fact derived from the declared parameter type of `messageParams`, with no hedging.",
+        "side_b": "Deduct when the answer only speculates about why the HashMap is there ('likely requires', 'suggests anticipation of\u2026', 'not apparent from this code segment alone'), since a guessed rationale is not an identification of the declared `HashMap` parameter type."
+    },
+    {
+        "id": "2c_tie_to_messageparams_callsite",
+        "name": "Grounds the answer in the actual `messageParams` call site vs. discusses HashMap/singletonMap generically",
+        "side_a": "No deduction when the answer explicitly ties the mutability difference to the specific API being called (`messageParams`) \u2014 i.e., it reasons about what that parameter/method needs or what passing it means.",
+        "side_b": "Deduct when the answer only talks about the two map types in the abstract, referring to the code with vague deictics (\"in this context\", \"here\", \"this code\") and never engaging with the `messageParams` call it is supposed to explain."
+    },
+    {
+        "id": "2c_semantic_vs_perf_rationale",
+        "name": "Rationale rests on semantics (required mutability / intent / integrity) vs. on performance ('more efficient', 'avoids object creation')",
+        "side_a": "No deduction when the decisive reason offered is semantic \u2014 the consumer needs a mutable map, or the choice signals intent / protects data \u2014 so the wrapper is explained rather than dismissed.",
+        "side_b": "Deduct when the answer's decisive reason is efficiency (singletonMap is 'lightweight', 'optimal', 'avoids unnecessary object creation', HashMap is 'less efficient'), concluding the wrapper is wasteful on performance grounds."
+    },
+    {
+        "id": "2d_generic_mutability_vs_callee_attribution",
+        "name": "generic mutable-vs-immutable property contrast vs attributing a mutability requirement to messageParams/the call site",
+        "side_a": "Do NOT deduct when the answer only contrasts the general properties of HashMap and Collections.singletonMap (mutable vs immutable, overhead, 'would throw on modification') without attributing any need for mutation to messageParams or to this call site \u2014 including answers that go on to recommend passing singletonMap directly because nothing here modifies the map.",
+        "side_b": "Deduct 2 points when the answer attributes the mutability need to the callee or to this call site, i.e. explains the HashMap wrapper as existing because messageParams (or downstream code) requires/modifies a mutable map. Phrasing such as 'the method likely requires a mutable map that can be modified after creation' triggers the deduction even though it is hedged with 'likely'."
+    }
+]

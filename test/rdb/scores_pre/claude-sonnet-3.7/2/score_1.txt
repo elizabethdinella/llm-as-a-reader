@@ -1,0 +1,37 @@
+[
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly states that Collections.singletonMap creates an immutable map with exactly one key-value pair, and that attempts to modify it throw UnsupportedOperationException, while HashMap is mutable and can grow. It thus discusses both mutability and size (single entry vs. arbitrary size) differences, satisfying the rubric requirement that singletonMap's immutability be mentioned.",
+        "item": "1a"
+    },
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly states that `new HashMap<>(...)` creates a mutable map that can be modified (add/remove/update entries) after creation, contrasting it with `Collections.singletonMap()` which is immutable and throws UnsupportedOperationException on modification. It also addresses size differences, noting singletonMap holds exactly one key-value pair and is memory-efficient, while HashMap has overhead (buckets, load factor) and can grow. The rubric's required element \u2014 stating that a HashMap is mutable \u2014 is clearly satisfied.",
+        "item": "1b"
+    },
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly addresses both required aspects: mutability (singletonMap is immutable and throws UnsupportedOperationException on modification, while HashMap is mutable and can grow/be modified) and size (singletonMap contains 'exactly one key-value pair' / 'a single entry', while HashMap can hold multiple entries with buckets/load factor overhead). The statement that singletonMap returns only a single key-value mapping is clearly present in both the explanation and the final answer.",
+        "item": "1c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The answer does discuss `messageParams` in a general sense (speculating that it 'requires a mutable map' or 'expects a specific Map implementation type'), but it never states or references the actual method signature of `messageParams` \u2014 i.e., that it accepts a `FetchProfile` and a `Map<String, Message>` (mapping message server IDs/UIDs to `Message` objects). Without identifying the declared parameter type, the answer cannot ground its claim about mutability requirements in the actual API contract; it merely guesses. Since the rubric requires mentioning the message signature of `messageParams`, the point is deducted.",
+        "item": "2a"
+    },
+    {
+        "deducted": true,
+        "feedback": "The rubric requires the answer to state that `messageParams` specifically takes a `HashMap` (i.e., the parameter type is HashMap, so a singletonMap could not be passed at all). The candidate only speculates that the method 'requires a mutable map' or 'modifiable map', and vaguely lists 'the API contract expects a specific Map implementation type' as one of three possibilities without committing to or identifying HashMap as the declared parameter type. The final answer explicitly frames the reason as mutability ('likely because the messageParams method requires a modifiable map or the map needs to be changed later'), which the rubric explicitly calls out as not specific enough. Therefore the point is deducted.",
+        "item": "2b"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate never examines how the map argument is actually used inside messageParams. Instead of determining whether the map is mutated, the answer speculates: 'This suggests that either: 1. The messageParams method requires a mutable map 2. The map might be modified later...' and concludes 'likely because the messageParams method requires a modifiable map or the map needs to be changed later.' This is the opposite of the required observation that the usages are read-only, and in any case the answer fails to clearly determine whether the map is modified \u2014 it only offers unverified guesses. Therefore the rubric condition is not met.",
+        "item": "2c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The answer does discuss messageParams, but it asserts\u2014without support from the code context\u2014that the mutable HashMap is needed because \"the messageParams method requires a modifiable map or the map needs to be changed later in the execution flow.\" The final answer states this as the likely reason, i.e., it claims that the usage of the map argument passed to messageParams modifies it. Nothing in the provided context supports that the map is mutated by messageParams or downstream consumers; the wrapping is not evidence of mutation (a HashMap is often used simply for type/implementation consistency or defensive copying). Since the answer incorrectly asserts that the map argument is modified by its usages, the deduction applies.",
+        "item": "2d"
+    }
+]

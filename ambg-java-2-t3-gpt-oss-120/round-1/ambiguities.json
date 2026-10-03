@@ -1,0 +1,14 @@
+[
+    {
+        "id": "1a_rationale",
+        "name": "provides-use\u2011case\u2011rationale vs no\u2011use\u2011case\u2011rationale",
+        "side_a": "Credit the answer when it not only states that `singletonMap` is immutable and `HashMap` is mutable, but also explains *why* one would choose one over the other (e.g., mentions downstream mutability needs, performance, thread\u2011safety, or memory considerations).",
+        "side_b": "Deduct the answer when it merely repeats the factual difference (immutable vs mutable) without any justification about when each choice is appropriate."
+    },
+    {
+        "id": "2c_code_specificity",
+        "name": "code\u2011specific justification vs generic pros/cons",
+        "side_a": "Answer explicitly ties the choice of HashMap vs singletonMap to the actual behavior of the given code (e.g., states that the map is not mutated in this code or that mutability is required here). No points are deducted.",
+        "side_b": "Answer only discusses generic advantages/disadvantages of HashMap vs singletonMap without referencing how the map is used in the presented code. Points are deducted."
+    }
+]

@@ -1,0 +1,30 @@
+[
+    {
+        "justification": "The answer explicitly states that `singletonMap` is immutable and cannot be changed after creation (and also notes HashMap is mutable). This satisfies the requirement of sub-item 1b, so no points should be deducted.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that 'HashMap is mutable and allows modifications', satisfying sub-item 1c.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer only discusses mutability (HashMap mutable, singletonMap immutable). It never states that Collections.singletonMap holds/returns only a single key-value mapping (i.e., is limited to one entry). Therefore the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer never states or discusses the actual signature of the `messageParams` method (e.g., that it accepts a `FetchProfile` and a `HashMap<String, Message>`). It only vaguely alludes to 'API requirements' without specifying the method's parameter types or signature. Therefore the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer only vaguely mentions 'API requirements' and focuses on mutability; it never states that the messageParams method signature specifically requires/takes a HashMap type. This is not specific enough per the rubric.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer never examines how the map argument is used inside messageParams. It only vaguely speculates that the HashMap is used 'to allow potential modifications or due to API requirements', failing to determine whether the usages actually modify the map or are read-only. Per sub-item 2d, the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer only speculates that the HashMap conversion is 'likely to allow potential modifications or due to API requirements' \u2014 it does not affirmatively claim that messageParams (or its usages of the map) modifies the map. Since it makes no clear incorrect assertion that the map is mutated within messageParams, the specific deduction in sub-item 2e (for incorrectly stating the usages modify the map) does not apply. (Its failure to clearly determine that the usages are read-only would be handled under sub-item 2c, not here.)",
+        "deducted": false
+    }
+]

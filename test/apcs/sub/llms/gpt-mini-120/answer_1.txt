@@ -1,0 +1,13 @@
+<answer>
+```java
+public Account(String requestedName) {
+    String candidate = requestedName;
+    int suffix = 1;
+    while (!isAvailable(candidate)) {
+        candidate = requestedName + suffix;
+        suffix++;
+    }
+    this.username = candidate;
+}
+```
+</answer>

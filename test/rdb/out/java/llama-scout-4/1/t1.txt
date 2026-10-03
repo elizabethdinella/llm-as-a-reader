@@ -1,0 +1,2 @@
+
+The code at the end of initializeFromLocalSearch does not directly depend on drawer being non-null but assumes it is initialized before calling this method.

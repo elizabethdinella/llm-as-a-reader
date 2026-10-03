@@ -1,0 +1,2 @@
+
+Yes, calling `deepcopy(result)` is necessary here. Without it, `result` is just a reference to `reply.result`, so serializing `result[DATA]` would also mutate the original object. This would create an unintended side effect, as the subsequent call to `self.storeTxnInGraph(reply.result)` likely requires the `DATA` field to be the original, unserialized Python object, not the JSON string format intended only for the ledger. The `deepcopy` isolates this modification, preventing this bug.

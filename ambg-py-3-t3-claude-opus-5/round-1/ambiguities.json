@@ -1,0 +1,14 @@
+[
+    {
+        "id": "1a_breadth_as_capability_vs_as_risk",
+        "name": "breadth stated as a positive capability of UTF-8 vs breadth mentioned only as a hazard of accepting non-ASCII bytes",
+        "side_a": "Credit when the answer attributes the wider coverage to UTF-8 as a property/advantage of the encoding itself \u2014 i.e., it says UTF-8 can represent/handle a broader range of characters (ideally noting it is a superset of / backwards compatible with ASCII). Do not deduct merely because the answer also adds caveats.",
+        "side_b": "Deduct when the only comparative remark is framed as a danger of UTF-8 permitting illegal/unexpected input (e.g., 'more permissive', 'could allow invalid characters', 'could allow non-ASCII data to pass through'), i.e. the answer characterizes what UTF-8 would *admit* in this header rather than asserting the encoding's larger character repertoire. Such risk-framing is not a breadth claim and earns no point."
+    },
+    {
+        "id": "1b_utf8_endorsement",
+        "name": "Endorses UTF-8 as the better default vs defends keeping ASCII",
+        "side_a": "No_deduct if the answer actually agrees that UTF-8 should (generally) replace ASCII as the default decoding for the host, i.e., it affirms the proposed change and explains that UTF-8 is ASCII-backwards-compatible and avoids the decode failure.",
+        "side_b": "Deduct if the answer rejects the change and argues ASCII should be kept (appealing to RFC/Punycode strictness, 'fail fast', 'catch protocol violations', security), since it never concedes the point the item is asking for."
+    }
+]

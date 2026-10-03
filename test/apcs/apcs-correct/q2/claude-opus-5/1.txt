@@ -1,0 +1,58 @@
+## Bottle Class
+
+The class needs two instance variables (capacity and current amount), a constructor that fills the bottle to capacity, and the `updateAmount` method that subtracts the amount used, refills if the result drops below 25% of capacity, and returns the resulting amount.
+
+```java
+public class Bottle
+{
+    private double capacity;
+    private double amount;
+
+    public Bottle(double c)
+    {
+        capacity = c;
+        amount = c;
+    }
+
+    public double updateAmount(double used)
+    {
+        amount -= used;
+        if (amount < 0.25 * capacity)
+        {
+            amount = capacity;
+        }
+        return amount;
+    }
+}
+```
+
+**Explanation of key points**
+
+- The constructor stores the capacity and sets the current amount equal to the capacity, since each bottle is created full.
+- `updateAmount` subtracts the parameter (guaranteed by the precondition to be greater than 0 and no more than the current amount), so no validation is required.
+- The refill test uses a strict `<` comparison: 10 mL remaining in a 40 mL bottle is exactly 25%, so no refill occurs, while 200 mL remaining in a 1000 mL bottle is below 250 mL, so the bottle resets to 1000.0.
+- The updated amount is returned after any possible refill, so the method returns 1000.0 or 40.0 in the reset cases.
+
+<answer>
+public class Bottle
+{
+    private double capacity;
+    private double amount;
+
+    public Bottle(double c)
+    {
+        capacity = c;
+        amount = c;
+    }
+
+    public double updateAmount(double used)
+    {
+        amount -= used;
+        if (amount < 0.25 * capacity)
+        {
+            amount = capacity;
+        }
+        return amount;
+    }
+}
+</answer>

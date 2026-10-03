@@ -1,0 +1,22 @@
+<answer>
+public String getShortenedName()
+{
+    String result = "";
+    int currentIndex = 0;
+    while (currentIndex < username.length())
+    {
+        int hyphenIndex = username.indexOf("-", currentIndex);
+        if (hyphenIndex == -1)
+        {
+            result += username.substring(currentIndex);
+            break;
+        }
+        else
+        {
+            result += username.substring(currentIndex, hyphenIndex - 1);
+            currentIndex = hyphenIndex + 1;
+        }
+    }
+    return result;
+}
+</answer>

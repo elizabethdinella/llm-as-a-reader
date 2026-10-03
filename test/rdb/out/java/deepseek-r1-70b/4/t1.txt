@@ -1,0 +1,1 @@
+Yes, because without it, a null value from the cache wouldn't trigger a database fetch when caching is enabled.

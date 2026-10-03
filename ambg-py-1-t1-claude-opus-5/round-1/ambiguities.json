@@ -1,0 +1,32 @@
+[
+    {
+        "id": "1a_where_the_difference_is_located",
+        "name": "Difference located in how the name resolves (alias/undefined bare name) vs. relocated to some other code feature (missing assignment, different class-based API)",
+        "side_a": "Credit if the answer pins the F.cross_entropy vs. cross_entropy difference to the name itself \u2014 i.e. it is the same functional under an import/alias, or the bare name is undefined/a typo and must be F.cross_entropy.",
+        "side_b": "Deduct if the answer treats the bare cross_entropy call as a legitimate call and relocates the 'difference' elsewhere \u2014 to a missing variable assignment / incomplete statement, or to a different object such as the class-based torch.nn.CrossEntropyLoss with extra options."
+    },
+    {
+        "id": "1a_garbled_output",
+        "name": "Clean, well-formed identifiers vs. corrupted/garbled text and mangled symbol names",
+        "side_a": "Credit if the answer renders the API names correctly and is coherent prose throughout (e.g. `F.cross_entropy`, `torch.nn.functional`).",
+        "side_b": "Deduct if the answer contains corrupted identifiers or decoding noise that makes the claim unreadable/unverifiable (mangled function names, stray tokens mid-sentence)."
+    },
+    {
+        "id": "1b_bare_call_is_error_vs_valid_alias",
+        "name": "Treats the bare `cross_entropy(...)` as a bug/typo/undefined name in this script vs. treats it as a legitimately imported alias that behaves identically",
+        "side_a": "No deduct if the answer asserts that the unqualified `cross_entropy` call is not a valid/defined function here \u2014 a typo, error, or something that should have been `F.cross_entropy` \u2014 i.e. it identifies a real defect rather than mere namespace style.",
+        "side_b": "Deduct if the answer concludes the two forms are the same function reached by a different import path and therefore functionally equivalent (even conditionally, 'provided it has been imported'), so no actual problem in the code is flagged."
+    },
+    {
+        "id": "2b_intact_function_name",
+        "name": "Names the compared function correctly and legibly vs. garbled/corrupted token text",
+        "side_a": "No deduct if the answer refers to the function with its actual, intact name (e.g., `F.cross_entropy` / `cross_entropy`) and the prose is free of corrupted or nonsense tokens, so the comparison being made is unambiguous.",
+        "side_b": "Deduct if the answer mangles the function name or emits corrupted tokens (e.g., 'F helic_entropy', 'cross_entropyujet', stray 'Runnable,'), so it never cleanly states which two things are being compared."
+    },
+    {
+        "id": "2b_same_fn_vs_different_api",
+        "name": "Treats bare `cross_entropy` as the same functional (import/alias or typo) vs. asserting it is the distinct class API `nn.CrossEntropyLoss`",
+        "side_a": "No deduct if the answer treats the bare `cross_entropy` as the same `torch.nn.functional` function reached via import/alias, or as a typo/error for `F.cross_entropy`.",
+        "side_b": "Deduct if the answer claims the bare `cross_entropy` is a different, class-based object (`torch.nn.CrossEntropyLoss`) with extra features, substituting a different API for the one in the code."
+    }
+]

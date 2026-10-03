@@ -1,0 +1,39 @@
+Part A explanation:
+- Initialize a candidate username with the requestedName.
+- If that candidate is unavailable, append successive integers starting from 1 until an available username is found.
+- Assign the first available candidate to the instance variable username.
+
+<answer>
+public Account(String requestedName) {
+    String candidate = requestedName;
+    int suffix = 0;
+    while (!isAvailable(candidate)) {
+        suffix++;
+        candidate = requestedName + suffix;
+    }
+    username = candidate;
+}
+</answer>
+
+Part B explanation:
+- Build the shortened string using a StringBuilder.
+- Iterate through the characters of username. Normally append characters.
+- When a hyphen is encountered, remove the last appended character (the one immediately before the hyphen) and skip the hyphen itself.
+- Return the built string; do not modify username.
+
+<answer>
+public String getShortenedName() {
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < username.length(); i++) {
+        char c = username.charAt(i);
+        if (c == '-') {
+            if (sb.length() > 0) {
+                sb.deleteCharAt(sb.length() - 1);
+            }
+        } else {
+            sb.append(c);
+        }
+    }
+    return sb.toString();
+}
+</answer>

@@ -1,0 +1,8 @@
+[
+    {
+        "id": "1a_names_the_exception",
+        "name": "Answer explicitly names the NullPointerException/crash consequence vs merely advises a null guard without naming the failure mode",
+        "side_a": "Do not deduct when the answer actually names the exception (e.g. 'NullPointerException', 'NPE', 'will throw'), even if it is hedged, conditional, or only in fix advice \u2014 the possible NPE has been surfaced.",
+        "side_b": "Deduct 1 point when the answer only talks about nullability/robustness ('guard against null', 'add a null check makes it more robust') and never names the NullPointerException or any thrown-exception/crash consequence, since the possible NPE is never discussed."
+    }
+]

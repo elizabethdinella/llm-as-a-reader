@@ -1,0 +1,7 @@
+{"justification": "The answer explicitly states that a singletonMap is immutable and throws an exception if modification is attempted.", "deducted": false}
+{"justification": "The answer explicitly states that a HashMap is mutable and can be modified after creation.", "deducted": false}
+{"justification": "The answer never mentions that Collections.singletonMap holds/returns only a single key-value mapping; it focuses solely on mutability.", "deducted": true}
+{"justification": "The answer does not mention or reference the method signature of messageParams at all.", "deducted": true}
+{"justification": "The answer does not state that messageParams specifically takes a HashMap parameter type; it only speculates about mutability needs.", "deducted": true}
+{"justification": "The answer does not examine the actual usages of the map inside messageParams and does not determine whether they are read-only; it only speculates that the builder 'may' need to alter the map.", "deducted": true}
+{"justification": "The answer does not definitively assert that the usages modify the map; it only hedges with 'may be necessary if the builder or command needs to alter the map internally', so no explicit incorrect claim is made.", "deducted": false}

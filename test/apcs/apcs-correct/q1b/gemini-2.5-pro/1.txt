@@ -1,0 +1,21 @@
+<answer>
+```java
+public String getShortenedName()
+{
+    StringBuilder shortened = new StringBuilder(username);
+    int hyphenPos = shortened.indexOf("-");
+
+    while (hyphenPos != -1)
+    {
+        // Per the preconditions, hyphenPos will always be > 0.
+        // We delete the character before the hyphen and the hyphen itself.
+        shortened.delete(hyphenPos - 1, hyphenPos + 1);
+        
+        // Find the next hyphen in the modified string.
+        hyphenPos = shortened.indexOf("-");
+    }
+
+    return shortened.toString();
+}
+```
+</answer>

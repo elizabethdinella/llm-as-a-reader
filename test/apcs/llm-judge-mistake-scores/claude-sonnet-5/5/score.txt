@@ -1,0 +1,17 @@
+[{
+"DECISION": "YES",
+"FEEDBACK": "The response calls isAvailable(requestedName) with a String argument, and the call is made without a receiver object (implicitly on the class/this), which is acceptable. It also calls isAvailable(requestedName + suffix), another valid String argument. There are no incorrect calls on non-Account objects, so the point is earned despite minor syntax issues (missing parentheses around the if condition and a missing semicolon), which do not obscure the intent."
+},
+{
+"DECISION": "YES",
+"FEEDBACK": "The response contains a loop whose condition calls the availability method with a potential username (requestedName + suffix) and whose body updates that potential username by incrementing suffix. Although the loop condition is logically inverted (it continues while the name IS available), the rubric explicitly permits incorrect availability checks and incorrect updating of potential usernames as long as the availability method is called with a potential username and a potential username is updated in the loop body. Both conditions are met, so the point is earned."
+},
+{
+"DECISION": "YES",
+"FEEDBACK": "The variable suffix is initialized to 1 and incremented inside the while loop with suffix = suffix + 1, satisfying the requirement of incrementing a count within the context of a loop. The rubric allows the point even if the count is not correctly used in forming the final username."
+},
+{
+"DECISION": "NO",
+"FEEDBACK": "The overall algorithm fails. First, the loop condition is inverted: it continues incrementing while the candidate name IS available, so it skips over available names and effectively stops at the first unavailable one. Second, and decisively, in the else branch the code assigns username = requestedName rather than requestedName + suffix, so the integer is never appended to the username. This means the response fails to append the correct integer to the username when necessary, which the rubric explicitly lists as a disqualifier for this point. (The available case is handled correctly, but that alone is insufficient.)"
+}
+]

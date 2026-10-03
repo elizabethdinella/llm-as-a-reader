@@ -1,0 +1,38 @@
+[
+    {
+        "id": "1a_correct_direction_of_consequence",
+        "name": "States the check triggers a DB fetch on cache miss vs inverts/misstates what the check does",
+        "side_a": "Do not deduct if the answer describes the check's effect in the correct direction: when caching is enabled and the cache entry is absent (null), the check is what routes execution into the database fetch (equivalently, without it the data would never be loaded from the DB).",
+        "side_b": "Deduct if the answer states the consequence backwards or otherwise misattributes the check's role \u2014 e.g., claiming that removing the check would cause extra/unnecessary database lookups for already-cached users, which reverses the actual cache-miss logic."
+    },
+    {
+        "id": "1a_affirms_necessity_vs_denies_or_conditions",
+        "name": "Affirms the null check is needed vs denies it / makes necessity conditional on unstated implementation details",
+        "side_a": "Do not deduct if the answer affirmatively concludes the null check is required/necessary before explaining the cache-miss-to-database behavior.",
+        "side_b": "Deduct if the answer concludes the check is not needed, or defers the conclusion to an unknown ('it depends on how X is implemented'), since no cache-miss/database consequence is actually asserted."
+    },
+    {
+        "id": "1e_removal_consequence_direction",
+        "name": "Consequence of dropping the check stated correctly (null returned / DB never queried on cache miss) vs stated backwards (extra, unnecessary DB lookups)",
+        "side_a": "No deduct: the answer describes removing the `roleInfoList == null` check as causing the method to skip the database fallback and return null (or fail to load data) on a cache miss \u2014 i.e., too few DB queries.",
+        "side_b": "Deduct: the answer describes removing the check as causing the code to hit the database unnecessarily / redundantly even when the value is already cached \u2014 i.e., it inverts the short-circuit logic of `!cachingEnabled || roleInfoList == null`."
+    },
+    {
+        "id": "1f_rationale_accuracy",
+        "name": "Check affirmed as needed with a flawed/incomplete rationale vs rationale that itself concedes removal changes nothing",
+        "side_a": "Do NOT deduct when the answer affirms the null check is needed, even if the supporting explanation is factually wrong, inverted, or points out that the check alone is insufficient \u2014 the sub-item targets the redundancy claim, not the quality of the mechanism description.",
+        "side_b": "Deduct when the answer's stated rationale itself concedes that removing the check leaves the executed path and result unchanged (e.g., 'it only avoids an extra lookup that would return the same data anyway'), since the reasoning, not just the verdict, denies a behavioral difference."
+    },
+    {
+        "id": "1f_conditional_on_external_code",
+        "name": "Necessity left open, contingent on unseen external code vs decided against the code as given",
+        "side_a": "Do NOT deduct when the answer makes the necessity of the check contingent on behavior the answer says it cannot see (e.g., how another method is implemented), because it never settles that the check is redundant in the code shown.",
+        "side_b": "Deduct when the answer resolves the question against the code as presented, declaring the check unnecessary for this snippet without making it conditional on anything outside it."
+    },
+    {
+        "id": "2a_affirms_necessity_vs_hedges",
+        "name": "Commits to the check being necessary vs. denies it / makes it conditional on unknowns",
+        "side_a": "No deduct when the answer gives a definite verdict that the null check is required and explains what it does (falls back to the DB on a miss).",
+        "side_b": "Deduct when the answer denies the check is needed or hedges the verdict on something it does not resolve (e.g., 'it depends on how getRolesFromDatabase is implemented'), so no account of the null's origin is ever given."
+    }
+]

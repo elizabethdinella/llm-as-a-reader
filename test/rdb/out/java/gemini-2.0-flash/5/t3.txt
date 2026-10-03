@@ -1,0 +1,2 @@
+
+Yes, a `ClassCastException` can occur at the line in question if a fragment exists with the ID `R.id.main_view`, but it is not an instance of the `OnKeyListenerForFragments` interface.

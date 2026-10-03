@@ -1,0 +1,9 @@
+[
+  {"justification": "The answer explicitly states that singletonMap 'is a fixed-size map designed for a single entry and is immutable', satisfying the immutability requirement.", "deducted": false},
+  {"justification": "The answer never states that HashMap is mutable. It describes it (incorrectly) as 'a resizable array implementation' that 'allows multiple entries', which addresses size/entry count but not mutability explicitly.", "deducted": true},
+  {"justification": "The answer states singletonMap is 'designed for a single entry', conveying that it holds only a single key-value mapping.", "deducted": false},
+  {"justification": "The answer never mentions the method signature of messageParams at all.", "deducted": true},
+  {"justification": "The answer does not state that messageParams requires/takes a HashMap; in fact it wrongly suggests singletonMap could be a better choice, implying it would be acceptable.", "deducted": true},
+  {"justification": "The answer does not discuss how the map argument is used inside messageParams, nor whether those usages are read-only.", "deducted": true},
+  {"justification": "The answer makes no claim that the usages of the map argument modify it, so this deduction does not apply.", "deducted": false}
+]

@@ -1,0 +1,64 @@
+<answer>
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Bird bird1 = new Bird("Cockatiel", 71.0);
+        Bird bird2 = new Bird("Macaw", 56.0);
+
+        System.out.println("Bird 1: " + bird1.getSpecies() + " | Position: " + bird1.getPosition());
+        System.out.println("Bird 2: " + bird2.getSpecies() + " | Position: " + bird2.getPosition());
+
+        Scanner scanner = new Scanner(System.in);
+
+        int birdChoice = 0;
+        while (birdChoice != 1 && birdChoice != 2) {
+            System.out.print("Select bird to move (1 for " + bird1.getSpecies() + ", 2 for " + bird2.getSpecies() + "): ");
+            if (scanner.hasNextInt()) {
+                birdChoice = scanner.nextInt();
+                if (birdChoice != 1 && birdChoice != 2) {
+                    System.out.println("Invalid selection. Please enter 1 or 2.");
+                }
+            } else {
+                System.out.println("Invalid input. Please enter a number.");
+                scanner.next();
+            }
+        }
+
+        char direction = ' ';
+        while (direction != 'N' && direction != 'S' && direction != 'E' && direction != 'W') {
+            System.out.print("Enter direction of travel (N, S, E, W): ");
+            String input = scanner.next().toUpperCase();
+            if (input.length() == 1) {
+                char d = input.charAt(0);
+                if (d == 'N' || d == 'S' || d == 'E' || d == 'W') {
+                    direction = d;
+                } else {
+                    System.out.println("Invalid direction. Must be N, S, E, or W.");
+                }
+            } else {
+                System.out.println("Invalid input. Enter a single character.");
+            }
+        }
+
+        int minutes = -1;
+        while (minutes < 0 || minutes > 500) {
+            System.out.print("Enter time spent flying in minutes (0 to 500): ");
+            if (scanner.hasNextInt()) {
+                minutes = scanner.nextInt();
+                if (minutes < 0 || minutes > 500) {
+                    System.out.println("Invalid time. Minutes must be between 0 and 500.");
+                }
+            } else {
+                System.out.println("Invalid input. Please enter an integer.");
+                scanner.next();
+            }
+        }
+
+        Bird selectedBird = (birdChoice == 1) ? bird1 : bird2;
+        selectedBird.move(direction, minutes);
+
+        System.out.println("Updated data for " + selectedBird.getSpecies() + ": " + selectedBird.getPosition());
+    }
+}
+</answer>

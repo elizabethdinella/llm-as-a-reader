@@ -1,0 +1,8 @@
+[
+    {
+        "id": "3a_non_drawer_end_mention",
+        "name": "Explicitly ties early-return to non-drawer 'end' statement vs only mentions drawer calls",
+        "side_a": "no_deduct if the answer explicitly notes that even the non-drawer code at the end (e.g., action bar subtitle visibility) is skipped due to the early return, directly addressing why the 'code at the end' depends on drawer.",
+        "side_b": "deduct if the answer only talks about calls on drawer or generically 'remaining code' without addressing the non-drawer end statement, failing to connect the dependency to the 'code at the end.'"
+    }
+]

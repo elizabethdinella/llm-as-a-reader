@@ -1,0 +1,106 @@
+Attempt 1  
+Explanation: I incorrectly started the suffix at 0, so the first alternative username produced has a “0” on the end instead of the required “1”. Otherwise the logic is fine.
+
+<answer>
+public Account(String requestedName)
+{
+    if (isAvailable(requestedName))
+    {
+        username = requestedName;
+    }
+    else
+    {
+        int suffix = 0;
+        String candidate = requestedName + suffix;
+        while (!isAvailable(candidate))
+        {
+            suffix++;
+            candidate = requestedName + suffix;
+        }
+        username = candidate;
+    }
+}
+</answer>
+
+
+Attempt 2  
+Explanation: I reversed the condition in the while-loop, so the loop now executes while the candidate IS available, skipping over good names and possibly looping forever when no names are left.
+
+<answer>
+public Account(String requestedName)
+{
+    if (isAvailable(requestedName))
+    {
+        username = requestedName;
+    }
+    else
+    {
+        int suffix = 1;
+        String candidate = requestedName + suffix;
+        while (isAvailable(candidate))
+        {
+            suffix++;
+            candidate = requestedName + suffix;
+        }
+        username = candidate;
+    }
+}
+</answer>
+
+
+Attempt 3  
+Explanation: This time I forgot to change the suffix inside the loop, so the candidate string never changes and the loop never ends when the first candidate is unavailable.
+
+<answer>
+public Account(String requestedName)
+{
+    if (isAvailable(requestedName))
+    {
+        username = requestedName;
+    }
+    else
+    {
+        int suffix = 1;
+        String candidate = requestedName + suffix;
+        while (!isAvailable(candidate))
+        {
+            candidate = requestedName + suffix;
+        }
+        username = candidate;
+    }
+}
+</answer>
+
+
+Attempt 4  
+Explanation: Here I ignored the availability check altogether and always assign the requested name, completely failing the requirements.
+
+<answer>
+public Account(String requestedName)
+{
+    username = requestedName;
+}
+</answer>
+
+
+Attempt 5  
+Explanation: In this final (and worst) attempt I introduced multiple syntax errors—missing semicolons, using “==” instead of “=”, and omitting parentheses/braces—so the code will not even compile.
+
+<answer>
+public Account(String requestedName)
+{
+    if (isAvailable(requestedName))
+        username == requestedName
+    else
+    {
+        int suffix = 1
+        String candidate = requestedName + suffix
+        while (!isAvailable(candidate))
+        {
+            suffix++
+            candidate = requestedName + suffix
+        }
+        username = candidate
+    }
+}
+</answer>

@@ -1,0 +1,2 @@
+
+Yes, you need to call `deepcopy(result)` before modifying `result[DATA]` to prevent unintended side effects. The original `result` (from `reply.result`) is a reference to a data structure that may be used elsewhere in the code (e.g., passed to `storeTxnInLedger`). By deepcopying, the code ensures that modifications to `result[DATA]` (such as serialization) only affect the copied object, leaving the original `reply.result` unchanged. This safeguards against accidental data corruption or unexpected behavior in other parts of the system that rely on the original `result`.

@@ -1,0 +1,7 @@
+{"justification": "The answer explicitly states Collections.singletonMap returns an immutable Map and that mutative operations throw UnsupportedOperationException.", "deducted": false}
+{"justification": "The answer states that new HashMap<>(...) creates a normal HashMap that is 'fully mutable' and can accept more entries.", "deducted": false}
+{"justification": "The answer states the singletonMap 'contains exactly one entry', satisfying the single key-value mapping requirement.", "deducted": false}
+{"justification": "The answer never mentions or describes the method signature of messageParams (e.g., its parameter types such as FetchProfile and Map/HashMap).", "deducted": true}
+{"justification": "The answer does not state that messageParams specifically takes a HashMap; it only speculates generally about mutability requirements without identifying the declared parameter type.", "deducted": true}
+{"justification": "The answer does not examine actual usages of the map inside messageParams; it hedges with 'if ... only reads the map ... but if the builder needs to add, remove or update entries', failing to clearly determine whether the map is modified.", "deducted": true}
+{"justification": "The answer does not assert that the usages modify the map; it merely presents a hypothetical, so this lie-deduction does not apply.", "deducted": false}

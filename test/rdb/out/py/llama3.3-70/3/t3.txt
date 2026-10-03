@@ -1,0 +1,1 @@
+Using UTF-8 instead of ASCII for decoding host could provide broader character support but may also introduce unnecessary complexity and potential security risks. Given standard practices around domain names, ASCII is generally sufficient and safer for this specific purpose. The choice ultimately depends on the expected format of the data in the `host` header.

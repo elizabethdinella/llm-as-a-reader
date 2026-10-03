@@ -1,0 +1,30 @@
+[
+    {
+        "justification": "The answer explicitly states that Collections.singletonMap returns an immutable map with exactly one entry that cannot be modified, satisfying the requirement to mention singletonMap's immutability.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that wrapping in a new HashMap 'creates a mutable copy that can be modified later,' which clearly conveys that a HashMap is mutable.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that Collections.singletonMap returns a map 'with exactly one entry', which satisfies the requirement of mentioning that singletonMap contains only a single key-value mapping.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer never states the actual signature of the messageParams method (e.g., its parameter types such as messageParams(FetchProfile, HashMap<String, Message>)). It only speculates that the method 'either requires a mutable map ... or specifically expects a HashMap type rather than the generic Map interface,' which is a hedged guess rather than a statement of the method signature. Therefore the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate explicitly raises the possibility that messageParams 'specifically expects a HashMap type rather than the generic Map interface,' which mentions the HashMap parameter requirement. Although the statement is hedged and paired with the less-specific 'requires a mutable map' alternative, the HashMap type requirement is mentioned, so the point for sub-item 2c is not deducted.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer does not examine the actual usages of the map argument inside messageParams. It merely speculates that the method 'either requires a mutable map for subsequent operations or specifically expects a HashMap type,' which fails to clearly determine whether the usages modify the map or are read-only. Per the deduction criteria, the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer only speculates, offering two alternatives ('either requires a mutable map for subsequent operations or specifically expects a HashMap type'). It never asserts as fact that the usages of the map inside messageParams modify it; it merely raises mutability as one possible reason. Since there is no incorrect definitive claim that the map is mutated, the 2-point penalty for asserting modification does not apply (the failure to clearly determine the read-only nature is penalized under sub-item 2c instead).",
+        "deducted": false
+    }
+]

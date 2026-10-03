@@ -1,0 +1,46 @@
+
+
+To solve this problem, we need to determine the number of students enrolled in both a history course and a math course who have more absences in the history course than in the math course. The solution involves efficiently checking each student's attendance records in both courses and comparing their absence counts.
+
+### Approach
+1. **Data Structures**: Use a HashMap to store student IDs from the math course along with their absence counts. This allows for efficient lookups when checking against the history course records.
+2. **Populate HashMap**: Iterate through the math course list and populate the HashMap with student IDs as keys and their absence counts as values.
+3. **Compare Absences**: For each student in the history course list, check if they exist in the HashMap. If they do, compare their absence counts from both courses. If the history course absences are greater, increment the count.
+4. **Edge Cases**: Ensure that each student ID appears only once in each list and handle cases where absence counts might be equal or less.
+
+This approach ensures that we efficiently check each student's records using HashMap for quick lookups, leading to an optimal solution.
+
+### Solution Code
+
+```java
+public int moreHistoryThanMathAbsences() {
+    HashMap<String, Integer> mathAbsences = new HashMap<>();
+    
+    for (CourseRecord record : mathList) {
+        mathAbsences.put(record.getStudentID(), record.getAbsences());
+    }
+    
+    int count = 0;
+    
+    for (CourseRecord record : historyList) {
+        String studentID = record.getStudentID();
+        if (mathAbsences.containsKey(studentID)) {
+            int historyAbs = record.getAbsences();
+            int mathAbs = mathAbsences.get(studentID);
+            if (historyAbs > mathAbs) {
+                count++;
+            }
+        }
+    }
+    
+    return count;
+}
+```
+
+### Explanation
+1. **HashMap Creation**: A HashMap is created to store student IDs from the math course with their respective absence counts. This allows for O(1) time complexity for each lookup.
+2. **Populating HashMap**: The math course list is iterated over to populate the HashMap with student IDs and their absence counts.
+3. **Iterating Through History List**: Each student in the history course list is checked against the HashMap. If the student exists in both lists, their absence counts are compared.
+4. **Counting Valid Cases**: If a student has more absences in the history course, they are counted towards the result.
+
+This method efficiently processes each student's records, ensuring that we only count those who meet the specified condition. The use of a HashMap ensures that the solution is both time-efficient and easy to understand.

@@ -1,0 +1,50 @@
+[
+    {
+        "id": "2b_extra_exceptions",
+        "name": "only plausible code exceptions vs implausible extra exception claims",
+        "side_a": "Credit the answer when it mentions only exception types that could realistically be thrown by the shown code (e.g., ClassCastException, IllegalStateException, or a NullPointerException that could arise from a called method). Do not list unrelated exception types.",
+        "side_b": "Deduct when the answer lists exception types that are not plausible given the snippet (e.g., IllegalArgumentException, RuntimeException unrelated to the fragment cast, or a generic NullPointerException claim with no justification)."
+    },
+    {
+        "id": "2d_exception_scope",
+        "name": "limited\u2011to\u2011cast\u2011related exceptions vs unrelated extra exceptions",
+        "side_a": "Credit answers that mention only exceptions that follow directly from the cast\u2011to\u2011interface (e.g., ClassCastException, or a plausible Android\u2011lifecycle IllegalStateException).",
+        "side_b": "Deduct answers that add exception types that are not evident from the shown code (e.g., IllegalArgumentException about volume flags, RuntimeException from starting a service)."
+    },
+    {
+        "id": "2g_focus_vs_broad",
+        "name": "single\u2011focus exception answer vs broad multi\u2011exception enumeration",
+        "side_a": "Credit answers that name one primary exception (ClassCastException) and, if they mention any other exception, it is at most one plausibly\u2011related secondary type and is qualified with code\u2011specific reasoning.",
+        "side_b": "Deduct answers that list several exception types (two or more) including ones that have no clear connection to the shown code and provide no code\u2011specific justification for each."
+    },
+    {
+        "id": "3a_specificity",
+        "name": "specific\u2011line focus vs generic exception list",
+        "side_a": "No deduction \u2013 the answer ties the possible exception(s) directly to the cast (or the exact line) and may mention other exceptions only as secondary/qualified possibilities.",
+        "side_b": "Deduction \u2013 the answer lists several unrelated exception types in a generic \u201ccan occur\u201d statement without clearly linking them to the cast line."
+    },
+    {
+        "id": "3b_multiple_exception_types",
+        "name": "lists\u202f\u2265\u202f3 exception types vs lists\u202f<\u202f3 exception types",
+        "side_a": "Answer enumerates three or more distinct exception types that could be thrown on the line in question (e.g., ClassCastException, NullPointerException, IllegalArgumentException, RuntimeException).",
+        "side_b": "Answer enumerates fewer than three distinct exception types (zero, one, or two)."
+    },
+    {
+        "id": "4b_null_safe_claim",
+        "name": "explicit null\u2011safe claim vs no null\u2011safe claim",
+        "side_a": "Answer does **not** contain an explicit statement that a missing fragment (i.e. a `null` result from `findFragmentById`) is safe \u2013 it may mention guards or other exceptions but never says \u201cnull is safe\u201d. No deduction.",
+        "side_b": "Answer contains an explicit claim that a missing fragment (`null`) is safe, e.g. phrasing like \u201creturns\u202fnull, which is a safe cast\u201d or \u201cmissing fragment is fine\u201d. Deduct."
+    },
+    {
+        "id": "4b_conditional_mix",
+        "name": "conditional safe/unsafe mix vs straight statement",
+        "side_a": "Answer presents a single, straightforward claim about whether an exception can occur (e.g., \u201cYes, an exception can happen\u201d or \u201cNo, it cannot happen on that line\u201d). No deduction.",
+        "side_b": "Answer uses a conditional construction that simultaneously mentions a safe scenario (null is safe) and an unsafe scenario (wrong type causes failure), e.g., \u201ceither not found \u2026 safe, or of a different type, the cast will fail\u201d. Deduct."
+    },
+    {
+        "id": "5a_single_vs_multiple_exceptions",
+        "name": "single\u2011exception focus vs multiple\u2011exception enumeration",
+        "side_a": "Credit answers that mention only\u202fClassCastException (or at most one other specific exception) as the relevant risk.",
+        "side_b": "Deduct answers that enumerate several distinct exception types as possible risks."
+    }
+]

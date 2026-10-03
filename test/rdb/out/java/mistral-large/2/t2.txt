@@ -1,0 +1,2 @@
+
+The use of `Collections.singletonMap` in the code ensures that the map passed to `messageParams` is immutable and cannot be altered after its creation, which provides additional safety guarantees. On the other hand, a `HashMap` would allow for modification but is not necessary here as only a single key-value pair is needed, making `singletonMap` more appropriate in this context.

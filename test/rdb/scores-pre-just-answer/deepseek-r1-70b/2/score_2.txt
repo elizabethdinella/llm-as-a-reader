@@ -1,0 +1,37 @@
+[
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly states that `singletonMap` is immutable ('it's immutable and lightweight for a single entry'), which satisfies the core requirement of the rubric item. It also contrasts this with the HashMap wrapper, noting that wrapping it 'unnecessarily allows mutability,' thereby addressing the mutability difference. The reference to being 'lightweight for a single entry' also touches on the fixed/single-entry size aspect of singletonMap versus a resizable HashMap. Although brief, the answer covers the required immutability point and the mutability/size contrast, so no deduction applies.",
+        "item": "1a"
+    },
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly notes that wrapping the map in a `HashMap` 'allows mutability,' which conveys that a HashMap is mutable, in contrast to `singletonMap` being described as 'immutable.' It also touches on the size/weight aspect by calling `singletonMap` 'lightweight for a single entry.' The core required point \u2014 that a HashMap is mutable \u2014 is stated, so no deduction applies for this rubric item.",
+        "item": "1b"
+    },
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly contrasts mutability ('immutable' singletonMap vs. the HashMap wrapper which 'unnecessarily allows mutability') and references the size aspect by noting singletonMap is 'lightweight for a single entry,' which conveys that singletonMap holds only one key-value mapping. Both required elements\u2014mutability difference and the single-mapping nature of singletonMap\u2014are addressed, so no deduction. The answer is terse and could have elaborated (e.g., that the HashMap copy allows adding more messages later), but it satisfies the stated rubric condition.",
+        "item": "1c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate answer never mentions `messageParams` or its method signature. It only comments generically on the efficiency/immutability trade-off between `singletonMap` and a wrapping `HashMap`, without noting that `messageParams` accepts a `FetchProfile` and a `Map<String, Message>` (and thus that either map implementation satisfies the parameter type, and whether the method may mutate the map). Since the required discussion of the `messageParams` signature is absent, the point is deducted.",
+        "item": "2a"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate answer never states that the `messageParams` method signature requires/takes a `HashMap` specifically. It only contrasts immutability vs. mutability, claiming the singletonMap would be 'more efficient' and that wrapping it in a HashMap 'unnecessarily allows mutability' \u2014 which actually implies singletonMap could be passed directly, contradicting the requirement that messageParams accepts a HashMap parameter type. Since the required point (messageParams takes a HashMap) is not mentioned, and even the weaker 'mutable map' justification is framed as unnecessary, the point is deducted.",
+        "item": "2b"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate answer only makes a generic statement about immutability vs. mutability and efficiency of `singletonMap` versus `HashMap`. It never examines how the map argument is actually used inside `messageParams` (or downstream in the builder/UidFetchCommand), and it does not determine whether those usages mutate the map or only read from it. Without that analysis, the answer cannot establish whether wrapping in a HashMap is necessary or merely redundant; it just asserts the wrapping is 'unnecessary' with no support from the code context. The rubric requirement to discuss the map's usages within messageParams and clearly conclude they are read-only is not met.",
+        "item": "2c"
+    },
+    {
+        "deducted": false,
+        "feedback": "The candidate answer addresses the HashMap vs singletonMap distinction in the context of the argument passed to messageParams, characterizing the HashMap wrapper as unnecessary since it 'allows mutability without adding any entries.' This implicitly and correctly conveys that the map is not modified by its usage \u2014 it does not claim that messageParams or its downstream usages mutate the map. Since the specified deduction condition (incorrectly stating that the usages of the map argument modify it) is not triggered, no points are deducted, though the answer is quite shallow and does not explicitly examine how messageParams consumes the map.",
+        "item": "2d"
+    }
+]

@@ -1,0 +1,26 @@
+[
+    {
+        "id": "1a_control_vs_reachability_dependency",
+        "name": "requires data/usage dependency for setVisibility vs counts control\u2011flow reachability as dependency",
+        "side_a": "Credit answers that distinguish the null\u2011guard (control flow) from actual dependency of the setVisibility logic, i.e., they say the visibility line itself does not depend on drawer even though an early return guards it.",
+        "side_b": "Deduct answers that claim the end code 'depends on drawer' solely because an early return on drawer==null gates reachability, conflating control flow with dependency."
+    },
+    {
+        "id": "1a_scope_end_code_line_vs_block",
+        "name": "scopes \u201ccode at the end\u201d to the final visibility line vs treats the whole post\u2011guard block (incl. drawer calls) as \u201cthe end\u201d",
+        "side_a": "Credit answers that interpret \u201cthe code at the end\u201d as the final actionBarSubTitle.setVisibility statement and assess that line\u2019s dependency in isolation.",
+        "side_b": "Deduct answers that interpret \u201cthe end\u201d as the broader post\u2011guard region and argue dependency based on the drawer\u2011selection calls in that block."
+    },
+    {
+        "id": "3a_control_flow_gating_vs_ensures_non_null",
+        "name": "accurate control\u2011flow gating vs claims it 'ensures non\u2011null'",
+        "side_a": "Credit if the answer correctly characterizes the dependency as control-flow gating (e.g., early return prevents later code) or explicitly notes no direct dependency.",
+        "side_b": "Deduct if the answer incorrectly claims the early return 'ensures' the object is non-null, conflating gating with guaranteeing non-null."
+    },
+    {
+        "id": "3b_control_flow_guard_vs_external_assumption",
+        "name": "Recognizes in-method guard/control-flow dependency vs claims external precondition/no direct dependency",
+        "side_a": "no_deduct: Credit answers that explicitly tie the dependency to the method\u2019s own null check/early return, i.e., that the subsequent code only executes when drawer is non-null because the method returns early if it is null.",
+        "side_b": "deduct: Withhold credit when the answer denies a dependency or shifts it to an external assumption/precondition (e.g., says it does not directly depend on drawer being non-null or that drawer is assumed/initialized before the call), instead of acknowledging the in-method guard."
+    }
+]

@@ -1,0 +1,37 @@
+[
+    {
+        "deducted": false,
+        "feedback": "The rubric's explicit deduction criterion is whether the answer states that a singletonMap is immutable. The candidate answer clearly and correctly does this: it states that `Collections.singletonMap()` returns an immutable Map, that any attempt to modify it would throw `UnsupportedOperationException`, and contrasts this with `HashMap` being mutable. It also correctly explains the practical implication in this code context \u2014 wrapping the singletonMap in `new HashMap<>()` creates a mutable copy, which matters if `messageParams()` or downstream code mutates the map. While the answer does not explicitly discuss the fixed size (single entry) limitation of `singletonMap`, the stated deduction condition (failure to mention immutability) is satisfied, so no points are deducted.",
+        "item": "1a"
+    },
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly states that the HashMap is mutable ('The code is passing a `HashMap` (which is mutable)', 'Using `new HashMap<>()` instead creates a mutable copy'), and contrasts it with the immutable singletonMap, noting the UnsupportedOperationException risk. The mutability requirement of the rubric is clearly satisfied. Although the answer only implicitly touches on size (singletonMap holds a single entry, HashMap can grow), the specific rubric requirement \u2014 stating that a HashMap is mutable \u2014 is met.",
+        "item": "1b"
+    },
+    {
+        "deducted": true,
+        "feedback": "The answer thoroughly discusses mutability (HashMap mutable vs. singletonMap immutable, risk of UnsupportedOperationException, defensive copying), but it never states that Collections.singletonMap returns a map containing only a single key-value mapping and thus has a fixed size of one, whereas a HashMap can hold an arbitrary number of entries. In fact, it explicitly asserts that 'in all other respects (e.g., contents, performance), there is no meaningful difference,' which sidesteps the size/capacity distinction the rubric requires. Since the size/single-mapping aspect is not mentioned, the point is deducted.",
+        "item": "1c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate refers to `messageParams()` only in passing (e.g., 'if the implementation of `messageParams()` ... attempts to modify the provided `Map`'), but never states or discusses its method signature \u2014 i.e., that it accepts a `FetchProfile` and a `Map<String, Message>` (the map of message IDs to Message objects). Since the rubric explicitly requires mentioning the signature of `messageParams`, and the answer merely notes that it receives a Map without identifying the declared parameter types or how the declared type (e.g., a general `Map`) allows either a HashMap or a singletonMap to be passed, the condition is not met.",
+        "item": "2a"
+    },
+    {
+        "deducted": true,
+        "feedback": "The rubric requires the answer to state that `messageParams` takes a `HashMap` (i.e., the parameter type itself is `HashMap`, so passing the `Map` returned by `Collections.singletonMap()` would not even be type-compatible). The candidate answer only frames the distinction in terms of mutability: it says the code passes a mutable `HashMap` copy of an immutable `singletonMap`, and speculates that passing the singletonMap directly 'may fail at runtime if the implementation ... attempts to modify the provided Map'. This implies the method accepts any `Map` and that the concern is runtime mutation, which is precisely the 'mutable map' explanation the rubric deems insufficient. The mention of 'The code is passing a HashMap ... to messageParams()' is merely a description of the existing code, not a statement that the method's parameter type is `HashMap`. The final answer likewise only cites mutability. Therefore the required point is deducted.",
+        "item": "2b"
+    },
+    {
+        "deducted": true,
+        "feedback": "The rubric requires the answer to examine how the map argument is actually used inside messageParams (and downstream code) and to clearly determine that those usages are read-only. The candidate answer never inspects or describes any usage within messageParams; it only speculates conditionally (\"It may fail at runtime if the implementation of messageParams() (or code it delegates to) attempts to modify the provided Map\" and \"which is safe if the Map needs to be modified\"). This leaves the question of whether the map is mutated unresolved, rather than concluding the usages are read-only and therefore that singletonMap would work equivalently here. Hence the condition is not met and the point is deducted.",
+        "item": "2c"
+    },
+    {
+        "deducted": false,
+        "feedback": "The answer does discuss messageParams, addressing the mutability of the map passed to it and the implication for whether a singletonMap could be used directly. Crucially, it does not assert that the actual usages of the map inside messageParams modify it; the statements are explicitly hedged and conditional (\"It may fail at runtime if the implementation of messageParams() ... attempts to modify the provided Map\", \"which is safe if the Map needs to be modified\"). Since no incorrect claim is made that the map argument is in fact mutated by its usages, no deduction applies for this subitem.",
+        "item": "2d"
+    }
+]

@@ -1,0 +1,14 @@
+[
+    {
+        "id": "3a_concrete_guard_statement_vs_abstract_nullity_claim",
+        "name": "Names the concrete guard construct (the `if (drawer == null) return;` early exit) vs. only asserts abstractly that behavior 'depends on the nullity of drawer'",
+        "side_a": "Do not deduct when the answer identifies the actual guarding construct \u2014 the early-return null check (or equivalent `if (drawer != null)` block) \u2014 as the mechanism that gates the end-of-method code, e.g. 'the method contains a check `if (drawer == null) { return; }`' or 'if drawer is null, the method returns early'.",
+        "side_b": "Deduct 2 when the answer only asserts in the abstract that what happens next 'is determined by' whether drawer is null, without pointing to the early-return/null-check statement that implements the gating; a bare dependency assertion is not a discussion of the guard."
+    },
+    {
+        "id": "3a_control_dependence_vs_object_usage_framing",
+        "name": "Frames the dependency as control-dependence of code that doesn't itself touch drawer vs. frames it as the following calls needing/using the drawer object",
+        "side_a": "Do not deduct when the dependency is explained as reachability of the trailing code in general (it 'is never reached'/'does not execute'), without reducing it to the fact that the following statements invoke methods on drawer.",
+        "side_b": "Deduct 2 when the answer's account of the dependency rests on the subsequent code using the drawer object as a receiver (needing a non-null instance to call selectFolder/selectUnifiedInbox), since that identifies a data/usage dependency of the drawer calls rather than the control dependence of the end-of-method statement."
+    }
+]

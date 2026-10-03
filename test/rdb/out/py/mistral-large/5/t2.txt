@@ -1,0 +1,1 @@
+Yes, we need both checks because they ensure the integrity and availability of essential components required for the process to continue successfully.

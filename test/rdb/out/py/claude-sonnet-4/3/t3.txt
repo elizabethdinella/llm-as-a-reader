@@ -1,0 +1,2 @@
+
+No, we should keep ASCII as the encoding. The HTTP Host header should contain ASCII-encoded hostnames according to web standards, even for internationalized domain names (which use Punycode encoding). Using ASCII decoding ensures compliance with HTTP specifications and will properly raise an error if invalid non-ASCII data is encountered, which is preferable to silently accepting potentially malformed host data.

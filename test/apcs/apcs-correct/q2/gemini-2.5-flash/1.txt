@@ -1,0 +1,24 @@
+<answer>
+```java
+public class Bottle {
+    private double capacity;
+    private double currentAmount;
+
+    public Bottle(double capacity) {
+        this.capacity = capacity;
+        this.currentAmount = capacity; // Filled to capacity upon construction
+    }
+
+    public double updateAmount(double amountRemoved) {
+        this.currentAmount -= amountRemoved;
+
+        // Check if the remaining amount is less than 25% of the capacity
+        if (this.currentAmount < (0.25 * this.capacity)) {
+            this.currentAmount = this.capacity; // If so, refill to capacity
+        }
+
+        return this.currentAmount;
+    }
+}
+```
+</answer>

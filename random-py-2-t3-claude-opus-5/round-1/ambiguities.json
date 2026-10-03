@@ -1,0 +1,38 @@
+[
+    {
+        "id": "1a_scope_characterization_vs_bare_label",
+        "name": "Describes the cumulative set's scope (accumulates over the whole test run, ever-growing, vs. per-interval sets) vs. uses the word 'cumulative' only as a bare label in the recommendation",
+        "side_a": "Do not deduct when the answer attaches some descriptive property to the cumulative KPISet that conveys its meaning \u2014 e.g. that it accumulates data across the entire test duration, is long-lived/ever-growing, or covers the whole run as opposed to a single interval/label set. Explaining it via this scope contrast is sufficient, no merging mechanics needed.",
+        "side_b": "Deduct when the word 'cumulative' appears only as a bare token inside the recommendation ('not just the cumulative one', 'every KPISet, not only cumulative ones') with no property ever predicated of it \u2014 even if other KPISets are named (e.g. 'per-second set'), the cumulative set itself is never characterized, so its meaning is left entirely unexplained."
+    },
+    {
+        "id": "1b_recommendation_scope_all_vs_cumulative_only",
+        "name": "Bottom-line recommendation: call _compact_times() on every KPISet vs only on the cumulative KPISet",
+        "side_a": "No deduct: the answer's actual recommendation is that _compact_times() should be called for every/all KPISets (not restricted to the cumulative one), i.e. compaction is treated as a general prerequisite for correct recalculation. Credit even if the stated reasons (memory bounding, idempotence, data integrity) are speculative or partly wrong, so long as the scope recommendation is 'all KPISets'.",
+        "side_b": "Deduct the 3 points when the answer concludes that _compact_times() should be called only on cumulative KPISets and that per-interval/per-label KPISets do not need it (e.g. 'only cumulative KPIsets', 'the intent is to compact only the cumulative set'), since this restricts compaction to the cumulative case."
+    },
+    {
+        "id": "2a_memory_vs_accuracy_purpose",
+        "name": "Purpose attributed to _compact_times(): data-size/precision tradeoff vs accuracy prerequisite",
+        "side_a": "Do not deduct if the answer attributes the call to shrinking/bounding the stored response-time data (histogram/buckets/key limit), even if it also mentions statistics \u2014 i.e., it treats compaction as trading precision/CPU for a smaller structure.",
+        "side_b": "Deduct if the answer attributes the call solely to making the statistics correct \u2014 framing compaction as a prerequisite for 'accurate'/'proper' averages, percentiles and stddev or for 'data integrity' \u2014 with no notion that it shrinks or merges the stored data."
+    },
+    {
+        "id": "2b_scope_recommendation",
+        "name": "Recommends compacting every KPISet vs restricting compaction to the cumulative KPISet only",
+        "side_a": "No deduction when the answer's bottom line is that _compact_times() should be called on every KPISet (not just the cumulative one), i.e. it endorses the universal/unconditional call.",
+        "side_b": "Deduct the 2 points when the answer concludes that compaction should be applied only to the cumulative KPISet and that per-interval/per-label KPISets should be skipped (or that calling it on them is unnecessary overhead / precision-losing)."
+    },
+    {
+        "id": "2c_scope_recommendation",
+        "name": "answer restricts compaction to the cumulative set (cost is a reason to limit it) vs. advocates universal compaction (cost framed as acceptable/beneficial)",
+        "side_a": "No deduction if the answer concludes that _compact_times should be called only on the cumulative KPISet and uses the per-KPISet overhead as the reason to exclude the other sets \u2014 i.e., the overhead is presented as a reason not to do it.",
+        "side_b": "Deduct 1 point if the answer recommends calling _compact_times on every KPISet, so that any mention of overhead/memory is framed as something worth paying or as a benefit rather than as a cost that argues against universal invocation."
+    },
+    {
+        "id": "2c_accuracy_tradeoff",
+        "name": "recognizes compaction's precision/accuracy loss as part of the cost vs. claims compaction improves or does not affect accuracy",
+        "side_a": "No deduction if the answer identifies that compacting a KPISet degrades data fidelity (loss of precision, skewed percentiles) as a downside of running it on every set, in addition to or instead of runtime cost.",
+        "side_b": "Deduct 1 point if the answer asserts compaction is accuracy-neutral or accuracy-improving (a prerequisite for correct stats, 'does not hurt accuracy'), since this removes the only remaining trade-off and leaves no identified cost of per-KPISet invocation."
+    }
+]

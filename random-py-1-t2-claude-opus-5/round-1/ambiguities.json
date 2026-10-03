@@ -1,0 +1,8 @@
+[
+    {
+        "id": "1b_distinct_custom_function",
+        "name": "Bare `cross_entropy` framed as a *different, custom* function that exists in the project vs framed as the same PyTorch function missing its namespace prefix",
+        "side_a": "Do not deduct when the answer frames the bare name purely as a namespace/scope issue \u2014 i.e., it is the same cross-entropy functionality that simply has no binding in this file unless imported, and says the call would fail. No claim is made that some other, project-specific `cross_entropy` function exists.",
+        "side_b": "Deduct 2 points when the answer posits a separate, custom/user-defined `cross_entropy` function living elsewhere in the codebase and explains how it differs from `F.cross_entropy` (extra features, wrapping, logging, side-effects, different defaults). Inventing a distinct implementation is itself a claim that the name is defined/imported, even when softened with 'appears to be' or 'might be'."
+    }
+]

@@ -1,0 +1,2 @@
+
+`Collections.singletonMap(...)` creates an *immutable* one‑entry map, while `new HashMap<>(Collections.singletonMap(...))` creates a *mutable* copy. The immutable map is smaller and safer (no accidental writes), but it cannot be modified later; the `HashMap` can be changed but costs a bit of memory and allocation time.

@@ -1,0 +1,17 @@
+public Account(String requestedName) {
+    String nameToCheck = requestedName;
+    if (isAvailable(nameToCheck)) {
+        this.username = nameToCheck;
+    } else {
+        int i = 1;
+        while (true) {
+            nameToCheck = requestedName + i; // i is not incremented inside the loop
+            if (isAvailable(nameToCheck)) {
+                this.username = nameToCheck;
+                break;
+            }
+            // Missing i++ here, causing infinite loop
+        }
+    }
+}
+

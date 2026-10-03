@@ -1,0 +1,2 @@
+
+Calling `compact_times()` on every KPI set ensures data consistency and integrity across all sets but may impact performance. Limiting it to cumulative KPI sets could enhance efficiency but might lead to discrepancies. The choice depends on your application's specific needs and priorities.

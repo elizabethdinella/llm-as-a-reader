@@ -1,0 +1,30 @@
+[
+  {
+    "justification": "The answer does not state that Collections.singletonMap returns an immutable map.",
+    "deducted": true
+  },
+  {
+    "justification": "Calling HashMap 'dynamic' does not clearly state that it is mutable.",
+    "deducted": true
+  },
+  {
+    "justification": "The answer correctly states that singletonMap is designed for exactly one entry.",
+    "deducted": false
+  },
+  {
+    "justification": "The messageParams method signature is not mentioned.",
+    "deducted": true
+  },
+  {
+    "justification": "The answer does not state that messageParams specifically takes a HashMap.",
+    "deducted": true
+  },
+  {
+    "justification": "The answer does not discuss how the map is used within messageParams or establish that those usages are read-only.",
+    "deducted": true
+  },
+  {
+    "justification": "The answer does not incorrectly claim that messageParams modifies the map.",
+    "deducted": false
+  }
+]

@@ -1,0 +1,8 @@
+[
+    {
+        "id": "2b_prevalence_claim",
+        "name": "Generalized claim that real-world headers are/can be UTF-8 encoded vs no such empirical generalization (hedge or ASCII-only stance)",
+        "side_a": "No deduct when the answer makes no generalization about what real HTTP headers actually carry \u2014 i.e., it either states the ASCII-only rule, or merely hedges about trade-offs ('could provide more flexibility', 'depends on requirements') without asserting that headers in practice are UTF-8/non-ASCII encoded.",
+        "side_b": "Deduct when the answer grounds its recommendation in an empirical generalization that headers are commonly encoded in UTF-8 / commonly carry non-ASCII (e.g., 'more accommodating of common practices where headers might be encoded in UTF-8'), since this asserts non-ASCII header content as the normal case even though it is framed as practice rather than as spec."
+    }
+]

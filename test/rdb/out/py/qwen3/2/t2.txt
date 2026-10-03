@@ -1,0 +1,2 @@
+  
+The code currently calls `compact_times()` on every `KPIset`, but the decision should depend on whether this method is required for all `KPIset` instances or only cumulative ones. If `compact_times()` is a general preprocessing step, it should be called on every `KPIset`. If it is specific to cumulative data, the code should conditionally invoke it based on the `KPIset` type.  

@@ -1,0 +1,18 @@
+[
+{
+"DECISION": "YES",
+"FEEDBACK": "A1: The response calls isAvailable(requestedName) and isAvailable(requestedName + suffix), both with String arguments and both as static/implicit calls on the Account class. There are no incorrect calls (no calls on a String object or other non-Account entity), so the point is earned."
+},
+{
+"DECISION": "YES",
+"FEEDBACK": "A2: There is a loop whose condition calls the availability method with a potential username (requestedName + suffix), and the body of the loop contains an assignment that constructs/updates a potential username (username = requestedName + suffix). Although the constructed value never actually changes because suffix is never incremented, the rubric explicitly allows the point when potential usernames are updated incorrectly, so long as availability is checked with a potential username and an update occurs in the loop body. Both conditions are met, so the point is earned."
+},
+{
+"DECISION": "NO",
+"FEEDBACK": "A3: The variable suffix is initialized to 1 but is never incremented anywhere — there is no suffix++ or suffix = suffix + 1 inside (or outside) the loop. Since no count is ever incremented in the context of the loop, this results in an infinite loop when requestedName is unavailable, and the point cannot be awarded."
+},
+{
+"DECISION": "NO",
+"FEEDBACK": "A4: The algorithm fails for the unavailable case. Because suffix is never incremented, the while loop repeatedly tests the same string requestedName + 1 and repeatedly assigns the same value to username, producing an infinite loop and never finding the first available variation. The rubric states the point is not earned if the response fails to increment a count or fails to append the correct integer to username when necessary. The available-name case is handled correctly, but the overall algorithm is not, so the point is not earned."
+}
+]

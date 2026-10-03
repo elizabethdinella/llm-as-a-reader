@@ -1,0 +1,1 @@
+Yes, to avoid modifying the original `reply.result` object when the transaction type is not SCHEMA or ISSUER_KEY, it is necessary to create a deep copy of `result` before modifying `result[DATA]`. This ensures that modifications to `result[DATA]` do not unintentionally affect the original `reply.result` object, which is used later in the function.

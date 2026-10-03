@@ -1,0 +1,32 @@
+[
+    {
+        "id": "1a_bottom_line_verdict",
+        "name": "answer concludes the deepcopy IS needed (protects reply.result) vs. concludes it is NOT needed / mutation is safe",
+        "side_a": "Credit when the answer's bottom-line verdict affirms that the deepcopy is needed (or at least that skipping it means mutating the original reply.result), i.e. it affirms the aliasing consequence rather than denying it. A conditional caveat ('if you're fine with mutating the original you can skip it') is fine as long as the main verdict is that the copy protects reply.result from the result[DATA] serialization.",
+        "side_b": "Deduct when the answer's verdict denies that the deepcopy matters for the result[DATA] assignment \u2014 e.g. it says the copy is only needed for certain transaction types and that modifying result[DATA] is 'intentional and safe' \u2014 since this asserts the opposite of the required decoupling fact instead of stating it."
+    },
+    {
+        "id": "1b_verdict_direction",
+        "name": "Affirms the deepcopy is needed vs denies it / declares the unguarded mutation safe",
+        "side_a": "No deduction if the answer answers 'Yes, the deepcopy is necessary' and justifies it purely by aliasing between `result` and `reply.result`, without carving out cases where it is unnecessary.",
+        "side_b": "Deduct 2 points if the answer denies the need for the deepcopy or restricts it to a subset of cases, declaring the mutation safe/intentional outside that subset (e.g., 'No, you only need to call deepcopy when handling SCHEMA or ISSUER_KEY ... otherwise ... safe') \u2014 the carve-out is itself a claim about what happens for the remaining transactions."
+    },
+    {
+        "id": "1b_type_gated_bug_claim",
+        "name": "Type-agnostic aliasing explanation vs claiming the deepcopy is transaction-type-gated and therefore buggy for the other branch",
+        "side_a": "No deduction if the explanation stays at the level of object references (`result` is the same dict as `reply.result`) and never conditions the risk on which transaction type is being processed.",
+        "side_b": "Deduct 2 points if the answer asserts that the deepcopy is conditioned on specific transaction types and that the unconditional DATA modification causes side effects in the other branch \u2014 even when those other types are left unnamed/generic ('if the transaction type is different'). A generic 'other transaction types' claim counts as an implication claim."
+    },
+    {
+        "id": "2a_aliasing_mechanism_named",
+        "name": "explains the shared-reference/aliasing mechanism (same dict object held elsewhere) vs merely asserts 'modifying would change the original'",
+        "side_a": "No deduction when the answer explicitly identifies the aliasing mechanism \u2014 that `result` and `reply.result` are the *same* object and that other code still holds a reference to it \u2014 so the mutated/serialized dict is literally the object other consumers read.",
+        "side_b": "Deduct when the answer only asserts the consequence ('would also modify the original', 'prevent unintended changes to the original reply.result') without stating that the same object is shared with / still referenced by downstream consumers."
+    },
+    {
+        "id": "2a_verdict_direction",
+        "name": "affirms the deepcopy is needed before the DATA mutation vs denies it / restricts it to specific txn types",
+        "side_a": "No deduction when the answer concludes the deepcopy is required (or at least recommended) before serializing/overwriting `result[DATA]`.",
+        "side_b": "Deduct when the answer concludes the copy is unnecessary for the DATA path or is only needed for SCHEMA/ISSUER_KEY, since it then never treats the serialized DATA as reaching any downstream consumer."
+    }
+]

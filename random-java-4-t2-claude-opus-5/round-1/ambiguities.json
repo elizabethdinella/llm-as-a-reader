@@ -1,0 +1,38 @@
+[
+    {
+        "id": "1a_cache_enabled_precondition",
+        "name": "Null arises specifically in the caching-ENABLED branch (names the enabled-cache precondition) vs. null described generically as 'not in the map' with no caching-state precondition",
+        "side_a": "Credit when the answer locates the null as occurring while caching is enabled \u2014 i.e., it ties the check to the second disjunct of `!isCachingEnabled() || roleInfoList == null` and says the DB fetch must still happen even though caching is on.",
+        "side_b": "Deduct when the answer only says the value is null because the username/key isn't in the map (or doesn't mention the cache's enabled state at all), so it never connects the check to the caching-enabled path of the condition."
+    },
+    {
+        "id": "1b_which_value_is_null_checked",
+        "name": "Check is on the cache-lookup result (controls whether DB is queried) vs. check is on the DB result / a defensive NPE guard",
+        "side_a": "Credit when the answer identifies the checked value as the cache lookup result and the check's role as gating the database query.",
+        "side_b": "Deduct when the answer treats the check as guarding a different value (e.g. the DB fetch result) or as generic NullPointerException/defensive protection rather than as cache-miss control flow."
+    },
+    {
+        "id": "1d_cache_miss_vs_npe_defense",
+        "name": "Explains the guard as cache-miss fallback to the DB vs. generic NPE/defensive protection against a failed fetch",
+        "side_a": "Give credit if the answer explains the null check as detecting a cache miss (the map lookup returned null) and thereby causing the code to fall through to the database query \u2014 i.e., it ties the null to the absence of an entry in roleInfoMap and to triggering the DB fetch.",
+        "side_b": "Deduct 2 points if the answer justifies the null check as defensive programming \u2014 preventing a NullPointerException or guarding against a database fetch failing or returning an unexpected result \u2014 rather than as the cache-miss condition that triggers the database lookup, since this misstates the guard's purpose and its position relative to the query."
+    },
+    {
+        "id": "2a_keyed_cache_miss_vs_generic_cache",
+        "name": "Locates the null in a per-key map lookup (username absent from roleInfoMap \u2192 get() returns null) vs. vague/wrong account of where the null comes from",
+        "side_a": "Credit when the answer ties the null to the specific lookup \u2014 the user's roles not being present in the role map so that the get call returns null (names the map/key, e.g. roleInfoMap / map.get(username)) \u2014 i.e. it identifies a per-user cache miss.",
+        "side_b": "Deduct when the answer only speaks of 'the cache' in the abstract ('the cache is empty', 'a null value from the cache'), or attributes the null to something else entirely (a failed/unexpected database fetch, NPE risk), without identifying that the null arises because that username has no entry in the role map."
+    },
+    {
+        "id": "2a_callervisible_consequence",
+        "name": "States the unhedged caller-visible consequence of removing the check (method returns null / fails to load the user's roles) vs. omits it or hedges it",
+        "side_a": "Credit when the answer spells out, as a definite outcome, what the caller would get without the check \u2014 the method would return null / fail to load the roles for that user instead of falling back to the DB.",
+        "side_b": "Deduct when the answer stops at the internal branch behaviour ('the DB fetch wouldn't be triggered') or qualifies the bad outcome as merely possible ('which might not be intended'), so the actual failure mode is never firmly asserted."
+    },
+    {
+        "id": "3a_db_error_vs_user_absence",
+        "name": "null attributed to a generic DB failure/unexpected result vs. attributed to the queried user having no record",
+        "side_a": "If the answer traces the null to the data source having no record for the requested username (the lookup legitimately finds nothing for that user), give credit \u2014 do not deduct the 1 point.",
+        "side_b": "If the answer only invokes a generic failure mode of the fetch \u2014 'the database fetch operation fails', 'returns an unexpected result', 'the fetch errors out' \u2014 without saying the user has no record, that does not cover this item; deduct the 1 point."
+    }
+]

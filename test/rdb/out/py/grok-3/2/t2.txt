@@ -1,0 +1,2 @@
+
+You should call `compact_times()` on every `KPIset` to ensure that timing data is properly prepared for recalculation of metrics, as it is invoked unconditionally in the `recalculate` method. However, if `compact_times()` is specifically for aggregating data in cumulative `KPIsets` and individual sets do not require this step, you could optimize by limiting the call to cumulative sets, provided this is supported by the method's purpose and documentation.

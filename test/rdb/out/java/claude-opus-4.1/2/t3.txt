@@ -1,0 +1,2 @@
+
+Collections.singletonMap returns an immutable, memory-efficient map with exactly one entry that cannot be modified, while wrapping it in a new HashMap creates a mutable copy that can be modified later. In this code, the HashMap wrapper is likely used because the messageParams method either requires a mutable map for subsequent operations or specifically expects a HashMap type rather than the generic Map interface.

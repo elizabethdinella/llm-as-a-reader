@@ -1,0 +1,32 @@
+[
+    {
+        "id": "1b_nullcheck_mention",
+        "name": "explicit null\u2011check mention vs no null\u2011check mention",
+        "side_a": "Credit the answer when it explicitly refers to the `if (drawer == null) { return; }` guard (or an equivalent early\u2011return null check).",
+        "side_b": "Deduct credit when the answer makes no mention of the null\u2011check guard and only speaks in vague terms about \u201cassuming drawer is initialized\u201d."
+    },
+    {
+        "id": "2b_dependency_claim",
+        "name": "explicit\u2011dependency claim vs non\u2011dependency claim",
+        "side_a": "Answer states that the code at the end of `initializeFromLocalSearch` depends on the `drawer` object (mentions the null\u2011check and conditional execution).",
+        "side_b": "Answer states that the code does **not** directly depend on `drawer` (treats it as an assumed\u2011already\u2011initialized object)."
+    },
+    {
+        "id": "3a_conditional_vs_direct_dependence",
+        "name": "recognizes conditional dependence vs claims direct dependence on drawer",
+        "side_a": "Credit the answer when it notes that the code\u2019s execution depends on drawer only conditionally (e.g., via an early\u2011return) or states that the final line does not directly reference drawer but is merely gated by the null\u2011check.",
+        "side_b": "Deduct when the answer asserts that the code directly depends on the drawer object without mentioning the conditional nature or the gating effect of the null\u2011check."
+    },
+    {
+        "id": "3b_null_check_mention",
+        "name": "explicit null\u2011check mention vs omission",
+        "side_a": "Credit answers that explicitly mention the `if (drawer == null) { return; }` guard (or any equivalent early\u2011return null check).",
+        "side_b": "Deduct answers that omit any reference to the null\u2011check guard and instead assume the drawer is already initialized."
+    },
+    {
+        "id": "3b_claims_dependence",
+        "name": "states dependence on drawer vs states no direct dependence",
+        "side_a": "Credit answers that state that the code **depends** on the drawer object (e.g., \u201cthe code depends on drawer\u201d).",
+        "side_b": "Deduct answers that claim the code **does not directly depend** on drawer (or similar wording)."
+    }
+]

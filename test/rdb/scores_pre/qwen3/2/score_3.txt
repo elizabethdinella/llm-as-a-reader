@@ -1,0 +1,37 @@
+[
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly identifies mutability as the key distinction, stating that `Collections.singletonMap` creates an **immutable** map with a single entry whose contents cannot be modified after creation, while the wrapping `HashMap` produces a mutable map that can be modified. It also touches on the size aspect by noting the singleton map holds a single entry. Since the rubric's core requirement \u2014 stating that singletonMap is immutable \u2014 is clearly satisfied, no deduction applies.",
+        "item": "1a"
+    },
+    {
+        "deducted": false,
+        "feedback": "The rubric's explicit deduction condition is whether the answer states that a HashMap is mutable. The candidate clearly does so: it states that `Collections.singletonMap` creates an immutable single-entry map while wrapping it in a `HashMap` yields a mutable map, and concludes that 'using `HashMap` allows potential modifications to the map, while `singletonMap` would prevent such changes.' It also touches on the size aspect by noting singletonMap holds exactly one entry (implying HashMap can hold/add more). Therefore the mutability requirement is satisfied and no deduction applies, despite the answer's verbose and somewhat repetitive reasoning and its speculative claim about `messageParams` requiring a `HashMap` type.",
+        "item": "1b"
+    },
+    {
+        "deducted": false,
+        "feedback": "The rubric requires that the answer discuss mutability differences and explicitly note that singletonMap holds only a single key-value mapping. The candidate's response addresses mutability at length (singletonMap is immutable, HashMap is mutable/modifiable) and in its explanation explicitly states that 'Collections.singletonMap creates an immutable map with a single entry,' i.e., it contains only one key-value mapping. While the final one-line <answer> omits the 'single entry' detail, the accompanying explanation clearly states it, so the condition for size/single-mapping is satisfied along with the mutability discussion. No deduction.",
+        "item": "1c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The rubric requires the answer to discuss `messageParams` by referencing its actual method signature (i.e., that it accepts a FetchProfile and a Map<String, Message>, and specifically whether the declared parameter type is a Map or a concrete HashMap). The candidate answer repeatedly speculates (\"If `messageParams` expects a `HashMap`...\", \"if the method accepts a Map, then singletonMap is okay\") but never states or identifies the actual signature of `messageParams`, nor the key/value types (String key, Message value) evident from the call site. The final answer text omits any mention of `messageParams` at all, only stating the generic mutability difference between singletonMap and HashMap. Therefore the requirement to mention the signature of `messageParams` is not met, and the point is deducted.",
+        "item": "2a"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate's final conclusion frames the difference purely in terms of mutability: \"Using `singletonMap` creates an immutable map, while `HashMap` allows modifications. The code uses `HashMap` to ensure mutability.\" The rubric explicitly says that stating the map must be mutable is not specific enough \u2014 the answer needs to state that `messageParams` takes (i.e., its signature declares) a `HashMap`. The only mention of this is a hedged, conditional aside in the body (\"If `messageParams` expects a `HashMap`, using `singletonMap` directly would not compile unless cast\"), which is immediately undercut by attributing the conversion to a desire for mutability rather than to the method's parameter type. The candidate never commits to the claim that `messageParams` requires a `HashMap` type, and the answer block omits it entirely. Therefore the point is deducted.",
+        "item": "2b"
+    },
+    {
+        "deducted": true,
+        "feedback": "The answer never actually examines how the map argument is used inside `messageParams` (or downstream in the builder/command). It only reasons abstractly about HashMap vs singletonMap mutability and speculates about the method's declared parameter type (\"If `messageParams` expects a `HashMap`, using `singletonMap` directly would not compile unless cast\"), which is an unsupported guess rather than an analysis of the method's usage of the map. It never establishes that the map's usages are read-only (e.g., only lookups/gets), and its statements are hedged and contradictory: it claims the code \"explicitly converts it to a `HashMap` to ensure mutability\" and provides \"flexibility,\" while elsewhere saying \"the map is not modified later\" and \"the difference is negligible.\" Thus it fails to clearly determine whether the usages modify the map, so the point is deducted.",
+        "item": "2c"
+    },
+    {
+        "deducted": false,
+        "feedback": "The answer does engage with `messageParams`, speculating about the parameter type it expects and explaining that the argument passed is a mutable `HashMap` derived from an immutable `Collections.singletonMap`. Crucially, it does not assert that the downstream usages of the map argument actually modify it \u2014 in fact, it explicitly states twice that \"the map is not modified later\" / \"the map isn't altered later,\" framing the mutable `HashMap` only as providing potential flexibility. Therefore the specific error targeted by this rubric item (incorrectly claiming that consumers of the map mutate it) is not committed, and no deduction applies for this subitem. (Other weaknesses, such as the unsupported speculation that `messageParams` requires a concrete `HashMap` type, are outside the scope of this particular subitem.)",
+        "item": "2d"
+    }
+]

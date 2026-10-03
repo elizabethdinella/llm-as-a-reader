@@ -1,0 +1,8 @@
+[
+    {
+        "id": "2c_null-check-recommendation",
+        "name": "definitive\u2011yes\u2011null\u2011check vs optional\u2011null\u2011check",
+        "side_a": "Answer says a null\u2011check is **not required** (e.g., \u201cyou don't necessarily need to add a null check\u201d).",
+        "side_b": "Answer says you **must** add a null\u2011check (e.g., \u201cyou should/absolutely should add a null check\u201d)."
+    }
+]

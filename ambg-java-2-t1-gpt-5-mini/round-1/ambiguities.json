@@ -1,0 +1,32 @@
+[
+    {
+        "id": "1a_conditional_vs_absolute",
+        "name": "explicitly notes exception/condition vs gives a blanket recommendation",
+        "side_a": "Answer explicitly acknowledges a conditional/caveat (e.g., 'may be necessary', 'unless the called method requires ...', 'if no changes are intended') and thus frames the HashMap vs singletonMap choice as context-dependent.",
+        "side_b": "Answer gives a blanket, unconditional recommendation (e.g., only claims singletonMap is better/ more efficient) without acknowledging cases where a mutable HashMap might be required."
+    },
+    {
+        "id": "1a_intent_vs_only_efficiency",
+        "name": "emphasizes expressiveness/data-integrity vs mentions only memory/efficiency",
+        "side_a": "Answer cites expressiveness/data integrity or conveys 'intent' (e.g., 'expressive of intent', 'convey the intent of a fixed mapping') as a reason to prefer singletonMap.",
+        "side_b": "Answer mentions only memory/efficiency (e.g., 'more memory-efficient') or performance and does not mention intent/data-integrity."
+    },
+    {
+        "id": "1b_mutability_as_justification",
+        "name": "explicitly justifies HashMap use because it may be mutated (caller/callee) vs argues for HashMap/singletonMap based on size/efficiency",
+        "side_a": "Award when the answer explicitly frames HashMap-as-choice in terms of mutability needed by the code (e.g., saying the map \"can be modified\", \"allows modifications\", or that the builder/called method might alter the map).",
+        "side_b": "Deduct when the answer instead justifies preferring singletonMap/HashMap purely by capacity/efficiency/expected size (e.g., 'more memory-efficient', 'intended for dynamic and potentially larger collections') and gives no mutability-as-justification."
+    },
+    {
+        "id": "1b_intent_vs_perf",
+        "name": "mentions semantic intent / data-integrity (expressing immutability) vs only mentions technical efficiency",
+        "side_a": "Award when the answer highlights that passing singletonMap better conveys intent or preserves data integrity (e.g., 'convey the intent of a fixed mapping', 'prevent unintended changes').",
+        "side_b": "Deduct when the answer limits the comparison to technical/resource considerations (memory-efficiency, suitability for larger/dynamic collections) without discussing intent or data-integrity implications."
+    },
+    {
+        "id": "2d_efficiency_intent_vs_mutation_justification",
+        "name": "argues singletonMap is preferable for efficiency/intent (no actual mutation) vs justifies HashMap because mutation is needed/occurs",
+        "side_a": "No deduction: The answer frames the HashMap->singletonMap choice in terms of efficiency, memory use, and expressing intent (i.e. the map is fixed / not modified). It either states the map isn't modified or gives performance/clarity reasons for preferring singletonMap rather than asserting an actual mutation occurs.",
+        "side_b": "Deduct: The answer's primary claim is that HashMap was used because the map will be modified (i.e. it asserts mutation is needed/occurs inside or as a consequence of the call), using that as the main justification."
+    }
+]

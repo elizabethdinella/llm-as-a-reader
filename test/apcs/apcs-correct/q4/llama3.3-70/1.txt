@@ -1,0 +1,20 @@
+```java
+public int getPointsForRow(int targetRow) {
+    int points = 0;
+    String color = board[targetRow][0].getColor();
+    boolean allSameColor = true;
+
+    for (int col = 0; col < board[0].length; col++) {
+        points += board[targetRow][col].getPoints();
+        if (!board[targetRow][col].getColor().equals(color)) {
+            allSameColor = false;
+        }
+    }
+
+    if (allSameColor) {
+        points *= 2;
+    }
+
+    return points;
+}
+```

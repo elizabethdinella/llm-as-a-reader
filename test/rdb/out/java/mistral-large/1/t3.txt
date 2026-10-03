@@ -1,0 +1,1 @@
+Yes, the code at the end of initializeFromLocalSearch depends on drawer because whether or not any further actions are taken (such as selecting a folder or unified inbox) is determined by the nullity of drawer.

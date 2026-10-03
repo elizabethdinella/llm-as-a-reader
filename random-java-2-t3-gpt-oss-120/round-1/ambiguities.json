@@ -1,0 +1,32 @@
+[
+    {
+        "id": "1c_mutability_accuracy",
+        "name": "correct\u2011mutability\u2011statement vs incorrect\u2011mutability\u2011claim",
+        "side_a": "No deduct if the answer does **not** claim that `Collections.singletonMap` yields a mutable map \u2013 i.e., it either correctly states that the singleton map is immutable (or makes no mutability claim).",
+        "side_b": "Deduct if the answer claims that `Collections.singletonMap` is mutable or that both the singleton map and the wrapped `HashMap` result in a mutable map being passed."
+    },
+    {
+        "id": "2a_conditional_usage",
+        "name": "mentions conditional choice based on mutability vs does not mention it",
+        "side_a": "The answer states that the correct approach depends on whether the map will need to be modified later.",
+        "side_b": "The answer does not mention any condition; it only describes the difference."
+    },
+    {
+        "id": "2a_exception_warning",
+        "name": "warns about UnsupportedOperationException vs no warning",
+        "side_a": "The answer warns that modifying the immutable map will throw an UnsupportedOperationException.",
+        "side_b": "The answer does not mention this exception."
+    },
+    {
+        "id": "2b_judgement_necessity",
+        "name": "Judges HashMap necessity vs. neutral description",
+        "side_a": "Credit answers that explicitly state whether using a HashMap is necessary, unnecessary, more/less efficient, or otherwise appropriate (i.e., give a recommendation or judgement about the choice).",
+        "side_b": "Deduct answers that only describe the technical difference between `Collections.singletonMap` and `new HashMap<>(\u2026)` without offering any judgement about whether the HashMap is needed or appropriate."
+    },
+    {
+        "id": "2c_mutability_accuracy",
+        "name": "definitive correct mutability claim vs inaccurate/hedged or missing mutability claim",
+        "side_a": "Credit the answer when it makes a clear, correct statement that the map passed to\u202f`messageParams` is immutable (or that using the singleton map alone is sufficient), without hedging or contradictory remarks.",
+        "side_b": "Deduct the answer when it either states the wrong mutability (e.g., claims the map is mutable when it is not), hedges by saying it depends, or does not address mutability at all."
+    }
+]

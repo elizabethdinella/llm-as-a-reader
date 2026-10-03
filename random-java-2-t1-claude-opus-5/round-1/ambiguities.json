@@ -1,0 +1,38 @@
+[
+    {
+        "id": "1c_cardinality_via_copy_description",
+        "name": "single-entry fact carried by describing the HashMap copy ('copying/initialized with the single entry') vs requiring the cardinality be predicated directly of singletonMap",
+        "side_a": "No_deduct if the one-mapping fact is conveyed anywhere, including indirectly as a description of what the HashMap wrapper copies \u2014 e.g. 'a new, mutable HashMap instance initialized with the single entry from the singleton map' or 'creates a mutable HashMap by copying the single entry'. The fact need not be attached grammatically to singletonMap itself.",
+        "side_b": "Deduct unless the cardinality is asserted directly of the singletonMap object (e.g. 'singletonMap contains exactly one entry'); phrasing that only mentions 'the single entry' while describing the copy into HashMap does not count, and any answer with no mention of one/single entry at all is deducted."
+    },
+    {
+        "id": "2a_verdict_singletonmap_suffices",
+        "name": "Delivers a verdict that the copy is unnecessary and singletonMap could be used directly vs. only describing the mutability contrast",
+        "side_a": "No deduction if the answer closes with an explicit judgment about this code \u2014 that the mutable copy is needed only if something downstream mutates the map, and that otherwise passing singletonMap directly is the better choice.",
+        "side_b": "Deduct if the answer stops at describing the HashMap-vs-singletonMap difference (immutable vs. mutable, throws UnsupportedOperationException, 'allows additions/removals'), or lists generic pros of singletonMap, without concluding whether the wrapper is warranted here."
+    },
+    {
+        "id": "2a_safety_vs_efficiency_rationale",
+        "name": "Preference for singletonMap justified on safety/immutability grounds vs. on efficiency alone",
+        "side_a": "No deduction if the recommendation rests on immutability as a correctness/safety property (prevents accidental modification) in addition to any performance point.",
+        "side_b": "Deduct if the only reason given for preferring singletonMap is size/speed ('more efficient', 'lightweight', 'better performance'), with mutability treated merely as an extra capability."
+    },
+    {
+        "id": "2b_conditional_vs_asserted_requirement",
+        "name": "Asserts the copy IS required by the API vs. hedges that mutability 'might be' needed",
+        "side_a": "Award credit when the answer states as fact that the downstream API (the messageParams/Builder parameter) requires the map that is passed in \u2014 i.e., the HashMap wrapper is presented as necessary, not hypothetical.",
+        "side_b": "Deduct when the answer only speculates about the need, framing it conditionally ('this mutability might be necessary if...', 'only necessary if the method ... needs to alter the map', 'allows for subsequent additions ... without throwing'), so no actual requirement is identified \u2014 the answer leaves it open that the wrapper is unnecessary."
+    },
+    {
+        "id": "2b_recommends_singletonmap_instead",
+        "name": "Treats the HashMap wrapper as the correct/needed choice vs. recommends singletonMap as the better option",
+        "side_a": "Award credit when the answer concludes the HashMap wrapper is the appropriate/needed form for the call site.",
+        "side_b": "Deduct when the answer ends by advocating that `singletonMap` be used directly because it is more efficient/safer/thread-safe, thereby asserting the wrapper is avoidable and contradicting the stated requirement."
+    },
+    {
+        "id": "2c_conditional_vs_asserted_usage",
+        "name": "Definite assertion that this code never alters the map vs. hypothetical 'if the method modifies it' framing",
+        "side_a": "Do not deduct when the answer makes a definite, unhedged factual claim about this particular code that the map is not altered after construction (e.g., 'even though the map isn't altered later'). A flat assertion of non-mutation counts as covering the usages, even if the rest of the answer is a generic HashMap-vs-singletonMap comparison.",
+        "side_b": "Deduct when the read/write behaviour is only raised conditionally or speculatively \u2014 'this might be necessary if messageParams ... internally modifies the map', 'which is only necessary if ... needs to alter the map's contents', 'additions ... which would occur if the immutable singletonMap were passed directly and then modified'. Framing mutation as a hypothesis the answer never resolves (or implying mutation does happen) does not establish the usages as read-only."
+    }
+]

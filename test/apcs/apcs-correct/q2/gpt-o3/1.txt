@@ -1,0 +1,28 @@
+<answer>
+public class Bottle {
+    private final double capacity; // maximum liquid (in mL)
+    private double amount;         // current liquid (in mL)
+
+    /** Constructs a Bottle filled to the specified capacity. */
+    public Bottle(double capacity) {
+        this.capacity = capacity;
+        this.amount = capacity;
+    }
+
+    /**
+     * Removes the specified amount of liquid and refills the bottle
+     * if the remaining liquid would be less than 25% of capacity.
+     *
+     * @param toRemove amount of liquid to remove (in mL);
+     *                 precondition: 0 < toRemove <= amount
+     * @return the amount of liquid remaining after the update (in mL)
+     */
+    public double updateAmount(double toRemove) {
+        amount -= toRemove;
+        if (amount < 0.25 * capacity) {
+            amount = capacity; // refill
+        }
+        return amount;
+    }
+}
+</answer>

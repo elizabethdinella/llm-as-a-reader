@@ -1,0 +1,7 @@
+{"justification": "The answer explicitly says singletonMap 'creates a single, immutable entry', so immutability of singletonMap is mentioned.", "deducted": false}
+{"justification": "The answer states HashMap 'allows for modifications' and 'ensures mutability', so HashMap's mutability is mentioned.", "deducted": false}
+{"justification": "The answer says singletonMap creates 'a single... entry', conveying that it holds only one key-value mapping.", "deducted": false}
+{"justification": "The answer never mentions or examines the method signature of messageParams (e.g., its parameter types/declaration), so this point is deducted.", "deducted": true}
+{"justification": "The answer only speaks generically about mutability being 'necessary if changes are expected later'; it never states that messageParams specifically requires/takes a HashMap type.", "deducted": true}
+{"justification": "The answer provides no discussion of how the map argument is actually used inside messageParams, and does not determine whether those usages are read-only or mutating.", "deducted": true}
+{"justification": "The answer does not explicitly assert that the usages inside messageParams modify the map; it only makes a conditional/general remark ('necessary if changes are expected later'), so the 2-point penalty for an incorrect claim is not applied.", "deducted": false}

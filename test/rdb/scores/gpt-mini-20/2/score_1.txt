@@ -1,0 +1,9 @@
+[
+  {"item": "1a", "deducted": false, "feedback": "The answer explicitly states that Collections.singletonMap creates an immutable one-entry map and that put/remove throws UnsupportedOperationException, satisfying the immutability requirement."},
+  {"item": "1b", "deducted": false, "feedback": "The answer explicitly states the HashMap copy is mutable and that entries can be added or removed."},
+  {"item": "1c", "deducted": false, "feedback": "The answer describes singletonMap as an 'immutable one-entry map' and mentions copying 'the single entry', conveying that it holds only a single key-value mapping."},
+  {"item": "2a", "deducted": true, "feedback": "The answer never states or discusses the actual signature of messageParams (e.g., that it accepts a FetchProfile and a Map/HashMap of a specific generic type). It only refers to 'the map' abstractly."},
+  {"item": "2b", "deducted": true, "feedback": "The answer never states that messageParams specifically declares a HashMap parameter; it only speculates conditionally ('if the method might try to modify the map, you must supply a mutable map'), which is not the required specific claim about the parameter type."},
+  {"item": "2c", "deducted": true, "feedback": "The answer does not examine or discuss how the map argument is actually used inside messageParams. It only offers a hypothetical ('if the method only reads the map... if the method might try to modify'), failing to clearly determine whether the usages are read-only."},
+  {"item": "2d", "deducted": false, "feedback": "The answer does not assert that messageParams modifies the map; it only raises the possibility conditionally, so this incorrect claim is not made."}
+]

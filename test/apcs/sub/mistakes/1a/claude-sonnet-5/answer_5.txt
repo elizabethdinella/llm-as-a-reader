@@ -1,0 +1,16 @@
+<answer>
+public Account(String requestedName)
+{
+    int suffix = 1;
+    if isAvailable(requestedName)
+    {
+        username = requestedName
+    }
+    else
+    {
+        while (isAvailable(requestedName + suffix))
+        suffix = suffix + 1;
+        username = requestedName;
+    }
+}
+</answer>

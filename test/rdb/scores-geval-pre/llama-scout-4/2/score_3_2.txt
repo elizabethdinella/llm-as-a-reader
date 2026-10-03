@@ -1,0 +1,30 @@
+[
+    {
+        "justification": "The answer explicitly states that SingletonMap 'is a fixed-size map designed for a single entry and is immutable,' which satisfies the requirement that the answer mention singletonMap's immutability.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly labels singletonMap as \"fixed-size\" and \"immutable\" while contrasting HashMap as \"resizable\" and allowing \"multiple entries.\" Describing HashMap as resizable (able to grow/change) in direct contrast to the immutable, fixed-size singletonMap conveys that HashMap is mutable, even though the exact word \"mutable\" isn't used for it. This is sufficient to satisfy the sub-item.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly describes singletonMap as 'a fixed-size map designed for a single entry', which conveys that it contains only a single key-value mapping. This satisfies sub-item 1d.",
+        "deducted": false
+    },
+    {
+        "justification": "The candidate answer only discusses generic differences between HashMap and Collections.singletonMap (mutability, size) and suggests singletonMap could be used. It never mentions the messageParams method at all, let alone its signature/parameter types. Therefore the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer only compares HashMap and singletonMap generally (mutability, size). It never discusses the messageParams method, its signature, or the fact that messageParams specifically requires/takes a HashMap parameter. In fact, it suggests singletonMap could be a better choice, implying no awareness that the parameter type is HashMap. Therefore the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer only compares HashMap and singletonMap generally; it never examines how the map argument is used inside messageParams, nor does it determine whether those usages are read-only or mutating. Therefore the point must be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer never discusses the internals or usages of the map argument within messageParams. It does not claim that messageParams modifies the map; in fact, it suggests singletonMap could be a better choice, implying no mutation. Since no incorrect statement about the map being modified is made, no deduction applies for this sub-item.",
+        "deducted": false
+    }
+]

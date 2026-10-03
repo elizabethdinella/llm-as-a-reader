@@ -1,0 +1,2 @@
+
+Using UTF-8 instead of ASCII for decoding the host could be a good practice, especially if your application needs to support internationalized domain names or characters beyond the ASCII range. However, consider your specific use case and system's capabilities before making a change.

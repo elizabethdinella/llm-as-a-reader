@@ -1,0 +1,18 @@
+[
+{
+"DECISION": "YES",
+"FEEDBACK": "The response calls isAvailable(name) where name is a String, and the call is made without an object reference (implicitly on the class/this), which is correct usage. No incorrect calls to isAvailable are made, so the point is earned."
+},
+{
+"DECISION": "NO",
+"FEEDBACK": "There is no loop in the response. The code checks availability only once and, if unavailable, appends only the integer 1 without ever re-checking or continuing to update the potential username. Since availability is never re-checked in a repeated structure and no potential username is updated within a loop body, the response does not update potential usernames until an available one is found."
+},
+{
+"DECISION": "NO",
+"FEEDBACK": "No counter variable is declared or incremented. The literal 1 is concatenated a single time, and there is no loop in which any count could be incremented, so this point is not earned."
+},
+{
+"DECISION": "NO",
+"FEEDBACK": "The algorithm is incomplete: username is assigned requestedName + 1 without verifying that this new name is available, and there is no count initialization or incrementing, so names such as requestedName2, requestedName3, etc., are never considered. Because the response fails to increment a count and fails to append the correct integer when necessary, it cannot earn the algorithm point (the case where requestedName itself is available is handled correctly, but that alone is insufficient)."
+}
+]

@@ -1,0 +1,2 @@
+
+The key difference is mutability: Collections.singletonMap() returns an immutable map that cannot be modified, while new HashMap<>(Collections.singletonMap(...)) creates a mutable HashMap initialized with that single entry. The code uses this pattern because the messageParams method likely requires a mutable map that can be modified after creation, whereas singletonMap would throw UnsupportedOperationException on any modification attempt.

@@ -1,0 +1,14 @@
+[
+    {
+        "id": "1a_explicit_npe_naming",
+        "name": "Names the exception (NullPointerException / crash) vs only generic null-safety/robustness language",
+        "side_a": "No deduct when the answer explicitly names the NullPointerException (or an equivalent 'it will throw/crash on null') somewhere \u2014 in analysis, recommendation, or code comment. Saying 'prevent potential NullPointerException' is enough.",
+        "side_b": "Deduct when the answer only talks about adding a null check in generic terms \u2014 'guard against null', 'make the code more robust', 'protect against accidental null assignments' \u2014 and never names the NullPointerException or any thrown/crash consequence. Recommending the null-safe fix alone does not satisfy 'discuss the possible NPE'."
+    },
+    {
+        "id": "2d_no_mechanism_stated_at_all",
+        "name": "Answer states no cause for the null at all (pure defensive-programming advice) vs asserts some causal mechanism",
+        "side_a": "Do not deduct when the answer never offers any explanation of why mPrefix could be null \u2014 it only recommends/declines a null guard on general robustness grounds. With no mechanism asserted, there is nothing that can be an 'incorrect alternative mechanism', so this sub-item cannot fire, even if the answer also fails to mention the cloud-service system property.",
+        "side_b": "Deduct 2 only when the answer actually commits to a causal mechanism for the null (an identifiable reason mPrefix would be null in this code) and that mechanism is false; mere omission of the real cause is not a wrong mechanism and is handled by other items."
+    }
+]

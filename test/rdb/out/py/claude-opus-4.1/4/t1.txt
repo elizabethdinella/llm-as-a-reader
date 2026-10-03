@@ -1,0 +1,2 @@
+
+Yes, you need to call `deepcopy(result)` before modifying `result[DATA]`. Without it, you would be modifying the original `reply.result` object directly, which could cause unintended side effects since the original object is still used later in the function. The deep copy ensures that the serialization transformation only affects the copy that's being stored in the ledger, while preserving the original data structure in `reply.result`.

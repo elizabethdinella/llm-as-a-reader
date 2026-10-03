@@ -1,0 +1,49 @@
+## Solution
+
+We compare every record in `historyList` against every record in `mathList`. When the student IDs match (using `equals`, since they are `String` objects), the student is enrolled in both courses. In that case we check whether the history absences exceed the math absences, and if so increment a counter. Since no ID repeats within a list, once a match is found we can stop searching the math list (`break`) — the lists themselves are never modified, so the postcondition holds.
+
+```java
+public int moreHistoryThanMathAbsences()
+{
+    int count = 0;
+    for (CourseRecord hist : historyList)
+    {
+        for (CourseRecord math : mathList)
+        {
+            if (hist.getStudentID().equals(math.getStudentID()))
+            {
+                if (hist.getAbsences() > math.getAbsences())
+                {
+                    count++;
+                }
+                break;   // IDs are unique, no need to keep looking
+            }
+        }
+    }
+    return count;
+}
+```
+
+**Trace of the example:** the common IDs are `dr03` (2 vs 2 – no), `ot32` (2 vs 1 – yes), `sq98` (3 vs 1 – yes), and `ry00` (1 vs 3 – no), so the method returns **2**.
+
+<answer>
+public int moreHistoryThanMathAbsences()
+{
+    int count = 0;
+    for (CourseRecord hist : historyList)
+    {
+        for (CourseRecord math : mathList)
+        {
+            if (hist.getStudentID().equals(math.getStudentID()))
+            {
+                if (hist.getAbsences() > math.getAbsences())
+                {
+                    count++;
+                }
+                break;
+            }
+        }
+    }
+    return count;
+}
+</answer>

@@ -1,0 +1,37 @@
+[
+    {
+        "deducted": true,
+        "feedback": "The candidate answer discusses purpose, memory overhead, and the fact that singletonMap holds only a single entry (size difference), but it never mentions mutability at all. Crucially, it does not state that Collections.singletonMap returns an immutable map (nor that HashMap is mutable, which is precisely why the code wraps the singletonMap in a new HashMap<>). It even incorrectly implies the only tradeoff is memory/performance and that using a HashMap 'would not cause any issues in terms of functionality,' missing the key immutability distinction. The rubric requirement that the answer state a singletonMap is immutable is not met.",
+        "item": "1a"
+    },
+    {
+        "deducted": true,
+        "feedback": "The rubric requires an explicit discussion of mutability, specifically stating that a HashMap is mutable (and by contrast that Collections.singletonMap returns an immutable/fixed map). The candidate answer only discusses purpose, memory overhead, and performance ('general-purpose hash map', 'constant-time performance', 'less overhead in terms of memory usage'). It touches on the size difference ('can store multiple key-value pairs' vs 'contains only a single entry'), but never mentions that HashMap is mutable/modifiable or that singletonMap is immutable \u2014 which is in fact the key reason the code wraps the singletonMap in a new HashMap<>(). It even incorrectly claims that using HashMap instead of singletonMap 'would not cause any issues in terms of functionality' and frames the difference as purely memory-related, further indicating the mutability distinction was missed. Therefore the point is deducted.",
+        "item": "1b"
+    },
+    {
+        "deducted": false,
+        "feedback": "The rubric's explicit deduction condition is whether the answer states that a singletonMap holds only a single key-value mapping. The candidate does state this: it says 'singletonMap is an implementation of the Map interface that contains only a single entry' and explains that in this code it creates 'a map with a single entry where the key is the string representation of the uid and the value is an instance of Message,' contrasting it with HashMap which 'can store multiple key-value pairs.' The size/single-mapping distinction is therefore clearly addressed, so the point is not deducted under the stated criterion. (Note: the answer weakly addresses mutability \u2014 it never mentions that singletonMap is immutable/unmodifiable, which is the actual reason the code wraps it in a new HashMap<>, and instead attributes the choice only to memory/performance, which is a shallow and partly misleading explanation.)",
+        "item": "1c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The rubric requires the answer to mention the signature of the messageParams method (i.e., that it takes a FetchProfile and a Map<String, Message>, so any Map implementation satisfies it). The candidate mentions messageParams only by name and describes the map's contents (uid string key, Message value), but never discusses the method's signature or its declared parameter types. It also frames the discussion purely in terms of memory/performance rather than the API contract of messageParams. Therefore the required condition is not met and the point is deducted.",
+        "item": "2a"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate never states that `messageParams` takes/requires a `HashMap` (i.e., that the method signature demands a HashMap type, which is why the singletonMap must be wrapped in a `new HashMap<>(...)`). Instead, the answer claims the difference is purely about memory usage and performance, and even asserts that using HashMap instead of singletonMap 'would not cause any issues in terms of functionality' and that singletonMap is 'a suitable choice' \u2014 which is incorrect given the code explicitly wraps the singletonMap in a HashMap. It also does not mention mutability. The required point about messageParams taking a HashMap is absent, so the point is deducted.",
+        "item": "2b"
+    },
+    {
+        "deducted": true,
+        "feedback": "The answer does not examine how the map argument is actually used within messageParams (or downstream in the command). It never mentions whether the map is only read (e.g., lookups via get/containsKey) or potentially mutated, which is the crux of the HashMap-vs-singletonMap distinction (singletonMap is immutable and would throw UnsupportedOperationException on modification). Instead, it merely asserts generically that using HashMap 'would not cause any issues in terms of functionality' based on general knowledge of the two implementations, without grounding this in the code context. It therefore fails to clearly determine whether the usages modify the map, and the deduction applies.",
+        "item": "2c"
+    },
+    {
+        "deducted": false,
+        "feedback": "The rubric's deduction trigger is an incorrect claim that the code consuming the map argument to messageParams mutates it. The candidate answer makes no such claim: it frames the difference purely in terms of memory usage/performance and explicitly says that using HashMap 'would not cause any issues in terms of functionality.' It also references messageParams in context, noting that the map passed to it associates the String uid key with a Message value (one message per uid). While the answer is weak in that it misses the real functional distinction (Collections.singletonMap is immutable, so wrapping it in a HashMap yields a mutable copy), it does not commit the specific error described in this rubric item, so no deduction applies here.",
+        "item": "2d"
+    }
+]

@@ -1,0 +1,2 @@
+
+The difference between calling F.cross_entropy vs cross_entropy is that F.cross_entropy refers to PyTorch's functional API for calculating cross-entropy loss, while cross_entropy alone would cause a NameError as it's not defined in the standard PyTorch library without proper module or class reference. The correct usage should be through torch.nn.functional.cross_entropy or by instantiating nn.CrossEntropyLoss.

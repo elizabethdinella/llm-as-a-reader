@@ -1,0 +1,21 @@
+**Rubric Item 1 (Mutability/size differences — 3 points)**
+- The answer correctly states that singletonMap is immutable. ✔ (no deduction)
+- The answer does *not* state that HashMap is mutable. It describes HashMap as "a resizable array implementation" (which is also technically inaccurate — HashMap is not an array implementation) and notes it "allows multiple entries," but never states mutability. −1
+- The answer correctly notes singletonMap is "designed for a single entry," i.e., a single key-value mapping. ✔ (no deduction)
+
+Score: 2/3
+
+**Rubric Item 2 (messageParams — 4 points)**
+- The message signature of `messageParams` is never mentioned. −1
+- The answer never states that `messageParams` takes a HashMap; it only vaguely says "HashMap is used" in the code without tying it to `messageParams`. −1
+- The answer does not discuss any usages of the map argument within `messageParams`, and thus fails to determine whether they modify the map. −1
+- No incorrect claim that the usages modify the map is made, so the 2-point lie deduction does not apply. (no deduction)
+
+Additionally, the answer's suggestion that "singletonMap could be a better choice if only one entry is intended" is made without any analysis of whether `messageParams` requires a mutable map, which is the crux of the question.
+
+Score: 1/4
+
+<scores>
+	<score> 2/3 </score>
+	<score> 1/4 </score>
+</scores>

@@ -1,0 +1,23 @@
+<answer>
+```java
+public Account(String requestedName)
+{
+    String currentUsername = requestedName;
+    int suffixNum = 1;
+
+    // Check requestedName first
+    if (!Account.isAvailable(currentUsername)) {
+        // If not available, enter a loop to find a suffixed username
+        while (true) { // Loop indefinitely until an available name is found
+            currentUsername = requestedName + suffixNum;
+            if (Account.isAvailable(currentUsername)) {
+                break; // Found an available username, exit loop
+            }
+            suffixNum++;
+        }
+    }
+    // Assign the first available username found (either requestedName or a suffixed one)
+    this.username = currentUsername;
+}
+```
+</answer>

@@ -1,0 +1,56 @@
+[
+    {
+        "id": "2b_contextual_relevance",
+        "name": "only\u2011plausible\u2011exceptions\u2011vs\u2011unjustified\u2011extra\u2011exceptions",
+        "side_a": "Credit answers that mention only exception types that are directly supported by the shown code (e.g., ClassCastException, possibly IllegalStateException) or qualify other exceptions as not arising from this line.",
+        "side_b": "Deduct answers that list additional exception types that are not justified by the snippet (e.g., NullPointerException, IllegalArgumentException, RuntimeException) as if they could be thrown here."
+    },
+    {
+        "id": "2b_causal_explanation",
+        "name": "explains\u2011exception\u2011cause\u2011vs\u2011mere\u2011enumeration",
+        "side_a": "Credit answers that provide a causal explanation linking each mentioned exception to the code fragment (e.g., \u201cthe cast will fail\u201d for ClassCastException).",
+        "side_b": "Deduct answers that simply enumerate possible exceptions without explaining why they could arise at this line."
+    },
+    {
+        "id": "2c_illegalstate_mention",
+        "name": "mentions IllegalStateException vs does not mention IllegalStateException",
+        "side_a": "No deduction when the answer never mentions IllegalStateException.",
+        "side_b": "Deduct when the answer mentions IllegalStateException in any form (hedged, unconditional, or speculative)."
+    },
+    {
+        "id": "2d_illegalarg_extra",
+        "name": "mentions IllegalArgumentException (or other unrelated exception) vs does not",
+        "side_a": "Answer does **not** claim an IllegalArgumentException (or any exception unrelated to the cast) can occur; it focuses on the ClassCastException (or exceptions directly tied to the cast line).",
+        "side_b": "Answer **does** claim an IllegalArgumentException (or other unrelated exception) can occur in the shown code."
+    },
+    {
+        "id": "2g_multiple_extras_vs_few_or_none",
+        "name": "multiple extra exception types vs zero/one extra",
+        "side_a": "No deduction: the answer mentions at most one exception type other than the primary ClassCastException (or none).",
+        "side_b": "Deduction: the answer lists two or more distinct exception types besides ClassCastException."
+    },
+    {
+        "id": "3a_null_mischaracterization",
+        "name": "claims null can cause exception vs correctly notes null is safe",
+        "side_a": "Credit the answer when it correctly states that a null result from the fragment lookup does **not** cause a ClassCastException (the cast is safe) or makes no claim about null causing an exception.",
+        "side_b": "Deduct the answer when it incorrectly asserts that a null fragment can cause a NullPointerException (or any exception) at the cast site."
+    },
+    {
+        "id": "4a_unchecked_cast",
+        "name": "mentions unchecked cast vs does not mention it",
+        "side_a": "Credit answers that explicitly note that the cast to\u202fOnKeyListenerForFragments\u202fis unchecked.",
+        "side_b": "Deduct answers that never mention the cast being unchecked."
+    },
+    {
+        "id": "4a_null_cast_safe",
+        "name": "states casting null is safe vs does not state it",
+        "side_a": "Credit answers that explicitly say that casting a null fragment is safe (does not throw).",
+        "side_b": "Deduct answers that never mention that casting null is safe."
+    },
+    {
+        "id": "5a_extra_exceptions",
+        "name": "only\u2011cast\u2011exception vs mentions\u2011extra\u2011exceptions",
+        "side_a": "Credit the answer when it only discusses the ClassCastException (or says the line cannot throw) and does not bring up other unrelated exception types.",
+        "side_b": "Deduct when the answer brings up additional exception types that are not directly related to the cast (e.g., NullPointerException from other methods, IllegalArgumentException, RuntimeException from unrelated code)."
+    }
+]

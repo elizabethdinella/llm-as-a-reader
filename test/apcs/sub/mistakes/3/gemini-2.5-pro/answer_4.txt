@@ -1,0 +1,18 @@
+public int moreHistoryThanMathAbsences()
+{
+    int totalExtraAbsences = 0;
+    for (CourseRecord histRecord : historyList)
+    {
+        for (CourseRecord mathRecord : mathList)
+        {
+            if (histRecord.getStudentID().equals(mathRecord.getStudentID()))
+            {
+                if (histRecord.getAbsences() > mathRecord.getAbsences())
+                {
+                    totalExtraAbsences += (histRecord.getAbsences() - mathRecord.getAbsences());
+                }
+            }
+        }
+    }
+    return totalExtraAbsences;
+}

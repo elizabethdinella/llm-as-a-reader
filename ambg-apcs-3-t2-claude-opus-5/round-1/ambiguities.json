@@ -1,0 +1,38 @@
+[
+    {
+        "id": "1_loop_bound_from_other_list",
+        "name": "loop bound matches the list being accessed vs. bound taken from the other list (parallel-index assumption)",
+        "side_a": "No deduct when every element of historyList (and mathList) is reached by a traversal whose extent is governed by that same list \u2014 e.g., an enhanced for over `historyList` / `mathList`, or an indexed loop bounded by `historyList.size()` for history accesses. Full coverage of the collection being accessed is guaranteed.",
+        "side_b": "Deduct when the index used to access one list is bounded by the size of a *different* list (e.g., `for (int i = 0; i < mathList.size(); i++) { ... historyList.get(i) ... }`), so elements of the accessed list are not guaranteed to all be visited (and may be out of range). A correctly-formed `get(i)` call does not rescue the item if its controlling bound belongs to the other collection."
+    },
+    {
+        "id": "2_accessor_vs_direct_field_access",
+        "name": "Data obtained via accessor method calls vs. direct instance-variable (field) access on the record",
+        "side_a": "No_deduct when the student ID and absence values are obtained by actually invoking the accessor methods on a CourseRecord element (e.g., hist.getStudentID(), math.getAbsences()), regardless of whether the surrounding comparison logic is right (>= instead of >, == on Strings, parallel-index assumption).",
+        "side_b": "Deduct when the response reaches the data by directly referencing the private instance variables / fields of the record (e.g., historyList[i].studentID, mathList[j].absences) instead of calling getStudentID() and getAbsences(); the accessor methods are then never invoked at all, even though the intent is clear."
+    },
+    {
+        "id": "3_comparison_must_exist",
+        "name": "an actual absences comparison must be present vs. matching/counting students by ID alone suffices",
+        "side_a": "deduct if the response never compares absence values at all \u2014 e.g., it only matches student IDs and increments a counter on the ID match \u2014 since no 'more absences than' determination is made anywhere in the method.",
+        "side_b": "no_deduct if the method correctly identifies the students common to both lists and increments a count, treating the ID-matching/counting structure as sufficient evidence that the response determines which student has more absences."
+    },
+    {
+        "id": "3_strict_vs_nonstrict_operator",
+        "name": "only strict '>' earns the point vs. '>=' also counts as 'more absences than'",
+        "side_a": "deduct if the response's only absences comparison uses a non-strict operator (>=, <=) rather than strict >, because 'more history absences than math absences' requires a strict inequality and >= wrongly includes equal-absence students.",
+        "side_b": "no_deduct if the response compares the two students' absence values with any relational operator in the correct direction (including >=), treating the off-by-one inclusion of ties as a minor logic slip rather than failure to make the comparison."
+    },
+    {
+        "id": "5_string_id_equality_method",
+        "name": "Student ID compared with .equals (or a collection's equals-based lookup) vs compared with == reference equality",
+        "side_a": "No deduction if the student IDs (Strings) are matched with .equals(...) or an equivalent equals-based mechanism \u2014 the match test is semantically correct for Strings.",
+        "side_b": "Deduct if the student IDs are compared with == (reference comparison on String objects), since the records in the two lists are distinct objects and the match will generally fail."
+    },
+    {
+        "id": "5_absence_values_actually_compared",
+        "name": "Counts only when history absences are compared against math absences vs counts on matching ID alone",
+        "side_a": "No deduction if, after matching the two records, the answer actually compares the two absence values (e.g., hist.getAbsences() > / >= math.getAbsences()) before incrementing the counter.",
+        "side_b": "Deduct if the counter is incremented purely on the existence of a matching student ID, with the absence fields never read or compared."
+    }
+]

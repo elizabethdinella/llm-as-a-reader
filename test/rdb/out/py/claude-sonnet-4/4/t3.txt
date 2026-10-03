@@ -1,0 +1,2 @@
+
+Yes, you should call deepcopy(result) before modifying result[DATA] for all transaction types, not just SCHEMA and ISSUER_KEY. Currently, when the transaction type is neither SCHEMA nor ISSUER_KEY, the variable `result` still references the original `reply.result` object, so modifying `result[DATA]` will mutate the original object. This could cause unintended side effects if the original reply object is used elsewhere in the system.

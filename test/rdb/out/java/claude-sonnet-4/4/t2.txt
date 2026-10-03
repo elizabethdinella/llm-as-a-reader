@@ -1,0 +1,2 @@
+
+Yes, you need the null check for roleInfoList. The Map.get() method returns null when the username key doesn't exist in the roleInfoMap, and this null check serves as a cache miss detector. Without it, the method could return null for users whose roles aren't cached, instead of properly fetching their roles from the database. The null check ensures that roles are loaded from the database whenever they're not found in the cache.

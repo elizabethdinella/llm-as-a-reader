@@ -1,0 +1,2 @@
+
+No, we should not use UTF-8. The `Host` header, according to HTTP and DNS standards (RFCs), must contain an ASCII-compatible string. International characters in domain names are handled by Punycode, which encodes them into a special ASCII format (e.g., `xn--...`). Using `'ascii'` for decoding is correct because it strictly enforces this standard, ensuring that only valid, compliant hostnames are processed while correctly rejecting malformed, non-ASCII headers.

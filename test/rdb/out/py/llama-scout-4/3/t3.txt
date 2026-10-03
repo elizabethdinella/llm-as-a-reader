@@ -1,0 +1,2 @@
+
+Using UTF-8 instead of ASCII for decoding the host can be beneficial for supporting a broader range of characters and enhancing interoperability. However, it should be done with consideration for compatibility and security implications.

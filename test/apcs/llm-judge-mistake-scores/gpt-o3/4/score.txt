@@ -1,0 +1,4 @@
+{"DECISION": "NO", "FEEDBACK": "The student never calls isAvailable at all. The constructor simply assigns requestedName to username, so no String argument is passed to isAvailable and the point cannot be earned."}
+{"DECISION": "NO", "FEEDBACK": "There is no loop and no call to an availability check. The response fails to update potential usernames or check their availability, so this point is not earned."}
+{"DECISION": "NO", "FEEDBACK": "No counter variable is declared or incremented, and there is no loop in the response, so this point is not earned."}
+{"DECISION": "NO", "FEEDBACK": "Although username is initialized with requestedName (handling the case where requestedName is available), the response fails to check availability, fails to initialize/increment a count, and fails to append an integer when the requested name is unavailable. These are explicit disqualifiers in the rubric, so the point is not earned."}

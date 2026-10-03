@@ -1,0 +1,2 @@
+
+The code uses `new HashMap<>(Collections.singletonMap(...))` to create a mutable copy of an immutable singleton map. While `singletonMap` returns an immutable map with exactly one entry that cannot be modified, wrapping it in a new HashMap creates a mutable map that can be changed later. This pattern is typically used when the API requires a mutable map or when there's a possibility that additional entries might need to be added to the map after its initial creation.

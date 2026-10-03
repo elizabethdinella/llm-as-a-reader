@@ -1,0 +1,2 @@
+
+No, a deepcopy is not strictly *required* before modifying `result[DATA]` in all cases, but it may be *desirable* to ensure that modifications to `result` do not unintentionally alter the original `reply.result`. The need for the deepcopy depends on whether the modifications to `result[DATA]` should be reflected in `reply.result` or not, and the current code exhibits inconsistent behavior based on the transaction type.

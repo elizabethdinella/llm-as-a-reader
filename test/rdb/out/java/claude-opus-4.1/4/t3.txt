@@ -1,0 +1,2 @@
+
+Yes, you need the null check for `roleInfoList`. It serves two purposes: (1) When caching is enabled, it determines whether to fetch from the database (only when there's no cached value), and (2) When caching is disabled, the OR condition ensures you always fetch fresh data from the database, regardless of any cached values. Removing the null check would break the caching logic when caching is enabled.

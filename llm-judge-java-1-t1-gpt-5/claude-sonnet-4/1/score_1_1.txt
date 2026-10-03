@@ -1,0 +1,6 @@
+{"deducted": false}
+{"deducted": false}
+{"deducted": true}
+{"deducted": false}
+{"deducted": false}
+{"deducted": false}

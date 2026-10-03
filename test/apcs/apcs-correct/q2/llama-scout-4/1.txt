@@ -1,0 +1,115 @@
+## Bottle Class Implementation
+
+### Overview
+
+The Bottle class represents a bottle that contains liquid. It has a constructor that takes the bottle's capacity in milliliters (mL) and an `updateAmount` method to update the amount of liquid in the bottle.
+
+### Implementation
+
+```java
+public class Bottle {
+    private double capacity;
+    private double amount;
+
+    /**
+     * Constructs a Bottle object with the given capacity.
+     * The bottle is filled to its capacity.
+     *
+     * @param capacity the bottle's capacity in milliliters (mL)
+     */
+    public Bottle(double capacity) {
+        this.capacity = capacity;
+        this.amount = capacity;
+    }
+
+    /**
+     * Updates the amount of liquid in the bottle.
+     * Removes the given amount of liquid from the bottle.
+     * If the remaining amount is less than 25% of the capacity, fills the bottle and resets it to the capacity.
+     *
+     * @param amountToRemove the amount of liquid to remove in milliliters (mL)
+     * @return the amount remaining in the bottle in milliliters (mL)
+     */
+    public double updateAmount(double amountToRemove) {
+        if (amountToRemove > 0 && amountToRemove <= amount) {
+            amount -= amountToRemove;
+            if (amount < 0.25 * capacity) {
+                amount = capacity;
+            }
+        }
+        return amount;
+    }
+}
+```
+
+### Explanation
+
+*   The `Bottle` class has two private fields: `capacity` and `amount`, which represent the bottle's capacity and the current amount of liquid in the bottle, respectively.
+*   The constructor `Bottle(double capacity)` initializes a new `Bottle` object with the given capacity and fills it to its capacity.
+*   The `updateAmount(double amountToRemove)` method updates the amount of liquid in the bottle by removing the given amount. If the remaining amount is less than 25% of the capacity, it fills the bottle and resets it to the capacity. The method returns the amount remaining in the bottle.
+
+### Example Usage
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        Bottle water = new Bottle(1000.0);
+        double amt = water.updateAmount(400.0);
+        System.out.println(amt); // Output: 600.0
+
+        amt = water.updateAmount(100.0);
+        System.out.println(amt); // Output: 500.0
+
+        amt = water.updateAmount(300.0);
+        System.out.println(amt); // Output: 1000.0
+
+        Bottle shampoo = new Bottle(40.0);
+        amt = shampoo.updateAmount(30.0);
+        System.out.println(amt); // Output: 10.0
+
+        amt = shampoo.updateAmount(1.0);
+        System.out.println(amt); // Output: 40.0
+    }
+}
+```
+
+## Required Code
+
+```java
+public class Bottle {
+    private double capacity;
+    private double amount;
+
+    public Bottle(double capacity) {
+        this.capacity = capacity;
+        this.amount = capacity;
+    }
+
+    public double updateAmount(double amountToRemove) {
+        amount -= amountToRemove;
+        if (amount < 0.25 * capacity) {
+            amount = capacity;
+        }
+        return amount;
+    }
+}
+<answer>
+public class Bottle {
+    private double capacity;
+    private double amount;
+
+    public Bottle(double capacity) {
+        this.capacity = capacity;
+        this.amount = capacity;
+    }
+
+    public double updateAmount(double amountToRemove) {
+        amount -= amountToRemove;
+        if (amount < 0.25 * capacity) {
+            amount = capacity;
+        }
+        return amount;
+    }
+}
+</answer>
+```

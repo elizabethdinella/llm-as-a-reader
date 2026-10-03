@@ -1,0 +1,86 @@
+[
+    {
+        "id": "2b_offcode_laundry_list",
+        "name": "Exceptions tied to mechanisms visible in the shown line vs. laundry list of exceptions from code/scenarios not present",
+        "side_a": "No deduction if every exception named is tied to a mechanism actually present in the quoted line (the unchecked cast, fragment-manager state), even if more than one is listed, and the connection is explained.",
+        "side_b": "Deduct if the answer pads the answer with exceptions drawn from code or scenarios not in the snippet (volume-flag arguments, foreground-service start, 'bugs inside the callee'), i.e. a generic laundry list rather than analysis of this line."
+    },
+    {
+        "id": "2b_mechanism_explained",
+        "name": "Explained causal mechanism for the named exception vs. bare enumeration of exception names",
+        "side_a": "No deduction if the answer states the concrete condition that triggers the exception (e.g. the returned fragment does not implement the interface, so the cast fails).",
+        "side_b": "Deduct if the answer merely enumerates exception names with vacuous or absent justification ('NullPointerException if any object is null') and never explains how this line produces them."
+    },
+    {
+        "id": "2c_which_exception_type_is_wrong",
+        "name": "only a spurious IllegalStateException costs the point vs any spurious extra exception type (NPE/IllegalArgumentException/RuntimeException) costs it",
+        "side_a": "No deduct when the answer identifies ClassCastException as the real risk and the only extra/incorrect exceptions it volunteers are types other than IllegalStateException (e.g. NullPointerException, IllegalArgumentException, Resources.NotFoundException, generic RuntimeException), even if those are unreachable or belong to unrelated code.",
+        "side_b": "Deduct 2 points as soon as the answer's list of possible exceptions includes IllegalStateException specifically, regardless of what other correct exceptions (ClassCastException) it also names; the deduction is keyed to that one exception name, not to 'named a wrong exception' in general."
+    },
+    {
+        "id": "2d_mechanism_vs_blanket_list",
+        "name": "Names a concrete failure mechanism for the cited exception vs. enumerates exception types with no mechanism",
+        "side_a": "Do not deduct when the answer identifies the actual operation that can fail and states the condition that makes it fail (e.g., the unchecked cast throwing ClassCastException because the fragment returned by findFragmentById does not implement OnKeyListenerForFragments), even if it also mentions secondary/hedged possibilities such as a null FragmentManager or an IllegalStateException.",
+        "side_b": "Deduct 2 points when the answer merely lists exception type names as a flat, equal-weight catalogue with no stated triggering condition or code operation (e.g., 'NullPointerException if any object is null', 'RuntimeException while starting a foreground service'), so no exception is actually attributed to a concrete fault in the code."
+    },
+    {
+        "id": "2e_ruled_out_mention",
+        "name": "Mention that is explicitly ruled out/deflected ('would be caught earlier', 'extremely rarely') still counts as claiming it vs only live, non-dismissed claims count",
+        "side_a": "Do not deduct unless the answer actually attributes a resource-not-found failure to this code. An answer that names no resource-lookup exception at all \u2014 even if it lists several other candidate exceptions (ClassCastException, NullPointerException, IllegalStateException, IllegalArgumentException) \u2014 does not trigger the deduction.",
+        "side_b": "Deduct 2 points even when the resource-not-found exception is raised only to be dismissed or deflected \u2014 e.g. flagged as 'extremely rarely', confined to a parenthetical, or said to be 'caught earlier' / to belong to another line \u2014 because naming it as a candidate outcome for this code still counts as claiming it can occur."
+    },
+    {
+        "id": "2g_subordinated_vs_coequal",
+        "name": "extra types subordinated to ClassCastException as unlikely/secondary vs listed co-equally with it",
+        "side_a": "No deduction when the answer clearly ranks ClassCastException as the real/primary exception and presents any additional type as a marginal, lower-probability aside ('most commonly', 'most likely', 'the only realistic exception here is', 'extremely rarely', 'in a highly abnormal scenario'). The subordinated extras are read as hedged colour, not as claims that these exceptions occur here.",
+        "side_b": "Deduct when the answer presents the extra types as co-equal members of a flat list of things that 'can occur', with no indication that ClassCastException is the actual answer and the others are remote edge cases."
+    },
+    {
+        "id": "2g_this_line_vs_elsewhere",
+        "name": "extra types attributed to other statements in the file vs to the asked line/cast",
+        "side_a": "Deduct only for wrong types the answer says can arise at the line under discussion (the findFragmentById cast / null check). If an extra type is attributed to some other part of the program, or the answer explicitly scopes its analysis to this line, no deduction here.",
+        "side_b": "Deduct for any wrong exception type the answer associates with the surrounding code segment at all, even if it is pinned to a different statement than the one asked about."
+    },
+    {
+        "id": "3a_focused_vs_shotgun_list",
+        "name": "Cast risk analyzed as its own point vs buried in an undifferentiated laundry list of possible exceptions across the whole segment",
+        "side_a": "No deduct when the cast/lookup risk is given its own treatment \u2014 identified as the (or a) principal hazard at that line, with the surrounding code's other risks clearly subordinate or separately labeled. Extra caveats (NPE, IllegalStateException, Resources.NotFoundException) are fine as long as the fragment-cast issue is developed on its own rather than being one undifferentiated item.",
+        "side_b": "Deduct when the cast is merely one entry in a flat, comma-separated enumeration of speculative exceptions spanning unrelated parts of the code (volume flags, foreground service, generic NPE), so nothing marks the fragment lookup/cast as an actual analyzed hazard rather than boilerplate hedging."
+    },
+    {
+        "id": "3a_condition_vs_bare_exception_name",
+        "name": "States the triggering condition for the failure vs only names the exception type",
+        "side_a": "No deduct when the answer states the condition under which the failure occurs \u2014 i.e., that the object returned by findFragmentById may not be an instance of / may not implement the expected interface \u2014 so the reader learns what makes the cast unsafe.",
+        "side_b": "Deduct when the answer only names the exception that could be thrown ('ClassCastException when casting the fragment') without stating any condition about what the lookup can return, leaving the risk asserted rather than identified."
+    },
+    {
+        "id": "3b_whole_segment_vs_single_line",
+        "name": "Scope of the exception analysis: covers all risky operations in the code segment vs. confines analysis to the fragment-lookup/cast line only",
+        "side_a": "No deduction when the answer surveys the whole code segment and names exception risks arising from the several distinct operations in it (fragment cast, null dereference, volume-adjustment arguments, starting a foreground service), rather than treating one line as the only source of exceptions.",
+        "side_b": "Deduct when the answer restricts its analysis to the fragment lookup/cast (ClassCastException, plus at most FragmentManager-related NPE/IllegalStateException) and never addresses the other exception-capable calls in the segment (volume adjustment, foreground-service start)."
+    },
+    {
+        "id": "4a_null_attributed_to_lookup_vs_generic_null",
+        "name": "Null is attributed to the findFragmentById lookup itself vs. null only appears as generic NPE boilerplate / a local variable null-check",
+        "side_a": "Do not deduct when the answer states that the fragment lookup call itself can yield null (e.g., 'findFragmentById returns null when no fragment is present', 'casting a null reference just yields null') \u2014 i.e., the null possibility is explicitly bound to the result of findFragmentById/the fragment.",
+        "side_b": "Deduct when the only mention of null is generic or misplaced \u2014 a blanket 'NullPointerException if any object is null', or merely observing that the `if (myFragment != null)` line checks a variable for null \u2014 without ever saying the lookup can return no fragment."
+    },
+    {
+        "id": "4a_affirms_vs_denies_exception_at_line",
+        "name": "Affirms an exception can occur at the analysed cast/lookup vs. denies an exception at the queried line and relocates it elsewhere",
+        "side_a": "Do not deduct when the answer answers 'Yes, an exception can happen here' and analyses the fragment-lookup/cast as the failure site.",
+        "side_b": "Deduct when the answer answers 'No, an exception cannot happen' at the line in question and pushes the risk onto a different line, since the absent-fragment failure mode is then never credited as a hazard of this code."
+    },
+    {
+        "id": "4b_null_cast_benign",
+        "name": "Null/missing-fragment path described neutrally vs declared harmless (null-cast-is-safe reassurance)",
+        "side_a": "Do not deduct if the answer merely reports the API behavior for the not-found case (e.g., that findFragmentById returns null) as a factual aside, without any statement that this path is safe, harmless, or produces no error \u2014 the answer leaves the consequences of a missing fragment open or even implies trouble.",
+        "side_b": "Deduct 2 points if the answer affirmatively reassures that the missing-fragment path cannot misbehave \u2014 e.g., stating that casting null is safe/yields null, that the manager is never null, and that therefore the ONLY possible failure is a type mismatch \u2014 since this explicitly characterizes the fragment-not-found case as correctly handled."
+    },
+    {
+        "id": "5a_line_scoped_vs_segment_wide_enumeration",
+        "name": "Analysis scoped to the fragment-lookup/cast statement vs. laundry-list of exceptions from other operations in the surrounding method",
+        "side_a": "Do NOT deduct when the answer keeps its exception analysis anchored to the fragment lookup/cast statement itself \u2014 naming the specific failing operation (the cast of the findFragmentById result) and the condition under which it fails \u2014 even if it also mentions adjacent, lookup-intrinsic risks (getSupportFragmentManager() being null, FragmentManager state, a bad view ID, the callee onKeyUp throwing).",
+        "side_b": "DEDUCT when the answer widens the scope and enumerates exceptions arising from other operations/statements of the enclosing method that have nothing to do with the fragment lookup (e.g., volume-adjustment flag validation, starting a foreground service), presenting a bare list of exception names without tying them to the lookup/cast site."
+    }
+]

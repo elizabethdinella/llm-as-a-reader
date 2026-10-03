@@ -1,0 +1,2 @@
+**
+Yes, `deepcopy(result)` is necessary for the `SCHEMA` and `ISSUER_KEY` transaction types. Without it, the `result[DATA] = ...` modification would directly alter `reply.result[DATA]`, leading to the serialized data being stored in the identity graph later via `self.storeTxnInGraph(reply.result)`. The `deepcopy` ensures that for these specific transaction types, `reply.result` retains its original, unserialized `DATA` when passed to `storeTxnInGraph`, while `result` (the copy) can be modified for `storeTxnInLedger`.

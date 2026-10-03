@@ -1,0 +1,44 @@
+[
+    {
+        "id": "2_explicit_private_modifier",
+        "name": "explicit `private` keyword required vs default (package-private) access tolerated",
+        "side_a": "No_deduct only when each required instance variable carries an explicit `private` access modifier in its declaration (e.g. `private double capacity;`).",
+        "side_b": "Deduct when a required instance variable is declared with no access modifier (default/package-private) or with public/protected visibility, even if it is otherwise correctly an instance variable of the right type."
+    },
+    {
+        "id": "2_undeclared_second_variable",
+        "name": "both required variables actually declared vs second variable only used, never declared",
+        "side_a": "No_deduct when both required state variables (capacity and current amount) appear as actual field declarations in the class body.",
+        "side_b": "Deduct when one of the required variables is never declared anywhere and is merely referenced inside a method as an undeclared identifier, so the class stores only one of the two needed values."
+    },
+    {
+        "id": "4_errors_elsewhere_in_class",
+        "name": "Compile-breaking defects outside the constructor (undeclared field, missing semicolon in another method): ignore vs. deduct because the class won't compile",
+        "side_a": "No deduct: judge only the constructor's capacity assignment. If the constructor assigns the parameter to the declared capacity instance variable, award the point even if the rest of the class fails to compile \u2014 e.g., it uses an instance variable that was never declared or omits a statement terminator in another method.",
+        "side_b": "Deduct: withhold the point when the class contains compile errors anywhere (undeclared variables, missing semicolons), on the theory that a non-compiling class never actually executes the assignment."
+    },
+    {
+        "id": "5_void_return_type",
+        "name": "`void` return type on updateAmount vs declared `double` return",
+        "side_a": "Award the point when the header declares the `double` return type (e.g., `public double updateAmount(double x)`), even if the body's arithmetic, field types, or threshold logic are wrong \u2014 those errors belong to other sub-items, not the header.",
+        "side_b": "Deduct when the header declares `void` (or any non-`double`) as the return type, e.g., `public void updateAmount(double used)`. An incorrect return type is one of the explicitly listed failure conditions for this sub-item, regardless of the parameter being correct."
+    },
+    {
+        "id": "6_threshold_scaled_by_capacity",
+        "name": "Refill threshold expressed as a fraction of capacity vs a bare constant / mis-scaled constant",
+        "side_a": "Award the point when the refill test compares the remaining amount against 25% of capacity written as an actual product/quotient of capacity (e.g., `0.25 * this.capacity`, `capacity / 4`). Do not deduct for how the quarter is spelled (decimal multiplier vs division), nor for int/double mixing in that expression.",
+        "side_b": "Deduct when the refill test compares the remaining amount against a literal number that is not scaled to capacity (e.g., `if (amount < 0.25)`), or against a constant that mis-scales capacity (e.g., `amount < 25 * capacity`). The threshold is then not one quarter of capacity, so the refill condition is conceptually wrong rather than an arithmetic/typing artifact."
+    },
+    {
+        "id": "6_update_direction_and_state",
+        "name": "Used amount subtracted from a declared remaining-amount field vs added / tracked in no field at all",
+        "side_a": "Award the point when the method subtracts the parameter from an existing instance variable that holds the remaining amount (e.g., `this.currentAmount -= amountRemoved;`), the field having been declared and initialized to capacity.",
+        "side_b": "Deduct when the method moves the amount in the wrong direction (adds the used amount, e.g., `amount = amount + used;`) or operates on a remaining-amount variable that is never declared/initialized as a field, so no correct remaining amount is ever stored."
+    },
+    {
+        "id": "7_no_return_at_all",
+        "name": "Method has some return statement for the computed amount vs. method is void with no return statement anywhere",
+        "side_a": "Do not deduct when updateAmount actually contains a return statement that hands back the computed/updated amount (e.g., `return amount;` / `return this.currentAmount;`), regardless of whether the value is a field or local, int or double, or whether surrounding code has other defects.",
+        "side_b": "Deduct when updateAmount is declared `void` (or otherwise ends) with no return statement at all \u2014 the computed amount is only stored or mutated and never handed back to the caller. This is distinct from returning a wrong-typed or non-numeric value; here nothing is returned."
+    }
+]

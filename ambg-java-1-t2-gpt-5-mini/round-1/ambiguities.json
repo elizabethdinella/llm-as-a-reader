@@ -1,0 +1,38 @@
+[
+    {
+        "id": "1a_control_flow_vs_wrong_control_flow",
+        "name": "correctly reasons about the null-check control-flow vs asserts a (mistaken) guard-based prevention",
+        "side_a": "no_deduct \u2014 The answer explicitly links actionBarSubTitle.setVisibility to execution-control and correctly states whether the drawer-null early-return actually prevents or permits that setVisibility line to run (i.e., correct control-flow reasoning).",
+        "side_b": "deduct \u2014 The answer asserts dependency/protection based on the early-return guard but states that the guard \"prevents that line from executing\" (or otherwise misstates the control-flow protecting/allowing the setVisibility line)."
+    },
+    {
+        "id": "1a_evidence_vs_speculation",
+        "name": "gives concrete code evidence vs makes speculative assumptions",
+        "side_a": "no_deduct \u2014 The answer supports its claim with concrete code evidence (naming the specific setVisibility line, citing exact drawer method calls, or pointing to the explicit null-check protecting those calls).",
+        "side_b": "deduct \u2014 The answer makes a speculative/unsubstantiated claim (e.g. 'assumes it is initialized before calling this method') without pointing to the code lines or guard that would justify the dependence."
+    },
+    {
+        "id": "2a_internal_guard_vs_external_assumption",
+        "name": "explicit internal null-check/early-return vs claiming an external precondition",
+        "side_a": "no_deduct: The answer explicitly identifies the method's internal null-check/early-return (control-flow guard) as the reason certain code only runs when drawer is non-null (i.e., attributes the dependency to an internal guard).",
+        "side_b": "deduct: The answer instead treats drawer non-null as an external precondition or simply says the code 'assumes' drawer is initialized (failing to attribute the dependency to the internal early-return guard)."
+    },
+    {
+        "id": "2b_early_return",
+        "name": "explicitly-mentions-null-check-early-return vs does-not-mention",
+        "side_a": "Credit (no_deduct) if the answer explicitly cites the `if (drawer == null) { return; }` early-return/null-check as the reason the later code only runs when drawer is non-null (i.e. uses the null-check/early-return as the justification).",
+        "side_b": "Deduct if the answer does not mention the null-check/early-return as the justification for code reachability (even if it otherwise says the code calls methods on drawer)."
+    },
+    {
+        "id": "2b_singleFolderMode_independent",
+        "name": "states-singleFolderMode-is-independent-of-drawer vs does-not/claims-dependence",
+        "side_a": "Credit (no_deduct) if the answer explicitly states that singleFolderMode (and thus the visibility value) is set/computed independently of drawer or initialized before this method is called.",
+        "side_b": "Deduct if the answer does not assert singleFolderMode's independence (or implies singleFolderMode's value depends on drawer)."
+    },
+    {
+        "id": "3a_distinguish_drawer_vs_subtitle",
+        "name": "distinguishes-drawer-dependent-calls vs treats-whole-end-as-drawer-dependent",
+        "side_a": "no_deduct \u2014 The answer distinguishes the drawer-dependent folder-selection calls from the subtitle-visibility lines (or frames the latter as independent or a precondition). It explicitly notes that subtitle visibility is computed from singleFolderMode or that the method only assumes drawer was initialized rather than the line depending on it.",
+        "side_b": "deduct \u2014 The answer treats the end-of-method code uniformly as depending on drawer (or fails to note any parts that do not call drawer)."
+    }
+]

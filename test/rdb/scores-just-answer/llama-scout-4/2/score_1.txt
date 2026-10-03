@@ -1,0 +1,9 @@
+[
+  { "item": "1a", "deducted": false, "feedback": "The answer explicitly states that singletonMap is 'an immutable map with a single entry', satisfying the requirement to identify singletonMap as immutable." },
+  { "item": "1b", "deducted": false, "feedback": "The answer contrasts singletonMap with HashMap by calling HashMap a 'general-purpose, resizable map'. 'Resizable' conveys that entries can be added/removed, i.e. that the HashMap is mutable, so the mutability contrast is conveyed, albeit indirectly." },
+  { "item": "1c", "deducted": false, "feedback": "The answer notes singletonMap holds 'a single entry', which corresponds to stating that it contains only a single key-value mapping." },
+  { "item": "2a", "deducted": true, "feedback": "The answer never references the method signature of messageParams (e.g. its parameter types such as FetchProfile and a Map/HashMap of message IDs to messages). It only discusses generic differences between map implementations." },
+  { "item": "2b", "deducted": true, "feedback": "The answer does not state that messageParams declares/requires a HashMap parameter; it makes no claim about what messageParams accepts at all, so the specific reason the wrapping HashMap is needed is missing." },
+  { "item": "2c", "deducted": true, "feedback": "The answer contains no discussion of how the map argument is used inside messageParams and does not determine whether those usages mutate the map (they are read-only). It only speculates generally about 'performance and thread safety'." },
+  { "item": "2d", "deducted": false, "feedback": "The answer makes no claim that messageParams modifies the passed map, so this incorrect-statement deduction does not apply." }
+]

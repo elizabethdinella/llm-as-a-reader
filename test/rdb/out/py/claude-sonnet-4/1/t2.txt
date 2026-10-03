@@ -1,0 +1,2 @@
+
+F.cross_entropy refers to PyTorch's standard cross entropy function (torch.nn.functional.cross_entropy) which returns a loss tensor suitable for backpropagation. The standalone cross_entropy call appears to be a custom function, likely used for logging/printing purposes, but this looks like a bug since its result isn't captured while val_loss is referenced later but never defined.

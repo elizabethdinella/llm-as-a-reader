@@ -1,0 +1,1 @@
+You should call `_compact_times()` on every KPI set to ensure that all necessary data is properly prepared for the subsequent calculations.

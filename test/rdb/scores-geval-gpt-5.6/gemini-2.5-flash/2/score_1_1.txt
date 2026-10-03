@@ -1,0 +1,30 @@
+[
+  {
+    "justification": "The answer explicitly states that Collections.singletonMap creates an immutable map.",
+    "deducted": false
+  },
+  {
+    "justification": "The answer explicitly states that the resulting HashMap is mutable.",
+    "deducted": false
+  },
+  {
+    "justification": "The answer states that singletonMap contains exactly one key-value pair.",
+    "deducted": false
+  },
+  {
+    "justification": "The answer does not provide or describe the method signature of messageParams.",
+    "deducted": true
+  },
+  {
+    "justification": "The answer does not explicitly state that messageParams takes a HashMap; it discusses Map parameters and mutability only in general terms.",
+    "deducted": true
+  },
+  {
+    "justification": "The answer does not examine the actual usages of the map inside messageParams or establish that those usages are read-only.",
+    "deducted": true
+  },
+  {
+    "justification": "The answer speculates that messageParams or the built object might modify the map, but it does not definitively claim that the actual usages within messageParams modify it.",
+    "deducted": false
+  }
+]

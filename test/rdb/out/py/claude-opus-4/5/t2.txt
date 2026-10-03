@@ -1,0 +1,2 @@
+
+Yes, we need the check for `if not build_directory`. Even though `build_setup_result` might indicate success, the `BUILD_DIR` environment variable could still be unset or empty due to a partial failure in the build setup process. Since `build_directory` is required later to create the Runner object, checking it early prevents a less informative error downstream and ensures both the build setup succeeded AND the required environment variable was properly set.

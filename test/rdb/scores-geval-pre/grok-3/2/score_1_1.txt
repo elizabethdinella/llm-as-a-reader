@@ -1,0 +1,30 @@
+[
+    {
+        "justification": "The answer explicitly states that `Collections.singletonMap` creates an immutable map with a single entry, satisfying the requirement to mention singletonMap's immutability.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that wrapping the singletonMap in a HashMap 'creates a mutable copy that can be modified if needed,' clearly conveying that a HashMap is mutable.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that `Collections.singletonMap` creates an immutable map with a single entry, which conveys that singletonMap holds only one key-value mapping. Therefore the requirement of sub-item 1d is satisfied.",
+        "deducted": false
+    },
+    {
+        "justification": "The candidate answer never mentions or discusses the method signature of `messageParams` (e.g., its parameter types such as FetchProfile and Map<String, Message>). It only discusses mutability differences between HashMap and singletonMap in general terms, without referencing what messageParams actually declares as its parameters.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer never states that the `messageParams` method's parameter is declared as a `HashMap` type. It only discusses mutability in general terms ('using HashMap allows for potential modifications'), which the rubric explicitly says is not specific enough. Therefore the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer never examines how the map argument is actually used inside messageParams. It only speculates that HashMap 'allows for potential modifications' without determining whether the method (or downstream code) reads from or writes to the map. This fails to clearly establish that the usages are read-only.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer only notes that using a HashMap 'allows for potential modifications' and suggests that if no changes are intended, singletonMap could be passed directly. It never affirmatively claims that messageParams (or its internal usages of the map) actually modifies the map. Since it does not incorrectly assert that the map is mutated, the 2-point deduction under sub-item 2e does not apply (though it also fails to clearly determine that usages are read-only, which is a separate sub-item).",
+        "deducted": false
+    }
+]

@@ -1,0 +1,2 @@
+
+You should call `_compact_times()` on every KPIset that needs recalculation, not just cumulative ones. The method appears to prepare the response time data for statistical calculations (percentiles, standard deviation), and these calculations need accurate underlying data regardless of whether the KPIset represents cumulative or individual measurements. Skipping it for non-cumulative KPIsets could lead to incorrect statistics being calculated.

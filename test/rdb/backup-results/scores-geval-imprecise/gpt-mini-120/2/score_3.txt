@@ -1,0 +1,18 @@
+**Rubric Item 1 — Mutability/size differences (3 pts)**
+- States `singletonMap` is immutable ("returns an **immutable** map", "read-only") ✔
+- States `HashMap` is mutable ("mutable copy", "can later be modified") ✔
+- States `singletonMap` contains a single key-value mapping ("contains exactly one entry") ✔
+No deductions.
+
+**Rubric Item 2 — Discussion of `messageParams` (4 pts)**
+- The answer never mentions `messageParams` at all: no method signature given → −1
+- Does not state that `messageParams` takes a `HashMap`; it only vaguely alludes to "APIs that expect a mutable HashMap implementation," which is generic and not tied to `messageParams`, and also frames the need as mutability rather than the declared parameter type → −1
+- No discussion of how the map argument is used inside `messageParams`, and no determination that those usages are read-only → −1
+- The answer does not incorrectly claim the usages modify the map, so no deduction for the "lie" sub-item (though its implication that a mutable map is needed is misleading, it never explicitly asserts modification).
+
+Total deduction: 3 → 1/4.
+
+<scores>
+	<score> 3/3 </score>
+	<score> 1/4 </score>
+</scores>

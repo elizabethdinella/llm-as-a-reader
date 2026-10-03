@@ -1,0 +1,2 @@
+
+You might need to call deepcopy(result) before modifying result[DATA] if you're unsure about the type of result[TXN_TYPE]. However, based on the given code, it seems that deepcopy is already being called for certain types. To be consistent, consider making a copy before modifying result[DATA].

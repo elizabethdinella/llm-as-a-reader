@@ -1,0 +1,23 @@
+PASS           claude-fable-5/1.txt  
+PASS           claude-opus-4.8/1.txt  
+PASS           claude-opus-5/1.txt  
+PASS           claude-sonnet-5/1.txt  
+PASS           deepseek-r1-70b/1.txt  
+PASS           gemini-2.5-flash/1.txt  
+PASS           gemini-2.5-pro/1.txt  
+PASS           gemini-3.6-flash/1.txt  
+PASS           gpt-4.1/1.txt  
+PASS           gpt-5/1.txt  
+PASS           gpt-mini-120/1.txt  
+PASS           gpt-mini-20/1.txt  
+PASS           gpt-o3/1.txt  
+PASS           grok-3/1.txt  
+PASS           grok-4/1.txt  
+PASS           grok-4.5/1.txt  
+PASS           llama-scout-4/1.txt  
+PASS           llama3.3-70/1.txt  
+PASS           mistral-large/1.txt  
+PASS           qwen3/1.txt  
+PASS           qwen3-coder/1.txt  
+
+PASS: 21

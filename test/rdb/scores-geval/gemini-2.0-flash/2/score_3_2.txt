@@ -1,0 +1,7 @@
+{"justification": "The answer explicitly states that `Collections.singletonMap` creates an immutable map, satisfying this criterion.", "deducted": false}
+{"justification": "The answer explicitly states that `HashMap` creates a mutable map, satisfying this criterion.", "deducted": false}
+{"justification": "The answer states singletonMap creates a 'single-entry' map, which conveys that it returns only a single key-value mapping.", "deducted": false}
+{"justification": "The answer never mentions or examines the method signature of `messageParams`; it only speculates about the code's intent.", "deducted": true}
+{"justification": "The answer does not state that `messageParams` declares/requires a `HashMap` parameter type; it only vaguely says HashMap allows potential modification.", "deducted": true}
+{"justification": "The answer does not investigate or discuss how the map argument is used inside `messageParams`, and fails to determine whether those usages are read-only. It instead vaguely speculates about 'potential modification ... later on'.", "deducted": true}
+{"justification": "The answer does not explicitly claim that usages of the map within `messageParams` modify it; it only vaguely speculates about possible future modification, so the lie deduction does not clearly apply.", "deducted": false}

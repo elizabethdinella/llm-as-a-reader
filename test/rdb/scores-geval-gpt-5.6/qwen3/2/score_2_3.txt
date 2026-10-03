@@ -1,0 +1,30 @@
+[
+  {
+    "justification": "The answer explicitly states that Collections.singletonMap creates an immutable map.",
+    "deducted": false
+  },
+  {
+    "justification": "The answer explicitly states that HashMap is mutable and allows modifications.",
+    "deducted": false
+  },
+  {
+    "justification": "The answer states that singletonMap creates a map with a single entry.",
+    "deducted": false
+  },
+  {
+    "justification": "The answer does not provide or describe the full messageParams method signature.",
+    "deducted": true
+  },
+  {
+    "justification": "The answer explicitly states that messageParams expects a HashMap and that singletonMap therefore cannot be passed directly.",
+    "deducted": false
+  },
+  {
+    "justification": "The answer clearly states that the map is not modified in this case, identifying its use as effectively read-only.",
+    "deducted": false
+  },
+  {
+    "justification": "The answer does not incorrectly claim that messageParams modifies the map; it states the opposite.",
+    "deducted": false
+  }
+]

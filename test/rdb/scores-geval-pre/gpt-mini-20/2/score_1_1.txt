@@ -1,0 +1,30 @@
+[
+    {
+        "justification": "The answer explicitly states that `Collections.singletonMap(...)` creates an *immutable* one-entry map, satisfying the requirement that the singletonMap's immutability be mentioned.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that `new HashMap<>(Collections.singletonMap(...))` creates a *mutable* copy and that 'the `HashMap` can be changed', clearly noting HashMap's mutability.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly describes Collections.singletonMap as creating an 'immutable one-entry map', which conveys that it contains only a single key-value mapping.",
+        "deducted": false
+    },
+    {
+        "justification": "The candidate answer only discusses the difference between an immutable singletonMap and a mutable HashMap copy. It never mentions the messageParams method or its signature (e.g., what parameter types it accepts, such as a FetchProfile and a HashMap). Therefore the required mention of the messageParams signature is missing.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer only compares singletonMap and HashMap in general terms (immutability, mutability, memory). It never mentions the signature of messageParams or that messageParams specifically declares/requires a HashMap parameter type, which is why a mutable copy is created. Therefore the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer only compares immutability/mutability and memory costs of singletonMap vs HashMap generally. It never examines how the map argument is actually used inside messageParams, nor does it determine whether those usages are read-only or modify the map. Therefore the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer only compares immutability/mutability and general cost of the two map types. It never claims that messageParams (or its internal usages) modify the passed map; it merely notes that a HashMap could be changed in general. Since it does not incorrectly assert that the map argument is mutated within messageParams, no deduction applies for this sub-item.",
+        "deducted": false
+    }
+]

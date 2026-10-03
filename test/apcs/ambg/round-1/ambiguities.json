@@ -1,0 +1,38 @@
+[
+    {
+        "id": "A1_calls_isavailable_at_all",
+        "name": "Consults isAvailable at least once vs. assigns requestedName unconditionally",
+        "side_a": "no_deduct: the constructor invokes isAvailable on a candidate name (directly or in a loop condition) before committing to a username, i.e. it makes some attempt to test availability rather than blindly accepting the request.",
+        "side_b": "deduct: the constructor never calls isAvailable at all and simply stores requestedName into username, so no availability logic of any kind is attempted."
+    },
+    {
+        "id": "A2_inloop_name_assignment",
+        "name": "Candidate username string is (re)assigned inside the loop body vs loop body only bumps a counter / no loop at all",
+        "side_a": "No deduct if the loop body itself contains an assignment that sets the username (or the candidate-name variable) to the concatenation of requestedName and the number \u2014 i.e., the name-building statement is executed inside the loop.",
+        "side_b": "Deduct if the loop body never assigns the concatenated name (it only changes the counter variable, e.g. `suffixNum++;` / `counter++;`), or there is no loop at all, so the username is fixed before/outside the loop."
+    },
+    {
+        "id": "A3_counter_increment_in_loop",
+        "name": "Loop body advances the numeric suffix (counter++) vs loop body never changes the number",
+        "side_a": "no_deduct: the search loop's body actually increments the numeric suffix variable (e.g. `suffixNum++` / `counter++`), so the candidate demonstrates progression through 1, 2, 3, ... for the appended number.",
+        "side_b": "deduct: the loop body never changes the number \u2014 it either re-assigns a string built from the same unchanged counter, assigns the instance variable, or there is no loop/number at all \u2014 so no new numbered name is ever generated."
+    },
+    {
+        "id": "A3_assignment_outside_loop",
+        "name": "Instance variable set once after the loop terminates vs set inside the loop to a rejected name",
+        "side_a": "no_deduct: `username`/`this.username` is assigned after the loop exits, so whatever name is stored is the one that passed `isAvailable`.",
+        "side_b": "deduct: the assignment to `username` happens inside the loop body, i.e. to a name that just failed `isAvailable`, and no assignment occurs on the exit path."
+    },
+    {
+        "id": "A4_stale_candidate_in_loop",
+        "name": "Loop body recomputes the numbered candidate name vs. loop body only bumps the counter, leaving the assigned string stale",
+        "side_a": "No deduct if, when the answer builds a numbered candidate (requestedName + number), the candidate string itself is (re)assigned inside the loop body, so the loop is visibly trying new names (even if the counter never changes).",
+        "side_b": "Deduct if the answer builds a numbered candidate once before the loop and the loop body only changes the integer counter, so the string that is finally assigned to username can never differ from the single pre-loop candidate."
+    },
+    {
+        "id": "A4_assignment_gated_by_availability",
+        "name": "username assigned only after an isAvailable test vs. assigned unconditionally",
+        "side_a": "No deduct if the value written to username is one that has passed an isAvailable check (an if-guard or the loop's exit condition), so the stored name is at least tested for availability.",
+        "side_b": "Deduct if username is set directly from requestedName with no isAvailable call at all, so availability is never consulted before storing."
+    }
+]

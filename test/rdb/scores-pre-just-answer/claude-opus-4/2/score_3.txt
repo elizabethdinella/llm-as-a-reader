@@ -1,0 +1,37 @@
+[
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly states that Collections.singletonMap() returns an immutable map with exactly one entry, contrasting it with HashMap being mutable and allowing modifications. This addresses both the immutability requirement and the size/entry difference, satisfying the rubric item.",
+        "item": "1a"
+    },
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly states that Collections.singletonMap() returns an immutable map with exactly one entry while HashMap is mutable and allows modifications, addressing both mutability and size differences. The requirement that the answer state a HashMap is mutable is satisfied.",
+        "item": "1b"
+    },
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly states that Collections.singletonMap() returns an immutable, memory-efficient map with exactly one entry, while HashMap is mutable and allows modifications. This covers both the mutability difference and the size/single key-value mapping characteristic required by the rubric, and also correctly explains why the HashMap wrapper is used here (to obtain a mutable copy for messageParams).",
+        "item": "1c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The answer only refers to messageParams() in passing (\"The developer likely needs a mutable map for the messageParams() method\") without describing its signature \u2014 it never states that messageParams accepts a FetchProfile and a Map<String, Message> (or otherwise identifies the declared parameter types, e.g., whether the Map parameter is declared as Map vs HashMap, which is the key to why the conversion is needed). Because the method signature of messageParams is not mentioned, the point is deducted.",
+        "item": "2a"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate answer discusses messageParams only in general terms, saying the developer 'likely needs a mutable map for the messageParams() method, either because the method modifies the map or expects a mutable implementation.' It never states that messageParams' signature actually takes a HashMap (as opposed to a general Map). Per the rubric, asserting only that a mutable map is required is not specific enough, so the point is deducted.",
+        "item": "2b"
+    },
+    {
+        "deducted": true,
+        "feedback": "The answer does not actually examine how `messageParams` uses the map. It only speculates: \"The developer likely needs a mutable map for the messageParams() method, either because the method modifies the map or expects a mutable implementation.\" This is hedged and non-committal it fails to clearly determine whether the usages inside messageParams modify the map (they do not the map is used read-only, meaning the HashMap wrapper is unnecessary and singletonMap would suffice). Since the answer neither discusses the actual usages within messageParams nor resolves whether they mutate the map, the point is deducted.",
+        "item": "2c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The answer does discuss messageParams, correctly noting singletonMap is immutable and HashMap is mutable. However, it then asserts that the wrapping in a HashMap is needed \"because the method modifies the map or expects a mutable implementation.\" Nothing in the provided context supports the claim that messageParams (or its downstream usages) mutates the passed map; this is an unsupported inference presented as the likely rationale. Since the rubric penalizes incorrectly stating that the usages of the map argument modify it, the hedging (\"likely\", \"either... or\") does not rescue it\u2014the answer's primary explanation rests on that incorrect premise. Points are deducted.",
+        "item": "2d"
+    }
+]

@@ -1,0 +1,8 @@
+[
+    {
+        "id": "1a_names_the_exception",
+        "name": "Must explicitly name the NullPointerException/exception mechanism vs generic null-safety advice suffices",
+        "side_a": "Do not deduct when the answer explicitly names the NullPointerException (or 'NPE' / 'runtime exception thrown by mPrefix.length()') as the consequence of a null mPrefix \u2014 even if the answer is hedged, says 'No, you don't necessarily need the check', or only mentions it while recommending a fix.",
+        "side_b": "Deduct 1 point when the answer only advises guarding against null in generic terms ('if mPrefix can ever be null you should guard against it', 'adding one makes the code more robust') or shows a null-safe code snippet, without ever naming the NullPointerException or any thrown exception as the failure mode."
+    }
+]

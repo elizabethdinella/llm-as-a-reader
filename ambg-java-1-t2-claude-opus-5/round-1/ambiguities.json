@@ -1,0 +1,50 @@
+[
+    {
+        "id": "1a_control_flow_guard_vs_usage",
+        "name": "Treating the early-return null guard as a dependency ('yes, depends') vs. judging only whether the trailing statement actually uses drawer",
+        "side_a": "No deduction if the answer evaluates the trailing code by whether it references/uses `drawer` itself, and answers that it does not depend on `drawer`, even if it mentions the preceding `if (drawer == null) return;` merely as context rather than as a dependency.",
+        "side_b": "Deduct 2 points if the answer concludes 'Yes, it depends on drawer' on the grounds of reachability/control flow (the method returns early when drawer is null, so the later code only runs when drawer is non-null); invoking the null-guard as the basis of dependence is an affirmative dependence claim, not a statement that setVisibility has no usages of drawer."
+    },
+    {
+        "id": "1a_misattributed_direct_calls",
+        "name": "Correctly identifying the trailing statement as the actionBarSubTitle.setVisibility line vs. asserting the trailing code makes direct drawer.* calls",
+        "side_a": "No deduction if the answer correctly locates the code 'at the end' as the actionBarSubTitle.setVisibility(...) statement and reports that it contains no drawer references.",
+        "side_b": "Deduct 2 points if the answer attributes direct `drawer` method invocations (e.g., drawer.selectFolder(), drawer.selectUnifiedInbox()) to the code at the end of initializeFromLocalSearch, i.e. misidentifies the target statement; such an answer asserts direct usage that the setVisibility line does not have."
+    },
+    {
+        "id": "2a_names_the_target_line",
+        "name": "Pinpoints the specific end-of-method statement and what feeds it vs. generic 'the rest of the code / drawer-related operations'",
+        "side_a": "Credit when the answer actually identifies the code in question at the end of initializeFromLocalSearch (the actionBarSubTitle visibility statement) and says what determines its value, so the dependency claim is anchored to a concrete statement.",
+        "side_b": "Deduct when the answer argues about 'the code' / 'drawer-related operations' / 'the rest of the logic' in the abstract, never naming the end-of-method statement, so it never shows it understands which code is being asked about."
+    },
+    {
+        "id": "2a_control_flow_vs_false_direct_use",
+        "name": "Correctly attributes the dependency to control flow only vs. falsely asserting the final code calls drawer / would NPE",
+        "side_a": "Credit when the answer states the final statement itself makes no drawer call and depends on drawer only via the early-return control flow.",
+        "side_b": "Deduct when the answer invents direct drawer usage or a null-safety bug for the code in question (e.g. 'makes direct calls to drawer.selectFolder()', 'would cause a NullPointerException'), since that misdescribes the code it is reasoning about."
+    },
+    {
+        "id": "3a_guard_account_must_be_consistent",
+        "name": "Account of the guard is internally consistent/correct vs. contradicts itself (claims the guard fails / NPE still possible)",
+        "side_a": "Do not deduct if the answer's description of the null guard is consistent with the code \u2014 i.e., it treats the `drawer == null` check as actually controlling whether the trailing code runs (e.g., early return means the rest is skipped).",
+        "side_b": "Deduct 2 points if the answer, while mentioning the null check, asserts that the later code nevertheless uses `drawer` unguarded or could throw a NullPointerException \u2014 a self-contradictory account showing the answer has not understood that the check protects the subsequent statements, even if it names specific drawer calls."
+    },
+    {
+        "id": "3a_committed_claim_vs_hedged_description",
+        "name": "Definite affirmative claim that the trailing code depends on drawer vs. hedged/non-committal description of the structure",
+        "side_a": "Do not deduct if the answer commits to a definite claim that the end-of-method code does depend on `drawer` (e.g., opens with 'Yes' and states the dependence outright).",
+        "side_b": "Deduct 2 points if the answer only describes the method's structure in hedged or non-committal terms ('is structured to handle cases where drawer might be null', 'depends on drawer being initialized before proceeding with the rest of the logic') without actually asserting that the final statement's execution depends on drawer."
+    },
+    {
+        "id": "3b_silent_on_setvisibility",
+        "name": "Answer never names the setVisibility line at all: omission is harmless vs omission counts as failing to establish the dependency",
+        "side_a": "Do not deduct if the answer never mentions `actionBarSubTitle.setVisibility` (or the subtitle line) at all. If it only answers the dependency question in general terms about the null-check / early return, there is no wrong claim about that call to penalize under this sub-item, even if the answer is vague or incomplete.",
+        "side_b": "Deduct if the answer, by never addressing the setVisibility line, leaves the specific dependency unestablished \u2014 i.e., require an explicit statement tying the subtitle-visibility call to drawer's non-nullity, and treat silence about the call as a miss."
+    },
+    {
+        "id": "3b_quality_critique_vs_reachability",
+        "name": "Complaint about 'no proper null handling' read as code-quality critique vs read as asserting the guard is bypassed",
+        "side_a": "Do not deduct when the answer's negative remark is a critique of the code's style/robustness (e.g., calling the structure a 'logical inconsistency' or saying there is no 'proper null handling') while it still acknowledges the `drawer == null` check at the top; such commentary does not assert that the call runs with a null drawer.",
+        "side_b": "Deduct when such a remark is read as a substantive claim that the later drawer-dependent code (including setVisibility) is executed despite the null check \u2014 i.e., treat 'proceeds to use drawer without null handling' as asserting the guard does not protect the later code."
+    }
+]

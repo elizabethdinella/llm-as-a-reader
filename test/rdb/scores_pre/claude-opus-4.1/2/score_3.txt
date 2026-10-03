@@ -1,0 +1,37 @@
+[
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly states that Collections.singletonMap returns an immutable map containing exactly one key-value pair, throwing UnsupportedOperationException on modification attempts, while the HashMap wrapper produces a mutable copy. It also addresses size differences (singletonMap holds exactly one entry and is memory-efficient, whereas HashMap carries additional internal structure overhead). Both required aspects \u2014 mutability and size \u2014 are covered, and the immutability of singletonMap is clearly mentioned, including in the final answer block.",
+        "item": "1a"
+    },
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly states that the HashMap (initialized with singletonMap) 'Creates a **mutable** map' and contrasts it with singletonMap being immutable and limited to exactly one key-value pair. It also discusses size/memory differences (singletonMap optimized for a single entry, HashMap uses more memory with default capacity 16 and load factor). The answer summary repeats that the HashMap copy is mutable. This satisfies the rubric requirement of discussing mutability and size differences and stating that HashMap is mutable.",
+        "item": "1b"
+    },
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly states that Collections.singletonMap 'returns an immutable map containing exactly one key-value pair' and contrasts this with the HashMap wrapper being mutable and able to have entries added/removed/updated, along with memory/size considerations (singletonMap optimized for a single entry vs HashMap's default capacity of 16). This satisfies the rubric requirement of discussing key mutability and size differences and stating that singletonMap holds only a single key-value mapping.",
+        "item": "1c"
+    },
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly discusses the `messageParams` call and addresses its signature, stating in the reasoning and final answer that the HashMap wrapper is likely needed because \"the method signature specifically requires a HashMap type rather than just a Map interface\" (or because it needs a mutable map). While the answer is somewhat speculative and does not spell out the exact parameter types (FetchProfile plus a Map/HashMap of String keys to Message values in detail), it does reference messageParams and its method signature as the reason the HashMap wrapper is used, which satisfies the rubric requirement that the signature be mentioned.",
+        "item": "2a"
+    },
+    {
+        "deducted": false,
+        "feedback": "The answer does discuss messageParams and explicitly raises the possibility that the method signature 'specifically requires a HashMap type rather than just a Map interface' \u2014 both in the body ('the method signature specifically requires a `HashMap` type rather than just a `Map` interface') and in the final answer ('specifically expects a HashMap type rather than the generic Map interface'). Although it hedges by first offering the weaker 'mutable map' explanation, it does state the HashMap-parameter point, which satisfies the rubric condition. No deduction.",
+        "item": "2b"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate answer only speculates about messageParams' behavior (\"likely expects a mutable map that might be modified later\", \"or the method signature specifically requires a HashMap type\") rather than examining or determining the actual usages of the map argument inside messageParams. It never establishes that the map is used in a read-only fashion; in fact, it suggests the opposite (that mutation may be needed), which is a failure to clearly and correctly determine whether the usages modify the map. The bulk of the answer is a generic comparison of Collections.singletonMap vs HashMap semantics, without grounding in the actual code context. Therefore the rubric condition is not satisfied and the point is deducted.",
+        "item": "2c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The rubric penalizes answers that incorrectly claim the map passed to messageParams is modified by its usages. The candidate does discuss messageParams, but asserts that \"The `messageParams` method likely expects a mutable map that might be modified later\" and that the HashMap wrapper is used \"to ensure the map is mutable for potential future operations within the UidFetchCommand,\" repeating this in the final answer (\"the messageParams method either requires a mutable map for subsequent operations\"). Nothing in the code context supports the claim that the map is mutated downstream; the answer speculatively presents mutation by consumers as the reason for the HashMap wrapper. This is exactly the error described in the rubric item, so the points are deducted.",
+        "item": "2d"
+    }
+]

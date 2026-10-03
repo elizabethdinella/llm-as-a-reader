@@ -1,0 +1,2 @@
+
+The difference lies in mutability and efficiency. `Collections.singletonMap` creates an immutable map optimized for a single entry, preventing modifications. `HashMap` is a mutable map allowing additions and removals. Using `singletonMap` directly would be more efficient and appropriate, as the `HashMap` is constructed from the `singletonMap` and no further modifications are required.

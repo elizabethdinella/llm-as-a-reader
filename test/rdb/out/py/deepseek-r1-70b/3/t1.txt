@@ -1,0 +1,2 @@
+
+No, the Host header should be decoded as ASCII because it's specified in HTTP standards. Using UTF-8 could cause decoding issues and non-compliance with standards.

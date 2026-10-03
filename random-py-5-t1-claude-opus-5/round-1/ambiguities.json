@@ -1,0 +1,38 @@
+[
+    {
+        "id": "1a_names_env_var_source",
+        "name": "Grounds the check in the BUILD_DIR environment-variable lookup vs. only vague 'build directory might be missing'",
+        "side_a": "no_deduct \u2014 the answer identifies the concrete mechanism behind `build_directory`, i.e. that it is read from the environment (`BUILD_DIR` / `environment.get_value`) and so is a separate thing from `setup_build`'s return value, which is why a second check is meaningful.",
+        "side_b": "deduct \u2014 the answer justifies the check only in generic terms ('missing or misconfigured build directory', 'downstream errors') without ever tying it to the environment-variable retrieval that produces `build_directory`."
+    },
+    {
+        "id": "1b_verdict_needed_vs_redundant",
+        "name": "Answer's bottom line: affirms the check is needed vs. concludes it is redundant/optional defensive code",
+        "side_a": "no_deduct \u2014 the answer's conclusion is that the `if not build_directory` check IS necessary/needed, treating a truthy build-setup result as insufficient guarantee that BUILD_DIR is usable.",
+        "side_b": "deduct \u2014 the answer concludes the check is not actually required (can 'never be false' absent a bug, removal 'would not change behaviour'), framing it only as optional belt-and-suspenders defensiveness."
+    },
+    {
+        "id": "2d_attribution_to_calling_wrapper",
+        "name": "BUILD_DIR attributed to an enclosing caller that delegates to _setup_application_path vs attributed to a genuinely different, non-delegating component",
+        "side_a": "Do not deduct when the answer credits the setting of BUILD_DIR to an outer/wrapper routine in the same call chain (e.g., 'build_manager.setup_build ... always writes the path of the build directory into the environment variable BUILD_DIR'). Naming the caller that reaches _setup_application_path is a coarser-grained but compatible description of where BUILD_DIR gets set, and it implicitly asserts that every successful setup path sets it \u2014 so it is not an affirmative claim that some path skips _setup_application_path.",
+        "side_b": "Deduct 2 only when the answer places the setting of BUILD_DIR in a component that is not in the _setup_application_path call chain (e.g., 'the task runner / the caller sets BUILD_DIR before setup_build runs', 'BUILD_DIR comes only from the job definition'), i.e., an attribution that actually excludes _setup_application_path rather than merely wrapping it."
+    },
+    {
+        "id": "3a_redundancy_plus_defensive_hedge",
+        "name": "Hedged verdict: 'not required by control flow, but nice as a defensive guard' vs 'needed as a safeguard' with no redundancy claim",
+        "side_a": "Do not deduct when the answer states the check is not required / would not change behaviour given the normal control flow, even if it goes on to endorse keeping it as a defensive, belt-and-suspenders sanity guard \u2014 the redundancy claim is present and the defensive endorsement does not cancel it.",
+        "side_b": "Deduct the 2 points when the answer's only rationale is defensive value (safeguard against misconfiguration, fail early, prevent downstream errors) and it never asserts that the check is unnecessary/redundant given that successful setup_build guarantees BUILD_DIR \u2014 generic defensive-programming praise is not a statement that the check is not needed."
+    },
+    {
+        "id": "3b_conclusion_polarity_needed_vs_redundant",
+        "name": "Bottom-line verdict: concludes the check is unnecessary/redundant vs concludes the check IS needed",
+        "side_a": "Give credit only if the answer's bottom-line verdict is that the `if not build_directory` check is NOT needed (redundant / cannot change behavior) \u2014 i.e., it reaches the correct conclusion before any supporting reasoning is weighed.",
+        "side_b": "Deduct 1 point if the answer concludes the check IS necessary/needed (e.g., 'Yes, the check is needed', 'ensures the build directory is actually set', 'guards against misconfiguration'), regardless of how well-written the justification is."
+    },
+    {
+        "id": "3b_unconditional_vs_hedged_redundancy",
+        "name": "Strength of the redundancy claim: unconditional assertion vs hedged/'defensive guard still warranted'",
+        "side_a": "Give credit if the answer asserts without qualification that the second clause can never alter the branch taken, so the check adds nothing.",
+        "side_b": "Deduct if the answer hedges the redundancy claim with escape hatches or endorses keeping the check for safety \u2014 e.g. 'should never be empty', 'unless there is a bug inside setup_build', 'not required for the normal control-flow', 'makes the function more defensive' \u2014 so it never commits to the conditions being interchangeable."
+    }
+]

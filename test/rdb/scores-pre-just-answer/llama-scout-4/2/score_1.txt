@@ -1,0 +1,37 @@
+[
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly states that singletonMap is immutable and holds a single entry, while HashMap is a general-purpose, resizable map. This covers both the mutability difference (immutable vs mutable) and the size difference (single entry vs resizable), satisfying the rubric requirement that immutability of singletonMap be mentioned.",
+        "item": "1a"
+    },
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly contrasts the two: singletonMap is described as 'an immutable map with a single entry' while HashMap is described as 'a general-purpose, resizable map.' This addresses both the mutability dimension (immutable vs. resizable/modifiable) and the size dimension (fixed single entry vs. growable). While the word 'mutable' is not used verbatim for HashMap, calling it 'resizable' in direct contrast to singletonMap's immutability conveys that a HashMap can be modified/added to, which is the required point. Therefore the rubric condition is satisfied and no deduction applies.",
+        "item": "1b"
+    },
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly states that singletonMap is 'an immutable map with a single entry, whereas HashMap is a general-purpose, resizable map.' This covers both required aspects of the rubric item: the mutability difference (immutable vs. general-purpose/mutable) and the size difference (single entry vs. resizable), including the key point that a singletonMap holds only a single key-value mapping. Therefore no deduction applies.",
+        "item": "1c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate answer only contrasts general properties of `HashMap` and `Collections.singletonMap` (immutability, single entry, resizability, performance/thread safety). It never references `messageParams` at all, and therefore does not mention or discuss the method's signature (i.e., that `messageParams` accepts a `FetchProfile` and a `Map<String, Message>`, which is why a mutable `HashMap` wrapper may be required rather than the immutable singleton map). Since the required discussion of `messageParams` and its signature is absent, the point is deducted.",
+        "item": "2a"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate answer only contrasts the general properties of Collections.singletonMap (immutable, single entry) with HashMap (general-purpose, resizable), and adds a claim about performance/thread safety. It never discusses messageParams itself, and in particular never states that the messageParams method signature requires/takes a HashMap (which is why the singletonMap must be wrapped in a `new HashMap<>(...)`). Since the required point about messageParams accepting a HashMap is absent, the point is deducted.",
+        "item": "2b"
+    },
+    {
+        "deducted": true,
+        "feedback": "The answer only contrasts the general properties of `Collections.singletonMap` (immutable, single-entry, thread-safe, potentially more performant) with `HashMap` (general-purpose, mutable, resizable). It never mentions `messageParams` or examines how the map argument is actually used inside that method \u2014 i.e., whether the map is only read (lookups/iteration) or whether it is mutated (put/remove/clear), which is the crux of whether an immutable `singletonMap` would be safe here. Since the answer does not discuss the usages within `messageParams` and does not determine whether those usages modify the map, the point is deducted.",
+        "item": "2c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The rubric item asks whether the answer discusses messageParams (i.e., how the map is actually used by the messageParams call and whether mutability matters in that context). The candidate answer never mentions messageParams at all. It only gives a generic textbook contrast between Collections.singletonMap (immutable, single-entry) and HashMap (general-purpose, resizable), plus a vague and partly dubious claim about 'better performance and thread safety'. It does not address the actual code context \u2014 that the map passed to messageParams is not modified by its usage (so wrapping in a HashMap is unnecessary defensive copying), nor does it explain any behavioral implication for the builder. Since the answer fails to discuss messageParams, the condition is not met and the points are deducted. (It does not, however, make the specific error of claiming the map is modified.)",
+        "item": "2d"
+    }
+]

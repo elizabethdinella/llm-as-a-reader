@@ -1,0 +1,37 @@
+[
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly states that Collections.singletonMap() creates an immutable, memory-efficient map with exactly one entry, whereas wrapping it in a new HashMap<>() produces a mutable map initialized with that entry. This directly addresses both the mutability difference (explicitly noting singletonMap is immutable) and the size/capacity distinction (singletonMap holds exactly one entry, HashMap can grow). It further reasons that the HashMap wrapper implies messageParams may need to mutate the map. The rubric condition is satisfied.",
+        "item": "1a"
+    },
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly discusses mutability, stating that Collections.singletonMap() creates an immutable map with exactly one entry while the HashMap wrapper creates a mutable HashMap initialized with that entry. It thus states the HashMap is mutable and also touches on the size difference (singletonMap holds exactly one entry, memory efficiency). The rubric condition is satisfied.",
+        "item": "1b"
+    },
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly addresses mutability (singletonMap is immutable, HashMap is mutable) and states that singletonMap creates a map with exactly one entry, while the HashMap wrapper produces a mutable map initialized with that single entry. This satisfies both the mutability/size discussion and the requirement to state that singletonMap holds only a single key-value mapping.",
+        "item": "1c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate answer references messageParams only in passing ('the messageParams method likely needs to modify the map'), but never states or discusses the method's signature \u2014 i.e., that messageParams accepts a FetchProfile and a Map<String, Message> (mutable Map) parameter. Since the type declared in the signature (e.g., Map vs. a mutable map requirement) is the crux of why a HashMap wrapper is used, and the answer only speculates about mutability without identifying the signature, the rubric condition is not met.",
+        "item": "2a"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate discusses messageParams only in terms of mutability \u2014 stating that the HashMap wrapper 'suggests the messageParams method likely needs to modify the map after receiving it.' It never states that messageParams actually takes a HashMap as its declared parameter type (which is why the singletonMap must be wrapped). Per the rubric, describing it as merely requiring a mutable map is not specific enough, so the point is deducted.",
+        "item": "2b"
+    },
+    {
+        "deducted": true,
+        "feedback": "The answer does not examine how the map argument is actually used within messageParams. Instead of determining whether the usages mutate the map, it merely speculates ('the HashMap wrapper suggests the messageParams method likely needs to modify the map after receiving it'), which is both unverified and contrary to the expected finding that the usages are read-only. It therefore fails to clearly determine whether the map is modified, and in fact leans toward the incorrect conclusion that it is mutated.",
+        "item": "2c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate does discuss messageParams, but explicitly claims that \"the HashMap wrapper suggests the messageParams method likely needs to modify the map after receiving it.\" Nothing in the provided code context supports the claim that the map argument is mutated by messageParams or its downstream usages; the wrapping in a HashMap is not evidence of mutation (it is a common defensive/idiomatic habit, and the builder may simply store or copy the map). By asserting that the receiving code modifies the map, the answer makes exactly the error described in the rubric item, so the 2 points are deducted.",
+        "item": "2d"
+    }
+]

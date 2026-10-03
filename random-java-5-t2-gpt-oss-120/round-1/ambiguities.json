@@ -1,0 +1,38 @@
+[
+    {
+        "id": "2b_extra_exception",
+        "name": "only ClassCastException mentioned vs mentions any other exception",
+        "side_a": "No deduction: the answer mentions only ClassCastException (the correct exception) and does not bring up any other exception type.",
+        "side_b": "Deduct 2 points: the answer mentions any additional exception type (e.g., NullPointerException) even if hedged or described as a later possibility."
+    },
+    {
+        "id": "2g_ack_vs_deny",
+        "name": "acknowledges possible ClassCastException vs denies it can happen",
+        "side_a": "Credit the answer when it explicitly states that a ClassCastException **can** be thrown at the cast site (e.g., \u201ccan occur\u201d, \u201cwill be thrown\u201d, \u201cis unsafe\u201d).",
+        "side_b": "Deduct when the answer asserts or strongly implies that a ClassCastException **cannot** occur at that line (e.g., \u201cwon\u2019t throw\u201d, \u201ccannot happen\u201d, \u201cthe cast is safe\u201d), even if it gives other correct information."
+    },
+    {
+        "id": "3b_nullptr_mention",
+        "name": "mentions possible NullPointerException vs does not mention NullPointerException",
+        "side_a": "Credit answers that explicitly note that a NullPointerException could occur (e.g., when the fragment is null).",
+        "side_b": "Deduct answers that never mention a NullPointerException, even if they discuss null handling."
+    },
+    {
+        "id": "4a_null_check_discussion",
+        "name": "explicit\u2011null\u2011check discussion vs none",
+        "side_a": "Answers that explicitly explain how the null\u2011check (or casting null) affects the possibility of a ClassCastException are credited.",
+        "side_b": "Answers that do not mention the null\u2011check or its safety are deducted."
+    },
+    {
+        "id": "4b_null_safety_claim",
+        "name": "explicit\u2011null\u2011cast\u2011safe claim vs no such claim",
+        "side_a": "Do NOT claim that the cast is safe when the fragment is null (i.e., no statement that \u2018casting null yields null\u2019).",
+        "side_b": "Explicitly state that casting a null fragment is safe (e.g., \u2018casting null yields null\u2019)."
+    },
+    {
+        "id": "4b_extra_exception_mention",
+        "name": "mentions NullPointerException vs mentions only ClassCastException",
+        "side_a": "Discuss only the possible ClassCastException from the unsafe cast.",
+        "side_b": "Also mention a possible NullPointerException (or other exception) besides ClassCastException."
+    }
+]

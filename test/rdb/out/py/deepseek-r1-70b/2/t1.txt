@@ -1,0 +1,2 @@
+
+You should call `compact_times()` on every KPIset. It prepares the data for recalculation regardless of whether it's cumulative or not.

@@ -1,0 +1,30 @@
+[
+  {
+    "justification": "The answer explicitly states that singletonMap is immutable.",
+    "deducted": false
+  },
+  {
+    "justification": "The answer calls HashMap resizable but does not explicitly state that it is mutable.",
+    "deducted": true
+  },
+  {
+    "justification": "The answer states that singletonMap contains a single entry.",
+    "deducted": false
+  },
+  {
+    "justification": "The answer does not mention the messageParams method signature.",
+    "deducted": true
+  },
+  {
+    "justification": "The answer does not state that messageParams specifically takes a HashMap.",
+    "deducted": true
+  },
+  {
+    "justification": "The answer does not discuss how the map is used within messageParams or establish that those usages are read-only.",
+    "deducted": true
+  },
+  {
+    "justification": "The answer does not incorrectly claim that messageParams modifies the map.",
+    "deducted": false
+  }
+]

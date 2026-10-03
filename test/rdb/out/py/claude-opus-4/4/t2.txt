@@ -1,0 +1,2 @@
+
+Yes, you need to call `deepcopy(result)` before modifying `result[DATA]`. Without the deep copy, you would be modifying the original `reply.result` object, which is still needed in its original form later in the method (specifically when calling `storeTxnInGraph(reply.result)`). The deep copy ensures that the serialization transformation only affects the local copy that gets stored in the ledger, while preserving the original data structure for other operations.

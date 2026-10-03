@@ -1,0 +1,11 @@
+
+
+Yes – you should guard against a `null` value. Calling `mPrefix.length()` when `mPrefix` is `null` will throw a `NullPointerException`. Add a check such as
+
+```java
+if (mPrefix != null && !mPrefix.isEmpty()) {
+    elements.add(mPrefix);
+}
+```
+
+or use a utility method like `StringUtils.isNotEmpty(mPrefix)`. Apply the same pattern to `mTopic` if it could also be `null`. This makes the method robust and prevents runtime crashes.

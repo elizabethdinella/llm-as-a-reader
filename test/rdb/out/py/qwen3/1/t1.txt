@@ -1,0 +1,2 @@
+
+The difference is that `F.cross_entropy` is from `torch.nn.functional`, while `cross_entropy` is not a standard PyTorch function. The code likely contains a typo, as `cross_entropy` is not a valid function without the `F.` prefix. The correct usage is `F.cross_entropy` for computing cross-entropy loss.

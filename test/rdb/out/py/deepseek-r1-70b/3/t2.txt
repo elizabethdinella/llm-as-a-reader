@@ -1,0 +1,2 @@
+
+Yes, we should use UTF-8 instead of ASCII as the default encoding for decoding the host header because it better handles internationalized domain names (IDNs) and is more accommodating of common practices where headers might be encoded in UTF-8. This change makes the function more robust against incorrectly encoded headers while maintaining compatibility with standards that typically use ASCII or Punycode for hostnames.

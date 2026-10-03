@@ -1,0 +1,30 @@
+[
+    {
+        "justification": "The answer explicitly states that Collections.singletonMap() creates an immutable, memory-efficient map with exactly one entry, satisfying the requirement to mention that singletonMap is immutable.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that 'new HashMap() creates a mutable map that can be modified after creation', clearly mentioning HashMap's mutability.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that Collections.singletonMap() creates an 'immutable, memory-efficient map with exactly one entry' and later refers to it as an 'immutable single-entry map', which clearly conveys that singletonMap contains only a single key-value mapping.",
+        "deducted": false
+    },
+    {
+        "justification": "The candidate answer never states or references the actual method signature of messageParams (e.g., its parameter types such as FetchProfile and Map<String, Message>/HashMap). It only speculates that the method 'requires a modifiable map', without citing the declared signature. Therefore the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer only speculates that messageParams 'requires a modifiable map' and never states that the method signature specifically takes a HashMap parameter type. Per the rubric, stating that it requires a mutable map is not specific enough, so the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer does not examine how the map argument is actually used inside messageParams. It only speculates ('likely because the messageParams method requires a modifiable map or the map needs to be changed later'), failing to clearly determine whether the usages are read-only or mutating.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer offers no analysis of the actual usages of the map inside messageParams, and instead asserts an incorrect explanation: that the HashMap wrapper is used 'likely because the messageParams method requires a modifiable map or the map needs to be changed later in the execution flow.' This claims that the map is (or may be) modified downstream, which is incorrect \u2014 the map argument is only read within messageParams. Since the answer propagates this false claim as its explanation, the deduction for 2e applies.",
+        "deducted": true
+    }
+]

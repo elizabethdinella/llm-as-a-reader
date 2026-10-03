@@ -1,0 +1,18 @@
+<answer>
+public int moreHistoryThanMathAbsences() {
+    int count = 0;
+    for (CourseRecord hRec : historyList) {
+        String id = hRec.getStudentID();
+        int hAbs = hRec.getAbsences();
+        for (CourseRecord mRec : mathList) {
+            if (id.equals(mRec.getStudentID())) {
+                if (hAbs > mRec.getAbsences()) {
+                    count++;
+                }
+                break; // no duplicates in mathList
+            }
+        }
+    }
+    return count;
+}
+</answer>

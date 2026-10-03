@@ -1,0 +1,2 @@
+
+You should call `compact_times()` only on cumulative KPIsets, not on every KPIset. The method appears to consolidate time-based data by removing duplicates or overlapping intervals, which is primarily beneficial for cumulative data that spans time periods. For instantaneous or non-cumulative KPIsets, this consolidation would be unnecessary and could potentially cause issues with data integrity.

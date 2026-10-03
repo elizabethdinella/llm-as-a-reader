@@ -1,0 +1,2 @@
+
+The key difference is mutability: `singletonMap` creates an unmodifiable map, while `new HashMap<>(...)` creates a modifiable one. Using `singletonMap` directly would be more efficient and prevent unintended modifications, but the code's approach allows for potential future changes.

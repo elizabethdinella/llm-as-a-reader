@@ -1,0 +1,1 @@
+The difference lies in mutability and intended use. HashMap allows for dynamic additions or removals of entries, making it suitable if further modifications are expected. Collections.singletonMap creates an immutable single-entry map, which is more memory efficient and appropriate when the map will always contain exactly one entry.

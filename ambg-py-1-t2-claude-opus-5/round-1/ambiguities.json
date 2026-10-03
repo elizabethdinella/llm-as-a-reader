@@ -1,0 +1,32 @@
+[
+    {
+        "id": "1a_name_resolution_vs_assignment_bug",
+        "name": "Diagnoses the bare name as a name/namespace issue (missing F prefix / not imported) vs. recasts it as a different bug (result not assigned to val_loss)",
+        "side_a": "no_deduct \u2014 the answer locates the difference in how the name is resolved: `cross_entropy` without `F.` is either the same function reached via import/alias, or an undefined/typo'd name that must be written `F.cross_entropy`. The explanation stays on the namespace axis.",
+        "side_b": "deduct \u2014 the answer shifts the explanation away from name resolution and instead characterizes the bare call as a dangling statement/missing assignment (speculating the line should have been `val_loss = ...`), so the actual F-prefix vs bare-name distinction is never settled."
+    },
+    {
+        "id": "1a_invented_functional_vs_class_api",
+        "name": "Keeps `cross_entropy` as the same functional API vs. invents a functional-vs-class (`nn.CrossEntropyLoss`) difference with extra features",
+        "side_a": "no_deduct \u2014 the answer treats the bare `cross_entropy` as either the identical functional op or a non-existent name; it does not fabricate a second, different API behind it.",
+        "side_b": "deduct \u2014 the answer asserts the bare `cross_entropy` is the class-based `torch.nn.CrossEntropyLoss` offering capabilities the functional form lacks, a fabricated distinction (and the answer is textually garbled about the function's own name)."
+    },
+    {
+        "id": "1b_bare_name_is_error_vs_valid_alias",
+        "name": "Treats bare `cross_entropy` as a mistake/undefined in this script vs. treats it as a legitimately imported alias that behaves identically",
+        "side_a": "No deduct: the answer judges the bare `cross_entropy(...)` call in the given code to be an error, typo, or not-a-defined-name, and states that the correct form is `F.cross_entropy(...)`.",
+        "side_b": "Deduct: the answer asserts the two forms are the same function reached by different import paths (conditional on an import/alias existing), so no mistake is identified in the code shown."
+    },
+    {
+        "id": "2a_garbled_token_charity",
+        "name": "Read corrupted/typo'd tokens charitably to the intended PyTorch claim vs literal reading of a mangled or self-contradicting attribution",
+        "side_a": "When the answer's text is garbled (OCR/typo noise, broken identifiers, stray tokens) but the recoverable intent still identifies the function as the PyTorch cross-entropy loss, treat the attribution as made and do not deduct the 1 point \u2014 including when the garbled name is first said to be 'not a standard PyTorch function' and is then corrected to the real one.",
+        "side_b": "When the answer is clean prose but simply never resolves what `F` is \u2014 leaving the prefixed call's source unidentified and the bare call described only as 'uninitialized' or wrong \u2014 deduct the 1 point; there is no corrupted text to read through, the attribution is genuinely absent."
+    },
+    {
+        "id": "2b_identity_of_bare_cross_entropy",
+        "name": "Treats bare `cross_entropy` as the same functional (import/alias or typo) vs. asserts it is the class-based `torch.nn.CrossEntropyLoss`",
+        "side_a": "no_deduct \u2014 the answer resolves bare `cross_entropy` to the same functional API as `F.cross_entropy` (imported/aliased from `torch.nn.functional`, or simply a typo/undefined name), so the only difference is namespace access or a code error.",
+        "side_b": "deduct \u2014 the answer claims bare `cross_entropy` denotes a different object, specifically the class-based `torch.nn.CrossEntropyLoss` with different capabilities (e.g. class weighting), introducing a substantively wrong identification of the symbol."
+    }
+]

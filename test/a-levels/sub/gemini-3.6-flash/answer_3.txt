@@ -1,0 +1,5 @@
+<answer>
+public String getPosition() {
+    return "X = " + this.xPosition + " Y = " + this.yPosition;
+}
+</answer>

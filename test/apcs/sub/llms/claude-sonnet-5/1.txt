@@ -1,0 +1,91 @@
+# Part A
+
+The constructor should first check if the requested name is available. If not, it should try appending "1", "2", "3", etc. until an available name is found.
+
+```java
+public Account(String requestedName)
+{
+    if (isAvailable(requestedName))
+    {
+        username = requestedName;
+    }
+    else
+    {
+        int suffix = 1;
+        while (!isAvailable(requestedName + suffix))
+        {
+            suffix++;
+        }
+        username = requestedName + suffix;
+    }
+}
+```
+
+**Explanation:** The constructor uses `isAvailable` to check `requestedName` first. If unavailable, it loops through integer suffixes (1, 2, 3, ...) appending each to `requestedName` and checking availability with `isAvailable` until a valid username is found, then assigns it to the instance variable `username`.
+
+# Part B
+
+The method needs to iterate through the username and skip both the hyphen and the character immediately preceding it.
+
+```java
+public String getShortenedName()
+{
+    String result = "";
+    int i = 0;
+    while (i < username.length())
+    {
+        if (i + 1 < username.length() && username.charAt(i + 1) == '-')
+        {
+            i += 2; // skip the character before the hyphen and the hyphen itself
+        }
+        else
+        {
+            result += username.charAt(i);
+            i++;
+        }
+    }
+    return result;
+}
+```
+
+**Explanation:** This method walks through `username` character by character. At each position `i`, it checks whether the *next* character is a hyphen. If so, it skips both the current character (the one before the hyphen) and the hyphen itself by incrementing `i` by 2. Otherwise, it appends the current character to `result` and moves to the next index. This correctly builds the shortened string without modifying the original `username` (satisfying the postcondition).
+
+---
+
+<answer>
+public Account(String requestedName)
+{
+    if (isAvailable(requestedName))
+    {
+        username = requestedName;
+    }
+    else
+    {
+        int suffix = 1;
+        while (!isAvailable(requestedName + suffix))
+        {
+            suffix++;
+        }
+        username = requestedName + suffix;
+    }
+}
+
+public String getShortenedName()
+{
+    String result = "";
+    int i = 0;
+    while (i < username.length())
+    {
+        if (i + 1 < username.length() && username.charAt(i + 1) == '-')
+        {
+            i += 2; // skip the character before the hyphen and the hyphen itself
+        }
+        else
+        {
+            result += username.charAt(i);
+            i++;
+        }
+    }
+    return result;
+}
+</answer>

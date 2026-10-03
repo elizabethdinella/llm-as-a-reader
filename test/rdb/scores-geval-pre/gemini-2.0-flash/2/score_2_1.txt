@@ -1,0 +1,30 @@
+[
+    {
+        "justification": "The answer explicitly states that `Collections.singletonMap` creates an immutable map with a single entry, satisfying the requirement to mention that singletonMap is immutable.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that `HashMap` creates a mutable map that can be modified, satisfying the requirement of sub-item 1c.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that `Collections.singletonMap` creates an immutable map with a single entry, and further notes that if only one entry is ever intended, singletonMap would suffice. This satisfies the requirement to mention that singletonMap holds only a single key-value mapping.",
+        "deducted": false
+    },
+    {
+        "justification": "The candidate answer only compares Collections.singletonMap and HashMap generally (immutability, mutability, efficiency). It never mentions the messageParams method or its signature/parameter types at all. Therefore the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer never discusses the messageParams method or its parameter type. It only compares HashMap and singletonMap generally, speculating that HashMap is used because more entries might be added later. It does not state that messageParams requires/declares a HashMap parameter, so the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer never examines how messageParams uses the map argument. It only speculates that the HashMap 'suggest[s] the possibility of adding more entries later,' without determining whether the method actually modifies the map or merely reads from it. Since the usages within messageParams are not discussed and no clear determination is made, the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer only contrasts general mutability of HashMap vs. singletonMap and speculates that the HashMap 'suggests the possibility of adding more entries later.' It never analyzes or asserts that the usages of the map inside messageParams modify it. Since no incorrect claim about messageParams mutating the map is made, this specific deduction does not apply (the failure to discuss the read-only usages falls under sub-item 2c instead).",
+        "deducted": false
+    }
+]

@@ -1,0 +1,2 @@
+
+Yes, `deepcopy(result)` is necessary. It ensures that when `result[DATA]` is modified (serialized) for storage in the ledger and sending to the client, the original `reply.result` object remains unchanged. This preservation is crucial because `reply.result` is subsequently passed to `self.storeTxnInGraph`, which likely expects the `DATA` field in its original, unserialized format.

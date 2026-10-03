@@ -1,0 +1,2 @@
+
+The difference between `F helic_entropy` and `cross_entropy` in this context is likely a misunderstanding or typo. `F helic_entropy` is not a standard PyTorch function and is probably meant to be `F cross_entropy`, which computes the cross-entropy loss for classification tasks.Runnable, `cross_entropy` likely refers to `torch.nn.CrossEntropyLoss`, a class-based implementation of the same loss, offering more customization options like class weighting compared to the functional `F cross_entropyujet

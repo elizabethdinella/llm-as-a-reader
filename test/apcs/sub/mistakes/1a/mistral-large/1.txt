@@ -1,0 +1,95 @@
+
+### Attempt 1: Correct Implementation
+<answer>
+```java
+public Account(String requestedName) {
+    if (isAvailable(requestedName)) {
+        this.username = requestedName;
+    } else {
+        int counter = 1;
+        String newUsername = requestedName + counter;
+        while (!isAvailable(newUsername)) {
+            counter++;
+            newUsername = requestedName + counter;
+        }
+        this.username = newUsername;
+    }
+}
+```
+</answer>
+
+### Attempt 2: Forgot to increment the counter
+<answer>
+```java
+public Account(String requestedName) {
+    if (isAvailable(requestedName)) {
+        this.username = requestedName;
+    } else {
+        int counter = 1;
+        String newUsername = requestedName + counter;
+        while (!isAvailable(newUsername)) {
+            newUsername = requestedName + counter;
+        }
+        this.username = newUsername;
+    }
+}
+```
+</answer>
+
+### Attempt 3: Incorrectly initialized `counter` as a string
+<answer>
+```java
+public Account(String requestedName) {
+    if (isAvailable(requestedName)) {
+        this.username = requestedName;
+    } else {
+        String counter = "1";
+        String newUsername = requestedName + counter;
+        while (!isAvailable(newUsername)) {
+            int intCounter = Integer.parseInt(counter);
+            intCounter++;
+            counter = Integer.toString(intCounter);
+            newUsername = requestedName + counter;
+        }
+        this.username = newUsername;
+    }
+}
+```
+</answer>
+
+### Attempt 4: Forgot to update `newUsername` inside the loop
+<answer>
+```java
+public Account(String requestedName) {
+    if (isAvailable(requestedName)) {
+        this.username = requestedName;
+    } else {
+        int counter = 1;
+        String newUsername = requestedName + counter;
+        while (!isAvailable(newUsername)) {
+            counter++;
+        }
+        this.username = newUsername;
+    }
+}
+```
+</answer>
+
+### Attempt 5: Infinite loop due to incorrect condition
+<answer>
+```java
+public Account(String requestedName) {
+    if (isAvailable(requestedName)) {
+        this.username = requestedName;
+    } else {
+        int counter = 1;
+        String newUsername = requestedName + counter;
+        while (isAvailable(newUsername)) {
+            counter++;
+            newUsername = requestedName + counter;
+        }
+        this.username = newUsername;
+    }
+}
+```
+</answer>

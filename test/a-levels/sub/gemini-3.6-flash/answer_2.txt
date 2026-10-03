@@ -1,0 +1,5 @@
+<answer>
+public String getSpecies() {
+    return this.species;
+}
+</answer>

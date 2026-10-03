@@ -1,0 +1,26 @@
+[
+    {
+        "id": "1a_recommendation_polarity",
+        "name": "endorses switching to UTF-8 (breadth as the reason) vs defends keeping ASCII (breadth framed as a hazard)",
+        "side_a": "Give credit when the answer's conclusion is that UTF-8 should be used, with the wider character coverage of UTF-8 relative to ASCII offered as the supporting reason for that conclusion.",
+        "side_b": "Deduct when the answer concludes ASCII should be kept, treating ASCII's restricted repertoire as sufficient/desirable and UTF-8's extra byte acceptance as a defect to be avoided; such answers never affirm UTF-8's broader repertoire as an operative fact about the host decoding."
+    },
+    {
+        "id": "1a_character_level_vs_domain_level",
+        "name": "breadth stated at the character/encoding level vs only at the application/IDN-compatibility level",
+        "side_a": "Give credit when the greater breadth is stated in terms of characters or encodings themselves (e.g., UTF-8 'can handle both ASCII and Unicode characters', 'supports a wider range of characters', ASCII fails on non-ASCII characters).",
+        "side_b": "Deduct when the only breadth claim is about downstream compatibility or convenience (e.g., 'broader compatibility with international domain names', 'reduce the risk of encoding errors') with no statement about which characters each encoding can represent."
+    },
+    {
+        "id": "1b_strictness_vs_failure_verb",
+        "name": "Explicit failure verb predicated of the ascii decode vs 'strictness/enforcement' framing that only implies rejection",
+        "side_a": "No_deduct when the answer uses an explicit failure verb about the ascii decode of non-ASCII input \u2014 'will raise', 'raises UnicodeDecodeError', 'will fail/throw' \u2014 i.e. the failure is directly predicated of the ascii decoding step.",
+        "side_b": "Deduct when the answer only characterizes ASCII as 'strict', 'appropriate', 'correctly enforces the protocol', or describes the contrast negatively via UTF-8 ('would silently accept / mask invalid bytes'), leaving the ASCII failure to be inferred rather than stated with a failure verb."
+    },
+    {
+        "id": "2b_strictness_posture",
+        "name": "ASCII decode failure framed as correct validation/rejection vs framed as a compatibility defect to be fixed by widening the encoding",
+        "side_a": "No deduct when the answer treats the strict ASCII decode (and the UnicodeDecodeError it raises on non-ASCII bytes) as the *desired* behavior \u2014 i.e., the header is invalid, so failing loudly enforces the protocol and prevents masking bad input. Such an answer never endorses non-ASCII in headers; it endorses rejecting it.",
+        "side_b": "Deduct when the answer treats the ASCII decode failure as a problem/limitation to be remedied by decoding with UTF-8 for 'broader compatibility' or to 'reduce encoding errors', i.e., it recommends widening the accepted byte set so that non-ASCII host bytes are accepted and turned into text."
+    }
+]

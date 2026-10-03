@@ -1,0 +1,7 @@
+{"justification": "The answer explicitly states that Collections.singletonMap creates an immutable Map ('Creates an **immutable** `Map`') and that modification throws UnsupportedOperationException.", "deducted": false}
+{"justification": "The answer explicitly states that the resulting HashMap object is mutable and can be added to, removed from, or modified.", "deducted": false}
+{"justification": "The answer states singletonMap contains 'exactly one key-value pair', satisfying the single-mapping requirement.", "deducted": false}
+{"justification": "The answer never mentions or examines the actual method signature of messageParams (e.g., that it declares specific parameter types); it only speaks generically about 'the receiving method'.", "deducted": true}
+{"justification": "The answer does not state that messageParams specifically requires/declares a HashMap parameter; it only discusses mutability generically, which the rubric says is not specific enough.", "deducted": true}
+{"justification": "The answer does not examine how the map argument is used inside messageParams and fails to determine whether those usages are read-only; it merely speculates that the map 'might need to be modified later'.", "deducted": true}
+{"justification": "The answer does not affirmatively claim that messageParams modifies the map; it only hedges with 'might need to be modified later by the receiving method', so no definitive incorrect statement is made.", "deducted": false}

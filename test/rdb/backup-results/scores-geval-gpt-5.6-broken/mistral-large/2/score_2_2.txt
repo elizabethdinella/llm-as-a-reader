@@ -1,0 +1,9 @@
+[
+  {"justification": "The answer explicitly states that `Collections.singletonMap` produces a map that 'is immutable and cannot be altered after its creation'. Immutability of singletonMap is mentioned.", "deducted": false},
+  {"justification": "The answer states 'a HashMap would allow for modification', which conveys that HashMap is mutable.", "deducted": false},
+  {"justification": "The answer notes 'only a single key-value pair is needed, making singletonMap more appropriate', which conveys that singletonMap holds only a single key-value mapping.", "deducted": false},
+  {"justification": "The answer never mentions or discusses the method signature of `messageParams` (e.g., its parameter types such as FetchProfile and Map/HashMap).", "deducted": true},
+  {"justification": "The answer does not state that `messageParams` requires/takes a HashMap. In fact, it incorrectly implies that the singletonMap itself is passed to `messageParams`, ignoring that the code wraps it in a `new HashMap<>(...)` because the parameter type is HashMap.", "deducted": true},
+  {"justification": "The answer does not discuss how the map argument is used inside `messageParams` at all, and thus does not establish that the usages are read-only.", "deducted": true},
+  {"justification": "The answer does not claim that the usages of the map inside `messageParams` modify it; it makes no claim about internal usage, so this deduction does not apply.", "deducted": false}
+]

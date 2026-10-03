@@ -1,0 +1,30 @@
+[
+    {
+        "justification": "The answer explicitly states that `Collections.singletonMap` creates an immutable map optimized for a single entry, preventing modifications. This satisfies the requirement to mention that singletonMap is immutable.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that \"`HashMap` is a mutable map allowing additions and removals,\" which directly satisfies the requirement that the answer state a HashMap is mutable.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer states that `Collections.singletonMap` creates an immutable map 'optimized for a single entry', which conveys that singletonMap holds only a single key-value mapping. This satisfies sub-item 1d.",
+        "deducted": false
+    },
+    {
+        "justification": "The candidate answer never mentions the signature of the `messageParams` method (e.g., that it takes a FetchProfile and a Map<String, Message> parameter). It only discusses mutability/efficiency differences between HashMap and singletonMap, with no reference to the method's declared parameter types.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer never mentions the signature or parameter type of `messageParams`, and does not state that it takes a `HashMap` (in fact it implies a `singletonMap` could be passed directly, which contradicts a HashMap-typed parameter). Since the requirement that messageParams takes a HashMap is not mentioned, the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer only vaguely asserts that 'no further modifications are required' without examining or discussing how the map argument is actually used inside messageParams (e.g., whether it is stored, read, or mutated). It does not demonstrate that the usages are read-only, so the required discussion of usages within messageParams is missing.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer states that no further modifications are required, implying the map is not modified within messageParams. It does not claim that the usages of the map argument modify it, so no deduction under this sub-item.",
+        "deducted": false
+    }
+]

@@ -1,0 +1,17 @@
+**Rubric Item 1 (Mutability/size differences, 3 points):**
+- The answer explicitly states `Collections.singletonMap()` creates an **immutable** map → no deduction.
+- It explicitly states wrapping in `HashMap` creates a **mutable** map → no deduction.
+- It explicitly states singletonMap has **exactly one entry** → no deduction.
+Score: 3/3
+
+**Rubric Item 2 (Discussion of `messageParams`, 4 points):**
+- No mention of the method signature of `messageParams` (it only vaguely refers to "the called method") → −1.
+- It does not state that `messageParams` takes a `HashMap`; it merely hedges with "unless the called method specifically requires a `HashMap` implementation or mutability," which shows it did not determine the parameter type → −1.
+- It does not examine the usages of the map argument inside `messageParams`. It asserts "the map isn't modified afterward," but this is an unverified/hedged claim (immediately undercut by the "unless... mutability" caveat) rather than a clear determination that the usages are read-only → −1.
+- It does not incorrectly claim the usages modify the map, so the 2-point penalty does not apply.
+Score: 1/4
+
+<scores>
+	<score> 3/3 </score>
+	<score> 1/4 </score>
+</scores>

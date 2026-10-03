@@ -1,0 +1,17 @@
+<answer>
+```java
+public Account(String requestedName)
+{
+    String currentUsername = requestedName; // Initial check with requestedName
+    int suffixNum = 1;
+
+    // Keep trying usernames until an available one is found
+    while (!Account.isAvailable(currentUsername)) {
+        suffixNum++; 
+    }
+
+    // Assign the first available username found to the instance variable
+    this.username = currentUsername; 
+}
+```
+</answer>

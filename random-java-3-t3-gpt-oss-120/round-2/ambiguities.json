@@ -1,0 +1,14 @@
+[
+    {
+        "id": "1a_npe_mention",
+        "name": "explicit NPE mention vs no NPE mention",
+        "side_a": "Credit (no deduction) when the answer explicitly mentions a NullPointerException or its possibility (e.g., \u201cwill throw a NullPointerException\u201d, \u201cpotential NullPointerExceptions\u201d).",
+        "side_b": "Deduct when the answer never mentions a NullPointerException at all."
+    },
+    {
+        "id": "2a_null_check_recommendation",
+        "name": "recommends null\u2011check vs says null\u2011check unnecessary",
+        "side_a": "Answers that say a null check for\u202fmPrefix (and optionally\u202fmTopic) should be added before calling\u202flength() \u2013 these were credited.",
+        "side_b": "Answers that claim a null check is unnecessary or that the existing condition already handles null \u2013 these were deducted."
+    }
+]

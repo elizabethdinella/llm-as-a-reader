@@ -1,0 +1,2 @@
+
+Yes, the null check for `roleInfoList` is necessary because `roleInfoMap.get(username)` can return null when no cached roles exist for the username. However, the current implementation has a logical flaw - if `getRolesFromDatabase()` returns null or its `getPageItems()` returns null, the method will still return null instead of an empty list. The check prevents returning null from the cache lookup, but additional handling is needed to ensure a non-null List is always returned.

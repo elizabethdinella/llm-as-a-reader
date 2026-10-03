@@ -1,0 +1,2 @@
+
+There is no functional difference between the two calls. They both invoke the same cross-entropy function from PyTorch's `torch.nn.functional` module. The difference lies solely in how they are imported and accessed in the code.

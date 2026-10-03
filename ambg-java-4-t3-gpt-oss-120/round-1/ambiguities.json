@@ -1,0 +1,26 @@
+[
+    {
+        "id": "1a_caching_context_vs_generic_robustness",
+        "name": "caching\u2011logic justification vs generic\u2011robustness/optional claim",
+        "side_a": "Credit answers that explicitly tie the null\u2011check to caching\u2011enabled behaviour (e.g., preventing a DB query or early return when the cache miss occurs).",
+        "side_b": "Deduct answers that either omit any caching context or frame the null\u2011check only as a generic robustness/optional measure (e.g., to avoid NPEs or because it \u201cmight be useful\u201d)."
+    },
+    {
+        "id": "1b_justification_type",
+        "name": "functional\u2011behavior justification vs generic NPE\u2011risk justification",
+        "side_a": "Credit answers that justify keeping the null\u2011check primarily by describing the functional effect (e.g., preventing a missed DB fetch, ensuring caching works, or handling a cache miss).",
+        "side_b": "Deduct answers that justify the null\u2011check mainly by asserting a risk of a NullPointerException without locating that risk downstream."
+    },
+    {
+        "id": "1d_contract_guarantee",
+        "name": "mentions DB\u2011method non\u2011null guarantee vs does not mention guarantee",
+        "side_a": "Do **not** mention that the database\u2011retrieval method (e.g., `getPageItems()`) is guaranteed to never return null. Answers on this side receive credit (no deduction).",
+        "side_b": "Mention that the database\u2011retrieval method is guaranteed to never return null (or that the result is *always* non\u2011null). Answers on this side are deducted because they shift the discussion to a contract guarantee rather than the intended pre\u2011query cache guard."
+    },
+    {
+        "id": "2a_null_source_attribution",
+        "name": "explicit-method-return-null vs no explicit method return null attribution",
+        "side_a": "Award credit when the answer explicitly says that a *specific* called method can return null (e.g., \u201cMap.get returns null on a cache miss\u201d). This shows a concrete source for the possible null value.",
+        "side_b": "Deduct credit when the answer does not attribute the possible null to the return value of a specific method (it may speak about robustness, conditional removal, or generic scenarios without naming a method that can return null)."
+    }
+]

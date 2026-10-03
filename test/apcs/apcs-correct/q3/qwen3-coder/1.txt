@@ -1,0 +1,33 @@
+<answer>
+public int moreHistoryThanMathAbsences()
+{
+    int count = 0;
+    
+    // Iterate through each student in historyList
+    for (CourseRecord historyStudent : historyList)
+    {
+        String historyID = historyStudent.getStudentID();
+        int historyAbsences = historyStudent.getAbsences();
+        
+        // Check if this student is also in mathList
+        for (CourseRecord mathStudent : mathList)
+        {
+            String mathID = mathStudent.getStudentID();
+            int mathAbsences = mathStudent.getAbsences();
+            
+            // If student exists in both lists
+            if (historyID.equals(mathID))
+            {
+                // Check if history absences are greater than math absences
+                if (historyAbsences > mathAbsences)
+                {
+                    count++;
+                }
+                break; // Found the student in mathList, no need to continue searching
+            }
+        }
+    }
+    
+    return count;
+}
+</answer>

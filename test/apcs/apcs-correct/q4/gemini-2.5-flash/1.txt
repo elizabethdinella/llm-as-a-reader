@@ -1,0 +1,40 @@
+<answer>
+public int getPointsForRow(int targetRow)
+{
+    int sumPoints = 0;
+    boolean allSameColor = true;
+
+    // Get the color of the first space in the row.
+    // Precondition: board has at least two columns, so board[targetRow][0] is a valid access.
+    String firstColor = board[targetRow][0].getColor();
+
+    // Iterate through all columns in the specified row
+    for (int col = 0; col < board[targetRow].length; col++)
+    {
+        Space currentSpace = board[targetRow][col];
+
+        // Add the point value of the current space to the total sum
+        sumPoints += currentSpace.getPoints();
+
+        // Check if the current space's color is different from the first space's color.
+        // If a different color is found, set allSameColor to false.
+        // Once it's false, it should remain false, so we don't need to re-check if already false.
+        if (!currentSpace.getColor().equals(firstColor))
+        {
+            allSameColor = false;
+        }
+    }
+
+    // Determine the final point value based on whether all spaces had the same color
+    if (allSameColor)
+    {
+        // If all spaces are the same color, return two times the sum of points
+        return 2 * sumPoints;
+    }
+    else
+    {
+        // Otherwise, return the sum of points
+        return sumPoints;
+    }
+}
+</answer>

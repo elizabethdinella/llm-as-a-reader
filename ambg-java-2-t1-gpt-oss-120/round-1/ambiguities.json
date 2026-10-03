@@ -1,0 +1,20 @@
+[
+    {
+        "id": "1a_exception_mention",
+        "name": "mentions\u2011exception\u2011on\u2011modify vs no\u2011exception\u2011mention",
+        "side_a": "Credit the answer when it explicitly states that attempting to modify the map created by `Collections.singletonMap` will throw an exception (e.g., `UnsupportedOperationException`).",
+        "side_b": "Do not give credit when the answer never mentions the exception behavior of the immutable map."
+    },
+    {
+        "id": "1a_performance_mention",
+        "name": "calls\u2011out\u2011performance\u2011benefit vs no\u2011performance\u2011call\u2011out",
+        "side_a": "Credit the answer when it explicitly mentions a performance, memory\u2011usage, or efficiency advantage of using `singletonMap` (e.g., \u201ccheaper in terms of memory\u201d, \u201cbetter performance\u201d).",
+        "side_b": "Do not give credit when the answer never references any performance or efficiency benefit."
+    },
+    {
+        "id": "2b_prose_requirement",
+        "name": "explicit\u2011prose\u2011requirement vs no\u2011explicit\u2011prose\u2011requirement",
+        "side_a": "Credit the answer when it contains a clear prose statement that the *messageParams* method **requires a HashMap** (or \u201ctakes a HashMap\u201d) as its parameter, e.g., \u201c`messageParams` requires a `HashMap<String,Object>` argument.\u201d",
+        "side_b": "Deduct the answer when it does **not** contain such an explicit statement \u2013 it may discuss mutability or compare `singletonMap` and `HashMap`, but never says that the method needs a `HashMap` argument."
+    }
+]

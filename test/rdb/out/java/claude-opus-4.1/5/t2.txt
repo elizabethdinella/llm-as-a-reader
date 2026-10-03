@@ -1,0 +1,2 @@
+
+Yes, a ClassCastException can occur at the marked line if the fragment with id R.id.main_view doesn't implement the OnKeyListenerForFragments interface or if a different fragment type than expected is attached to that container. The null check that follows only prevents NPE on the method call but doesn't prevent the exception during the cast itself.

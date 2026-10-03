@@ -1,0 +1,79 @@
+To solve the problem of removing a hyphen and its preceding character from a string, we can approach this using a **loop with a flag** to track whether the previous character was a hyphen. This ensures that whenever we encounter a hyphen, we also skip adding the character immediately before it.
+
+---
+
+### ✅ **Approach**
+
+1. **Initialize**:
+   - Use a flag `skipNext` to indicate whether the next character should be skipped.
+   - Initialize an empty string `result` to store the final output.
+
+2. **Iterate**:
+   - For each character in the input string:
+     - If `skipNext` is `true`, skip the current character and set `skipNext` to `false`.
+     - Else, if the current character is a hyphen (`'-'`), set `skipNext` to `true` (so the next character is also skipped).
+     - Otherwise, append the character to `result`.
+
+3. **Return**:
+   - Return the `result` string.
+
+---
+
+### ✅ **Java Code**
+
+```java
+public class HyphenRemover {
+    public static String removeHyphenAndPrevious(char[] chars) {
+        StringBuilder result = new StringBuilder();
+        boolean skipNext = false;
+
+        for (int i = 0; i < chars.length; i++) {
+            if (skipNext) {
+                skipNext = false;
+                continue;
+            }
+
+            if (chars[i] == '-') {
+                skipNext = true;
+                continue;
+            }
+
+            result.append(chars[i]);
+        }
+
+        return result.toString();
+    }
+}
+```
+
+---
+
+### ✅ **Usage Example**
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        char[] input = {'A', '-', 'B', 'C', '-', 'D'};
+        String output = HyphenRemover.removeHyphenAndPrevious(input);
+        System.out.println(output); // Output: "BCD"
+    }
+}
+```
+
+---
+
+### ✅ **Explanation**
+
+- For the input `["A", "-", "B", "C", "-", "D"]`:
+  - The first `-` is encountered, so we skip it and the next character `'B'`.
+  - The second `-` is encountered, so we skip it and the next character `'D'`.
+  - The result is `["C"]` → `"C"`.
+
+---
+
+### ✅ **Key Points**
+- This approach ensures that **every hyphen and its preceding character are removed**.
+- It works efficiently in **O(n)** time and **O(n)** space (for the result).
+- The use of a `skipNext` flag helps avoid double-counting or skipping the wrong character.
+
+Let me know if you want a version using `String` instead of `char[]`.

@@ -1,0 +1,19 @@
+<answer>
+public class Bottle {
+    private double capacity;
+    private double current;
+
+    public Bottle(double cap) {
+        capacity = cap;
+        current = cap;
+    }
+
+    public double updateAmount(double amt) {
+        current -= amt;
+        if (current < 0.25 * capacity) {
+            current = capacity;
+        }
+        return current;
+    }
+}
+</answer>

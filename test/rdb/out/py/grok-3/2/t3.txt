@@ -1,0 +1,2 @@
+
+You should call `compact_times()` on every `KPIset` during recalculation, as it appears to be a necessary preprocessing step for computing metrics like averages and percentiles. The code does not differentiate between individual and cumulative `KPIsets` in the `recalculate` method, suggesting that this operation is intended for all sets to ensure data consistency before further calculations.

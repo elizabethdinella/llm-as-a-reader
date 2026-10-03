@@ -1,0 +1,2 @@
+
+You should call `_compact_times()` on cumulative KPIsets only. Individual KPIsets likely need to maintain all raw response time data points for accurate percentile and standard deviation calculations, while cumulative KPIsets that aggregate data from multiple sources or time periods benefit from compaction to manage memory usage without significantly impacting statistical accuracy.

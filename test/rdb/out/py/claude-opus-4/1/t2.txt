@@ -1,0 +1,2 @@
+
+In this code, `F.cross_entropy` is the PyTorch functional cross-entropy loss function from `torch.nn.functional`, while `cross_entropy` (without the F. prefix) appears to be a bug - it's either an undefined function that would cause a NameError, or it's meant to be `F.cross_entropy`. The line should likely be `val_loss = F.cross_entropy(logits[val_idx], labels[val_idx])` to properly compute and store the validation loss.

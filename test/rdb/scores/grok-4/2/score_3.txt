@@ -1,0 +1,9 @@
+[
+    { "item": "1a", "deducted": false, "feedback": "The answer explicitly states that a singletonMap is immutable and throws an exception if modification is attempted. Condition satisfied." },
+    { "item": "1b", "deducted": false, "feedback": "The answer explicitly states that a HashMap is mutable and can be modified after creation (adding/removing entries). Condition satisfied." },
+    { "item": "1c", "deducted": true, "feedback": "The answer never states that Collections.singletonMap holds/returns only a single key-value mapping (fixed size of one). It focuses exclusively on mutability, so the size/cardinality distinction is missing." },
+    { "item": "2a", "deducted": true, "feedback": "The answer does not mention the method signature of messageParams (e.g., that it accepts a FetchProfile and a Map/HashMap of message ids to Message objects). No signature details are given at all." },
+    { "item": "2b", "deducted": true, "feedback": "The answer never states that messageParams specifically takes a HashMap parameter type (which is why the singletonMap must be wrapped). It only speaks generically about mutability requirements, which the rubric explicitly deems insufficient." },
+    { "item": "2c", "deducted": true, "feedback": "The answer does not discuss how the map argument is actually used inside messageParams/the builder, and it does not determine whether those usages mutate the map. It merely speculates the copy 'may be necessary if the builder or command needs to alter the map internally', failing to clearly establish that the usages are read-only." },
+    { "item": "2d", "deducted": false, "feedback": "The answer does not assert outright that the usages modify the map; it uses hedged, conditional language ('may be necessary if... needs to alter the map internally'). Since no definite incorrect claim of mutation is made, this deduction does not apply (the vagueness is already penalized under 2c)." }
+]

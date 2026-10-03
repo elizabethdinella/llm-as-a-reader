@@ -1,0 +1,22 @@
+
+The difference between `new HashMap<>(Collections.singletonMap(...))` and `Collections.singletonMap(...)` as a parameter lies primarily in the **mutability** of the `Map` object created:
+
+1.  **`Collections.singletonMap(key, value)`**:
+    *   Creates an **immutable** `Map` containing exactly one key-value pair.
+    *   Any attempt to modify this map (e.g., adding or removing entries) will throw an `UnsupportedOperationException`.
+    *   It is lightweight and memory-efficient, as it's a specialized, optimized internal implementation not designed for general-purpose resizing or modification.
+    *   It is suitable when you are certain the map will always contain only this single entry and will never need to be modified.
+
+2.  **`new HashMap<>(Collections.singletonMap(key, value))`**:
+    *   First, `Collections.singletonMap(key, value)` creates the immutable single-entry map.
+    *   Then, `new HashMap<>(Map m)` uses that immutable map to **initialize a *new*, standard `HashMap` instance**.
+    *   The resulting `HashMap` object is **mutable**. You can add, remove, or modify entries within this `HashMap` without error.
+    *   It carries the overhead of a typical `HashMap` (e.g., initial capacity, load factor, internal array structure).
+    *   It is suitable when the map needs to start with a single entry but might need to be modified later by the receiving method (`messageParams` in this case) or by the object being built (`UidFetchCommand`).
+
+**In summary:**
+
+*   Use `Collections.singletonMap(...)` directly if the map passed to `messageParams` is guaranteed to be **immutable** and will never need additional entries or modifications.
+*   Use `new HashMap<>(Collections.singletonMap(...))` if the map needs to be **mutable** by the receiving `messageParams` method or the `UidFetchCommand` builder/object, even if it starts with only one entry.
+
+In this specific code, the `new HashMap<>(...)` approach is generally safer as it provides a mutable map, which is often the default expectation for `Map` parameters unless immutability is explicitly stated or required by design.

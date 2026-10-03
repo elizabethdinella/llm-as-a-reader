@@ -1,0 +1,32 @@
+[
+    {
+        "id": "A1_call_present_at_all",
+        "name": "Response actually invokes the availability method somewhere vs omits any call to isAvailable entirely",
+        "side_a": "No deduct: the response contains at least one invocation of the availability method with a String argument anywhere in the constructor (e.g., inside an if condition or loop test), regardless of whether the surrounding logic is correct or terminates.",
+        "side_b": "Deduct: the response never invokes isAvailable at all \u2014 it merely assigns the requested name (or otherwise sets username) with no availability check anywhere \u2014 so there is no call to award the point for."
+    },
+    {
+        "id": "A2_any_check_attempt_present",
+        "name": "Constructor performs some availability check / alternate-name attempt (even a single non-loop `if`) vs unconditional direct assignment with no check at all",
+        "side_a": "No deduct if the constructor contains at least one call to isAvailable on a candidate name and, when unavailable, produces a different candidate name string \u2014 even if the retry is a single `if` branch rather than a true loop, or the loop is logically flawed (never terminating / never breaking). The attempt at check-then-alternate-name satisfies this sub-item.",
+        "side_b": "Deduct if the constructor simply assigns the requested name to the username field with no availability check and no alternate-name construction anywhere (no isAvailable call, no `+ number` suffix, no conditional), so there is nothing that could count as a checked/updated potential username."
+    },
+    {
+        "id": "A3_no_repetition_at_all",
+        "name": "Some repeated-attempt structure must exist vs a single hard-coded attempt (or none) counts",
+        "side_a": "Deduct when the answer contains no repetition mechanism whatsoever \u2014 no loop, no recursion, no repeated attempt \u2014 so there is nothing that could 'advance a count per attempt'; e.g., straight-line code that assigns the name once or appends a fixed '1' exactly once. Give the point (no_deduct) only when the code actually re-attempts (e.g., `while (true) { ... i++; }`).",
+        "side_b": "Give the point (no_deduct) even for straight-line, single-attempt code, treating a literal suffix like `requestedName + 1` or a plain assignment as satisfying the counter requirement."
+    },
+    {
+        "id": "A3_increment_statement_present",
+        "name": "An actual increment of the counter inside the repetition vs a counter that is declared/used but never advanced",
+        "side_a": "Deduct when a loop exists but the counter is never modified inside it (no `i++`, `count = count + 1`, or equivalent), so the loop body uses a frozen value; the item requires the count to actually advance.",
+        "side_b": "Give the point (no_deduct) whenever a counter variable is merely declared and referenced in a loop's condition/body, treating the presence of a numeric suffix variable in a loop as sufficient even without any increment."
+    },
+    {
+        "id": "A4_counter_variable_exists_vs_absent",
+        "name": "A numeric counter is actually declared/initialized vs no counter variable exists at all (hardcoded or omitted suffix)",
+        "side_a": "Credit when the response actually declares and initializes a numeric counter variable that will be used to build the appended suffix (e.g., `int suffix = 1;` or `int i = 1;`) \u2014 the 'initialize the count' requirement is satisfied by the presence of that initialized variable, even if the surrounding loop/increment logic is flawed.",
+        "side_b": "Deduct when no counter variable is declared or initialized at all \u2014 either the response never appends any number (just assigns the requested name) or it hardcodes a literal suffix such as `requestedName + 1` with no variable to initialize. Absence of a count is treated as failure to initialize the count, not as a separate loop/logic error."
+    }
+]

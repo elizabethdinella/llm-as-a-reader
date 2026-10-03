@@ -1,0 +1,7 @@
+{"justification": "The answer explicitly states that singletonMap is immutable ('it's immutable and lightweight for a single entry'). No deduction.", "deducted": false}
+{"justification": "The answer states that wrapping in a HashMap 'unnecessarily allows mutability', conveying that HashMap is mutable. No deduction.", "deducted": false}
+{"justification": "The answer refers to singletonMap as 'lightweight for a single entry', which conveys that it holds only a single key-value mapping. No deduction.", "deducted": false}
+{"justification": "The answer never mentions or discusses the method signature of messageParams. Deducted.", "deducted": true}
+{"justification": "The answer does not state that messageParams takes/requires a HashMap parameter type; it only implies HashMap is unnecessary. Deducted.", "deducted": true}
+{"justification": "The answer does not examine how the map argument is used within messageParams, nor determine that the usages are read-only. Deducted.", "deducted": true}
+{"justification": "The answer makes no claim that the usages of the map inside messageParams modify it, so no false-statement deduction applies.", "deducted": false}

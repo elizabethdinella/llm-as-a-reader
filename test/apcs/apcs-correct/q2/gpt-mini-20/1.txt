@@ -1,0 +1,21 @@
+<answer>
+```java
+public class Bottle {
+    private double capacity;
+    private double amount;
+
+    public Bottle(double capacity) {
+        this.capacity = capacity;
+        this.amount = capacity;   // bottle starts full
+    }
+
+    public double updateAmount(double removal) {
+        amount -= removal;                // remove liquid
+        if (amount < 0.25 * capacity) {   // below 25% of capacity
+            amount = capacity;            // refill bottle
+        }
+        return amount;                    // amount remaining (or refilled)
+    }
+}
+```
+</answer>

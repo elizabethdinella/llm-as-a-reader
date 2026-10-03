@@ -1,0 +1,7 @@
+{"justification": "The answer explicitly states that Collections.singletonMap creates a 'compact, immutable' map that 'cannot be changed (no put/remove)'. Immutability is clearly mentioned.", "deducted": false}
+{"justification": "The answer states that new HashMap<>(...) copies the entry into a 'regular, mutable HashMap' that 'can be modified later'. Mutability of HashMap is mentioned.", "deducted": false}
+{"justification": "The answer states the singletonMap 'contains exactly one entry' and is a 'one-element map', satisfying the single key-value mapping requirement.", "deducted": false}
+{"justification": "The answer never mentions or examines the method signature of messageParams (e.g., its declared parameter types such as HashMap<String, Message>). It only speaks generically about 'the called method'.", "deducted": true}
+{"justification": "The answer does not state that messageParams specifically requires/declares a HashMap parameter; it only vaguely says the choice depends on whether the method needs to modify the map.", "deducted": true}
+{"justification": "The answer does not examine how the map argument is used inside messageParams and does not determine whether those usages are read-only; it leaves it open-ended ('depends on whether the method needs to modify the map').", "deducted": true}
+{"justification": "The answer does not affirmatively claim that messageParams modifies the map; it only notes the general possibility of mutation with a HashMap, so no incorrect assertion is made.", "deducted": false}

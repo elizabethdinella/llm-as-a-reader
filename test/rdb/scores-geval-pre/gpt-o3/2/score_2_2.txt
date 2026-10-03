@@ -1,0 +1,30 @@
+[
+    {
+        "justification": "The answer explicitly states that Collections.singletonMap returns a Map implementation that is 'unmodifiable' and that attempting to add, remove, or clear entries would throw UnsupportedOperationException, and further contrasts it with the mutable HashMap copy. This clearly conveys that singletonMap is immutable.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that the copy created via new HashMap<>(...) 'is a normal HashMap it is fully mutable \u2013 additional (uid, Message) pairs can be inserted or removed without error', clearly mentioning HashMap's mutability.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that Collections.singletonMap(k, v) returns a Map implementation that 'contains exactly one entry', and refers to it as a 'one-element map'. This satisfies the requirement that the answer mention singletonMap returns only a single key-value mapping.",
+        "deducted": false
+    },
+    {
+        "justification": "The candidate answer only discusses generic differences between Collections.singletonMap and HashMap (immutability, mutability, allocation overhead). It never mentions or examines the signature of the messageParams method (e.g., its parameter types such as FetchProfile and Map/HashMap<String, Message>). Therefore the point for mentioning the method signature should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer never states that messageParams' parameter is declared as a HashMap. It only discusses mutability in general terms ('if messageParams ... tries to add, remove or clear entries'), which the rubric explicitly says is not specific enough. No mention of the actual parameter type requirement.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer never examines what messageParams actually does with the map. It only speculates hypothetically ('if messageParams ... tries to add, remove or clear entries'), and does not determine whether the actual usages are read-only or mutating. Therefore it fails to clearly resolve whether the map is modified.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer only speaks hypothetically/conditionally (\"if messageParams ... tries to add, remove or clear entries, an UnsupportedOperationException will be thrown\") and gives generic advice about wrapping in a HashMap when modifications are expected. It never affirmatively claims that the actual usages of the map inside messageParams modify it. Therefore, it does not incorrectly state that the map is modified, so the 2-point deduction under 2e does not apply (its failure to determine the actual behavior is covered by 2c instead).",
+        "deducted": false
+    }
+]

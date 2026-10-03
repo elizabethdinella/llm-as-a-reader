@@ -1,0 +1,2 @@
+
+No, we should not use UTF-8 instead of ASCII. The HTTP Host header must contain only ASCII characters according to HTTP specifications (RFC 7230). Using ASCII encoding ensures that any non-ASCII characters will raise an error, which helps catch invalid Host headers early. If internationalized domain names are needed, they should be properly encoded using Punycode before being used in the Host header.

@@ -1,0 +1,30 @@
+[
+    {
+        "justification": "The answer explicitly states that Collections.singletonMap returns a 'special, read-only Map implementation' whose modification attempts throw UnsupportedOperationException, and later calls it an 'immutable, single-entry map'. This clearly satisfies the requirement that the singletonMap is immutable.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that wrapping in new HashMap<>(...) creates 'an ordinary, mutable HashMap' where you can freely add, remove, or replace entries, and reiterates that passing new HashMap<>(singletonMap) gives a 'regular, mutable map'. The mutability of HashMap is clearly mentioned.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that Collections.singletonMap(...) returns a read-only Map implementation that 'contains exactly one key/value pair', and later refers to it as a 'single-entry map'. This satisfies the requirement that the answer mention the singletonMap contains only a single key-value mapping.",
+        "deducted": false
+    },
+    {
+        "justification": "The candidate answer never mentions or shows the signature of the messageParams method (e.g., its declared parameter types such as FetchProfile and HashMap<String, Message>). It only speculates generically about whether messageParams might need a mutable map, without referencing the actual method signature.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer never mentions the actual parameter type of messageParams; it only speaks generally about passing an immutable vs mutable map and whether the method 'needs to modify the map'. It does not state that messageParams declares a HashMap (or Map) parameter type, so the requirement of sub-item 2c is unmet.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer only explains the general mutability difference and concludes that 'the choice depends on whether messageParams (or code that later receives the map) needs to modify the map.' It never examines or discusses the actual usages of the map argument inside messageParams, and explicitly leaves it undetermined whether those usages modify the map or are read-only. Per the deduction criteria, the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer never asserts that messageParams actually modifies the map. It only speaks hypothetically ('the method or later code can change its contents', 'depends on whether messageParams ... needs to modify the map'), leaving the question open rather than incorrectly claiming modification occurs. This ambiguity is penalized under 2d, but does not constitute an incorrect statement that the usages modify the map, so no deduction applies for 2e.",
+        "deducted": false
+    }
+]

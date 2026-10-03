@@ -1,0 +1,1 @@
+Yes, the check is needed to ensure both the build setup and the presence of `BUILD_DIR` are valid, preventing errors in subsequent steps.

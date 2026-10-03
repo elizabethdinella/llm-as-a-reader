@@ -1,0 +1,21 @@
+<answer>
+```java
+public class Bottle {
+    private double capacity;
+    private double amount;
+
+    public Bottle(double capacity) {
+        this.capacity = capacity;
+        this.amount = capacity;
+    }
+
+    public double updateAmount(double usedAmount) {
+        this.amount -= usedAmount;
+        if (this.amount < 0.25 * this.capacity) {
+            this.amount = this.capacity;
+        }
+        return this.amount;
+    }
+}
+```
+</answer>

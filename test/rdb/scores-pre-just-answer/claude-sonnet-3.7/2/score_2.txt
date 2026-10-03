@@ -1,0 +1,37 @@
+[
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly states that Collections.singletonMap() creates an immutable map with exactly one entry, while the HashMap wrapper creates a mutable map. This covers both the mutability difference (singletonMap is immutable) and the size difference (exactly one entry vs. a general-purpose resizable map). The rubric's requirement that the answer state singletonMap is immutable is satisfied.",
+        "item": "1a"
+    },
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly states that `Collections.singletonMap()` creates an immutable map with exactly one entry while wrapping it in `new HashMap<>(...)` produces a mutable map. This covers both the mutability difference (HashMap is mutable, singletonMap is immutable) and the size/capacity difference (singletonMap holds exactly one entry, whereas a HashMap can grow). The rubric requirement that the answer state HashMap is mutable is satisfied.",
+        "item": "1b"
+    },
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly states that `Collections.singletonMap()` creates an immutable map with exactly one entry (a single key-value mapping), and contrasts it with wrapping in a `HashMap`, which produces a mutable map. This covers both the mutability difference and the size/single-mapping constraint required by the rubric item, so no deduction applies.",
+        "item": "1c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The rubric requires the answer to explicitly discuss the messageParams method and reference its signature (e.g., that it accepts a FetchProfile and a Map<String, Message>, and whether it declares Map vs. HashMap and whether it mutates the map). The candidate answer never names or describes messageParams or its parameter types at all; it only makes a generic statement about mutable vs. immutable maps and vaguely alludes to 'the called method' possibly requiring a HashMap or mutability. That is not a mention of the messageParams signature, so the point is deducted.",
+        "item": "2a"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate answer focuses on the general immutability/mutability distinction between Collections.singletonMap and a HashMap copy, and even claims that 'using singletonMap directly would be more efficient,' which suggests the answer does not recognize that the messageParams method's signature requires a HashMap. The only reference to this is the hedged, conditional clause 'unless the called method specifically requires a HashMap implementation or mutability' \u2014 a speculative caveat rather than a statement that messageParams takes a HashMap. It also never names or discusses messageParams explicitly. Therefore the required point is not earned.",
+        "item": "2b"
+    },
+    {
+        "deducted": true,
+        "feedback": "The answer only addresses the general immutability difference between `Collections.singletonMap` and `HashMap`. It does not examine how the map argument is actually used inside `messageParams` (i.e., whether the stored map is only read from, such as for lookups by message UID, or whether it is mutated/stored for later modification). Instead of determining this, the answer explicitly hedges with \"unless the called method specifically requires a HashMap implementation or mutability,\" which leaves the question open rather than concluding that the usages are read-only. Its claim that \"the map isn't modified afterward\" refers only to the visible local code, not to the behavior within `messageParams`. Therefore the rubric condition (discussing usages within `messageParams` and clearly determining they are read-only) is not met.",
+        "item": "2c"
+    },
+    {
+        "deducted": false,
+        "feedback": "The candidate addresses the map argument in the context of the method it is passed to (referring to 'the called method', i.e., messageParams), noting that the map 'isn't modified afterward' and only conditionally raising mutability as a hypothetical requirement ('unless the called method specifically requires ... mutability'). It does not assert that messageParams or its downstream usages actually mutate the map, so the error described in the rubric is not made. No deduction.",
+        "item": "2d"
+    }
+]

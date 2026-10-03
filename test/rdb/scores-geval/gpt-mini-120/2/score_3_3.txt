@@ -1,0 +1,7 @@
+{"justification": "The answer explicitly states that `Collections.singletonMap` returns an **immutable** map, so this criterion is satisfied.", "deducted": false}
+{"justification": "The answer explicitly describes `new HashMap<>(...)` as creating a **mutable copy** that can later be modified, satisfying this criterion.", "deducted": false}
+{"justification": "The answer states the singleton map 'contains exactly one entry' and is 'a lightweight, read-only map with a single entry', satisfying this criterion.", "deducted": false}
+{"justification": "The answer never mentions or examines the method signature of `messageParams` (e.g., its parameter types such as `FetchProfile` and `HashMap<String, Message>`). Deduct.", "deducted": true}
+{"justification": "The answer only vaguely references 'APIs that expect a mutable HashMap implementation' generically; it never states that `messageParams` specifically declares/takes a `HashMap` parameter. Deduct.", "deducted": true}
+{"justification": "The answer does not examine how the map argument is used inside `messageParams` at all, and thus fails to determine that the usages are read-only. Deduct.", "deducted": true}
+{"justification": "The answer does not assert that `messageParams` modifies the map; it only speaks generally about a HashMap being modifiable. No false claim about mutation within `messageParams` is made, so no deduction here.", "deducted": false}

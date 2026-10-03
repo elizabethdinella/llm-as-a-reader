@@ -1,0 +1,14 @@
+<answer>
+public String getShortenedName() {
+    StringBuilder shortened = new StringBuilder();
+    for (int i = 0; i < username.length(); i++) {
+        if (i + 1 < username.length() && username.charAt(i + 1) == '-') {
+            // Skip this character and the next hyphen
+            i++;
+        } else {
+            shortened.append(username.charAt(i));
+        }
+    }
+    return shortened.toString();
+}
+</answer>

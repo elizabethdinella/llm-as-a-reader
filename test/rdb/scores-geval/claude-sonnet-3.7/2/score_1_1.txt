@@ -1,0 +1,24 @@
+**Rubric Item 1 — Mutability/size differences (3 pts)**
+
+1a. singletonMap is immutable — stated ("creates an immutable... map").
+{"deducted": false}
+
+1b. HashMap is mutable — stated ("creates a mutable map that can be modified after creation").
+{"deducted": false}
+
+1c. singletonMap holds a single key-value mapping — stated ("with exactly one entry").
+{"deducted": false}
+
+**Rubric Item 2 — messageParams (4 pts)**
+
+2a. Method signature of messageParams — never given or described.
+{"deducted": true}
+
+2b. States messageParams takes a HashMap — only says it "requires a modifiable map," which the rubric explicitly deems insufficient.
+{"deducted": true}
+
+2c. Discussion of the map's usages inside messageParams as read-only — not discussed; the answer only speculates ("likely because...") and fails to determine whether the map is modified.
+{"deducted": true}
+
+2d. Incorrectly claims the usages modify the map — the answer asserts the wrapping is "likely because the messageParams method requires a modifiable map or the map needs to be changed later," which incorrectly implies mutation.
+{"deducted": true}

@@ -1,0 +1,7 @@
+{"justification": "The answer explicitly states that Collections.singletonMap returns an immutable map that 'cannot be modified'. Requirement met.", "deducted": false}
+{"justification": "The answer states that wrapping in a new HashMap 'creates a mutable copy that can be modified later', identifying HashMap as mutable. Requirement met.", "deducted": false}
+{"justification": "The answer says singletonMap returns a map 'with exactly one entry', satisfying the single key-value mapping requirement.", "deducted": false}
+{"justification": "The answer never presents or discusses the actual method signature of messageParams (its parameter types/declaration); it only speculates about what it might expect.", "deducted": true}
+{"justification": "The answer only speculatively offers that messageParams 'either requires a mutable map ... or specifically expects a HashMap type'. It does not definitively state that the parameter type is HashMap, and it equally offers the 'mutable map' reasoning that the rubric deems insufficient.", "deducted": true}
+{"justification": "The answer does not examine how the map argument is actually used inside messageParams and fails to determine whether those usages are read-only, instead hedging with 'likely ... either ... or'.", "deducted": true}
+{"justification": "The answer does not assert as fact that the usages modify the map; it only raises it as one speculative possibility, so the full lie deduction does not apply.", "deducted": false}

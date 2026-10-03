@@ -1,0 +1,1 @@
+Yes, you should add a null check for mPrefix to prevent potential NullPointerExceptions, unless it's guaranteed that mPrefix will never be null when getLogFileParentDir() is called. Adding a simple if (mPrefix != null) before checking its length would suffice. 

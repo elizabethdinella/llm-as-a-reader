@@ -1,0 +1,38 @@
+
+
+The `Bottle` class is designed to manage the liquid level in a bottle, automatically refilling it when the remaining liquid falls below 25% of its capacity.
+
+```java
+public class Bottle {
+    private final double capacity;
+    private double currentAmount;
+
+    public Bottle(double capacity) {
+        this.capacity = capacity;
+        this.currentAmount = capacity;
+    }
+
+    public double updateAmount(double amount) {
+        currentAmount -= amount;
+        if (currentAmount < 0.25 * capacity) {
+            currentAmount = capacity;
+        }
+        return currentAmount;
+    }
+}
+```
+
+**Step-by-Step Explanation:**
+
+1. **Class Structure:**
+   - The `Bottle` class has two instance variables: `capacity` (the maximum volume the bottle can hold) and `currentAmount` (the current liquid level).
+
+2. **Constructor:**
+   - Initializes the bottle with a given `capacity` and sets `currentAmount` to this capacity, meaning the bottle starts full.
+
+3. **updateAmount Method:**
+   - **Subtract the Given Amount:** Reduces `currentAmount` by the specified `amount`.
+   - **Check Refill Condition:** If `currentAmount` drops below 25% of `capacity`, resets `currentAmount` to `capacity`.
+   - **Return the Result:** Returns the updated `currentAmount` after processing.
+
+This implementation ensures the bottle behaves as specified, automatically refilling when the liquid level is too low.

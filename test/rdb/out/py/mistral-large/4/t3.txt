@@ -1,0 +1,1 @@
+You need to call `deepcopy(result)` before modifying `result[DATA]` if you want to ensure that modifications do not affect the original `result` object for all transaction types. Currently, this is only done for `SCHEMA` and `ISSUER_KEY`, so for other types (e.g., `NODE_UPGRADE`), a deep copy should be made if immutability of the original `result` is necessary.

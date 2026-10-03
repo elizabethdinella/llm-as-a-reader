@@ -1,0 +1,219 @@
+I'll answer each sub-question and provide explanations.
+
+### (a)(i) Declare the class Bird and its constructor
+
+```java
+public class Bird {
+    private double distancePerHour;
+    private String species;
+    private double xPosition;
+    private double yPosition;
+
+    public Bird(String species, double distancePerHour) {
+        this.species = species;
+        this.distancePerHour = distancePerHour;
+        this.xPosition = 500.0;
+        this.yPosition = 500.0;
+    }
+}
+<answer>
+public class Bird {
+    private double distancePerHour;
+    private String species;
+    private double xPosition;
+    private double yPosition;
+
+    public Bird(String species, double distancePerHour) {
+        this.species = species;
+        this.distancePerHour = distancePerHour;
+        this.xPosition = 500.0;
+        this.yPosition = 500.0;
+    }
+}
+</answer>
+```
+
+### (a)(ii) Write program code for GetSpecies()
+
+```java
+public String getSpecies() {
+    return species;
+}
+<answer>
+public String getSpecies() {
+    return species;
+}
+</answer>
+```
+
+### (a)(iii) Write program code for GetPosition()
+
+```java
+public String getPosition() {
+    return "X = " + xPosition + " Y = " + yPosition;
+}
+<answer>
+public String getPosition() {
+    return "X = " + xPosition + " Y = " + yPosition;
+}
+</answer>
+```
+
+### (a)(iv) Write program code for Move()
+
+```java
+public void move(char direction, int minutesFlying) {
+    double distanceTraveled = (distancePerHour / 60) * minutesFlying;
+
+    switch (direction) {
+        case 'N':
+            yPosition += distanceTraveled;
+            break;
+        case 'S':
+            yPosition -= distanceTraveled;
+            break;
+        case 'E':
+            xPosition += distanceTraveled;
+            break;
+        case 'W':
+            xPosition -= distanceTraveled;
+            break;
+    }
+}
+<answer>
+public void move(char direction, int minutesFlying) {
+    double distanceTraveled = (distancePerHour / 60) * minutesFlying;
+
+    switch (direction) {
+        case 'N':
+            yPosition += distanceTraveled;
+            break;
+        case 'S':
+            yPosition -= distanceTraveled;
+            break;
+        case 'E':
+            xPosition += distanceTraveled;
+            break;
+        case 'W':
+            xPosition -= distanceTraveled;
+            break;
+    }
+}
+</answer>
+```
+
+### (b) Declare and initialise the two birds
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        Bird cockatiel = new Bird("Cockatiel", 71.0);
+        Bird macaw = new Bird("Macaw", 56.0);
+    }
+}
+<answer>
+Bird cockatiel = new Bird("Cockatiel", 71.0);
+Bird macaw = new Bird("Macaw", 56.0);
+</answer>
+```
+
+### (c)(i) Amend the main program
+
+```java
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Bird cockatiel = new Bird("Cockatiel", 71.0);
+        Bird macaw = new Bird("Macaw", 56.0);
+
+        System.out.println("Initial positions:");
+        System.out.println(cockatiel.getSpecies() + " - " + cockatiel.getPosition());
+        System.out.println(macaw.getSpecies() + " - " + macaw.getPosition());
+
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            try {
+                System.out.print("Select a bird to move (1 for Cockatiel, 2 for Macaw): ");
+                int choice = scanner.nextInt();
+                Bird selectedBird;
+                if (choice == 1) {
+                    selectedBird = cockatiel;
+                } else if (choice == 2) {
+                    selectedBird = macaw;
+                } else {
+                    System.out.println("Invalid choice. Please try again.");
+                    continue;
+                }
+
+                System.out.print("Enter direction (N, S, E, W): ");
+                char direction = scanner.next().charAt(0);
+
+                System.out.print("Enter time flying (minutes): ");
+                int minutesFlying = scanner.nextInt();
+
+                selectedBird.move(direction, minutesFlying);
+
+                System.out.println(selectedBird.getSpecies() + " - New position: " + selectedBird.getPosition());
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please try again.");
+                scanner.next(); // Clear invalid input
+            }
+        }
+
+        scanner.close();
+    }
+}
+<answer>
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Bird cockatiel = new Bird("Cockatiel", 71.0);
+        Bird macaw = new Bird("Macaw", 56.0);
+
+        System.out.println("Initial positions:");
+        System.out.println(cockatiel.getSpecies() + " - " + cockatiel.getPosition());
+        System.out.println(macaw.getSpecies() + " - " + macaw.getPosition());
+
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            try {
+                System.out.print("Select a bird to move (1 for Cockatiel, 2 for Macaw): ");
+                int choice = scanner.nextInt();
+                Bird selectedBird;
+                if (choice == 1) {
+                    selectedBird = cockatiel;
+                } else if (choice == 2) {
+                    selectedBird = macaw;
+                } else {
+                    System.out.println("Invalid choice. Please try again.");
+                    continue;
+                }
+
+                System.out.print("Enter direction (N, S, E, W): ");
+                char direction = scanner.next().charAt(0);
+
+                System.out.print("Enter time flying (minutes): ");
+                int minutesFlying = scanner.nextInt();
+
+                selectedBird.move(direction, minutesFlying);
+
+                System.out.println(selectedBird.getSpecies() + " - New position: " + selectedBird.getPosition());
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please try again.");
+                scanner.next(); // Clear invalid input
+            }
+        }
+
+        scanner.close();
+    }
+}
+</answer>
+```

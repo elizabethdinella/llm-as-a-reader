@@ -1,0 +1,32 @@
+[
+    {
+        "id": "1b_uncopied_branch_mutation_claim",
+        "name": "Claims about what happens in the branches where deepcopy is NOT called: asserting mutation/acceptable-mutation there vs. saying nothing modifies DATA there",
+        "side_a": "No deduct when the answer either makes no claim about the non-deepcopy branches, or explains that in those branches `result[DATA]` is simply never touched, so no copy is needed (a correct, no-effect statement).",
+        "side_b": "Deduct when the answer asserts that in the branches/cases where `deepcopy` is not called, `result[DATA]` is (or would be) modified and the original `reply.result` gets mutated, or that such mutation is intentionally 'acceptable' there \u2014 this invents a positive mutation consequence for the other transaction paths that the code does not have."
+    },
+    {
+        "id": "1b_necessity_verdict",
+        "name": "Verdict on whether the deepcopy is needed: affirms it is required vs. says it is unnecessary/optional",
+        "side_a": "No deduct when the answer concludes the deepcopy is needed as written, because the un-serialized `reply.result` is still used afterwards.",
+        "side_b": "Deduct when the answer concludes the deepcopy is not needed (or is merely a stylistic 'unless you care about side effects' option), thereby denying the real downstream dependency on the unmodified reply."
+    },
+    {
+        "id": "2a_names_the_serialized_data_destination",
+        "name": "Names a concrete destination for the serialized DATA vs only generic 'side effects / other parts of the system'",
+        "side_a": "No deduct when the answer actually names where the serialized/modified value goes (the ledger, the stored txn, what gets written out) \u2014 i.e., it identifies a concrete consumer of the serialized data rather than just asserting that mutation would be visible somewhere.",
+        "side_b": "Deduct when the answer only argues in the abstract \u2014 'unintended side effects', 'elsewhere in your code', 'other parts of the system', 'avoid side effects on the original' \u2014 without ever naming the ledger or any concrete consumer of the serialized value."
+    },
+    {
+        "id": "2a_which_side_of_the_copy_is_traced",
+        "name": "Traces the serialized copy to the ledger vs only traces the preserved original to the graph",
+        "side_a": "No deduct when the answer says the modified/serialized copy is what goes to the ledger (even while also mentioning the graph), so the ledger is identified as consumer of the serialized data.",
+        "side_b": "Deduct when the only downstream consumer named is the one receiving the untouched original (e.g. `storeTxnInGraph` / the identity graph gets the raw data), with the serialized value's destination left unstated \u2014 the ledger is never raised as consumer."
+    },
+    {
+        "id": "2b_necessity_verdict",
+        "name": "affirms the deepcopy is required (original must survive) vs says it is optional / not needed",
+        "side_a": "No deduction if the answer concludes the deepcopy is genuinely necessary because the unmodified original is still needed after the serialization step (e.g. states the original reply/result is reused later and must stay raw).",
+        "side_b": "Deduct if the answer concludes the deepcopy is unnecessary, optional, or that mutating the original is acceptable, treating the existing conditional deepcopy as mere defensive style rather than a requirement of the downstream flow."
+    }
+]

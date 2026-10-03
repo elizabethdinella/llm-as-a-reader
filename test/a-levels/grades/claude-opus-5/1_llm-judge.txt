@@ -1,0 +1,18 @@
+[
+{
+"DECISION": "YES",
+"FEEDBACK": "The class header `public class Bird` is declared with proper opening and closing braces, satisfying the class header/end requirement."
+},
+{
+"DECISION": "YES",
+"FEEDBACK": "All four attributes (DistancePerHour, Species, XPosition, YPosition) are declared as private with appropriate data types (double for the reals, String for species)."
+},
+{
+"DECISION": "YES",
+"FEEDBACK": "The constructor `public Bird(String NewSpecies, double NewDistancePerHour)` is declared inside the class with two parameters and correct opening/closing braces."
+},
+{
+"DECISION": "YES",
+"FEEDBACK": "Inside the constructor, the parameters are correctly assigned to Species and DistancePerHour, and both XPosition and YPosition are initialised to 500.0."
+}
+]

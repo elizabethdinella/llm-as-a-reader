@@ -1,0 +1,7 @@
+{"justification": "Sub-item 1a: The answer never states that singletonMap is immutable, only that it stores a single entry efficiently.", "deducted": true}
+{"justification": "Sub-item 1b: The answer never states that HashMap is mutable; it only says HashMap can store multiple key-value pairs.", "deducted": true}
+{"justification": "Sub-item 1c: The answer does state singletonMap holds/creates only one entry ('optimized for storing only one entry', 'a map with a single entry'), satisfying this requirement.", "deducted": false}
+{"justification": "Sub-item 2a: The answer does not mention the method signature of messageParams at all.", "deducted": true}
+{"justification": "Sub-item 2b: The answer does not state that messageParams requires/takes a HashMap parameter type.", "deducted": true}
+{"justification": "Sub-item 2c: The answer does not discuss how the map argument is used inside messageParams, nor whether those usages are read-only.", "deducted": true}
+{"justification": "Sub-item 2d: The answer does not incorrectly claim that usages of the map modify it, since it makes no claim about internal usage.", "deducted": false}

@@ -1,0 +1,170 @@
+# Answer
+
+## (a)(i) Class declaration with constructor
+
+```java
+public class Bird
+{
+    private double distancePerHour;
+    private String species;
+    private double xPosition;
+    private double yPosition;
+
+    public Bird(String species, double distancePerHour)
+    {
+        this.species = species;
+        this.distancePerHour = distancePerHour;
+        this.xPosition = 500.0;
+        this.yPosition = 500.0;
+    }
+}
+```
+
+<answer>
+public class Bird
+{
+    private double distancePerHour;
+    private String species;
+    private double xPosition;
+    private double yPosition;
+
+    public Bird(String species, double distancePerHour)
+    {
+        this.species = species;
+        this.distancePerHour = distancePerHour;
+        this.xPosition = 500.0;
+        this.yPosition = 500.0;
+    }
+}
+</answer>
+
+## (a)(ii) GetSpecies()
+
+<answer>
+public String GetSpecies()
+{
+    return species;
+}
+</answer>
+
+## (a)(iii) GetPosition()
+
+<answer>
+public String GetPosition()
+{
+    return "X = " + xPosition + " Y = " + yPosition;
+}
+</answer>
+
+## (a)(iv) Move()
+
+<answer>
+public void Move(char direction, int minutesFlying)
+{
+    double distance = (distancePerHour / 60) * minutesFlying;
+
+    if (direction == 'N')
+    {
+        yPosition = yPosition + distance;
+    }
+    else if (direction == 'S')
+    {
+        yPosition = yPosition - distance;
+    }
+    else if (direction == 'E')
+    {
+        xPosition = xPosition + distance;
+    }
+    else if (direction == 'W')
+    {
+        xPosition = xPosition - distance;
+    }
+}
+</answer>
+
+## (b) Declaring and initialising two Bird instances
+
+<answer>
+Bird bird1 = new Bird("Cockatiel", 71.0);
+Bird bird2 = new Bird("Macaw", 56.0);
+</answer>
+
+## (c)(i) Main program logic
+
+<answer>
+import java.util.Scanner;
+
+public class Main
+{
+    public static void main(String[] args)
+    {
+        Scanner input = new Scanner(System.in);
+
+        Bird bird1 = new Bird("Cockatiel", 71.0);
+        Bird bird2 = new Bird("Macaw", 56.0);
+
+        System.out.println("Bird 1: " + bird1.GetSpecies() + " " + bird1.GetPosition());
+        System.out.println("Bird 2: " + bird2.GetSpecies() + " " + bird2.GetPosition());
+
+        int birdChoice = 0;
+        boolean validChoice = false;
+        while (!validChoice)
+        {
+            System.out.println("Select a bird to move (1 or 2): ");
+            birdChoice = input.nextInt();
+            if (birdChoice == 1 || birdChoice == 2)
+            {
+                validChoice = true;
+            }
+            else
+            {
+                System.out.println("Invalid choice, please enter 1 or 2");
+            }
+        }
+
+        char direction = ' ';
+        boolean validDirection = false;
+        while (!validDirection)
+        {
+            System.out.println("Enter direction (N, S, E or W): ");
+            direction = input.next().charAt(0);
+            direction = Character.toUpperCase(direction);
+            if (direction == 'N' || direction == 'S' || direction == 'E' || direction == 'W')
+            {
+                validDirection = true;
+            }
+            else
+            {
+                System.out.println("Invalid direction, please enter N, S, E or W");
+            }
+        }
+
+        int minutes = 0;
+        boolean validMinutes = false;
+        while (!validMinutes)
+        {
+            System.out.println("Enter minutes flying (0 to 500): ");
+            minutes = input.nextInt();
+            if (minutes >= 0 && minutes <= 500)
+            {
+                validMinutes = true;
+            }
+            else
+            {
+                System.out.println("Invalid time, please enter a value between 0 and 500");
+            }
+        }
+
+        if (birdChoice == 1)
+        {
+            bird1.Move(direction, minutes);
+            System.out.println("Bird 1 new position: " + bird1.GetSpecies() + " " + bird1.GetPosition());
+        }
+        else
+        {
+            bird2.Move(direction, minutes);
+            System.out.println("Bird 2 new position: " + bird2.GetSpecies() + " " + bird2.GetPosition());
+        }
+    }
+}
+</answer>

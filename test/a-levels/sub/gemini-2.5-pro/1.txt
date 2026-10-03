@@ -1,0 +1,220 @@
+Here are the answers to the exam questions.
+
+### **Question 1**
+
+**(a)(i) Write program code to declare the class Bird and its constructor.**
+Do NOT declare the other methods. All attributes should be private. Use an appropriate constructor.
+[4]
+
+**Explanation:**
+This code declares the `Bird` class. I have defined four instance variables (`DistancePerHour`, `Species`, `XPosition`, `YPosition`) as `private` to encapsulate the data, which is a core principle of OOP. `double` is used for the real number types as it is the standard for floating-point numbers in Java.
+
+The constructor is a special method used to initialise new objects. It is declared as `public` and has the same name as the class. It takes the species and distance per hour as parameters. Inside the constructor, `this.Species` and `this.DistancePerHour` are used to assign the parameter values to the object's instance variables. The `this` keyword is used to distinguish between the instance variables and the parameters which have the same names. As required, `XPosition` and `YPosition` are initialised to the fixed value of `500.0`.
+
+<answer>
+```java
+public class Bird {
+    private double DistancePerHour;
+    private String Species;
+    private double XPosition;
+    private double YPosition;
+
+    public Bird(String species, double distancePerHour) {
+        this.Species = species;
+        this.DistancePerHour = distancePerHour;
+        this.XPosition = 500.0;
+        this.YPosition = 500.0;
+    }
+}
+```
+</answer>
+
+**(a)(ii) The method GetSpecies() returns the species of the bird.**
+Write program code for GetSpecies()
+[2]
+
+**Explanation:**
+This is an accessor method, commonly known as a "getter". It allows external code to access the value of the `private` `Species` attribute without being able to modify it directly. The method is declared as `public` so it can be called from outside the `Bird` class. It has a return type of `String`, which matches the data type of the `Species` attribute. The `return` statement simply returns the value of the `Species` instance variable.
+
+<answer>
+```java
+public String GetSpecies() {
+    return this.Species;
+}
+```
+</answer>
+
+**(a)(iii) The method GetPosition() returns a string of the bird's data in the format: "X = " & <XPosition> & " Y = " & <YPosition>**
+Write program code for GetPosition()
+[3]
+
+**Explanation:**
+This method constructs and returns a formatted string containing the bird's coordinates. It is `public` and returns a `String`. I have used the `+` operator for string concatenation in Java to join the literal strings "X = " and " Y = " with the values of the `XPosition` and `YPosition` instance variables. This creates a single string in the specified format, for example, "X = 500.0 Y = 500.0".
+
+<answer>
+```java
+public String GetPosition() {
+    return "X = " + this.XPosition + " Y = " + this.YPosition;
+}
+```
+</answer>
+
+**(a)(iv) If the bird is travelling north, the vertical position increases. If travelling south, it decreases. If travelling east, the horizontal position increases. If travelling west, it decreases.**
+**The method Move():**
+**- takes the direction of travel as a parameter in the form 'N' for north, 'S' for south, 'E' for east or 'W' for west**
+**- takes the number of minutes that the bird has been flying (to the nearest minute) as a parameter**
+**- calculates the distance travelled by the bird using the formula: distance travelled = (distance per hour / 60) * minutes flying**
+**- updates the vertical or horizontal position using the distance calculated.**
+**You do NOT need to validate the parameters.**
+**Write program code for Move()**
+[5]
+
+**Explanation:**
+This method modifies the state of the `Bird` object, so its return type is `void`. It takes a `char` for the direction and an `int` for the minutes as parameters.
+
+First, it calculates the distance travelled. I divided `DistancePerHour` by `60.0` (using `60.0` ensures floating-point division) and then multiplied by the number of minutes.
+
+Next, I used a `switch` statement to handle the logic for the four possible directions. A `switch` is efficient and readable for comparing a single variable against multiple constant values.
+-   For 'N', the calculated distance is added to `YPosition`.
+-   For 'S', the distance is subtracted from `YPosition`.
+-   For 'E', the distance is added to `XPosition`.
+-   For 'W', the distance is subtracted from `XPosition`.
+Each `case` ends with a `break` statement to prevent fall-through to the next case.
+
+<answer>
+```java
+public void Move(char direction, int minutes) {
+    double distance = (this.DistancePerHour / 60.0) * minutes;
+
+    switch (direction) {
+        case 'N':
+            this.YPosition += distance;
+            break;
+        case 'S':
+            this.YPosition -= distance;
+            break;
+        case 'E':
+            this.XPosition += distance;
+            break;
+        case 'W':
+            this.XPosition -= distance;
+            break;
+    }
+}
+```
+</answer>
+
+**(b) The main program creates two instances of Bird.**
+**The first bird is the species 'Cockatiel' and flies 71.0 km/h.**
+**The second bird is the species 'Macaw' and flies 56.0 km/h.**
+**Write program code to declare and initialise the two birds.**
+[3]
+
+**Explanation:**
+This code creates two instances (objects) of the `Bird` class. I use the `new` keyword to allocate memory for each object and call the `Bird` constructor that was defined in part (a)(i).
+
+For the first object, `bird1`, I pass "Cockatiel" and `71.0` to the constructor.
+For the second object, `bird2`, I pass "Macaw" and `56.0` to the constructor.
+This initialises each object with its specific species and flight speed, while the positions are set to the default 500.0 by the constructor.
+
+<answer>
+```java
+Bird bird1 = new Bird("Cockatiel", 71.0);
+Bird bird2 = new Bird("Macaw", 56.0);
+```
+</answer>
+
+**(c)(i) The main program needs to:**
+**- output a message that includes the species and current X position and Y position for each bird**
+**- prompt the user to select one of the birds to move and take this as an input**
+**- prompt the user to enter the direction the bird has been travelling and take this as an input**
+**- prompt the user to enter the time to the nearest minute that the bird has been travelling and take this as an input**
+**- call the appropriate method to update the chosen bird's position**
+**- output an update on the bird's new position.**
+**Each input needs to repeat until valid data is entered. All outputs must be meaningful.**
+**Write program code to amend the main program.**
+[8]
+
+**Explanation:**
+This code implements the main program logic inside a `main` method.
+1.  **Setup:** A `Scanner` object is created to handle user input from the console. The two `Bird` objects from part (b) are declared and initialised.
+2.  **Initial Status:** The program first prints the initial status of both birds using their `GetSpecies()` and `GetPosition()` methods, providing a clear starting point for the user.
+3.  **Input & Validation:** The program then collects three pieces of input from the user, each with its own validation loop to ensure data integrity.
+    *   **Bird Selection:** A `do-while` loop prompts the user to enter '1' or '2'. The loop continues until one of these two valid strings is entered. A ternary operator is then used to assign either `bird1` or `bird2` to the `chosenBird` variable.
+    *   **Direction:** Another `do-while` loop prompts for a direction. It validates that the input is a single character and that this character is one of 'N', 'S', 'E', or 'W'. The input is converted to uppercase to make it case-insensitive.
+    *   **Time:** A `do-while` loop prompts for the number of minutes. This loop is more complex as it includes a `try-catch` block to handle `InputMismatchException` (if the user enters text instead of a number) and an `if` statement to check if the number is within the valid range (0-500). Invalid inputs result in an error message, and the loop repeats.
+4.  **Action:** Once all inputs are validated, the `Move()` method of the `chosenBird` object is called with the validated direction and time.
+5.  **Final Output:** A final message is printed, confirming which bird was moved and showing its new position by calling `GetPosition()` again.
+6.  **Cleanup:** Finally, `scanner.close()` is called to release system resources associated with the `Scanner`.
+
+<answer>
+```java
+import java.util.Scanner;
+import java.util.InputMismatchException;
+
+public class BirdProgram {
+    public static void main(String[] args) {
+        // Create instances from part (b)
+        Bird bird1 = new Bird("Cockatiel", 71.0);
+        Bird bird2 = new Bird("Macaw", 56.0);
+
+        Scanner scanner = new Scanner(System.in);
+
+        // Output initial status
+        System.out.println("Initial Bird Positions:");
+        System.out.println("1. " + bird1.GetSpecies() + " - " + bird1.GetPosition());
+        System.out.println("2. " + bird2.GetSpecies() + " - " + bird2.GetPosition());
+        System.out.println();
+
+        // Select a bird with validation
+        String birdChoice;
+        do {
+            System.out.print("Select a bird to move (1 for " + bird1.GetSpecies() + ", 2 for " + bird2.GetSpecies() + "): ");
+            birdChoice = scanner.nextLine();
+            if (!birdChoice.equals("1") && !birdChoice.equals("2")) {
+                System.out.println("Invalid selection. Please enter 1 or 2.");
+            }
+        } while (!birdChoice.equals("1") && !birdChoice.equals("2"));
+
+        Bird chosenBird = (birdChoice.equals("1")) ? bird1 : bird2;
+
+        // Get direction with validation
+        char direction;
+        String directionInput;
+        do {
+            System.out.print("Enter direction ('N', 'S', 'E', 'W'): ");
+            directionInput = scanner.nextLine().toUpperCase();
+            if (directionInput.length() != 1 || "NSEW".indexOf(directionInput.charAt(0)) == -1) {
+                System.out.println("Invalid direction. Please enter N, S, E, or W.");
+            }
+        } while (directionInput.length() != 1 || "NSEW".indexOf(directionInput.charAt(0)) == -1);
+        direction = directionInput.charAt(0);
+
+        // Get time with validation
+        int minutes = -1; // Initialize to an invalid value to enter loop
+        do {
+            try {
+                System.out.print("Enter minutes flying (a whole number between 0 and 500): ");
+                minutes = scanner.nextInt();
+                if (minutes < 0 || minutes > 500) {
+                    System.out.println("Invalid input. Please enter a number between 0 and 500.");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter a whole number.");
+                scanner.nextLine(); // Clear the invalid input from the scanner
+                minutes = -1; // Reset to ensure loop continues
+            }
+        } while (minutes < 0 || minutes > 500);
+
+        // Call the method to update position
+        chosenBird.Move(direction, minutes);
+
+        // Output the new position
+        System.out.println("\nUpdate: The " + chosenBird.GetSpecies() + "'s new position is now:");
+        System.out.println(chosenBird.GetPosition());
+
+        scanner.close();
+    }
+}
+```
+</answer>

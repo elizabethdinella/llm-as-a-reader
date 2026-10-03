@@ -1,0 +1,2 @@
+
+Yes, the null check is necessary to ensure that when caching is enabled and there's no existing cached data for the username, the method fetches the roles from the database.

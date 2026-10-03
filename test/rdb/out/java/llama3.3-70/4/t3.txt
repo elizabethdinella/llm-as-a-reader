@@ -1,0 +1,1 @@
+ Yes, you need this null check for roleInfoList to avoid potential NullPointerExceptions and ensure the correct retrieval of roles from the database when necessary. The null check allows the method to handle cases where the role information is not cached or does not exist in the map. 

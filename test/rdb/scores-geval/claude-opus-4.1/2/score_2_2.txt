@@ -1,0 +1,7 @@
+{"justification": "The answer explicitly states that `Collections.singletonMap()` alone 'would return an immutable map', satisfying the requirement to note the immutability of singletonMap.", "deducted": false}
+{"justification": "The answer explicitly states the code creates a 'mutable HashMap', satisfying the mutability point for HashMap.", "deducted": false}
+{"justification": "The answer refers to creating a HashMap 'with one initial entry' derived from the singletonMap, conveying that singletonMap holds only a single key-value mapping.", "deducted": false}
+{"justification": "The answer never mentions or examines the method signature of `messageParams` (e.g., its parameter types such as FetchProfile and HashMap<String, Message>). Deduct.", "deducted": true}
+{"justification": "The answer only speculates ('likely necessary because ... either ... or specifically requires a mutable/HashMap type'). It never definitively states that messageParams' parameter is declared as a HashMap; it hedges between mutability and type requirements. Deduct.", "deducted": true}
+{"justification": "The answer does not examine how the map argument is actually used inside messageParams and fails to determine whether those usages are read-only; it leaves it as an open speculation. Deduct.", "deducted": true}
+{"justification": "The answer raises modification only as a hedged possibility ('either needs to modify the map later or ...') rather than asserting that the usages do modify the map, so the 2-point penalty for an incorrect claim is not applied.", "deducted": false}

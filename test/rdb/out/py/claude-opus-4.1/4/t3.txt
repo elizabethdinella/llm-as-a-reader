@@ -1,0 +1,2 @@
+
+Yes, you need to call deepcopy(result) before modifying result[DATA]. Without deepcopy, result is just a reference to reply.result, so modifying result[DATA] would mutate the original reply.result object. Since reply.result is used later in the method (in storeTxnInGraph), this mutation would cause unintended side effects where the serialized version would be stored in the graph instead of the original data structure.

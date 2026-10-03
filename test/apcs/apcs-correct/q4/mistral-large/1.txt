@@ -1,0 +1,71 @@
+To implement the `getPointsForRow` method in the `GameBoard` class, we need to follow these steps:
+
+1. Calculate the sum of the points in the specified row.
+2. Check if all spaces in the specified row are the same color.
+3. If all spaces are the same color, return twice the sum of the points.
+4. If not, return the sum of the points.
+
+Here is the complete implementation of the `getPointsForRow` method:
+
+```java
+public int getPointsForRow(int targetRow) {
+    int sumPoints = 0;
+    String color = board[targetRow][0].getColor();
+    boolean sameColor = true;
+
+    for (int col = 0; col < board[targetRow].length; col++) {
+        sumPoints += board[targetRow][col].getPoints();
+        if (!board[targetRow][col].getColor().equals(color)) {
+            sameColor = false;
+        }
+    }
+
+    if (sameColor) {
+        return 2 * sumPoints;
+    } else {
+        return sumPoints;
+    }
+}
+```
+
+### Explanation:
+
+1. **Initialization**:
+   - `sumPoints` is initialized to 0 to keep track of the sum of points in the row.
+   - `color` is initialized to the color of the first space in the row.
+   - `sameColor` is a boolean flag initialized to `true` to check if all spaces in the row have the same color.
+
+2. **Loop through the row**:
+   - For each column in the specified row, add the points of the space to `sumPoints`.
+   - Check if the color of the current space is different from the initial color. If it is, set `sameColor` to `false`.
+
+3. **Return the result**:
+   - If `sameColor` is still `true` after the loop, return twice the sum of the points.
+   - Otherwise, return the sum of the points.
+
+This method ensures that the point value of the row is calculated correctly based on the conditions specified.
+
+<answer>
+
+```java
+public int getPointsForRow(int targetRow) {
+    int sumPoints = 0;
+    String color = board[targetRow][0].getColor();
+    boolean sameColor = true;
+
+    for (int col = 0; col < board[targetRow].length; col++) {
+        sumPoints += board[targetRow][col].getPoints();
+        if (!board[targetRow][col].getColor().equals(color)) {
+            sameColor = false;
+        }
+    }
+
+    if (sameColor) {
+        return 2 * sumPoints;
+    } else {
+        return sumPoints;
+    }
+}
+```
+
+</answer>

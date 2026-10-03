@@ -1,0 +1,8 @@
+[
+    {
+        "id": "2c_null_check_stance",
+        "name": "advocates adding null\u2011check vs advocates not adding null\u2011check",
+        "side_a": "Answer recommends adding a null check for `mPrefix` (e.g., \u201cYes, you should add a null check \u2026\u201d). This side is credited.",
+        "side_b": "Answer advises that a null check is unnecessary (e.g., \u201cNo, adding a null check \u2026 is unnecessary\u201d). This side is deducted."
+    }
+]

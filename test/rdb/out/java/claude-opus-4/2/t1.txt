@@ -1,0 +1,2 @@
+
+The main difference is that `singletonMap` creates an immutable, memory-efficient map with exactly one entry, while `HashMap` creates a mutable map that can be modified. In this code, wrapping the singletonMap in a HashMap defeats the efficiency benefit of singletonMap and adds unnecessary object creation. You should either use `Collections.singletonMap()` directly if the map won't be modified, or create the HashMap directly with the key-value pair if mutability is needed.

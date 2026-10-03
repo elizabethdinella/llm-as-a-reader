@@ -1,0 +1,18 @@
+```java
+public Account(String requestedName)
+{
+    String tempName = requestedName;
+    int counter = 1;
+
+    // Check if the requested name is available
+    while (!isAvailable(tempName))
+    {
+        // If not, try a variation of the requested name with a number appended
+        tempName = requestedName + counter;
+        counter++;
+    }
+
+    // Once an available username is found, assign it to the instance variable username
+    this.username = tempName;
+}
+```

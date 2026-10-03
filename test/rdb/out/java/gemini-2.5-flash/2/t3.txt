@@ -1,0 +1,2 @@
+
+The primary difference is **mutability**. `Collections.singletonMap()` returns an immutable map, meaning its contents cannot be changed after creation. In contrast, `new HashMap<>(Collections.singletonMap(...))` creates a new, mutable `HashMap` instance initialized with the single entry from the singleton map. This allows for subsequent additions, removals, or modifications to the map's contents without throwing an `UnsupportedOperationException`, which would occur if the immutable `singletonMap` were passed directly and then modified.

@@ -1,0 +1,37 @@
+[
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly states that singletonMap creates an immutable map with exactly one entry, while HashMap is mutable and can be modified. This addresses both the mutability difference (immutability of singletonMap explicitly stated) and the size difference (exactly one entry vs. arbitrary size). The rubric condition is satisfied.",
+        "item": "1a"
+    },
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly states that `singletonMap` creates an immutable map with exactly one entry while `HashMap` creates a mutable map that can be modified. This directly addresses both the mutability difference (HashMap is mutable \u2014 explicitly stated) and the size/capacity difference (singletonMap holds exactly one entry, HashMap can hold arbitrary entries). It also correctly notes the implication for this code context (wrapping in HashMap is needed only if the map must be modified later). The rubric condition is satisfied.",
+        "item": "1b"
+    },
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly states that `singletonMap` creates an immutable map with 'exactly one entry' while `HashMap` creates a mutable map that can be modified. This directly addresses both the mutability difference and the size/single key-value mapping restriction of singletonMap required by the rubric. It further contextualizes this to the code by noting that wrapping the singletonMap in a HashMap yields a mutable copy, and suggests using singletonMap directly if no modification is needed. The rubric condition is satisfied.",
+        "item": "1c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate answer only discusses the generic differences between `Collections.singletonMap` (immutable, single-entry, memory-efficient) and `HashMap` (mutable). It never references the `messageParams` method itself, nor its signature/parameter types (e.g., that it accepts a `FetchProfile` and a `Map<String, Message>`), which would determine whether an immutable map is acceptable or whether a mutable `HashMap` is required by the API contract. Since the message signature of `messageParams` is not mentioned at all, the rubric condition is not met.",
+        "item": "2a"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate answer never discusses the actual signature/requirement of the messageParams method. It only contrasts immutability vs. mutability generally, and even suggests passing Collections.singletonMap() directly \"if the map won't be modified\" \u2014 which would not compile if messageParams declares a HashMap parameter. It fails to state that messageParams takes a HashMap (the specific reason for the wrapping), so the point is deducted.",
+        "item": "2b"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate answer only discusses the general semantics of `Collections.singletonMap` (immutable, single-entry) versus `HashMap` (mutable). It never examines how the map argument is actually used inside `messageParams`/the `UidFetchCommand.Builder`, and never determines whether those usages mutate the map. Instead it hedges with conditional phrasing ('if the map won't be modified', 'if mutability is needed'), leaving the reader without a conclusion that the map is only read (read-only usage) and therefore that the `HashMap` wrapper is unnecessary for correctness. This fails the rubric requirement to discuss the usages within `messageParams` and to clearly determine whether they modify the map.",
+        "item": "2c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The rubric asks whether the answer discusses messageParams. The candidate answer never mentions messageParams or how the map argument is consumed by that builder method \u2014 it only offers a generic comparison of `Collections.singletonMap` (immutable, single-entry, memory-efficient) versus `HashMap` (mutable), plus a stylistic remark that wrapping the singletonMap in a HashMap is redundant. It does not address whether messageParams (or the UidFetchCommand it builds) actually requires or mutates the map, which is the crux of the question. To its credit, it does not affirmatively (and incorrectly) claim that the usages modify the map \u2014 it only conditionally says 'if mutability is needed' \u2014 so the specific error clause is not triggered. However, since the answer fails to discuss messageParams at all, the condition is not met.",
+        "item": "2d"
+    }
+]

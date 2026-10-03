@@ -1,0 +1,1 @@
+Yes, you need to call deepcopy(result) before modifying result[DATA]. This ensures that the original reply.result is not altered, preserving its state for subsequent operations. Without deepcopy, modifying result[DATA] would directly change the original data structure, which could lead to unintended side effects in other parts of the code that rely on the unmodified reply.result.

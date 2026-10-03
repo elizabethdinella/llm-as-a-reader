@@ -1,0 +1,4 @@
+{"DECISION": "YES", "FEEDBACK": "The constructor calls isAvailable(requestedName) and isAvailable(newUsername), both with valid String arguments and as static calls within the Account class, so the call is correct."}
+{"DECISION": "YES", "FEEDBACK": "The while loop checks !isAvailable(newUsername) and, inside the loop body, updates newUsername to requestedName + the incremented counter, so potential usernames are updated until an available one is found."}
+{"DECISION": "YES", "FEEDBACK": "Inside the loop, the counter string is parsed to an int, incremented (intCounter++), and converted back to a String, effectively incrementing a count within the loop context."}
+{"DECISION": "YES", "FEEDBACK": "The count begins at 1, requestedName is checked first and assigned directly if available, otherwise successive integers are appended in order until an available name is found, and username is assigned in both cases with nothing printed or returned. The algorithm is correct."}

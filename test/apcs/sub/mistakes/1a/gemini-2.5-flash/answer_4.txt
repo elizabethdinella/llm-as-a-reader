@@ -1,0 +1,27 @@
+<answer>
+```java
+public Account(String requestedName)
+{
+    this.username = requestedName; // Initialize instance variable directly with requestedName
+    String currentUsername = requestedName; // A local variable is used for checks
+    int suffixNum = 1;
+
+    // Keep trying usernames until an available one is found (using currentUsername)
+    while (!Account.isAvailable(currentUsername)) {
+        currentUsername = requestedName + suffixNum;
+        suffixNum++;
+    }
+
+    this.username = requestedName; 
+
+    String tempCurrentUsername = requestedName; // Use a temporary variable for the search
+    int suffixNum = 1;
+
+    // Keep trying usernames until an available one is found
+    while (!Account.isAvailable(tempCurrentUsername)) {
+        tempCurrentUsername = requestedName + suffixNum;
+        suffixNum++;
+    }
+}
+```
+</answer>

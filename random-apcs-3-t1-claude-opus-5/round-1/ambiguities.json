@@ -1,0 +1,50 @@
+[
+    {
+        "id": "2_accessor_roles_linked",
+        "name": "Both accessors must each do their job (ID used to pair records, absences used to compare) vs. any one accessor call is enough",
+        "side_a": "No_deduct only when the response's algorithm actually uses getStudentID to establish the history/math pairing AND uses getAbsences to compare the paired records' absence counts \u2014 i.e., both accessors appear in their distinct functional roles (ID-match condition guarding, or feeding, an absence comparison).",
+        "side_b": "Deduct whenever the response's design collapses to a single role \u2014 comparing absences without ever matching students by ID, or matching students by ID without ever reading absences \u2014 even though the surviving accessor is called correctly and repeatedly on CourseRecord elements of both lists."
+    },
+    {
+        "id": "2_logic_bug_tolerance",
+        "name": "Wrong comparison/counting semantics tolerated vs. correct absence logic required for this sub-item",
+        "side_a": "No_deduct for this sub-item when the accessor calls are present and correctly paired, even if the surrounding logic is wrong \u2014 e.g., using >= instead of >, counting students instead of summing extra absences, or breaking out of the inner loop after the first match.",
+        "side_b": "Deduct whenever the absence comparison or the returned quantity is semantically incorrect, treating the faulty comparison as a failure to use getAbsences properly."
+    },
+    {
+        "id": "3_strictness_of_sole_comparison",
+        "name": "sole absences comparison is strict `>` vs. inclusive `>=` (ties counted)",
+        "side_a": "no_deduct if the only absences-to-absences comparison the response makes is a strict greater-than (`>`), so equal absence counts are excluded",
+        "side_b": "deduct if the response's only absences-to-absences comparison is inclusive (`>=`, or equivalently `<=`/`!<`), since counting ties does not establish that one student has MORE absences than the other \u2014 an inclusive operator alone never satisfies the item, no matter how correctly the records are paired"
+    },
+    {
+        "id": "3_absence_value_retrieved_at_all",
+        "name": "absence values are actually read and compared vs. only student IDs are compared",
+        "side_a": "no_deduct if the response calls getAbsences() (or otherwise obtains absence counts) on records and compares those values to each other",
+        "side_b": "deduct if the response never compares absence values \u2014 e.g., it only matches/compares student IDs or set membership and increments a counter on that basis \u2014 since no comparison of absences is performed anywhere"
+    },
+    {
+        "id": "4_condition_correctness",
+        "name": "Correctness of the boolean test guarding the increment: any conditional counts vs the conditional must be the correct test (ID match + strict history > math)",
+        "side_a": "Do not deduct based on what the conditional actually tests. As long as the increment sits inside some `if` inside a loop, award the point even if the test omits the student-ID match (`if (histRecord.getAbsences() > mathRecord.getAbsences())`), uses the wrong relational operator (`>=` instead of `>`), or never compares absences at all (`if (mathStudents.contains(cr.getStudentID()))`). Logic errors in the condition are graded under other sub-items, not this one.",
+        "side_b": "Deduct unless the guarding conditional is the semantically correct one \u2014 i.e. it matches student IDs between the two lists AND strictly compares history absences greater than math absences \u2014 so that the counted quantity is genuinely 'students with more history than math absences'."
+    },
+    {
+        "id": "4_loop_shape",
+        "name": "Shape of the enclosing loop: single pass with auxiliary structure counts vs nested traversal of both lists required",
+        "side_a": "Do not deduct when the conditional increment lives in a single `for` loop over one list while the other list was preprocessed into a map/set (`HashSet<String> mathStudents`, `HashMap<String, Integer> mathAbsencesMap`); a loop containing the conditional increment is enough regardless of how the other collection is reached.",
+        "side_b": "Deduct unless the increment is inside a conditional nested within loops that iterate both `historyList` and `mathList` directly."
+    },
+    {
+        "id": "5_counts_students_vs_aggregates_absence_difference",
+        "name": "Return value is a count of qualifying students vs. an accumulated absence-difference total",
+        "side_a": "No deduct if the method increments a counter by exactly 1 for each matched student whose history absences exceed math absences, and returns that count.",
+        "side_b": "Deduct if the method returns a different quantity than a student count \u2014 e.g. summing the numeric difference in absences (or otherwise adding more than 1 per student) \u2014 so the returned value is a total of absences rather than a number of students."
+    },
+    {
+        "id": "5_absence_comparison_present_vs_absent",
+        "name": "Counting is gated on an absences comparison vs. gated only on the student appearing in both lists",
+        "side_a": "No deduct if the increment is guarded by a comparison of the two records' absence values (getAbsences() of the history record vs the math record).",
+        "side_b": "Deduct if the increment happens on mere membership/ID match with no comparison of absence values at all, so every student enrolled in both courses is counted."
+    }
+]

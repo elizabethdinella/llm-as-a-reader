@@ -1,0 +1,21 @@
+<answer>
+public void Move(char direction, int minutes) {
+    double distanceTravelled = (distancePerHour / 60.0) * minutes; // km
+
+    switch (Character.toUpperCase(direction)) {
+        case 'N':
+            yPosition += distanceTravelled;
+            break;
+        case 'S':
+            yPosition -= distanceTravelled;
+            break;
+        case 'E':
+            xPosition += distanceTravelled;
+            break;
+        case 'W':
+            xPosition -= distanceTravelled;
+            break;
+        // No validation required – assume caller passes a correct value
+    }
+}
+</answer>

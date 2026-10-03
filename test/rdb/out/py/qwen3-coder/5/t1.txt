@@ -1,0 +1,2 @@
+
+Yes, we need the check for 'if not build_directory'. While `build_manager.setup_build()` is called first and would raise an exception if it fails, there's still a possibility that even after successful build setup, the environment variable 'BUILD_DIR' might not be properly set. The code later uses `build_directory` to create a Runner instance and perform corpus pruning operations, so validating that it's not empty/None is necessary to prevent runtime errors in subsequent operations.

@@ -1,0 +1,37 @@
+[
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly states that Collections.singletonMap creates an immutable map containing exactly one entry, while the HashMap wrapper produces a mutable copy. It discusses both mutability (immutable would throw UnsupportedOperationException if modified; HashMap allows adds/changes) and size (exactly one entry vs. a general-purpose expandable map), as well as memory efficiency. This satisfies the rubric requirement that singletonMap's immutability be mentioned along with key mutability/size differences.",
+        "item": "1a"
+    },
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly states that `Collections.singletonMap(...)` produces an immutable map containing exactly one entry, while `new HashMap<>(...)` creates a 'normal, mutable HashMap' copy. It further elaborates on the consequences of mutability (immutable map would throw an exception if downstream code modifies it) and touches on size/memory differences (singletonMap being cheaper in memory, fixed at one entry, whereas HashMap can grow with added entries). This satisfies the rubric's requirement to discuss mutability and size differences and to state that a HashMap is mutable.",
+        "item": "1b"
+    },
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly states that `Collections.singletonMap(...)` creates an immutable map containing exactly one entry (a single key-value mapping), and contrasts it with `new HashMap<>(...)` which produces a mutable copy that can grow/change. It further explains the practical consequence: attempting to modify the singleton map would throw an exception, so a HashMap is needed if downstream code mutates the map. This covers both the mutability difference and the size/single-mapping property required by the rubric.",
+        "item": "1c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The answer does discuss `messageParams` in the sense of whether the map passed to it needs to be mutable, but it never states or references the method's signature \u2014 e.g., that `messageParams` accepts a `FetchProfile` and a `Map<String, Message>` (mapping message UID strings to `Message` objects). Without identifying the declared parameter type (a `Map` interface, which accepts any implementation including `singletonMap` or `HashMap`), the explanation remains generic about immutability and does not anchor the discussion in the actual builder method signature. Hence the rubric condition is not met.",
+        "item": "2a"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate answer only discusses mutability in general terms: it says `singletonMap` is immutable and that a mutable `HashMap` would be required 'if messageParams (or downstream code) might add or change entries.' It never states that the `messageParams` method's parameter type is declared as `HashMap` (which is why `Collections.singletonMap` could not be passed directly regardless of mutability concerns). Per the rubric, framing it merely as 'requires a mutable map' is not specific enough, so the point is deducted.",
+        "item": "2b"
+    },
+    {
+        "deducted": true,
+        "feedback": "The answer only speaks hypothetically about mutability: \"If `messageParams` (or downstream code) might add or change entries, the immutable map would throw an exception.\" It never examines or asserts how the map argument is actually used inside `messageParams` (or in the resulting `UidFetchCommand`), and does not determine that those usages are read-only (e.g., lookups/iteration only, with no put/remove calls). Because the answer leaves the decision conditional on an unresolved 'if', it fails to clearly determine whether the usages modify the map, so the rubric point is lost.",
+        "item": "2c"
+    },
+    {
+        "deducted": false,
+        "feedback": "The answer does discuss `messageParams`, explaining that passing `Collections.singletonMap(...)` supplies an immutable single-entry map while `new HashMap<>(singletonMap(...))` supplies a mutable copy, and framing the choice around whether the receiver needs to mutate the map. Regarding the error condition: the answer never asserts that the actual consumers of the `messageParams` map do modify it. Its statement about mutation is explicitly hypothetical/conditional (\"If `messageParams` (or downstream code) *might* add or change entries...\", \"mutable `HashMap` when future modifications *are expected*\"), and it equally allows the read-only case (\"If `messageParams` or the code that consumes the map never needs to modify the mapping, the immutable map is safe\"). Since no incorrect claim is made that the usages in fact mutate the map, the deduction condition is not triggered.",
+        "item": "2d"
+    }
+]

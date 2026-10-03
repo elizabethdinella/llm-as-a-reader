@@ -1,0 +1,30 @@
+[
+  {
+    "justification": "The answer explicitly states that singletonMap creates an immutable map.",
+    "deducted": false
+  },
+  {
+    "justification": "The answer explicitly states that HashMap creates a mutable map.",
+    "deducted": false
+  },
+  {
+    "justification": "The answer states that singletonMap contains exactly one entry.",
+    "deducted": false
+  },
+  {
+    "justification": "The answer does not provide or mention the signature of messageParams.",
+    "deducted": true
+  },
+  {
+    "justification": "The answer does not state that messageParams specifically takes a HashMap; it instead suggests that singletonMap could be passed directly.",
+    "deducted": true
+  },
+  {
+    "justification": "The answer does not inspect or clearly describe the actual read-only usages of the map argument within messageParams.",
+    "deducted": true
+  },
+  {
+    "justification": "The answer does not incorrectly claim that messageParams modifies the map.",
+    "deducted": false
+  }
+]

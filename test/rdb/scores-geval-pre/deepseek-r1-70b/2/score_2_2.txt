@@ -1,0 +1,30 @@
+[
+    {
+        "justification": "The answer explicitly states that using `singletonMap` directly is 'more efficient as it's immutable and lightweight for a single entry,' clearly identifying singletonMap as immutable (and also noting HashMap allows mutability). Therefore no deduction applies for this sub-item.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer states that wrapping in a `HashMap` 'unnecessarily allows mutability', which conveys that a HashMap is mutable (in contrast to the immutable singletonMap). This satisfies sub-item 1c.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer describes singletonMap as 'immutable and lightweight for a single entry,' which conveys that it holds only one key-value mapping. While brief, it does communicate the single-entry nature of singletonMap, so the point should not be deducted.",
+        "deducted": false
+    },
+    {
+        "justification": "The candidate answer never mentions the method signature of `messageParams` (e.g., that it accepts a FetchProfile and a Map/HashMap parameter). It only comments generally on immutability and efficiency, so the point for sub-item 2b should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer never mentions the signature of messageParams or that it specifically takes/requires a HashMap parameter type. It only vaguely refers to mutability versus immutability, without stating the declared parameter type is HashMap.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer only briefly compares immutability/efficiency of singletonMap vs HashMap. It never examines how the map argument is used inside messageParams, nor does it determine whether those usages modify the map (read-only). Therefore the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer does not claim that the usages of the map within messageParams modify it. In fact, it implies the opposite by saying the HashMap wrapper 'unnecessarily allows mutability without adding any entries.' Since no incorrect claim of modification is made, no deduction applies for this sub-item.",
+        "deducted": false
+    }
+]

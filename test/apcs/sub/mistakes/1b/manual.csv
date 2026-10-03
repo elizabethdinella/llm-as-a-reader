@@ -1,0 +1,21 @@
+model name,attempt,rubric items deducted
+gemini 2.5 flash,1,B3
+gemini 2.5 flash,2,B3
+gemini 2.5 flash,3,B3
+gemini 2.5 flash,4,B3
+gemini 2.5 flash,5,"B2,B3"
+grok 4.5,1,B3
+grok 4.5,2,B3
+grok 4.5,3,B3
+grok 4.5,4,B3
+grok 4.5,5,B3
+claude sonnet 5,1,B3
+claude sonnet 5,2,B3
+claude sonnet 5,3,B3
+claude sonnet 5,4,B3
+claude sonnet 5,5,B3
+claude opus 4.8,1,B3
+claude opus 4.8,2,"B2,B3"
+claude opus 4.8,3,B3
+claude opus 4.8,4,B3
+claude opus 4.8,5,B3

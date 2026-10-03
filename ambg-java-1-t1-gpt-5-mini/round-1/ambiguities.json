@@ -1,0 +1,62 @@
+[
+    {
+        "id": "1a_separates_visibility_logic_vs_treats_all_following_code_as_drawer_dependent",
+        "name": "explicitly distinguishes subtitle-visibility computation (singleFolderMode) vs treats all post-guard code as drawer-dependent",
+        "side_a": "Credit: The answer explicitly calls out that the subtitle visibility lines are computed from singleFolderMode (and thus do not use drawer), even if other subsequent lines call methods on drawer.",
+        "side_b": "Deduct: The answer treats the tail of the method as uniformly depending on drawer (or only mentions calls on drawer) and does not separate the subtitle visibility logic from drawer-dependent calls."
+    },
+    {
+        "id": "1a_internal_null_check_vs_external_initialization_assumption",
+        "name": "claims dependency arises from an internal null-check/control-flow vs claims it is an external precondition",
+        "side_a": "Credit: The answer identifies an internal control-flow dependency (e.g. the method returns early if drawer == null, or it calls methods on drawer inside the method).",
+        "side_b": "Deduct: The answer asserts there is no internal dependency and instead says the method assumes drawer is initialized before being called (an external precondition)."
+    },
+    {
+        "id": "1b_local_guard_vs_assumption",
+        "name": "local-early-return guard vs external precondition",
+        "side_a": "no_deduct \u2014 The answer points to a local guard/early-return that ensures drawer is non-null before the later code runs (control-flow justification).",
+        "side_b": "deduct \u2014 The answer attributes non-nullness to an external assumption (e.g., 'drawer was initialized before calling this method') rather than a local guard; treat this as insufficient and deduct."
+    },
+    {
+        "id": "1b_visibility_vs_drawer_value",
+        "name": "distinguishes setVisibility's value source (singleFolderMode) vs claiming drawer influences it",
+        "side_a": "no_deduct \u2014 The answer explicitly separates the drawer-dependent code from the setVisibility line, noting the visibility value is computed from singleFolderMode and so does not depend on drawer.",
+        "side_b": "deduct \u2014 The answer treats the visibility-setting line as depending on drawer (or does not acknowledge that its value comes from singleFolderMode), which should be treated as a data-flow claim and deducted."
+    },
+    {
+        "id": "2a_specific_methods_vs_generic_claim",
+        "name": "names specific dependent lines/methods vs makes a generic claim",
+        "side_a": "no_deduct \u2014 The answer explicitly identifies the specific lines or drawer methods that are protected/require non-null drawer (e.g. names actionBarSubTitle.setVisibility or selectFolder/selectUnifiedInbox) and ties the dependency to those operations.",
+        "side_b": "deduct \u2014 The answer makes a generic statement about calling methods on `drawer` or about dependence without naming which lines/methods are involved or which code execution is gated."
+    },
+    {
+        "id": "2a_explicit_control-flow_vs_hedged_or_contradictory",
+        "name": "explicit control-flow causal linking vs hedged/contradictory phrasing",
+        "side_a": "no_deduct \u2014 The answer clearly explains the control-flow relationship (e.g., that an early `if (drawer == null) return;` causes subsequent lines to execute only when drawer is non-null, and distinguishes that from value computation using singleFolderMode).",
+        "side_b": "deduct \u2014 The answer is hedged, self-contradictory, or merely assumes initialization without clearly linking the null-check to which code is executed (e.g., says it depends but then claims it's 'ensured', or just asserts an assumption)."
+    },
+    {
+        "id": "2b_scope_specificity",
+        "name": "explicitly scopes dependency to drawer-invoking lines vs treats the end-of-method/value as generally dependent",
+        "side_a": "no_deduct \u2014 The answer explicitly distinguishes which statements depend on drawer (e.g. the drawer.selectFolder calls) and/or states that the subtitle visibility is computed from singleFolderMode (which is independent); it does not claim the singleFolderMode/visibility value is computed from drawer.",
+        "side_b": "deduct \u2014 The answer treats the end-of-method or the computed visibility/singleFolderMode value itself as depending on drawer (i.e. asserts the whole tail of the method or the computed value is dependent) without scoping that claim to only the drawer-invoking lines."
+    },
+    {
+        "id": "3a_partial_vs_blanket_drawer_dependency",
+        "name": "acknowledges-partial/non-drawer-logic vs asserts-blanket-drawer-dependency",
+        "side_a": "no_deduct: The answer explicitly distinguishes parts of the code that do not depend on drawer (or treats non-drawer behavior as a precondition), i.e., acknowledges that only some lines (or only the drawer-selection logic) depend on drawer.",
+        "side_b": "deduct: The answer treats the end-of-method code as generally dependent on drawer (a blanket statement) without noting that some lines (e.g., subtitle visibility computation) are independent."
+    },
+    {
+        "id": "3b_caller_precond_vs_internal_guard",
+        "name": "attributes non-null to caller precondition vs recognizes method's internal guard",
+        "side_a": "No deduction: Answer either (a) explicitly cites the method's internal null-check/early return (e.g. 'returns early if drawer is null') or (b) states the code calls methods on drawer which therefore must be non-null \u2014 i.e., the answer recognizes that the method's control flow ensures the call only runs when drawer is non-null.",
+        "side_b": "Deduct 3 points: Answer denies that the method itself enforces drawer non-null and instead attributes non-nullness to an external precondition or caller (e.g. 'assumes it is initialized before calling this method'), thereby asserting the method does not depend on drawer being non-null."
+    },
+    {
+        "id": "3b_whole_method_vs_per_line_dependency",
+        "name": "blanket 'does not depend' vs distinguishing which lines depend on drawer",
+        "side_a": "No deduction: Answer distinguishes that some parts of the method (drawer selection calls) depend on drawer being non-null while other lines (e.g., computing subtitle visibility from singleFolderMode) do not \u2014 i.e., it separates control-flow dependence from per-line/data independence.",
+        "side_b": "Deduct 3 points: Answer makes a blanket claim that 'the code ... does not directly depend on drawer' (or equivalent) without acknowledging that specific subsequent calls require drawer to be non-null."
+    }
+]

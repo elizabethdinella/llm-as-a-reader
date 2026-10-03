@@ -1,0 +1,2 @@
+
+You should call `_compact_times()` on every KPIset that needs accurate statistical calculations, not just cumulative ones. The compaction appears to be a prerequisite for proper calculation of averages, percentiles, and standard deviations. Since `recalculate()` calls it before performing any calculations, it suggests this step is necessary for all KPIsets where you want to ensure data integrity and calculation accuracy.

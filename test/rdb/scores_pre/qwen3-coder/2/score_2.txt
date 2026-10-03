@@ -1,0 +1,37 @@
+[
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly states that Collections.singletonMap() returns an immutable map containing exactly one entry, while new HashMap<>(...) creates a mutable HashMap. This covers both the mutability difference (singletonMap is immutable, preventing accidental modification) and the size/capacity difference (single entry vs. arbitrary size). The final answer also reiterates 'immutable, optimized single-entry map' vs 'mutable HashMap instance.' The rubric's required point \u2014 stating that singletonMap is immutable \u2014 is clearly satisfied, so no deduction.",
+        "item": "1a"
+    },
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly states that `new HashMap<>(...)` creates a mutable HashMap instance while `Collections.singletonMap()` returns an immutable map containing exactly one entry. It thus addresses both mutability and the size (single-entry) difference, satisfying the rubric requirement that the HashMap be described as mutable.",
+        "item": "1b"
+    },
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly addresses both required aspects. On mutability, it states that \"Collections.singletonMap() returns an immutable map\" whereas \"new HashMap<>(...) creates a mutable HashMap instance,\" and reiterates this in the final answer. On size, it states the singletonMap \"contains exactly one entry\" and describes it as a \"single-entry map,\" i.e., a single key-value mapping, and notes it is \"specifically designed for single-entry maps.\" Both the mutability and single-mapping/size differences are covered, so no deduction applies for this rubric item.",
+        "item": "1c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The rubric requires the answer to reference the method signature of `messageParams` (i.e., that it accepts a FetchProfile and a Map<String, Message>, and what that implies about whether a mutable Map is needed). The candidate only notes in passing that `messageParams` 'is being called with a HashMap created from a singletonMap' and speculates that the method 'likely doesn't modify it.' It never states or examines the actual parameter types/signature of `messageParams`, nor does it ground the mutability discussion in what the method declares or requires. Because the signature is not mentioned, the point is deducted. Additionally, the claim that singletonMap should be used directly is unsupported speculation given no evidence about whether the builder mutates the map.",
+        "item": "2a"
+    },
+    {
+        "deducted": true,
+        "feedback": "The rubric requires the answer to state that `messageParams` takes a `HashMap` (i.e., the parameter type itself is `HashMap`, which is why the `singletonMap` must be wrapped). The candidate never mentions the method's parameter type. Instead, it frames the difference purely in terms of mutability, immutability, and performance, and even asserts that 'both approaches would work functionally' and that 'the code should be using singletonMap directly instead of creating a HashMap from it.' This is the opposite of the required point \u2014 the wrapping is necessary precisely because `messageParams` declares a `HashMap` parameter, so a `singletonMap` (a `Map`) could not be passed directly. The required condition is not met, so the point is deducted.",
+        "item": "2b"
+    },
+    {
+        "deducted": true,
+        "feedback": "The answer does not examine how the map argument is actually used inside messageParams. It only speculates vaguely that the map is \"immediately passed to a method that likely doesn't modify it,\" which is a hedge rather than a clear determination. There is no discussion of the specific usages (e.g., lookups/reads) within messageParams, nor any concrete statement that those usages are read-only. Because the answer fails to clearly determine whether messageParams modifies the map (and thus whether an immutable singletonMap would be safe), the rubric condition is not met and the point is deducted.",
+        "item": "2c"
+    },
+    {
+        "deducted": false,
+        "feedback": "The answer does discuss `messageParams`, noting that the map is 'immediately passed to a method that likely doesn't modify it.' It does not claim that the usages of the map argument inside/downstream of `messageParams` mutate the map \u2014 in fact it asserts the opposite (that the map is likely not modified), and recommends passing `singletonMap` directly. Since the rubric only deducts when the answer incorrectly states that the map argument is modified by its usages, no deduction applies here.",
+        "item": "2d"
+    }
+]

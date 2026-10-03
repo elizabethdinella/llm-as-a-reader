@@ -1,0 +1,12 @@
+public Account(String requestedName) {
+    int i = 1;
+    while (true) {
+        String nameToCheck = requestedName + i;
+        if (isAvailable(nameToCheck)) {
+            this.username = nameToCheck;
+            break;
+        }
+        i++;
+    }
+}
+

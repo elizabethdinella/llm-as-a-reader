@@ -1,0 +1,38 @@
+[
+    {
+        "id": "2_undeclared_required_var",
+        "name": "variable used in a method but never declared vs both required variables actually declared",
+        "side_a": "No_deduct when both the capacity variable and the current-amount variable appear as actual declarations in the class body (e.g. `private double capacity; private double amount;`), even if the names differ from the question's wording.",
+        "side_b": "Deduct when one of the two required variables is only referenced inside a method and never declared anywhere in the class (the field simply does not exist), regardless of how the declared one is written."
+    },
+    {
+        "id": "2_private_modifier_present",
+        "name": "explicit `private` on both instance variables vs default/package access declarations",
+        "side_a": "No_deduct when each required instance variable declaration carries the explicit `private` keyword.",
+        "side_b": "Deduct when the required instance variables are declared with no access modifier (default/package-private) or any non-private access, even if the types, names and constructor initialization are all otherwise correct."
+    },
+    {
+        "id": "5_subtract_vs_add_used",
+        "name": "updateAmount decreases the stored amount by the used quantity vs increases it (wrong sign / wrong arithmetic)",
+        "side_a": "No deduct if the method reduces the tracked amount by the parameter (e.g. `amount = amount - used;`, `amount -= used;`, `this.currentAmount -= amountRemoved;`) before the refill check.",
+        "side_b": "Deduct if the method moves the amount in the wrong direction \u2014 adding the used quantity instead of subtracting it (`amount = amount + used;`) \u2014 so the stored amount never reflects liquid removed."
+    },
+    {
+        "id": "6_constructor_inits_amount",
+        "name": "Constructor sets the current-amount field to full capacity vs. leaves it uninitialized/undeclared",
+        "side_a": "No deduction if the constructor explicitly stores the parameter into the current-amount field as well as the capacity field (e.g. `amount = cap;` / `this.currentAmount = capacity;`), so the bottle starts full and `updateAmount` has a valid starting value.",
+        "side_b": "Deduct if the constructor only saves capacity and never initializes the current-amount field (or the field is never declared at all), so the subsequent subtraction operates on a default/undefined value."
+    },
+    {
+        "id": "6_refill_to_full_capacity",
+        "name": "Refill restores the amount to full capacity vs. to some other value (e.g. 25% of capacity)",
+        "side_a": "No deduction if, when the level drops below 25% of capacity, the amount is reset to the full capacity value (`amount = capacity;`).",
+        "side_b": "Deduct if the refill assigns anything other than full capacity, such as clamping the amount to `0.25 * capacity`."
+    },
+    {
+        "id": "7_no_return_statement_at_all",
+        "name": "Method has some return of a computed value vs. method body contains no return statement whatsoever (void-declared, result only stored)",
+        "side_a": "Do not deduct when updateAmount actually ends with (or contains) a return statement that hands back the computed remaining amount, e.g. `return amount;` / `return this.currentAmount;`, regardless of how the value was derived or whether it also updated state.",
+        "side_b": "Deduct when updateAmount contains no return statement at all \u2014 the method is declared `void` and merely assigns the result to a field/local (e.g. `public void updateAmount(double used) { amount -= used; ... }`). Nothing is returned, so the 'return the calculated amount' point is lost; this is separate from the header/return-type point in item 5, and is not excused by the fact that the correct value was computed and stored."
+    }
+]

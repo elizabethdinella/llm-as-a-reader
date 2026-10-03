@@ -1,0 +1,37 @@
+[
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly states that `Collections.singletonMap(...)` creates an immutable map containing exactly one key-value pair, and that attempts to modify it throw `UnsupportedOperationException`. It contrasts this with `new HashMap<>(...)`, which produces a mutable map that can accept additional entries. It also touches on the size aspect (single fixed entry, memory-efficient, vs. a HashMap that can grow). This satisfies the rubric requirement to discuss mutability/size differences and to state that singletonMap is immutable, so no deduction applies.",
+        "item": "1a"
+    },
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly states that `Collections.singletonMap` creates an immutable map containing exactly one key-value pair, and that `new HashMap<>(Collections.singletonMap(...))` produces a new, mutable HashMap initialized with that single entry which can subsequently be modified (entries added/removed/updated) without an UnsupportedOperationException. This covers both the required statement that a HashMap is mutable and the size distinction (singletonMap fixed at one entry vs. HashMap able to grow). Therefore the rubric condition is satisfied and no deduction applies.",
+        "item": "1b"
+    },
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly addresses both required aspects: it states that `Collections.singletonMap(...)` creates an immutable map containing exactly one key-value pair (the size/single-mapping point), and it thoroughly contrasts mutability \u2014 the singletonMap throws `UnsupportedOperationException` on modification, whereas `new HashMap<>(...)` yields a mutable map that can accept additional entries or updates. Both the final answer block and the explanation mention the single-entry nature and the mutability difference, satisfying the rubric condition.",
+        "item": "1c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The rubric requires the answer to discuss `messageParams` and specifically mention its method signature (i.e., that it accepts a `FetchProfile` and a `Map<String, Message>` \u2014 as evidenced by the `(Message) createImapMessage(...)` cast in the context). The candidate answer focuses entirely on the mutability distinction between `Collections.singletonMap` and `new HashMap<>(...)`. It only vaguely references the Builder ('the `UidFetchCommand.Builder` ... expects or might need to operate on a mutable map') and the phrase 'add more message parameters for other UIDs', but never names or describes the `messageParams` method's parameter types/signature (no mention that it takes a `FetchProfile` plus a `Map<String, Message>`, nor why the `Message` cast is needed for type inference). Therefore the required discussion of the `messageParams` signature is absent and the point is deducted.",
+        "item": "2a"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate answer discusses messageParams only in terms of mutability, stating that the Builder 'expects or might need to operate on a mutable map' and 'needs a modifiable map instance.' It never states that the messageParams method signature actually takes a HashMap (rather than a general Map), which is the concrete reason the singletonMap must be wrapped. Per the rubric, framing this merely as a mutability requirement is not specific enough, so the point is deducted.",
+        "item": "2b"
+    },
+    {
+        "deducted": true,
+        "feedback": "The rubric requires the answer to examine how the map argument is actually used inside messageParams/UidFetchCommand and to clearly conclude that those usages are read-only. The candidate never inspects or references the actual usages; instead it speculates in the opposite direction, asserting that `new HashMap<>(...)` is used because the Builder 'expects or might need to operate on a mutable map' and 'needs a modifiable map instance.' This is an unsupported claim and fails to determine (indeed misstates) whether the usages modify the map. Therefore the condition is not met and the point is deducted.",
+        "item": "2c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate does discuss messageParams, but it asserts\u2014without support from the code context\u2014that the mutable HashMap is required because the consumer modifies it. Specifically, it states that using `new HashMap<>(...)` 'indicat[es] that the `UidFetchCommand.Builder` (or the `UidFetchCommand` it builds) expects or might need to operate on a **mutable** map' and, in the final answer, that 'The use of `new HashMap` here implies that the `UidFetchCommand.Builder` or the resulting `UidFetchCommand` needs a modifiable map instance.' This incorrectly claims that the usages of the map argument to messageParams modify it, which is not supported by the provided context (the map is simply passed in as message parameters in a test helper). Per the rubric, this error triggers the deduction.",
+        "item": "2d"
+    }
+]

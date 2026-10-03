@@ -1,0 +1,9 @@
+[
+  { "item": "1a", "deducted": false, "feedback": "The answer explicitly states that `Collections.singletonMap()` creates an immutable map that throws an exception if modification is attempted. Requirement satisfied." },
+  { "item": "1b", "deducted": false, "feedback": "The answer explicitly states that `new HashMap<>(...)` creates a 'brand new, fully mutable HashMap instance'. Requirement satisfied." },
+  { "item": "1c", "deducted": false, "feedback": "The answer states the singletonMap 'contains exactly one entry', which conveys that it holds only a single key-value mapping. Requirement satisfied." },
+  { "item": "2a", "deducted": true, "feedback": "The answer never presents or discusses the method signature of `messageParams` (e.g., its parameter types such as FetchProfile and the map type, or its return type). It only refers vaguely to 'the UidFetchCommand' and 'the command's internal logic'. Deduction applies." },
+  { "item": "2b", "deducted": true, "feedback": "The answer never states that `messageParams` declares a `HashMap` parameter type. It only argues generically about mutability/defensive copying ('ensures the UidFetchCommand receives its own modifiable map'), which the rubric explicitly says is not specific enough. Deduction applies." },
+  { "item": "2c", "deducted": true, "feedback": "The answer does not examine any actual usage of the map inside `messageParams` and does not determine whether those usages are read-only. It merely speculates 'if the command's internal logic needs to alter the map', leaving the question unresolved. Deduction applies." },
+  { "item": "2d", "deducted": false, "feedback": "While the answer hedges by suggesting the internal logic might need to alter the map, it does not affirmatively assert that the usages within `messageParams` do modify the map. It is speculative rather than an incorrect factual claim, so this deduction is not triggered." }
+]

@@ -1,0 +1,14 @@
+public int getPointsForRow(int targetRow)
+{
+    int sum = board[0][0].getPoints();
+    boolean allSameColor = true;
+
+    if (allSameColor)
+    {
+        return sum * 2;
+    }
+    else
+    {
+        return sum;
+    }
+}

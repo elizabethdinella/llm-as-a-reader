@@ -1,0 +1,37 @@
+[
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly states that `Collections.singletonMap()` returns an immutable map that cannot be modified after creation, while `new HashMap<>(...)` creates a mutable copy. It also addresses the size/capacity difference, noting singletonMap holds exactly one key-value pair and is a lightweight implementation, whereas HashMap supports multiple entries and dynamic sizing with additional internal overhead. Both required elements (mutability with singletonMap being immutable, and size differences) are covered, so no deduction applies.",
+        "item": "1a"
+    },
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly addresses mutability, stating that `new HashMap<>(singletonMap)` creates a **mutable** HashMap copy while `Collections.singletonMap()` returns an **immutable** map. It also discusses size/capacity differences, noting that singletonMap holds exactly one key-value pair and is lightweight/memory-efficient, whereas HashMap has internal structure overhead (buckets, capacity, load factor) and supports dynamic sizing for multiple entries. This satisfies the rubric requirement that the answer state a HashMap is mutable and cover key mutability/size differences, so no deduction applies.",
+        "item": "1b"
+    },
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly addresses both required aspects. It discusses mutability ('Collections.singletonMap() returns an immutable map that cannot be modified after creation' vs 'new HashMap<>(singletonMap) creates a mutable HashMap copy'), and it clearly states the size/single-mapping property of singletonMap ('a lightweight implementation designed for exactly one key-value pair' and in the final answer, 'creates an immutable, memory-efficient map with exactly one entry'). It also notes HashMap supports multiple entries and dynamic sizing, reinforcing the size difference. The rubric condition is satisfied, so no deduction.",
+        "item": "1c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate does discuss `messageParams` in general terms (whether it might mutate the map internally), but never states or describes its method signature. Nowhere does the answer indicate that `messageParams` accepts a `FetchProfile` and a `Map<String, Message>` (i.e., the declared parameter type that determines whether an immutable `singletonMap` would even be accepted). The only appearance of `Message` is the incidental `(Message)` cast copied from the original snippet, which is not a discussion of the method's signature. Since the rubric requires explicitly mentioning the signature of `messageParams`, the point is deducted.",
+        "item": "2a"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate discusses messageParams but frames the difference entirely in terms of mutability, memory overhead, and performance. It claims 'the current code suggests that messageParams() likely needs to modify the map internally, which requires the mutable HashMap version' \u2014 this is precisely the mutability-based explanation the rubric explicitly deems insufficient. The answer never states that the messageParams method's signature/parameter type is declared as HashMap (rather than Map), which is the required point. Therefore the deduction applies.",
+        "item": "2b"
+    },
+    {
+        "deducted": true,
+        "feedback": "The answer never examines the actual usages of the map argument inside `messageParams`. Instead it only speculates conditionally (\"If `messageParams()` needs to modify the map internally, it requires the mutable `HashMap`\"), and then in the final answer draws the incorrect conclusion that \"the current code suggests that messageParams() likely needs to modify the map internally, which requires the mutable HashMap version.\" This fails to clearly determine whether the usages modify the map, and in fact asserts the opposite of the read-only reality. Deduction applies.",
+        "item": "2c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The answer does discuss messageParams, but it explicitly asserts that the map is modified: \"The current code suggests that messageParams() likely needs to modify the map internally, which requires the mutable HashMap version,\" and earlier \"If messageParams() needs to modify the map internally, it requires the mutable HashMap.\" Nothing in the provided context supports that the map argument is mutated by its usages; the builder simply stores/consumes the map. By concluding that the wrapping in HashMap is required because the method modifies the map, the answer makes exactly the error described in the rubric item, so the points are deducted.",
+        "item": "2d"
+    }
+]

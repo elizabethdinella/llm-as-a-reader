@@ -1,0 +1,18 @@
+[
+{
+"DECISION": "YES",
+"FEEDBACK": "The student calls Account.isAvailable(currentUsername), passing a String argument, on the class Account. This is a correct call to the helper method, so the point is earned."
+},
+{
+"DECISION": "YES",
+"FEEDBACK": "The while loop condition checks availability of a potential username (currentUsername), and inside the loop body the potential username is reassigned (currentUsername = requestedName + suffixNum), so potential usernames are updated in the loop body until an available one is found. Even though the numbering is off, the rubric allows updating potential usernames incorrectly, so the point is earned."
+},
+{
+"DECISION": "YES",
+"FEEDBACK": "The variable suffixNum is incremented (suffixNum++) inside the body of the while loop, satisfying the requirement of incrementing a count in the context of a loop."
+},
+{
+"DECISION": "NO",
+"FEEDBACK": "The count is initialized to 1 but incremented before being appended, so the first variation tried is requestedName + 2, skipping requestedName1 entirely. The rubric explicitly states the point is not earned if the response fails to append the correct integer to the username when necessary (successive integers beginning with 1). The case where requestedName is available is handled correctly, and username is assigned, but the incorrect starting integer means the algorithm point cannot be awarded."
+}
+]

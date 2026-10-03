@@ -1,0 +1,9 @@
+[
+  { "item": "1a", "deducted": false, "feedback": "The answer explicitly states that Collections.singletonMap returns an immutable map and that attempting to modify it throws UnsupportedOperationException. Requirement satisfied." },
+  { "item": "1b", "deducted": false, "feedback": "The answer explicitly states that new HashMap<>(...) creates a mutable HashMap in which entries can be freely added, removed, or modified. Requirement satisfied." },
+  { "item": "1c", "deducted": false, "feedback": "The answer states that singletonMap contains 'only one mapping' / 'a single mapping'. Requirement satisfied." },
+  { "item": "2a", "deducted": true, "feedback": "The answer never mentions or reproduces the method signature of messageParams (e.g., its parameter types such as FetchProfile and Map<String, Message>/HashMap). It only refers to it generically as receiving 'a mutable map'. Deduction applies." },
+  { "item": "2b", "deducted": true, "feedback": "The answer only says messageParams 'receives a mutable map' and never states that the parameter type is specifically a HashMap. Per the rubric, saying 'mutable map' is not specific enough. Deduction applies." },
+  { "item": "2c", "deducted": true, "feedback": "The answer does not examine or discuss how the map argument is actually used inside messageParams, and never determines that the usages are read-only. Instead it leaves the impression that mutability is needed. Deduction applies." },
+  { "item": "2d", "deducted": true, "feedback": "The answer asserts that the HashMap wrapper exists 'so that messageParams receives a mutable map' and that passing singletonMap 'would restrict future modifications to the map within messageParams', incorrectly implying that messageParams modifies the map, when in fact the usages are read-only. Deduction applies." }
+]

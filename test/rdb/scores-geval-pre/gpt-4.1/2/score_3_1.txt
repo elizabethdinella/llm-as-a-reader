@@ -1,0 +1,30 @@
+[
+    {
+        "justification": "The answer explicitly states that `Collections.singletonMap(key, value)` returns an immutable map and that attempting to modify it throws UnsupportedOperationException. It also notes the HashMap wrapper is mutable. The requirement that singletonMap is immutable is clearly mentioned.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that `new HashMap<>(Collections.singletonMap(...))` creates a new mutable `HashMap` and that entries can be added, removed, or modified, clearly identifying HashMap as mutable.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that `Collections.singletonMap(key, value)` returns an immutable map 'containing only the mapping you provide', and further describes the HashMap as being 'initially populated with the single entry from the immutable singleton map'. This clearly conveys that singletonMap holds only a single key-value mapping.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer never states or discusses the actual method signature of `messageParams` (e.g., its parameter types such as FetchProfile and HashMap<String, ImapMessage>). It only speaks generically about passing a mutable vs. immutable map, so the signature is not mentioned.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer never states that `messageParams` declares its parameter type as `HashMap` (nor shows its signature). It only discusses mutability generically, saying `messageParams` would receive an immutable vs. mutable map. Per the rubric, stating it requires a mutable map is not specific enough.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer does not examine or state how the map argument is actually used within messageParams. It only speculates conditionally ('The correct usage depends on whether messageParams or subsequent code needs to modify the map'), failing to clearly determine that the usages are read-only. Per the rubric, the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer only speaks hypothetically ('If you wrap it with a HashMap, messageParams receives a mutable map and can safely add or remove entries. The correct usage depends on whether messageParams or subsequent code needs to modify the map.'). It never affirmatively claims that the actual usages of the map inside messageParams modify it; it leaves this undetermined. Therefore it does not incorrectly assert modification, and the 2-point deduction under sub-item 2e does not apply (the vagueness would instead be penalized under 2d).",
+        "deducted": false
+    }
+]

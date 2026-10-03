@@ -1,0 +1,2 @@
+
+No, ASCII should be used for decoding the Host header, not UTF-8. The HTTP specification requires the Host header to contain only ASCII characters (with internationalized domains using Punycode encoding). Using ASCII decoding ensures compliance with the HTTP standard and will properly raise an error if invalid non-ASCII bytes are encountered, rather than silently accepting malformed headers.

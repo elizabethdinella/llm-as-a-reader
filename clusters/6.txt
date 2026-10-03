@@ -1,0 +1,266 @@
+skipping test/a-levels/sub/deepseek-r1-70b/answer_6.txt
+skipping test/a-levels/sub/grok-3/answer_6.txt
+REPRESENTATIVE SAMPLES==============
+gemini-2.5-pro
+<answer>
+```java
+import java.util.Scanner;
+import java.util.InputMismatchException;
+
+public class BirdProgram {
+    public static void main(String[] args) {
+        // Create instances from part (b)
+        Bird bird1 = new Bird("Cockatiel", 71.0);
+        Bird bird2 = new Bird("Macaw", 56.0);
+
+        Scanner scanner = new Scanner(System.in);
+
+        // Output initial status
+        System.out.println("Initial Bird Positions:");
+        System.out.println("1. " + bird1.GetSpecies() + " - " + bird1.GetPosition());
+        System.out.println("2. " + bird2.GetSpecies() + " - " + bird2.GetPosition());
+        System.out.println();
+
+        // Select a bird with validation
+        String birdChoice;
+        do {
+            System.out.print("Select a bird to move (1 for " + bird1.GetSpecies() + ", 2 for " + bird2.GetSpecies() + "): ");
+            birdChoice = scanner.nextLine();
+            if (!birdChoice.equals("1") && !birdChoice.equals("2")) {
+                System.out.println("Invalid selection. Please enter 1 or 2.");
+            }
+        } while (!birdChoice.equals("1") && !birdChoice.equals("2"));
+
+        Bird chosenBird = (birdChoice.equals("1")) ? bird1 : bird2;
+
+        // Get direction with validation
+        char direction;
+        String directionInput;
+        do {
+            System.out.print("Enter direction ('N', 'S', 'E', 'W'): ");
+            directionInput = scanner.nextLine().toUpperCase();
+            if (directionInput.length() != 1 || "NSEW".indexOf(directionInput.charAt(0)) == -1) {
+                System.out.println("Invalid direction. Please enter N, S, E, or W.");
+            }
+        } while (directionInput.length() != 1 || "NSEW".indexOf(directionInput.charAt(0)) == -1);
+        direction = directionInput.charAt(0);
+
+        // Get time with validation
+        int minutes = -1; // Initialize to an invalid value to enter loop
+        do {
+            try {
+                System.out.print("Enter minutes flying (a whole number between 0 and 500): ");
+                minutes = scanner.nextInt();
+                if (minutes < 0 || minutes > 500) {
+                    System.out.println("Invalid input. Please enter a number between 0 and 500.");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter a whole number.");
+                scanner.nextLine(); // Clear the invalid input from the scanner
+                minutes = -1; // Reset to ensure loop continues
+            }
+        } while (minutes < 0 || minutes > 500);
+
+        // Call the method to update position
+        chosenBird.Move(direction, minutes);
+
+        // Output the new position
+        System.out.println("\nUpdate: The " + chosenBird.GetSpecies() + "'s new position is now:");
+        System.out.println(chosenBird.GetPosition());
+
+        scanner.close();
+    }
+}
+```
+</answer>
+
+qwen3
+<answer>
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Bird bird1 = new Bird("Cockatiel", 71.0);
+        Bird bird2 = new Bird("Macaw", 56.0);
+
+        System.out.println(bird1.GetSpecies() + " " + bird1.GetPosition());
+        System.out.println(bird2.GetSpecies() + " " + bird2.GetPosition());
+
+        int selectedBird = 0;
+        while (selectedBird != 1 && selectedBird != 2) {
+            System.out.print("Select bird to move (1 or 2): ");
+            selectedBird = Integer.parseInt(scanner.nextLine());
+        }
+
+        String direction = "";
+        while (!direction.equals("N") && !direction.equals("S") && !direction.equals("E") && !direction.equals("W")) {
+            System.out.print("Enter direction (N, S, E, W): ");
+            direction = scanner.nextLine().toUpperCase();
+        }
+
+        int minutes = 0;
+        while (minutes < 0 || minutes > 500) {
+            System.out.print("Enter time (0-500 minutes): ");
+            minutes = Integer.parseInt(scanner.nextLine());
+        }
+
+        Bird selectedBirdObj;
+        if (selectedBird == 1) {
+            selectedBirdObj = bird1;
+        } else {
+            selectedBirdObj = bird2;
+        }
+
+        selectedBirdObj.Move(direction, minutes);
+
+        System.out.println("New position for " + selectedBirdObj.GetSpecies() + ": " + selectedBirdObj.GetPosition());
+    }
+}
+</answer>
+
+gpt-4.1
+<answer>
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Bird bird1 = new Bird("Cockatiel", 71.0);
+        Bird bird2 = new Bird("Macaw", 56.0);
+
+        Scanner scanner = new Scanner(System.in);
+
+        // Output birds' information
+        System.out.println("Bird 1: " + bird1.GetSpecies() + ", " + bird1.GetPosition());
+        System.out.println("Bird 2: " + bird2.GetSpecies() + ", " + bird2.GetPosition());
+
+        // Select bird
+        int birdNum = 0;
+        while (birdNum != 1 && birdNum != 2) {
+            System.out.print("Enter the number of the bird to move (1 for Cockatiel, 2 for Macaw): ");
+            if (scanner.hasNextInt()) {
+                birdNum = scanner.nextInt();
+            } else {
+                scanner.next(); // clear invalid input
+            }
+        }
+
+        // Input direction
+        char direction = ' ';
+        boolean validDir = false;
+        while (!validDir) {
+            System.out.print("Enter direction (N/S/E/W): ");
+            String dirInput = scanner.next();
+            dirInput = dirInput.toUpperCase();
+            if (dirInput.length() == 1 &&
+                (dirInput.charAt(0) == 'N' ||
+                 dirInput.charAt(0) == 'S' ||
+                 dirInput.charAt(0) == 'E' ||
+                 dirInput.charAt(0) == 'W')) {
+                direction = dirInput.charAt(0);
+                validDir = true;
+            }
+        }
+
+        // Input minutes
+        int minutes = -1;
+        while (minutes < 0 || minutes > 500) {
+            System.out.print("Enter minutes flying (0-500): ");
+            if (scanner.hasNextInt()) {
+                minutes = scanner.nextInt();
+            } else {
+                scanner.next();
+            }
+        }
+
+        // Move the chosen bird and output new position
+        Bird chosenBird = (birdNum == 1) ? bird1 : bird2;
+        chosenBird.Move(direction, minutes);
+        System.out.println("After moving:");
+        System.out.println(chosenBird.GetSpecies() + ": " + chosenBird.GetPosition());
+
+        scanner.close();
+    }
+}
+</answer>
+
+claude-opus-5
+<answer>
+import java.util.Scanner;
+
+public class BirdProgram
+{
+    public static void main(String[] args)
+    {
+        Scanner Input = new Scanner(System.in);
+
+        Bird Bird1 = new Bird("Cockatiel", 71.0);
+        Bird Bird2 = new Bird("Macaw", 56.0);
+
+        // output current data for both birds
+        System.out.println("Bird 1 is a " + Bird1.GetSpecies() + " at position " + Bird1.GetPosition());
+        System.out.println("Bird 2 is a " + Bird2.GetSpecies() + " at position " + Bird2.GetPosition());
+
+        // input and validate which bird to move
+        int Choice;
+        do
+        {
+            System.out.println("Enter 1 to move the " + Bird1.GetSpecies()
+                             + " or 2 to move the " + Bird2.GetSpecies() + ":");
+            while (!Input.hasNextInt())
+            {
+                System.out.println("Invalid input. Please enter 1 or 2:");
+                Input.next();
+            }
+            Choice = Input.nextInt();
+            if (Choice != 1 && Choice != 2)
+            {
+                System.out.println("Invalid choice, you must enter 1 or 2.");
+            }
+        } while (Choice != 1 && Choice != 2);
+
+        // input and validate the direction
+        char Direction;
+        do
+        {
+            System.out.println("Enter the direction of travel (N, S, E or W):");
+            Direction = Character.toUpperCase(Input.next().charAt(0));
+            if (Direction != 'N' && Direction != 'S' && Direction != 'E' && Direction != 'W')
+            {
+                System.out.println("Invalid direction, you must enter N, S, E or W.");
+            }
+        } while (Direction != 'N' && Direction != 'S' && Direction != 'E' && Direction != 'W');
+
+        // input and validate the number of minutes
+        int Minutes;
+        do
+        {
+            System.out.println("Enter the number of minutes flying (0 to 500):");
+            while (!Input.hasNextInt())
+            {
+                System.out.println("Invalid input. Please enter a whole number between 0 and 500:");
+                Input.next();
+            }
+            Minutes = Input.nextInt();
+            if (Minutes < 0 || Minutes > 500)
+            {
+                System.out.println("Invalid time, it must be between 0 and 500 minutes.");
+            }
+        } while (Minutes < 0 || Minutes > 500);
+
+        // move the chosen bird and output its new position
+        if (Choice == 1)
+        {
+            Bird1.Move(Direction, Minutes);
+            System.out.println("The " + Bird1.GetSpecies() + " has moved to " + Bird1.GetPosition());
+        }
+        else
+        {
+            Bird2.Move(Direction, Minutes);
+            System.out.println("The " + Bird2.GetSpecies() + " has moved to " + Bird2.GetPosition());
+        }
+    }
+}
+</answer>
+
+The provided Java code samples represent different implementations of a program that simulates moving birds based on user input. Each sample has its own approach to handling user input and validating it. Here are the key differences between the samples:1. **Class and Method Naming:**   - The first and fourth samples use `BirdProgram` as the class name, while the second and third samples use `Main`.   - Method names for getting species and position are consistently `GetSpecies()` and `GetPosition()` across all samples.2. **User Input Handling:**   - The first sample uses a `do-while` loop for input validation and handles exceptions using `try-catch` blocks for invalid integer inputs.   - The second sample uses `while` loops for input validation and directly parses integers using `Integer.parseInt()`, which can throw exceptions if the input is not a valid integer.   - The third sample uses `while` loops and checks `scanner.hasNextInt()` to validate integer inputs, clearing invalid inputs with `scanner.next()`.   - The fourth sample uses a combination of `do-while` loops and `while` loops with `scanner.hasNextInt()` for input validation, similar to the third sample.3. **Direction Input Validation:**   - All samples ensure that the direction input is one of 'N', 'S', 'E', or 'W', but they differ in how they handle invalid inputs:     - The first sample uses a `do-while` loop and checks the length and content of the input string.     - The second sample uses a `while` loop and checks the string against valid options.     - The third and fourth samples use a `while` loop and check the character against valid options.4. **Bird Selection:**   - All samples allow the user to select between two birds, but they differ in how they handle invalid selections:     - The first sample uses a `do-while` loop with string comparison.     - The second sample uses a `while` loop with integer comparison.     - The third and fourth samples use a `while` loop with integer comparison and `scanner.hasNextInt()` for validation.5. **Output:**   - All samples output the initial positions of the birds and the updated position after movement.   - The first sample provides more detailed prompts and error messages compared to the others.Overall, while all samples achieve the same functionality, they differ in their approach to input handling, validation, and user interaction. The choice of approach can affect the robustness and user-friendliness of the program.

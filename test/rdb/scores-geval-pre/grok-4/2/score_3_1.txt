@@ -1,0 +1,30 @@
+[
+    {
+        "justification": "The answer explicitly states that 'a singletonMap is immutable and throws an exception if modification is attempted,' satisfying the requirement.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that 'a HashMap is mutable and can be modified after creation (e.g., adding or removing entries)', satisfying the requirement of sub-item 1c.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer only discusses mutability differences (HashMap mutable, singletonMap immutable) and does not mention that Collections.singletonMap holds/returns only a single key-value mapping (i.e., is limited to one entry).",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer never mentions or discusses the method signature of messageParams (e.g., its parameter types such as FetchProfile and Map/HashMap). It only speculates generally that the builder 'may' need a mutable map, without referencing the actual declared signature. Therefore the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer never states the actual parameter type of messageParams (i.e., that its signature requires a HashMap). It only discusses mutability in general terms, speculating that the builder 'may' need a mutable map. Per the rubric, saying it requires a mutable map is not specific enough.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer does not examine actual usages of the map argument inside messageParams. It only speculates that a mutable copy 'may be necessary if the builder or command needs to alter the map internally,' failing to clearly determine whether the usages are read-only or modifying. Per the deduction criteria, the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer only speculates that a mutable copy 'may be necessary if the builder or command needs to alter the map internally' \u2014 it does not affirmatively state that the usages of the map within messageParams modify it. Since it hedges rather than incorrectly asserting modification, the 2-point deduction for incorrectly claiming mutation does not apply (though it does fail to clearly determine the read-only nature, which is covered by sub-item 2c).",
+        "deducted": false
+    }
+]

@@ -1,0 +1,7 @@
+
+The difference between `HashMap` and `singletonMap` in this context lies in **mutability** and **creation efficiency**. 
+
+- `Collections.singletonMap` creates an **immutable** map with a single entry, which is efficient for static data. However, if the `messageParams` method expects a `HashMap` (mutable), using `singletonMap` directly would not compile. 
+- The code uses `new HashMap<>(Collections.singletonMap(...))` to explicitly create a **mutable** `HashMap` from the singleton map. This ensures compatibility with the method's parameter type, even though the underlying data is not modified in this case. 
+
+Thus, the key difference is **mutability**: `HashMap` allows future modifications, while `singletonMap` does not. The code uses `HashMap` to satisfy the method's expected parameter type, even though the data remains static.

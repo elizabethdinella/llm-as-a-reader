@@ -1,0 +1,38 @@
+[
+    {
+        "deducted": false,
+        "feedback": "The rubric requires the answer to discuss mutability and size differences, explicitly stating that singletonMap is immutable. The candidate answer does both: it has an explicit 'Immutability' bullet stating '`singletonMap` returns an immutable map, whereas a `HashMap` is mutable', repeats this in the final answer, and addresses size by noting singletonMap contains only a single key-value pair while HashMap should be used 'when you need to create a map with multiple entries.' Although the answer misinterprets the code's intent (the HashMap wrapper is used precisely to obtain a mutable copy, not out of inefficiency), the specific rubric condition regarding mutability and size is satisfied, so no deduction applies for this subitem.",
+        "item": "1a"
+    },
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly addresses mutability, stating under 'Key differences' that 'singletonMap returns an immutable map, whereas a HashMap is mutable,' and repeats this in the final answer ('HashMap is mutable'). It also covers the size distinction, noting that singletonMap holds a single key-value pair while HashMap should be used 'when you need to create a map with multiple entries.' Both required aspects\u2014mutability (with the explicit statement that HashMap is mutable) and size/capacity differences\u2014are present, so no deduction applies.",
+        "item": "1b"
+    },
+    {
+        "deducted": false,
+        "feedback": "The rubric requires discussion of mutability and size differences, specifically stating that singletonMap holds only a single key-value mapping. The candidate explicitly states 'Collections.singletonMap() returns a Map that contains a single key-value pair' and describes it as a specialized single-entry map, and also covers mutability ('singletonMap returns an immutable map, whereas a HashMap is mutable'), including guidance to use HashMap when multiple entries or modification are needed. Both required aspects (single mapping size and mutability) are addressed, so no deduction for this subitem (despite the answer's questionable recommendation to replace HashMap with singletonMap in this context, which is outside this rubric item).",
+        "item": "1c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate answer discusses only the general differences between `HashMap` and `Collections.singletonMap` (performance, immutability, thread-safety, mutability) and never mentions `messageParams` at all. It does not reference the `messageParams(FetchProfile, Map<String, Message>)` builder method or its signature/expected parameter type, which is the crux of why a mutable `HashMap` wrapper is used around the singletonMap here. Since `messageParams` and its signature are entirely absent, the rubric condition is not met and the point is deducted.",
+        "item": "2a"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate answer never discusses the `messageParams` method at all. It only gives a generic Java comparison between `HashMap` and `Collections.singletonMap()` (performance, immutability, thread-safety). It never states that `messageParams` requires/takes a `HashMap` parameter \u2014 in fact it wrongly concludes that using `singletonMap` directly would be 'more efficient and concise' here, which would not compile given the method signature requires a `HashMap`. Since the requirement that `messageParams` takes a `HashMap` is not mentioned, the point is deducted.",
+        "item": "2b"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate answer provides only a generic comparison of HashMap and Collections.singletonMap (performance, immutability, thread-safety) and never examines the `messageParams` method or how the map argument is actually used inside it. It does not investigate or state whether `messageParams` mutates the passed map or merely reads from it (i.e., that the usages are read-only, which would make an immutable singletonMap safe here). Because the answer fails to discuss messageParams' usage of the map and fails to determine whether the map is modified, the rubric condition is not met.",
+        "item": "2c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The rubric requires the answer to actually engage with `messageParams` \u2014 i.e., to address why the map passed to `messageParams` is wrapped in a `new HashMap<>(...)` and whether the downstream builder/command usage requires a mutable map. The candidate answer never mentions `messageParams` (or the builder, `FetchProfile`, or `UidFetchCommand`) at all; it is an entirely generic textbook comparison of `HashMap` vs `Collections.singletonMap` (performance, immutability, thread-safety) plus a generic code example unrelated to the given context. It therefore fails the 'discuss messageParams' condition. Notably, it also draws an unsupported conclusion for this specific code \u2014 asserting that `singletonMap` 'would be a more efficient and concise way' here \u2014 without examining how the map argument is used by the command, which is exactly the contextual analysis the rubric targets. It does not make the specific error of claiming the usages modify the map, but since it never discusses `messageParams` in the first place, the subitem's points are not earned.",
+        "deducted_points": 2,
+        "item": "2d"
+    }
+]

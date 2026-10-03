@@ -1,0 +1,2 @@
+
+F.cross_entropy refers to PyTorch's built-in cross entropy function from torch.nn.functional, while cross_entropy (without the F prefix) appears to be a custom function defined elsewhere in the codebase. The F.cross_entropy call is used for the training loss and properly assigned to a variable, while the bare cross_entropy call appears to be missing an assignment (should likely be val_loss = cross_entropy(...)) and represents a custom implementation whose behavior would depend on how it's defined in the codebase.

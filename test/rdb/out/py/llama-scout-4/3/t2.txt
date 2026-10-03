@@ -1,0 +1,2 @@
+
+Using UTF-8 instead of ASCII for decoding the host could provide more flexibility, but it may also introduce compatibility issues with certain standards and existing systems. The choice depends on the specific requirements and constraints of the project. 

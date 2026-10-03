@@ -1,0 +1,2 @@
+
+No, you don't necessarily need this null check for roleInfoList, but it depends on how getRolesFromDatabase is implemented.

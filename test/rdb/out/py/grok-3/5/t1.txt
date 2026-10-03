@@ -1,0 +1,2 @@
+
+The check for `if not build_directory` is necessary as a defensive programming measure to ensure that the build directory is set before proceeding with corpus pruning. While it might seem redundant if `build_setup_result` guarantees a valid `build_directory`, it protects against edge cases, future changes, or misconfigurations where the directory might not be set, thus preventing potential runtime errors or unexpected behavior.

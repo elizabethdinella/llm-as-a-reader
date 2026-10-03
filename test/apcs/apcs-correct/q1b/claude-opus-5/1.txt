@@ -1,0 +1,49 @@
+## Part B
+
+**Approach:** Walk through `username` character by character. If the *next* character is a hyphen, skip both the current character and the hyphen; otherwise, append the current character to the result.
+
+```java
+public String getShortenedName()
+{
+    String shortened = "";
+    int i = 0;
+    while (i < username.length())
+    {
+        if (i < username.length() - 1 && username.substring(i + 1, i + 2).equals("-"))
+        {
+            i += 2;   // skip this character and the hyphen that follows it
+        }
+        else
+        {
+            shortened += username.substring(i, i + 1);
+            i++;
+        }
+    }
+    return shortened;
+}
+```
+
+**Trace for `"Amy-Marie-Lin"`:** `A`, `m` are kept; `y` is followed by `-`, so both are skipped → `"Am"`; `M`,`a`,`r`,`i` kept; `e` followed by `-`, both skipped → `"AmMari"`; `L`,`i`,`n` kept → `"AmMariLin"`.
+
+**Trace for `"SammyB3"`:** no hyphens, so every character is appended → `"SammyB3"`. The instance variable `username` is never modified, satisfying the postcondition.
+
+<answer>
+public String getShortenedName()
+{
+    String shortened = "";
+    int i = 0;
+    while (i < username.length())
+    {
+        if (i < username.length() - 1 && username.substring(i + 1, i + 2).equals("-"))
+        {
+            i += 2;   // skip this character and the hyphen that follows it
+        }
+        else
+        {
+            shortened += username.substring(i, i + 1);
+            i++;
+        }
+    }
+    return shortened;
+}
+</answer>

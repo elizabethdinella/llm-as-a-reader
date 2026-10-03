@@ -1,0 +1,2 @@
+
+Yes, this null check is essential. Its primary purpose is to handle a "cache miss." When caching is enabled and a user's roles are not in the `roleInfoMap`, the `map.get()` call returns `null`. This null check correctly identifies that situation and triggers the database query to fetch the roles. Without it, the method would fail to load data for users not in the cache.

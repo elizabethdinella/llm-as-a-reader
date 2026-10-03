@@ -1,0 +1,2 @@
+
+`_compact_times()` should be called on **every KPIset that has its `recalculate` method invoked**. Its unconditional placement at the start of `recalculate` indicates it's a necessary preprocessing step, likely for memory optimization or data preparation (e.g., sorting, compacting raw time data) before statistical computations like percentiles and standard deviation are performed. Practically, only KPIsets that accumulate raw time data (what you might refer to as "cumulative" KPIsets) would typically call `recalculate`, making `_compact_times()` essential for those.

@@ -1,0 +1,18 @@
+[
+{
+"DECISION": "YES",
+"FEEDBACK": "The response calls Account.isAvailable(currentUsername), passing a String argument, and the call is made on the class Account, which is permitted. The call is syntactically and semantically correct (a String is passed, and the boolean result is used in the while condition), so the point for calling isAvailable with a String argument is earned."
+},
+{
+"DECISION": "YES",
+"FEEDBACK": "The while loop condition checks !Account.isAvailable(currentUsername) with a potential username as the argument, and inside the loop body the potential username is updated via currentUsername = requestedName + suffixNum. Thus availability is checked with a potential username and the potential username is updated in the body of the loop, continuing until an available name is found. The point is earned even though the redundant duplicated block and failure to store the result are present."
+},
+{
+"DECISION": "YES",
+"FEEDBACK": "The variable suffixNum is initialized to 1 and incremented with suffixNum++ inside the body of the while loop, so a count is incremented in the context of a loop. This satisfies the criterion even though the count is not ultimately used to set the instance variable."
+},
+{
+"DECISION": "NO",
+"FEEDBACK": "The instance variable username is only ever assigned requestedName (twice: this.username = requestedName). The loop finds the available username in the local variables currentUsername / tempCurrentUsername, but that result is never assigned to username. Therefore the constructor fails to assign the correct value to username when requestedName is unavailable (no integer is ever appended to username). Additionally, the response redeclares suffixNum in the same scope, which is a compile-time error, and the duplicated search logic is extraneous. The algorithm point is not earned."
+}
+]

@@ -1,0 +1,64 @@
+To solve the `getPointsForRow` method in the `GameBoard` class, we need to determine the point value of a specific row based on two conditions:
+
+1. **If all spaces in the row have the same color**, the point value is **twice the sum of the points** in that row.
+2. **If not all spaces have the same color**, the point value is **simply the sum of the points** in the row.
+
+---
+
+### ✅ Step-by-Step Implementation
+
+1. **Calculate the total points in the row**:
+   - Loop through each column in the specified row.
+   - Sum up the `getPoints()` value of each `Space` object in that row.
+
+2. **Check if all spaces in the row have the same color**:
+   - Retrieve the color of the first space in the row.
+   - Loop through the remaining spaces in the row, comparing each color to the first.
+   - If any color is different, mark the row as not having uniform color.
+
+3. **Return the appropriate value based on the uniformity of colors**:
+   - If all colors are the same, return `2 * sumPoints`.
+   - Otherwise, return `sumPoints`.
+
+---
+
+### 🧠 Edge Case Considerations
+
+- The `board` has **at least two columns**, so we can safely compare from the second column onward.
+- We do **not** need to check for `null` values because the preconditions ensure that all elements in the `board` are non-null.
+- We assume that the `getColor()` and `getPoints()` methods are properly implemented in the `Space` class.
+
+---
+
+### ✅ Final Code
+
+```java
+public int getPointsForRow(int targetRow) {
+    int sumPoints = 0;
+    int numColumns = board[targetRow].length;
+
+    // Calculate sum of points
+    for (int col = 0; col < numColumns; col++) {
+        sumPoints += board[targetRow][col].getPoints();
+    }
+
+    // Check if all colors are the same
+    String firstColor = board[targetRow][0].getColor();
+    boolean allSameColor = true;
+    for (int col = 1; col < numColumns; col++) {
+        String currentColor = board[targetRow][col].getColor();
+        if (!currentColor.equals(firstColor)) {
+            allSameColor = false;
+            break;
+        }
+    }
+
+    return allSameColor ? 2 * sumPoints : sumPoints;
+}
+```
+
+---
+
+### 📌 Summary
+
+This implementation correctly handles both conditions as per the problem's requirements. It first calculates the total point value of the row and then checks for uniform color, returning the appropriate result. The code is efficient and adheres to the given constraints.

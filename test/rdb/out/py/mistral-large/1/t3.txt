@@ -1,0 +1,1 @@
+The difference between calling F.cross_entropy and cross_entropy is that F.cross_entropy is a standard function provided by PyTorch for computing cross-entropy loss, while cross_entropy could be a custom implementation or an alias, making it ambiguous without additional context.

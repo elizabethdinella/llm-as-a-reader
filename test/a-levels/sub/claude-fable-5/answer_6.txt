@@ -1,0 +1,44 @@
+<answer>
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        Bird bird1 = new Bird("Cockatiel", 71.0);
+        Bird bird2 = new Bird("Macaw", 56.0);
+
+        System.out.println("Bird 1: " + bird1.getSpecies() + " is at position " + bird1.getPosition());
+        System.out.println("Bird 2: " + bird2.getSpecies() + " is at position " + bird2.getPosition());
+
+        int choice;
+        do {
+            System.out.println("Which bird do you want to move? Enter 1 or 2:");
+            choice = scanner.nextInt();
+        } while (choice != 1 && choice != 2);
+
+        char direction;
+        do {
+            System.out.println("Enter the direction of travel (N, S, E or W):");
+            direction = scanner.next().toUpperCase().charAt(0);
+        } while (direction != 'N' && direction != 'S' && direction != 'E' && direction != 'W');
+
+        int minutes;
+        do {
+            System.out.println("Enter the number of minutes flying (0 to 500):");
+            minutes = scanner.nextInt();
+        } while (minutes < 0 || minutes > 500);
+
+        Bird chosenBird;
+        if (choice == 1) {
+            chosenBird = bird1;
+        } else {
+            chosenBird = bird2;
+        }
+
+        chosenBird.move(direction, minutes);
+
+        System.out.println("The " + chosenBird.getSpecies() + " has moved to new position: " + chosenBird.getPosition());
+    }
+}
+</answer>

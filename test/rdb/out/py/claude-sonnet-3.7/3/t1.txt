@@ -1,0 +1,2 @@
+
+We should continue using ASCII rather than UTF-8 for decoding the Host header. The HTTP specification requires Host headers to use ASCII encoding, even for internationalized domain names which are represented in Punycode format. Using UTF-8 could lead to incorrect URL reconstruction and potential security issues with domain name interpretation.

@@ -1,0 +1,37 @@
+[
+  {
+    "item": "1a",
+    "deducted": false,
+    "feedback": "The answer explicitly states that `Collections.singletonMap` creates an immutable map and that attempting to modify it would throw `UnsupportedOperationException`. Requirement satisfied."
+  },
+  {
+    "item": "1b",
+    "deducted": false,
+    "feedback": "The answer explicitly states that a `HashMap` is mutable ('A HashMap, on the other hand, is mutable and can hold multiple entries'). Requirement satisfied."
+  },
+  {
+    "item": "1c",
+    "deducted": false,
+    "feedback": "The answer states that `singletonMap` creates a map 'containing only one entry' / 'a single-entry, immutable map', which conveys that it holds only a single key-value mapping. Requirement satisfied."
+  },
+  {
+    "item": "2a",
+    "deducted": true,
+    "feedback": "The answer never mentions or reproduces the method signature of `messageParams` (e.g., that it accepts a FetchProfile and a HashMap<String, Message>). No signature information is provided at all, only vague references to 'the logic within messageParams'."
+  },
+  {
+    "item": "2b",
+    "deducted": true,
+    "feedback": "The answer does not state that `messageParams` specifically declares a `HashMap` parameter (which is the actual reason for the wrapping). Instead it speculates that a `HashMap` is used 'to allow potential modification or addition of entries later on'. It does not even meet the weaker (insufficient) claim of requiring a mutable map as a declared type requirement."
+  },
+  {
+    "item": "2c",
+    "deducted": true,
+    "feedback": "The answer does not examine or discuss any usages of the map argument inside `messageParams`; it merely hedges with 'if required by the logic within messageParams or elsewhere'. It fails to determine whether the usages are read-only or mutating."
+  },
+  {
+    "item": "2d",
+    "deducted": true,
+    "feedback": "The answer attributes the wrapping in a `HashMap` to enabling 'potential modification or addition of more entries... if required by the logic within messageParams', and repeats in the final answer that 'HashMap is used to allow potential modification or addition of entries'. This asserts, without support from the code context, that the map may be mutated by `messageParams`, which is incorrect since the usages are read-only; the real reason is the declared parameter type."
+  }
+]

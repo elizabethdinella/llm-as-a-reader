@@ -1,0 +1,2 @@
+
+Yes, you need the null check for `roleInfoList`. Without it, when caching is enabled and the user has no cached roles (roleInfoMap.get() returns null), the method would return null without attempting to fetch roles from the database. The null check ensures that whenever there's no cached data, the system will try to load it from the database, which is the expected behavior for a cache-aside pattern.

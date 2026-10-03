@@ -1,0 +1,2 @@
+
+No, you don't necessarily need to call deepcopy(result) before modifying result[DATA] if you're certain that result is not used elsewhere and result[DATA] does not contain mutable objects. However, it's a good practice to create a deep copy if you're unsure.

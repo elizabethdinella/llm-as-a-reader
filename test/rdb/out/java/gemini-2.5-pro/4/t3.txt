@@ -1,0 +1,2 @@
+
+Yes, this null check is absolutely necessary. It functions as the "cache miss" condition. If a user's roles are not in the `roleInfoMap`, `roleInfoMap.get()` will return `null`, and this check ensures the code proceeds to fetch the roles from the database. Without it, the method would incorrectly return `null` for any user not in the cache, leading to likely bugs and `NullPointerExceptions` in the calling code.

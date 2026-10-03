@@ -1,0 +1,40 @@
+
+
+To solve this problem, we need to create a method that shortens a username by removing each hyphen and the character immediately preceding it. The method should handle various cases, such as multiple hyphens and ensuring the username does not start or end with a hyphen.
+
+### Approach
+The approach involves iterating through each character of the username string and using a `StringBuilder` to construct the shortened version. Here’s a step-by-step breakdown:
+
+1. **Initialize a `StringBuilder`**: This will be used to build the resulting shortened username.
+2. **Iterate through each character**: For each character in the username, check if it is a hyphen.
+3. **Handle hyphens**: If a hyphen is encountered, remove the last character from the `StringBuilder` (this removes the character before the hyphen).
+4. **Append non-hyphen characters**: If the character is not a hyphen, append it to the `StringBuilder`.
+5. **Return the result**: Convert the `StringBuilder` to a string and return it.
+
+This approach ensures that each hyphen and its preceding character are efficiently removed while constructing the result.
+
+### Solution Code
+
+```java
+public String getShortenedName() {
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < username.length(); i++) {
+        char c = username.charAt(i);
+        if (c == '-') {
+            if (sb.length() > 0) {
+                sb.deleteCharAt(sb.length() - 1);
+            }
+        } else {
+            sb.append(c);
+        }
+    }
+    return sb.toString();
+}
+```
+
+### Explanation
+- **StringBuilder**: Used to efficiently build the resulting string by appending characters and removing the last character when a hyphen is encountered.
+- **Iteration and Checks**: Each character is checked in a loop. If a hyphen is found, the preceding character is removed from the `StringBuilder`. Non-hyphen characters are simply appended.
+- **Efficiency**: The algorithm processes each character exactly once, resulting in a time complexity of O(n), where n is the length of the username.
+
+This solution effectively handles all specified cases, ensuring the username is shortened correctly by removing each hyphen and its preceding character.

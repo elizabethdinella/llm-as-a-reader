@@ -1,0 +1,37 @@
+[
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly states that Collections.singletonMap returns an immutable map optimized for a single entry that cannot be changed (no put/remove), and contrasts it with the mutable HashMap copy that allows adding/removing entries at the cost of a larger object. This covers both mutability and size/overhead differences, satisfying the rubric requirement that immutability of singletonMap be mentioned.",
+        "item": "1a"
+    },
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly states that wrapping the singletonMap in `new HashMap<>` creates a mutable HashMap copy, and contrasts this with singletonMap being immutable (no put/remove). It also touches on size/overhead differences ('optimised for a single entry \u2013 minimal overhead' vs 'slightly larger, mutable object'). The requirement that the answer state a HashMap is mutable is satisfied.",
+        "item": "1b"
+    },
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly notes that `Collections.singletonMap(key, value)` returns an immutable map 'optimised for a single entry' with minimal overhead, thereby conveying that a singletonMap holds only one key-value mapping. It also clearly addresses mutability: singletonMap cannot be modified (no put/remove), while wrapping it in `new HashMap<>(...)` produces a mutable copy that the callee or later code can add to or remove from, at the cost of a slightly larger object. Both the mutability and the size/single-mapping aspects required by the rubric are covered.",
+        "item": "1c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate answer only explains the general difference between an immutable `Collections.singletonMap` and a mutable `HashMap` copy (mutability, overhead). While it briefly references passing the map to `messageParams`, it never states or discusses the method signature of `messageParams` (e.g., that it accepts a `FetchProfile` and a `Map<String, Message>` of message IDs to messages) or how that signature/expected parameter type influences whether an immutable singletonMap would be acceptable. Since the required mention of the messageParams signature is absent, the point is deducted.",
+        "item": "2a"
+    },
+    {
+        "deducted": true,
+        "feedback": "The rubric requires the answer to explicitly state that `messageParams` takes a `HashMap` (i.e., its parameter type is declared as `HashMap`, so a `singletonMap` could not be passed at all). The candidate answer never mentions the signature/parameter type of `messageParams`; it only discusses immutability vs. mutability, saying 'passing the singletonMap directly to messageParams gives a read-only, lightweight map, while passing a HashMap allows the called method ... to modify the map.' This is the generic mutable-vs-immutable argument the rubric explicitly says is not specific enough, and it actually implies singletonMap could be passed directly, which is not the case given the HashMap parameter type. Therefore the required point is deducted.",
+        "item": "2b"
+    },
+    {
+        "deducted": true,
+        "feedback": "The answer only discusses the general semantics of `Collections.singletonMap` (immutable, single-entry) versus `new HashMap<>(...)` (mutable copy). It never examines how the map argument is actually used inside `messageParams` (e.g., whether the builder merely stores/reads the map entries, such as looking up messages by UID, without ever calling put/remove). Instead of determining the actual behavior, it hedges by saying passing a HashMap \"allows the called method (or later code) to modify the map,\" leaving it ambiguous whether `messageParams` mutates the map. Since it fails to note that the usages within `messageParams` are read-only and does not clearly determine whether mutation occurs, the point is deducted.\"}",
+        "item": "2c"
+    },
+    {
+        "deducted": false,
+        "feedback": "The answer does discuss `messageParams`, explicitly framing the comparison in terms of what is passed to it (an immutable single-entry `singletonMap` vs. a mutable `HashMap` copy). Regarding the error condition: the answer states that passing a `HashMap` 'allows the called method (or later code) to modify the map', which is a statement about capability/mutability rather than an assertion that the actual usages of the map inside `messageParams` do mutate it. It does not incorrectly claim that the consumers of the argument modify the map, so the 2-point deduction does not apply.",
+        "item": "2d"
+    }
+]

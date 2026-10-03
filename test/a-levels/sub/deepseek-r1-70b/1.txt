@@ -1,0 +1,117 @@
+
+
+(a)(i) Here's the Bird class declaration:
+
+```java
+public class Bird {
+    private double distancePerHour;
+    private String species;
+    private double xPosition;
+    private double yPosition;
+
+    public Bird(String species, double distancePerHour) {
+        this.species = species;
+        this.distancePerHour = distancePerHour;
+        this.xPosition = 500.0;
+        this.yPosition = 500.0;
+    }
+}
+```
+
+(a)(ii) The GetSpecies() method:
+
+```java
+public String getSpecies() {
+    return this.species;
+}
+```
+
+(a)(iii) The GetPosition() method:
+
+```java
+public String getPosition() {
+    return String.format("X = %.1f Y = %.1f", xPosition, yPosition);
+}
+```
+
+(a)(iv) The Move() method:
+
+```java
+public void move(char direction, int minutes) {
+    double distance = (distancePerHour / 60) * minutes;
+
+    switch(direction) {
+        case 'N':
+            yPosition += distance;
+            break;
+        case 'S':
+            yPosition -= distance;
+            break;
+        case 'E':
+            xPosition += distance;
+            break;
+        case 'W':
+            xPosition -= distance;
+            break;
+    }
+}
+```
+
+(b) Initialization of two Bird instances:
+
+```java
+Bird bird1 = new Bird("Cockatiel", 71.0);
+Bird bird2 = new Bird("Macaw", 56.0);
+```
+
+(c)(i) Main program code handling user input and output:
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        Bird bird1 = new Bird("Cockatiel", 71.0);
+        Bird bird2 = new Bird("Macaw", 56.0);
+
+        System.out.println("Bird 1: " + bird1.getSpecies() + " - Position: " + bird1.getPosition());
+        System.out.println("Bird 2: " + bird2.getSpecies() + " - Position: " + bird2.getPosition());
+
+        java.util.Scanner scanner = new java.util.Scanner(System.in);
+
+        while (true) {
+            int choice;
+            do {
+                System.out.print("\nEnter the number of the bird to move (1 or 2): ");
+                choice = scanner.nextInt();
+                if (choice != 1 && choice != 2) {
+                    System.out.println("Please enter either 1 or 2.");
+                }
+            } while (choice != 1 && choice != 2);
+
+            char direction;
+            do {
+                System.out.print("Enter the direction (N, S, E, W): ");
+                direction = scanner.next().charAt(0);
+                if (direction != 'N' && direction != 'S' && direction != 'E' && direction != 'W') {
+                    System.out.println("Please enter N, S, E or W.");
+                }
+            } while (direction != 'N' && direction != 'S' && direction != 'E' && direction != 'W');
+
+            int minutes;
+            do {
+                System.out.print("Enter the time in minutes (0-500): ");
+                minutes = scanner.nextInt();
+                if (minutes < 0 || minutes > 500) {
+                    System.out.println("Please enter a value between 0 and 500.");
+                }
+            } while (minutes < 0 || minutes > 500);
+
+            Bird selectedBird = (choice == 1) ? bird1 : bird2;
+            selectedBird.move(direction, minutes);
+
+            System.out.println("\nUpdated position of " + selectedBird.getSpecies() + ": " + selectedBird.getPosition());
+        }
+    }
+}
+```
+
+Each part is implemented according to the requirements, ensuring encapsulation and proper method functionality.

@@ -1,0 +1,23 @@
+**Rubric Item 1 — Mutability/size differences (3 points)**
+
+- *singletonMap is immutable*: Explicitly stated ("returns an immutable map that cannot be modified") — no deduction.
+- *HashMap is mutable*: Explicitly stated ("creates a mutable HashMap") — no deduction.
+- *singletonMap holds only a single key-value mapping*: Implied/stated via "initialized with that single entry" — credit given, no deduction.
+
+Score: 3/3
+
+**Rubric Item 2 — Discussion of messageParams (4 points)**
+
+- *Method signature of messageParams*: Never mentioned; the answer gives no signature, parameter types, or return type. **−1**
+- *States messageParams takes a HashMap*: The answer only says it "likely requires a mutable map," which the rubric explicitly calls out as not specific enough. **−1**
+- *Discusses usages of the map argument inside messageParams and determines they are read-only*: The answer never examines the body of messageParams; it speculates ("likely") and fails to determine whether the map is modified. **−1**
+- *Incorrectly states the usages modify the map*: The answer asserts messageParams "requires a mutable map that can be modified after creation," implying the argument is mutated, which is incorrect (the usages are read-only). **−2**
+
+Total deductions exceed the item value, so the score floors at 0.
+
+Score: 0/4
+
+<scores>
+	<score> 3/3 </score>
+	<score> 0/4 </score>
+</scores>

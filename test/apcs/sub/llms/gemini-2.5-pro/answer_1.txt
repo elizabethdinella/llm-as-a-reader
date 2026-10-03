@@ -1,0 +1,13 @@
+<answer>
+public Account(String requestedName)
+{
+    String currentName = requestedName;
+    int num = 1;
+    while (!isAvailable(currentName))
+    {
+        currentName = requestedName + num;
+        num++;
+    }
+    this.username = currentName;
+}
+</answer>

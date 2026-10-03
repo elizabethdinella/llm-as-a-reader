@@ -1,0 +1,30 @@
+[
+    {
+        "justification": "The answer explicitly states that Collections.singletonMap() creates an 'immutable, optimized single-entry map', satisfying the requirement that the singletonMap's immutability be mentioned. (It also notes HashMap is mutable.) No deduction warranted.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that 'new HashMap<>(...) creates a mutable HashMap instance', directly addressing the mutability of HashMap. (It also notes singletonMap is a single-entry map.) Therefore no deduction applies.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly describes Collections.singletonMap() as creating an 'immutable, optimized single-entry map' and notes 'there's only one entry', which conveys that singletonMap holds only a single key-value mapping.",
+        "deducted": false
+    },
+    {
+        "justification": "The candidate answer only compares Collections.singletonMap and HashMap generally (immutability, efficiency). It never mentions the messageParams method or its signature/parameter types at all, so the required discussion of the method signature is absent.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer only discusses general differences between Collections.singletonMap and HashMap (immutability, efficiency). It never mentions the messageParams method signature or that it specifically takes a HashMap parameter type. In fact, it wrongly implies singletonMap would be appropriate there, which would not compile if the parameter type is HashMap. The requirement of sub-item 2c is not met.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer only compares HashMap and singletonMap generically (immutability, efficiency). It never examines the messageParams method or how the map argument is used inside it, and therefore does not determine whether those usages are read-only or modify the map. Per sub-item 2d, the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer only contrasts immutability/mutability of singletonMap vs HashMap and claims singletonMap would be preferable since it prevents accidental modification. It never examines or asserts that the usages of the map argument inside messageParams modify the map. Since it does not incorrectly claim that the map is mutated within messageParams, the 2-point deduction for this sub-item does not apply.",
+        "deducted": false
+    }
+]

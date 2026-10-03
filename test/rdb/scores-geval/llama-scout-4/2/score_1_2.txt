@@ -1,0 +1,7 @@
+{"justification": "The answer explicitly states that singletonMap is 'an immutable map with a single entry', satisfying the immutability requirement.", "deducted": false}
+{"justification": "The answer describes HashMap as a 'general-purpose, resizable map' in contrast to the immutable singletonMap, which conveys that it is mutable. This is a marginal but acceptable statement of mutability.", "deducted": false}
+{"justification": "The answer says singletonMap is a map 'with a single entry', covering the single key-value mapping point.", "deducted": false}
+{"justification": "The answer never mentions or examines the method signature of messageParams; it only discusses the generic differences between the two map types.", "deducted": true}
+{"justification": "The answer does not state that messageParams requires/takes a HashMap parameter specifically (which would make passing a singletonMap a compile error).", "deducted": true}
+{"justification": "The answer does not discuss how the map argument is used inside messageParams, nor does it determine whether those usages are read-only.", "deducted": true}
+{"justification": "The answer makes no incorrect claim that the usages of the map within messageParams modify it; it simply doesn't address it.", "deducted": false}

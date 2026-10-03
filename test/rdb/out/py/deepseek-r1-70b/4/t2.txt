@@ -1,0 +1,2 @@
+
+Yes, you should call `deepcopy(result)` before modifying `result[DATA]` if you want to avoid modifying the original `reply.result`. The deepcopy creates a new independent object, preventing unintended side effects on the original data.

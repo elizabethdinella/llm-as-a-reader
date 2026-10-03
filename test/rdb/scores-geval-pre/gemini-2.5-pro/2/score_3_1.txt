@@ -1,0 +1,30 @@
+[
+    {
+        "justification": "The answer explicitly states that `Collections.singletonMap()` creates an immutable, lightweight map that throws an exception if modification is attempted, clearly conveying its immutability.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that `new HashMap<>(Collections.singletonMap(...))` creates a 'brand new, fully **mutable** `HashMap` instance', clearly mentioning that HashMap is mutable.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that `Collections.singletonMap()` creates an immutable, lightweight map that 'contains exactly one entry', which satisfies the requirement that the singletonMap holds only a single key-value mapping.",
+        "deducted": false
+    },
+    {
+        "justification": "The candidate answer never mentions or discusses the method signature of `messageParams` (e.g., its parameter types such as FetchProfile and Map/HashMap). It only speaks generally about mutability and defensive copying, without referencing the declared signature of the method.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer never states that `messageParams` declares a `HashMap` parameter type. It only speaks generally about creating a mutable map for defensive purposes and possible internal modification, which the rubric explicitly says is not specific enough.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer never examines how the map argument is actually used within messageParams. It only speculates vaguely that the command's 'internal logic needs to alter the map,' failing to clearly determine whether the usages are read-only. This meets the deduction criteria for sub-item 2d.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer only speculates conditionally ('if the command's internal logic needs to alter the map') and frames the HashMap as defensive programming to prevent 'potential' UnsupportedOperationException. It never affirmatively states that the usages of the map inside messageParams actually modify it \u2014 it leaves the question undetermined rather than making an incorrect claim. This vagueness would be penalized under sub-item 2c, but it does not meet the criterion of incorrectly asserting that the map is modified.",
+        "deducted": false
+    }
+]

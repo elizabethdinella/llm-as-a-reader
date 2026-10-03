@@ -1,0 +1,44 @@
+[
+    {
+        "id": "1c_count_word_vs_capacity_paraphrase",
+        "name": "numeric 'exactly one entry' wording vs capacity/design paraphrase ('fixed-size', 'designed for a single entry')",
+        "side_a": "No_deduct when the answer conveys the one-mapping fact through any cardinality-bearing paraphrase about the map's capacity or design \u2014 e.g. 'fixed-size map designed for a single entry' \u2014 not just the numeric form 'exactly one entry'/'size is 1'.",
+        "side_b": "Deduct unless the answer gives a numeric/count statement of the mapping ('exactly one entry', 'one key-value pair', 'size is always 1'); capacity or design-intent phrasings such as 'fixed-size' or 'designed for a single entry' are treated as not stating cardinality."
+    },
+    {
+        "id": "2a_purpose_in_this_code",
+        "name": "Ties the conversion to a concrete need of this call site (messageParams needing a mutable map) vs. generic/dismissive treatment of why the copy exists",
+        "side_a": "No deduct if the answer, beyond comparing the two map types, states a concrete reason the code makes the mutable copy here \u2014 e.g. that the downstream `messageParams` call modifies or requires a mutable map.",
+        "side_b": "Deduct if the answer only contrasts the two types in the abstract (or merely hedges with 'APIs that expect a mutable HashMap'), or actively says the mutability serves no purpose because the map is never changed."
+    },
+    {
+        "id": "2a_reads_code_correctly",
+        "name": "Correctly describes the code as wrapping singletonMap in a HashMap vs. misreads it as a choice between the two",
+        "side_a": "No deduct if the answer recognizes the actual construct \u2014 a HashMap copy built from a Collections.singletonMap.",
+        "side_b": "Deduct if the answer misdescribes the snippet, e.g. treating singletonMap as absent and suggesting it as an alternative to the HashMap."
+    },
+    {
+        "id": "2b_speculative_vs_asserted",
+        "name": "Requirement asserted as fact vs. floated as one speculative possibility among alternatives",
+        "side_a": "No deduct when the answer asserts the HashMap parameter requirement as a definite fact about messageParams' signature (e.g., 'messageParams takes a HashMap<String,Object>'), without hedging it as a guess or offering competing explanations.",
+        "side_b": "Deduct when the HashMap requirement is only floated speculatively or as one branch of a disjunction/guess ('likely', 'either ... or', 'probably', 'APIs that expect'), since the answer never commits to the declared parameter type being HashMap."
+    },
+    {
+        "id": "2b_wrapper_unnecessary",
+        "name": "Wrapper treated as required by the API vs. treated as unnecessary/stylistic",
+        "side_a": "No deduct when the answer presents the HashMap wrapping as necessary because messageParams' parameter is declared HashMap.",
+        "side_b": "Deduct when the answer concludes the wrapper is unneeded or that singletonMap would be fine/better, which contradicts the HashMap parameter requirement entirely."
+    },
+    {
+        "id": "2c_speculative_mutation_hypothesis",
+        "name": "Definitive 'not altered' verdict vs. hedged 'maybe the method mutates it' speculation",
+        "side_a": "Do not deduct when the answer resolves the usage question with a definite statement that the map is never changed after construction (e.g. 'the map isn't altered later'), even if no call sites are enumerated.",
+        "side_b": "Deduct when the answer only floats a hedged/disjunctive hypothesis that the method might need to write to the map ('likely... either the method modifies the map or expects a mutable implementation'), leaving the read/write question unresolved rather than determined."
+    },
+    {
+        "id": "2c_generic_class_comparison_only",
+        "name": "Claim about what happens to this map in this code vs. textbook HashMap-vs-singletonMap contrast",
+        "side_a": "Do not deduct when the answer makes a claim about this particular map's fate inside the code ('The code uses HashMap... even though the map isn't altered later'), tying the immutability discussion to the actual usage.",
+        "side_b": "Deduct when the answer only contrasts the two map types in the abstract ('HashMap is mutable and allows modifications', 'singletonMap ... cannot be changed') and says nothing about what the receiving method actually does with the argument, or only offers a conditional unrelated to writes ('if only one entry is intended')."
+    }
+]

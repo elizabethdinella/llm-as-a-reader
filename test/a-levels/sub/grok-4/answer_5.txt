@@ -1,0 +1,6 @@
+<answer>
+```java
+Bird bird1 = new Bird("Cockatiel", 71.0);
+Bird bird2 = new Bird("Macaw", 56.0);
+```
+</answer>

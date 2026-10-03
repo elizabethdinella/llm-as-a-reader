@@ -1,0 +1,30 @@
+[
+    {
+        "justification": "The answer explicitly states that `Collections.singletonMap(...)` creates an immutable map containing exactly one entry, and further notes it guarantees the map cannot be altered. This satisfies the requirement to mention singletonMap's immutability.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that `new HashMap<>(Collections.singletonMap(...))` creates a 'normal, mutable `HashMap`', and repeatedly refers to the mutable HashMap. The mutability of HashMap is clearly mentioned.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that `Collections.singletonMap(...)` creates an immutable map that contains exactly one entry, and refers to it as a 'one-entry map', satisfying the requirement that singletonMap holds only a single key-value mapping.",
+        "deducted": false
+    },
+    {
+        "justification": "The candidate answer never mentions or reproduces the signature of the `messageParams` method (e.g., its parameter types such as `FetchProfile` and `HashMap<String, Message>`). It only speculates generically about whether `messageParams` might modify the map, without referencing the actual method signature.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer never states that the `messageParams` method signature specifically requires/takes a `HashMap` type parameter. It only discusses mutability in general terms ('a mutable HashMap is required' if modifications are needed), which the rubric explicitly says is not specific enough. There is no reference to the declared parameter type of messageParams.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer only speculates conditionally ('If messageParams or the code that consumes the map never needs to modify...', 'If messageParams might add or change entries...') without examining or determining the actual usages of the map argument within messageParams. It never states that the usages are read-only, leaving the question unresolved.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer only discusses mutability hypothetically ('If messageParams ... might add or change entries'), and never asserts that the actual usages of the map within messageParams modify it. Since it does not incorrectly claim the map is modified, the 2-point deduction under sub-item 2e does not apply (its failure to determine the actual read-only usage is covered by sub-item 2c, not 2e).",
+        "deducted": false
+    }
+]

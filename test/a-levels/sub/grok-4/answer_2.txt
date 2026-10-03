@@ -1,0 +1,7 @@
+<answer>
+```java
+public String GetSpecies() {
+    return Species;
+}
+```
+</answer>

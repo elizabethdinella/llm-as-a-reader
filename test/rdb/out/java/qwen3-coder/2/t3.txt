@@ -1,0 +1,2 @@
+
+The main difference is that `Collections.singletonMap()` returns an immutable map while `new HashMap<>(...)` creates a mutable copy. In this code, since the singletonMap is immediately wrapped in a new HashMap, both approaches would result in a mutable map being passed to messageParams. However, using just `singletonMap` would be more efficient as it avoids creating an unnecessary intermediate mutable copy. The actual functional difference depends on whether messageParams needs to modify the parameters - if not, the singletonMap alone would suffice and be more efficient.

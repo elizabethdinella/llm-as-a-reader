@@ -1,0 +1,62 @@
+[
+    {
+        "id": "2_errors_elsewhere_isolation",
+        "name": "point judged solely on the two declarations vs contaminated by compile/logic errors elsewhere in the class",
+        "side_a": "No_deduct whenever the two required private instance variables are present and correctly declared, regardless of broken code elsewhere in the class (constructor written as a void method, missing return statement, non-statement expressions, wrong threshold constant, <= instead of <). Those faults are scored under the constructor/method items.",
+        "side_b": "Deduct when the class does not compile or the logic is broken (e.g. `public void Bottle(...)` so there is no constructor, or `amount - used;` which is not a valid statement, or no return in a double method), on the view that the declarations cannot earn the point in a class that does not work."
+    },
+    {
+        "id": "2_undeclared_field_use",
+        "name": "variable must be explicitly declared vs merely referenced in method bodies",
+        "side_a": "No_deduct only when both the capacity and the remaining-amount variables appear as explicit `private <type> name;` declarations at class level.",
+        "side_b": "Deduct when one of the required variables never appears in a declaration and is only used inside a method body (implicitly assumed to exist), even though the one variable that is declared is private and of appropriate type."
+    },
+    {
+        "id": "3_body_or_other_compile_errors",
+        "name": "Compile/logic errors in the constructor body or elsewhere in the class: ignore (header point stands) vs deduct",
+        "side_a": "no_deduct \u2014 Judge only the constructor header (access, name, single double parameter). Award the point even if the body or the rest of the class has compile errors: undeclared/missing fields, missing semicolons, type-mismatched assignments, or missing return statements.",
+        "side_b": "deduct \u2014 Withhold the point whenever the class would not compile, treating body errors (undeclared variables, missing semicolons, narrowing assignments) as invalidating the constructor header."
+    },
+    {
+        "id": "3_return_type_on_constructor",
+        "name": "Constructor header written with a return type (`public void Bottle(double)`): no_deduct vs deduct",
+        "side_a": "no_deduct \u2014 Award the point if the header names the class and takes one double parameter, even if an erroneous return type such as `void` is written before the class name, making it technically a method rather than a constructor.",
+        "side_b": "deduct \u2014 Withhold the point if a return type is present, since `public void Bottle(double capacity)` is a method declaration, not a constructor."
+    },
+    {
+        "id": "4_error_location_in_assignment_vs_elsewhere",
+        "name": "Where the non-compiling code sits: a broken statement elsewhere in the class (credit) vs. the capacity assignment statement itself being the illegal one (deduct)",
+        "side_a": "Do not deduct when the class contains code that would not compile (missing semicolon, a bare expression statement, an undeclared field, a missing return) **outside** the capacity-assignment statement; the capacity point is judged on the assignment statement alone, which legally stores the parameter's value in the capacity instance variable.",
+        "side_b": "Deduct when the capacity assignment statement is itself the illegal code \u2014 i.e., the statement that writes the parameter into the capacity instance variable cannot compile as written (e.g., a `double` parameter assigned to an `int` field with no cast, a narrowing conversion) \u2014 because then no legal assignment of the parameter to the capacity instance variable exists."
+    },
+    {
+        "id": "5_void_return_type",
+        "name": "`void updateAmount(double)` \u2014 void counts as an incorrect return type vs method-exists-with-right-name is enough",
+        "side_a": "Deduct when the header declares `void` (or any non-`double` return) for `updateAmount`, even though the visibility, name, and the single `double` parameter are all correct \u2014 `void` is an 'incorrect return type' and fails the sub-item outright.",
+        "side_b": "Do not deduct for `void` as long as the method is `public`, named `updateAmount`, and takes one `double` parameter; treat the missing/void return as a body/return-value issue graded elsewhere."
+    },
+    {
+        "id": "5_declared_header_vs_actual_return",
+        "name": "Declared `double` return with no `return` statement in the body \u2014 header text alone vs header must be backed by a returned value",
+        "side_a": "Do not deduct when the header correctly reads `public double updateAmount(double ___)` even if the body never executes a `return`; the sub-item grades the declaration only, and a missing return is penalized under the return-value sub-item.",
+        "side_b": "Deduct when the body contains no `return` of a double, on the grounds that the method does not actually return a `double` regardless of what the header declares."
+    },
+    {
+        "id": "6_subtract_and_store",
+        "name": "Removal is subtracted from amount and the result is stored back vs. amount never correctly updated",
+        "side_a": "No deduct if updateAmount actually decreases the stored amount by the parameter and assigns the result back to the field (e.g. `amount = amount - used;` or `this.currentAmount -= amountRemoved;`).",
+        "side_b": "Deduct if the removal is not correctly applied to the field \u2014 the expression result is discarded (a bare `amount - used;` statement) or the parameter is added instead of subtracted (`amount = amount + used;`)."
+    },
+    {
+        "id": "6_strict_threshold",
+        "name": "Refill test uses strict `<` one-quarter vs. inclusive `<=` one-quarter",
+        "side_a": "No deduct if the refill condition compares the remaining amount strictly below a quarter of capacity (`amount < 0.25 * capacity`).",
+        "side_b": "Deduct if the condition includes equality at the quarter mark (`amount <= 0.25 * capacity`), so the bottle is refilled when it is exactly one quarter full."
+    },
+    {
+        "id": "7_no_return_statement_at_all",
+        "name": "Method body contains an actual `return <computed value>;` vs. method body has no return statement anywhere",
+        "side_a": "Give credit when updateAmount's body actually ends in (or contains) a `return` statement that hands back the computed/updated amount, e.g. `return amount;` or `return this.currentAmount;` \u2014 the value is genuinely returned to the caller.",
+        "side_b": "Deduct whenever the body of updateAmount contains no return statement at all \u2014 whether because the method was declared `void` and only mutates/attempts to mutate state, or because it is declared to return a double but simply falls off the end with no `return` anywhere. Item 7 requires the computed amount actually be returned, so an absent return statement forfeits the point regardless of how correct the internal arithmetic/conditional is."
+    }
+]

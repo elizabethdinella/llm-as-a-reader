@@ -1,0 +1,14 @@
+<scores>
+<score> 2/3 </score>
+<score> 1/4 </score>
+</scores>
+
+**Rationale:**
+
+**Item 1 (2/3):** The answer correctly states that `singletonMap` is immutable (+1) and that `HashMap` is mutable (+1). However, it never mentions that `Collections.singletonMap` holds/returns only a single key-value mapping, so 1 point is deducted.
+
+**Item 2 (1/4):** 
+- The method signature of `messageParams` is never mentioned → −1.
+- The answer never states that `messageParams` takes a `HashMap` specifically; it only vaguely references "API requirements" → −1.
+- The answer does not examine the usages of the map argument inside `messageParams`, and fails to determine whether they are read-only (it speculates "likely to allow potential modifications") → −1.
+- However, it does not affirmatively/incorrectly claim that the usages modify the map (it hedges with "likely...or due to API requirements" and concedes passing `singletonMap` directly could work), so the 2-point deduction for the false claim is not applied.

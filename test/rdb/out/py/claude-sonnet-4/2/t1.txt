@@ -1,0 +1,2 @@
+
+You should call `_compact_times()` on every KPIset, not just cumulative ones. The method is positioned at the beginning of the recalculation process and appears to be a data preprocessing step that ensures the response times data is in the proper state for accurate statistical calculations (averages, percentiles, standard deviation). Since all KPIsets need accurate statistics regardless of whether they're cumulative, the compacting operation should be applied universally.

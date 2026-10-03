@@ -1,0 +1,2 @@
+
+Yes, the check for `if not build_directory` is necessary. Even though `build_manager.setup_build()` should set the BUILD_DIR environment variable when successful, the explicit check ensures that the build directory path is actually available before it's used to initialize the Runner. This provides defense-in-depth against cases where setup_build() might return success but fail to properly set the BUILD_DIR environment variable, or where BUILD_DIR might be set to an empty string.

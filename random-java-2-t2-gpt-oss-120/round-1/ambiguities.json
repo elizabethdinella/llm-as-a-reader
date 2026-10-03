@@ -1,0 +1,14 @@
+[
+    {
+        "id": "1c_mutability_consistency",
+        "name": "consistent\u2011immutability\u2011statement vs contradictory\u2011mutability\u2011statement",
+        "side_a": "No deduction when the answer consistently states that a Collections.singletonMap is immutable (or does not claim it becomes mutable when passed directly).",
+        "side_b": "Deduction when the answer contains a contradictory claim that a Collections.singletonMap results in a mutable map (e.g., says both the singletonMap and the wrapped HashMap are mutable)."
+    },
+    {
+        "id": "2c_missing_determination",
+        "name": "explicit determination of map mutability vs. no determination",
+        "side_a": "Credit the answer when it explicitly determines that the map passed to\u202fmessageParams\u202fis read\u2011only (or mutable) for the relevant usage, e.g., \u201cmessageParams never modifies the map\u201d or \u201cthe map is only read\u201d.",
+        "side_b": "Deduct the answer when it does not make a clear determination, instead only discusses possible mutability, uses conditional language, or leaves the question open."
+    }
+]

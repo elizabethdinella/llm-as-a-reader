@@ -1,0 +1,30 @@
+[
+    {
+        "justification": "The answer explicitly states that `Collections.singletonMap` returns an immutable map that cannot be modified and throws `UnsupportedOperationException` on modification attempts. It also notes the HashMap wrapper creates a mutable copy. The requirement is satisfied.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that wrapping in `new HashMap<>(...)` 'creates a mutable copy of that map, allowing potential additions, removals, or changes to entries', clearly indicating that a HashMap is mutable.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that `Collections.singletonMap` returns an immutable map containing a single key-value pair, satisfying the requirement that a singletonMap holds only a single key-value mapping.",
+        "deducted": false
+    },
+    {
+        "justification": "The candidate answer never states or describes the method signature of `messageParams` (e.g., that it accepts a FetchProfile and a Map/HashMap of String to ImapMessage). It only speculates generically that `messageParams` or the Builder 'might' modify the map, without referencing the declared parameter types. Therefore the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer never states that the `messageParams` method's parameter is declared as a `HashMap` (nor mentions its signature). It only speculates that the map might need to be mutable if the method or builder modifies it, which the rubric explicitly says is not specific enough.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer does not examine or discuss the actual usages of the map argument inside `messageParams`. It only speculates that mutability 'might be necessary if the `messageParams` method or the `UidFetchCommand.Builder` internally modifies the map,' without determining whether the map is actually modified or only read. It thus fails to clearly establish that the usages are read-only, so the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer only hedges, saying mutability 'might be necessary if' messageParams or the builder internally modifies the map. It does not assert that the usages of the map argument actually modify it, so the incorrect-claim deduction does not apply (it fails to determine this, which affects 2c, not 2e).",
+        "deducted": false
+    }
+]

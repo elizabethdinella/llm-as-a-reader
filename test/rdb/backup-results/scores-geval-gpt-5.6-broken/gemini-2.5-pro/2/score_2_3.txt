@@ -1,0 +1,9 @@
+[
+{"justification": "The answer explicitly states `Collections.singletonMap` creates an immutable map that throws on modification.", "deducted": false},
+{"justification": "The answer states `new HashMap<>(...)` creates a new, mutable HashMap.", "deducted": false},
+{"justification": "The answer states the singletonMap contains 'exactly one entry'.", "deducted": false},
+{"justification": "The answer never mentions or examines the method signature of `messageParams`; it only speculates about it generically.", "deducted": true},
+{"justification": "The answer does not state that `messageParams` requires/takes a `HashMap` specifically; it only speaks vaguely about a 'modifiable map' being needed conditionally.", "deducted": true},
+{"justification": "The answer does not discuss any actual usages of the map inside `messageParams` and fails to determine whether they modify the map, saying only 'if the messageParams method or the resulting command object needs to alter the map's contents'.", "deducted": true},
+{"justification": "The answer does not affirmatively claim that the usages modify the map; it leaves it as a conditional hypothesis, so this deduction does not apply.", "deducted": false}
+]

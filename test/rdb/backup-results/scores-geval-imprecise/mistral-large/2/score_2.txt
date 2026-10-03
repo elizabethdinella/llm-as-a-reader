@@ -1,0 +1,21 @@
+**Rubric Item 1 — Mutability/size differences (3 points)**
+
+- *singletonMap is immutable*: Explicitly stated ("ensures that the map ... is immutable and cannot be altered after its creation"). ✔ No deduction.
+- *HashMap is mutable*: Stated ("a `HashMap` would allow for modification"). ✔ No deduction.
+- *singletonMap returns only a single key-value mapping*: Implied/stated via "only a single key-value pair is needed, making `singletonMap` more appropriate." ✔ No deduction.
+
+Score: 3/3
+
+**Rubric Item 2 — Discussion of `messageParams` (4 points)**
+
+- *Method signature of `messageParams`*: Not mentioned at all — no parameter types, return type, or declaration shown. −1
+- *States that `messageParams` takes a `HashMap`*: Not mentioned. The answer only says a map is "passed to `messageParams`" and never identifies the declared parameter type (nor even that it requires a mutable map). −1
+- *Discusses usages of the map argument within `messageParams` and whether they are read-only*: Not discussed at all; the answer only reasons about the immutability of the argument itself, never examining what the method body does with the map. −1
+- *Incorrectly claims usages modify the map*: The answer does not make this claim, so no deduction here.
+
+Score: 4 − 3 = 1/4
+
+<scores>
+	<score> 3/3 </score>
+	<score> 1/4 </score>
+</scores>

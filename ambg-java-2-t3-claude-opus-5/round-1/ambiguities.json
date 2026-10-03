@@ -1,0 +1,38 @@
+[
+    {
+        "id": "1c_cardinality_property_vs_mutability_only",
+        "name": "attributes a single-entry/fixed-size capacity to singletonMap vs characterizes it only by immutability",
+        "side_a": "No_deduct when the answer attributes a size/capacity property to the singletonMap \u2014 any wording that says it holds one entry or is fixed-size for a single entry ('contains exactly one entry', 'fixed-size map designed for a single entry'), including as a contrast with HashMap's ability to hold multiple entries.",
+        "side_b": "Deduct when the only property the answer ascribes to singletonMap is immutability/read-only-ness (and to HashMap, mutability), with no statement of how many entries it holds \u2014 e.g. 'singletonMap creates an immutable map, while HashMap allows modifications' \u2014 even though the name 'singletonMap' is used."
+    },
+    {
+        "id": "2a_code_specific_rationale",
+        "name": "Ties the wrapping to this code's actual call site (messageParams) vs gives only a generic textbook rationale",
+        "side_a": "no_deduct \u2014 the answer explains why THIS code wraps the singletonMap, naming the actual consumer (the `messageParams` method) and hypothesizing that it needs/expects a mutable map.",
+        "side_b": "deduct \u2014 the answer only states generic properties of the two map types (or generic 'APIs that expect a mutable HashMap') without connecting the choice to the specific call in the snippet."
+    },
+    {
+        "id": "2a_misreads_the_snippet",
+        "name": "Reads the wrapping as a deliberate, justified choice vs declares it unnecessary/wrong or misstates what the code does",
+        "side_a": "no_deduct \u2014 the answer treats `new HashMap<>(singletonMap(...))` as a purposeful conversion and offers a reason it is needed.",
+        "side_b": "deduct \u2014 the answer asserts the HashMap is pointless ('isn't altered later'), recommends singletonMap instead, or misdescribes the snippet/types (e.g., calling HashMap 'a resizable array implementation', not noticing singletonMap is already in the code)."
+    },
+    {
+        "id": "2b_requirement_localized_to_messageparams",
+        "name": "Requirement attributed to the specific messageParams parameter vs. stated generically (unnamed APIs / no callee named at all)",
+        "side_a": "Award credit when the answer ties the HashMap requirement to the actual receiving method/parameter (messageParams), i.e., names the callee whose parameter is declared as HashMap.",
+        "side_b": "Deduct when the answer explains HashMap-vs-singletonMap only in the abstract \u2014 no mention of messageParams, or only a generic reference to 'APIs that expect ...' / 'the code uses HashMap' \u2014 since the sub-item is about the declared parameter of that specific call, not a general property of maps."
+    },
+    {
+        "id": "2b_hedged_disjunctive_speculation",
+        "name": "Asserts the parameter requirement vs. offers it as one speculative possibility among alternatives",
+        "side_a": "Award credit when the answer asserts, without hedging into alternatives, that the parameter is/must be a HashMap.",
+        "side_b": "Deduct when the HashMap-parameter claim is presented only as a guessed option in a disjunction ('likely ... either requires a mutable map ... or specifically expects a HashMap type'), because the answer does not commit to the declared parameter type as the reason."
+    },
+    {
+        "id": "2c_speculative_vs_determined_usage",
+        "name": "Definite finding that the code never alters the map vs. speculative guess that mutability might be needed",
+        "side_a": "Do not deduct when the answer makes a definite, asserted claim about the actual behavior of the code \u2014 that the map is in fact not altered / not written to after being handed to messageParams \u2014 even if that claim is tacked on as a concession and no call sites are named. A flat statement of fact about the real usage ('the map isn't altered later') satisfies the sub-item.",
+        "side_b": "Deduct when the answer only offers hedged conjecture about why a mutable map might be wanted ('likely because the method modifies the map or expects a mutable implementation', 'can later be modified ... or be passed to APIs that expect a mutable HashMap'), without ever committing to a finding about what messageParams actually does. Speculation framed as possible reasons leaves the read/write question unresolved and biases toward mutation, so it does not count as noting the usages are read-only."
+    }
+]

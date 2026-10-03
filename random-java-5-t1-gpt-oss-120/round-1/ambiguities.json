@@ -1,0 +1,32 @@
+[
+    {
+        "id": "1b_reason_vs_generic",
+        "name": "explicit\u2011cause explanation vs generic exception claim",
+        "side_a": "Credit answers that explicitly explain *why* the cast can throw a ClassCastException (e.g., \u201cif the fragment returned is not an instance of OnKeyListenerForFragments\u201d).",
+        "side_b": "Deduct answers that only make a generic claim that an exception can occur without tying it to the cast (e.g., merely listing possible exceptions or saying \u201cexceptions can happen here\u201d)."
+    },
+    {
+        "id": "2b_specific_vs_generic",
+        "name": "specific-cause explanation vs generic exception list",
+        "side_a": "Credit when the answer explains a concrete condition that makes the ClassCastException possible (e.g., fragment type mismatch), rather than merely listing possible exceptions.",
+        "side_b": "Deduct when the answer only gives a generic list of possible exceptions without a precise cause (e.g., \u201cNullPointerException and ClassCastException can occur\u201d)."
+    },
+    {
+        "id": "3a_nullptr_misstatement",
+        "name": "claims NullPointerException possible at cast vs no such claim",
+        "side_a": "Answer does **not** assert that a NullPointerException can be thrown at the cast line (or explicitly notes that casting null is safe). Credit.",
+        "side_b": "Answer asserts that a NullPointerException may be thrown at the cast line. Deduct."
+    },
+    {
+        "id": "3b_extra_context",
+        "name": "extra\u2011context vs basic\u2011explanation",
+        "side_a": "Credit answers that go beyond simply stating that a ClassCastException can occur \u2013 they add any additional reasoning such as mentioning other possible exceptions, describing the cast happening before a null\u2011check, or noting broader assumptions about the fragment type.",
+        "side_b": "Deduct answers that only state that a ClassCastException can occur (even if they note the null\u2011check) and provide no extra context or additional exception types."
+    },
+    {
+        "id": "5a_null_cast",
+        "name": "claims null cast throws vs does not claim",
+        "side_a": "Answers that do NOT claim that casting a null reference can throw a ClassCastException (they either omit the claim or explicitly state that casting null is safe).",
+        "side_b": "Answers that claim that casting a null reference can throw a ClassCastException."
+    }
+]

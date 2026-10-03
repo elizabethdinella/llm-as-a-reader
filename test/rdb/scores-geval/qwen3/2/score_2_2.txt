@@ -1,0 +1,9 @@
+[
+{"justification": "The answer explicitly states that `Collections.singletonMap` creates an **immutable** map, satisfying this sub-item.", "deducted": false},
+{"justification": "The answer explicitly describes `HashMap` as **mutable** and notes it 'allows future modifications'.", "deducted": false},
+{"justification": "The answer states singletonMap 'creates an immutable map with a single entry', covering the single key-value mapping point.", "deducted": false},
+{"justification": "The answer never provides or discusses the actual method signature of `messageParams` (e.g., its parameter types such as FetchProfile and HashMap<String, Message>); it only speculates conditionally about what it 'expects'.", "deducted": true},
+{"justification": "The answer does indicate the method's parameter type is a `HashMap` ('if the messageParams method expects a HashMap... using singletonMap directly would not compile' and 'ensures compatibility with the method's parameter type'), which is specific enough.", "deducted": false},
+{"justification": "The answer does not examine or discuss how the map argument is actually used inside `messageParams`; it only vaguely asserts 'the underlying data is not modified in this case' / 'the data remains static' without any analysis of the method's internal usages, failing to clearly establish that the usages are read-only.", "deducted": true},
+{"justification": "The answer does not claim that the usages modify the map; it states the opposite, so this penalty does not apply.", "deducted": false}
+]

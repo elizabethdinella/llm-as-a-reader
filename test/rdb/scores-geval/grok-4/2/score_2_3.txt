@@ -1,0 +1,7 @@
+{"justification": "The answer explicitly states singletonMap is immutable.", "deducted": false}
+{"justification": "The answer states the HashMap copy is mutable, allowing additions/removals/changes.", "deducted": false}
+{"justification": "The answer says singletonMap 'returns an immutable map containing a single key-value pair' and refers to 'a single-entry map'.", "deducted": false}
+{"justification": "The answer never mentions or examines the actual method signature of `messageParams`; it only speculates about it.", "deducted": true}
+{"justification": "The answer does not state that `messageParams` declares a `HashMap` parameter type (which is the actual reason the wrapping is required); it only vaguely speaks of possible mutability needs.", "deducted": true}
+{"justification": "The answer does not examine how the map argument is actually used inside `messageParams`; it hedges with 'might be necessary if the messageParams method ... internally modifies the map', failing to determine that the usages are read-only.", "deducted": true}
+{"justification": "The answer does not affirmatively claim that the usages modify the map; it only raises it as a conditional possibility, so the full 2-point penalty for an incorrect assertion does not apply.", "deducted": false}

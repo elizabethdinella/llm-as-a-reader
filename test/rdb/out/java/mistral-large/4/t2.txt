@@ -1,0 +1,1 @@
+Yes, you need the null check for roleInfoList to ensure that the method fetches roles from the database when they are not found in the cache.

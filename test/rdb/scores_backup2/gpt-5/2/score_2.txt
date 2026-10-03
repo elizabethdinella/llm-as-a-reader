@@ -1,0 +1,9 @@
+[
+  { "item": "1a", "deducted": false, "feedback": "The answer explicitly states that Collections.singletonMap returns an immutable Map and that put/remove/clear throw UnsupportedOperationException." },
+  { "item": "1b", "deducted": false, "feedback": "The answer states that new HashMap<>(...) creates a mutable copy, correctly identifying HashMap as mutable." },
+  { "item": "1c", "deducted": false, "feedback": "The answer describes singletonMap as a 'single-entry Map' containing that one entry, which conveys that it holds only a single key-value mapping." },
+  { "item": "2a", "deducted": true, "feedback": "The answer never mentions or describes the method signature of messageParams (e.g., its parameter types such as FetchProfile and Map/HashMap). It only vaguely refers to 'messageParams' behavior." },
+  { "item": "2b", "deducted": true, "feedback": "The answer only says 'you must pass a mutable Map (e.g., new HashMap<>(...))' if mutation occurs; it never states that messageParams' parameter type is specifically a HashMap. Per the rubric, referring merely to a mutable map is not specific enough." },
+  { "item": "2c", "deducted": true, "feedback": "The answer does not examine the actual usages of the map inside messageParams; it presents only hypothetical branches ('If messageParams only reads the map... If messageParams mutates the map...'), failing to clearly determine that the usages are read-only." },
+  { "item": "2d", "deducted": false, "feedback": "The answer does not assert that the usages inside messageParams modify the map; it frames mutation only as a conditional possibility, so no incorrect claim is made." }
+]

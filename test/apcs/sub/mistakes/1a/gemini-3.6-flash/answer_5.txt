@@ -1,0 +1,13 @@
+<answer>
+public Account(String requestedName)
+{
+    if (isAvailable(requestedName))
+    {
+        return requestedName;
+    }
+    else
+    {
+        return requestedName + 1;
+    }
+}
+</answer>

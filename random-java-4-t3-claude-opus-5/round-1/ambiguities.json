@@ -1,0 +1,44 @@
+[
+    {
+        "id": "1a_counterfactual_consequence_correctness",
+        "name": "Counterfactual of removing the check stated correctly (cache miss \u21d2 DB never queried / null returned) vs stated invertedly (extra/unnecessary DB fetches, cache defeated)",
+        "side_a": "Credit when the answer's description of what happens if the null check is dropped is the correct failure mode \u2014 on a cache miss the database would not be consulted and the method would return null/empty \u2014 or when it simply asserts the fallback-to-DB role without describing a wrong consequence.",
+        "side_b": "Deduct when the answer describes the consequence of removing `roleInfoList == null` incorrectly, e.g. claiming the code would then hit the database unnecessarily / for cached users / defeat the cache, since this inverts the actual behavior (the remaining `!isCachingEnabled()` condition would skip the DB entirely on a cache miss)."
+    },
+    {
+        "id": "1b_concrete_consequence_vs_robustness_boilerplate",
+        "name": "Names the concrete behavioral consequence of removal (returns null / skips the DB fallback) vs only generic 'robustness/prevents errors' framing",
+        "side_a": "No deduction if the answer states the specific control-flow consequence of dropping the null check \u2014 i.e., that on a cache miss the method would return null / fail to fall back to the database query (or, conversely, that keeping the check is what triggers the DB fetch for uncached users). The mechanism is tied to this method's return value and the cache-miss branch.",
+        "side_b": "Deduct if the answer justifies the check only with generic error-avoidance/quality language ('prevents errors', 'safeguard against potential errors', 'maintains robustness and reliability') without ever stating that the method would otherwise return null or skip the database fallback; the stated reason is interchangeable boilerplate rather than this code's behavior."
+    },
+    {
+        "id": "1e_removal_consequence_correctness",
+        "name": "States the correct consequence of dropping the null check (no DB fetch / null returned) vs. states the inverted/wrong consequence (extra unnecessary DB fetches)",
+        "side_a": "no_deduct \u2014 the answer describes what actually happens if `roleInfoList == null` is removed from the `||` condition: cached-enabled requests with no cache entry would skip the DB and return null/empty, so the check is the fallback trigger.",
+        "side_b": "deduct \u2014 the answer inverts the effect of removing the clause, claiming the code would then hit the database unnecessarily (or otherwise over-fetch) when caching is on and the user is cached, which misreads the short-circuit `||` semantics."
+    },
+    {
+        "id": "2a_wrong_mechanism_claim",
+        "name": "Technically correct account of what the null branch does vs. a factually wrong mechanism/consequence claim (NPE-prevention, 'would fetch unnecessarily')",
+        "side_a": "No deduct if the answer's stated reason for the check is technically accurate: the map can lack an entry for the user, so without the `roleInfoList == null` term an enabled-cache miss would skip the DB lookup and yield null/empty.",
+        "side_b": "Deduct if the answer justifies the check with an incorrect mechanism or an incorrect counterfactual \u2014 e.g. claiming it 'prevents NullPointerExceptions', or claiming that dropping the null test would cause *extra/unnecessary* DB fetches for users already in the cache (the opposite of what happens)."
+    },
+    {
+        "id": "2a_counterfactual_vs_restatement",
+        "name": "States the concrete consequence/condition of removing the check vs. only restates the check's purpose in defensive terms",
+        "side_a": "No deduct if the answer commits to a specific removal analysis \u2014 what the code would do without the check, or the precise condition under which it could be dropped (e.g. always storing an empty list).",
+        "side_b": "Deduct if the answer only affirms the check in generic defensive language ('safeguard', 'fallback mechanism', 'robustness') without saying what concretely breaks or when it could be removed."
+    },
+    {
+        "id": "3c_unconditional_vs_hedged_necessity",
+        "name": "Flat 'yes, the check is necessary' vs conditional 'necessary unless you change the design' (offering ways to drop it)",
+        "side_a": "no_deduct if the answer asserts the null check is necessary outright and explains its role in the current code, without offering escape hatches for removing it.",
+        "side_b": "deduct if the answer makes necessity conditional on the present design and suggests alternatives under which the check could be dropped (e.g. always store an empty list, use getOrDefault), so the verdict is qualified rather than a clear 'yes it is needed'."
+    },
+    {
+        "id": "3c_wrong_removal_consequence",
+        "name": "Correct vs incorrect description of what happens if the null clause is removed",
+        "side_a": "no_deduct if the answer's account of the consequence of dropping the null test is correct (uncached users would wrongly get null / no DB fallback) or it makes no such claim.",
+        "side_b": "deduct if the answer misstates the consequence, e.g. claiming removal would cause extra/unnecessary DB fetches for users already in the cache, which contradicts the short-circuit `!isCachingEnabled() || roleInfoList == null` logic."
+    }
+]

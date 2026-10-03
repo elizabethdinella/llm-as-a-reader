@@ -1,0 +1,30 @@
+[
+    {
+        "justification": "The answer explicitly states that 'Collections.singletonMap returns an immutable, fixed-size map with one entry' and notes attempts to put/remove throw UnsupportedOperationException. The immutability of singletonMap is clearly mentioned, so no deduction.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that 'new HashMap<>(Collections.singletonMap(...)) creates a mutable copy containing that single entry, which messageParams can safely modify,' and further refers to passing 'a mutable HashMap.' This clearly mentions that a HashMap is mutable.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that Collections.singletonMap 'returns an immutable, fixed-size map with one entry', which conveys that it contains only a single key-value mapping. This satisfies the requirement of sub-item 1d.",
+        "deducted": false
+    },
+    {
+        "justification": "The candidate answer never states or references the actual method signature of messageParams (e.g., its parameter types such as FetchProfile and HashMap<String, Message>). It only speaks generically about whether messageParams reads or mutates the map, without citing the declared signature. Therefore the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer never states that messageParams' parameter type is specifically a HashMap. It only discusses mutability generally ('you must pass a mutable HashMap' in the context of needing mutation), which the rubric explicitly says is not specific enough. The actual signature requirement is not mentioned.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer only speaks hypothetically about how messageParams might use the map ('If messageParams only reads the map... if it needs to add/replace entries'). It never inspects or describes the actual usages of the map argument inside messageParams, and thus fails to clearly determine whether those usages are read-only or mutating. Per the deduction criteria for sub-item 2d, the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer only speaks conditionally/hypothetically about mutation ('which messageParams can safely modify', 'If messageParams only reads... if it needs to add/replace entries'). It never affirmatively claims that the actual usages of the map inside messageParams modify it. Thus, while it fails to determine the read-only nature (relevant to 2c), it does not make the incorrect assertion targeted by 2e.",
+        "deducted": false
+    }
+]

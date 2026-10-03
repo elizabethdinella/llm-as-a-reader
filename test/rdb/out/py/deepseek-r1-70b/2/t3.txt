@@ -1,0 +1,2 @@
+
+You should call `compact_times()` only on cumulative KPIsets where the data grows over time.

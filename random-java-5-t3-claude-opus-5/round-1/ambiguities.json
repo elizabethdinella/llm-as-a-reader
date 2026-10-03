@@ -1,0 +1,62 @@
+[
+    {
+        "id": "2b_cast_condition_vs_shotgun_list",
+        "name": "States the specific condition under which the cast fails vs. bare shotgun list of exception types",
+        "side_a": "Credit if the answer ties the exception to the indicated cast and names the triggering condition \u2014 i.e. that the fragment returned by findFragmentById(R.id.main_view) may not be / may not implement OnKeyListenerForFragments, so the cast fails at runtime.",
+        "side_b": "Deduct if the answer merely enumerates exception types (ClassCastException, NullPointerException, IllegalArgumentException, RuntimeException) attached to vague or unrelated triggers elsewhere in the method (null objects, volume flags, starting a foreground service) without stating the condition that makes the indicated cast fail."
+    },
+    {
+        "id": "2d_shotgun_vs_anchored",
+        "name": "Anchored single primary exception (with hedged, implementation-dependent extras) vs shotgun list of unconditioned exception types attributed to other calls in the snippet",
+        "side_a": "No deduction when the answer names ClassCastException as the exception at the marked line and states the condition that triggers it (fragment not implementing/instanceof OnKeyListenerForFragments); any additional exceptions are left generic and explicitly conditioned on code not shown (e.g., 'depending on its implementation') rather than asserted as concrete named exceptions from other statements in the snippet.",
+        "side_b": "Deduct 2 points when the answer instead enumerates a laundry list of concrete named exception types bound to other statements in the shown code (e.g., NullPointerException 'if any object is null', IllegalArgumentException from the volume flags, RuntimeException from starting the foreground service), without giving the triggering condition for the cast failure or marking the extras as merely implementation-dependent."
+    },
+    {
+        "id": "2e_offline_service_speculation",
+        "name": "Extra-exception speculation: kept on the flagged line / explicitly scoped to the whole segment vs. unrelated system operations asserted as happening \"here\"",
+        "side_a": "Credit if the answer's additional exception possibilities are either omitted, tied to something that actually happens on the flagged line (the cast target or the call made on it), or explicitly framed as belonging to the wider code segment rather than to the indicated line.",
+        "side_b": "Deduct if the answer, while answering about the indicated line (\"can an exception happen here\"), tacks on causes that belong to unrelated code elsewhere \u2014 e.g. service-starting / system constraints \u2014 presenting them as additional ways this line can throw."
+    },
+    {
+        "id": "2g_line_scope_vs_whole_snippet",
+        "name": "answer confined to the marked line vs sweeping over the whole code segment",
+        "side_a": "No deduction when the answer keeps its exception analysis anchored to the indicated line (the cast/findFragmentById call), even if it adds a brief, subordinate aside about other code. The scope signal is phrasing like 'at this line', 'at the indicated line', 'here'.",
+        "side_b": "Deduct when the answer broadens the question to the whole method/snippet and attributes exceptions to unrelated statements (volume adjustment flags, starting a foreground service), so the specific line is no longer the subject of the answer."
+    },
+    {
+        "id": "2g_primary_diagnosis_vs_shotgun_list",
+        "name": "one primary diagnosis with a stated mechanism vs an undifferentiated shotgun list of candidates",
+        "side_a": "No deduction when one exception is singled out as the answer with its triggering condition spelled out (fragment doesn't implement the interface / isn't an instance of the type), with any further possibilities clearly marked as secondary ('Additionally', 'could').",
+        "side_b": "Deduct when the answer enumerates several exceptions as co-equal 'potential issues' with no single identified cause and with filler conditions ('if any object is null'), so nothing is actually diagnosed."
+    },
+    {
+        "id": "3a_primary_vs_laundry_list",
+        "name": "Cast risk identified as the (or a) primary, localized risk vs. buried as one item in an undifferentiated shotgun list of speculative exceptions",
+        "side_a": "No deduct when the answer foregrounds the cast failure as the answer to the question \u2014 it is stated first/alone as the exception for the indicated line, with any other exceptions clearly subordinated (e.g. 'Additionally...', 'Other exceptions are unlikely'). The reader can tell the cast is the identified hazard at that line.",
+        "side_b": "Deduct when the cast failure appears only as one undifferentiated item in a hedged enumeration of generic exceptions ('issues like ClassCastException, NullPointerException, IllegalArgumentException, RuntimeException') covering the whole code segment rather than the indicated line, so no specific diagnosis of this line is actually committed to."
+    },
+    {
+        "id": "3b_cast_failure_framing",
+        "name": "Cast failure framed as runtime-type/instance mismatch vs framed as 'fragment doesn't implement the interface'",
+        "side_a": "If the answer attributes the ClassCastException to the fragment's actual runtime type not matching the cast target (\"not of type\", \"not an instance of\", \"when casting the fragment\"), give credit.",
+        "side_b": "If the answer attributes the ClassCastException specifically to the fragment 'not implementing the OnKeyListenerForFragments interface' (recasting the cast target as an interface contract the fragment must implement), withhold credit."
+    },
+    {
+        "id": "4a_notfound_vs_typemismatch_only",
+        "name": "Raises the fragment-not-found / null-return scenario vs only discusses a wrong-type fragment failing the cast",
+        "side_a": "Give credit if the answer actually raises the scenario where findFragmentById(R.id.main_view) finds no fragment / returns null (i.e., the lookup fails), whatever exception it attributes to it.",
+        "side_b": "Deduct if the answer only describes the cast failing because the fragment that WAS found is of the wrong type / does not implement OnKeyListenerForFragments, and never raises the not-found (null result) case \u2014 a generic 'NullPointerException if any object is null' boilerplate list does not count as raising it for this line."
+    },
+    {
+        "id": "5a_excludes_vs_asserts_other_exceptions",
+        "name": "Mentioning surrounding context only to rule it out vs. affirmatively asserting other exceptions could occur",
+        "side_a": "Do not deduct if the answer references the surrounding code/context only to dismiss it (e.g., says other exceptions are unlikely, or states assumptions under which nothing else fails), keeping the cast as the sole asserted failure.",
+        "side_b": "Deduct if the answer affirmatively asserts that additional exceptions could/would be thrown from other parts of the code (callee bodies, service start, volume flags), adding claimed failure points beyond the asked-about cast."
+    },
+    {
+        "id": "5a_line_anchored_vs_segment_wide",
+        "name": "Answer anchored to the indicated line vs. framed over the whole code segment",
+        "side_a": "Do not deduct if the answer explicitly pins its verdict to the marked line/cast expression (e.g., 'at this line', 'at the indicated line') before giving the mechanism.",
+        "side_b": "Deduct if the answer reframes the question to the broader block ('in this code segment', 'in this method') and lists exception types without tying the verdict to the asked-about line."
+    }
+]

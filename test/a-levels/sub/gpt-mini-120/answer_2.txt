@@ -1,0 +1,5 @@
+<answer>
+public String GetSpecies() {
+    return species;
+}
+</answer>

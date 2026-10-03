@@ -1,0 +1,2 @@
+
+No, we should not use UTF-8. The HTTP specification requires the `Host` header to contain only US-ASCII characters. Therefore, decoding with `ascii` is the correct and safest approach. This ensures compliance with the standard and will correctly raise an error if a malformed (non-ASCII) `Host` header is received, preventing potential security issues or misinterpretations.

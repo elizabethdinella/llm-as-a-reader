@@ -1,0 +1,1 @@
+ The difference between using HashMap vs singletonMap as a parameter to messageParams lies in their implementation and performance. SingletonMap is more memory-efficient for storing a single key-value pair, while HashMap is more general-purpose. In this code segment, using singletonMap is more efficient and clearer in its intent since only one entry needs to be stored. 

@@ -1,0 +1,2 @@
+
+HashMap and singletonMap serve the same purpose but have different characteristics. HashMap is a resizable array implementation and allows multiple entries. SingletonMap, on the other hand, is a fixed-size map designed for a single entry and is immutable. In the given code, HashMap is used but singletonMap could be a better choice if only one entry is intended.

@@ -1,0 +1,62 @@
+[
+    {
+        "id": "1a_env_var_decoupling_mechanism",
+        "name": "Names the concrete mechanism (BUILD_DIR env var can be unset/cleared independently of a truthy setup result) vs. generic 'it's safer' assertion",
+        "side_a": "Give credit when the answer justifies the check by pointing at the specific decoupling between the setup result and the environment variable \u2014 i.e., that `BUILD_DIR` may be missing/empty/cleared even though `setup_build` returned success, so the retrieved `build_directory` can be None/empty.",
+        "side_b": "Withhold credit when the answer only asserts generic defensiveness ('ensures the path is valid', 'additional safeguard', 'prevents errors') without identifying that the build directory is read from the environment separately and can therefore be falsy independent of the setup result."
+    },
+    {
+        "id": "1a_unqualified_vs_undercut_necessity",
+        "name": "Unqualified endorsement of the check vs. endorsement undercut by calling it redundant/unnecessary",
+        "side_a": "Give credit when the answer affirms the check without retracting that affirmation \u2014 it is presented as needed/robust, with no claim that it is redundant or replaceable.",
+        "side_b": "Withhold credit when the answer undercuts itself by declaring the check unnecessary/redundant or proposing to drop it in favor of relying on `build_setup_result` alone, even if it then concedes it is 'harmless' or a 'safeguard'."
+    },
+    {
+        "id": "1b_redundancy_conceded_vs_real_gap",
+        "name": "Check closes a real gap the setup result doesn't cover vs check conceded redundant / only a stylistic safety net",
+        "side_a": "no_deduct: the answer asserts the check is actually needed because a truthy build_setup_result does not guarantee BUILD_DIR is set/valid \u2014 i.e., there is a genuine failure mode the setup-result check misses.",
+        "side_b": "deduct: the answer concedes (explicitly or by framing) that the check is redundant with the setup-result check and justifies it only as defensive style, robustness, better error messages, or an 'extra safeguard' \u2014 including answers that say it isn't strictly necessary at all."
+    },
+    {
+        "id": "1b_concrete_failure_mode_vs_generic_best_practice",
+        "name": "Names a concrete way BUILD_DIR can be missing vs appeals to generic software-engineering virtues",
+        "side_a": "no_deduct: the justification points at the specific state being checked (BUILD_DIR unset/cleared, invalid path, downstream operations needing it) rather than at abstract coding principles.",
+        "side_b": "deduct: the justification rests on generic principles \u2014 'good practice', 'defensive measure', 'fail-fast', 'more robust and easier to debug' \u2014 without naming a concrete situation where the setup result succeeds but the directory is missing."
+    },
+    {
+        "id": "2a_names_setting_mechanism",
+        "name": "Identifies the concrete mechanism/code that sets BUILD_DIR vs. only asserts a generic dependency on setup_build's success",
+        "side_a": "Do not deduct if the answer identifies the actual mechanism linking the two \u2014 e.g. names _setup_application_path (or the specific success path inside setup_build) as the code that sets the BUILD_DIR environment variable, so that build_setup_result being truthy implies BUILD_DIR is populated.",
+        "side_b": "Deduct if the answer only asserts a generic or black-box dependency ('build_directory depends on build_setup_result', 'setup_build sets BUILD_DIR on success', or no mention of BUILD_DIR at all) without identifying the code/function that performs the setting."
+    },
+    {
+        "id": "2a_guaranteed_vs_speculative_link",
+        "name": "States the link as guaranteed by the code vs. hedges or posits that BUILD_DIR may be unset despite a truthy result",
+        "side_a": "Do not deduct if the answer states the implication definitely (success of build setup guarantees BUILD_DIR is set), grounding the claim in the code rather than in supposition.",
+        "side_b": "Deduct if the answer hedges or speculates about the relationship \u2014 e.g. 'probably', 'should', or claims BUILD_DIR might be missing/cleared or the directory might fail even when build_setup_result is truthy \u2014 since this shows the actual relationship was not established."
+    },
+    {
+        "id": "2h_invalid_vs_empty",
+        "name": "What the answer says could go wrong with the build directory: path invalid / directory doesn't exist on disk vs. the string value being empty",
+        "side_a": "No deduct: if the answer's justification for the check is that the *path/directory* may be invalid, may not exist, or may have failed to be created on disk (a filesystem-level claim), do not deduct \u2014 this is not an assertion that the `build_dir` string value can be empty.",
+        "side_b": "Deduct 2: only if the answer asserts the *value* of `build_dir` can be an empty string. Filesystem-validity language is treated as equivalent to an emptiness claim and triggers the deduction."
+    },
+    {
+        "id": "2h_external_mutation",
+        "name": "Source of the hypothesized bad value: environment state set/cleared outside the function vs. the function's own assignment of build_dir",
+        "side_a": "No deduct: if the answer attributes the possible bad value to the environment variable not being set by, or being cleared outside of, `build_manager.setup_build` (i.e. an environment-state risk), treat it as an environment claim, not a claim about the function's `build_dir` assignment \u2014 no deduct.",
+        "side_b": "Deduct 2: any answer positing a bad/empty build directory value at this point in the code is making the enumerated error, regardless of whether it blames external environment mutation or the function's own code."
+    },
+    {
+        "id": "3a_invariant_vs_desync",
+        "name": "Treats a truthy setup result as guaranteeing BUILD_DIR is set vs posits the two can diverge",
+        "side_a": "Give the 2 points when the answer grounds the redundancy in the contract between the two values \u2014 i.e., it asserts that build_manager.setup_build returns falsy on failure and therefore a truthy build_setup_result already implies BUILD_DIR/build directory is set, so the second check can never fire.",
+        "side_b": "Deduct the 2 points when the answer claims (or speculates) that build_setup_result can be truthy while the build directory is still missing/unset \u2014 i.e., it treats the two conditions as independent and uses that supposed gap to justify the check, since this contradicts the setup_build contract."
+    },
+    {
+        "id": "3a_engages_prior_check",
+        "name": "Reasons about the preceding build_setup_result check vs generic 'validate the path' boilerplate",
+        "side_a": "Give the 2 points when the answer actually relates the `if not build_directory` check to the immediately preceding build_setup_result check (or to using build_setup_result.build_dir instead of rereading the env), showing it understands the check is duplicative.",
+        "side_b": "Deduct the 2 points when the answer justifies the check only with generic input-validation/fail-fast reasoning ('ensures the path is valid', 'prevents downstream errors') without ever engaging with the fact that success was already established by build_setup_result."
+    }
+]

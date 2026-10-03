@@ -1,0 +1,30 @@
+[
+    {
+        "justification": "The answer explicitly states that Collections.singletonMap 'Returns an immutable map that contains exactly one key/value pair' and 'Cannot be modified... throws UnsupportedOperationException.' This satisfies sub-item 1b.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly describes HashMap as 'A concrete, mutable implementation' that 'can be modified after it's created', satisfying the requirement to state that HashMap is mutable.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that Collections.singletonMap 'Returns an immutable map that contains exactly one key/value pair,' which satisfies the requirement that singletonMap returns only a single key-value mapping.",
+        "deducted": false
+    },
+    {
+        "justification": "The candidate answer never states or discusses the actual method signature of `messageParams` (e.g., that it accepts a FetchProfile and a Map/HashMap parameter type). It only speaks generally about the map passed to it, without citing the declared signature.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer never mentions the signature or parameter type of `messageParams`; it only speaks generally about mutability differences and says a mutable map like HashMap would be needed if the code later modifies it. It does not state that `messageParams` specifically takes a `HashMap` parameter type.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer never examines how the map argument is actually used inside messageParams; it only speaks generically about mutability and vaguely says 'if the code later needs to add or change entries, you must use a mutable map.' It fails to determine whether the internal usages are read-only or modifying, so the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer never claims that messageParams (or its internal usages of the map) modifies the map. It only discusses general mutability differences and a hypothetical 'if the code later needs to add or change entries.' It does not incorrectly assert that the map argument is modified within messageParams, so the 2-point deduction under 2e does not apply (its failure to actually analyze the usages is covered by sub-item 2c, not 2e).",
+        "deducted": false
+    }
+]

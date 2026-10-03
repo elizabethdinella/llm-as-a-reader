@@ -1,0 +1,37 @@
+[
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly states that `Collections.singletonMap` produces an immutable map that 'cannot be altered after its creation,' satisfying the core requirement of the rubric item. It also contrasts this with `HashMap`, noting that a HashMap 'would allow for modification,' and touches on the size difference by mentioning that only a single key-value pair is needed for singletonMap. Thus, both the mutability and size aspects are addressed. (Note: the answer somewhat misreads the code, which actually wraps the singletonMap in a new HashMap to obtain a mutable copy, but that inaccuracy is outside the scope of this particular rubric item.)",
+        "item": "1a"
+    },
+    {
+        "deducted": false,
+        "feedback": "The rubric subitem requires the answer to state that a HashMap is mutable (and to touch on mutability/size differences). The candidate explicitly says that \"a `HashMap` would allow for modification\" while `singletonMap` produces an immutable map, which conveys HashMap's mutability. It also references size by noting only a single key-value pair is needed. Thus the required condition is mentioned and no deduction applies for this subitem, despite the answer separately mischaracterizing what is actually passed (the code wraps the singletonMap in a new HashMap, so the argument is in fact mutable).",
+        "item": "1b"
+    },
+    {
+        "deducted": false,
+        "feedback": "The candidate answer explicitly addresses both aspects required by this rubric item: it states that `Collections.singletonMap` produces an immutable map that 'cannot be altered after its creation,' contrasting it with `HashMap`, which 'would allow for modification' (mutability difference), and it notes that 'only a single key-value pair is needed,' conveying that singletonMap contains only one key-value mapping (size difference). Although the answer misinterprets the code's intent (the singletonMap is actually wrapped in a HashMap precisely to obtain a mutable copy), that error is outside the scope of this particular rubric subitem, which only requires discussion of mutability and the single-mapping nature of singletonMap. Both are mentioned, so no deduction applies here.",
+        "item": "1c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate only references `messageParams` incidentally (\"the map passed to `messageParams`\") and never describes its method signature \u2014 it does not state that messageParams takes a FetchProfile and a Map<String, Message> (or otherwise characterize the parameter types/expected map type). Because the required signature discussion is absent, and the answer instead only asserts (incorrectly, since the singletonMap is wrapped in a new HashMap<>, making it mutable) that immutability is the difference, the rubric condition is not satisfied.",
+        "item": "2a"
+    },
+    {
+        "deducted": true,
+        "feedback": "The rubric requires the answer to state that `messageParams` takes a `HashMap` (i.e., the parameter type is specifically HashMap, which is why the singletonMap must be wrapped in `new HashMap<>(...)`). The candidate answer never mentions that `messageParams` accepts/requires a `HashMap` type. Instead, it incorrectly asserts that `singletonMap` is the map actually passed to `messageParams` and is 'more appropriate in this context', ignoring the fact that the code explicitly wraps it with `new HashMap<>(...)`. It also frames the distinction purely as immutability/mutability, which the rubric explicitly says is not specific enough. Therefore the point is deducted.",
+        "item": "2b"
+    },
+    {
+        "deducted": true,
+        "feedback": "The answer does not discuss how the map argument is actually used inside messageParams (i.e., whether the builder/command only reads from the map, such as look-ups by UID, or whether it mutates it). It merely contrasts general mutability properties of HashMap vs. singletonMap and asserts singletonMap is 'more appropriate,' which also contradicts the code (which deliberately wraps the singletonMap in a HashMap). Since it never determines whether the internal usages modify the map, and in fact implies immutability is fine without verifying this, the rubric condition is not met.",
+        "item": "2c"
+    },
+    {
+        "deducted": false,
+        "feedback": "The answer does reference messageParams, framing the discussion as what map is passed to it. The specific deduction trigger for this rubric item is claiming that the consumers/usages of the map argument mutate it. The candidate does not make that claim \u2014 it argues the opposite direction, that immutability is safe and that mutability offered by HashMap 'is not necessary here.' Therefore no assertion is made that messageParams (or downstream usage) modifies the map, and the deduction condition is not triggered. (Separately, the answer misreads the code, since the singletonMap is wrapped in `new HashMap<>(...)` so the map actually passed is mutable \u2014 but that error falls outside this particular rubric subitem.)",
+        "item": "2d"
+    }
+]

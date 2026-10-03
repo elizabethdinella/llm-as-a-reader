@@ -1,0 +1,18 @@
+**Rubric Item 1 (Mutability/size differences — 3 points)**
+- Immutability of `singletonMap`: explicitly stated ("returns an immutable map... throws `UnsupportedOperationException`"). ✔
+- Mutability of `HashMap`: explicitly stated ("You can freely add, remove, or modify entries"). ✔
+- `singletonMap` contains only a single key-value mapping: explicitly stated ("containing only one mapping"). ✔
+No deductions. **3/3**
+
+**Rubric Item 2 (Discussion of `messageParams` — 4 points)**
+- Method signature of `messageParams`: never given or described. −1
+- Does not state that `messageParams` takes a `HashMap` specifically; it only says it "receives a mutable map," which the rubric explicitly notes is not specific enough. −1
+- Usages of the map argument inside `messageParams` are not examined at all; the answer does not determine whether they are read-only. −1
+- The answer implies/asserts modification occurs ("Passing `singletonMap` directly would restrict future modifications to the map within `messageParams`"), which incorrectly suggests the usages mutate the map. −2
+
+Deductions exceed the item total. **0/4**
+
+<scores>
+	<score> 3/3 </score>
+	<score> 0/4 </score>
+</scores>

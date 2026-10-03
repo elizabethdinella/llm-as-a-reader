@@ -1,0 +1,62 @@
+[
+    {
+        "id": "1_paired_index_vs_independent_traversal",
+        "name": "each list traversed over its own full extent (nested/separate loops) vs. one shared index capped by a conjunctive min-size bound",
+        "side_a": "Do not deduct when each list is iterated over its own full range \u2014 nested enhanced-for loops (`for (CourseRecord hist : historyList) { for (CourseRecord math : mathList) ... }`) or two separate full passes \u2014 so the declared bounds for each list cover every element of that list.",
+        "side_b": "Deduct when a single loop index is used to walk both lists in lock-step under a conjunctive bound such as `i < historyList.size() && i < mathList.size()`; the declared bound caps traversal at the shorter list, so elements of the longer list are structurally never reachable (this is a bounds defect, not merely early termination)."
+    },
+    {
+        "id": "1_auxiliary_structure_access",
+        "name": "elements accessed in a separate preprocessing pass into an auxiliary structure vs. required to be accessed inside the comparison loop",
+        "side_a": "Do not deduct when every element of a list is touched in a distinct, complete prior pass that loads it into an auxiliary structure (`for (CourseRecord cr : mathList) { mathAbsencesMap.put(cr.getStudentID(), cr.getAbsences()); }`) and the comparison then reads from that structure \u2014 full access is still achieved.",
+        "side_b": "Deduct when an element of a list is never reached by any loop at all, whether directly or via a preprocessing pass, because the only traversal that would reach it is bounded away."
+    },
+    {
+        "id": "2_id_matching_vs_positional_pairing",
+        "name": "Records paired by retrieved student ID vs. paired positionally with no ID retrieval",
+        "side_a": "No_deduct whenever the response retrieves the student ID from CourseRecord elements to pair/compare history and math records \u2014 even if the pairing or counting logic is semantically wrong (reference comparison with ==, inverted comparison direction, counting in the wrong branch, or a discarded getAbsences() call). The surrounding logic's correctness is irrelevant; the ID is being pulled off the elements.",
+        "side_b": "Deduct when the response pairs history and math records by position/index (or by any scheme that never asks a CourseRecord for its ID), so getStudentID is never used to identify the element \u2014 the required retrieval simply does not occur in the algorithm."
+    },
+    {
+        "id": "2_receiver_binding_form",
+        "name": "Calls on a declared CourseRecord loop variable vs. chained onto an inline list.get(i) expression",
+        "side_a": "No_deduct when the required calls are made on a variable explicitly declared/typed as CourseRecord (enhanced-for variable or local assignment), making the element unambiguously a CourseRecord object.",
+        "side_b": "Deduct when the calls are only chained directly onto an inline indexed accessor such as historyList.get(i).getAbsences(), with no CourseRecord element variable ever obtained from the lists."
+    },
+    {
+        "id": "3_locus_of_the_defect",
+        "name": "defect lies outside the absence comparison (ID matching / count placement / pairing) vs. inside the comparison itself",
+        "side_a": "No deduct: if the absence comparison is written in the correct direction (history > math), other errors in the surrounding code \u2014 comparing student IDs with == instead of .equals, incrementing count outside the comparison's if-block, missing break causing double counts, or pairing records by parallel index instead of by student ID \u2014 do not cost this point; they belong to other sub-items.",
+        "side_b": "Deduct: if the error is in the absence-comparison condition itself (counting the wrong relation between history and math absences), the point is lost regardless of how correct the ID lookup/pairing machinery is."
+    },
+    {
+        "id": "3_reversal_by_operator_flip",
+        "name": "direction judged on the relation tested, not operand order: flipped operator with correct operand order vs. correct relation",
+        "side_a": "No deduct: the expression tests that the history record's absences exceed the math record's absences, whichever way the operands are arranged (e.g., 'hist.getAbsences() > math.getAbsences()').",
+        "side_b": "Deduct: the history value is still on the left but the relational operator is reversed ('historyAbs < mathAbs'), so the method counts students with more math absences; an operator flip counts as a wrong-direction comparison just as an operand swap does."
+    },
+    {
+        "id": "4_condition_semantics_irrelevant",
+        "name": "Logical correctness of the guarding condition: irrelevant (only structural placement matters) vs must be the correct absence comparison",
+        "side_a": "Give credit whenever the increment statement sits inside the body of some `if` within a loop, regardless of whether the guard's logic is right \u2014 reversed comparisons, wrong matching strategy, or a condition that doesn't actually implement the specified rule still count as 'within a conditional statement'.",
+        "side_b": "Deduct unless the `if` that immediately contains the increment actually tests the required condition (history absences greater than math absences for the same student); a wrong, reversed, or unrelated test fails this sub-item."
+    },
+    {
+        "id": "4_which_conditional_encloses",
+        "name": "Identity of the enclosing conditional: any enclosing `if` suffices vs the innermost comparison `if` must enclose the increment",
+        "side_a": "Give credit if the increment is lexically inside the body of any `if` in the loop \u2014 e.g. inside only an outer student-ID-match `if` while the absence-comparison `if` sits beside it \u2014 since the increment statement is still contained in a conditional statement.",
+        "side_b": "Deduct when the increment escapes the comparison `if` and is only enclosed by an outer/unrelated `if`, because the increment is not conditioned on the intended test."
+    },
+    {
+        "id": "5_id_pairing_method",
+        "name": "Pairs history/math records by value-based student-ID matching vs by reference == or by list position",
+        "side_a": "No deduct if the two lists are paired by comparing student IDs by value \u2014 e.g. String.equals(...) or a HashMap keyed on getStudentID() with containsKey/get \u2014 so the math record retrieved is genuinely the same student's record.",
+        "side_b": "Deduct if the pairing is not value-based: comparing IDs with reference equality (`==` on Strings) or pairing records by index position in the two lists, so the records compared are not reliably the same student's."
+    },
+    {
+        "id": "5_increment_guarded_by_absence_test",
+        "name": "count++ executed only when the absence comparison succeeds vs count++ executed for every matched student",
+        "side_a": "No deduct if the increment statement is inside the body of the absence-comparison if, so only students satisfying the absence relation are tallied.",
+        "side_b": "Deduct if the increment sits outside the absence-comparison (e.g. only inside the ID-match block), so every matched student is counted regardless of absences \u2014 the comparison result is discarded."
+    }
+]

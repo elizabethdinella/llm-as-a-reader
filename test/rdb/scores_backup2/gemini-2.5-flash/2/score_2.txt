@@ -1,0 +1,9 @@
+[
+  { "item": "1a", "deducted": false, "feedback": "The answer clearly states that Collections.singletonMap returns an immutable Map and that modification attempts throw UnsupportedOperationException." },
+  { "item": "1b", "deducted": false, "feedback": "The answer clearly states that wrapping in new HashMap<>(...) produces a mutable HashMap that can be added to, removed from, or modified." },
+  { "item": "1c", "deducted": false, "feedback": "The answer explicitly states singletonMap creates a Map containing exactly one key-value pair / single entry." },
+  { "item": "2a", "deducted": true, "feedback": "The answer never mentions the actual method signature of messageParams (e.g., that it accepts a FetchProfile and a HashMap<String, Message>). It only refers to 'the messageParams method of the UidFetchCommand.Builder' generically without giving its parameter types." },
+  { "item": "2b", "deducted": true, "feedback": "The answer does not state that messageParams declares a HashMap parameter (which is the actual reason the singletonMap must be wrapped). Instead it frames the choice purely in terms of possible mutation needs and explicitly says 'Without knowing the internal implementation of messageParams', which is not the required specific claim." },
+  { "item": "2c", "deducted": true, "feedback": "The answer does not examine or describe any usages of the map inside messageParams. It explicitly hedges ('If messageParams ... expects to modify ... then...' / 'Without knowing the internal implementation'), thereby failing to clearly determine whether the usages are read-only." },
+  { "item": "2d", "deducted": false, "feedback": "The answer does not assert that messageParams actually modifies the map; it only speculates conditionally ('might need to be modified'), so the incorrect-claim deduction does not apply." }
+]

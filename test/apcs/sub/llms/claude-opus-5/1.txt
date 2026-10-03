@@ -1,0 +1,87 @@
+## Part A
+
+**Reasoning:** The constructor must first test `requestedName` itself with the helper `isAvailable`. If it's free, store it. Otherwise, we append 1, 2, 3, … in a loop, testing each candidate with `isAvailable`, and stop at the *first* one that is available. A `while` loop with a counter is the natural structure since we don't know in advance how many tries are needed. Note `isAvailable` is `static`, so it can be called directly, and string concatenation `requestedName + n` automatically converts the `int` to a `String`.
+
+```java
+public Account(String requestedName)
+{
+    if (isAvailable(requestedName))
+    {
+        username = requestedName;
+    }
+    else
+    {
+        int n = 1;
+        while (!isAvailable(requestedName + n))
+        {
+            n++;
+        }
+        username = requestedName + n;
+    }
+}
+```
+
+## Part B
+
+**Reasoning:** We must remove every hyphen *and the character immediately preceding it*, without changing `username` (Strings are immutable, so building a new String is safe). Scan left to right with an index `i`. If the character *after* position `i` exists and is a hyphen, then the character at `i` must be dropped along with the hyphen, so advance `i` by 2 and append nothing. Otherwise, append the character at `i` and advance by 1. The preconditions (no leading/trailing hyphen, no consecutive hyphens) guarantee this look‑ahead never mis-handles a hyphen. If there are no hyphens, every character is appended, so `username` is returned unchanged.
+
+```java
+public String getShortenedName()
+{
+    String result = "";
+    int i = 0;
+    while (i < username.length())
+    {
+        if (i + 1 < username.length() && username.substring(i + 1, i + 2).equals("-"))
+        {
+            i += 2;              // skip this character and the hyphen
+        }
+        else
+        {
+            result += username.substring(i, i + 1);
+            i++;
+        }
+    }
+    return result;
+}
+```
+
+Trace on `"Amy-Marie-Lin"`: keeps `A`,`m`; drops `y-`; keeps `M`,`a`,`r`,`i`; drops `e-`; keeps `L`,`i`,`n` → `"AmMariLin"`. On `"SammyB3"` there are no hyphens, so it returns `"SammyB3"`.
+
+<answer>
+public Account(String requestedName)
+{
+    if (isAvailable(requestedName))
+    {
+        username = requestedName;
+    }
+    else
+    {
+        int n = 1;
+        while (!isAvailable(requestedName + n))
+        {
+            n++;
+        }
+        username = requestedName + n;
+    }
+}
+
+public String getShortenedName()
+{
+    String result = "";
+    int i = 0;
+    while (i < username.length())
+    {
+        if (i + 1 < username.length() && username.substring(i + 1, i + 2).equals("-"))
+        {
+            i += 2;
+        }
+        else
+        {
+            result += username.substring(i, i + 1);
+            i++;
+        }
+    }
+    return result;
+}
+</answer>

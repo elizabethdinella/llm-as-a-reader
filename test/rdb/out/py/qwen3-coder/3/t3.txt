@@ -1,0 +1,2 @@
+
+No, we should not use UTF-8 instead of ASCII when decoding the host header. HTTP headers including the Host header are specified to use ASCII encoding according to RFC standards. Using UTF-8 would be inappropriate because it could break compatibility with standard HTTP implementations and potentially introduce encoding errors for legitimate ASCII hostnames that are expected in HTTP requests. The current ASCII decoding is correct for this use case.

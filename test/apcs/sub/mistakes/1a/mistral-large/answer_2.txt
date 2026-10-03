@@ -1,0 +1,16 @@
+<answer>
+```java
+public Account(String requestedName) {
+    if (isAvailable(requestedName)) {
+        this.username = requestedName;
+    } else {
+        int counter = 1;
+        String newUsername = requestedName + counter;
+        while (!isAvailable(newUsername)) {
+            newUsername = requestedName + counter;
+        }
+        this.username = newUsername;
+    }
+}
+```
+</answer>

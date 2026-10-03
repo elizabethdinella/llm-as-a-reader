@@ -1,0 +1,14 @@
+{"deducted": false}
+{"deducted": false}
+{"deducted": false}
+{"deducted": true}
+
+**Reasoning:**
+
+- **A1:** The constructor calls `isAvailable(candidate)` with a `String` argument, invoked properly within the class (implicit static call on `Account`). The call itself is well-formed, so the point is earned.
+
+- **A2:** There is a loop that repeatedly checks availability of a potential username (`candidate`) and updates the potential username in the body of the loop (`candidate = requestedName + suffix;`). The rubric explicitly allows this point even if `isAvailable` is used incorrectly, so the point is earned.
+
+- **A3:** A count (`suffix`) is initialized to 1 and incremented (`suffix++`) inside the loop, so the point is earned.
+
+- **A4:** The availability logic is inverted — the loop continues *while* the name **is** available and stops when it is **unavailable**. Consequently, if `requestedName` is available, the constructor does not assign it (it enters the loop and appends integers), and the final value assigned to `username` is an unavailable name. This fails the criterion of handling the case where `requestedName` itself is available and does not assign a correct value to `username`, so the point is deducted.

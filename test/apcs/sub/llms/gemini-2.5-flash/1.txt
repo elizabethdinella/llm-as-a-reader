@@ -1,0 +1,135 @@
+As a computer science student, I will provide the implementations for the `Account` constructor (Part A) and the `getShortenedName` method (Part B), explaining my reasoning for each.
+
+---
+
+### Part A: Complete the Account constructor.
+
+**Explanation:**
+The goal of the constructor is to initialize the `username` instance variable. It first checks if the `requestedName` is available using the provided `isAvailable` helper method.
+If `requestedName` is available, it's directly assigned to `username`.
+If `requestedName` is not available, the constructor needs to append successive integers (starting from 1) to `requestedName` until an available username is found. This suggests a loop.
+
+1.  **Initialize a temporary variable:** I'll use a `String` variable, say `currentUsername`, initialized with `requestedName`. This variable will be updated in each iteration of the search.
+2.  **Loop for availability:** A `while` loop is suitable here, as we don't know in advance how many attempts it will take. The loop should continue as long as `Account.isAvailable(currentUsername)` returns `false`.
+3.  **Generate variations:** Inside the loop, I'll need a counter, say `suffixNum`, initialized to 1. In each iteration, `suffixNum` is incremented, and the `currentUsername` is re-constructed by concatenating the original `requestedName` with the string representation of `suffixNum`.
+4.  **Assign to instance variable:** Once the `while` loop terminates, it means `currentUsername` is finally available. At this point, I assign `currentUsername` to the `this.username` instance variable.
+
+```java
+public Account(String requestedName)
+{
+    String currentUsername = requestedName;
+    int suffixNum = 1;
+
+    // Keep trying usernames until an available one is found
+    while (!Account.isAvailable(currentUsername)) {
+        currentUsername = requestedName + suffixNum;
+        suffixNum++;
+    }
+
+    // Assign the first available username found to the instance variable
+    this.username = currentUsername;
+}
+```
+<answer>
+```java
+public Account(String requestedName)
+{
+    String currentUsername = requestedName;
+    int suffixNum = 1;
+
+    // Keep trying usernames until an available one is found
+    while (!Account.isAvailable(currentUsername)) {
+        currentUsername = requestedName + suffixNum;
+        suffixNum++;
+    }
+
+    // Assign the first available username found to the instance variable
+    this.username = currentUsername;
+}
+```
+</answer>
+
+---
+
+### Part B: Complete method getShortenedName.
+
+**Explanation:**
+The `getShortenedName` method needs to return a new string where each hyphen (`-`) and the character immediately preceding it are removed from the `username` instance variable. If no hyphens are present, the original `username` is returned. The method must not modify the `username` instance variable.
+
+1.  **Use `StringBuilder`:** Since we are building a new string character by character, `StringBuilder` is more efficient than repeatedly concatenating `String` objects.
+2.  **Iterate through `username`:** I'll use a `for` loop to iterate from the beginning to the end of the `username` string.
+3.  **Conditional Appending/Skipping:**
+    *   For each character `username.charAt(i)`, I need to decide if it should be included in the `shortenedName`.
+    *   If `username.charAt(i)` is *not* a hyphen:
+        *   I check if the *next* character (`username.charAt(i+1)`) is a hyphen.
+        *   If `username.charAt(i+1)` is a hyphen, it means `username.charAt(i)` is the character *before* a hyphen, so both `username.charAt(i)` and the hyphen at `username.charAt(i+1)` should be removed. To achieve this, I will increment the loop counter `i` by an additional one (effectively `i++` twice for this iteration), skipping both characters.
+        *   If `username.charAt(i+1)` is *not* a hyphen (or `i` is the last character), then `username.charAt(i)` should be appended to the `StringBuilder`.
+    *   The problem statement's preconditions ("username does not start or end with a hyphen", "username does not contain consecutive hyphens", "username.length() >= 2") simplify the logic by ensuring valid indices and patterns. Specifically, if `username.charAt(i+1)` is checked, `i+1` will always be a valid index if `username.charAt(i+1)` is a hyphen. The `i + 1 < username.length()` check is still good practice to prevent `IndexOutOfBoundsException` for the last character if it's not a hyphen.
+4.  **Return result:** Finally, convert the `StringBuilder` to a `String` using `toString()` and return it.
+
+```java
+public String getShortenedName()
+{
+    StringBuilder shortenedName = new StringBuilder();
+
+    for (int i = 0; i < username.length(); i++) {
+        char currentChar = username.charAt(i);
+
+        // If the current character is a hyphen, it means the character BEFORE it
+        // and this hyphen should have been skipped already.
+        // Due to the loop's i++ and the special handling below,
+        // we never actually 'process' a hyphen here to append it.
+        // This condition is mostly for clarity but will be true only if
+        // the character before it was NOT followed by a hyphen.
+        if (currentChar != '-') {
+            // Check if the next character is a hyphen.
+            // If it is, this 'currentChar' is the one BEFORE the hyphen,
+            // so both it and the hyphen must be skipped.
+            if (i + 1 < username.length() && username.charAt(i + 1) == '-') {
+                i++; // Increment i again to skip the hyphen as well.
+                     // The loop's i++ will then take care of moving to the character AFTER the hyphen.
+            } else {
+                // This character is not a hyphen and not before a hyphen, so append it.
+                shortenedName.append(currentChar);
+            }
+        }
+    }
+
+    return shortenedName.toString();
+}
+```
+<answer>
+```java
+public String getShortenedName()
+{
+    StringBuilder shortenedName = new StringBuilder();
+
+    for (int i = 0; i < username.length(); i++) {
+        char currentChar = username.charAt(i);
+
+        // We only consider appending if the current character is not a hyphen.
+        // Hyphens are implicitly skipped if the character before them causes an 'i++'.
+        if (currentChar != '-') {
+            // Check if the next character is a hyphen.
+            // If it is, then 'currentChar' is the character immediately before a hyphen.
+            // Both 'currentChar' and the hyphen should be removed.
+            if (i + 1 < username.length() && username.charAt(i + 1) == '-') {
+                i++; // Skip 'currentChar' and advance 'i' one more position to also skip the hyphen.
+                     // The loop's 'i++' will then execute, moving to the character after the hyphen.
+            } else {
+                // 'currentChar' is not a hyphen, and it's not immediately followed by one.
+                // So, it should be included in the shortened name.
+                shortenedName.append(currentChar);
+            }
+        }
+        // If currentChar IS a hyphen, it means the character before it was not followed by a hyphen,
+        // so it was appended. This hyphen should not be appended, so we do nothing here.
+        // However, given the logic of 'i++' inside the if-block, the loop counter 'i' will always
+        // jump past a hyphen if its preceding character was caught by the 'if (i + 1 < ...)' condition.
+        // So this 'if (currentChar != '-')' effectively processes only non-hyphen characters that are to be kept.
+    }
+
+    return shortenedName.toString();
+}
+```
+</answer>

@@ -1,0 +1,18 @@
+public String getShortenedName()
+{
+    String result = "";
+    int i = 0;
+    while (i < username.length())
+    {
+        if (i + 1 < username.length() && username.charAt(i + 1) == '-')
+        {
+            i += 2;
+        }
+        else
+        {
+            result += username.charAt(i);
+            i++;
+        }
+    }
+    return result;
+}

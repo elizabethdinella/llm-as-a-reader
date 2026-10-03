@@ -1,0 +1,9 @@
+[
+  { "item": "1a", "deducted": false, "feedback": "The answer explicitly states that `Collections.singletonMap` creates an immutable map." },
+  { "item": "1b", "deducted": false, "feedback": "The answer explicitly states that `new HashMap` creates a general-purpose, mutable map." },
+  { "item": "1c", "deducted": false, "feedback": "The answer states the singletonMap contains 'exactly one entry', satisfying the single key-value mapping requirement." },
+  { "item": "2a", "deducted": true, "feedback": "The answer never mentions or reproduces the method signature of `messageParams` (e.g., its parameter types such as FetchProfile and Map/HashMap<String, Message>). No signature detail is given at all." },
+  { "item": "2b", "deducted": true, "feedback": "The answer only says the command 'receives a mutable copy of the map'; it never states that `messageParams` declares a `HashMap` parameter type (which is the actual reason the wrapping is required). Per the rubric, referring merely to a mutable map is not specific enough." },
+  { "item": "2c", "deducted": true, "feedback": "The answer does not examine any actual usages of the map argument inside `messageParams`/`UidFetchCommand`. Instead of determining that the usages are read-only, it speculates that the class 'can safely modify' the map internally, so it fails to clearly and correctly determine whether the map is modified." },
+  { "item": "2d", "deducted": true, "feedback": "The answer asserts the map is wrapped so the command 'can safely modify [it] internally without causing an UnsupportedOperationException', incorrectly implying that usages of the map argument mutate it, when in fact the usages are read-only and the HashMap is required only by the declared parameter type." }
+]

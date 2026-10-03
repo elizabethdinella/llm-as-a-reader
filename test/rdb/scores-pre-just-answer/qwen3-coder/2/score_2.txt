@@ -1,0 +1,37 @@
+[
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly states that Collections.singletonMap() creates an 'immutable, optimized single-entry map' while new HashMap<>(...) creates a 'mutable HashMap instance.' This satisfies the requirement of stating that singletonMap is immutable, and it also addresses the size aspect by noting singletonMap holds only one entry whereas HashMap is a general-purpose resizable map. The mutability contrast (prevents accidental modification vs. allows modification) is directly discussed, so no deduction applies for this rubric item, even though the answer's normative claim about which is 'more appropriate' is arguably off given the code deliberately wraps in a mutable HashMap.",
+        "item": "1a"
+    },
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly states that `new HashMap<>(...)` creates a mutable HashMap instance, contrasting it with `Collections.singletonMap()` which is described as an immutable, optimized single-entry map. This covers both the mutability distinction (HashMap is mutable, singletonMap is immutable) and the size aspect (singletonMap holds exactly one entry, while a HashMap can grow). The rubric's requirement that the answer state a HashMap is mutable is satisfied.",
+        "item": "1b"
+    },
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly addresses both required aspects: mutability (\"Collections.singletonMap() creates an immutable ... map while new HashMap<>(...) creates a mutable HashMap instance\") and size (\"single-entry map\", \"there's only one entry\"), which conveys that singletonMap holds only a single key-value mapping. It also notes the practical consequence (prevents accidental modification). This satisfies the rubric condition, so no deduction applies, even though the claim that singletonMap is 'more appropriate here' is arguable given the code deliberately wraps it in a mutable HashMap.",
+        "item": "1c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate answer only compares Collections.singletonMap and new HashMap<>() in general terms (immutability, efficiency, mutability). It never discusses the messageParams method itself, nor its signature/expected parameter types (e.g., that it takes a FetchProfile and a Map<String, Message>, and specifically whether it requires a mutable Map implementation). Since the rubric requires mention of the messageParams method signature, the point is deducted.",
+        "item": "2a"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate answer only explains the generic difference between Collections.singletonMap (immutable, single-entry, memory-efficient) and new HashMap<>(...) (mutable, general-purpose). It never discusses the messageParams method itself, and crucially never states that messageParams requires/accepts a HashMap parameter type (which is why the singletonMap must be wrapped in a HashMap). In fact, the answer wrongly concludes that singletonMap would be 'more efficient and appropriate here,' which contradicts the actual constraint that messageParams takes a HashMap. Since the required point about messageParams taking a HashMap is absent, the point is deducted.",
+        "item": "2b"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate answer only explains the generic difference between `Collections.singletonMap` (immutable, single-entry, memory-optimized) and `new HashMap<>(...)` (mutable). It never examines how the map argument is actually used inside `messageParams` (or downstream in the `UidFetchCommand.Builder`/command), and therefore never establishes whether those usages are read-only or whether the builder/command mutates the supplied map. In fact, the answer implies mutability matters ('prevents accidental modifications') without verifying this against the code context, so it neither discusses the internal usages nor clearly determines that they do not modify the map. The rubric condition is not satisfied.",
+        "item": "2c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The rubric requires the answer to actually engage with messageParams \u2014 i.e., how the method consumes the map and whether that consumption requires mutability. The candidate answer never mentions messageParams or how the map is used inside it; it only gives a generic Java-library comparison of Collections.singletonMap (immutable, single-entry, memory-efficient) versus new HashMap<> (mutable, general-purpose). It offers no analysis of why the code wraps the singletonMap in a HashMap in this specific call, nor whether messageParams (or downstream code such as the command construction/fetch handling) ever mutates the passed map. Furthermore, its conclusion that 'singletonMap is more efficient and appropriate here' and 'prevents accidental modifications' is an unsupported claim about this call site, since nothing in the given context establishes that the callee tolerates an immutable map. Because the answer fails to discuss messageParams in any substantive way, the condition is not met.",
+        "item": "2d"
+    }
+]

@@ -1,0 +1,8 @@
+[
+    {
+        "id": "2b_null_check_recommendation",
+        "name": "explicit null\u2011check recommendation vs no null\u2011check recommendation",
+        "side_a": "Answer explicitly recommends adding a null\u2011check for `mPrefix` (e.g., \u201cyou should add a null check for mPrefix\u201d). Credit these answers.",
+        "side_b": "Answer does **not** recommend adding a null\u2011check for `mPrefix` (e.g., says the check is unnecessary or omits any mention of it). Deduct credit for these answers."
+    }
+]

@@ -1,0 +1,30 @@
+[
+    {
+        "justification": "The candidate answer explicitly states that `Collections.singletonMap()` returns an immutable map, satisfying the requirement that the answer mention singletonMap's immutability.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that `new HashMap<>(...)` creates a mutable copy, and refers to 'a mutable map being passed to messageParams'. This satisfies the requirement to mention that a HashMap is mutable.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer only discusses immutability vs mutability of singletonMap and HashMap. It never states that Collections.singletonMap returns a map containing only a single key-value mapping (i.e., it is limited to one entry). Therefore the point for sub-item 1d should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer never states or references the actual method signature of `messageParams` (e.g., its declared parameter types such as `messageParams(FetchProfile, HashMap<String, Message>)`). It only speculates about whether messageParams needs to modify the parameters, without citing the signature. Therefore the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer never states that messageParams' parameter type is specifically a HashMap. It only speaks generally about mutable maps and speculates about whether messageParams needs to modify the parameters. The required specificity (that the method signature takes a HashMap, which is why the wrapping is necessary) is absent.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer does not examine actual usages of the map inside messageParams. It explicitly leaves the question open, saying 'The actual functional difference depends on whether messageParams needs to modify the parameters,' failing to clearly determine that the usages are read-only. Per the rubric, the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer does not claim that messageParams modifies the map. It states the difference 'depends on whether messageParams needs to modify the parameters' \u2014 leaving it undetermined rather than incorrectly asserting modification. While this vagueness would cost the point under 2c, it does not trigger the deduction in 2e, which requires an incorrect claim that the usages modify the map.",
+        "deducted": false
+    }
+]

@@ -1,0 +1,20 @@
+[
+    {
+        "id": "1a_misidentified_target_statement",
+        "name": "Answer scopes the claim to the final actionBarSubTitle.setVisibility statement vs. answer asserts the 'code at the end' invokes drawer methods (selectFolder/selectUnifiedInbox)",
+        "side_a": "Do not deduct if the answer identifies the statement in question as the final actionBarSubTitle.setVisibility(...) line and asserts, about that line, that it does not reference/use drawer (even while noting the enclosing null-check guard).",
+        "side_b": "Deduct if the answer instead characterizes the code at the end as calling methods on drawer (e.g. 'calls selectFolder and selectUnifiedInbox', 'invokes methods on the drawer object'), thereby affirmatively claiming direct drawer usage in the code under discussion rather than denying it."
+    },
+    {
+        "id": "3a_misidentifies_tail_code_as_drawer_calls",
+        "name": "Correctly identifies the trailing statement (a non-drawer statement guarded by the early return) vs. misidentifies the 'code at the end' as the drawer method calls themselves",
+        "side_a": "Credit when the answer points at the actual terminal code of initializeFromLocalSearch \u2014 the statement that does not itself touch drawer (the actionBarSubTitle visibility line, or 'the code after the null check' described as executing only because the early return was not taken) \u2014 as the thing whose execution hinges on drawer being non-null.",
+        "side_b": "Deduct when the answer's account of 'the code at the end' is the drawer-using calls (selectFolder / selectUnifiedInbox), i.e. it describes a different, drawer-referencing region of code rather than the trailing non-drawer statement; this is a misreading of which code is at issue, not merely an omission, so no credit even though a guard is mentioned."
+    },
+    {
+        "id": "3a_control_vs_data_dependency",
+        "name": "Explains dependency as control-flow dependence via the early return vs. only as direct data use of drawer",
+        "side_a": "Credit when the answer articulates the dependency as control-flow (the early return on drawer == null prevents the later code from running), regardless of whether that code uses drawer.",
+        "side_b": "Deduct when the answer's only stated reason for dependency is that the code directly invokes methods on / reads the drawer object, with no statement that reaching the code is conditioned on the null check."
+    }
+]

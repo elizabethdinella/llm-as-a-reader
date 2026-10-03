@@ -1,0 +1,38 @@
+[
+    {
+        "id": "1a_controlflow_guard_as_dependence",
+        "name": "Early-return null-guard treated as a real dependence (answers 'Yes') vs treated as mere control flow with no usage in the trailing code",
+        "side_a": "No deduction if the answer concludes that the trailing code (the actionBarSubTitle.setVisibility line) contains no usage of drawer, treating the earlier `if (drawer == null) return;` guard as reachability/control flow only and not as a usage or dependence of that line.",
+        "side_b": "Deduct 2 points if the answer answers 'Yes, it depends on drawer' and grounds that dependence in the early-return null check (e.g. 'the code after the return is executed only when drawer is non-null', 'the control flow to reach and execute this code requires drawer to be non-null'); citing the guard as the dependence is not a statement that setVisibility has no usages of drawer."
+    },
+    {
+        "id": "1a_fabricated_direct_calls",
+        "name": "Trailing code correctly identified as the setVisibility line vs fabricated direct drawer method calls in that code",
+        "side_a": "No deduction if the answer identifies the code at the end of initializeFromLocalSearch as the actionBarSubTitle.setVisibility statement and reports that it makes no calls on drawer.",
+        "side_b": "Deduct 2 points if the answer asserts that the trailing code makes direct calls on drawer (e.g. drawer.selectFolder(), drawer.selectUnifiedInbox()), misattributing drawer-using statements to the code in question; this is an affirmative, incorrect claim of direct usage."
+    },
+    {
+        "id": "2a_target_line_identified",
+        "name": "Pins the dependency claim to the actual end-of-method statement (actionBarSubTitle.setVisibility) vs talks vaguely about 'drawer-related operations' / 'the rest of the logic'",
+        "side_a": "No deduct when the answer explicitly identifies the code in question as the final subtitle-visibility statement (or the specific post-null-check block) and explains its relation to drawer in those terms.",
+        "side_b": "Deduct when the answer never locates the end-of-method code, instead asserting dependency of generic 'drawer-related operations', 'the rest of the logic', or of the drawer.selectFolder()/selectUnifiedInbox() calls themselves \u2014 i.e. it answers about drawer usage rather than about the targeted statement."
+    },
+    {
+        "id": "2a_controlflow_vs_value_mechanism",
+        "name": "Separates reachability (control-flow) dependency from the value computation vs asserts a single undifferentiated 'depends on drawer'",
+        "side_a": "No deduct when the answer explicitly distinguishes the two mechanisms \u2014 the statement is only reached because of the null-check early return, while the value it writes is computed elsewhere/independently.",
+        "side_b": "Deduct when the answer collapses everything into one flat dependency claim based solely on the early return, without saying what kind of dependency it is or what determines the value being set."
+    },
+    {
+        "id": "3a_guard_scope_all_following_code_vs_only_drawer_calls",
+        "name": "Guard is described as gating ALL subsequent code (including the non-drawer subtitle line) vs. only gating drawer's own method calls / claimed to leave later code unprotected",
+        "side_a": "Do not deduct when the answer describes the null check as gating the entire remainder of the method \u2014 i.e., that when drawer is null nothing after the check runs, explicitly including code that does not itself touch drawer (the subtitle/visibility statement, the else-if chain). Treating the guard's protection as extending to non-drawer statements is what earns credit.",
+        "side_b": "Deduct 2 when the answer confines the guard's effect to drawer's own usages (e.g., 'only proceeds with drawer-related operations') or asserts that code after the check runs unguarded / could NPE, since this denies that the setVisibility statement's execution is controlled by the check."
+    },
+    {
+        "id": "3a_definite_dependency_verdict_vs_hedged_null_handling_framing",
+        "name": "Commits to an affirmative dependency verdict vs. hedged/reframed as 'the code handles null gracefully'",
+        "side_a": "Do not deduct when the answer states an unqualified verdict that the later code does depend on drawer and backs it with the control-flow fact ('Yes... the method exits immediately', 'Yes... requires drawer to be non-null').",
+        "side_b": "Deduct 2 when the answer gives no clear yes/no verdict and instead reframes the guard as defensive null-handling ('it is structured to handle cases where drawer might be null by returning early'), leaving unstated whether the trailing code's execution is thereby conditioned on drawer."
+    }
+]

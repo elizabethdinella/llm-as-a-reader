@@ -1,0 +1,2 @@
+
+Based on the provided code, `_compact_times()` is an unconditional first step in the `recalculate` method. This implies it's a necessary data preparation step for *any* KPIset whose statistics need to be accurately recomputed. Therefore, it should be called on every KPIset when `recalculate` is invoked. If "cumulative KPIsets" have different data management requirements, the `_compact_times()` method itself should ideally contain the logic to handle those distinctions rather than skipping the call entirely.

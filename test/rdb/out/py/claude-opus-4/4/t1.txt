@@ -1,0 +1,2 @@
+
+Yes, you need to call `deepcopy(result)` before modifying `result[DATA]`. Without the deep copy, modifying `result[DATA]` would also modify `reply.result[DATA]` since they reference the same object. This appears intentional - the code wants to serialize the DATA field for ledger storage and client response while preserving the original data structure in `reply.result` for graph storage.

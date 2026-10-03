@@ -1,0 +1,2 @@
+
+Yes, a ClassCastException can occur if the fragment isn't an instance of OnKeyListenerForFragments.

@@ -1,0 +1,1 @@
+Yes, the null check for roleInfoList is necessary to prevent potential NullPointerExceptions and ensure proper functionality when caching is disabled or the cached value is not present.

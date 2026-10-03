@@ -1,0 +1,2 @@
+
+The main difference between using HashMap and singletonMap is that singletonMap is an immutable map with a single entry, whereas HashMap is a general-purpose, resizable map. Using singletonMap can provide better performance and thread safety. 

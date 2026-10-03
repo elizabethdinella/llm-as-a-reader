@@ -1,0 +1,164 @@
+(a)(i)
+```java
+public class Bird {
+    private double DistancePerHour;
+    private String Species;
+    private double XPosition;
+    private double YPosition;
+
+    public Bird(String species, double distancePerHour) {
+        this.Species = species;
+        this.DistancePerHour = distancePerHour;
+        this.XPosition = 500.0;
+        this.YPosition = 500.0;
+    }
+}
+```
+
+(a)(ii)
+```java
+public String GetSpecies() {
+    return Species;
+}
+```
+
+(a)(iii)
+```java
+public String GetPosition() {
+    return "X = " + XPosition + " Y = " + YPosition;
+}
+```
+
+(a)(iv)
+```java
+public void Move(char direction, int minutes) {
+    double distance = (DistancePerHour / 60.0) * minutes;
+    if (direction == 'N') {
+        YPosition += distance;
+    } else if (direction == 'S') {
+        YPosition -= distance;
+    } else if (direction == 'E') {
+        XPosition += distance;
+    } else if (direction == 'W') {
+        XPosition -= distance;
+    }
+}
+```
+
+(b)
+```java
+Bird bird1 = new Bird("Cockatiel", 71.0);
+Bird bird2 = new Bird("Macaw", 56.0);
+```
+
+(c)(i)
+```java
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Bird bird1 = new Bird("Cockatiel", 71.0);
+        Bird bird2 = new Bird("Macaw", 56.0);
+
+        System.out.println(bird1.GetSpecies() + ": " + bird1.GetPosition());
+        System.out.println(bird2.GetSpecies() + ": " + bird2.GetPosition());
+
+        Bird selectedBird = null;
+        while (selectedBird == null) {
+            System.out.print("Select bird (1 for Cockatiel, 2 for Macaw): ");
+            int choice = scanner.nextInt();
+            if (choice == 1) selectedBird = bird1;
+            else if (choice == 2) selectedBird = bird2;
+        }
+
+        char direction = ' ';
+        while (direction != 'N' && direction != 'S' && direction != 'E' && direction != 'W') {
+            System.out.print("Enter direction (N/S/E/W): ");
+            direction = scanner.next().toUpperCase().charAt(0);
+        }
+
+        int minutes = -1;
+        while (minutes < 0 || minutes > 500) {
+            System.out.print("Enter minutes flying (0-500): ");
+            minutes = scanner.nextInt();
+        }
+
+        selectedBird.Move(direction, minutes);
+        System.out.println("Updated position: " + selectedBird.GetPosition());
+    }
+}
+```
+
+<answer>
+(a)(i)
+```java
+public class Bird {
+    private double DistancePerHour;
+    private String Species;
+    private double XPosition;
+    private double YPosition;
+
+    public Bird(String species, double distancePerHour) {
+        this.Species = species;
+        this.DistancePerHour = distancePerHour;
+        this.XPosition = 500.0;
+        this.YPosition = 500.0;
+    }
+}
+```
+(a)(ii)
+```java
+public String GetSpecies() {
+    return Species;
+}
+```
+(a)(iii)
+```java
+public String GetPosition() {
+    return "X = " + XPosition + " Y = " + YPosition;
+}
+```
+(a)(iv)
+```java
+public void Move(char direction, int minutes) {
+    double distance = (DistancePerHour / 60.0) * minutes;
+    if (direction == 'N') YPosition += distance;
+    else if (direction == 'S') YPosition -= distance;
+    else if (direction == 'E') XPosition += distance;
+    else if (direction == 'W') XPosition -= distance;
+}
+```
+(b)
+```java
+Bird bird1 = new Bird("Cockatiel", 71.0);
+Bird bird2 = new Bird("Macaw", 56.0);
+```
+(c)(i)
+```java
+import java.util.Scanner;
+Scanner sc = new Scanner(System.in);
+Bird b1 = new Bird("Cockatiel", 71.0);
+Bird b2 = new Bird("Macaw", 56.0);
+System.out.println(b1.GetSpecies() + " " + b1.GetPosition());
+System.out.println(b2.GetSpecies() + " " + b2.GetPosition());
+Bird sel = null;
+while (sel == null) {
+    System.out.print("Bird (1/2): ");
+    int c = sc.nextInt();
+    if (c == 1) sel = b1; else if (c == 2) sel = b2;
+}
+char dir = 0;
+while (dir != 'N' && dir != 'S' && dir != 'E' && dir != 'W') {
+    System.out.print("Dir: ");
+    dir = sc.next().toUpperCase().charAt(0);
+}
+int min = -1;
+while (min < 0 || min > 500) {
+    System.out.print("Mins: ");
+    min = sc.nextInt();
+}
+sel.Move(dir, min);
+System.out.println("New: " + sel.GetPosition());
+```
+</answer>

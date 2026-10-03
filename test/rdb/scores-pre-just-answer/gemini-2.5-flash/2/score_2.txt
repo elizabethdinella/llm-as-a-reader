@@ -1,0 +1,37 @@
+[
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly states that Collections.singletonMap creates an immutable map with a single entry that cannot be changed after creation, while the HashMap wrapper produces a mutable map that can accept additional entries or removals without throwing UnsupportedOperationException. It addresses both mutability and the single-entry (size) constraint, satisfying the rubric requirement.",
+        "item": "1a"
+    },
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly states that Collections.singletonMap creates an immutable map with a single entry and that new HashMap<>(...) creates a mutable HashMap that can be modified (adding/removing entries) without throwing UnsupportedOperationException. This covers both the mutability difference (explicitly saying HashMap is mutable) and the size/single-entry aspect of singletonMap versus a growable HashMap. The rubric condition is satisfied.",
+        "item": "1b"
+    },
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly states that `Collections.singletonMap()` creates an immutable map containing a single entry, and contrasts it with `new HashMap<>(...)` which is mutable and initialized with that single entry but can later have additional key-value pairs added or removed. This addresses both the mutability difference (immutable vs. modifiable, including the UnsupportedOperationException consequence) and the size/single-mapping characteristic required by the rubric. Therefore the condition is satisfied and no deduction applies.",
+        "item": "1c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The rubric requires the answer to discuss the `messageParams` method and reference its signature (e.g., that it accepts a `FetchProfile` and a `Map<String, Message>` argument, which is why a mutable/immutable map distinction may or may not matter). The candidate answer never mentions `messageParams` by name at all, nor its parameter types. It only makes a generic reference to the `UidFetchCommand.Builder`/`UidFetchCommand` needing 'a modifiable map instance', which is an unsupported inference and does not constitute mentioning the method signature. Therefore the point is deducted.",
+        "item": "2a"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate frames the difference purely in terms of mutability: singletonMap is immutable while `new HashMap<>(...)` is mutable, and concludes that the Builder/UidFetchCommand 'needs a modifiable map instance.' It never states that the `messageParams` method signature actually takes (requires) a `HashMap` type parameter, which is why the singletonMap must be wrapped. Per the rubric, saying it requires a mutable map is explicitly not specific enough, so the point is deducted.",
+        "item": "2b"
+    },
+    {
+        "deducted": true,
+        "feedback": "The answer only explains the generic mutability difference between `Collections.singletonMap` and `new HashMap<>(...)`. It does not examine or discuss how the map argument is actually used inside `messageParams` (or within the Builder/UidFetchCommand), and it does not establish that those usages are read-only. Instead, it speculates in the opposite direction \u2014 asserting that the use of `new HashMap` 'implies that the `UidFetchCommand.Builder` or the resulting `UidFetchCommand` needs a modifiable map instance' \u2014 a claim unsupported by the provided context. Thus it fails to clearly determine whether the usages modify the map, and the point is deducted.",
+        "item": "2c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The answer does discuss messageParams, but it concludes with the claim that \"The use of `new HashMap` here implies that the `UidFetchCommand.Builder` or the resulting `UidFetchCommand` needs a modifiable map instance.\" This asserts that the consumer of the map argument mutates it, which is not supported by the given code context (the map is simply passed to messageParams alongside the FetchProfile; nothing shown indicates it is modified downstream). Since the answer incorrectly states/implies that the usages of the map argument modify it, the deduction applies.",
+        "item": "2d"
+    }
+]

@@ -1,0 +1,1 @@
+Yes, the code at the end of initializeFromLocalSearch depends on drawer because if drawer is null, the method returns early and none of the subsequent logic will be executed.

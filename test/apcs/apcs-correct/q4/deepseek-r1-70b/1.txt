@@ -1,0 +1,38 @@
+
+
+To solve this problem, we need to calculate the point value of a specific row on a game board. The calculation depends on whether all spaces in that row have the same color. If they do, the point value is twice the sum of the points in the row; otherwise, it is just the sum.
+
+### Approach
+1. **Extract the Target Row**: Access the specified row from the two-dimensional array of `Space` objects.
+2. **Initialize Variables**: Set up variables to keep track of the sum of points and a flag to check if all spaces in the row have the same color.
+3. **Iterate Through Each Space**: For each space in the row, add its point value to the sum and check if its color matches the color of the first space in the row.
+4. **Check Color Consistency**: If any space in the row has a different color than the first space, set the flag indicating that not all colors are the same.
+5. **Calculate Final Points**: After processing all spaces, if all spaces have the same color, return twice the sum of the points; otherwise, return the sum.
+
+### Solution Code
+```java
+public int getPointsForRow(int targetRow) {
+    Space[] row = board[targetRow];
+    String firstColor = row[0].getColor();
+    int sum = 0;
+    boolean allSame = true;
+
+    for (int col = 0; col < row.length; col++) {
+        Space space = row[col];
+        sum += space.getPoints();
+        if (!firstColor.equals(space.getColor())) {
+            allSame = false;
+        }
+    }
+
+    return allSame ? 2 * sum : sum;
+}
+```
+
+### Explanation
+- **Extract the Target Row**: The target row is accessed using `board[targetRow]`, which gives us an array of `Space` objects representing that row.
+- **Initialize Variables**: `sum` keeps the total points of the row, and `allSame` is a boolean flag initialized to `true`, assuming all spaces are the same color initially.
+- **Iterate Through Each Space**: For each space in the row, we add its point value to `sum` and compare its color with the first space's color. If any space has a different color, `allSame` is set to `false`.
+- **Calculate Final Points**: After iterating through all spaces, if `allSame` is still `true`, the points are doubled; otherwise, the sum is returned as is.
+
+This approach ensures that we efficiently compute the point value in a single pass through the row, making the solution both clear and efficient.

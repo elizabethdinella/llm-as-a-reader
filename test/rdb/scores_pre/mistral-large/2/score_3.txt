@@ -1,0 +1,37 @@
+[
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly states that Collections.singletonMap is 'Immutable and does not support adding, removing, or modifying entries after creation' and that it is 'designed for maps with exactly one entry,' while HashMap 'allows for dynamic resizing and can hold multiple key-value pairs' and is mutable ('Suitable when you need to add, remove, or modify entries after creation'). This directly discusses both mutability and size differences and explicitly mentions immutability of singletonMap, satisfying the rubric item.",
+        "item": "1a"
+    },
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly addresses mutability and size differences. For HashMap it states it \"allows for dynamic resizing and can hold multiple key-value pairs\" and is \"suitable when you need to add, remove, or modify entries after creation\" \u2014 i.e., it is mutable and unbounded in size. It contrasts this with singletonMap being \"immutable and does not support adding, removing, or modifying entries after creation\" and holding \"exactly one entry.\" Although the final summarized answer emphasizes memory efficiency rather than mutability, the response as a whole clearly conveys that HashMap is mutable/resizable, satisfying the rubric condition.",
+        "item": "1b"
+    },
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly addresses both required aspects. On size: it states that Collections.singletonMap is 'designed for maps with exactly one entry' / 'a single key-value pair', while HashMap 'can hold multiple key-value pairs' and supports dynamic resizing. On mutability: it states singletonMap is 'Immutable and does not support adding, removing, or modifying entries after creation', whereas HashMap is 'Suitable when you need to add, remove, or modify entries after creation.' It also ties this to the code context (one UID key mapped to one message). Thus the required point about singletonMap returning only a single key-value mapping, plus mutability differences, is clearly mentioned; no deduction.",
+        "item": "1c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate answer never mentions `messageParams` by name, nor does it describe its signature (i.e., that it accepts a FetchProfile and a Map<String, Message> argument). The discussion is entirely a generic comparison of `HashMap` vs `Collections.singletonMap` (mutability, memory overhead, single-entry design), with only a vague reference to 'the provided code segment' noting the map holds one UID-to-message entry. Because the method's signature/parameter type (Map<String, Message>) is never mentioned or discussed \u2014 which is the crucial point, since a mutable Map may be required by the builder if entries are later added, whereas singletonMap is immutable \u2014 the rubric condition is not satisfied and the point is deducted.",
+        "item": "2a"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate answer only gives a generic comparison of HashMap vs Collections.singletonMap (mutability, memory overhead) and never discusses the signature/requirement of the `messageParams` method. Crucially, it fails to state that `messageParams` takes (requires) a `HashMap` \u2014 in fact it argues the opposite, recommending `singletonMap` as 'more appropriate,' which would not compile/fit the parameter type. Since the required point about `messageParams` taking a HashMap is absent (and not even the weaker 'mutable map' claim is made), the point is deducted.",
+        "item": "2b"
+    },
+    {
+        "deducted": true,
+        "feedback": "The answer never examines `messageParams` or how the map argument is actually used inside it. It only offers a generic textbook comparison of `HashMap` vs `Collections.singletonMap` (mutability, memory overhead). It asserts that \"the map does not need to be modified after creation,\" but this is an unsupported assumption rather than a determination based on the usages within `messageParams` \u2014 no mention is made of the map being read-only/only read from within the builder or command, nor any inspection of whether internal code puts/removes entries. Since the answer fails to discuss usages of the map inside `messageParams` and does not clearly establish, from the code, that those usages do not modify the map, the point is deducted.",
+        "item": "2c"
+    },
+    {
+        "deducted": false,
+        "feedback": "The rubric's deduction trigger is an incorrect claim that the code/usages of the map argument passed to messageParams mutate it. The candidate does not make that claim. Instead, it asserts the opposite: 'The map does not need to be modified after creation,' and argues singletonMap (immutable) would be appropriate. It also correctly characterizes HashMap as mutable/resizable and singletonMap as immutable single-entry. While the answer only addresses the messageParams call site superficially (referring to it as 'the provided code segment' and the map argument, without explaining what the receiving code does with the map, e.g., that mutability is why the singletonMap is copied into a HashMap), it does not commit the specific error described in the rubric, so the 2-point deduction does not apply.",
+        "item": "2d"
+    }
+]

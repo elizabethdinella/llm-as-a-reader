@@ -1,0 +1,15 @@
+```java
+public int moreHistoryThanMathAbsences() {
+    int count = 0;
+    for (CourseRecord historyRecord : historyList) {
+        for (CourseRecord mathRecord : mathList) {
+            if (historyRecord.getStudentID().equals(mathRecord.getStudentID()) 
+                && historyRecord.getAbsences() > mathRecord.getAbsences()) {
+                count++;
+                break;
+            }
+        }
+    }
+    return count;
+}
+```

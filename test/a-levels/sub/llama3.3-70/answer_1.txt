@@ -1,0 +1,15 @@
+<answer>
+public class Bird {
+    private double distancePerHour;
+    private String species;
+    private double xPosition;
+    private double yPosition;
+
+    public Bird(double distancePerHour, String species) {
+        this.distancePerHour = distancePerHour;
+        this.species = species;
+        this.xPosition = 500.0;
+        this.yPosition = 500.0;
+    }
+}
+</answer>

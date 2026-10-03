@@ -1,0 +1,62 @@
+[
+    {
+        "id": "2b_generic_hedge_vs_named_npe_alternative",
+        "name": "Unnamed hedge about 'other runtime exceptions' vs enumerating NullPointerException by name as an additional candidate",
+        "side_a": "no_deduct \u2014 The answer may add a vague, unnamed hedge that other runtime exceptions could arise elsewhere (e.g. 'other runtime exceptions could occur based on the implementation ... or system constraints when starting services') as long as no null-related exception is ever named; the only exception actually identified remains ClassCastException.",
+        "side_b": "deduct 2 \u2014 The answer enumerates NullPointerException by name as a concrete additional candidate exception for this code, even when it is pinned on an unrelated cause such as unavailable system services ('Other potential exceptions include NullPointerException if system services are unavailable')."
+    },
+    {
+        "id": "2b_null_as_cast_input_vs_null_as_failure",
+        "name": "Null mentioned as an input that still yields ClassCastException vs null mentioned as producing its own failure",
+        "side_a": "no_deduct \u2014 The answer may mention null as one of the values coming back from findFragmentById as long as the resulting exception it names is still the cast failure ('If a different type of fragment (or null) ... will throw this runtime exception'); no null-caused crash is asserted.",
+        "side_b": "deduct 2 \u2014 The answer treats the possible null as the trigger of a separate failure mode in this code, naming or describing a null-caused exception in addition to the ClassCastException."
+    },
+    {
+        "id": "2e_anchor_to_cast_op",
+        "name": "Pins the failure to the cast operation on the marked line vs. leaves the mechanism unanchored and diffuses it to other code",
+        "side_a": "no_deduct \u2014 the answer explicitly names the cast itself as the failing operation on the marked line (e.g. 'during the cast', 'attempting to cast it', 'the line where the fragment is cast'), so the ClassCastException is tied to the specific statement being asked about; extra exceptions, if mentioned, are clearly subordinate to that anchored claim.",
+        "side_b": "deduct \u2014 the answer states ClassCastException only as a consequence of an interface mismatch without ever identifying the cast expression/marked line as the failure point, and then shifts the discussion to unnamed 'other runtime exceptions' arising from other code (e.g. the callee's implementation) or unspecified 'system constraints', leaving the mechanism at the marked line unanchored."
+    },
+    {
+        "id": "2f_offtarget_named_exceptions",
+        "name": "Confines the answer to the cast failure vs. also asserts specific named exception types at other code locations",
+        "side_a": "No deduction: the answer commits to the ClassCastException at the marked cast as the exception, with any extra possibilities left unnamed/vague or explicitly ruled out, so the single correct exception type stands as the answer.",
+        "side_b": "Deduct: the answer dilutes the identification by listing additional concretely-named exception types (e.g. NullPointerException, IllegalStateException) attached to unrelated code (system-service lookup, foreground-service start), presenting them as competing candidate answers rather than keeping the marked line's ClassCastException as the answer."
+    },
+    {
+        "id": "3a_spurious_named_exceptions",
+        "name": "Extra exception talk: vague/hedged aside vs. concretely named additional exception types attributed to other code paths",
+        "side_a": "No deduct \u2014 the answer identifies the ClassCastException at the marked cast and either confines itself to that, or mentions other possibilities only as an unnamed, hedged aside (e.g. 'other runtime exceptions could occur'), without asserting specific alternative exception types for the line/method.",
+        "side_b": "Deduct \u2014 the answer, beyond the cast, asserts specific named exception types tied to other imagined failures (NullPointerException from unavailable system services, IllegalStateException from foreground-service startup) that are not supported by the code at the marked line, diluting/clouding the identified answer."
+    },
+    {
+        "id": "3b_null_path_acknowledged",
+        "name": "Acknowledges the null/NPE failure path at findFragmentById vs. ignores or explicitly rules it out",
+        "side_a": "No deduction when the answer, besides naming the ClassCastException, also brings the null case into play \u2014 either noting that the fragment lookup may yield null or listing NullPointerException among the possible exceptions at this spot.",
+        "side_b": "Deduct when the answer treats the cast as the sole failure mode and never raises the null-return possibility, or affirmatively excludes it (e.g. claims findFragmentById 'never throws' and that the cast is 'the only exception')."
+    },
+    {
+        "id": "4a_explicit_null_token_vs_generic_type_disjunction",
+        "name": "Credit requires an explicit 'null'/'missing'/'no fragment found' token vs a generic type-mismatch disjunction ('or is not of the expected type') counts as covering not-found",
+        "side_a": "Credit only if the answer literally names the absent/null return of findFragmentById (e.g., 'or null', 'if no fragment is present', 'returns null'). A combined sentence counts only when it contains such an explicit missing/null reference alongside the wrong-type reference.",
+        "side_b": "Credit any broadened or hedged description of why the cast fails ('does not implement the interface or is not of the expected type', 'doesn't actually implement that interface') as implicitly covering the not-found case, without requiring the word null/missing."
+    },
+    {
+        "id": "4a_null_raised_as_risk_vs_null_dismissed_as_handled",
+        "name": "Null mentioned as a live failure source vs null mentioned only to rule it out as already handled",
+        "side_a": "Credit when null/absence is presented as something that can go wrong at this line. Deduct when the answer mentions null only to declare it safe or impossible (e.g., says the later null-check protects, or that findFragmentById never throws), since it affirmatively denies the not-found failure case.",
+        "side_b": "Credit any occurrence of null/absence in the discussion of this line, including statements that the null case is handled or cannot cause a problem."
+    },
+    {
+        "id": "5a_anchor_to_marked_line",
+        "name": "Explicitly anchors the ClassCastException to the marked cast line vs. names the cause without locating it at the marked line",
+        "side_a": "No deduct if the answer explicitly ties the exception to the marked line / the cast expression itself (quoting the line, saying \"at the marked line\", \"at that line\", or \"on the line where the fragment is cast\").",
+        "side_b": "Deduct if the answer only states the failure condition (fragment doesn't implement the interface) without identifying the marked cast line as the site, so the exception is never pinned to the asked-about location."
+    },
+    {
+        "id": "5a_named_vs_vague_extras",
+        "name": "Extra exception possibilities named concretely vs. vague unnamed hand-waving",
+        "side_a": "No deduct if any additional exception possibilities beyond the cast are named concretely (specific exception types with specific triggers) or omitted entirely.",
+        "side_b": "Deduct if the answer dilutes the answer with unspecified \"other runtime exceptions\" tied to unrelated calls/conditions, giving no exception type and no mechanism."
+    }
+]

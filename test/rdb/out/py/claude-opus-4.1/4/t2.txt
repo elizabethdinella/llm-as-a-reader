@@ -1,0 +1,2 @@
+
+Yes, you need to call `deepcopy(result)` before modifying `result[DATA]`. Without it, you would be modifying the original `reply.result` object since `result = reply.result` only creates a reference. This would cause issues because the code later uses `reply.result` for graph storage (in `storeTxnInGraph`), which likely expects the original unserialized format, while the ledger needs the serialized format.

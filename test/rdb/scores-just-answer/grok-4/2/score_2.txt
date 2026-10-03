@@ -1,0 +1,9 @@
+[
+  { "item": "1a", "deducted": false, "feedback": "The answer explicitly states that Collections.singletonMap returns an immutable map that throws UnsupportedOperationException on modification attempts." },
+  { "item": "1b", "deducted": false, "feedback": "The answer states that wrapping in new HashMap<>(...) creates a mutable copy allowing additions, removals, or changes." },
+  { "item": "1c", "deducted": false, "feedback": "The answer notes the singletonMap contains a single key-value pair (a single-entry map)." },
+  { "item": "2a", "deducted": true, "feedback": "The answer never mentions or describes the method signature of messageParams (e.g., its parameter types such as FetchProfile and the map type/generics). It only refers to messageParams abstractly." },
+  { "item": "2b", "deducted": true, "feedback": "The answer does not state that messageParams specifically requires/takes a HashMap type parameter; it only speculates that a mutable map 'might be necessary', which is not the required specific claim." },
+  { "item": "2c", "deducted": true, "feedback": "The answer does not discuss any actual usages of the map inside messageParams, and it fails to determine whether those usages modify the map, instead hedging with 'This mutability might be necessary if ... internally modifies the map, but if no modifications are needed...'." },
+  { "item": "2d", "deducted": false, "feedback": "The answer does not affirmatively claim that the usages modify the map; it only raises it as a conditional possibility, so no incorrect assertion of mutation is made." }
+]

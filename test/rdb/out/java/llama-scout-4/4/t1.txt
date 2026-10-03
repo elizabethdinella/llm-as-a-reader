@@ -1,0 +1,2 @@
+
+You don't necessarily need the null check for roleInfoList. The code will still work as expected without it.

@@ -1,0 +1,15 @@
+<answer>
+public Account(String requestedName) { 
+    int counter = 1; 
+    String baseUsername = requestedName; 
+
+    if (isAvailable(requestedName)) { 
+        this.username = requestedName; 
+    } else { 
+        while (!isAvailable(baseUsername + counter)) { 
+            counter++; 
+        } 
+        this.username = baseUsername + counter; 
+    } 
+}
+</answer>

@@ -1,0 +1,13 @@
+<answer>
+public String getShortenedName()
+{
+    String result = username;
+    int index = result.indexOf("-");
+    while (index != -1)
+    {
+        result = result.substring(0, index - 1) + result.substring(index + 1);
+        index = result.indexOf("-");
+    }
+    return result;
+}
+</answer>

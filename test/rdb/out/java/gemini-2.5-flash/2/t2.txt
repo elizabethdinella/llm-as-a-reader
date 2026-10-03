@@ -1,0 +1,2 @@
+
+The difference is that `Collections.singletonMap()` creates an **immutable** map with a single entry, meaning its contents cannot be changed after creation. In contrast, `new HashMap<>(Collections.singletonMap(...))` creates a **mutable** `HashMap` initialized with that single entry, allowing it to be modified (e.g., adding more key-value pairs or removing entries) later without throwing an `UnsupportedOperationException`. The use of `new HashMap` here implies that the `UidFetchCommand.Builder` or the resulting `UidFetchCommand` needs a modifiable map instance.

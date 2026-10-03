@@ -1,0 +1,19 @@
+**Rubric Item 1 – Mutability/size differences (3 points)**
+- singletonMap immutable: explicitly stated ("tiny, immutable Map", mutative ops throw `UnsupportedOperationException`) ✔
+- HashMap mutable: explicitly stated ("fully mutable and can later accept more key/value pairs") ✔
+- singletonMap holds only a single key-value mapping: explicitly stated ("contains exactly one entry", "single-entry map") ✔
+
+No deductions → 3/3
+
+**Rubric Item 2 – Discussion of messageParams (4 points)**
+- Method signature of `messageParams`: never given or described (no parameter types, no return type). Deduct 1.
+- Does not state that `messageParams` takes a `HashMap`; it only speaks generically about "the map" and conditions on whether mutability is needed. Deduct 1.
+- Does not examine the actual usages of the map argument inside `messageParams`; instead it hedges with "if ... only reads the map ... but if the builder ... needs to add, remove or update entries", never determining which is the case. Deduct 1.
+- It does not affirmatively (incorrectly) claim that the usages modify the map — the statement is purely conditional — so the 2-point deduction for the false claim does not apply.
+
+4 − 3 = 1/4
+
+<scores>
+	<score> 3/3 </score>
+	<score> 1/4 </score>
+</scores>

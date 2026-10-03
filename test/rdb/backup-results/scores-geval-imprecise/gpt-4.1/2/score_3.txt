@@ -1,0 +1,16 @@
+<scores>
+<score> 3/3 </score>
+<score> 1/4 </score>
+</scores>
+
+**Reasoning:**
+
+**Rubric Item 1 (3/3):** The answer explicitly states that `Collections.singletonMap` "returns an immutable map containing only the mapping you provide" — covering both immutability (1 pt) and the single key-value mapping (1 pt). It also clearly states that `new HashMap<>(...)` "creates a new mutable `HashMap`" that can be added to, removed from, or modified (1 pt). No deductions.
+
+**Rubric Item 2 (1/4):**
+- The message signature of `messageParams` is never mentioned or shown. **−1**
+- The answer never states that `messageParams` takes a `HashMap`; it only speaks generically about "a mutable map," which the rubric explicitly says is not specific enough. **−1**
+- The answer does not examine or discuss the actual usages of the map argument inside `messageParams`, and instead leaves it entirely open ("The correct usage depends on whether `messageParams` or subsequent code needs to modify the map"), failing to determine whether the usages mutate the map. **−1**
+- The answer does not affirmatively claim that the usages modify the map — its statements are hypothetical/conditional ("any attempt to modify it will throw..."), so the 2-point deduction for an incorrect claim does not apply. **No deduction (2 pts retained)**
+
+Total: 4 − 3 = 1.

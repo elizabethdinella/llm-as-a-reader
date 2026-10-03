@@ -1,0 +1,19 @@
+**Rubric Item 1 – Mutability and size differences:**
+- The answer explicitly states `Collections.singletonMap()` creates an **immutable** map → no deduction.
+- It explicitly states `new HashMap<>(...)` produces a fully **mutable** `HashMap` → no deduction.
+- It states the singleton map "contains exactly one entry," which conveys the single key-value mapping → no deduction.
+
+Score: 3/3
+
+**Rubric Item 2 – Discussion of `messageParams`:**
+- The answer never mentions `messageParams` at all, so the method signature is not given → deduct 1.
+- It does not state that `messageParams` takes a `HashMap` (it only speaks generally about needing a mutable map for `UidFetchCommand`) → deduct 1.
+- It does not examine the actual usages of the map argument inside `messageParams`, and rather than determining that they are read-only, it speculates that the command's "internal logic needs to alter the map," failing to clearly resolve whether modification occurs → deduct 1.
+- The claim is hedged/conditional ("if the command's internal logic needs to alter the map") rather than an outright assertion that the usages modify the map, so the 2-point deduction for an incorrect claim is not applied, though it is borderline misleading.
+
+Score: 1/4
+
+<scores>
+	<score> 3/3 </score>
+	<score> 1/4 </score>
+</scores>

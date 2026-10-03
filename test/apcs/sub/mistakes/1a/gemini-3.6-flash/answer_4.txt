@@ -1,0 +1,11 @@
+<answer>
+public Account(String requestedName)
+{
+    String name = requestedName;
+    if (!isAvailable(name))
+    {
+        name = requestedName + 1;
+    }
+    username = name;
+}
+</answer>

@@ -1,0 +1,38 @@
+[
+    {
+        "id": "1a_no_characterization_of_cumulative",
+        "name": "Answer actually characterizes what makes a KPIset 'cumulative' vs. only asserts universal applicability without ever saying what cumulative means",
+        "side_a": "If the answer states, even briefly or inaccurately, what a cumulative KPIset is (e.g., it keeps accumulating samples over the whole run / never resets / spans the full test rather than one interval), credit the sub-item \u2014 the meaning was discussed.",
+        "side_b": "If the answer only argues about *when* `_compact_times()` should be invoked (\"on every KPIset\", \"unconditional first step\") and never supplies any content about what 'cumulative' denotes, deduct \u2014 the distinction was dodged, not discussed."
+    },
+    {
+        "id": "1a_cumulative_treated_as_unknown",
+        "name": "Owning the term vs. treating 'cumulative' as an undefined hypothetical to be handled elsewhere",
+        "side_a": "If the answer commits to a meaning for cumulative KPIsets and reasons from it, credit.",
+        "side_b": "If the answer explicitly flags 'cumulative' as something it does not know or defers it (scare quotes, 'if they have different requirements', 'whether it is cumulative or a time window'), deduct \u2014 the concept is named but left empty."
+    },
+    {
+        "id": "1b_claim_presence_vs_absence",
+        "name": "Answer makes no affirmative claim about what cumulative KPISets are vs. it asserts a definition/property of them",
+        "side_a": "If the answer only uses the term 'cumulative' to say the method should be called on all KPISets (or more than just cumulative ones) and never states any property, definition, or behavior of cumulative KPISets, there is nothing to be wrong about \u2014 do not deduct the 3 points.",
+        "side_b": "Deduct the 3 points only when the answer affirmatively asserts a property of cumulative KPISets (dedup/duplicate-handling, or coverage of a non-fixed/variable/sliding period). Mere use of the word 'cumulative' as a category label in the scope argument is not such an assertion."
+    },
+    {
+        "id": "1b_hypothetical_vs_asserted",
+        "name": "Conditional/hedged or disjunctive reference to cumulative behavior vs. flat assertion about it",
+        "side_a": "If any statement touching cumulative KPISets is framed hypothetically or as an open disjunction (e.g. 'if cumulative KPIsets have different requirements...', 'whether the KPIset is cumulative or represents a time window'), treat it as not committing to a property \u2014 do not deduct.",
+        "side_b": "Deduct only when the answer commits, in the indicative, to a wrong property of cumulative KPISets (they deduplicate / they cover a variable or sliding period); hedged or conditional phrasing does not count as such a commitment."
+    },
+    {
+        "id": "2a_callsite_position_vs_data_operation",
+        "name": "Justifying from the call-site's position in the code ('it's the first/unconditional step') vs describing what the operation actually does to the data",
+        "side_a": "No deduct when the answer grounds its claim in what `_compact_times()` does to the underlying data (e.g. consolidating/eliminating data points so the statistics are computed over a reduced, clean set), i.e. an operation-level account rather than an inference from where the call appears.",
+        "side_b": "Deduct when the answer's only support is the call's location/unconditionality in `recalculate()` ('called at the very beginning', 'unconditional first step', 'required preprocessing step') or a bare assertion that stats would otherwise be inaccurate, without saying anything about what compaction does to the time data."
+    },
+    {
+        "id": "2b_scope_of_call_universal_vs_cumulative_only",
+        "name": "Restricts _compact_times() to cumulative KPISets vs asserts it must run on every KPISet",
+        "side_a": "No deduct if the answer keeps _compact_times() scoped to the cumulative KPISet case (i.e., says it is needed/called for cumulative sets, or declines to extend it to all sets), even if its stated reason for compaction is thin.",
+        "side_b": "Deduct the 2 points if the answer affirmatively claims _compact_times() should/must be called on every KPISet regardless of cumulativeness \u2014 including when the claim is justified only by its unconditional position at the top of recalculate() \u2014 since this contradicts the cumulative-only applicability of the compaction step."
+    }
+]

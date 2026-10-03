@@ -1,0 +1,26 @@
+<answer>
+public int moreHistoryThanMathAbsences()
+{
+    int count = 0;
+
+    for (CourseRecord histRec : historyList)
+    {
+        String id = histRec.getStudentID();
+        int histAbs = histRec.getAbsences();
+
+        for (CourseRecord mathRec : mathList)
+        {
+            if (id.equals(mathRec.getStudentID()))
+            {
+                if (histAbs > mathRec.getAbsences())
+                {
+                    count++;
+                }
+                break;   // student IDs are unique within a list
+            }
+        }
+    }
+
+    return count;
+}
+</answer>

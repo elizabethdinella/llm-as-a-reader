@@ -1,0 +1,2 @@
+
+Yes, you need to ensure that `deepcopy(result)` is called before modifying `result[DATA]` if you want to prevent changes to the original `reply.result` for all transaction types. However, in the current code, `deepcopy(result)` is already called for specific transaction types (`SCHEMA` and `ISSUER_KEY`), so for those cases, the modification is safe and does not affect the original data. If the intent is to protect the original data only for these types, no additional `deepcopy` call is needed before modifying `result[DATA]`.

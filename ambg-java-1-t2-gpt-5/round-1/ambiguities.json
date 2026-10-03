@@ -1,0 +1,14 @@
+[
+    {
+        "id": "3a_early_return_semantics",
+        "name": "correctly describes early-return gating vs misstates early-return as ensuring non-null",
+        "side_a": "no_deduct if the answer explains that the early return prevents later code from running when drawer is null (i.e., later code only runs when drawer is non-null) and/or clearly distinguishes which parts depend on drawer versus those that don't.",
+        "side_b": "deduct if the answer claims the method 'ensures' drawer is non-null by returning early or otherwise mischaracterizes the effect of the early return."
+    },
+    {
+        "id": "3b_guard_vs_precondition",
+        "name": "Recognizes in-method null-guard dependency vs claims external precondition/no direct dependency",
+        "side_a": "no_deduct: Credit answers that explicitly ground the dependency in the method's own control flow (e.g., citing the early-return null check and/or subsequent calls on drawer), showing that the end-of-method code executes only when drawer is non-null.",
+        "side_b": "deduct: Deduct when the answer denies a direct dependency and frames non-null as an external assumption/precondition (e.g., says the method assumes drawer is initialized before being called), thereby moving the dependency outside the method."
+    }
+]

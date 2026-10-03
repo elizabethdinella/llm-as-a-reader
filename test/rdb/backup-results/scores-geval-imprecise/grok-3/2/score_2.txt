@@ -1,0 +1,21 @@
+**Rubric Item 1 — Mutability and size differences (3 points)**
+
+- The answer explicitly states that `singletonMap` is **immutable** ✔ (no deduction)
+- The answer explicitly states that `HashMap` is **mutable** and "allows modifications" ✔ (no deduction)
+- The answer notes that `singletonMap` is "optimized for a single key-value pair," which conveys that it holds only one mapping ✔ (no deduction, though the phrasing is somewhat vague/indirect)
+
+Score: 3/3
+
+**Rubric Item 2 — Discussion of `messageParams` (4 points)**
+
+- The answer never presents or references the **method signature** of `messageParams` ✘ (−1)
+- The answer never states that `messageParams` **takes a `HashMap`** specifically (it only compares the two map types generically, without identifying the declared parameter type) ✘ (−1)
+- The answer does not examine how the map argument is **used inside** `messageParams`, and does not determine whether those usages are read-only. It vaguely gestures at "the risk of unintended changes" and "if no modifications are needed," which leaves the question unresolved ✘ (−1)
+- The answer does not affirmatively claim that the usages modify the map — it only hedges about hypothetical risk — so the 2-point falsehood deduction does not apply ✔ (no deduction)
+
+Score: 1/4
+
+<scores>
+	<score> 3/3 </score>
+	<score> 1/4 </score>
+</scores>

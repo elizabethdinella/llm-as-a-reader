@@ -1,0 +1,8 @@
+[
+    {
+        "id": "1a_names_the_exception_vs_only_null_guard_advice",
+        "name": "Answer explicitly names the NPE/crash consequence vs merely recommends a null guard without naming any exception",
+        "side_a": "Do not deduct when the answer explicitly names the exception or crash that results from the null dereference (e.g., 'will throw a NullPointerException', 'NPE', 'crashing your application'), even if the recommendation itself is hedged, conditional, or phrased as 'you don't necessarily need to'.",
+        "side_b": "Deduct 1 point when the answer only advises adding a null guard / null-safe idiom (e.g., 'if mPrefix can ever be null you should guard against it', 'use StringUtils.isNotEmpty') and never names NullPointerException or any thrown-exception/crash consequence \u2014 recommending defensive coding is not discussing the possible NPE."
+    }
+]

@@ -1,0 +1,7 @@
+{"justification": "The answer explicitly states that `singletonMap` creates an immutable map. Point not deducted.", "deducted": false}
+{"justification": "The answer states that `HashMap` allows modifications, i.e., is mutable. Point not deducted.", "deducted": false}
+{"justification": "The answer never mentions that `Collections.singletonMap` holds only a single key-value mapping (size limitation). Point deducted.", "deducted": true}
+{"justification": "The answer does not mention or reproduce the method signature of `messageParams` at all. Point deducted.", "deducted": true}
+{"justification": "The answer only says the code uses HashMap 'to ensure mutability'; it never states that the `messageParams` parameter is declared specifically as a `HashMap` type, which is the actual reason a `singletonMap` cannot be passed. This is not specific enough. Point deducted.", "deducted": true}
+{"justification": "The answer does note that the map isn't altered later, thereby determining that the usages are read-only, though it provides no detail about the actual usages. Given it clearly concludes the map is not modified, the point is not deducted.", "deducted": false}
+{"justification": "The answer does not claim the map is modified inside `messageParams`; in fact it says the opposite. No deduction for this lie item.", "deducted": false}

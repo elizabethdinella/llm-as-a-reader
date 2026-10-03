@@ -1,0 +1,2 @@
+
+The main difference between calling `F.cross_entropy` and `cross_entropy` is that `F.cross_entropy` is a PyTorch built-in function optimized for performance, while `cross_entropy` might be a custom function with different implementation and behavior.

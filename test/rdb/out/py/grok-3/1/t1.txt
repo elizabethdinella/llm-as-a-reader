@@ -1,0 +1,2 @@
+
+The difference between `F.cross_entropy` and `cross_entropy` in this context is that `F.cross_entropy` is a standard PyTorch function from the `torch.nn.functional` module used to compute cross-entropy loss, while `cross_entropy` (without the `F` prefix) is not a recognized PyTorch function and likely represents a typo or error in the code. Using `F.cross_entropy` is the correct approach for calculating loss in this script, as seen in the training and testing phases.

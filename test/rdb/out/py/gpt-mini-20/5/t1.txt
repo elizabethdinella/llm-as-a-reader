@@ -1,0 +1,2 @@
+
+In practice the check is defensive; it isn’t strictly required if `build_manager.setup_build()` guarantees that `BUILD_DIR` will always be set when it returns `True`. However, keeping the `if not build_directory` guard protects the function against subtle bugs where the environment variable is missing, unset, or an empty string, and makes the error path explicit.

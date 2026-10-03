@@ -1,0 +1,62 @@
+[
+    {
+        "id": "1a_verdict_check_is_needed",
+        "name": "Concludes the null check is required/load-bearing vs concludes it is unnecessary or redundant",
+        "side_a": "No deduction if the answer's bottom-line verdict is that the roleInfoList null check is needed \u2014 i.e., it is what triggers the DB fetch on a cache miss and removing it would break the caching logic \u2014 even if the answer also mentions NPE-safety or alternatives (computeIfAbsent, storing empty lists) as optional refactors.",
+        "side_b": "Deduct if the answer's bottom-line verdict is that the null check is not needed / is redundant (e.g., 'No, you don't need this null check'), since this denies the role the check plays in causing the database query on a missing cache entry."
+    },
+    {
+        "id": "1a_asserted_vs_mechanism",
+        "name": "States a mechanism linking null roleInfoList to the DB query vs bare unsupported assertion",
+        "side_a": "No deduction if the answer supplies at least one concrete mechanism tying the null/absent cache entry to the database fetch (e.g., 'detects a cache miss', 'determines whether to fetch from the database', 'retrieve roles from the database when the cache is empty').",
+        "side_b": "Deduct if the answer offers only a bare verdict about the null check with no statement of what the check does or what happens to the database call, leaving the required condition\u2192query link unarticulated."
+    },
+    {
+        "id": "1b_defensive_without_npe",
+        "name": "Robustness/defensive-programming framing stated *without* invoking NPEs vs framing that names NPE/error prevention as the purpose",
+        "side_a": "Do NOT deduct when the answer praises the check as 'good defensive programming' / robustness but grounds it in something other than exceptions (e.g., 'ensure you don't return null from this method'), i.e., the harm named is a null return or a broken cache path, not a thrown exception.",
+        "side_b": "Deduct 2 points when the stated purpose of the check is preventing errors/exceptions \u2014 e.g., 'necessary to prevent NullPointerExceptions', 'safeguard against potential errors' \u2014 since the guard is credited with exception protection it does not provide."
+    },
+    {
+        "id": "1b_no_mechanism_claim",
+        "name": "Answer makes no claim about consequences of removal vs asserts a consequence",
+        "side_a": "Do NOT deduct when the answer simply answers yes/no (or discusses only the caching/DB-fetch control flow) and makes no claim at all about what happens when the check is removed.",
+        "side_b": "Deduct 2 points when the answer volunteers a consequence of removal framed as an exception/error, rather than as 'returns null' or 'skips the DB call'."
+    },
+    {
+        "id": "1c_misattributed_disabled_branch",
+        "name": "Null check credited only for cache-miss detection vs. null check credited with the caching-disabled behavior that the `!isCachingEnabled()` operand actually provides",
+        "side_a": "No deduct if the answer ties the null check to the cache-miss / map-lookup-returned-nothing case (or simply denies it is needed), without assigning it the job of the caching-disabled branch.",
+        "side_b": "Deduct if the answer assigns the null check a second role in the caching-disabled path \u2014 i.e. claims it is what forces a fresh DB fetch when caching is off \u2014 which is actually done by the separate `!authConfigs.isCachingEnabled()` operand."
+    },
+    {
+        "id": "1c_names_null_consequence",
+        "name": "States the concrete consequence of a null (NPE / returning null) vs. describes only abstract control flow",
+        "side_a": "No deduct if the answer names what actually goes wrong with nulls \u2014 NPE risk, or the method returning null to the caller \u2014 grounding why the check matters.",
+        "side_b": "Deduct if the answer only asserts that the branching 'would break' without ever saying what a null value would cause downstream."
+    },
+    {
+        "id": "1f_functional_role_vs_error_prevention",
+        "name": "Check credited with a functional control-flow role (cache-miss \u2192 DB fetch) vs framed only as error/NPE prevention or subsumed by other logic",
+        "side_a": "Do NOT deduct if the answer attributes an actual control-flow function to the null check \u2014 i.e., it says the check is what detects a cache miss / determines whether the DB lookup happens \u2014 even if the answer also uses protective wording like 'safeguard' or 'prevent NullPointerExceptions'. The functional attribution shows the answer recognizes a real behavioral difference.",
+        "side_b": "Deduct 2 if the answer never grants the check any control-flow function and instead treats it as already covered by the surrounding condition or as mere defensive hygiene (e.g., 'it's already handled by the condition ...', 'the method will always proceed to fetch from database when needed'), so the check does nothing functionally."
+    },
+    {
+        "id": "2b_redundancy_basis",
+        "name": "check called unnecessary on control-flow/short-circuit grounds vs. on 'the value is never null' grounds",
+        "side_a": "Do not deduct when the answer says the null check is unneeded/redundant but grounds that claim in control flow, the surrounding boolean condition, or gives no nullability rationale at all (e.g. 'it's already handled by the condition', 'the method will always proceed to fetch from database'). The variable's nullability is never denied.",
+        "side_b": "Deduct 2 points when the answer's stated reason for dropping the check is that roleInfoList itself will never hold null (e.g. 'the check is unnecessary because the map/mapper never yields null'), i.e. the redundancy argument is a non-nullability argument."
+    },
+    {
+        "id": "2b_conditional_precondition",
+        "name": "non-nullability framed as a hypothetical precondition or proposed refactor vs. asserted as a fact about the current code",
+        "side_a": "Do not deduct when any non-null guarantee appears only as a condition the reader would have to establish or a change they could make (e.g. 'unless you can guarantee\u2026', 'if you ensure the cache never stores nulls', 'return an empty list from the DB call'); this presupposes null is currently possible.",
+        "side_b": "Deduct 2 points when the answer states as a present fact about this code that roleInfoList is non-null, rather than conditioning it on a guarantee or a proposed refactor."
+    },
+    {
+        "id": "3c_prescriptive_remediation_framing",
+        "name": "Advisory/remediation framing that presupposes the map can hold null values vs. answer that only explains current behavior (cache miss / caching disabled)",
+        "side_a": "No deduction when the answer explains the check purely in terms of the current code's behavior \u2014 cache miss, username not found, caching disabled, or returning fresh data \u2014 without issuing any guidance premised on the map holding null values for a username key.",
+        "side_b": "Deduct 2 points when the answer frames the check's necessity as contingent on a guarantee about stored values, or recommends changing how values are stored so nulls are never cached (e.g., 'unless you can guarantee the map always contains a non-null value', 'ensure the cache never stores nulls', 'store empty lists for \"no roles\"'). Prescriptive/remediation phrasing still puts a null-valued username entry on the table and is deducted."
+    }
+]

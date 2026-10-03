@@ -1,0 +1,109 @@
+I'll solve each part of this Java programming question step by step.
+
+## (a)(i) Class Declaration and Constructor
+
+We need to create a Bird class with private attributes and a constructor that takes species and distance per hour as parameters, initializing position to 500.0.
+
+<answer>
+public class Bird {
+    private double DistancePerHour;
+    private String Species;
+    private double XPosition;
+    private double YPosition;
+    
+    public Bird(String species, double distancePerHour) {
+        this.Species = species;
+        this.DistancePerHour = distancePerHour;
+        this.XPosition = 500.0;
+        this.YPosition = 500.0;
+    }
+}
+</answer>
+
+## (a)(ii) GetSpecies() Method
+
+This is a simple getter method that returns the species.
+
+<answer>
+public String GetSpecies() {
+    return Species;
+}
+</answer>
+
+## (a)(iii) GetPosition() Method
+
+This method needs to return a formatted string with X and Y positions.
+
+<answer>
+public String GetPosition() {
+    return "X = " + XPosition + " Y = " + YPosition;
+}
+</answer>
+
+## (a)(iv) Move() Method
+
+This method takes direction and minutes, calculates distance, and updates the appropriate position.
+
+<answer>
+public void Move(char direction, int minutes) {
+    double distance = (DistancePerHour / 60) * minutes;
+    
+    if (direction == 'N') {
+        YPosition += distance;
+    } else if (direction == 'S') {
+        YPosition -= distance;
+    } else if (direction == 'E') {
+        XPosition += distance;
+    } else if (direction == 'W') {
+        XPosition -= distance;
+    }
+}
+</answer>
+
+## (b) Creating Two Bird Instances
+
+We need to create two Bird objects with the specified parameters.
+
+<answer>
+Bird bird1 = new Bird("Cockatiel", 71.0);
+Bird bird2 = new Bird("Macaw", 56.0);
+</answer>
+
+## (c)(i) Main Program with User Interaction
+
+The main program needs to display bird info, get user input with validation, and update bird positions.
+
+<answer>
+import java.util.Scanner;
+
+Scanner scanner = new Scanner(System.in);
+
+System.out.println("Bird 1: " + bird1.GetSpecies() + " - " + bird1.GetPosition());
+System.out.println("Bird 2: " + bird2.GetSpecies() + " - " + bird2.GetPosition());
+
+int birdChoice = 0;
+while (birdChoice != 1 && birdChoice != 2) {
+    System.out.print("Select bird to move (1 or 2): ");
+    birdChoice = scanner.nextInt();
+}
+
+char direction = ' ';
+while (direction != 'N' && direction != 'S' && direction != 'E' && direction != 'W') {
+    System.out.print("Enter direction (N/S/E/W): ");
+    direction = scanner.next().charAt(0);
+}
+
+int minutes = -1;
+while (minutes < 0 || minutes > 500) {
+    System.out.print("Enter time in minutes (0-500): ");
+    minutes = scanner.nextInt();
+}
+
+if (birdChoice == 1) {
+    bird1.Move(direction, minutes);
+    System.out.println(bird1.GetSpecies() + " new position: " + bird1.GetPosition());
+} else {
+    bird2.Move(direction, minutes);
+    System.out.println(bird2.GetSpecies() + " new position: " + bird2.GetPosition());
+}
+</answer>

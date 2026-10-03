@@ -1,0 +1,2 @@
+
+Yes, you need to call deepcopy(result) before modifying result[DATA] to avoid accidentally modifying the original reply.result object. The current code has a logic flaw where the deep copy only happens for specific transaction types (SCHEMA, ISSUER_KEY), but the DATA modification occurs unconditionally, which could lead to unintended side effects if the transaction type is different. The deepcopy should be performed before any modifications to ensure data integrity and prevent pollution of the original reply structure.

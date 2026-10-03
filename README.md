@@ -1,0 +1,20 @@
+# LLM-as-a-Reader
+
+Artifact for "LLM-as-a-Reader: Automated Rubric Application via Active Ambiguity Resolution".
+
+## Contents
+- `utils.py`, `selection.py`, `calibrate.py`, `validate.py`, `consts.py`: LLM-as-a-Reader (ambiguity generation, rule application, greedy selection, refinement, grading notes, flagging). Prompts are in `utils.py`.
+- `llm_judge_geval*.py`: the LLM-as-a-Judge baseline (G-Eval style), zero-shot and few-shot.
+- `run_*.sh`, `compare_all.sh`, `eval.py`, `apcs_eval.sh`: experiment and scoring scripts.
+- `amb_stats.py`, `flag_stats.py`: ambiguity and flagging statistics (no model calls).
+- `ambg-*`, `random-*`, `llm-judge-*`: all run outputs used in the paper. Each `ambg-*/round-1/` holds the selected responses (`selected.json`), ambiguities, grading notes (`notes.json`), and predictions.
+- `test/apcs/sub/`: the 115 generated APCS responses; `manual.csv` files hold the expert labels.
+
+## Data not included
+The APCS free-response questions and scoring guidelines are copyrighted by the College Board. Download the 2026 AP Computer Science A free-response questions and scoring guidelines from AP Central and place them in `test/apcs/` (`q1a.txt` ... `q4.txt`, `rubric_1a.json` ... `rubric_4.json`).
+RubberDuckBench is publicly available; place it in `../RubberDuckBench`.
+
+## Running
+Set `ANTHROPIC_API_KEY` (and `OPENAI_API_KEY` for GPT backbones).
+- APCS: `Q=2 bash run_apcs.sh`, then `bash apcs_eval.sh 2`.
+- RubberDuckBench: `bash compare_all.sh <question> java|py`.

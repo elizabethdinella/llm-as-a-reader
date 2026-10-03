@@ -1,0 +1,21 @@
+<answer>
+public int moreHistoryThanMathAbsences()
+{
+    int count = 0;
+    for (CourseRecord hRec : historyList)
+    {
+        for (CourseRecord mRec : mathList)
+        {
+            if (hRec.getStudentID().equals(mRec.getStudentID()))
+            {
+                if (hRec.getAbsences() > mRec.getAbsences())
+                {
+                    count++;
+                }
+                break;
+            }
+        }
+    }
+    return count;
+}
+</answer>

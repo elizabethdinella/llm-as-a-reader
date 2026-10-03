@@ -1,0 +1,30 @@
+[
+    {
+        "justification": "The answer explicitly states that Collections.singletonMap() creates an immutable, memory-efficient map with exactly one entry, satisfying the requirement to mention singletonMap's immutability.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that 'new HashMap(Collections.singletonMap(...)) creates a mutable HashMap initialized with that single entry,' clearly noting that a HashMap is mutable. Therefore no deduction applies for sub-item 1c.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that Collections.singletonMap() creates an immutable, memory-efficient map 'with exactly one entry', which conveys that a singletonMap holds only a single key-value mapping. Therefore the requirement of sub-item 1d is satisfied.",
+        "deducted": false
+    },
+    {
+        "justification": "The candidate answer never mentions or describes the method signature of messageParams (e.g., its parameter types such as FetchProfile and Map/HashMap). It only speculates that the method 'likely needs to modify the map', without referencing the actual signature. Therefore the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer never states that messageParams declares a HashMap parameter type. It only speculates that the method 'likely needs to modify the map', which is a mutability-based rationale and explicitly deemed not specific enough by the rubric. No mention of the actual parameter type being HashMap.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer does not examine the actual usages of the map inside messageParams. It merely speculates that the method 'likely needs to modify the map', which neither discusses concrete usages nor clearly determines that they are read-only (in fact it suggests the opposite). The deduction criteria for 2d are met.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer asserts that the HashMap wrapper 'suggests the messageParams method likely needs to modify the map after receiving it,' which incorrectly claims/implies that the usages of the map argument within messageParams mutate it. In reality the usages are read-only, so this incorrect statement triggers the deduction.",
+        "deducted": true
+    }
+]

@@ -1,0 +1,37 @@
+[
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly states that `Collections.singletonMap` creates an immutable Map containing exactly one key-value pair, and that attempts to modify it throw `UnsupportedOperationException`. It contrasts this with `new HashMap<>(...)`, which produces a mutable, general-purpose map that can grow beyond a single entry, and notes the memory/overhead differences. Both the mutability requirement (singletonMap is immutable) and the size difference (single entry vs. arbitrary size) are addressed, so the rubric condition is satisfied.",
+        "item": "1a"
+    },
+    {
+        "deducted": false,
+        "feedback": "The answer explicitly states that `new HashMap<>(Collections.singletonMap(...))` produces a mutable map ('The resulting `HashMap` object is **mutable**. You can add, remove, or modify entries within this `HashMap` without error'), and contrasts it with `Collections.singletonMap`, which it correctly describes as immutable and holding exactly one key-value pair (throwing `UnsupportedOperationException` on modification). It also touches on size/overhead differences (singletonMap being lightweight/specialized single-entry vs HashMap's initial capacity, load factor, and internal array overhead), and explains the practical implication for the `messageParams` parameter. The rubric's requirement that the answer state a HashMap is mutable is clearly satisfied, so no deduction applies.",
+        "item": "1b"
+    },
+    {
+        "deducted": false,
+        "feedback": "The candidate explicitly states that `Collections.singletonMap(key, value)` \"Creates an immutable Map containing exactly one key-value pair,\" satisfying the requirement to mention that singletonMap returns only a single key-value mapping. It also thoroughly discusses mutability differences (singletonMap throws UnsupportedOperationException on modification, while the HashMap copy is mutable and can have entries added/removed), as well as size/overhead considerations (singletonMap being lightweight/memory-efficient versus HashMap's capacity, load factor, and internal array). Both the mutability and size aspects required by the rubric are covered.",
+        "item": "1c"
+    },
+    {
+        "deducted": true,
+        "feedback": "The candidate answer only discusses the general Java-level distinction between an immutable `Collections.singletonMap` and a mutable `HashMap` copy. While it references `messageParams` by name a few times (\"the receiving method (`messageParams` in this case)\"), it never states or discusses the actual signature of `messageParams` \u2014 i.e., that it accepts a `FetchProfile` and a `Map<String, Message>` (hence the `(Message)` cast in the call and why the map type/mutability matters for that parameter). Since the rubric requires mentioning the method signature of `messageParams`, and the answer treats it as an unspecified generic \"Map parameter\" receiver without identifying its declared parameter types, the condition is not met.",
+        "item": "2a"
+    },
+    {
+        "deducted": true,
+        "feedback": "The rubric requires the answer to state that `messageParams` specifically takes a `HashMap` as its parameter type (which is why the singletonMap must be wrapped \u2014 it would not even compile/type-check otherwise). The candidate answer never mentions the declared parameter type of `messageParams`; it only frames the discussion around mutability, stating the HashMap wrapper is used 'if the map needs to be mutable by the receiving `messageParams` method' and that it is 'generally safer.' The rubric explicitly says that citing mutability alone is not specific enough. Therefore the point is deducted.",
+        "item": "2b"
+    },
+    {
+        "deducted": true,
+        "feedback": "The answer only explains the generic Java-level difference between an immutable singletonMap and a mutable HashMap. It never examines how the map argument is actually used inside messageParams (or within UidFetchCommand), and does not establish that those usages are read-only. Instead it hedges, speculating that the map 'might need to be modified later by the receiving method' and concluding that HashMap is 'generally safer' \u2014 i.e., it explicitly fails to determine whether messageParams modifies the map. This is precisely the failure described by the rubric item, so the point is deducted.",
+        "item": "2c"
+    },
+    {
+        "deducted": false,
+        "feedback": "The answer does discuss `messageParams` explicitly, referring to it as the receiving method for the map argument. Regarding the potential error condition: the answer never affirmatively claims that `messageParams` (or its downstream usages) actually mutates the map. Its statements are framed conditionally/hypothetically \u2011 e.g., 'It is suitable when the map ... might need to be modified later by the receiving method (`messageParams` in this case)' and 'Use `new HashMap<>(...)` if the map needs to be mutable by the receiving `messageParams` method' \u2011 which describe general criteria for choosing a mutable map rather than asserting that this particular code path modifies it. The closing remark that the HashMap approach is 'generally safer' is a general-practice comment, not a factual claim about mutation in this code. Since the answer does not incorrectly assert that the usages of the map modify it, no deduction applies, though it also does not affirmatively note that in this test context the two forms would behave identically because the map is never mutated.",
+        "item": "2d"
+    }
+]

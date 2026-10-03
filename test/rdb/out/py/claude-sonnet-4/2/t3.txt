@@ -1,0 +1,2 @@
+
+You should call `_compact_times()` on every KPIset, not just cumulative ones. The method is positioned at the very beginning of `recalculate()` and called unconditionally, indicating it's a necessary data preparation step for all KPI calculations. Since the subsequent average, percentile, and standard deviation calculations depend on properly formatted time data, skipping `_compact_times()` on non-cumulative KPIsets could lead to incorrect results or calculation errors.

@@ -1,0 +1,7 @@
+{"justification": "Immutability of singletonMap is never mentioned; the answer only talks about memory efficiency and intent clarity.", "deducted": true}
+{"justification": "The answer does not state that HashMap is mutable; describing it as 'more general-purpose' does not convey mutability.", "deducted": true}
+{"justification": "The answer does convey that singletonMap holds only a single key-value pair ('more memory-efficient for storing a single key-value pair', 'only one entry needs to be stored').", "deducted": false}
+{"justification": "The answer never references the signature of messageParams or its parameter types.", "deducted": true}
+{"justification": "The answer does not state that messageParams specifically requires a HashMap; in fact it wrongly suggests singletonMap would be preferable, implying it would compile.", "deducted": true}
+{"justification": "The answer does not discuss how the map argument is used inside messageParams, nor whether those usages are read-only.", "deducted": true}
+{"justification": "The answer makes no claim that the usages modify the map, so this lie-based deduction does not apply.", "deducted": false}

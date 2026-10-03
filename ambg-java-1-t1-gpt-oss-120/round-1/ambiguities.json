@@ -1,0 +1,26 @@
+[
+    {
+        "id": "2a_final_line_dependency_claim",
+        "name": "final-line-dep-claim: claims no dependency vs claims dependency",
+        "side_a": "Answer explicitly says the final line does **not** depend on `drawer` (or only has a control dependency) \u2013 give credit.",
+        "side_b": "Answer claims the final line **does** depend on `drawer` (either data or control) \u2013 deduct."
+    },
+    {
+        "id": "2b_dependency_presence",
+        "name": "acknowledges\u2011some\u2011dependency vs denies\u2011any\u2011dependency",
+        "side_a": "Credit the answer when it acknowledges that the final line\u2019s execution is in any way dependent on `drawer` (direct data, control\u2011flow guard, or null\u2011check).",
+        "side_b": "Deduct when the answer claims there is no dependency on `drawer` at all, ignoring the early\u2011return/null\u2011check control relationship."
+    },
+    {
+        "id": "3a_conditional_mention_vs_none",
+        "name": "conditional\u2011mention vs no\u2011conditional\u2011mention",
+        "side_a": "Credit answers that explicitly state that the code\u2019s execution is conditional on a null\u2011check or on `drawer` being non\u2011null (e.g., \u2018only executes when\u202fdrawer\u202fis\u202finitialized\u2019, \u2018if\u202fdrawer\u202fis\u202fnull \u2026 returns early\u2019, \u2018only reaches \u2026 if\u202fdrawer\u202fis\u202fnot\u202fnull\u2019).",
+        "side_b": "Deduct answers that merely assert that `drawer` must be non\u2011null for the operations but do not mention any conditional execution or guard (e.g., \u2018calls methods on\u202fdrawer\u202fwhich must be non\u2011null\u2019)."
+    },
+    {
+        "id": "3b_guard_mention",
+        "name": "mentions_guard vs omits_guard",
+        "side_a": "No deduction: the answer explicitly mentions that the execution of the final line is conditioned on `drawer` being non\u2011null (e.g., refers to the early\u2011return null\u2011check or says the code only runs when `drawer` is initialized).",
+        "side_b": "Deduction: the answer makes no mention of the null\u2011check guard, implying the final line could run unconditionally or ignoring the control\u2011dependency on `drawer`."
+    }
+]

@@ -1,0 +1,2 @@
+
+The main difference is that `Collections.singletonMap()` creates an immutable map with exactly one entry, while wrapping it in a new `HashMap` creates a mutable map. In this code, using the `HashMap` constructor creates an unnecessary object since the map isn't modified afterward. Using `singletonMap` directly would be more efficient for this single-entry immutable use case, unless the called method specifically requires a `HashMap` implementation or mutability.

@@ -1,0 +1,30 @@
+[
+    {
+        "justification": "The candidate answer only discusses memory usage and performance optimization differences between HashMap and singletonMap. It never mentions that Collections.singletonMap returns an immutable map (nor does it mention mutability at all). Therefore the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer only discusses memory usage and performance differences, stating singletonMap is optimized for single entries. It never mentions that HashMap is mutable (nor that singletonMap is immutable). Therefore the point for rubric sub-item 1c should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer states that singletonMap is 'more optimized for storing single entries' and that it is suitable 'since only one message is associated with each uid'. This conveys that a singletonMap holds/returns only a single key-value mapping, satisfying sub-item 1d.",
+        "deducted": false
+    },
+    {
+        "justification": "The candidate answer only discusses generic memory/performance differences between HashMap and singletonMap. It never mentions or discusses the method signature of messageParams (e.g., that it accepts a FetchProfile and a HashMap<String, Message>). Therefore the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer only discusses memory usage and performance differences between HashMap and singletonMap. It never states or even alludes to the fact that the messageParams method signature requires/takes a HashMap (nor even that it requires a mutable map). Therefore the point for sub-item 2c should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer only discusses memory usage and performance differences between HashMap and singletonMap. It never examines how the map argument is used inside messageParams, nor does it state whether those usages are read-only or mutating. Therefore the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer only discusses memory usage and performance differences, and does not make any claim about how the map argument is used within messageParams. It never states that the usages modify the map, so the deduction criterion for sub-item 2e is not triggered.",
+        "deducted": false
+    }
+]

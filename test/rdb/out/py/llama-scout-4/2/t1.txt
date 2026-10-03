@@ -1,0 +1,2 @@
+
+You should call compact_times() on cumulative KPIsets if your analysis primarily focuses on trends over time and you're dealing with a large dataset. However, if real-time optimization across all KPI sets is crucial for your application, then call it on every KPIset.

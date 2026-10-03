@@ -1,0 +1,62 @@
+[
+    {
+        "id": "1a_controlflow_guard_counted_as_dependence",
+        "name": "Denies dependence outright vs affirms dependence via the null-check/early-return guard",
+        "side_a": "Give credit if the answer concludes the end-of-method code (the actionBarSubTitle.setVisibility line) does not depend on / has no usage of drawer, treating the preceding `if (drawer == null) return;` guard as merely a precondition that does not make the later line use drawer.",
+        "side_b": "Deduct 2 points if the answer answers 'Yes, it depends on drawer' on the grounds that the early return / null check means the later code only runs when drawer is non-null (or that drawer must be 'initialized before proceeding'); reachability-via-guard is not a usage of drawer and the answer has failed to state that no usage exists."
+    },
+    {
+        "id": "1a_misattributed_direct_drawer_calls",
+        "name": "Correctly scopes the end-of-method code to the setVisibility line vs attributes direct drawer.* calls to it",
+        "side_a": "Give credit if the answer identifies the code at the end of initializeFromLocalSearch as the actionBarSubTitle.setVisibility(...) statement (driven by singleFolderMode) and says it makes no drawer calls.",
+        "side_b": "Deduct 2 points if the answer claims the end-of-method code itself invokes drawer methods (e.g., drawer.selectFolder(), drawer.selectUnifiedInbox()), misattributing earlier branch code to the final statement and thereby asserting direct usage of drawer."
+    },
+    {
+        "id": "1b_generic_tail_reference_vs_named_call",
+        "name": "Generic 'the code at the end' dependency claim vs claim naming actionBarSubTitle.setVisibility as the drawer-using statement",
+        "side_a": "No deduction when the answer never attributes drawer usage to the actionBarSubTitle.setVisibility statement specifically, but only speaks generically about 'the code at the end' / 'the rest of the logic' depending on drawer (typically via early-return/initialization framing). With no statement-level attribution, there is no incorrect claim about setVisibility to penalize.",
+        "side_b": "Deduct when the answer explicitly names actionBarSubTitle.setVisibility (or its argument) as the thing that uses/reads drawer, i.e. it localizes the asserted dependency to that call rather than to the method tail in general."
+    },
+    {
+        "id": "1b_drawer_use_on_neighbouring_statements",
+        "name": "Drawer usage attributed to other statements in the tail region (drawer.selectFolder etc.) vs attributed to the setVisibility call",
+        "side_a": "No deduction when the asserted 'direct use' of drawer is placed on genuinely drawer-using neighbouring statements in the same region (drawer.selectFolder(), drawer.selectUnifiedInbox(), drawer.selectFolder(null)); these are true statements about other lines, and unrelated errors in the surrounding commentary (e.g. a bogus NPE claim) are not scored here.",
+        "side_b": "Deduct when the claimed direct call/receiver/argument relationship is placed on actionBarSubTitle.setVisibility itself, i.e. the answer says that particular line calls into or reads drawer."
+    },
+    {
+        "id": "2a_guard_vs_direct_use",
+        "name": "Locates the dependency in the early-return guard (control flow) vs. falsely claims the end-of-method code itself calls/uses drawer",
+        "side_a": "No deduct when the answer attributes the dependency solely to the `if (drawer == null) return;` guard and does not claim the final subtitle-visibility code itself touches drawer (i.e., it correctly characterizes what the tail code does).",
+        "side_b": "Deduct when the answer asserts that the end-of-method code performs drawer operations itself (e.g., 'makes direct calls to drawer.selectFolder()', 'proceeds with drawer-related operations'), or otherwise misdescribes the null-check as leaving a NPE hazard \u2014 i.e., the stated reason for the dependency is factually wrong about the code."
+    },
+    {
+        "id": "2a_commitment_specificity",
+        "name": "Explicit yes plus identification of the specific end-of-method code vs. hedged, non-committal restatement",
+        "side_a": "No deduct when the answer gives an explicit verdict and names the specific code at issue (e.g., the actionBarSubTitle.setVisibility line) together with the mechanism.",
+        "side_b": "Deduct when the answer never commits to a yes/no and only paraphrases the guard in vague terms ('depends on drawer being initialized before proceeding with the rest of the logic', 'structured to handle cases where drawer might be null'), without identifying which code is affected."
+    },
+    {
+        "id": "3a_guard_scope_accuracy",
+        "name": "Accurately describes the guard as protecting the trailing code vs. asserts the trailing code is unguarded / would NPE",
+        "side_a": "Do not deduct when the answer's description of the control flow is consistent with the guard actually protecting the end of the method \u2014 i.e., it says the null case exits/skips so the later line cannot run with a null drawer.",
+        "side_b": "Deduct 2 when the answer contradicts the guard's scope \u2014 e.g., it claims the method checks drawer for null but then uses drawer afterwards 'without proper null handling', or warns of a NullPointerException at the end of the method. Such an answer denies the very reachability relation the sub-item asks about, so no credit even though it mentions the null check."
+    },
+    {
+        "id": "3a_control_dependence_vs_data_use",
+        "name": "Dependence grounded in control flow (reaching the code) vs. grounded in drawer being used/called by the code",
+        "side_a": "Do not deduct when the answer bases the dependence on control flow \u2014 the null state of drawer determines whether the trailing statement is reached at all (early return / exit / skip).",
+        "side_b": "Deduct 2 when the answer bases the dependence only on drawer being used in the region ('calls drawer.selectFolder()', 'proceeds with drawer-related operations'), i.e., a data/usage dependence, without making the null state determine reachability of the final statement."
+    },
+    {
+        "id": "3b_generic_dependency_sufficiency",
+        "name": "Generic 'depends on drawer / guarded by early return' affirmation accepted vs requirement to name the actionBarSubTitle.setVisibility line specifically",
+        "side_a": "Do not deduct when the answer affirms the dependency only in general terms \u2014 e.g., that the code 'only proceeds' past the null check, or that the method 'returns early if drawer is null' \u2014 without ever naming or analyzing the actionBarSubTitle.setVisibility statement. A correct global statement of the guard is enough to show the final line is understood as unreachable with a null drawer.",
+        "side_b": "Deduct unless the answer explicitly ties the actionBarSubTitle.setVisibility call itself to drawer's non-nullity; a generic 'the code depends on drawer' that only discusses drawer-related operations leaves the subtitle line unaddressed and so fails the sub-item."
+    },
+    {
+        "id": "3b_misplaced_code_critique",
+        "name": "Wrong claims about other parts of the method (e.g., 'no proper null handling', 'logical inconsistency') vs wrong claims about setVisibility's reachability",
+        "side_a": "Do not deduct for incorrect commentary about the code's quality or structure elsewhere \u2014 claiming the method 'proceeds to use drawer operations without proper null handling' or alleging a 'logical inconsistency' \u2014 as long as the answer never asserts that the final setVisibility call executes with a null drawer. Only errors about the guarded status of the end-of-method code count.",
+        "side_b": "Deduct for any factually wrong statement about the guard, including saying the method lacks proper null handling after the early return, since that implies drawer-dependent code can run unguarded."
+    }
+]

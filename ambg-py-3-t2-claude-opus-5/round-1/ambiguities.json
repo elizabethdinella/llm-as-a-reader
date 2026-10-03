@@ -1,0 +1,14 @@
+[
+    {
+        "id": "1a_breadth_as_capability_vs_permissiveness_risk",
+        "name": "breadth framed as UTF-8's affirmative character-handling capability (and endorsed) vs breadth mentioned only as a laxness/validity risk while rejecting UTF-8",
+        "side_a": "Give credit when the answer affirmatively states UTF-8's wider character handling as a reason to prefer/accept it as the default (e.g., endorses UTF-8 because it 'handles a broader range of characters' and is ASCII-compatible). The breadth must be presented as a positive property of the UTF-8 encoding itself.",
+        "side_b": "Deduct when the answer rejects UTF-8 and only alludes to its wider coverage negatively, as permissiveness toward invalid/unexpected input ('more permissive', 'could allow non-ASCII data to pass through', 'could allow invalid or unexpected characters'). Such risk-framing is about what input would be tolerated, not an affirmative claim about UTF-8's larger character repertoire, so it does not satisfy the item."
+    },
+    {
+        "id": "1b_stance_on_utf8",
+        "name": "Endorses UTF-8 as the better default vs defends keeping ASCII",
+        "side_a": "No_deduct when the answer actually agrees that UTF-8 should (generally) replace ASCII as the default decoding for `host`, i.e. it affirms the proposed change and explains the benefit (broader character coverage, ASCII-backward-compatible, fewer decode failures).",
+        "side_b": "Deduct when the answer rejects the proposal and argues ASCII should be kept (because the Host header is spec-mandated ASCII/Punycode, and strict failure is desirable), regardless of how well that position is argued."
+    }
+]

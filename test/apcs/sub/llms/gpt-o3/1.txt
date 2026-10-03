@@ -1,0 +1,60 @@
+Explanation
+
+Part (a)  
+• Call the helper `isAvailable` on the exact string that was requested.  
+• If it is free, store it in the instance variable `username`.  
+• Otherwise, keep trying `requestedName + 1`, `requestedName + 2`, … until `isAvailable` returns true.  
+• As soon as an available candidate is found, assign it to `username`.
+
+Part (b)  
+• We must not modify the instance variable `username`; we build the shortened name in a local `StringBuilder`.  
+• Scan the characters of `username` from left to right.  
+  – When the current character is a hyphen (`'-'`), remove the most-recently‐added character from the builder (that is the character immediately before the hyphen) and skip appending the hyphen.  
+  – Otherwise, append the current character.  
+• Return the builder’s contents.
+
+Both fragments run in O(n) time and meet the given pre-/post-conditions.
+
+<answer>
+public Account(String requestedName)
+{
+    if (isAvailable(requestedName))
+    {
+        username = requestedName;
+    }
+    else
+    {
+        int suffix = 1;
+        String candidate = requestedName + suffix;
+        while (!isAvailable(candidate))
+        {
+            suffix++;
+            candidate = requestedName + suffix;
+        }
+        username = candidate;
+    }
+}
+</answer>
+
+<answer>
+public String getShortenedName()
+{
+    StringBuilder result = new StringBuilder();
+    for (int i = 0; i < username.length(); i++)
+    {
+        char ch = username.charAt(i);
+        if (ch == '-')
+        {
+            if (result.length() > 0)
+            {
+                result.deleteCharAt(result.length() - 1);
+            }
+        }
+        else
+        {
+            result.append(ch);
+        }
+    }
+    return result.toString();
+}
+</answer>

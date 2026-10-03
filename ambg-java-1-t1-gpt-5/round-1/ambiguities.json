@@ -1,0 +1,14 @@
+[
+    {
+        "id": "3a_control_flow_nuance_vs_ensures_misstatement",
+        "name": "acknowledges control\u2011flow/limited dependency vs claims it 'ensures' non\u2011null",
+        "side_a": "no_deduct if the answer accurately characterizes the dependency (e.g., as control\u2011flow gating or limited to specific calls) or notes that some lines don't directly depend on drawer.",
+        "side_b": "deduct if the answer misstates the guard as 'ensuring' drawer is non\u2011null, without the nuanced control\u2011flow framing."
+    },
+    {
+        "id": "3b_dependency_ack",
+        "name": "Affirms end-of-method depends-on-drawer vs denies dependency as mere precondition",
+        "side_a": "no_deduct: Credit answers that explicitly state the end-of-method code depends on drawer being non-null to execute (often citing the early return or direct calls on drawer).",
+        "side_b": "deduct: Deduct when the answer denies such dependency and frames non-null drawer as merely an external assumption/precondition (e.g., 'does not directly depend' and 'assumes it is initialized')."
+    }
+]

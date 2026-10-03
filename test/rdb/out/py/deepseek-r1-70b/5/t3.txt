@@ -1,0 +1,2 @@
+
+Yes, the check is needed to ensure the `BUILD_DIR` environment variable is set and valid.

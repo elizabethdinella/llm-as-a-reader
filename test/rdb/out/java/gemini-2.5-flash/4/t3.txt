@@ -1,0 +1,2 @@
+
+Yes, the `roleInfoList == null` check is necessary. It is crucial for handling cache misses when caching is enabled. If caching is enabled and `roleInfoMap.get(username)` returns `null` (indicating a cache miss), this `null` check ensures that the code proceeds to fetch the roles from the database instead of simply returning `null` without attempting to retrieve the data.

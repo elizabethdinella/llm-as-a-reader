@@ -1,0 +1,44 @@
+[
+    {
+        "id": "1a_affirms_aliasing_vs_denies_need",
+        "name": "answer affirms that result aliases reply.result and copying is needed vs. denies any aliasing problem (mutation declared safe/intentional)",
+        "side_a": "Credit when the answer answers in the affirmative about the deepcopy and asserts that without it the mutation of result[DATA] would touch/propagate to the original reply.result (or that the copy isolates it). Any of the accepted phrasings count.",
+        "side_b": "Deduct when the answer denies that the copy is needed for the DATA mutation \u2014 e.g., says deepcopy is only required for certain transaction types and that modifying result[DATA] is 'intentional and safe' \u2014 thereby asserting there is no shared-reference effect on reply.result at all."
+    },
+    {
+        "id": "1b_bug_claim_vs_rationale",
+        "name": "Diagnosing the existing code as buggy/mis-ordered vs simply explaining the aliasing rationale",
+        "side_a": "No deduction when the answer confines itself to explaining why copying is needed (shared reference, mutation leaking into reply.result) without asserting that the surrounding code's placement/conditioning of the deepcopy is defective.",
+        "side_b": "Deduct 2 points when the answer diagnoses the existing code as flawed because the copy is conditioned on only some transaction types while the DATA mutation is unconditional, i.e. prescribes relocating/ungating the deepcopy relative to the type check."
+    },
+    {
+        "id": "1b_affirm_vs_deny_need",
+        "name": "Affirming the deepcopy is needed vs denying it / making it conditional on transaction type",
+        "side_a": "No deduction when the answer's top-line verdict is that the deepcopy is needed (or at least advisable) whenever result[DATA] is mutated.",
+        "side_b": "Deduct 2 points when the answer's top-line verdict denies the need, scoping the deepcopy to SCHEMA/ISSUER_KEY only and declaring mutation safe otherwise."
+    },
+    {
+        "id": "2a_propagation_out_vs_local_mutation",
+        "name": "mutation described as propagating out to downstream consumers that hold the object vs described only as corrupting the local/original reply object",
+        "side_a": "Credit when the answer says the in-place change travels OUTWARD to code/components that still hold or consume the same object (e.g., 'could then propagate to the ledger, graph, or other code that still holds a reference'), i.e., the serialized value escapes the function into something downstream.",
+        "side_b": "Deduct when the risk is framed only as mutating/polluting 'the original reply.result' or vague 'data integrity' / 'used elsewhere in the code', with no statement that the mutated-serialized value actually reaches a downstream consumer of the data."
+    },
+    {
+        "id": "2a_affirms_vs_denies_copy_need",
+        "name": "affirms the deepcopy is needed before the DATA mutation vs denies it / calls the shared mutation intentional",
+        "side_a": "Credit only if the answer affirms that the copy is required before mutating result[DATA], so there is a live risk whose consumer can be discussed.",
+        "side_b": "Deduct when the answer concludes the copy is unnecessary or that mutating result[DATA] is 'intentional and safe', since it then never identifies any consumer of the serialized data at all."
+    },
+    {
+        "id": "2b_conditional_misread",
+        "name": "accurate reading of the unconditional DATA mutation vs invented transaction-type gating of the copy/mutation",
+        "side_a": "No deduction when the answer treats the DATA serialization/mutation as applying to the result object as given, describing the aliasing between `result` and `reply.result` without inventing control-flow conditions (e.g. 'result is just another reference to the same dictionary that lives in reply.result').",
+        "side_b": "Deduct when the answer re-frames the question around a supposed transaction-type condition \u2014 claiming the deepcopy or the mutation only applies for SCHEMA/ISSUER_KEY, or diagnosing a 'logic flaw' about which branches copy \u2014 since this substitutes a fabricated control-flow story for the statement about what the downstream consumer receives."
+    },
+    {
+        "id": "2b_necessity_verdict",
+        "name": "affirms the copy is needed to protect the original vs declares the mutation safe / copy unnecessary",
+        "side_a": "No deduction when the answer concludes the deepcopy is needed (or at least that skipping it means deliberately mutating the shared original), so that the unmodified dict survives for whatever consumes `reply.result` afterwards \u2014 a hedge like 'if you're fine with mutating the original you can skip it' still counts.",
+        "side_b": "Deduct when the answer's bottom line is that no copy is required and the in-place modification of result[DATA] is 'safe'/'intentional', because that denies there is any consumer that must receive the unserialized data."
+    }
+]

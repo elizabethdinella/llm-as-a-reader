@@ -1,0 +1,19 @@
+<answer>
+public class Bottle {
+    private final double capacity;
+    private double amount;
+
+    public Bottle(double capacity) {
+        this.capacity = capacity;
+        this.amount = capacity;
+    }
+
+    public double updateAmount(double toRemove) {
+        amount -= toRemove; // precondition: toRemove > 0 and toRemove <= amount
+        if (amount < 0.25 * capacity) {
+            amount = capacity;
+        }
+        return amount;
+    }
+}
+</answer>

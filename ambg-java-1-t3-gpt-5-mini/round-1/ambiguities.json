@@ -1,0 +1,38 @@
+[
+    {
+        "id": "1a_control_flow_vs_data_use",
+        "name": "explicit direct/data use of actionBarSubTitle.setVisibility vs mere control\u2011flow (early return) reachability",
+        "side_a": "no_deduct \u2014 Answer asserts a direct/data dependency of the specific setVisibility line on drawer (e.g. says actionBarSubTitle.setVisibility itself reads/uses drawer or is invoked via drawer).",
+        "side_b": "deduct \u2014 Answer only argues that the code is 'dependent' on drawer via control\u2011flow (e.g. 'method returns early if drawer is null so the later lines only run when drawer!=null') without showing that the setVisibility call itself uses drawer data."
+    },
+    {
+        "id": "2a_specificity",
+        "name": "specific-code-citation vs generic-statement",
+        "side_a": "no_deduct: The answer cites specific code elements (e.g., exact line, method names) when explaining the dependency, showing precise reasoning tied to the snippet.",
+        "side_b": "deduct: The answer uses generic or vague language about dependency (e.g., \"calls methods on drawer\", \"the code at the end\") without naming the specific lines/methods or clearly tying the claim to the snippet."
+    },
+    {
+        "id": "2b_nullcheck_guard_vs_vague",
+        "name": "explicit null-check/guard cited vs vague/unqualified 'depends on drawer' claim",
+        "side_a": "no_deduct: The answer explicitly cites the null-check/early-return or otherwise explains that code only runs when drawer is non-null (e.g. \u2018if (drawer == null) { return; }\u2019 or \u2018returns early if it is\u2019), i.e. it justifies dependency as conditional execution.",
+        "side_b": "deduct: The answer makes an unqualified claim that the code \u2018depends on drawer\u2019 without citing the null-check/guard or otherwise explaining how the non-null requirement is established."
+    },
+    {
+        "id": "2b_value_vs_reachability",
+        "name": "distinguishes reachability/control-flow gating vs claiming the value (singleFolderMode/visibility) is derived from drawer",
+        "side_a": "no_deduct: The answer separates the two notions, saying that certain calls or code execution are gated on drawer being non-null but that the visibility value is computed from singleFolderMode (i.e. the value is independent of drawer).",
+        "side_b": "deduct: The answer conflates control-flow gating with data/value dependence by asserting that the computed visibility (or singleFolderMode value) depends on drawer."
+    },
+    {
+        "id": "3a_partial-vs-global-dep",
+        "name": "acknowledges-partial/non-drawer-dependency vs asserts-global-drawer-dependency",
+        "side_a": "Credit (no_deduct): The answer explicitly acknowledges that parts of the final code do NOT depend on drawer (mentions singleFolderMode or that visibility is computed independently) or otherwise distinguishes partial vs full dependency.",
+        "side_b": "Deduct: The answer states a blanket dependency on drawer (focuses only on calls to drawer / non-null requirement) without noting parts that are independent of drawer."
+    },
+    {
+        "id": "3b_method_guard_vs_caller_precondition",
+        "name": "method-local null-guard/ensures vs caller-precondition/assumes",
+        "side_a": "No deduct \u2014 Answer explicitly attributes non-nullness to the method itself (mentions an internal null-check/early return or that the method's control flow prevents execution when drawer is null), concluding the code only runs when drawer is non-null.",
+        "side_b": "Deduct \u2014 Answer frames non-nullness as an external assumption or precondition (says the method \u2018assumes\u2019 drawer is initialized or that responsibility lies with the caller), implying the method does not itself ensure drawer is non-null."
+    }
+]

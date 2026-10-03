@@ -1,0 +1,8 @@
+{
+  "r1_s1": {"deducted": true},
+  "r1_s2": {"deducted": false},
+  "r2_s1": {"deducted": true},
+  "r2_s2": {"deducted": false},
+  "r3_s1": {"deducted": true},
+  "r3_s2": {"deducted": false}
+}

@@ -1,0 +1,2 @@
+
+In this code, `F.cross_entropy` refers to PyTorch's built-in cross entropy loss function from the `torch.nn.functional` module, while `cross_entropy` (without the F prefix) appears to be a custom function defined elsewhere in the codebase. The custom function is being used for validation loss calculation, while the PyTorch built-in function is used for training and test loss. The custom implementation might include additional features, different default parameters, or logging capabilities not present in the standard PyTorch implementation.

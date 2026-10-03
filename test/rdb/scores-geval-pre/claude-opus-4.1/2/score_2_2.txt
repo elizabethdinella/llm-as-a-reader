@@ -1,0 +1,30 @@
+[
+    {
+        "justification": "The answer explicitly states that `Collections.singletonMap()` alone would return an immutable map, satisfying the requirement to mention singletonMap's immutability.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly describes `new HashMap<>(Collections.singletonMap(...))` as creating 'a mutable HashMap with one initial entry' and later refers to requiring 'a mutable/HashMap type', clearly stating that a HashMap is mutable. Therefore no deduction for sub-item 1c.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer describes `new HashMap<>(Collections.singletonMap(...))` as creating 'a mutable HashMap with one initial entry', which conveys that the singletonMap supplies exactly one key-value mapping (and refers to it as an 'immutable singleton map'). This adequately covers the point that singletonMap holds only a single mapping.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer never states or describes the method signature of `messageParams` (e.g., its parameter types such as `FetchProfile` and `HashMap<String, Message>`). It only speculates that the method 'either needs to modify the map later or specifically requires a mutable/HashMap type', which is a hedged guess rather than a statement of the actual signature.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer never definitively states that messageParams' signature takes a HashMap. It only speculates: the HashMap wrapper is 'likely necessary because the messageParams method either needs to modify the map later or specifically requires a mutable/HashMap type'. This is a hedged guess offering mutability as the primary alternative explanation, and 'mutable/HashMap type' is not a clear statement that the parameter type is HashMap. Per the rubric, framing it as requiring a mutable map is not specific enough, and the speculative phrasing fails to establish the required point.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer does not examine actual usages of the map within messageParams. It merely speculates that the method 'either needs to modify the map later or specifically requires a mutable/HashMap type', failing to clearly determine whether the usages are read-only or mutating. Per the deduction criteria, the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate hedges: it says the HashMap wrapper is 'likely necessary because the messageParams method either needs to modify the map later or specifically requires a mutable/HashMap type'. It does not affirmatively assert that the usages inside messageParams modify the map; it offers modification only as one speculative possibility alongside the correct explanation. Since it does not incorrectly state that the map is modified (that failure to determine is already penalized under 2c), the 2-point deduction for an outright incorrect claim does not apply.",
+        "deducted": false
+    }
+]

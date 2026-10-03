@@ -1,0 +1,30 @@
+[
+    {
+        "justification": "The answer explicitly states that the Map from Collections.singletonMap() is immutable (cannot be modified), satisfying the requirement.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that `HashMap` is mutable (can be modified), satisfying rubric sub-item 1c.",
+        "deducted": false
+    },
+    {
+        "justification": "The candidate answer only discusses mutability (HashMap mutable, singletonMap immutable). It does not state that Collections.singletonMap returns a map containing only a single key-value mapping (fixed size of one).",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer only discusses the mutability difference between HashMap and singletonMap. It makes no reference to the messageParams method or its signature (e.g., parameter types such as FetchProfile and Map/HashMap). Therefore the point for mentioning the method signature of messageParams must be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer only discusses the general mutability difference between HashMap and Collections.singletonMap. It never mentions the messageParams method, its signature, or that messageParams specifically requires/takes a HashMap parameter type. Therefore the point for sub-item 2c should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer only states the general mutability difference between HashMap and Collections.singletonMap. It does not examine messageParams at all, and therefore does not discuss how the map argument is used inside messageParams or whether those usages are read-only. Per sub-item 2d, the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer only discusses the general mutability difference between HashMap and Collections.singletonMap. It makes no claim about how messageParams uses the map argument, and therefore does not incorrectly state that the usages modify the map. No deduction applies for this sub-item.",
+        "deducted": false
+    }
+]

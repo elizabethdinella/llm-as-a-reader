@@ -1,0 +1,2 @@
+
+You should call `compact_times()` on cumulative KPI sets. This approach optimizes data storage and analysis for long-term trends without potentially disrupting real-time or short-term data analysis. 

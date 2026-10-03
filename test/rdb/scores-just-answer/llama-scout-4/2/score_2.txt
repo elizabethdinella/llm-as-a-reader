@@ -1,0 +1,9 @@
+[
+    { "item": "1a", "deducted": false, "feedback": "The answer explicitly states that `singletonMap` 'returns an immutable map', satisfying the requirement to mention immutability." },
+    { "item": "1b", "deducted": false, "feedback": "The answer explicitly states that '`HashMap` is mutable', satisfying this requirement." },
+    { "item": "1c", "deducted": false, "feedback": "The answer conveys the single-mapping nature by saying 'Use `singletonMap` for single-entry maps that don't need to be modified,' which communicates that singletonMap holds only one key-value mapping." },
+    { "item": "2a", "deducted": true, "feedback": "The answer never references the signature of `messageParams` (e.g., that it accepts a FetchProfile and a Map/HashMap parameter). It gives only a generic comparison of the two map types with no reference to the method at all." },
+    { "item": "2b", "deducted": true, "feedback": "The answer does not state that `messageParams` specifically takes/declares a `HashMap` parameter (which is why the singletonMap must be wrapped). It only offers general advice about when to use each type." },
+    { "item": "2c", "deducted": true, "feedback": "The answer contains no discussion of how the map argument is used inside `messageParams`, and therefore does not determine whether those usages are read-only or mutating." },
+    { "item": "2d", "deducted": false, "feedback": "The answer makes no claim that the usages inside `messageParams` modify the map, so this lie deduction does not apply." }
+]

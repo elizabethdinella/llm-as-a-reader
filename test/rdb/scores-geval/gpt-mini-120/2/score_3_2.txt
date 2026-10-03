@@ -1,0 +1,7 @@
+{"justification": "The answer explicitly states that `Collections.singletonMap` returns an **immutable** map, and later describes it as 'read-only'. Requirement met.", "deducted": false}
+{"justification": "The answer explicitly describes the `new HashMap<>(...)` copy as a 'mutable copy' and 'a separate, mutable map'. Requirement met.", "deducted": true}
+{"justification": "The answer states the singleton map 'contains exactly one entry' and is 'a lightweight, read-only map with a single entry'. Requirement met.", "deducted": false}
+{"justification": "The answer never mentions or examines the actual method signature of `messageParams` (e.g., that it accepts a `FetchProfile` and a `HashMap<String, Message>`). It only speaks generically about 'APIs'. Deduct.", "deducted": true}
+{"justification": "The answer only vaguely says the copy can 'be passed to APIs that expect a mutable HashMap implementation'. It never states that `messageParams` specifically declares a `HashMap` parameter type, which is the actual reason for the wrapping. Deduct.", "deducted": true}
+{"justification": "The answer does not examine or discuss how the map argument is used inside `messageParams` at all, and therefore does not establish that those usages are read-only. Deduct.", "deducted": true}
+{"justification": "The answer does not explicitly claim that `messageParams` modifies the map; it only makes a generic statement that a HashMap 'can later be modified'. No false assertion about the internal usages is made, so no deduction for this item.", "deducted": false}

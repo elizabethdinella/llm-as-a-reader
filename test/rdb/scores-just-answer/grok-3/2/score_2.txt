@@ -1,0 +1,9 @@
+[
+  {"item": "1a", "deducted": false, "feedback": "The answer explicitly states that `singletonMap` is immutable."},
+  {"item": "1b", "deducted": false, "feedback": "The answer explicitly states that `HashMap` is mutable and allows modifications."},
+  {"item": "1c", "deducted": false, "feedback": "The answer states singletonMap is 'optimized for a single key-value pair' and later refers to 'a fixed mapping', which conveys that singletonMap holds/returns only a single key-value mapping."},
+  {"item": "2a", "deducted": true, "feedback": "The answer never mentions or discusses the method signature of `messageParams` (e.g., that it accepts a FetchProfile and a HashMap<String, Message>). It only speaks generically about map types."},
+  {"item": "2b", "deducted": true, "feedback": "The answer does not state that `messageParams` specifically requires/takes a `HashMap` parameter type — which is the actual reason the singletonMap must be wrapped. It only discusses mutability tradeoffs, and even wrongly implies singletonMap could be passed directly ('singletonMap would better convey the intent'), which would not compile if the parameter is declared as HashMap."},
+  {"item": "2c", "deducted": true, "feedback": "The answer does not examine how the map argument is used inside `messageParams`, and does not clearly determine whether those usages are read-only; it vaguely mentions a 'risk of unintended changes' without resolution."},
+  {"item": "2d", "deducted": false, "feedback": "The answer does not affirmatively claim that the usages inside `messageParams` modify the map; it only mentions a general risk of unintended changes from mutability, so this deduction does not apply."}
+]

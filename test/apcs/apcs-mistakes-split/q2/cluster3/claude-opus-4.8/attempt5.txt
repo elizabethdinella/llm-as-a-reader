@@ -1,0 +1,18 @@
+public class Bottle
+{
+    private double capacity;
+
+    public Bottle(double cap)
+    {
+        capacity = cap;
+    }
+
+    public void updateAmount(double used)
+    {
+        amount = amount + used;
+        if (amount < 25 * capacity)
+        {
+            amount = capacity
+        }
+    }
+}

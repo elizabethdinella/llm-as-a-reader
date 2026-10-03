@@ -1,0 +1,7 @@
+{"justification": "The answer explicitly says Collections.singletonMap 'Returns an immutable map' and 'Cannot be modified'. Not deducted.", "deducted": false}
+{"justification": "The answer explicitly describes HashMap as 'A concrete, mutable implementation' that 'can be modified after it's created'. Not deducted.", "deducted": false}
+{"justification": "The answer states the singletonMap 'contains exactly one key/value pair'. Not deducted.", "deducted": false}
+{"justification": "The answer never mentions or examines the actual method signature of messageParams (e.g., its declared parameter types). It only speaks generically about passing a map. Deducted.", "deducted": true}
+{"justification": "The answer never states that messageParams specifically declares/requires a HashMap parameter; it only discusses generic mutable vs immutable map considerations. Deducted.", "deducted": true}
+{"justification": "The answer does not examine how the map argument is used inside messageParams, and does not determine whether those usages are read-only. It only speculates 'if the code later needs to add or change entries'. Deducted.", "deducted": true}
+{"justification": "The answer does not claim that messageParams modifies the map; it only offers a conditional hypothetical. No incorrect assertion, so no deduction.", "deducted": false}

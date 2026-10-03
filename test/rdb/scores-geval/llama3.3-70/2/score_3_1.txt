@@ -1,0 +1,21 @@
+**Rubric Item 1 – mutability & size differences**
+
+- Sub-item 1 (singletonMap is immutable): The answer never mentions immutability; it only discusses memory efficiency and generality. → deduct.
+- Sub-item 2 (HashMap is mutable): Not mentioned at all. → deduct.
+- Sub-item 3 (singletonMap holds only a single key-value mapping): The answer states singletonMap is "for storing a single key-value pair" and that "only one entry needs to be stored." → not deducted.
+
+**Rubric Item 2 – discussion of messageParams**
+
+- Sub-item 1 (message signature of messageParams): No signature is given or described. → deduct.
+- Sub-item 2 (messageParams takes a HashMap): The answer does not state the parameter type; it only vaguely compares the two map types. → deduct.
+- Sub-item 3 (usages of the map argument inside messageParams are read-only): No discussion of how the map is used within the method; instead it makes an unsupported efficiency claim. → deduct.
+- Sub-item 4 (incorrectly claiming usages modify the map): The answer makes no such claim. → not deducted.
+
+
+{"deducted": true}
+{"deducted": true}
+{"deducted": false}
+{"deducted": true}
+{"deducted": true}
+{"deducted": true}
+{"deducted": false}

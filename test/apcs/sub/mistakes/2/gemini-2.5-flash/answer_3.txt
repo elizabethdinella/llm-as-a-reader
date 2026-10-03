@@ -1,0 +1,22 @@
+public class Bottle {
+    private double capacity;
+    private double currentAmount;
+
+    public Bottle(double capacity) {
+        this.capacity = capacity;
+        this.currentAmount = capacity;
+    }
+
+    public double updateAmount(double amountRemoved) {
+        double amountBeforeRefillCheck = this.currentAmount - amountRemoved;
+
+        this.currentAmount -= amountRemoved;
+
+        if (this.currentAmount < (0.25 * this.capacity)) {
+            this.currentAmount = this.capacity;
+            return amountBeforeRefillCheck;
+        }
+
+        return this.currentAmount;
+    }
+}

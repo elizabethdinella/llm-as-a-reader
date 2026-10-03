@@ -1,0 +1,76 @@
+**Attempt 1 – Small oversight (missing increment of `suffix`).**  
+The loop will never advance to the next candidate when the first one is taken, causing an infinite loop if the original name isn’t available.
+
+<answer>
+public Account(String requestedName) {
+    String candidate = requestedName;
+    int suffix = 1;
+    while (!isAvailable(candidate)) {
+        candidate = requestedName + suffix;
+        // suffix++ omitted – loop never progresses
+    }
+    this.username = candidate;
+}
+</answer>
+
+---
+
+**Attempt 2 – Misplaced assignment inside the loop.**  
+`username` is set to `requestedName` on every iteration, even when that name is unavailable, and the final value may still be an unavailable username.
+
+<answer>
+public Account(String requestedName) {
+    String candidate = requestedName;
+    int suffix = 1;
+    while (!isAvailable(candidate)) {
+        this.username = requestedName;          // wrong place to assign
+        candidate = requestedName + suffix;
+        suffix++;
+    }
+}
+</answer>
+
+---
+
+**Attempt 3 – Inverted loop condition.**  
+The `while` checks for availability instead of unavailability, so the loop exits immediately and may store an unavailable name.
+
+<answer>
+public Account(String requestedName) {
+    String candidate = requestedName;
+    int suffix = 1;
+    while (isAvailable(candidate)) {            // should be !isAvailable(...)
+        candidate = requestedName + suffix;
+        suffix++;
+    }
+    this.username = candidate;
+}
+</answer>
+
+---
+
+**Attempt 4 – Resetting `suffix` on each iteration.**  
+Because `suffix` is declared inside the loop, it’s reset to 1 every time, so the same candidate (`requestedName1`) is tested repeatedly, leading to an infinite loop if that name isn’t free.
+
+<answer>
+public Account(String requestedName) {
+    String candidate = requestedName;
+    while (!isAvailable(candidate)) {
+        int suffix = 1;                         // resets each iteration
+        candidate = requestedName + suffix;
+        suffix++;
+    }
+    this.username = candidate;
+}
+</answer>
+
+---
+
+**Attempt 5 – Completely ignoring availability.**  
+The constructor assigns the supplied name without any check, violating the specification.
+
+<answer>
+public Account(String requestedName) {
+    this.username = requestedName;   // no call to isAvailable at all
+}
+</answer>

@@ -1,0 +1,30 @@
+[
+    {
+        "justification": "The answer explicitly states that `Collections.singletonMap` creates a 'compact, immutable' map that cannot be changed (no put/remove), and reiterates that passing a singletonMap gives an immutable, one-element map. This satisfies the requirement.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly describes the HashMap copy as a 'regular, mutable' HashMap that can be modified later (add or remove entries), satisfying the requirement to state that a HashMap is mutable.",
+        "deducted": false
+    },
+    {
+        "justification": "The answer explicitly states that Collections.singletonMap creates a map that 'contains exactly one entry' and refers to it as a 'one-element map', which satisfies the requirement that singletonMap holds only a single key-value mapping.",
+        "deducted": false
+    },
+    {
+        "justification": "The candidate answer only discusses generic differences between Collections.singletonMap and HashMap (immutability, mutability, memory). It never mentions the messageParams method's signature or the parameter types it declares. Therefore the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer never references the actual signature or parameter type of `messageParams`. It only speaks generically about 'the called method' possibly needing a mutable map, and does not state that `messageParams` specifically declares a `HashMap` (or `Map<String, Message>`) parameter. Per the rubric, stating only that a mutable map is needed is not specific enough.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer never examines how messageParams actually uses the map argument. It only speculates generically that the choice 'depends on whether the method needs to modify the map,' failing to determine whether the usages are read-only or mutating. Therefore the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer discusses the general mutability difference and only speculates that 'the choice depends on whether the method needs to modify the map.' It never asserts that messageParams (or its usages of the map) actually modifies the map. Since no incorrect claim of modification is made, the 2-point deduction for this sub-item does not apply.",
+        "deducted": false
+    }
+]

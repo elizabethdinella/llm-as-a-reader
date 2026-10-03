@@ -1,0 +1,2 @@
+
+No, we should not use UTF-8 instead of ASCII. The code correctly uses ASCII decoding because HTTP Host headers are standardized to be ASCII-compatible, and using ASCII prevents potential security issues from malformed encodings while maintaining compliance with HTTP standards. UTF-8 would be unnecessarily permissive for this specific use case where ASCII suffices and is the expected format.

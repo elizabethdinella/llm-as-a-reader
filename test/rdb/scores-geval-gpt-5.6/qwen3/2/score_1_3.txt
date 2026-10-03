@@ -1,0 +1,30 @@
+[
+  {
+    "justification": "The answer correctly states that singletonMap creates an unmodifiable map.",
+    "deducted": false
+  },
+  {
+    "justification": "The answer correctly states that new HashMap<>(...) creates a modifiable map.",
+    "deducted": false
+  },
+  {
+    "justification": "The answer does not explicitly state that singletonMap contains exactly one key-value mapping.",
+    "deducted": true
+  },
+  {
+    "justification": "The answer does not mention the messageParams method signature.",
+    "deducted": true
+  },
+  {
+    "justification": "The answer does not state that messageParams specifically takes a HashMap.",
+    "deducted": true
+  },
+  {
+    "justification": "The answer does not discuss how the map is used within messageParams or establish that those usages are read-only.",
+    "deducted": true
+  },
+  {
+    "justification": "The answer does not explicitly claim that messageParams modifies the map, so this incorrect-claim penalty does not apply.",
+    "deducted": false
+  }
+]

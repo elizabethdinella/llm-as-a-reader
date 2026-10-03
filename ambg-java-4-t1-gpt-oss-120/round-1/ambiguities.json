@@ -1,0 +1,38 @@
+[
+    {
+        "id": "1a_caching_logic_link",
+        "name": "explicit\u2011caching\u2011impact vs no\u2011caching\u2011impact",
+        "side_a": "Answer explicitly ties the null\u2011check to caching behaviour \u2013 it states that the check affects whether the database is queried (e.g., mentions a cache miss, skipping or performing a DB fetch when caching is enabled).",
+        "side_b": "Answer does not mention the caching effect; it only gives generic reasons such as NPE\u2011avoidance, robustness, or asserts the check is unnecessary."
+    },
+    {
+        "id": "1b_npe_just",
+        "name": "NPE\u2011avoidance justification vs other justification",
+        "side_a": "No\u2011deduct: The answer does **not** cite avoiding a NullPointerException as the primary reason for keeping the null\u2011check (or mentions only downstream NPEs).",
+        "side_b": "Deduct: The answer cites avoiding a NullPointerException as the main justification for the null\u2011check, without qualifying it with other functional reasons."
+    },
+    {
+        "id": "1b_uncond_vs_cond",
+        "name": "Unconditional necessity claim vs conditional/nuanced claim",
+        "side_a": "No\u2011deduct: The answer states the null\u2011check is **conditionally** needed (e.g., \u201cif \u2026 then \u2026\u201d, \u201cyou could remove it\u201d, \u201cyou don\u2019t necessarily need it\u201d).",
+        "side_b": "Deduct: The answer declares the null\u2011check is **unconditionally** required (e.g., \u201cyou need this null check \u2026\u201d, without any qualifiers)."
+    },
+    {
+        "id": "1d_necessity_vs_robustness",
+        "name": "functional\u2011necessity claim vs abstract\u2011robustness claim",
+        "side_a": "Credit answers that justify the null\u2011check based on the current functional behaviour of the code (e.g., cache miss handling, avoiding a concrete NullPointerException). These answers focus on what the code does now, not on hypothetical future changes.",
+        "side_b": "Deduct answers that treat the null\u2011check as optional and justify it only in terms of robustness, external guarantees, or possible future changes (e.g., \u201cif getPageItems() is guaranteed never to return null\u201d or \u201cincluding the check improves robustness\u201d)."
+    },
+    {
+        "id": "2b_concrete_null_source",
+        "name": "explicit concrete source of possible null vs only generic null\u2011safety claim",
+        "side_a": "Credit the answer when it cites a specific operation or condition that can produce a null value for **roleInfoList** (e.g., \u201cMap.get returns null on a cache miss\u201d).",
+        "side_b": "Deduct when the answer only makes generic statements about null\u2011safety or robustness without naming a concrete source of null."
+    },
+    {
+        "id": "2c_alternative_design_suggestion",
+        "name": "suggests concrete alternative to null check vs none",
+        "side_a": "Credit the answer when it proposes a concrete alternative or mitigation (e.g., store empty list, use containsKey, switch to a loading cache).",
+        "side_b": "Deduct when the answer does not suggest any alternative handling beyond the null check."
+    }
+]

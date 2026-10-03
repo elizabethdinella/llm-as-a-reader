@@ -1,0 +1,62 @@
+[
+    {
+        "id": "1a_final_stance_on_guard",
+        "name": "Answer's bottom line endorses keeping the `if not build_directory` guard vs. concludes it is redundant/unnecessary",
+        "side_a": "Do not deduct if, whatever hedging appears, the answer's dominant/concluding stance is that the guard should be kept as a real safeguard against BUILD_DIR being unset or empty (e.g., 'it isn't strictly required ... However, keeping the guard protects ...').",
+        "side_b": "Deduct 1 point if the answer's dominant/concluding stance is that the check is unnecessary or redundant given that setup_build already guarantees/validates the build directory \u2014 including when redundancy is the headline verdict and defensiveness is only conceded as an aside or replaced with a different suggested check."
+    },
+    {
+        "id": "1a_reasoning_present",
+        "name": "Verdict accompanied by a stated failure mode vs. bare unsupported assertion",
+        "side_a": "Do not deduct if the answer supports its verdict by naming the concrete condition the check covers (BUILD_DIR missing/unset/empty, failing early with a clear error), even in one sentence.",
+        "side_b": "Deduct 1 point if the answer gives only a bare verdict with no supporting reason at all \u2014 no mention of what could go wrong or of where build_directory's value comes from."
+    },
+    {
+        "id": "1b_single_verdict_vs_two_sided_hedge",
+        "name": "Commits to one unambiguous verdict (yes or no) vs. argues both sides / hedged 'not strictly, but keep it' answer",
+        "side_a": "no_deduct \u2014 the answer states a single, unhedged verdict on whether the check is necessary and sticks to it (either a plain 'Yes, it is necessary' with supporting reasons, or a plain 'No, it is not needed'), without reversing or endorsing the opposite position.",
+        "side_b": "deduct \u2014 the answer gives a conditional/equivocal verdict that endorses both positions: declares the check not strictly required (contingent on assumptions about setup_build's contract) while simultaneously recommending keeping it as harmless/defensive, so no clear answer is committed to."
+    },
+    {
+        "id": "2a_keep_vs_redundant_verdict",
+        "name": "Final verdict endorses keeping the guard vs declares it redundant/unneeded",
+        "side_a": "No deduction when the answer's bottom line is that the `if not build_directory` guard should be kept/is warranted \u2014 even if it concedes it is 'defensive' or 'not strictly required' \u2014 so long as it ends by endorsing retention.",
+        "side_b": "Deduct when the answer's bottom line is that the check is redundant, unnecessary, or not needed (including 'harmless but redundant' framings or a flat 'No'), i.e. it licenses removing the guard."
+    },
+    {
+        "id": "2a_concrete_code_grounding",
+        "name": "Rationale tied to concrete code facts (downstream use / setup_build contract) vs generic 'defensive safeguard' boilerplate",
+        "side_a": "No deduction when the justification is anchored in specifics of this code \u2014 e.g. that `build_directory` is immediately consumed to construct the Runner, or an explicit statement of what `setup_build()` does/doesn't guarantee.",
+        "side_b": "Deduct when the answer only restates a generic defensive-programming rationale ('edge cases', 'fails early with a clear error message') without connecting it to the actual downstream use of the value or to the guarantee of `setup_build()`."
+    },
+    {
+        "id": "3a_invariant_affirmed_vs_denied",
+        "name": "Accepts the setup_build\u21d2BUILD_DIR-set contract (so check is redundant) vs. posits the contract can silently fail (so check is genuinely necessary)",
+        "side_a": "Do not deduct if the answer accepts, even conditionally, that a truthy build_setup_result implies BUILD_DIR is set \u2014 i.e. it grants the invariant and concludes the build_directory check is therefore not strictly required / redundant under that contract.",
+        "side_b": "Deduct if the answer denies or doubts the invariant \u2014 asserting there could be a scenario where setup succeeds but BUILD_DIR is unset/empty, and concluding on that basis that the check IS necessary. Speculating about contract violation and calling the guard a needed safeguard is not a statement that the check is unneeded."
+    },
+    {
+        "id": "3a_conditional_concession",
+        "name": "Hedged/conditional concession of redundancy ('not strictly required if\u2026') counts vs. only an unconditional 'not needed' counts",
+        "side_a": "Do not deduct when the redundancy claim is stated conditionally or with hedges such as 'not strictly', 'in practice the check is defensive', 'if setup_build guarantees\u2026' \u2014 the conditional is the code's actual contract, so the claim stands.",
+        "side_b": "Deduct only when the hedge is resolved against redundancy, i.e. the answer's bottom-line verdict is that the check is necessary."
+    },
+    {
+        "id": "3b_necessity_verdict_direction",
+        "name": "Concludes the guard is a no-op/redundant vs affirms it is necessary and catches a real possible failure",
+        "side_a": "Give credit when the answer's bottom line is that the `if not build_directory` guard can never fire independently \u2014 i.e. it treats the truthy-result/falsy-directory situation as an impossibility, so the guard adds nothing to control flow.",
+        "side_b": "Deduct 1 point when the answer answers 'yes, the check is necessary' or otherwise asserts that the guard protects against a live scenario (BUILD_DIR unset/empty while setup succeeded), since this asserts reachability of the very case that cannot occur."
+    },
+    {
+        "id": "3b_conditional_contract_hedge",
+        "name": "Unconditional claim that the second check cannot change behavior vs redundancy asserted only conditionally on an assumed setup_build contract",
+        "side_a": "Give credit when the answer states flatly that the extra check cannot alter the branch, without making that conclusion contingent on an unverified assumption about what `setup_build()` promises.",
+        "side_b": "Deduct 1 point when the redundancy claim is hedged or conditioned \u2014 e.g. 'not strictly required *if* setup_build guarantees...', 'under that contract', 'harmless defensive check' \u2014 leaving open that the guard might still matter."
+    },
+    {
+        "id": "4b_specific_line_vs_generic_downstream_reference",
+        "name": "generic 'it gets used later / passed to Runner' remark vs. identification of a particular build_directory usage",
+        "side_a": "Do NOT deduct when the answer only makes a vague, unlocated reference to build_directory being consumed downstream (e.g., 'it is used right after to create the Runner') without naming or quoting any specific usage line, argument, or attribute. Such a generic motivation statement is not 'mentioning the irrelevant usage'.",
+        "side_b": "Deduct 1 point for any reference at all to build_directory being used downstream in the Runner, even a one-clause generic remark, since it still directs the reader to the usage site."
+    }
+]

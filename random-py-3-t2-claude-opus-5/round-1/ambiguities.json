@@ -1,0 +1,20 @@
+[
+    {
+        "id": "1a_protocol_compliance_substitute",
+        "name": "encoding-capability claim vs pure standards-compliance argument",
+        "side_a": "No deduct if the answer, somewhere, characterizes what characters/bytes each encoding can actually represent (e.g., 'ASCII covers only 128 code points, UTF-8 covers all of Unicode'), regardless of whether it recommends keeping ASCII.",
+        "side_b": "Deduct if the answer's entire justification is normative/protocol-based \u2014 the RFCs say Host must be ASCII, Punycode makes IDNs ASCII, UTF-8 would 'break compatibility' or allow 'non-compliant' values \u2014 with no statement about the character repertoire either encoding is capable of encoding. Asserting that the protocol restricts hostnames to ASCII is a claim about hostnames, not about the encodings' coverage."
+    },
+    {
+        "id": "1a_compatibility_vs_repertoire",
+        "name": "character-repertoire statement vs vague 'broader compatibility' appeal",
+        "side_a": "No deduct if the breadth claim is expressed in terms of characters/code points/Unicode coverage that UTF-8 can represent and ASCII cannot.",
+        "side_b": "Deduct if the only pro-UTF-8 breadth language is a generic benefit claim such as 'broader compatibility with international domain names' or 'fewer encoding errors', which names a use case or outcome rather than stating that UTF-8 encodes a larger character set than ASCII."
+    },
+    {
+        "id": "2b_idn_punycode",
+        "name": "Internationalized domain names: treated as Punycode/ASCII-on-the-wire vs invoked as a reason the Host header needs UTF-8",
+        "side_a": "No deduct when the answer handles the IDN case correctly \u2014 i.e., it either states that internationalized domain names reach the Host header already Punycode/A-label encoded (hence still ASCII), or otherwise grounds the ASCII restriction in the host/URI production of the spec. Internationalization is acknowledged but resolved without widening the header charset.",
+        "side_b": "Deduct when the answer uses internationalization (international domain names, 'broader compatibility', avoiding 'encoding errors') as the justification for decoding the Host header as UTF-8, thereby implying non-ASCII bytes legitimately appear in that header and ignoring the Punycode/A-label mechanism."
+    }
+]

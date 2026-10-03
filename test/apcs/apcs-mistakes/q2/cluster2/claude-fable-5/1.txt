@@ -1,0 +1,164 @@
+# Taking the Exam — Five Attempts with Increasingly Severe Mistakes
+
+Below, I'll write each attempt as an edit of my original (correct) submission, with each attempt containing a more serious mistake than the last.
+
+---
+
+## Attempt 1 — Subtle boundary condition mistake
+
+Here I use `<=` instead of `<` in the refill check. This is a very realistic off-by-one-style logic error: the spec says the bottle refills when the amount would be **less than** 25% of capacity, so a bottle at exactly 25% should NOT be refilled. This mistake would only fail an edge-case test (e.g., exactly 250 mL remaining in a 1000 mL bottle), so it's quite subtle.
+
+<answer>
+public class Bottle
+{
+    private double capacity;
+    private double amount;
+
+    public Bottle(double cap)
+    {
+        capacity = cap;
+        amount = cap;
+    }
+
+    public double updateAmount(double used)
+    {
+        amount -= used;
+        if (amount <= 0.25 * capacity)
+        {
+            amount = capacity;
+        }
+        return amount;
+    }
+}
+</answer>
+
+---
+
+## Attempt 2 — Checking the refill condition before subtracting
+
+Here I reversed the order of operations: I check whether the amount is below 25% **before** removing the used liquid. This means the refill happens one call too late. For example, in the shampoo case, `updateAmount(1.0)` would return 9.0 instead of 40.0, and only the *next* call would trigger the refill. This is a genuine logic error that breaks several expected outputs, but the code still compiles and runs.
+
+<answer>
+public class Bottle
+{
+    private double capacity;
+    private double amount;
+
+    public Bottle(double cap)
+    {
+        capacity = cap;
+        amount = cap;
+    }
+
+    public double updateAmount(double used)
+    {
+        if (amount < 0.25 * capacity)
+        {
+            amount = capacity;
+        }
+        amount -= used;
+        return amount;
+    }
+}
+</answer>
+
+---
+
+## Attempt 3 — Forgetting to fill the bottle in the constructor
+
+Here I forgot that the spec says bottles start **filled to capacity**, and instead initialized `amount` to 0. This breaks the class's behavior from the very first method call: `water.updateAmount(400.0)` would make `amount` negative, trigger a refill, and return 1000.0 instead of 600.0. This is more severe because essentially every test case fails, but the code still compiles.
+
+<answer>
+public class Bottle
+{
+    private double capacity;
+    private double amount;
+
+    public Bottle(double cap)
+    {
+        capacity = cap;
+        amount = 0;
+    }
+
+    public double updateAmount(double used)
+    {
+        amount -= used;
+        if (amount < 0.25 * capacity)
+        {
+            amount = capacity;
+        }
+        return amount;
+    }
+}
+</answer>
+
+---
+
+## Attempt 4 — Wrong return type / missing return
+
+Here I declared `updateAmount` as `void` and removed the `return` statement — a classic mistake when a student forgets the method is required to return the remaining amount. This is more severe than the previous attempts because any client code like `amt = water.updateAmount(400.0);` will no longer compile — the method signature itself violates the specification.
+
+<answer>
+public class Bottle
+{
+    private double capacity;
+    private double amount;
+
+    public Bottle(double cap)
+    {
+        capacity = cap;
+        amount = cap;
+    }
+
+    public void updateAmount(double used)
+    {
+        amount -= used;
+        if (amount < 0.25 * capacity)
+        {
+            amount = capacity;
+        }
+    }
+}
+</answer>
+
+---
+
+## Attempt 5 — Multiple compile errors (syntax breakdown)
+
+This final attempt doesn't compile at all: I forgot the type on the method parameter (`updateAmount(used)`), forgot a semicolon after `amount -= used`, and used `=` instead of `-=`/proper assignment logic by assigning `capacity = amount` backwards in the refill (which, even if it compiled, corrupts the capacity instead of refilling the bottle). This represents the most severe, rushed-submission level of mistakes — the code is both syntactically and semantically broken.
+
+<answer>
+public class Bottle
+{
+    private double capacity;
+    private double amount;
+
+    public Bottle(double cap)
+    {
+        capacity = cap;
+        amount = cap;
+    }
+
+    public double updateAmount(used)
+    {
+        amount -= used
+        if (amount < 0.25 * capacity)
+        {
+            capacity = amount;
+        }
+        return amount;
+    }
+}
+</answer>
+
+---
+
+### Summary of escalating severity
+
+| Attempt | Mistake | Severity |
+|---|---|---|
+| 1 | `<=` instead of `<` in refill check | Subtle edge-case logic error |
+| 2 | Refill check performed before subtraction | Logic error affecting many cases |
+| 3 | Bottle starts empty instead of full | Fundamental behavior broken |
+| 4 | `void` return type, no return value | Violates spec; client code won't compile |
+| 5 | Missing parameter type, missing semicolon, corrupted capacity | Doesn't compile at all |

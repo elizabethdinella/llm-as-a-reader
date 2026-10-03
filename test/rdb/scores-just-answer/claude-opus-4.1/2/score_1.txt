@@ -1,0 +1,9 @@
+[
+  { "item": "1a", "deducted": false, "feedback": "The answer explicitly states that Collections.singletonMap() returns an immutable map that cannot be modified, and notes it would throw UnsupportedOperationException on modification. Requirement met." },
+  { "item": "1b", "deducted": false, "feedback": "The answer explicitly states that new HashMap<>(...) creates a mutable HashMap. Requirement met." },
+  { "item": "1c", "deducted": false, "feedback": "The answer conveys that singletonMap contains only one entry by describing the HashMap as 'initialized with that single entry' derived from the singletonMap. This adequately communicates the single key-value mapping property." },
+  { "item": "2a", "deducted": true, "feedback": "The answer never mentions the signature of messageParams (e.g., the FetchProfile parameter and the Map<String, Message> parameter, or its declared parameter types). It only vaguely speculates about what the method 'likely requires'." },
+  { "item": "2b", "deducted": true, "feedback": "The answer only says messageParams 'likely requires a mutable map', which the rubric explicitly states is not specific enough. It never states that the parameter type is a HashMap." },
+  { "item": "2c", "deducted": true, "feedback": "The answer does not examine any actual usage of the map argument inside messageParams. It merely speculates ('likely'), and fails to determine whether the usages modify the map — in fact it wrongly implies modification rather than identifying read-only usage." },
+  { "item": "2d", "deducted": true, "feedback": "The answer asserts that messageParams 'requires a mutable map that can be modified after creation', incorrectly implying the map argument is mutated within messageParams. This contradicts the read-only usage and triggers the deduction." }
+]

@@ -1,0 +1,2 @@
+
+Yes, you need to call `deepcopy(result)` before modifying `result[DATA]` to ensure that the original `reply.result` remains unchanged. This prevents unintended side effects on other parts of the system that may reference the original data, maintaining data integrity across different processing steps.

@@ -1,0 +1,14 @@
+<answer>
+public Account(String requestedName)
+{
+    if (isAvailable(requestedName)) {
+        username = requestedName;
+    } else {
+        int i = 1;
+        while (!isAvailable(requestedName + i)) {
+            i++;
+        }
+        username = requestedName + i;
+    }
+}
+</answer>

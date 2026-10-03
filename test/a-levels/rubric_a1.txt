@@ -1,0 +1,27 @@
+## Question 1(a)(i) — [4 marks]
+
+1 mark each:
+- Class header (and end)
+- 4 private attributes with correct data types
+- Constructor header (and end) taking 2 parameters within class …
+- … within constructor assigning parameters to `Species` and `DistancePerHour` and assigning 500.0 to `XPosition` and `YPosition`
+
+**Example program code — Java**
+
+```java
+class Bird{
+    private String Species;
+    private Double DistancePerHour;
+    private Double XPosition;
+    private Double YPosition;
+
+    public Bird(Double pDistancePerHour, String pSpecies){
+        Species = pSpecies;
+        DistancePerHour = pDistancePerHour;
+        XPosition = 500.0;
+        YPosition = 500.0;
+    }
+}
+```
+
+

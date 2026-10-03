@@ -1,0 +1,30 @@
+[
+    {
+        "justification": "The candidate answer only discusses memory efficiency and general-purpose usage of HashMap vs singletonMap. It never states or implies that Collections.singletonMap returns an immutable map. Since immutability is not mentioned, the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer only discusses memory efficiency and general-purpose nature of HashMap versus singletonMap. It never states that HashMap is mutable (nor that singletonMap is immutable). Therefore the point for sub-item 1c should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The answer states that 'SingletonMap is more memory-efficient for storing a single key-value pair' and notes that 'only one entry needs to be stored,' which conveys that singletonMap holds/returns only a single key-value mapping. This satisfies sub-item 1d.",
+        "deducted": false
+    },
+    {
+        "justification": "The candidate answer only discusses general implementation/performance differences between HashMap and singletonMap. It never mentions or describes the signature of the messageParams method (e.g., its parameter types such as FetchProfile and HashMap<String, Message>). Therefore the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer only discusses generic memory-efficiency and general-purpose differences between HashMap and singletonMap. It never states (or even alludes to) the fact that the messageParams method signature requires/takes a HashMap specifically, nor does it mention any mutability requirement. Therefore the point for sub-item 2c must be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer only discusses generic memory efficiency and intent differences between HashMap and singletonMap. It never examines how the map argument is used inside messageParams, nor does it determine whether those usages read from or modify the map. Therefore the point should be deducted.",
+        "deducted": true
+    },
+    {
+        "justification": "The candidate answer only discusses memory efficiency and general-purpose nature of HashMap vs singletonMap. It never examines or mentions how the map argument is used inside messageParams, and therefore does not incorrectly claim that those usages modify the map. No deduction applies for this sub-item.",
+        "deducted": false
+    }
+]

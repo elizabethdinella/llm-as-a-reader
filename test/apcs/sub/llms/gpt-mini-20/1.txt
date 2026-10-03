@@ -1,0 +1,47 @@
+**Explanation – Part A**
+
+The constructor must assign a unique username.  
+We first try the requested name itself. If it isn’t available we repeatedly append an increasing integer until we find one that is free.  
+The loop starts with `counter = 1` and builds a candidate string by concatenating the original request and the counter. The loop stops when `isAvailable(candidate)` returns true, then that candidate becomes the account’s username.
+
+```java
+<answer>
+public Account(String requestedName) {
+    String candidate = requestedName;
+    int counter = 1;
+    while (!isAvailable(candidate)) {
+        candidate = requestedName + counter;
+        counter++;
+    }
+    this.username = candidate;
+}
+</answer>
+```
+
+---
+
+**Explanation – Part B**
+
+`getShortenedName` must return a copy of `username` with each hyphen and the character immediately before it removed.  
+We iterate through the characters, appending non‑hyphen characters to a `StringBuilder`. When we encounter a hyphen we delete the last appended character (the one just before the hyphen) and skip the hyphen itself. The preconditions guarantee that a hyphen will never be the first character, so `deleteCharAt` is always safe.
+
+```java
+<answer>
+public String getShortenedName() {
+    StringBuilder sb = new StringBuilder();
+    int i = 0;
+    while (i < username.length()) {
+        char c = username.charAt(i);
+        if (c == '-') {
+            // remove preceding character and skip the hyphen
+            sb.deleteCharAt(sb.length() - 1);
+            i++;              // skip '-'
+        } else {
+            sb.append(c);
+            i++;
+        }
+    }
+    return sb.toString();
+}
+</answer>
+```

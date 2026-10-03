@@ -1,0 +1,13 @@
+{"desc": "singletonMap is immutable", "deducted": false}
+{"desc": "HashMap is mutable", "deducted": false}
+{"desc": "singletonMap returns only a single key-value mapping", "deducted": true}
+{"desc": "mentions the method signature of messageParams", "deducted": true}
+{"desc": "states messageParams takes a HashMap specifically", "deducted": true}
+{"desc": "discusses usages of map argument within messageParams, noting read-only", "deducted": true}
+{"desc": "incorrectly states the usages modify the map", "deducted": false}
+
+**Explanation:**
+
+- **Item 1:** The answer correctly states that `Collections.singletonMap()` returns an immutable map and that `new HashMap<>(...)` creates a mutable copy, satisfying the first two sub-items. However, it never mentions that a `singletonMap` holds only a single key-value mapping, so that point is deducted.
+
+- **Item 2:** The answer never cites or describes the signature of `messageParams` (no parameter types/return type given), and it does not state that `messageParams` specifically accepts a `HashMap` — it only vaguely refers to "a mutable map being passed to messageParams." It also fails to inspect or determine the actual usages of the map inside `messageParams`, instead hedging with "depends on whether messageParams needs to modify the parameters," which is explicitly insufficient per the rubric. It does not, however, incorrectly assert that the usages modify the map, so the 2-point deduction for that falsehood does not apply.
