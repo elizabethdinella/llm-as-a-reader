@@ -1,7 +1,7 @@
 #!/bin/bash
 # LLM-as-a-judge baselines on APCS: zero-shot and few-shot, 3 trials each.
-#   Q=2 bash run_apcs_judges.sh                      # Claude Opus 5, both modes
-#   Q=2 MODES=few-shot TRIALS=1 bash run_apcs_judges.sh
+#   Q=2 bash scripts/run_apcs_judges.sh                      # Claude Opus 5, both modes
+#   Q=2 MODES=few-shot TRIALS=1 bash scripts/run_apcs_judges.sh
 #
 # Outputs (same naming as the ambg/random APCS runs, so eval finds them directly):
 #   llm-judge-apcs-<q>-t<t>-<model>/      zero-shot
@@ -42,7 +42,7 @@ for mode in $MODES; do
     fi
 
     echo "[$(date +%T)] Running $name"
-    python llm_judge_geval_apcs.py "$QUESTION" "$RUBRIC" "$ANSWERS" "${name}/" \
+    python src/llm_judge_geval_apcs.py "$QUESTION" "$RUBRIC" "$ANSWERS" "${name}/" \
       --model "$MODEL" --sample-num "$Q" "${extra[@]}" > "$log" 2>&1
     if [ $? -ne 0 ] || grep -q "Traceback" "$log"; then
       echo "  ERROR in $name:"; tail -5 "$log" | sed 's/^/    /'; failed+=("$name"); continue
@@ -58,7 +58,7 @@ for mode in $MODES; do
       [ -f "$c" ] && { split="$c"; break; }
     done
     if [ -n "$split" ]; then
-      python eval.py "${name}/" "$Q" APCS "$MODEL" java --seed "$split" > "logs/${name}-eval.log" 2>&1 \
+      python src/eval.py "${name}/" "$Q" APCS "$MODEL" java --seed "$split" > "logs/${name}-eval.log" 2>&1 \
         && echo "  test $(grep -A3 'Test accuracy' "logs/${name}-eval.log" | grep 'Total Accuracy' | head -1 | sed 's/^\s*//')"
     else
       echo "  (no split file for eval yet; outputs are saved)"
@@ -69,8 +69,8 @@ done
 [ ${#failed[@]} -gt 0 ] && { echo; echo "Failed: ${failed[*]}"; exit 1; }
 echo; echo "Done. Commit and push the llm-judge*-apcs-${Q}-* folders."#!/bin/bash
 # LLM-as-a-judge baselines on APCS: zero-shot and few-shot, 3 trials each.
-#   Q=2 bash run_apcs_judges.sh                      # Claude Opus 5, both modes
-#   Q=2 MODES=few-shot TRIALS=1 bash run_apcs_judges.sh
+#   Q=2 bash scripts/run_apcs_judges.sh                      # Claude Opus 5, both modes
+#   Q=2 MODES=few-shot TRIALS=1 bash scripts/run_apcs_judges.sh
 #
 # Outputs (same naming as the ambg/random APCS runs, so eval finds them directly):
 #   llm-judge-apcs-<q>-t<t>-<model>/      zero-shot
@@ -111,7 +111,7 @@ for mode in $MODES; do
     fi
 
     echo "[$(date +%T)] Running $name"
-    python llm_judge_geval_apcs.py "$QUESTION" "$RUBRIC" "$ANSWERS" "${name}/" \
+    python src/llm_judge_geval_apcs.py "$QUESTION" "$RUBRIC" "$ANSWERS" "${name}/" \
       --model "$MODEL" --sample-num "$Q" "${extra[@]}" > "$log" 2>&1
     if [ $? -ne 0 ] || grep -q "Traceback" "$log"; then
       echo "  ERROR in $name:"; tail -5 "$log" | sed 's/^/    /'; failed+=("$name"); continue
@@ -127,7 +127,7 @@ for mode in $MODES; do
       [ -f "$c" ] && { split="$c"; break; }
     done
     if [ -n "$split" ]; then
-      python eval.py "${name}/" "$Q" APCS "$MODEL" java --seed "$split" > "logs/${name}-eval.log" 2>&1 \
+      python src/eval.py "${name}/" "$Q" APCS "$MODEL" java --seed "$split" > "logs/${name}-eval.log" 2>&1 \
         && echo "  test $(grep -A3 'Test accuracy' "logs/${name}-eval.log" | grep 'Total Accuracy' | head -1 | sed 's/^\s*//')"
     else
       echo "  (no split file for eval yet; outputs are saved)"

@@ -1,7 +1,7 @@
 #!/bin/bash
 # APCS runs for one backbone: ambg and random calibration (3 trials each), then eval.
-#   Q=2 MODEL=claude-opus-5 bash run_apcs.sh
-#   Q=2 METHODS=ambg TRIALS=1 bash run_apcs.sh      # quick check first
+#   Q=2 MODEL=claude-opus-5 bash scripts/run_apcs.sh
+#   Q=2 METHODS=ambg TRIALS=1 bash scripts/run_apcs.sh      # quick check first
 # Runs are named <method>-apcs-<q>-t<trial>-<model>. Logs in logs/.
 # Needs: data/apcs/sub/mistakes/<q>/ (answers + manual.csv), data/apcs/rubric_<q>.json,
 #        scratch-apcs/java/<q>/ (ambiguities), cache-apcs-<model>/<q>/ (warmed).
@@ -22,7 +22,7 @@ for method in $METHODS; do
     name="${method}-apcs-${Q}-t${t}-${MODEL}"
     log="logs/${name}-calibrate.log"
     echo "[$(date +%T)] Running $name"
-    python calibrate.py "$name/" APCS "$Q" "$LANG_ARG" --model "$MODEL" "${extra[@]}" > "$log" 2>&1
+    python src/calibrate.py "$name/" APCS "$Q" "$LANG_ARG" --model "$MODEL" "${extra[@]}" > "$log" 2>&1
     # calibrate.py exits 1 after one round by design; tracebacks are the real failures
     if grep -q "Traceback" "$log"; then
       echo "  ERROR in $name:"; tail -5 "$log" | sed 's/^/    /'; failed+=("$name"); continue
@@ -30,7 +30,7 @@ for method in $METHODS; do
 
     pred=$(find "$name/round-1/preds" -mindepth 1 -maxdepth 1 -type d 2>/dev/null | head -1)
     elog="logs/${name}-eval.log"
-    python eval.py "$pred/" "$Q" APCS "$MODEL" "$LANG_ARG" --seed "$name/round-1/selected.json" > "$elog" 2>&1
+    python src/eval.py "$pred/" "$Q" APCS "$MODEL" "$LANG_ARG" --seed "$name/round-1/selected.json" > "$elog" 2>&1
     if grep -q "Traceback" "$elog"; then
       echo "  EVAL ERROR in $name:"; tail -5 "$elog" | sed 's/^/    /'; failed+=("$name-eval"); continue
     fi

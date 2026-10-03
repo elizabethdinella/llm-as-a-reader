@@ -72,7 +72,7 @@ for MODEL in $MODELS; do
       fi
 
       echo "Evaluating $RUN" >&2
-      python eval.py "$PRED_DIR" "$N" RDB "$MODEL" "$LANG_NAME" \
+      python src/eval.py "$PRED_DIR" "$N" RDB "$MODEL" "$LANG_NAME" \
         --seed "$SEED" > "$LOG" 2>&1
 
       if grep -q "Traceback" "$LOG"; then

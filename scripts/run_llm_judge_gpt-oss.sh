@@ -4,8 +4,8 @@
 #   llm-judge-fs  few-shot, using the samples selected in the matching
 #                 ambg-<lang>-<sample>-t<trial>-<model>/round-1/selected.json
 # Defaults: all langs/samples/modes below. Override for a quick check, e.g.:
-#   LANGS=java SAMPLES=3 bash run_llm_judge_gpt-oss.sh
-#   MODES=few-shot LANGS=java SAMPLES=3 bash run_llm_judge_gpt-oss.sh
+#   LANGS=java SAMPLES=3 bash scripts/run_llm_judge_gpt-oss.sh
+#   MODES=few-shot LANGS=java SAMPLES=3 bash scripts/run_llm_judge_gpt-oss.sh
 
 MODEL="${MODEL:-gpt-oss-120}"
 LANGS="${LANGS:-java py}"
@@ -41,7 +41,7 @@ for lang in $LANGS; do
 
         echo "Running $name"
         start=$(date +%s)
-        python llm_judge_geval.py "$sample" "${DATASET_ROOT}/${lang}/" "$PROJECTS_DIR" \
+        python src/llm_judge_geval.py "$sample" "${DATASET_ROOT}/${lang}/" "$PROJECTS_DIR" \
           "${ANSWER_ROOT}/${lang}/" "${name}/" "$lang" --model "$MODEL" "${extra[@]}" \
           > "$log" 2>&1
         status=$?
@@ -55,7 +55,7 @@ for lang in $LANGS; do
       done
 
       echo
-      PREFIX="$PREFIX" bash eval.sh "$sample" "$lang" "$MODEL"
+      PREFIX="$PREFIX" bash scripts/eval.sh "$sample" "$lang" "$MODEL"
       echo
     done
   done

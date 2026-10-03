@@ -1,7 +1,7 @@
 #!/bin/bash
 # Run calibration with random sample selection (baseline), then evaluate.
 # Defaults: all langs/samples below. Override for a quick check, e.g.:
-#   LANGS=java SAMPLES=3 bash run_random_trials.sh
+#   LANGS=java SAMPLES=3 bash scripts/run_random_trials.sh
 
 MODEL="${MODEL:-gpt-oss-120}"
 LANGS="${LANGS:-java python}"
@@ -18,7 +18,7 @@ for lang in $LANGS; do
       log="logs/${name}-calibrate.log"
       echo "Running $name"
       start=$(date +%s)
-      python calibrate.py "$name/" RDB "$sample" "$lang" --model "$MODEL" \
+      python src/calibrate.py "$name/" RDB "$sample" "$lang" --model "$MODEL" \
         --selection-method random > "$log" 2>&1
       status=$?
       echo "  finished in $(( $(date +%s) - start ))s (exit $status)"
@@ -33,7 +33,7 @@ for lang in $LANGS; do
     done
 
     echo
-    PREFIX="$PREFIX" bash eval.sh "$sample" "$lang" "$MODEL"
+    PREFIX="$PREFIX" bash scripts/eval.sh "$sample" "$lang" "$MODEL"
     echo
   done
 done

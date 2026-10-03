@@ -1,12 +1,11 @@
 #!/bin/bash
-# Run calibration with random sample selection (baseline) and a Claude backbone, then evaluate.
+# Run ambiguity calibration with a gpt-oss-120 backbone.
 # Defaults: all langs/samples below. Override for a quick check, e.g.:
-#   LANGS=java SAMPLES=3 bash run_random_trials_claude.sh
+#   LANGS=java SAMPLES=3 bash scripts/run_ambg_trials.sh
 
-MODEL="${MODEL:-claude-opus-5}"
+MODEL="${MODEL:-gpt-oss-120}"
 LANGS="${LANGS:-java python}"
 SAMPLES="${SAMPLES:-3 4 5}"
-PREFIX="random"
 
 mkdir -p logs
 failed=()
@@ -14,12 +13,12 @@ failed=()
 for lang in $LANGS; do
   for sample in $SAMPLES; do
     for trial in 1 2 3; do
-      name="${PREFIX}-${lang}-${sample}-t${trial}-${MODEL}"
+      name="ambg-${lang}-${sample}-t${trial}-${MODEL}"
       log="logs/${name}-calibrate.log"
       echo "Running $name"
       start=$(date +%s)
-      python calibrate.py "$name/" RDB "$sample" "$lang" --model "$MODEL" \
-        --selection-method random > "$log" 2>&1
+      python src/calibrate.py "$name/" RDB "$sample" "$lang" --model "$MODEL" \
+        > "$log" 2>&1
       status=$?
       echo "  finished in $(( $(date +%s) - start ))s (exit $status)"
 
@@ -33,7 +32,7 @@ for lang in $LANGS; do
     done
 
     echo
-    PREFIX="$PREFIX" bash eval.sh "$sample" "$lang" "$MODEL"
+    PREFIX=random bash scripts/eval.sh "$sample" "$lang" "$MODEL"
     echo
   done
 done

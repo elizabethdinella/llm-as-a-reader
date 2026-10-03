@@ -66,7 +66,7 @@ for T in 1 2 3; do
   fi
 
   echo "=== Trial ${T}: ${PRED_DIR} (split: ${SEED}) ==="
-  python eval.py "$PRED_DIR" "$N" RDB "$MODEL" "$LANG_NAME" \
+  python src/eval.py "$PRED_DIR" "$N" RDB "$MODEL" "$LANG_NAME" \
     --seed "$SEED" > "$LOG" 2>&1
 
   if grep -q "Traceback" "$LOG"; then

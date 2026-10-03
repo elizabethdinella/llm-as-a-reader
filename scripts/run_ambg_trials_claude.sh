@@ -1,9 +1,9 @@
 #!/bin/bash
-# Run ambiguity calibration with a gpt-oss-120 backbone.
+# Run ambiguity calibration with a Claude backbone.
 # Defaults: all langs/samples below. Override for a quick check, e.g.:
-#   LANGS=java SAMPLES=3 bash run_ambg_trials.sh
+#   LANGS=java SAMPLES=3 bash scripts/run_ambg_trials_claude.sh
 
-MODEL="${MODEL:-gpt-oss-120}"
+MODEL="${MODEL:-claude-opus-5}"
 LANGS="${LANGS:-java python}"
 SAMPLES="${SAMPLES:-3 4 5}"
 
@@ -17,7 +17,7 @@ for lang in $LANGS; do
       log="logs/${name}-calibrate.log"
       echo "Running $name"
       start=$(date +%s)
-      python calibrate.py "$name/" RDB "$sample" "$lang" --model "$MODEL" \
+      python src/calibrate.py "$name/" RDB "$sample" "$lang" --model "$MODEL" \
         > "$log" 2>&1
       status=$?
       echo "  finished in $(( $(date +%s) - start ))s (exit $status)"
@@ -32,7 +32,7 @@ for lang in $LANGS; do
     done
 
     echo
-    PREFIX=random bash eval.sh "$sample" "$lang" "$MODEL"
+    bash scripts/eval.sh "$sample" "$lang" "$MODEL"
     echo
   done
 done
