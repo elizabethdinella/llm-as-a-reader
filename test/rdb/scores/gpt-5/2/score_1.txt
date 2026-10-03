@@ -1,9 +1,0 @@
-[
-  { "item": "1a", "deducted": false, "feedback": "The answer explicitly states that Collections.singletonMap returns an immutable, single-entry Map and that mutation attempts throw UnsupportedOperationException." },
-  { "item": "1b", "deducted": false, "feedback": "The answer states that new HashMap<>(Collections.singletonMap(...)) creates a mutable copy, clearly identifying HashMap as mutable." },
-  { "item": "1c", "deducted": false, "feedback": "The answer describes singletonMap as a 'single-entry Map' containing 'that one entry', which conveys that it holds only a single key-value mapping." },
-  { "item": "2a", "deducted": true, "feedback": "The answer never mentions or describes the actual signature of messageParams (e.g., its parameter types such as FetchProfile and HashMap<String, Message>, or its return type). It only refers to messageParams abstractly." },
-  { "item": "2b", "deducted": true, "feedback": "The answer never states that messageParams specifically takes a HashMap. It only says 'you must pass a mutable Map (e.g., new HashMap<>(...))' conditionally, which is the generic 'mutable map' formulation the rubric explicitly deems insufficient; it also frames it as a hypothetical rather than an actual requirement of the declared parameter type." },
-  { "item": "2c", "deducted": true, "feedback": "The answer does not examine the actual usages of the map argument inside messageParams. It only presents hedged conditionals ('If messageParams only reads the map, either works... If messageParams (or later code) mutates the map...'), failing to clearly determine that the usages are read-only." },
-  { "item": "2d", "deducted": false, "feedback": "The answer does not assert that messageParams modifies the map; it merely raises it as a hypothetical condition, so no incorrect claim of mutation is made." }
-]

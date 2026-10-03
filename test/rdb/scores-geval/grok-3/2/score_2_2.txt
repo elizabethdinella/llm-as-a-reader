@@ -1,7 +1,0 @@
-{"justification": "The answer explicitly states that singletonMap is immutable ('while `singletonMap` is immutable and optimized for a single key-value pair').", "deducted": false}
-{"justification": "The answer explicitly states that HashMap is mutable and allows modifications.", "deducted": false}
-{"justification": "The answer notes singletonMap is 'optimized for a single key-value pair' and conveys 'a fixed mapping', which conveys that it holds only a single key-value mapping.", "deducted": false}
-{"justification": "The answer never mentions or discusses the method signature of messageParams (its parameter types), so this point is deducted.", "deducted": true}
-{"justification": "The answer does not state that messageParams specifically requires a HashMap type parameter; in fact it suggests singletonMap could be used instead, which contradicts this. Point deducted.", "deducted": true}
-{"justification": "The answer does not examine how the map argument is used inside messageParams and does not determine that the usages are read-only; it vaguely mentions 'risk of unintended changes' without resolving whether the map is modified. Point deducted.", "deducted": true}
-{"justification": "The answer does not explicitly claim that the usages within messageParams modify the map; it only speaks of a general 'risk of unintended changes' and conditions on 'if no modifications are needed'. This is not an explicit incorrect assertion that the map is modified, so the 2-point deduction does not apply.", "deducted": false}

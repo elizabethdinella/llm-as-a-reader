@@ -1,9 +1,0 @@
-[
-  { "item": "1a", "deducted": false, "feedback": "The answer explicitly states that `Collections.singletonMap` creates an 'unmodifiable' (immutable) map, both in the explanation and the final answer." },
-  { "item": "1b", "deducted": false, "feedback": "The answer explicitly states that `new HashMap<>(...)` creates a 'modifiable' map that allows further modifications, i.e., it is mutable." },
-  { "item": "1c", "deducted": false, "feedback": "The answer notes that singletonMap 'creates an unmodifiable map with a single entry', capturing that it holds only one key-value mapping." },
-  { "item": "2a", "deducted": true, "feedback": "The answer never presents the actual signature of `messageParams`. The reasoning vacillates between claiming the parameter is a generic `Map` and speculating it 'might expect a HashMap', and the final answer omits any signature information entirely." },
-  { "item": "2b", "deducted": true, "feedback": "The answer does not state that `messageParams` takes a `HashMap`. Instead it speculates ('maybe the messageParams method expects a HashMap, but the code is using a generic Map') and concludes with a conditional 'depends on whether the messageParams method requires mutability', which is neither definite nor specific." },
-  { "item": "2c", "deducted": true, "feedback": "The answer does not examine or discuss how the map argument is used inside `messageParams`, and does not determine whether those usages mutate the map; it leaves it as an open conditional ('The choice here depends on whether the messageParams method requires mutability'), so it fails to clearly establish the usages are read-only." },
-  { "item": "2d", "deducted": false, "feedback": "The answer does not assert that the usages inside `messageParams` modify the map; it only speculates that mutability might be needed, so this incorrect claim is not made." }
-]

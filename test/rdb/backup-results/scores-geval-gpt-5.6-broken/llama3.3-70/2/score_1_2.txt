@@ -1,7 +1,0 @@
-{"justification": "The answer never states that singletonMap is immutable; it only discusses memory/performance optimization.", "deducted": true }
-{"justification": "The answer never states that HashMap is mutable; mutability is not discussed at all.", "deducted": true}
-{"justification": "The answer does convey that singletonMap holds only a single entry ('optimized for storing single entries', 'only one message is associated with each uid').", "deducted": false}
-{"justification": "The answer never mentions the signature of messageParams.", "deducted": true}
-{"justification": "The answer never states that messageParams requires/takes a HashMap; it instead suggests singletonMap would be suitable.", "deducted": true}
-{"justification": "The answer does not discuss how the map argument is used inside messageParams or whether those usages are read-only.", "deducted": true}
-{"justification": "The answer does not claim that usages of the map modify it, so no deduction for this item.", "deducted": false}

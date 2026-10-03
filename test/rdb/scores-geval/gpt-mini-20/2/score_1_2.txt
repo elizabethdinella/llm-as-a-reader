@@ -1,7 +1,0 @@
-{"justification": "The answer explicitly says `Collections.singletonMap(...)` creates an *immutable* one-entry map. Requirement met.", "deducted": false}
-{"justification": "The answer explicitly says `new HashMap<>(...)` creates a *mutable* copy, and that the HashMap can be changed. Requirement met.", "deducted": false}
-{"justification": "The answer describes singletonMap as a 'one-entry map', conveying the single key-value mapping. Requirement met.", "deducted": false}
-{"justification": "The answer never mentions the method signature of `messageParams` (its parameter types/declaration). Deducted.", "deducted": true}
-{"justification": "The answer does not state that `messageParams` specifically declares/requires a `HashMap` parameter type; it only speaks generically about mutability. Deducted.", "deducted": true}
-{"justification": "The answer does not examine how the map argument is used inside `messageParams`, nor determine that those usages are read-only. Deducted.", "deducted": true}
-{"justification": "The answer does not claim that usages within `messageParams` modify the map, so no penalty applies here.", "deducted": false}

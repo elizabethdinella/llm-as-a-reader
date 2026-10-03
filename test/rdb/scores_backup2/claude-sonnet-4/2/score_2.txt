@@ -1,9 +1,0 @@
-[
-  {"item": "1a", "deducted": false, "feedback": "The answer explicitly states Collections.singletonMap() returns an immutable map and that modification attempts throw UnsupportedOperationException."},
-  {"item": "1b", "deducted": false, "feedback": "The answer explicitly states that new HashMap(...) creates a mutable copy that can be modified after creation."},
-  {"item": "1c", "deducted": false, "feedback": "The answer states singletonMap contains 'exactly one key-value pair' and is optimized for a single entry."},
-  {"item": "2a", "deducted": true, "feedback": "The answer never states or examines the actual signature of messageParams (e.g. that it accepts a FetchProfile and a HashMap<String, Message>). It only speculates about what the method 'likely' requires."},
-  {"item": "2b", "deducted": true, "feedback": "The answer only says the method 'likely needs a mutable map' or 'the API contract requires a mutable Map implementation'. It never states that messageParams' parameter is declared as a HashMap specifically, which per the rubric is required; 'mutable map' is not specific enough."},
-  {"item": "2c", "deducted": true, "feedback": "The answer does not inspect or discuss how the map argument is actually used inside messageParams, and fails to determine that the usages are read-only. Instead it merely guesses ('perhaps it adds more entries later', 'or... defensive programming'), leaving the question of modification unresolved."},
-  {"item": "2d", "deducted": true, "feedback": "The answer asserts, in its final answer, that 'This pattern is typically used when the receiving method needs a mutable map or might modify the map after receiving it', and earlier that messageParams 'likely needs a mutable map (perhaps it adds more entries later)'. This incorrectly suggests the usages modify the map, when the actual reason is simply the declared HashMap parameter type while usages are read-only."}
-]

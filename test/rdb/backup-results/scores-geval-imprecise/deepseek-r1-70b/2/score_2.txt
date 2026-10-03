@@ -1,4 +1,0 @@
-<scores>
-	<score> 3/3 </score>
-	<score> 0/4 </score>
-</scores>

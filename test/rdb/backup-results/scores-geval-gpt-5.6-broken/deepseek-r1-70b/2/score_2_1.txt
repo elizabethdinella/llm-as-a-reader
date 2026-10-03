@@ -1,7 +1,0 @@
-{"justification": "The answer explicitly states that `singletonMap` is immutable ('it's immutable and lightweight for a single entry'), so this point is satisfied.", "deducted": false}
-{"justification": "The answer notes that wrapping in a `HashMap` 'allows mutability', which conveys that HashMap is mutable. Point satisfied.", "deducted": false}
-{"justification": "The answer describes singletonMap as 'lightweight for a single entry', which conveys that it holds only a single key-value mapping. Point satisfied (generously).", "deducted": true}
-{"justification": "The answer never mentions or discusses the method signature of `messageParams` at all. Deducted.", "deducted": true}
-{"justification": "The answer does not state that `messageParams` takes/requires a `HashMap` parameter type; it only speculates that the HashMap wrapper is unnecessary, which is actually the opposite implication. Deducted.", "deducted": true}
-{"justification": "The answer does not examine how the map argument is used inside `messageParams`, nor does it determine whether those usages are read-only. Deducted.", "deducted": true}
-{"justification": "The answer does not incorrectly claim that the usages of the map argument modify it; it makes no claim about internal usage at all. No deduction for this lie item.", "deducted": false}

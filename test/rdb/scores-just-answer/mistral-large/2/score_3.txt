@@ -1,9 +1,0 @@
-[
-  { "item": "1a", "deducted": true, "feedback": "The answer never states that Collections.singletonMap returns an immutable map. It only mentions that it is designed for exactly one entry and is memory-efficient, which does not convey immutability." },
-  { "item": "1b", "deducted": true, "feedback": "The answer does not state that HashMap is mutable. Saying it is 'intended for dynamic and potentially larger collections' is vague and does not explicitly identify mutability as the distinguishing property." },
-  { "item": "1c", "deducted": false, "feedback": "The answer does state that singletonMap 'is designed for maps with exactly one entry', which conveys that it holds only a single key-value mapping." },
-  { "item": "2a", "deducted": true, "feedback": "The answer makes no mention of the method signature of messageParams (its parameter types, e.g. FetchProfile and a Map/HashMap of ids to messages)." },
-  { "item": "2b", "deducted": true, "feedback": "The answer does not state that messageParams requires/takes a HashMap; in fact it wrongly suggests singletonMap would be more appropriate, ignoring the API's declared parameter type." },
-  { "item": "2c", "deducted": true, "feedback": "The answer does not discuss how the map argument is used inside messageParams at all, and therefore never establishes that the usages are read-only." },
-  { "item": "2d", "deducted": false, "feedback": "The answer makes no claim that the usages of the map inside messageParams modify it, so this deduction does not apply." }
-]

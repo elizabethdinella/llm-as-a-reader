@@ -1,7 +1,0 @@
-{"justification": "The answer explicitly states that singletonMap is 'an immutable map with a single entry', satisfying the requirement.", "deducted": false}
-{"justification": "The answer describes HashMap as a 'general-purpose, resizable map', which conveys that it can grow/change and is therefore mutable, in direct contrast to the immutable singletonMap. This is a sufficient (if indirect) statement of mutability.", "deducted": true}
-{"justification": "The answer says singletonMap is a map 'with a single entry', which covers the single key-value mapping point.", "deducted": false}
-{"justification": "The answer never mentions or examines the signature of messageParams (e.g., that it accepts a FetchProfile and a HashMap<String, Message>). It only discusses the general Java collection differences.", "deducted": true}
-{"justification": "The answer does not state that messageParams specifically requires/declares a HashMap parameter type; it makes no reference to the method's parameter type at all.", "deducted": true}
-{"justification": "The answer does not discuss how the map argument is used inside messageParams (or downstream), and thus does not determine whether those usages are read-only.", "deducted": true}
-{"justification": "The answer makes no incorrect claim that the usages of the map modify it, since it does not discuss the internal usage at all.", "deducted": false}

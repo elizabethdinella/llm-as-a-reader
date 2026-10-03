@@ -1,9 +1,0 @@
-[
-  { "item": "1a", "deducted": false, "feedback": "The answer explicitly states that `singletonMap` is immutable and cannot be changed after creation." },
-  { "item": "1b", "deducted": false, "feedback": "The answer explicitly states that `HashMap` is mutable and allows modifications." },
-  { "item": "1c", "deducted": true, "feedback": "The answer never mentions that `Collections.singletonMap` holds/returns only a single key-value mapping (fixed size of one entry). It only discusses mutability, not the size limitation." },
-  { "item": "2a", "deducted": true, "feedback": "The answer does not mention or reference the signature of `messageParams` (e.g., that it accepts a FetchProfile and a Map/HashMap of String to Message). It gives no information about the declared parameter types at all." },
-  { "item": "2b", "deducted": true, "feedback": "The answer only vaguely alludes to 'API requirements' and never states that `messageParams` specifically declares/requires a `HashMap` parameter type (which is why the singletonMap must be wrapped). This is not specific enough." },
-  { "item": "2c", "deducted": true, "feedback": "The answer does not examine how the map argument is used inside `messageParams`, and does not determine whether those usages mutate the map. It instead hedges ('likely to allow potential modifications or due to API requirements', 'if no changes are needed'), failing to clearly determine that the usages are read-only." },
-  { "item": "2d", "deducted": true, "feedback": "The answer asserts the HashMap wrapping is 'likely to allow potential modifications', incorrectly implying that the map passed to `messageParams` may be modified, whereas the usages within `messageParams` are read-only." }
-]

@@ -1,9 +1,0 @@
-[
-  { "item": "1a", "deducted": false, "feedback": "The answer explicitly states that Collections.singletonMap returns an immutable Map and that put/remove/clear throw UnsupportedOperationException. Requirement met." },
-  { "item": "1b", "deducted": false, "feedback": "The answer states that 'new HashMap<>(Collections.singletonMap(...)) creates a mutable copy', clearly identifying HashMap as mutable. Requirement met." },
-  { "item": "1c", "deducted": false, "feedback": "The answer describes singletonMap as a 'single-entry Map' containing 'that one entry', conveying that it holds only a single key-value mapping. Requirement met." },
-  { "item": "2a", "deducted": true, "feedback": "The answer never mentions the actual signature of messageParams (e.g., that it accepts a FetchProfile and a Map/HashMap of String to Message). It only refers to 'messageParams' abstractly without describing its parameters or types. Deduction applies." },
-  { "item": "2b", "deducted": true, "feedback": "The answer only says 'you must pass a mutable Map (e.g., new HashMap<>(...))' conditionally, which is a generic mutability statement rather than stating that messageParams' parameter type is specifically a HashMap. The rubric explicitly says stating a mutable map is not specific enough. Deduction applies." },
-  { "item": "2c", "deducted": true, "feedback": "The answer does not examine or describe any actual usage of the map inside messageParams. It hedges entirely with conditionals ('If messageParams only reads the map... If messageParams (or later code) mutates the map...'), failing to determine whether the usages are read-only. Deduction applies." },
-  { "item": "2d", "deducted": false, "feedback": "The answer does not assert that messageParams modifies the map; it only raises mutation as a hypothetical possibility. No incorrect claim of mutation is made, so this deduction does not apply." }
-]

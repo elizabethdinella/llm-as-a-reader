@@ -1,7 +1,0 @@
-{"justification": "The answer explicitly states that `Collections.singletonMap()` returns an immutable map whose contents cannot be changed after creation.", "deducted": false}
-{"justification": "The answer explicitly states that `new HashMap<>(...)` creates a new, mutable `HashMap` instance that allows additions, removals, and modifications.", "deducted": false}
-{"justification": "The answer refers to the HashMap being 'initialized with the single entry from the singleton map', conveying that singletonMap contains only one key-value mapping.", "deducted": false}
-{"justification": "The answer never mentions or shows the method signature of `messageParams`; it discusses only the general HashMap vs singletonMap distinction.", "deducted": true}
-{"justification": "The answer never states that `messageParams` specifically declares/takes a `HashMap` parameter (which is the actual reason the wrapping is needed); it only speaks generically about mutability.", "deducted": true}
-{"justification": "The answer does not examine how the map argument is used inside `messageParams`, and thus does not determine that the usages are read-only. It only speculates hypothetically about potential modifications.", "deducted": true}
-{"justification": "The answer does not affirmatively claim that `messageParams` modifies the map; it only makes a generic hypothetical statement about mutability, so no false assertion is made.", "deducted": false}

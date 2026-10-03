@@ -1,9 +1,0 @@
-[
-{ "item": "1a", "deducted": false, "feedback": "The answer explicitly states that `singletonMap` creates an unmodifiable map, satisfying the requirement to mention immutability." },
-{ "item": "1b", "deducted": false, "feedback": "The answer states that `new HashMap<>(...)` creates a modifiable map, satisfying the mutability requirement for HashMap." },
-{ "item": "1c", "deducted": true, "feedback": "The answer never mentions that `singletonMap` holds/returns only a single key-value mapping (fixed size of one entry). It only discusses mutability." },
-{ "item": "2a", "deducted": true, "feedback": "The answer makes no reference to the signature of `messageParams` (its parameter types, e.g., FetchProfile and the map type), so the required discussion of the method signature is absent." },
-{ "item": "2b", "deducted": true, "feedback": "The answer does not state that `messageParams` takes a `HashMap` specifically. It only generically discusses mutability of the map, implying (incorrectly) that a `Map` would suffice, which is not specific enough." },
-{ "item": "2c", "deducted": true, "feedback": "The answer does not examine how the map argument is used inside `messageParams`; it does not determine whether the usages are read-only. It vaguely speculates that HashMap 'allows for potential future changes' without clarifying whether the current usages modify the map." },
-{ "item": "2d", "deducted": false, "feedback": "The answer does not claim that the usages inside `messageParams` modify the map; it actually suggests `singletonMap` could be used directly, so it does not commit this specific error." }
-]

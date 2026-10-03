@@ -1,4 +1,0 @@
-{"DECISION": "NO", "FEEDBACK": "The student never calls isAvailable at all; the constructor simply assigns requestedName to username. No String argument is passed to isAvailable, so this point is not earned."}
-{"DECISION": "NO", "FEEDBACK": "There is no loop and no update of potential usernames. The response fails to call the availability check method, which explicitly does not earn the point."}
-{"DECISION": "NO", "FEEDBACK": "No counter variable exists and there is no loop, so no count is incremented."}
-{"DECISION": "NO", "FEEDBACK": "The constructor assigns requestedName to username unconditionally, without checking availability, incrementing a count, or appending integers. It fails to handle the case where requestedName is unavailable, so the algorithm point is not earned."}

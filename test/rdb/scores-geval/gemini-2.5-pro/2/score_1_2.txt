@@ -1,7 +1,0 @@
-{"justification": "The answer explicitly states that `Collections.singletonMap` creates an immutable map, so no deduction.", "deducted": false}
-{"justification": "The answer explicitly states that `new HashMap` creates a general-purpose, mutable map, so no deduction.", "deducted": false}
-{"justification": "The answer states the singletonMap contains 'exactly one entry', satisfying the single key-value mapping requirement.", "deducted": false}
-{"justification": "The answer never mentions or examines the method signature of `messageParams` (e.g., its declared parameter types), so this point is deducted.", "deducted": true}
-{"justification": "The answer only says the command receives a 'mutable copy of the map' and never states that `messageParams` specifically declares/requires a `HashMap` parameter type; per the rubric, referring only to mutability is not specific enough.", "deducted": true}
-{"justification": "The answer does not examine how the map argument is actually used inside `messageParams`; instead it speculates that the command 'can safely modify' it, failing to establish that the usages are read-only.", "deducted": true}
-{"justification": "The answer incorrectly implies/asserts that the map is modified internally ('which it can safely modify internally without causing an UnsupportedOperationException'), which contradicts the read-only usage; 2 points deducted.", "deducted": true}

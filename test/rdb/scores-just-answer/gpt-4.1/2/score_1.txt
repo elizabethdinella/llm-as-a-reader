@@ -1,9 +1,0 @@
-[
-  { "item": "1a", "deducted": false, "feedback": "The answer explicitly states that Collections.singletonMap 'creates an immutable map' and that attempts to modify it throw UnsupportedOperationException. Immutability is clearly covered." },
-  { "item": "1b", "deducted": false, "feedback": "The answer states that wrapping in `new HashMap<>(...)` produces 'a new mutable HashMap' that 'can be altered after construction'. Mutability of HashMap is covered." },
-  { "item": "1c", "deducted": false, "feedback": "The answer says singletonMap 'creates an immutable map with a single entry', which conveys that it holds only a single key-value mapping." },
-  { "item": "2a", "deducted": true, "feedback": "The answer never mentions or reproduces the signature of messageParams (e.g., the declared parameter types such as FetchProfile and HashMap<String, Message>). It only speculates about the method's behavior generically." },
-  { "item": "2b", "deducted": true, "feedback": "The answer does not state that messageParams specifically requires/declares a HashMap parameter type (which is the actual compile-time reason the singletonMap must be wrapped). It instead frames the issue purely in terms of mutability ('safer if messageParams ... needs to modify the map'), which the rubric explicitly says is not specific enough." },
-  { "item": "2c", "deducted": true, "feedback": "The answer does not examine how the map argument is actually used inside messageParams (i.e., read-only lookups). It leaves the matter unresolved with the conditional 'if messageParams or later code needs to modify the map', failing to clearly determine whether the usages mutate the map." },
-  { "item": "2d", "deducted": false, "feedback": "The answer never affirmatively claims that messageParams modifies the map; it only raises a hypothetical ('is safer if ... needs to modify'). Since no incorrect assertion of mutation is made, this deduction does not apply." }
-]

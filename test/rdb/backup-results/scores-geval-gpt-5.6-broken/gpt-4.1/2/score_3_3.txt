@@ -1,7 +1,0 @@
-{"justification": "The answer explicitly states that Collections.singletonMap returns an immutable map, so no deduction.", "deducted": false}
-{"justification": "The answer explicitly states that new HashMap<>(...) creates a new mutable HashMap that can be added to/modified, so no deduction.", "deducted": false}
-{"justification": "The answer states the singleton map is 'an immutable map containing only the mapping you provide' and refers to 'the single entry', so the single key-value mapping is mentioned.", "deducted": false}
-{"justification": "The answer never mentions or examines the actual signature of messageParams (e.g., its declared parameter types such as FetchProfile and Map/HashMap). Deduct.", "deducted": true}
-{"justification": "The answer does not state that messageParams specifically requires/takes a HashMap; it only speaks generically about mutable vs immutable maps and says the correct usage 'depends'. Deduct.", "deducted": true}
-{"justification": "The answer does not examine how the map argument is actually used inside messageParams and fails to determine whether the usages modify the map, instead leaving it conditional ('depends on whether messageParams or subsequent code needs to modify the map'). Deduct.", "deducted": true}
-{"justification": "The answer does not affirmatively claim that messageParams modifies the map; it only speaks hypothetically about what would happen if modification were attempted. No incorrect assertion, so no deduction.", "deducted": false}

@@ -1,7 +1,0 @@
-{"justification": "The answer explicitly states that Collections.singletonMap returns an immutable, fixed-size map and that mutation attempts throw UnsupportedOperationException. Point not deducted.", "deducted": false}
-{"justification": "The answer states that new HashMap<>(...) creates a mutable copy that can be safely modified. Point not deducted.", "deducted": false}
-{"justification": "The answer says singletonMap is a 'fixed-size map with one entry', which conveys the single key-value mapping. Point not deducted.", "deducted": false}
-{"justification": "The answer never gives or references the actual method signature of messageParams (e.g., its parameter types such as FetchProfile and Map/HashMap). Point deducted.", "deducted": true}
-{"justification": "The answer never states that messageParams specifically declares/takes a HashMap parameter; it only speaks generically about mutable vs immutable maps. Point deducted.", "deducted": true}
-{"justification": "The answer does not examine the actual usages of the map inside messageParams; it only offers conditional speculation ('if messageParams only reads the map...'), failing to clearly determine that the usages are read-only. Point deducted.", "deducted": true}
-{"justification": "The answer does not affirmatively claim that messageParams modifies the map; it only presents this as a hypothetical possibility. No incorrect assertion made, so the 2-point penalty does not apply.", "deducted": false}

@@ -1,9 +1,0 @@
-[
-  { "item": "1a", "deducted": false, "feedback": "The answer explicitly states that `Collections.singletonMap` creates a 'compact, immutable' map that cannot be changed (no put/remove), satisfying this requirement." },
-  { "item": "1b", "deducted": false, "feedback": "The answer states that `new HashMap<>(...)` produces a 'regular, mutable' HashMap that can be modified later (add or remove entries), satisfying this requirement." },
-  { "item": "1c", "deducted": false, "feedback": "The answer states the singletonMap 'contains exactly one entry' and is 'implemented specially for that single-entry case', which conveys the single key-value mapping property." },
-  { "item": "2a", "deducted": true, "feedback": "The answer never references the signature of `messageParams` (e.g., that it accepts a FetchProfile and a Map/HashMap parameter). It only speaks generically about 'the called method', with no mention of the actual declared parameter types." },
-  { "item": "2b", "deducted": true, "feedback": "The answer does not state that `messageParams` specifically takes a `HashMap` (which is why the singletonMap must be copied). It only speaks abstractly about whether 'the method needs to modify the map', which is even weaker than the 'requires a mutable map' phrasing the rubric already deems insufficient." },
-  { "item": "2c", "deducted": true, "feedback": "The answer does not examine or discuss how the map argument is used inside `messageParams` at all, and explicitly leaves it undetermined ('The choice depends on whether the method needs to modify the map'). It fails to conclude that the usages are read-only." },
-  { "item": "2d", "deducted": false, "feedback": "The answer does not assert that the usages within `messageParams` modify the map; it only notes generally that a HashMap could be altered without an UnsupportedOperationException. Since no incorrect claim of modification is made, this lie-based deduction does not apply." }
-]

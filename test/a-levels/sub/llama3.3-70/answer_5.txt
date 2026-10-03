@@ -1,4 +1,0 @@
-<answer>
-Bird cockatiel = new Bird(71.0, "Cockatiel");
-Bird macaw = new Bird(56.0, "Macaw");
-</answer>

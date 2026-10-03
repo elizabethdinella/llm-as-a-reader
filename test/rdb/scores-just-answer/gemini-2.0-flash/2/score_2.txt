@@ -1,9 +1,0 @@
-[
-  { "item": "1a", "deducted": false, "feedback": "The answer explicitly states that `Collections.singletonMap` creates an immutable map, satisfying this requirement." },
-  { "item": "1b", "deducted": false, "feedback": "The answer explicitly states that `HashMap` creates a mutable map that can be modified." },
-  { "item": "1c", "deducted": false, "feedback": "The answer states that singletonMap creates a map 'with a single entry', i.e., a single key-value mapping, and later refers to 'If only one entry is ever intended'." },
-  { "item": "2a", "deducted": true, "feedback": "The answer never mentions or examines the signature of the `messageParams` method (e.g., its parameter types such as FetchProfile and the map type/generics). It only reasons generically about HashMap vs singletonMap." },
-  { "item": "2b", "deducted": true, "feedback": "The answer does not state that `messageParams` specifically requires/takes a `HashMap` parameter type. It merely speculates that HashMap was chosen to allow adding entries later, which is not the same as identifying the required parameter type." },
-  { "item": "2c", "deducted": true, "feedback": "The answer does not discuss how the map argument is used inside `messageParams` (or the builder/command), and fails to determine that those usages are read-only. It instead vaguely says the use of HashMap suggests 'the possibility of adding more entries later, even though it's not immediately apparent'." },
-  { "item": "2d", "deducted": false, "feedback": "The answer does not affirmatively claim that the usages within `messageParams` modify the map; it only speculates about possible future additions without asserting mutation occurs, so this deduction does not apply." }
-]

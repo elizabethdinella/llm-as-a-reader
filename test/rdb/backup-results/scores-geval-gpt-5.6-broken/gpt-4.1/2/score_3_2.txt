@@ -1,7 +1,0 @@
-{"justification": "The answer states that Collections.singletonMap returns an immutable map. No deduction.", "deducted": false}
-{"justification": "The answer states that the HashMap wrapper creates a mutable map that can be added to/removed from. No deduction.", "deducted": false}
-{"justification": "The answer says the singleton map contains 'only the mapping you provide', i.e., a single key-value mapping. No deduction.", "deducted": false}
-{"justification": "The answer never gives or discusses the actual method signature of messageParams (its parameter types/declaration). Deduct 1.", "deducted": true}
-{"justification": "The answer only speaks generically about needing a 'mutable map' and never states that messageParams' parameter is declared as a HashMap. Deduct 1.", "deducted": true}
-{"justification": "The answer does not examine how the map argument is actually used inside messageParams; it merely says 'the correct usage depends on whether messageParams or subsequent code needs to modify the map', failing to determine that the usages are read-only. Deduct 1.", "deducted": true}
-{"justification": "The answer does not affirmatively claim that messageParams modifies the map; it only speaks hypothetically. No deduction for this penalty item.", "deducted": false}

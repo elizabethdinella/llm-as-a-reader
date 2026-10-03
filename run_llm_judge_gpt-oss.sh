@@ -14,7 +14,7 @@ MODES="${MODES:-zero-shot few-shot}"
 
 DATASET_ROOT="../crqbench/artifact/dataset"
 PROJECTS_DIR="../crqbench/projects/"
-ANSWER_ROOT="test/rdb/out"
+ANSWER_ROOT="data/rdb/out"
 
 mkdir -p logs
 failed=()

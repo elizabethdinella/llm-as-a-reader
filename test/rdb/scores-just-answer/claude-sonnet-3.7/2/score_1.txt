@@ -1,9 +1,0 @@
-[
-{"item": "1a", "deducted": false, "feedback": "The answer explicitly states that Collections.singletonMap() creates an immutable map, satisfying this requirement."},
-{"item": "1b", "deducted": false, "feedback": "The answer explicitly states that new HashMap() creates a mutable map that can be modified after creation."},
-{"item": "1c", "deducted": false, "feedback": "The answer states the singletonMap has 'exactly one entry', which conveys that it holds only a single key-value mapping."},
-{"item": "2a", "deducted": true, "feedback": "The answer never mentions the signature of messageParams (e.g., its parameter types such as FetchProfile and the map type, or its return type). It only refers to the method vaguely as 'the messageParams method'."},
-{"item": "2b", "deducted": true, "feedback": "The answer only speculates that messageParams 'requires a modifiable map', which the rubric explicitly says is not specific enough; it never states that the parameter type is declared as a HashMap."},
-{"item": "2c", "deducted": true, "feedback": "The answer does not examine or discuss how the map argument is actually used inside messageParams, and it fails to determine whether those usages are read-only. It merely speculates about possible reasons."},
-{"item": "2d", "deducted": true, "feedback": "The answer asserts that the wrapping is 'likely because the messageParams method requires a modifiable map or the map needs to be changed later in the execution flow', implying the map is modified. This is an incorrect characterization of the usages, which are read-only; the actual reason is the declared parameter type being HashMap."}
-]

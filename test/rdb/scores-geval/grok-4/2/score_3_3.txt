@@ -1,7 +1,0 @@
-{"justification": "The answer explicitly states that a singletonMap is immutable and throws on modification attempts.", "deducted": false}
-{"justification": "The answer explicitly states that a HashMap is mutable and can be modified (adding/removing entries) after creation.", "deducted": false}
-{"justification": "The answer never mentions that singletonMap holds/returns only a single key-value mapping (fixed size of one).", "deducted": true}
-{"justification": "The answer never mentions or examines the method signature of messageParams.", "deducted": true}
-{"justification": "The answer does not state that messageParams' parameter type is a HashMap; it only speculates generally about mutability needs, which the rubric says is not specific enough.", "deducted": true}
-{"justification": "The answer does not examine how the map argument is actually used inside messageParams; it merely speculates that the builder/command 'may' need to alter the map, failing to clearly determine that the usages are read-only.", "deducted": true}
-{"justification": "The answer hedges ('may be necessary if the builder or command needs to alter the map internally') rather than asserting outright that the usages modify the map, so the incorrect-claim penalty does not apply.", "deducted": false}

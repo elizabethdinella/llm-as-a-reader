@@ -1,7 +1,0 @@
-{"justification": "The answer explicitly states that `Collections.singletonMap(...)` creates an immutable map, so this criterion is met.", "deducted": false}
-{"justification": "The answer explicitly states that `new HashMap<>(...)` creates a normal, mutable `HashMap`, so this criterion is met.", "deducted": false}
-{"justification": "The answer states the singletonMap 'contains exactly one entry', satisfying the single key-value mapping requirement.", "deducted": false}
-{"justification": "The answer never mentions or describes the method signature of `messageParams` (e.g., its parameter types such as FetchProfile and HashMap). Deduct.", "deducted": true}
-{"justification": "The answer only discusses mutability generically and never states that `messageParams` specifically declares/requires a `HashMap` parameter type (which is why the copy is needed). Deduct.", "deducted": true}
-{"justification": "The answer does not examine the actual usages of the map inside `messageParams`; it merely speculates conditionally ('if messageParams ... never needs to modify', 'if it might add or change entries'), failing to determine that the usages are read-only. Deduct.", "deducted": true}
-{"justification": "The answer does not assert that the usages actually modify the map; it only raises it as a hypothetical possibility, so no incorrect claim is made. No deduction.", "deducted": false}

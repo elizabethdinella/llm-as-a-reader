@@ -1,7 +1,0 @@
-{"justification": "The answer explicitly states that `Collections.singletonMap` returns an immutable map whose entries cannot be added, removed, or modified.", "deducted": false}
-{"justification": "The answer explicitly states that `new HashMap<>(...)` creates a new mutable HashMap in which entries can be added, removed, or modified.", "deducted": false}
-{"justification": "The answer states the singleton map is 'an immutable map containing only the mapping you provide', i.e., a single key-value mapping.", "deducted": false}
-{"justification": "The answer never presents or discusses the actual method signature of `messageParams` (e.g., its parameter types), only speaking generically about maps.", "deducted": true}
-{"justification": "The answer only says `messageParams` 'receives a mutable map', never stating that the parameter type is specifically a `HashMap`, which is not specific enough per the rubric.", "deducted": true}
-{"justification": "The answer does not examine how the map argument is used inside `messageParams`; it merely speculates that 'the correct usage depends on whether messageParams or subsequent code needs to modify the map', failing to determine that the usages are read-only.", "deducted": true}
-{"justification": "The answer does not assert that the usages within `messageParams` actually modify the map; it only frames modification as a hypothetical/conditional possibility, so no incorrect claim was made.", "deducted": false}

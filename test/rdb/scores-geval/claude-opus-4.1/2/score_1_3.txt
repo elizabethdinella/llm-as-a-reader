@@ -1,7 +1,0 @@
-{"justification": "The answer explicitly states that Collections.singletonMap() 'returns an immutable map that cannot be modified'.", "deducted": false}
-{"justification": "The answer explicitly states that new HashMap<>(...) 'creates a mutable HashMap'.", "deducted": false}
-{"justification": "The answer refers to the HashMap being 'initialized with that single entry' from singletonMap, conveying that singletonMap holds only one key-value mapping.", "deducted": true}
-{"justification": "The answer never mentions or examines the actual method signature of messageParams (e.g., its parameter types such as FetchProfile and HashMap<String, Message>). It only speculates about what it 'likely requires'.", "deducted": true}
-{"justification": "The answer only says messageParams 'likely requires a mutable map', which the rubric explicitly says is not specific enough; it does not state that the parameter type is a HashMap.", "deducted": true}
-{"justification": "The answer does not examine or discuss how the map argument is used inside messageParams, and fails to determine whether those usages modify the map; it merely speculates.", "deducted": true}
-{"justification": "The answer asserts that messageParams 'likely requires a mutable map that can be modified after creation', incorrectly implying the map is mutated, when the usages are actually read-only.", "deducted": true}

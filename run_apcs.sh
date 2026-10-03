@@ -3,7 +3,7 @@
 #   Q=2 MODEL=claude-opus-5 bash run_apcs.sh
 #   Q=2 METHODS=ambg TRIALS=1 bash run_apcs.sh      # quick check first
 # Runs are named <method>-apcs-<q>-t<trial>-<model>. Logs in logs/.
-# Needs: test/apcs/sub/mistakes/<q>/ (answers + manual.csv), test/apcs/rubric_<q>.json,
+# Needs: data/apcs/sub/mistakes/<q>/ (answers + manual.csv), data/apcs/rubric_<q>.json,
 #        scratch-apcs/java/<q>/ (ambiguities), cache-apcs-<model>/<q>/ (warmed).
 export PATH="$HOME/miniconda3/envs/py39/bin:$PATH"
 

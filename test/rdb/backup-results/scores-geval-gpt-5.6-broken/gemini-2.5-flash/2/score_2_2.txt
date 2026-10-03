@@ -1,7 +1,0 @@
-{"justification": "The answer explicitly states that `Collections.singletonMap()` creates an immutable map, so the point is not deducted.", "deducted": false}
-{"justification": "The answer explicitly states that `new HashMap<>(...)` creates a mutable map that can be modified later, so the point is not deducted.", "deducted": false}
-{"justification": "The answer states singletonMap creates a map 'with a single entry', satisfying the requirement.", "deducted": true}
-{"justification": "The answer never mentions or examines the method signature of `messageParams` (e.g., its parameter types such as FetchProfile and HashMap). Deduct.", "deducted": true}
-{"justification": "The answer only says the builder 'needs a modifiable map instance' — it never states that the `messageParams` parameter type is declared as a `HashMap`, which is the actual reason. This is exactly the 'requires a mutable map' phrasing the rubric deems insufficient. Deduct.", "deducted": true}
-{"justification": "The answer does not examine how the map argument is used inside `messageParams` and fails to determine that the usages are read-only; it instead speculates that a modifiable map is needed. Deduct.", "deducted": true}
-{"justification": "By asserting that the builder/command 'needs a modifiable map instance,' the answer incorrectly implies that the map is mutated by its usages, which is not the case (the usages are read-only; the parameter is simply typed as HashMap). Deduct.", "deducted": true}

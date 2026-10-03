@@ -1,9 +1,0 @@
-[
-  { "item": "1a", "deducted": false, "feedback": "The answer explicitly states that `singletonMap` creates a single, immutable entry, satisfying the requirement to mention immutability of singletonMap." },
-  { "item": "1b", "deducted": false, "feedback": "The answer states that `HashMap` allows for modifications and that using it 'ensures mutability', which satisfies the requirement to note HashMap is mutable." },
-  { "item": "1c", "deducted": false, "feedback": "The answer says singletonMap 'creates a single, immutable entry' and contrasts it with HashMap allowing 'multiple entries', which conveys that singletonMap holds only a single key-value mapping." },
-  { "item": "2a", "deducted": true, "feedback": "The answer never references the signature of `messageParams` (e.g., its parameter types such as FetchProfile and Map<String, Message>). It discusses only generic Map differences, so no credit." },
-  { "item": "2b", "deducted": true, "feedback": "The answer does not state that `messageParams` takes/declares a HashMap parameter. It only makes a general claim that HashMap 'ensures mutability', which the rubric explicitly says is not specific enough." },
-  { "item": "2c", "deducted": true, "feedback": "The answer does not discuss how the map argument is actually used inside `messageParams`, and it fails to determine whether those usages mutate the map. Instead it vaguely speculates that mutability is 'necessary if changes are expected later', leaving the question unresolved." },
-  { "item": "2d", "deducted": false, "feedback": "The answer does not explicitly assert that the usages within `messageParams` modify the map; it only makes a conditional/hypothetical remark about changes possibly being expected later. Since no definitive incorrect claim of mutation is made, this deduction does not apply." }
-]

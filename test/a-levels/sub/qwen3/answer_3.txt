@@ -1,5 +1,0 @@
-<answer>
-public String GetPosition() {
-    return String.format("X = %.1f Y = %.1f", XPosition, YPosition);
-}
-</answer>

@@ -1,9 +1,0 @@
-[
-{"item": "1a", "deducted": true, "feedback": "The answer never mentions that singletonMap is immutable. It only discusses that it contains a single entry and is memory-optimized, focusing on performance/memory rather than immutability."},
-{"item": "1b", "deducted": true, "feedback": "The answer does not state that HashMap is mutable. It says HashMap is a general-purpose map supporting get()/put() operations, but never explicitly identifies mutability as the distinguishing property."},
-{"item": "1c", "deducted": false, "feedback": "The answer explicitly states that singletonMap 'contains only a single entry' and describes creating a map with a single key-value entry (uid -> Message), satisfying this condition."},
-{"item": "2a", "deducted": true, "feedback": "The answer never mentions the method signature of messageParams (e.g., that it takes a FetchProfile and a HashMap<String, Message>). It gives no signature detail at all."},
-{"item": "2b", "deducted": true, "feedback": "The answer does not state that messageParams requires/takes a HashMap specifically. Instead it incorrectly implies either would work functionally ('Using HashMap instead of singletonMap would not cause any issues in terms of functionality'), which contradicts the fact that the parameter type is HashMap."},
-{"item": "2c", "deducted": true, "feedback": "The answer does not discuss how the map argument is used inside messageParams at all, and thus does not establish that the usages are read-only."},
-{"item": "2d", "deducted": false, "feedback": "The answer does not claim that the usages modify the map; it simply does not discuss internal usage, so no incorrect claim of mutation is made."}
-]

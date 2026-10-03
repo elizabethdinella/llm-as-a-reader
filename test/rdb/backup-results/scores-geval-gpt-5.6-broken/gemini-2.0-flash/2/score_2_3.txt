@@ -1,7 +1,0 @@
-  {"justification": "The answer explicitly states that `Collections.singletonMap` creates an immutable map, satisfying this sub-item.", "deducted": false}
-  {"justification": "The answer explicitly states that `HashMap` creates a mutable map that can be modified.", "deducted": false}
-  {"justification": "The answer states that singletonMap creates a map 'with a single entry', covering the single key-value mapping point.", "deducted": false}
-  {"justification": "The answer never mentions or examines the method signature of `messageParams` (e.g., its parameter types such as FetchProfile and Map/HashMap).", "deducted": true}
-  {"justification": "The answer does not state that `messageParams` specifically requires/accepts a HashMap; it only speculates generically about possible future additions of entries.", "deducted": true}
-  {"justification": "The answer does not examine how the map argument is actually used inside `messageParams`, and fails to determine that the usages are read-only. It only vaguely speculates 'suggesting the possibility of adding more entries later'.", "deducted": true}
-  {"justification": "The answer does not affirmatively claim that the usages within `messageParams` modify the map; it merely speculates about future possibilities without asserting modification occurs, so this lie deduction does not apply.", "deducted": false}

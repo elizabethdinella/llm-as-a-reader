@@ -1,9 +1,0 @@
-[
-  {"justification": "The answer explicitly states that `Collections.singletonMap()` creates an 'immutable, pre-optimized single-entry map', satisfying the requirement to mention immutability of singletonMap.", "deducted": false},
-  {"justification": "The answer never states or implies that a HashMap is mutable; it only discusses instantiation/copying overhead. The mutability of HashMap is not mentioned.", "deducted": true},
-  {"justification": "The answer describes singletonMap as a 'single-entry map', which conveys that it holds only a single key-value mapping.", "deducted": false},
-  {"justification": "The answer does not mention the method signature of `messageParams` at all (e.g., its parameter types such as FetchProfile and HashMap<String, Message>).", "deducted": true},
-  {"justification": "The answer does not state that `messageParams` requires/takes a HashMap specifically; in fact it wrongly suggests passing `singletonMap` directly would work, ignoring the declared parameter type.", "deducted": true},
-  {"justification": "The answer does not discuss how the map argument is used inside `messageParams` (whether it is only read or modified); it only speaks about performance overhead.", "deducted": true},
-  {"justification": "The answer does not claim that the usages of the map argument modify it, so this lie deduction does not apply.", "deducted": false}
-]

@@ -1,7 +1,0 @@
-{"justification": "The answer explicitly states that `Collections.singletonMap(...)` creates an immutable map, so this point is earned.", "deducted": false}
-{"justification": "The answer explicitly states that `new HashMap<>(...)` creates a normal, mutable `HashMap`, so this point is earned.", "deducted": false}
-{"justification": "The answer states the singletonMap 'contains exactly one entry', satisfying the single key-value mapping requirement.", "deducted": false}
-{"justification": "The answer never mentions or shows the method signature of `messageParams` (e.g., its parameter types such as FetchProfile and Map/HashMap). Point deducted.", "deducted": true}
-{"justification": "The answer never states that `messageParams` specifically requires/declares a `HashMap` parameter; it only speaks generically about mutability requirements. Point deducted.", "deducted": true}
-{"justification": "The answer does not examine the actual usages of the map inside `messageParams`; it only speculates conditionally ('if messageParams never needs to modify...'), failing to clearly determine whether the usages are read-only. Point deducted.", "deducted": true}
-{"justification": "The answer does not affirmatively claim that the usages modify the map; it only poses a hypothetical condition, so this penalty does not apply.", "deducted": false}

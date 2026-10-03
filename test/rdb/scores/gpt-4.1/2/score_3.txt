@@ -1,9 +1,0 @@
-[
-{ "item": "1a", "deducted": false, "feedback": "The answer explicitly states that Collections.singletonMap returns an immutable map and that entries cannot be added, removed, or modified." },
-{ "item": "1b", "deducted": false, "feedback": "The answer explicitly states that new HashMap<>(...) creates a mutable map to which entries can be added, removed, or modified." },
-{ "item": "1c", "deducted": false, "feedback": "The answer states the singleton map contains 'only the mapping you provide' and refers to 'the single entry from the immutable singleton map', which conveys the single key-value mapping limitation." },
-{ "item": "2a", "deducted": true, "feedback": "The answer never mentions or examines the actual signature of messageParams (e.g., its parameter types such as FetchProfile and Map/HashMap). It only speaks generally about 'messageParams receiving a map'." },
-{ "item": "2b", "deducted": true, "feedback": "The answer only says messageParams 'receives a mutable map' — it never states that the method signature specifically requires/takes a HashMap. Per the rubric, stating that a mutable map is required is not specific enough." },
-{ "item": "2c", "deducted": true, "feedback": "The answer does not examine or discuss how the map argument is actually used inside messageParams, and explicitly leaves it undetermined: 'The correct usage depends on whether messageParams or subsequent code needs to modify the map.' It fails to establish that the usages are read-only." },
-{ "item": "2d", "deducted": false, "feedback": "The answer does not affirmatively claim that messageParams modifies the map; it only speaks hypothetically ('any attempt to modify it will throw...', 'depends on whether ... needs to modify'). No incorrect assertion of mutation is made." }
-]

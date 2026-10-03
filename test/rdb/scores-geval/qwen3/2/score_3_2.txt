@@ -1,7 +1,0 @@
-{"justification": "The answer explicitly states 'Using `singletonMap` creates an immutable map', satisfying this item.", "deducted": false}
-{"justification": "The answer states `HashMap` allows modifications and is used 'to ensure mutability', so HashMap's mutability is covered.", "deducted": false}
-{"justification": "The answer never mentions that `singletonMap` holds/returns only a single key-value mapping.", "deducted": true}
-{"justification": "The answer never presents or discusses the method signature of `messageParams`.", "deducted": true}
-{"justification": "The answer only speaks in terms of mutability ('HashMap allows modifications', 'ensure mutability') and never states that `messageParams` specifically declares/requires a `HashMap` parameter type, which is why a `singletonMap` cannot be passed.", "deducted": true}
-{"justification": "The answer asserts 'even though the map isn't altered later' but does not actually discuss how the map argument is used inside `messageParams` (e.g., only read from for lookups); there is no examination of the usages themselves.", "deducted": true}
-{"justification": "The answer does not claim that the usages modify the map; it says the opposite, so no deduction applies here.", "deducted": false}

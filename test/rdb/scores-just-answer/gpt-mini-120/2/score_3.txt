@@ -1,9 +1,0 @@
-[
-  {"item": "1a", "deducted": false, "feedback": "The answer explicitly states that `Collections.singletonMap` returns an **immutable** map that 'cannot be changed (no puts, removes, etc.)', satisfying this requirement."},
-  {"item": "1b", "deducted": false, "feedback": "The answer explicitly describes the `new HashMap<>(...)` copy as a 'mutable copy – a regular `HashMap` that can later be modified, have additional entries added', satisfying this requirement."},
-  {"item": "1c", "deducted": false, "feedback": "The answer states the singleton map 'contains exactly one entry' and later 'a lightweight, read-only map with a single entry', satisfying the single key-value mapping requirement."},
-  {"item": "2a", "deducted": true, "feedback": "The answer never mentions the actual signature of `messageParams` (e.g., its parameter types such as FetchProfile and Map/HashMap, or its return type/builder nature). It only discusses generic map semantics, so this is not covered."},
-  {"item": "2b", "deducted": true, "feedback": "The answer only vaguely says the copy can 'be passed to APIs that expect a mutable HashMap implementation'. It never specifically states that `messageParams` declares a `HashMap` parameter; the phrasing is generic and framed around mutability rather than the concrete declared type of this method's parameter."},
-  {"item": "2c", "deducted": true, "feedback": "The answer does not examine or discuss how the map argument is actually used inside `messageParams`, and therefore never determines that those usages are read-only. It reasons purely about general HashMap vs singletonMap semantics."},
-  {"item": "2d", "deducted": false, "feedback": "The answer does not claim that `messageParams` modifies the map; it only notes generically that a HashMap 'can later be modified', so it does not make the incorrect assertion described here."}
-]

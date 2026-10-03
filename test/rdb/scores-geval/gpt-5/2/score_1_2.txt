@@ -1,7 +1,0 @@
-{"justification": "The answer explicitly says Collections.singletonMap returns an immutable Map and that put/remove/clear throw UnsupportedOperationException.", "deducted": false}
-{"justification": "The answer states that new HashMap<>(...) creates a mutable copy, clearly noting HashMap's mutability.", "deducted": false}
-{"justification": "The answer describes singletonMap as a 'single-entry Map', capturing that it holds only one key-value mapping.", "deducted": false}
-{"justification": "The answer never mentions or examines the actual method signature of messageParams (its parameter types/declaration).", "deducted": true}
-{"justification": "The answer only speaks generically about needing 'a mutable Map (e.g., new HashMap<>(...))'; it does not state that messageParams specifically declares/requires a HashMap parameter.", "deducted": true}
-{"justification": "The answer only hypothesizes conditionally ('If messageParams only reads the map... If messageParams mutates the map...'), never actually determining that the usages within messageParams are read-only.", "deducted": true}
-{"justification": "The answer does not assert that messageParams modifies the map; it only presents it as a conditional possibility, so no false claim was made.", "deducted": false}

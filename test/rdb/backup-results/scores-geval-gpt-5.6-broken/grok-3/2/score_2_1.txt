@@ -1,7 +1,0 @@
-{"justification": "The answer explicitly states that `singletonMap` is immutable ('while `singletonMap` is immutable and optimized for a single key-value pair'). No deduction.", "deducted": false}
-{"justification": "The answer explicitly states that `HashMap` is mutable ('`HashMap` is mutable and allows modifications'). No deduction.", "deducted": false}
-{"justification": "The answer notes that `singletonMap` is 'optimized for a single key-value pair' and conveys 'a fixed mapping', which communicates that it holds only a single key-value mapping. No deduction.", "deducted": false}
-{"justification": "The answer never mentions or examines the method signature of `messageParams` (i.e., that it declares a `HashMap<String, Message>` parameter). Deduction applies.", "deducted": true}
-{"justification": "The answer does not state that `messageParams` requires/takes a `HashMap`; in fact it suggests `singletonMap` would be preferable, which ignores the declared parameter type. Deduction applies.", "deducted": true}
-{"justification": "The answer does not discuss how the map argument is actually used inside `messageParams`, nor does it determine whether those usages are read-only. Deduction applies.", "deducted": true}
-{"justification": "The answer does not affirmatively claim that `messageParams` modifies the map; it only vaguely mentions a general 'risk of unintended changes' from mutability. No explicit incorrect claim, so no deduction for this lie item.", "deducted": false}

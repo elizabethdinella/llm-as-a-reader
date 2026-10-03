@@ -1,5 +1,0 @@
-<answer>
-public String GetPosition() {
-    return "X = " + XPosition + " Y = " + YPosition;
-}
-</answer>

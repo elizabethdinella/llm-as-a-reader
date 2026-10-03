@@ -1,9 +1,0 @@
-[
-  { "item": "1a", "deducted": false, "feedback": "The answer explicitly states that Collections.singletonMap creates an immutable map and that attempts to modify it would throw an exception, satisfying this requirement." },
-  { "item": "1b", "deducted": false, "feedback": "The answer explicitly states that HashMap is a mutable implementation that can hold multiple entries." },
-  { "item": "1c", "deducted": false, "feedback": "The answer states singletonMap creates a map with only one key-value pair / single entry, and notes the resulting HashMap will therefore have just that one entry." },
-  { "item": "2a", "deducted": true, "feedback": "The answer never states or examines the actual signature of messageParams (e.g., that it accepts a FetchProfile and a HashMap<String, Message>). It only vaguely says 'the parameter for messageParams seems to require a Map object' and admits 'I don't know its internals'." },
-  { "item": "2b", "deducted": true, "feedback": "The answer says messageParams 'seems to require a Map object' and speculates about whether it needs a mutable or immutable map; it never states that the parameter type is specifically a HashMap, which is why the singletonMap must be wrapped." },
-  { "item": "2c", "deducted": true, "feedback": "The answer only conditionally speculates ('if it doesn't modify the map', 'both approaches would work if messageParams only reads from the map') and explicitly admits not knowing the internals. It does not examine or clearly determine that the usages of the map within messageParams are read-only." },
-  { "item": "2d", "deducted": false, "feedback": "The answer does not claim that messageParams modifies the map; it leaves the question open rather than asserting modification, so this error is not made." }
-]

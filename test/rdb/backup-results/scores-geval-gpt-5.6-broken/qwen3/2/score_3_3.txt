@@ -1,7 +1,0 @@
-{"justification": "The answer explicitly states that `singletonMap` creates an immutable map, satisfying this criterion.", "deducted": false}
-{"justification": "The answer states that `HashMap` allows modifications, which conveys mutability.", "deducted": false}
-{"justification": "The answer never mentions that `Collections.singletonMap` holds only a single key-value mapping (versus a HashMap which can hold many entries).", "deducted": true}
-{"justification": "The answer never presents or references the method signature of `messageParams` (e.g., its parameter types such as `FetchProfile` and `HashMap<String, Message>`).", "deducted": true}
-{"justification": "The answer only claims the code uses HashMap 'to ensure mutability'; it never states that the `messageParams` signature specifically requires/declares a `HashMap` parameter, which is the actual reason a singletonMap could not be passed.", "deducted": true}
-{"justification": "The answer offers only a bare assertion that 'the map isn't altered later' without examining or discussing how the map argument is actually used inside `messageParams`/the builder, so it does not really discuss the usages being read-only.", "deducted": true}
-{"justification": "The answer does not claim that the usages modify the map; it says the map isn't altered, so no deduction for this lie item.", "deducted": false}

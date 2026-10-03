@@ -8,7 +8,7 @@ explanation text is dropped. Files already in the expected format are left alone
 Files it can't parse are listed.
 
 Usage:
-  python fix_judge_format.py "llm-judge-apcs-2-t*-claude-opus-5" test/apcs/rubric_2.json
+  python fix_judge_format.py "llm-judge-apcs-2-t*-claude-opus-5" data/apcs/rubric_2.json
 """
 import glob
 import json

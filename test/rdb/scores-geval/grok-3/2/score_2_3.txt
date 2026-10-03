@@ -1,7 +1,0 @@
-{"justification": "The answer explicitly states that `singletonMap` is immutable ('while `singletonMap` is immutable and optimized for a single key-value pair'). No deduction.", "deducted": false}
-{"justification": "The answer explicitly states that `HashMap` is mutable ('`HashMap` is mutable and allows modifications'). No deduction.", "deducted": false}
-{"justification": "The answer notes singletonMap is 'optimized for a single key-value pair' and conveys 'a fixed mapping', which conveys that it holds only a single key-value mapping. No deduction.", "deducted": false}
-{"justification": "The answer never mentions the method signature of `messageParams` (e.g., its declared parameter types such as FetchProfile and HashMap<String, Message>). Deduct.", "deducted": true}
-{"justification": "The answer does not state that `messageParams` specifically requires/takes a `HashMap`; in fact it suggests `singletonMap` could be used instead, which contradicts the API requirement. Deduct.", "deducted": true}
-{"justification": "The answer does not examine how the map argument is used within `messageParams` and does not determine whether those usages are read-only; it only vaguely mentions a 'risk of unintended changes'. Deduct.", "deducted": true}
-{"justification": "The answer does not explicitly claim that usages of the map inside `messageParams` modify it; it only speaks generally about the mutability risk of HashMap. No deduction for this lie item.", "deducted": false}

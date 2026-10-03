@@ -1,9 +1,0 @@
-[
-  { "item": "1a", "deducted": false, "feedback": "The answer explicitly states that `Collections.singletonMap` returns an **immutable** map that cannot be changed (no puts/removes). Condition satisfied." },
-  { "item": "1b", "deducted": false, "feedback": "The answer explicitly states that wrapping in `new HashMap<>(...)` creates a **mutable copy** that can be modified or have entries added. Condition satisfied." },
-  { "item": "1c", "deducted": false, "feedback": "The answer states the singleton map 'contains exactly one entry' and later 'a lightweight, read-only map with a single entry'. Condition satisfied." },
-  { "item": "2a", "deducted": true, "feedback": "The answer never mentions or examines the method signature of `messageParams` (e.g., its declared parameter types such as FetchProfile and Map/HashMap). It speaks only generically about 'APIs that expect a mutable HashMap'. Deduction applies." },
-  { "item": "2b", "deducted": true, "feedback": "The answer does not state that `messageParams` itself takes a HashMap; it only vaguely alludes to 'APIs that expect a mutable HashMap implementation' without tying this to `messageParams`. This is not a specific statement about the method's parameter type, so the deduction applies." },
-  { "item": "2c", "deducted": true, "feedback": "The answer contains no discussion of how the map argument is actually used inside `messageParams` (or the builder/command), and thus fails to determine whether those usages are read-only or mutating. Deduction applies." },
-  { "item": "2d", "deducted": false, "feedback": "The answer does not assert that `messageParams` (or its internal usages) modifies the map; it only notes that a HashMap copy generally permits modification. No incorrect claim of mutation is made, so no deduction." }
-]

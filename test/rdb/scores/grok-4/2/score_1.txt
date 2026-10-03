@@ -1,9 +1,0 @@
-[
-  { "item": "1a", "deducted": false, "feedback": "The answer explicitly states that `Collections.singletonMap()` returns an immutable Map and that any attempt to modify it would throw `UnsupportedOperationException`." },
-  { "item": "1b", "deducted": false, "feedback": "The answer explicitly states that `HashMap` is mutable and that `new HashMap<>()` creates a mutable copy." },
-  { "item": "1c", "deducted": true, "feedback": "The answer never mentions that `Collections.singletonMap()` produces a map containing exactly one key-value mapping (and thus fixed size); it only discusses mutability." },
-  { "item": "2a", "deducted": true, "feedback": "The answer does not reference or discuss the method signature of `messageParams` (its declared parameter types, e.g. FetchProfile and the map type). It only speculates about the implementation." },
-  { "item": "2b", "deducted": true, "feedback": "The answer does not state that `messageParams` declares a `HashMap` parameter. In fact it implies a `Map` would be acceptable ('It would provide an immutable Map... may fail at runtime'), suggesting a runtime rather than compile-time/type-signature constraint." },
-  { "item": "2c", "deducted": true, "feedback": "The answer does not examine how the map argument is actually used inside `messageParams`; it hedges with 'may fail at runtime if the implementation... attempts to modify', failing to determine that the usages are read-only." },
-  { "item": "2d", "deducted": false, "feedback": "The answer does not affirmatively claim that `messageParams` modifies the map; it only raises it as a conditional possibility, so this incorrect-statement deduction does not apply." }
-]

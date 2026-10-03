@@ -1,9 +1,0 @@
-[
-  {"justification": "The answer explicitly states that `singletonMap` returns an immutable map that cannot be modified.", "deducted": false},
-  {"justification": "The answer explicitly states that wrapping in a new HashMap creates a mutable map that can be changed later.", "deducted": false},
-  {"justification": "The answer states singletonMap returns an immutable map 'with exactly one entry', covering the single key-value mapping point.", "deducted": false},
-  {"justification": "The answer never mentions the method signature of `messageParams` (e.g., its parameter types), only referring vaguely to 'the API'.", "deducted": true},
-  {"justification": "The answer only says the API 'requires a mutable map' and does not specify that `messageParams` declares a `HashMap` parameter type, which the rubric says is not specific enough.", "deducted": true},
-  {"justification": "The answer does not examine how the map argument is actually used inside `messageParams`, and gives no determination about whether those usages modify the map (it only speculates generically).", "deducted": true},
-  {"justification": "The answer does not affirmatively claim that `messageParams` modifies the map; it only offers generic speculation about why such a pattern is 'typically' used, so no incorrect assertion is made.", "deducted": false}
-]

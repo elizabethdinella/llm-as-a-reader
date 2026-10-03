@@ -127,16 +127,16 @@ def calculate_and_print_metrics(sample, auto, manual, split, metrics):
     metrics[split]["recall"] += recall
     metrics[split]["f1"] += f1
         
-#SCORE_DIR = "test/rdb/scores-just-answer/"
-#SCORE_DIR = "test/rdb/scores-pre-just-answer/"
-#SCORE_DIR = "test/rdb/scores_pre/"
-#SCORE_DIR = "test/rdb/scores/"
-#SCORE_DIR = "test/rdb/scores-geval/"
-#SCORE_DIR = "test/rdb/scores-geval-gpt-5.6/"
-#SCORE_DIR = "test/rdb/scores-geval-pre/"
-#SCORE_DIR = "test/rdb/calibrate-round-1/"
-#SCORE_DIR = "test/rdb/scores-geval-no-cot/"
-#SCORE_DIR = "test/rdb/calibrate-round-1-with-notes4/"
+#SCORE_DIR = "data/rdb/scores-just-answer/"
+#SCORE_DIR = "data/rdb/scores-pre-just-answer/"
+#SCORE_DIR = "data/rdb/scores_pre/"
+#SCORE_DIR = "data/rdb/scores/"
+#SCORE_DIR = "data/rdb/scores-geval/"
+#SCORE_DIR = "data/rdb/scores-geval-gpt-5.6/"
+#SCORE_DIR = "data/rdb/scores-geval-pre/"
+#SCORE_DIR = "data/rdb/calibrate-round-1/"
+#SCORE_DIR = "data/rdb/scores-geval-no-cot/"
+#SCORE_DIR = "data/rdb/calibrate-round-1-with-notes4/"
 
 
 args = parse_args()

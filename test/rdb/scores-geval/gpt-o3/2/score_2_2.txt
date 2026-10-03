@@ -1,7 +1,0 @@
-{"justification": "The answer explicitly says Collections.singletonMap returns a map that is 'unmodifiable', so immutability is covered.", "deducted": false}
-{"justification": "The answer states the HashMap copy 'is fully mutable – additional (uid, Message) pairs can be inserted or removed without error', so mutability of HashMap is covered.", "deducted": false}
-{"justification": "The answer says singletonMap 'contains exactly one entry', covering the single key-value mapping point.", "deducted": false}
-{"justification": "The answer never mentions the actual method signature of messageParams (e.g., its declared parameter types such as FetchProfile and HashMap<String, Message>).", "deducted": true}
-{"justification": "The answer never states that messageParams specifically declares/requires a HashMap parameter type; it only discusses generic mutability considerations.", "deducted": true}
-{"justification": "The answer only speculates hypothetically ('if messageParams ... tries to add, remove or clear entries'), and never inspects or determines how the map is actually used inside messageParams, i.e., that the usages are read-only.", "deducted": true}
-{"justification": "The answer does not affirmatively claim that messageParams modifies the map; it only presents a conditional/hypothetical scenario, so no false assertion of mutation is made.", "deducted": false}

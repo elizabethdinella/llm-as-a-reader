@@ -1,7 +1,0 @@
-{"justification": "The answer explicitly states that `Collections.singletonMap(key, value)` returns an immutable map and that attempting modification throws `UnsupportedOperationException`.", "deducted": false}
-{"justification": "The answer explicitly states that `new HashMap<>(...)` creates a mutable map in which entries can be freely added, removed, or modified.", "deducted": false}
-{"justification": "The answer states the singleton map contains 'only one mapping'.", "deducted": false}
-{"justification": "The answer never presents or discusses the actual method signature of `messageParams` (its parameter types/declaration).", "deducted": true}
-{"justification": "The answer only says `messageParams` 'receives a mutable map' — it never states that the parameter type is specifically a `HashMap`, which the rubric requires as more specific than 'mutable map'.", "deducted": true}
-{"justification": "The answer does not examine how the map argument is actually used inside `messageParams`, and fails to determine that those usages are read-only.", "deducted": true}
-{"justification": "The answer implies/asserts that the mutable copy is needed so modifications can occur within `messageParams` ('so that messageParams receives a mutable map'; 'Passing singletonMap directly would restrict future modifications to the map within messageParams'), which incorrectly suggests the usages modify the map.", "deducted": true}

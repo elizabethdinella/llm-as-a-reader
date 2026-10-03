@@ -1,7 +1,0 @@
-{"justification": "The answer never mentions that Collections.singletonMap returns an immutable map; it only discusses memory usage and performance optimization.", "deducted": true}
-{"justification": "The answer never mentions that HashMap is mutable; it only compares memory footprint/performance.", "deducted": true}
-{"justification": "The answer indicates singletonMap is 'optimized for storing single entries' and that 'only one message is associated with each uid', which conveys that singletonMap holds only a single key-value mapping.", "deducted": false}
-{"justification": "The answer does not mention the method signature of messageParams at all.", "deducted": true}
-{"justification": "The answer does not state that messageParams requires/takes a HashMap (which is why the singletonMap must be wrapped); it treats the choice as merely a performance trade-off.", "deducted": true}
-{"justification": "The answer does not examine how the map argument is used inside messageParams, nor whether those usages are read-only.", "deducted": false}
-{"justification": "The answer does not claim that the usages modify the map, so this deduction does not apply.", "deducted": false}

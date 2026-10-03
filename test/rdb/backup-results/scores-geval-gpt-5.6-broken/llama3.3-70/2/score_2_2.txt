@@ -1,7 +1,0 @@
-{"justification": "The answer never mentions that singletonMap is immutable; it only discusses memory efficiency and entry count.", "deducted": true}
-{"justification": "The answer does not state that HashMap is mutable; it only says HashMap is suitable for multiple key-value pairs.", "deducted": true}
-{"justification": "The answer does state that singletonMap is 'optimized for storing only one entry' and 'creates a map with a single entry', satisfying this requirement.", "deducted": false}
-{"justification": "The answer does not mention the method signature of messageParams at all.", "deducted": true}
-{"justification": "The answer never states that messageParams requires/takes a HashMap parameter type.", "deducted": true}
-{"justification": "The answer does not discuss how the map argument is used inside messageParams, nor whether those usages are read-only.", "deducted": true}
-{"justification": "The answer makes no claim that the usages modify the map, so no deduction for this incorrect statement.", "deducted": false}

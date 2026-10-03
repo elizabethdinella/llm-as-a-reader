@@ -17,7 +17,7 @@ lang = None
 sample_num = None #set via arg
 #sample_num = 2
 
-init_pred_dir = "test/rdb/scores-geval-no-cot/"
+init_pred_dir = "data/rdb/scores-geval-no-cot/"
 
 
 dataset_dir = None 
@@ -103,7 +103,7 @@ def get_cache_prefix(model_name):
 
 def get_rubric():
     if _MODE == Mode.APCS:
-        f_rubric_apcs = os.path.join("test/apcs/", f"rubric_{str(sample_num)}.json")
+        f_rubric_apcs = os.path.join("data/apcs/", f"rubric_{str(sample_num)}.json")
         return open(f_rubric_apcs).read()
     elif _MODE == Mode.RDB:
         f_rubric = os.path.join(dataset_dir, "rubrics", str(sample_num) + ".json")
@@ -120,9 +120,9 @@ def get_mode():
 
 def get_answer_dir():
     if _MODE == Mode.RDB:
-        return os.path.join("test/rdb/out", lang)
+        return os.path.join("data/rdb/out", lang)
     elif _MODE == Mode.APCS:
-        return f"test/apcs/sub/mistakes/{str(sample_num)}"
+        return f"data/apcs/sub/mistakes/{str(sample_num)}"
     else:
         assert False
 
@@ -163,7 +163,7 @@ def get_question():
         return CODE
 
     elif _MODE == Mode.APCS:
-        f_question = f"test/apcs/q{str(sample_num)}.txt"
+        f_question = f"data/apcs/q{str(sample_num)}.txt"
         return open(f_question).read() 
         
     else:

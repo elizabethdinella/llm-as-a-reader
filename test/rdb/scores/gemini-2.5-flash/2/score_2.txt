@@ -1,9 +1,0 @@
-[
-    { "item": "1a", "deducted": false, "feedback": "The answer explicitly states that `Collections.singletonMap(...)` creates an immutable Map and that modification attempts throw UnsupportedOperationException." },
-    { "item": "1b", "deducted": false, "feedback": "The answer explicitly states that `new HashMap<>(...)` produces a new, mutable HashMap that can be modified afterwards." },
-    { "item": "1c", "deducted": false, "feedback": "The answer states the singletonMap contains 'exactly one key-value pair', satisfying the single-mapping requirement." },
-    { "item": "2a", "deducted": true, "feedback": "The answer never mentions or reproduces the signature of `messageParams` (e.g., its parameter types such as FetchProfile and Map/HashMap). It only vaguely refers to what the Builder 'expects'." },
-    { "item": "2b", "deducted": true, "feedback": "The answer only says the Builder 'expects or might need to operate on a mutable map' / 'needs a modifiable map instance'. It never states that the `messageParams` parameter type is specifically a HashMap, which the rubric requires; 'mutable map' is explicitly deemed insufficient." },
-    { "item": "2c", "deducted": true, "feedback": "The answer does not examine or discuss how the map argument is actually used inside `messageParams`; it merely speculates ('If the Builder's internal logic were to...'), failing to determine that the usages are read-only." },
-    { "item": "2d", "deducted": true, "feedback": "The answer incorrectly asserts that a mutable map is required, concluding 'the use of `new HashMap` here implies that the `UidFetchCommand.Builder` or the resulting `UidFetchCommand` needs a modifiable map instance' and suggesting entries may be added/modified later. This is unsupported by the code context, where the map usages are read-only." }
-]

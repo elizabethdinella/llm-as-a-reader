@@ -1,7 +1,0 @@
-{"justification": "The answer explicitly states that `Collections.singletonMap` returns an immutable map that throws `UnsupportedOperationException` on modification.", "deducted": false}
-{"justification": "The answer explicitly states that `new HashMap<>(...)` creates a mutable map to which entries can be freely added, removed, or modified.", "deducted": false}
-{"justification": "The answer states the singleton map contains 'only one mapping'.", "deducted": false}
-{"justification": "The answer never mentions the actual method signature of `messageParams` (e.g., its parameter types such as FetchProfile and HashMap<String, Message>). Deduct.", "deducted": true}
-{"justification": "The answer only says `messageParams` 'receives a mutable map' / needs a modifiable map; it never states that the declared parameter type is specifically a `HashMap`, which is why the conversion is necessary. This is not specific enough per the rubric. Deduct.", "deducted": true}
-{"justification": "The answer does not examine how the map argument is actually used inside `messageParams`, and fails to determine that the usages are read-only; instead it vaguely suggests modifications may occur. Deduct.", "deducted": true}
-{"justification": "The answer asserts the HashMap is used 'so that messageParams receives a mutable map' and that passing singletonMap 'would restrict future modifications to the map within messageParams', implying the method modifies the map, which is incorrect (usages are read-only). Deduct.", "deducted": true}

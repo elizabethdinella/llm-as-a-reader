@@ -1,8 +1,0 @@
-{"justification": "The answer explicitly states that `singletonMap` creates an unmodifiable map, satisfying the immutability requirement.", "deducted": false}
-{"justification": "The answer explicitly states that `new HashMap<>(...)` creates a modifiable one, satisfying the mutability requirement.", "deducted": false}
-{"justification": "The answer never mentions that `singletonMap` holds only a single key-value mapping (nor its size limitation of one entry).", "deducted": true}
-
-{"justification": "The answer does not mention or reference the method signature of `messageParams` at all.", "deducted": true}
-{"justification": "The answer does not state that `messageParams` declares/requires a `HashMap` parameter type; it only speaks generically about modifiability.", "deducted": true}
-{"justification": "The answer does not examine how the map argument is used inside `messageParams`, and fails to determine whether those usages are read-only.", "deducted": true}
-{"justification": "The answer does not claim that usages within `messageParams` modify the map; it only vaguely mentions preventing 'unintended modifications' and allowing 'potential future changes', so no false claim of modification is made.", "deducted": false}

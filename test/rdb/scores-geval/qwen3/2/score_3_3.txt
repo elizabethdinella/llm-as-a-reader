@@ -1,7 +1,0 @@
-{"justification": "The answer explicitly states that `singletonMap` creates an immutable map. No deduction.", "deducted": false}
-{"justification": "The answer states that `HashMap` allows modifications, i.e., it is mutable. No deduction.", "deducted": false}
-{"justification": "The answer never mentions that `Collections.singletonMap` holds only a single key-value mapping (fixed size of one). Deduction applies.", "deducted": true}
-{"justification": "The answer does not mention or quote the method signature of `messageParams` at all. Deduction applies.", "deducted": true}
-{"justification": "The answer does not state that `messageParams` declares a `HashMap` parameter type; it only vaguely appeals to mutability. Deduction applies.", "deducted": true}
-{"justification": "The answer does not examine or discuss how the map argument is used inside `messageParams` (e.g., only read via lookups); it only makes a passing remark that the map 'isn't altered later' without any discussion of the actual usages. Deduction applies.", "deducted": true}
-{"justification": "The answer does not claim that the usages modify the map \u2014 it says the map isn't altered \u2014 so this penalty does not apply.", "deducted": false}

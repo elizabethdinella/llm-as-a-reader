@@ -1,9 +1,0 @@
-[
-  { "item": "1a", "deducted": false, "feedback": "The answer explicitly states that `Collections.singletonMap()` returns an **immutable** map, satisfying this requirement." },
-  { "item": "1b", "deducted": false, "feedback": "The answer explicitly states that `HashMap` is a **mutable** map that can be modified after creation." },
-  { "item": "1c", "deducted": false, "feedback": "The answer states the singletonMap is 'an immutable map with exactly one key-value pair' and is 'optimized for single entries', which covers the single key-value mapping point." },
-  { "item": "2a", "deducted": true, "feedback": "The answer never mentions or examines the actual signature of `messageParams` (e.g., its declared parameter types such as FetchProfile and Map/HashMap). It only speculates about behavior without referencing the method declaration." },
-  { "item": "2b", "deducted": true, "feedback": "The answer does not state that `messageParams` takes a HashMap specifically. It only hypothesizes conditionally ('If `messageParams` needs to modify the map, then `HashMap` is necessary'), and even suggests passing `Collections.singletonMap()` directly, which would not compile if the parameter is declared as HashMap. This is neither specific nor correct." },
-  { "item": "2c", "deducted": true, "feedback": "The answer does not examine the actual usages of the map argument inside `messageParams`. It presents both possibilities conditionally ('If the method only reads the map... If the method needs to modify the map...') and never determines that the usages are read-only, failing the requirement to clearly resolve this." },
-  { "item": "2d", "deducted": false, "feedback": "The answer does not assert that the usages inside `messageParams` modify the map; it only raises it as a hypothetical possibility. No incorrect claim of mutation was made, so this deduction does not apply." }
-]

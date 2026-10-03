@@ -1,4 +1,0 @@
-{"DECISION": "YES", "FEEDBACK": "The response calls isAvailable(requestedName) and isAvailable(requestedName + count), both with String arguments, called unqualified within the Account class, which is correct."}
-{"DECISION": "YES", "FEEDBACK": "The while loop checks isAvailable(requestedName + count) and increments count in the body, so the potential username is updated each iteration until an available one is found."}
-{"DECISION": "YES", "FEEDBACK": "count is initialized to 1 and incremented (count++) inside the while loop body, satisfying the requirement to increment a count in the context of a loop."}
-{"DECISION": "YES", "FEEDBACK": "The constructor handles the case where requestedName itself is available by assigning it directly; otherwise it starts with count = 1, loops incrementing until an available name is found, and assigns requestedName + count to the instance variable username. Nothing is printed or returned, and username is initialized in all cases."}

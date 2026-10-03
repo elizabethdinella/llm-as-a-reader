@@ -1,7 +1,0 @@
-{"justification": "The answer explicitly states that `Collections.singletonMap` creates an immutable Map and that any modification attempt throws UnsupportedOperationException. Requirement met.", "deducted": false}
-{"justification": "The answer explicitly states that the resulting `HashMap` object is mutable and can be added to/removed from. Requirement met.", "deducted": false}
-{"justification": "The answer states singletonMap 'creates an immutable Map containing exactly one key-value pair' and reiterates it holds only this single entry. Requirement met.", "deducted": false}
-{"justification": "The answer never mentions or examines the actual method signature of `messageParams`; it only speaks generically about Map parameters. Deduct 1 point.", "deducted": true}
-{"justification": "The answer does not state that `messageParams` specifically takes a `HashMap` (rather than a general Map); it only speculates about whether a mutable map is needed. Deduct 1 point.", "deducted": true}
-{"justification": "The answer never inspects or discusses how the map argument is actually used inside `messageParams`, and fails to determine whether those usages are read-only or mutating — it only offers hypothetical reasoning ('might need to be modified later'). Deduct 1 point.", "deducted": true}
-{"justification": "The answer does not affirmatively claim that `messageParams` modifies the map; it only phrases it conditionally/hypothetically ('if the map needs to be mutable by the receiving method'). No incorrect assertion is made, so no deduction here.", "deducted": false}

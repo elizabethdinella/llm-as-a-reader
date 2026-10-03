@@ -1,7 +1,0 @@
-{"justification": "The answer explicitly states that `Collections.singletonMap` returns an immutable map that throws `UnsupportedOperationException` on modification.", "deducted": false}
-{"justification": "The answer states that wrapping in `new HashMap<>(...)` creates a mutable copy allowing additions, removals, or changes.", "deducted": false}
-{"justification": "The answer says singletonMap returns a map 'containing a single key-value pair' and refers to it as a single-entry map.", "deducted": false}
-{"justification": "The answer never mentions the method signature of `messageParams` (its parameter types/declaration).", "deducted": true}
-{"justification": "The answer never states that `messageParams` specifically takes/declares a `HashMap` parameter; it only speaks generally about mutability requirements.", "deducted": true}
-{"justification": "The answer does not examine how the map argument is used inside `messageParams`; it merely speculates ('might be necessary if... internally modifies the map'), failing to clearly determine that the usages are read-only.", "deducted": true}
-{"justification": "The answer does not affirmatively claim that the usages modify the map; it only hedges with a conditional ('might be necessary if... internally modifies'). Therefore no deduction for an incorrect assertion.", "deducted": false}

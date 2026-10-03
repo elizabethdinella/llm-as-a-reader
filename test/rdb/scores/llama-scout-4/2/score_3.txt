@@ -1,9 +1,0 @@
-[
-  { "item": "1a", "deducted": false, "feedback": "The answer explicitly states under 'Key Differences' that '`singletonMap` is immutable', and also notes attempts to add or remove entries throw UnsupportedOperationException. Requirement met." },
-  { "item": "1b", "deducted": false, "feedback": "The answer explicitly states 'whereas `HashMap` is mutable' and that HashMap can be resized/modified. Requirement met." },
-  { "item": "1c", "deducted": false, "feedback": "The answer states 'A `singletonMap` is a map that contains only one key-value pair' and 'singletonMap is designed for a single entry'. Requirement met." },
-  { "item": "2a", "deducted": true, "feedback": "The answer never mentions or discusses the method signature of messageParams (e.g., that it accepts a FetchProfile and a HashMap<String, Message>). It only discusses generic Map implementation differences, with no reference to the builder method's declared parameter types." },
-  { "item": "2b", "deducted": true, "feedback": "The answer does not state that messageParams specifically takes a HashMap. In fact, it wrongly suggests that singletonMap 'could be a better choice' in this context, which contradicts the fact that the parameter is declared as a HashMap (which is why the code wraps the singletonMap in a new HashMap<>)." },
-  { "item": "2c", "deducted": true, "feedback": "The answer contains no discussion of how the map argument is used inside messageParams; it never examines whether the internal usages read from or modify the map, so it fails to determine that the usages are read-only." },
-  { "item": "2d", "deducted": false, "feedback": "The answer does not claim that messageParams modifies the map; it makes no assertion about internal modification at all (it merely speculates that singletonMap could be used if no modification is intended). No false claim of modification is made, so no deduction here." }
-]

@@ -1,9 +1,0 @@
-[
-  { "item": "1a", "deducted": false, "feedback": "The answer explicitly states that `Collections.singletonMap(...)` creates an immutable map, satisfying this requirement." },
-  { "item": "1b", "deducted": false, "feedback": "The answer explicitly states that `new HashMap<>(...)` creates a normal, mutable `HashMap`, satisfying this requirement." },
-  { "item": "1c", "deducted": false, "feedback": "The answer states the singletonMap 'contains exactly one entry' / is a 'one-entry map', which conveys the single key-value mapping limitation." },
-  { "item": "2a", "deducted": true, "feedback": "The answer never mentions the method signature of `messageParams` (e.g., that it accepts a FetchProfile and a map parameter of a specific declared type). It only refers to `messageParams` abstractly as something the map is passed to." },
-  { "item": "2b", "deducted": true, "feedback": "The answer does not state that `messageParams` declares a `HashMap` parameter type. It only speaks generically about whether mutability is needed ('a mutable HashMap is required' if modifications occur), which the rubric explicitly says is not specific enough. It never identifies that the API itself requires a HashMap type, which is the actual reason the singletonMap must be wrapped." },
-  { "item": "2c", "deducted": true, "feedback": "The answer does not examine actual usages of the map inside `messageParams`; it merely hypothesizes ('If `messageParams` ... never needs to modify' / 'might add or change entries'). It fails to clearly determine whether the usages are read-only, which the rubric requires." },
-  { "item": "2d", "deducted": false, "feedback": "The answer does not assert that the usages within `messageParams` modify the map; it only raises modification as a conditional hypothetical, so this incorrect-claim deduction does not apply." }
-]

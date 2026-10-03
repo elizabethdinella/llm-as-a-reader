@@ -1,7 +1,0 @@
-{"justification": "The answer explicitly states that `singletonMap` returns an immutable map, so this point is not deducted.", "deducted": false}
-{"justification": "The answer states that wrapping in a new HashMap creates a mutable map that can be changed later, correctly noting HashMap's mutability.", "deducted": false}
-{"justification": "The answer states singletonMap returns 'an immutable map with exactly one entry', satisfying the single key-value mapping requirement.", "deducted": false}
-{"justification": "The answer never mentions or examines the actual signature of `messageParams` (e.g., its parameter types); it only speaks generically about 'the API'. Point deducted.", "deducted": true}
-{"justification": "The answer only says 'the API requires a mutable map', which the rubric explicitly deems not specific enough; it never states that messageParams takes a HashMap parameter type. Point deducted.", "deducted": true}
-{"justification": "The answer does not examine how the map argument is used inside messageParams and fails to determine whether those usages are read-only. Point deducted.", "deducted": true}
-{"justification": "The answer does not affirmatively claim that messageParams modifies the map; it only offers a generic, hedged statement about why the pattern is typically used. No deduction under this lie item.", "deducted": false}

@@ -1,7 +1,0 @@
-{"justification": "The answer explicitly states that singletonMap 'creates a single, immutable entry', so the immutability of singletonMap is mentioned.", "deducted": false}
-{"justification": "The answer states HashMap 'allows for modifications' and 'ensures mutability', so HashMap's mutability is mentioned.", "deducted": false}
-{"justification": "The answer contrasts 'multiple entries' for HashMap with 'a single, immutable entry' for singletonMap, thereby noting singletonMap holds only one key-value mapping.", "deducted": false}
-{"justification": "The answer makes no mention of the method signature of messageParams (e.g., its parameter types such as FetchProfile and HashMap<String, Message>).", "deducted": true}
-{"justification": "The answer never states that messageParams specifically declares/requires a HashMap parameter type; it only vaguely suggests mutability may be needed.", "deducted": true}
-{"justification": "The answer does not discuss how the map argument is used inside messageParams, nor does it determine whether those usages are read-only. It ambiguously says mutability is 'necessary if changes are expected later' without resolving the actual behavior.", "deducted": true}
-{"justification": "The answer does not explicitly claim that the usages within messageParams modify the map; it only makes a conditional statement about possible future changes, so the 2-point penalty for an incorrect assertion does not apply.", "deducted": false}

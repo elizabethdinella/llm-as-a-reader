@@ -1,7 +1,0 @@
-<answer>
-```java
-public String GetPosition() {
-    return "X = " + xPosition + " Y = " + yPosition;
-}
-```
-</answer>

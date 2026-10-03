@@ -1,9 +1,0 @@
-public int moreHistoryThanMathAbsences() {
-    int count = 0;
-    for (int i = 0; i < historyList.size() && i < mathList.size(); i++) {
-        if (historyList.get(i).getAbsences() > mathList.get(i).getAbsences()) {
-            count++;
-        }
-    }
-    return count;
-}

@@ -8,8 +8,8 @@
 #   llm-judge-fs-apcs-<q>-t<t>-<model>/   few-shot, examples = the 5 samples in
 #                                         ambg-apcs-<q>-t<t>-<model>/round-1/selected.json
 # Needs (pull from git first):
-#   test/apcs/q<q>.txt, test/apcs/rubric_<q>.json,
-#   test/apcs/sub/mistakes/<q>/<model>/answer_<a>.txt and manual.csv,
+#   data/apcs/q<q>.txt, data/apcs/rubric_<q>.json,
+#   data/apcs/sub/mistakes/<q>/<model>/answer_<a>.txt and manual.csv,
 #   ambg-apcs-<q>-t<t>-<model>/round-1/selected.json (few-shot examples and split),
 #   random-apcs-<q>-t<t>-<model>/round-1/selected.json (zero-shot split, for eval)
 # Existing score files are skipped, so rerunning only fills gaps.
@@ -19,9 +19,9 @@ MODEL="${MODEL:-claude-opus-5}"
 MODES="${MODES:-zero-shot few-shot}"
 TRIALS="${TRIALS:-1 2 3}"
 
-QUESTION="test/apcs/q${Q}.txt"
-RUBRIC="test/apcs/rubric_${Q}.json"
-ANSWERS="test/apcs/sub/mistakes/${Q}"
+QUESTION="data/apcs/q${Q}.txt"
+RUBRIC="data/apcs/rubric_${Q}.json"
+ANSWERS="data/apcs/sub/mistakes/${Q}"
 for f in "$QUESTION" "$RUBRIC" "$ANSWERS/manual.csv"; do
   [ -e "$f" ] || { echo "Missing $f (git pull?)"; exit 1; }
 done
@@ -77,8 +77,8 @@ echo; echo "Done. Commit and push the llm-judge*-apcs-${Q}-* folders."#!/bin/bas
 #   llm-judge-fs-apcs-<q>-t<t>-<model>/   few-shot, examples = the 5 samples in
 #                                         ambg-apcs-<q>-t<t>-<model>/round-1/selected.json
 # Needs (pull from git first):
-#   test/apcs/q<q>.txt, test/apcs/rubric_<q>.json,
-#   test/apcs/sub/mistakes/<q>/<model>/answer_<a>.txt and manual.csv,
+#   data/apcs/q<q>.txt, data/apcs/rubric_<q>.json,
+#   data/apcs/sub/mistakes/<q>/<model>/answer_<a>.txt and manual.csv,
 #   ambg-apcs-<q>-t<t>-<model>/round-1/selected.json (few-shot examples and split),
 #   random-apcs-<q>-t<t>-<model>/round-1/selected.json (zero-shot split, for eval)
 # Existing score files are skipped, so rerunning only fills gaps.
@@ -88,9 +88,9 @@ MODEL="${MODEL:-claude-opus-5}"
 MODES="${MODES:-zero-shot few-shot}"
 TRIALS="${TRIALS:-1 2 3}"
 
-QUESTION="test/apcs/q${Q}.txt"
-RUBRIC="test/apcs/rubric_${Q}.json"
-ANSWERS="test/apcs/sub/mistakes/${Q}"
+QUESTION="data/apcs/q${Q}.txt"
+RUBRIC="data/apcs/rubric_${Q}.json"
+ANSWERS="data/apcs/sub/mistakes/${Q}"
 for f in "$QUESTION" "$RUBRIC" "$ANSWERS/manual.csv"; do
   [ -e "$f" ] || { echo "Missing $f (git pull?)"; exit 1; }
 done

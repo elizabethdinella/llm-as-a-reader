@@ -1,9 +1,0 @@
-[
-  { "item": "1a", "deducted": false, "feedback": "The answer explicitly states that Collections.singletonMap() returns an immutable map, satisfying this requirement." },
-  { "item": "1b", "deducted": false, "feedback": "The answer states that wrapping in new HashMap<>() converts the immutable map to a mutable HashMap, i.e., that HashMap is mutable." },
-  { "item": "1c", "deducted": false, "feedback": "The answer notes singletonMap is 'an immutable map with exactly one entry' and is 'more memory-efficient for exactly one entry', clearly capturing the single key-value mapping restriction." },
-  { "item": "2a", "deducted": true, "feedback": "The answer never mentions or examines the method signature of messageParams (e.g., its parameter types such as FetchProfile and Map/HashMap). It only discusses the argument expression in isolation." },
-  { "item": "2b", "deducted": true, "feedback": "The answer does not state that messageParams takes/declares a HashMap parameter. In fact it implies the opposite by suggesting 'Using the singletonMap directly would be more efficient if immutability is acceptable', which would not compile if the parameter type is HashMap." },
-  { "item": "2c", "deducted": true, "feedback": "The answer does not examine how the map is used inside messageParams and explicitly leaves it undetermined ('it's unclear if that's necessary', 'not apparent from this code segment alone'), failing to determine that the usages are read-only." },
-  { "item": "2d", "deducted": false, "feedback": "The answer does not affirmatively claim that messageParams modifies the map; it only speculates that the HashMap wrapping 'suggests' possible modification while admitting uncertainty, so no incorrect assertion is made." }
-]

@@ -1,7 +1,0 @@
-{"justification": "The answer explicitly states that `Collections.singletonMap()` creates an immutable map, so this criterion is satisfied.", "deducted": false}
-{"justification": "The answer explicitly states that `new HashMap<>(...)` creates a mutable map that can be modified later, satisfying this criterion.", "deducted": false}
-{"justification": "The answer states singletonMap 'creates an immutable map with a single entry', covering the single key-value mapping point.", "deducted": false}
-{"justification": "The answer never mentions or examines the method signature of `messageParams`; it only speculates about the Builder generally.", "deducted": true}
-{"justification": "The answer never states that `messageParams` specifically declares a `HashMap` parameter; it only vaguely says a 'modifiable map instance' is needed, which the rubric explicitly deems insufficient.", "deducted": true}
-{"justification": "The answer does not examine how the map argument is used inside `messageParams`, and does not determine that these usages are read-only; instead it speculates the opposite without clarity.", "deducted": true}
-{"justification": "The answer asserts that the use of `new HashMap` 'implies that the `UidFetchCommand.Builder` or the resulting `UidFetchCommand` needs a modifiable map instance', incorrectly suggesting the map is modified rather than read-only.", "deducted": true}

@@ -1,9 +1,0 @@
-[
-  { "item": "1a", "deducted": false, "feedback": "The answer explicitly states that SingletonMap 'is immutable', satisfying this requirement." },
-  { "item": "1b", "deducted": true, "feedback": "The answer describes HashMap as 'a resizable array implementation' that 'allows multiple entries', but never states that a HashMap is mutable (i.e., supports put/remove/modification after creation). The description is also technically inaccurate (HashMap is not a resizable array). Mutability is not asserted, so the point is deducted." },
-  { "item": "1c", "deducted": false, "feedback": "The answer states SingletonMap is 'a fixed-size map designed for a single entry', which conveys that it holds only a single key-value mapping." },
-  { "item": "2a", "deducted": true, "feedback": "The answer never mentions the method signature of messageParams (e.g., that it accepts a FetchProfile and a Map/HashMap of message IDs to Message objects). No discussion of the builder method's signature at all." },
-  { "item": "2b", "deducted": true, "feedback": "The answer does not state that messageParams specifically takes/requires a HashMap parameter type. In fact, it wrongly suggests singletonMap 'could be a better choice', which would not even compile if the parameter is declared as HashMap." },
-  { "item": "2c", "deducted": true, "feedback": "The answer contains no discussion of how the map argument is used inside messageParams/the resulting command, and never determines whether those usages are read-only. It only speculates generically about which map is preferable." },
-  { "item": "2d", "deducted": false, "feedback": "The answer does not claim that the usages of the map argument modify it; it makes no claim about internal mutation at all, so this incorrect-statement deduction does not apply." }
-]

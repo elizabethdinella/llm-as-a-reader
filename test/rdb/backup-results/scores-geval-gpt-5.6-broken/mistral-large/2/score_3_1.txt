@@ -1,7 +1,0 @@
-{"justification": "The answer never mentions that Collections.singletonMap returns an immutable map; it only discusses memory efficiency and entry count.", "deducted": true}
-{"justification": "The answer describes HashMap only as 'intended for dynamic and potentially larger collections', which does not clearly state that it is mutable.", "deducted": true}
-{"justification": "The answer does state that singletonMap 'is designed for maps with exactly one entry', satisfying the single key-value mapping requirement.", "deducted": false}
-{"justification": "The answer makes no reference to the method signature of messageParams.", "deducted": true}
-{"justification": "The answer does not state that messageParams requires/takes a HashMap parameter type.", "deducted": true}
-{"justification": "The answer does not discuss how the map argument is used inside messageParams or whether those usages are read-only.", "deducted": true}
-{"justification": "The answer does not claim that the usages of the map modify it, so no deduction for this incorrect statement.", "deducted": false}

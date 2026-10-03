@@ -1,9 +1,0 @@
-[
-{ "item": "1a", "deducted": false, "feedback": "The answer explicitly states that Collections.singletonMap() returns an immutable map ('an immutable, memory-efficient map with exactly one entry')."},
-{ "item": "1b", "deducted": false, "feedback": "The answer states 'HashMap is mutable and allows modifications', satisfying this requirement."},
-{ "item": "1c", "deducted": false, "feedback": "The answer notes the singletonMap contains 'exactly one entry', which conveys the single key-value mapping."},
-{ "item": "2a", "deducted": true, "feedback": "The answer never mentions or examines the actual method signature of messageParams (e.g., its declared parameter types such as FetchProfile and the map type). It only speculates about what the method 'likely' expects."},
-{ "item": "2b", "deducted": true, "feedback": "The answer only says the method 'expects a mutable implementation' / 'needs a mutable map'. Per the rubric, stating a mutable map is not specific enough; it fails to state that messageParams specifically takes a HashMap."},
-{ "item": "2c", "deducted": true, "feedback": "The answer does not discuss any actual usages of the map argument inside messageParams, and explicitly fails to determine whether the map is modified, offering 'either because the method modifies the map or expects a mutable implementation'. It does not establish that the usages are read-only."},
-{ "item": "2d", "deducted": false, "feedback": "The answer does not affirmatively claim that messageParams modifies the map; it presents modification only as one hedged possibility ('either... or...'), so the incorrect-assertion deduction does not apply (the failure to determine is already penalized under 2c)."}
-]
