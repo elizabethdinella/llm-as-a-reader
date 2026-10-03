@@ -7,7 +7,7 @@ Artifact for "LLM-as-a-Reader: Automated Rubric Application via Active Ambiguity
 - `llm_judge_geval*.py`: the LLM-as-a-Judge baseline (G-Eval style), zero-shot and few-shot.
 - `run_*.sh`, `compare_all.sh`, `eval.py`, `apcs_eval.sh`: experiment and scoring scripts.
 - `amb_stats.py`, `flag_stats.py`: ambiguity and flagging statistics (no model calls).
-- `ambg-*`, `random-*`, `llm-judge-*`: all run outputs used in the paper. Each `ambg-*/round-1/` holds the selected responses (`selected.json`), ambiguities, grading notes (`notes.json`), and predictions.
+- `runs/rubberduckbench/`, `runs/apcs/`: all run outputs used in the paper (`ambg-*`: LLM-as-a-Reader, `random-*`: random selection, `llm-judge-*`: zero-shot judge, `llm-judge-fs-*`: few-shot judge). Each `ambg-*/round-1/` holds the selected responses (`selected.json`), ambiguities, grading notes (`notes.json`), and predictions.
 - `test/apcs/sub/`: the 115 generated APCS responses; `manual.csv` files hold the expert labels.
 
 ## Data not included
@@ -18,3 +18,5 @@ RubberDuckBench is publicly available; place it in `../RubberDuckBench`.
 Set `ANTHROPIC_API_KEY` (and `OPENAI_API_KEY` for GPT backbones).
 - APCS: `Q=2 bash run_apcs.sh`, then `bash apcs_eval.sh 2`.
 - RubberDuckBench: `bash compare_all.sh <question> java|py`.
+
+Scripts write new runs to the repository root; to rescore a stored run, copy it from `runs/` to the root first.
