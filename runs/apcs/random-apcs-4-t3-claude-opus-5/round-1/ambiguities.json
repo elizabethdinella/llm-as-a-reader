@@ -1,0 +1,20 @@
+[
+    {
+        "id": "1_loop_bound_in_range",
+        "name": "Loop boundary: iterates exactly over valid column indices vs. runs one index past the end (<=)",
+        "side_a": "No deduct if the traversal stays within the array bounds \u2014 i.e. the for-loop condition uses a strict `<` against the row length (or uses an enhanced for-loop over the row), so every access `board[targetRow][col]` is legal.",
+        "side_b": "Deduct if the traversal exceeds the array bounds \u2014 e.g. the loop condition is `col <= board[targetRow].length`, causing an ArrayIndexOutOfBoundsException on the final iteration and preventing the sum/color check from ever completing."
+    },
+    {
+        "id": "3_equals_vs_reference_operator",
+        "name": "colors compared with equals() (possibly negated) vs. compared with == / != reference operators",
+        "side_a": "Do not deduct when the two color values are compared using the equals() method, including the negated form `!a.equals(b)` inside an if-condition; the use of equals() is the behavior the sub-item actually scores.",
+        "side_b": "Deduct whenever the colors are compared with the reference operators `==` or `!=` (e.g., `currentSpace.getColor() != firstColor`), even if everything else \u2014 storing the first color in a variable, calling getColor() on real Space objects, using the boolean result correctly \u2014 is perfect."
+    },
+    {
+        "id": "4_loop_bound_runtime_error",
+        "name": "Off-by-one / out-of-bounds loop bound in the summation loop: tolerated as an 'incorrect sum' vs treated as failing to sum the row's points",
+        "side_a": "Do not deduct when the response initializes a points variable and accumulates `space.getPoints()` inside a loop over the row, even if the loop bound is wrong and would throw at runtime (e.g., `col <= board[targetRow].length`). The bound error affects correctness of the sum, not whether the points variable was initialized or the point method was called.",
+        "side_b": "Deduct when the loop's bounds are wrong such that the traversal does not validly cover the row's spaces (e.g., `col <= board[targetRow].length` runs past the last index and throws), on the grounds that no valid sum of the row's point values is ever produced."
+    }
+]

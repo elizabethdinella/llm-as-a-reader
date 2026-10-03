@@ -1,32 +1,20 @@
 [
     {
-        "id": "B1_length_bounded_condition_vs_literal_true",
-        "name": "Loop condition written against username.length() counts as 'multiple indices' even if the increment is missing/wrong vs only guaranteed-terminating loops count",
-        "side_a": "Do not deduct when the loop header tests an index variable against `username.length()` (e.g. `while (i < username.length())` or `while (i <= username.length())`), even if some branch forgets to advance `i` so the loop could spin forever \u2014 the header itself shows the code is indexing over multiple positions of username, which satisfies 'in the context of a loop that considers multiple parts or indices'.",
-        "side_b": "Deduct whenever termination is not actually guaranteed \u2014 a branch that leaves `i` unchanged makes the loop no better than `while (true)` with no reliable exit, so 'no other conditions stop the loop appropriately' applies."
+        "id": "B2_string_vs_char_equality",
+        "name": "Hyphen test compares chars with == vs compares String objects with ==",
+        "side_a": "No deduct if the hyphen check compares a primitive char to a char literal (e.g. `username.charAt(i + 1) == '-'`), which is a valid equality test in Java.",
+        "side_b": "Deduct if the hyphen check compares String objects with `==` (e.g. `username.substring(i + 1, i + 2) == \"-\"`), since reference comparison instead of `.equals` makes the hyphen detection never reliably fire."
     },
     {
-        "id": "B1_bounds_and_compile_errors_ignored",
-        "name": "Out-of-bounds indexing / non-compiling body ignored vs loop must be legal and in-bounds",
-        "side_a": "Do not deduct for index-arithmetic or compile errors inside the loop \u2014 `username.charAt(i + 1)` with `i <= username.length()` (guaranteed StringIndexOutOfBounds), iterating a String with an enhanced for, or calling a nonexistent method \u2014 the credit is for structuring the traversal as a loop over characters of username, not for its correctness.",
-        "side_b": "Deduct when the loop cannot actually run over username's parts because it indexes past the end or uses constructs that do not compile, so no multiple indices are really examined."
+        "id": "B3_unguarded_lookahead_index",
+        "name": "Reading one past the current index (charAt(i+1)/substring(i+1,i+2)) without a length guard counts as a real out-of-bounds defect vs. treated as a harmless lookahead idiom",
+        "side_a": "No_deduct when the lookahead used to detect the hyphen is bounds-safe \u2014 either guarded (`i < username.length() - 1 && ...`) or structured so the index can never exceed the last character \u2014 and the string actually assembled/returned is correct.",
+        "side_b": "Deduct when the method peeks at an index that can run past the end of the string (e.g., `username.charAt(i + 1)` evaluated when `i` is the last valid index, or a loop bound of `i <= username.length()`), since the method throws StringIndexOutOfBoundsException instead of returning the shortened name; this is a bounds error, not an excused 'String method called incorrectly'."
     },
     {
-        "id": "B2_string_treated_as_array",
-        "name": "Hyphen located through genuine String API calls vs. String treated as a char array / non-existent String methods",
-        "side_a": "If the response reaches the hyphen through real String API calls on the instance variable \u2014 e.g. username.charAt(i) compared to '-' with username.length() bounding the scan \u2014 award B2 (no_deduct), even if the loop bounds or index arithmetic are buggy (off-by-one, infinite loop, i+1 out of range); those errors are judged under B3/B4.",
-        "side_b": "If the response never makes a valid String method call to find the hyphen \u2014 iterating the String as if it were an array/collection (for (char c : username)) and/or invoking a method that does not exist on String (username.delete(...)) \u2014 deduct B2: no String method has been called correctly to identify the hyphen's location."
-    },
-    {
-        "id": "B3_lookahead_offbyone_wrong_chars",
-        "name": "Char-by-char accumulation that selects the right characters vs. lookahead (`charAt(i+1)`) offsets that drop a letter or keep the hyphen",
-        "side_a": "No_deduct when the character-by-character build appends exactly the non-hyphen characters of the username in order \u2014 the test and the index advance line up so that the hyphen (and only the hyphen) is skipped and every letter is appended exactly once.",
-        "side_b": "Deduct when the response tests a lookahead character (`username.charAt(i + 1) == '-'`) but then skips/advances on the *current* index, so the accumulated result drops the letter immediately before the hyphen, re-appends or retains the hyphen itself, or never advances at all. This is an algorithmic defect in which pieces of the string are combined, not an excused method-call or compile slip."
-    },
-    {
-        "id": "B3_string_treated_as_mutable_collection",
-        "name": "Misusing a String method's arguments/name vs. treating String as an iterable/mutable container",
-        "side_a": "No_deduct when the response uses real String behavior (immutable, indexed access or substring) and merely garbles a call's name or arguments while the intended construction of the returned string is clear.",
-        "side_b": "Deduct when the response builds the answer by treating `username` as an array/collection or mutable object \u2014 e.g. enhanced-for iteration over a String or calling a mutator on it \u2014 so there is no valid String-based construction of the shortened name to credit."
+        "id": "B3_string_equality_operator",
+        "name": "Comparing String pieces with `==` instead of `.equals` counts as a logic defect that breaks the result vs. a stylistic/API slip excused as 'calling a String method incorrectly'",
+        "side_a": "No_deduct when the hyphen is detected by a comparison that actually works (char comparison with `==`, or `.equals`/`.compareTo` on substrings), so the hyphen and its neighbor are genuinely skipped.",
+        "side_b": "Deduct when the hyphen test compares String objects with `==` (e.g., `username.substring(i + 1, i + 2) == \"-\"`): the condition is never true for the computed substring, so no character is ever skipped and the method returns the unshortened name \u2014 an algorithmic failure of the returned value, not an excused malformed method call."
     }
 ]

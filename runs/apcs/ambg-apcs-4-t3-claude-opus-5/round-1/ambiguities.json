@@ -1,0 +1,44 @@
+[
+    {
+        "id": "1_row_traversal_present",
+        "name": "Traverses the target row accumulating every space's points vs. no loop at all (single hard-coded space)",
+        "side_a": "no_deduct \u2014 the answer contains a loop over the spaces of the target row (`for (int col = 0; col < board[targetRow].length; col++)` or `for (Space currentSpace : board[targetRow])`) that both accumulates `getPoints()` and inspects each space's color, so the row is actually examined before the doubling decision.",
+        "side_b": "deduct \u2014 the answer has no loop/traversal of the row: it reads a single hard-coded space (`board[0][0]`), never uses `targetRow`, never compares any colors, and just returns based on an unmodified flag."
+    },
+    {
+        "id": "3_equals_vs_reference_operator",
+        "name": "color comparison uses equals() vs. uses ==/!= reference comparison",
+        "side_a": "Do not deduct when the two color values are compared with the String equals() method (e.g., `!currentSpace.getColor().equals(firstColor)`), since the sub-item's whole point is correct String comparison.",
+        "side_b": "Deduct when the colors are compared with the reference operators == or != (e.g., `if (s.getColor() != firstColor)`), even if everything else \u2014 the saved first color, the loop, the boolean flag, the doubling \u2014 is correct; no equals()-based comparison exists anywhere in the response."
+    },
+    {
+        "id": "3_comparison_present_at_all",
+        "name": "some color comparison is attempted vs. no color comparison appears anywhere",
+        "side_a": "Do not deduct when the code actually contains a color-comparison expression of any form built from a getColor() call (e.g., `board[targetRow][col].getColor().equals(firstColor)`), even if sloppily written.",
+        "side_b": "Deduct when the response never calls getColor() and never compares colors at all \u2014 it merely declares/assumes a flag such as `boolean allSameColor = true;` and branches on it; the lenient 'incorrect call' allowances presuppose that a comparison was attempted."
+    },
+    {
+        "id": "4_init_vs_retrieval_separation",
+        "name": "Initialization and point-retrieval must be separate steps (init, then at least one accumulating/assigning statement) vs a single `int sum = space.getPoints();` initializer satisfying both",
+        "side_a": "Deduct when the points variable's only contact with a point value is its own initializer expression \u2014 i.e., `int sum = board[0][0].getPoints();` with no later statement that adds or assigns point values into `sum`. The rubric asks for an initialized points variable AND a subsequent accumulation of retrieved point values; collapsing both into one declaration means there is no accumulation step at all, so the 'fails to initialize the point variable' / no-sum failure applies. Credit responses that declare the variable with a plain constant (`int sum = 0;`, even `int sum = 1;`) and then take point values from row spaces in a separate statement.",
+        "side_b": "Do not deduct as long as some space's point value ends up in the points variable, regardless of whether that happens in the declaration itself; `int sum = board[0][0].getPoints();` both initializes the variable and obtains a point value from a space, which satisfies the two hard requirements, and returning only one space's points is merely 'an incorrect sum ... calculated using the obtained point values.'"
+    },
+    {
+        "id": "5_sum_accumulator_defects_irrelevant",
+        "name": "Defects in the points accumulator (bad init / reset inside loop) count against this sub-item vs. only the color-traversal matters",
+        "side_a": "No deduct for errors in the point-summing part of the method (e.g., initializing the running total to a nonzero value, or resetting it to 0 on every iteration) as long as the loop visits every space in the row and compares each space's color to the reference color. Sub-item 5 judges only that all spaces are accessed in a loop and their colors compared; sum-accumulation bugs are charged elsewhere.",
+        "side_b": "Deduct whenever the loop body's accumulation logic is broken (total initialized wrong, or overwritten each pass so only the last space contributes), on the grounds that the traversal does not actually use all the spaces it visits."
+    },
+    {
+        "id": "6_accumulator_seeded_or_reset",
+        "name": "running total is a clean zero-initialized accumulator vs a total seeded/overwritten with something that isn't the running sum",
+        "side_a": "Award sub-item 6 when the response declares the total at 0 and does nothing but add each visited space's points to it (`int sum = 0; ... sum += currentSpace.getPoints();`), so the returned value is the genuine row total before any doubling.",
+        "side_b": "Deduct sub-item 6 when the accumulator is corrupted independently of the loop structure \u2014 seeded with a non-zero constant, re-initialized inside the loop body, or never accumulated at all (a single fixed space's points assigned once) \u2014 because the returned value is then not the sum of the row's points, and this is not forgiven by the 'same-color' or bounds allowances."
+    },
+    {
+        "id": "6_early_return_truncates_sum",
+        "name": "full-row traversal then branch vs early return that abandons the rest of the row",
+        "side_a": "Award sub-item 6 when the response visits every space in the target row before returning, recording the color result in a flag and choosing the branch after the loop, so the total always covers the whole row.",
+        "side_b": "Deduct sub-item 6 when the method returns from inside the loop on the first color mismatch, so the value returned is only a partial sum of the spaces seen so far rather than the sum of the entire row."
+    }
+]

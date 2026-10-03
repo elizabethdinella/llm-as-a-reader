@@ -1,0 +1,38 @@
+[
+    {
+        "id": "1_row_index_position",
+        "name": "Row index used as first subscript (board[targetRow][col]) vs transposed access (board[col][targetRow])",
+        "side_a": "No deduct: the method indexes the 2D array with targetRow in the FIRST subscript (or iterates the sub-array board[targetRow] directly), so it actually traverses the requested row.",
+        "side_b": "Deduct: the method puts targetRow in the SECOND subscript (board[col][targetRow]), traversing a column instead of the row \u2014 and correspondingly bounds the loop by board.length (row count) rather than the row's length."
+    },
+    {
+        "id": "3_equals_present_at_all",
+        "name": "at least one equals() color comparison exists vs. the only color comparison is a reference comparison (==/!=)",
+        "side_a": "Do not deduct when the response contains at least one color comparison written with .equals() (e.g., `!currentSpace.getColor().equals(firstColor)`), even if the surrounding logic is broken (early return inside the loop, `=` instead of `+=`, row/column indices swapped). The sub-item only requires that a Space's color be compared with equals().",
+        "side_b": "Deduct when no color comparison in the response uses .equals() at all \u2014 i.e., the sole color test is a reference comparison such as `currentSpace.getColor() != firstColor` or `a.getColor() == b.getColor()`. With no equals() anywhere, the required behavior (comparing colors as Strings) is never demonstrated, regardless of how correct the rest of the method is."
+    },
+    {
+        "id": "5_decision_consumed_inside_loop",
+        "name": "Where the all-same-color determination is consumed: after the loop finishes vs. inside the loop body on the first iteration",
+        "side_a": "No deduct when the comparison flag is only read/acted on after the loop has finished, so every space of the row has had a chance to flip it (e.g., `allSameColor` tested in an `if` that follows the closing brace of the for-loop). The loop structure then genuinely considers all spaces, which is what this sub-item asks for.",
+        "side_b": "Deduct when the flag is tested and the method returns from inside the loop body, so the determination is finalized from the first space only and the remaining spaces are never compared \u2014 the traversal is structurally truncated even though a loop is written."
+    },
+    {
+        "id": "5_accumulator_or_axis_defects_elsewhere",
+        "name": "Defects in the point accumulation or in which axis is traversed: excused here (charged under other sub-items) vs. counted as failing to consider all spaces",
+        "side_a": "No deduct when every space the loop visits is compared to the reference color and the loop runs to completion, even if the point total is computed wrongly (`sumPoints = currentSpace.getPoints();` overwriting instead of adding) or the indices are transposed so a column rather than the intended row is swept (`board[col][targetRow]` with `col < board.length`); those defects belong to the summing/indexing sub-items.",
+        "side_b": "Deduct only when the algorithm's own control flow omits spaces from the color comparison (no loop, exit before the loop ends, or comparing a tally of matches against an inconsistent expected count), independent of any arithmetic or axis mistake."
+    },
+    {
+        "id": "6_sums_whole_target_row_vs_wrong_set_of_spaces",
+        "name": "Summation actually covers every space of the target row vs. accumulates over a different/truncated set of spaces (transposed indexing or early return inside the loop)",
+        "side_a": "Award sub-item 6 when the loop iterates over the spaces of the target row (e.g., enhanced for over board[targetRow], or board[targetRow][col]) and the return happens after the loop, so every space in the row contributes to the total.",
+        "side_b": "Deduct sub-item 6 when the accumulation runs over a set of spaces that is not the target row \u2014 e.g., indices transposed so a column is summed (board[col][targetRow]) \u2014 or when a return statement is placed inside the loop body so the method exits after the first space and the total omits the rest of the row. This is a wrong-sum error, not a bounds/off-by-one error."
+    },
+    {
+        "id": "6_accumulate_vs_overwrite",
+        "name": "Accumulating total with += vs. overwriting the total with = each iteration",
+        "side_a": "Award sub-item 6 when the running total is accumulated across iterations (sum += space.getPoints()), so the final value is the sum of all visited spaces.",
+        "side_b": "Deduct sub-item 6 when the total is assigned rather than accumulated (sum = space.getPoints()), so the variable holds only the last space's points and the returned value is not a sum, even though the loop and doubling logic are otherwise correct."
+    }
+]

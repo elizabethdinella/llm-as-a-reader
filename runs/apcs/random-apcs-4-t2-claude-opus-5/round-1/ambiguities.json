@@ -1,0 +1,38 @@
+[
+    {
+        "id": "1_loop_bound_in_range",
+        "name": "Loop bound stays within array indices vs. off-by-one past the last index",
+        "side_a": "No deduction if the row traversal only accesses valid indices \u2014 a condition of `col < board[targetRow].length` (or an enhanced-for over `board[targetRow]`) \u2014 even if other parts of the computation (wrong accumulator, missing doubling, `!=` on Strings) are flawed.",
+        "side_b": "Deduct if the loop condition lets the index reach `board[targetRow].length`, i.e. `col <= board[targetRow].length`, so the traversal indexes one past the end and throws ArrayIndexOutOfBoundsException rather than traversing the row."
+    },
+    {
+        "id": "3_equals_present_at_all",
+        "name": "at least one equals()-based color comparison exists vs. the only color comparison is reference (==/!=) with no equals() anywhere",
+        "side_a": "Do not deduct when the response actually performs its color comparison with the equals() method (e.g., `!currentSpace.getColor().equals(firstColor)`), regardless of the surrounding logic, loop bounds, or whether the doubling is applied; the required behavior \u2014 comparing Space colors with equals() rather than reference equality \u2014 is present.",
+        "side_b": "Deduct when the response never calls equals() on a color and instead compares the color values only with == or != (e.g., `if (s.getColor() != firstColor)`), even though the structure (saved first color, loop over the row, allSame flag) is otherwise identical to a credited response. Reference comparison alone cannot earn this point because the sub-item explicitly disqualifies == / != for color comparison."
+    },
+    {
+        "id": "5_scoring_arithmetic_defects_vs_loop_logic",
+        "name": "Defects in the point-sum/doubling arithmetic: ignored here (charged to other sub-items) vs. treated as broken aggregation logic",
+        "side_a": "No deduct for errors in how points are accumulated or how the bonus is applied \u2014 e.g., overwriting instead of accumulating the sum, seeding the sum with a wrong initial value, or never using the all-same-color flag to double. As long as the loop visits every space in the row and a single all-same-color flag is correctly maintained (set false on any mismatch), give credit; the arithmetic/bonus defects are charged under the sum and doubling sub-items.",
+        "side_b": "Deduct if the scoring arithmetic is wrong \u2014 i.e., the sum is not a true accumulation over all spaces, is initialized to a non-zero value, or the computed all-same-color result is never used \u2014 on the grounds that the row traversal does not actually aggregate the spaces."
+    },
+    {
+        "id": "5_loop_bound_off_by_one",
+        "name": "Off-by-one / out-of-bounds loop bound: still counts as looping over the spaces vs. counts as not visiting the spaces correctly",
+        "side_a": "No deduct when the loop header has an incorrect bound (e.g., `col <= board[targetRow].length`) that would overrun the array; the loop still iterates over every space in the row and compares each color, so the traversal requirement is met and the bounds error is charged elsewhere.",
+        "side_b": "Deduct when the loop bound is wrong (<= length, starting at 1, stopping at length-1, etc.), since the loop does not iterate exactly over the row's spaces."
+    },
+    {
+        "id": "6_accumulator_corrupted",
+        "name": "the running total itself is corrupted (assignment instead of +=, or non-zero seed) vs a genuine zero-initialized accumulation of every visited space",
+        "side_a": "Award the point when the loop body actually accumulates each visited space's points into a total that starts at 0 (e.g., `int sum = 0; ... sum += space.getPoints();`). Flaws in the loop bounds, indices, or in how the same-color flag is decided do not matter here, because the arithmetic of 'add up the points' is correct.",
+        "side_b": "Deduct when the accumulation arithmetic itself is wrong independent of indexing/bounds: the body overwrites rather than adds (`sum = space.getPoints();`, leaving only the last space), or the accumulator is seeded with a non-zero constant (`int sum = 1;`, so every answer is off by a fixed amount). These are not 'array access' or 'bounds' flaws and are not covered by the same-color allowance; the response never computes the row's point sum."
+    },
+    {
+        "id": "6_doubling_absent_vs_misselected",
+        "name": "doubling logic entirely absent (flag computed but never used) vs present-but-wrongly-selected",
+        "side_a": "Award the point when a doubled-sum return actually exists and is reached via the same-color flag, even if the condition is inverted or the flag was derived badly \u2014 the 'incorrectly determine whether all spaces are the same color' allowance covers the selection.",
+        "side_b": "Deduct when the response never returns a doubled total at all: the same-color boolean is computed and then dead, and the method unconditionally returns the plain sum. The allowance forgives mis-deciding which branch to take, not omitting the doubling requirement entirely."
+    }
+]

@@ -1,32 +1,20 @@
 [
     {
-        "id": "B1_bounded_header_vs_runtime_index_errors",
-        "name": "Loop header explicitly bounded by username.length() counts regardless of index arithmetic errors vs index must advance and stay in range",
-        "side_a": "Do not deduct when the loop header itself is written against the username's length (e.g. `while (i < username.length())` / `while (i <= username.length())`) and the body reads username by index \u2014 off-by-one bounds (`<=`), out-of-range reads (`charAt(i + 1)`), or a branch that forgets to increment `i` are correctness/runtime bugs, not failures to 'consider multiple parts or indices in the context of a loop'.",
-        "side_b": "Deduct when the index in a length-bounded loop can fail to advance or reads past the end, on the grounds that the loop does not actually traverse multiple valid indices of username."
+        "id": "B2_string_identity_vs_char_equality",
+        "name": "Hyphen test uses value comparison of a char vs reference comparison (==) of String objects",
+        "side_a": "No deduct if the delimiter test compares a primitive char against the literal '-' (e.g. username.charAt(i + 1) == '-'), so the comparison actually evaluates the character's value and the hyphen is genuinely detected.",
+        "side_b": "Deduct if the delimiter test compares String objects with == (e.g. username.substring(i + 1, i + 2) == \"-\"), since reference comparison does not test string contents, the condition is effectively never true, and the hyphen-skipping branch never executes."
     },
     {
-        "id": "B1_noncompiling_loop_header",
-        "name": "Loop that would not compile (illegal iteration target / uninitialized accumulator) still counts vs compilable code required",
-        "side_a": "Do not deduct for a loop whose header or body is type-invalid \u2014 e.g. `for (char character : username)` iterating a String/StringBuilder directly, with `username.delete(character)` and an uninitialized `String finalName` \u2014 as long as the written construct plainly intends to visit each character of username.",
-        "side_b": "Deduct when the loop cannot compile as written (username is not an array/Iterable, accumulator never initialized), since no loop over username's characters actually executes."
+        "id": "B3_unguarded_lookahead_index",
+        "name": "Lookahead access `charAt(i + 1)` (or loop bound reaching length) is guarded against running past the last index vs. left unguarded",
+        "side_a": "no_deduct: the response only reads positions it has proved are in range \u2014 either it never peeks past the current index, or it explicitly guards the peek (e.g. `if (i < username.length() - 1 && ...)`) and keeps the loop bound strictly below `username.length()`. Correct in-range traversal that produces the right shortened string earns B3.",
+        "side_b": "deduct: the response peeks at `username.charAt(i + 1)` (or equivalent) while `i` can legally be the last index, or runs the loop to `i <= username.length()`, so the method throws StringIndexOutOfBoundsException before returning. A guaranteed runtime exception on a typical valid username forfeits B3 even though the concatenation/return lines are textbook."
     },
     {
-        "id": "B2_indexed_scan_vs_foreach_char",
-        "name": "Indexed charAt scan that pins the hyphen's position vs for-each over a char value with no index (and no real String call)",
-        "side_a": "If the response walks the username with an explicit integer index and a String accessor (e.g., `username.charAt(i)` / `username.charAt(i + 1)` compared to '-'), the hyphen's location is identified by that index variable \u2014 award B2 (no_deduct), even if the loop bounds or increments are buggy (off-by-one, `i <= username.length()`, `i += 1` instead of `i += 2`), since those errors are judged under B3.",
-        "side_b": "If the response iterates with an enhanced for over the String itself (`for (char character : username)`), only comparing the loop's char value to '-', no index ever exists, the construct is not legal on a String, and no String method is called to locate the hyphen \u2014 deduct B2."
-    },
-    {
-        "id": "B3_runtime_failure_vs_wrong_value",
-        "name": "Loop that throws / never terminates (no value ever returned) vs. loop that safely terminates and returns something",
-        "side_a": "No_deduct when the accumulation loop always stays in bounds and is guaranteed to advance to termination, so the method actually reaches its `return` and hands back a shortened string (judge only whether that string is right).",
-        "side_b": "Deduct when the written loop cannot deliver a value at all: a look-ahead index such as `charAt(i + 1)` is evaluated while `i` can reach `length()-1` (or the bound is `i <= username.length()`), throwing StringIndexOutOfBoundsException, or a branch of the loop body fails to advance the counter so the loop spins forever. A runtime-fatal loop forfeits B3 regardless of how plausible the concatenation logic looks."
-    },
-    {
-        "id": "B3_string_as_mutable_sequence",
-        "name": "Builds the result with valid String operations vs. treats `username` as an array/mutable buffer",
-        "side_a": "No_deduct when the shortened name is produced by legitimate String operations (charAt/substring/concatenation), even if a method is named or parameterized sloppily, because the mechanism for producing the returned string is still a real String construction.",
-        "side_b": "Deduct when the response treats the String as something it is not \u2014 iterating it with an enhanced for-loop as if it were a char array, or calling a mutator like `delete(...)` to remove characters in place \u2014 and/or returns an accumulator that was declared without being initialized to \"\", so the constructed value is not a well-formed String build."
+        "id": "B3_string_equality_operator",
+        "name": "Detecting the hyphen with a value comparison (char literal / .equals) vs. with `==` on String objects",
+        "side_a": "no_deduct: the hyphen test compares values \u2014 `charAt(i) == '-'` on a char, or `.equals(\"-\")` / `.compareTo` on a substring \u2014 so the branch that removes the hyphen actually fires and the returned string is the shortened one.",
+        "side_b": "deduct: the hyphen test applies `==` to a String expression (e.g. `username.substring(i + 1, i + 2) == \"-\"`); the reference comparison is false for the runtime-built substring, the removal branch never executes, and the method returns the full unshortened name. This is a logic error in the string-building algorithm, not an excused 'String method called incorrectly'."
     }
 ]

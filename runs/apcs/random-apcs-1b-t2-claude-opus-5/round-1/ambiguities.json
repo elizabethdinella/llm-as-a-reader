@@ -1,0 +1,14 @@
+[
+    {
+        "id": "B3_rescan_vs_use_found_index",
+        "name": "Assembling the shortened name from the already-located hyphen position vs. throwing that away and re-filtering the username character-by-character",
+        "side_a": "no_deduct: any construction counts for B3 \u2014 a scan loop that appends the surviving characters one at a time is just as good as substring/concatenation, as long as the characters that end up in the returned string are the right ones.",
+        "side_b": "deduct: B3 credits building and returning the shortened name out of the pieces delimited by the hyphen location the method already determined. A response that discards that location and instead walks the whole username appending single characters (`result += username.charAt(i)`, `result += username.substring(i, i+1)`, `result.append(username.charAt(i))`) has not performed the required construction, so it loses B3 even when the characters it emits happen to be correct."
+    },
+    {
+        "id": "B3_string_ops_vs_stringbuilder",
+        "name": "Producing the result with String operations vs. producing it with a StringBuilder accumulator",
+        "side_a": "no_deduct: it does not matter what accumulator is used \u2014 a StringBuilder whose `toString()` is returned satisfies 'builds and returns the shortened String'.",
+        "side_b": "deduct: B3 is about constructing and returning the shortened String with String operations; a response that accumulates into a non-String helper object and converts at the end (`new StringBuilder()` / `.append(...)` / `return result.toString();`) is not doing the String construction the item scores."
+    }
+]

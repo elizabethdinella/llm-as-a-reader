@@ -1,38 +1,32 @@
 [
     {
         "id": "A1_call_present_at_all",
-        "name": "Response contains an actual isAvailable invocation vs. omits the availability check entirely",
-        "side_a": "No deduct: the constructor body contains at least one invocation of the availability method with a String argument (e.g., `isAvailable(requestedName)` or `isAvailable(nameToCheck)`), regardless of whether the surrounding loop/assignment logic is correct or even terminates.",
-        "side_b": "Deduct: the response never calls isAvailable (or any availability method) anywhere \u2014 it just assigns the name directly \u2014 so there is nothing to award the 'calls isAvailable on Account/this with a String' point for."
+        "name": "isAvailable is actually invoked somewhere vs method never called at all",
+        "side_a": "No deduct: the response contains at least one actual invocation of isAvailable (with a String argument) on Account/this/implicitly, used to test the candidate username \u2014 the call exists in the code regardless of whether the surrounding loop logic is correct.",
+        "side_b": "Deduct: the response never invokes isAvailable anywhere; it simply assigns the requested name (or otherwise sets username) without any availability check, so there is no call to award the point for."
     },
     {
-        "id": "A2_any_availability_check_present",
-        "name": "Some availability check + alternate-name logic exists vs. unconditional assignment of requestedName",
-        "side_a": "No deduct if the code calls isAvailable at least once and, on failure, produces a different candidate name (whether inside a loop or a single if) \u2014 the required check/update behavior is present.",
-        "side_b": "Deduct if the constructor never calls isAvailable and never forms an alternate candidate name, simply assigning the requested name to the field; there is no check-and-update behavior at all to credit."
+        "id": "A2_calls_isavailable_search",
+        "name": "Performs an availability check / search for a free name vs. unconditionally assigning the requested name",
+        "side_a": "No deduct if the constructor actually consults isAvailable (directly or in a loop) and only sets username based on that check, i.e. it makes an attempt to find a usable/available name.",
+        "side_b": "Deduct if the constructor never calls isAvailable and simply stores the requested name as the username, making no attempt to test or search for availability."
     },
     {
-        "id": "A2_loop_vs_single_conditional",
-        "name": "Single conditional retry counts as the required repetition vs. only an explicit loop counts",
-        "side_a": "No deduct if the student recomputes a candidate name and checks availability even once via an if-statement rather than a loop; a one-shot conditional retry still demonstrates the check-then-update structure.",
-        "side_b": "Deduct only when there is no control structure at all guarding the assignment \u2014 i.e., the name is assigned with no conditional or loop based on availability."
+        "id": "A3_counter_actually_incremented",
+        "name": "Counter must be advanced (++/+1) somewhere inside the loop body vs a declared-but-never-updated counter still counts",
+        "side_a": "Deduct unless the counter's value actually changes once per repetition \u2014 i.e. a statement such as `i++`, `suffix++`, or `count = count + 1` executes inside the loop body. A counter that is only declared and then read (never updated) does not 'increment the count in the context of a loop' and loses the point.",
+        "side_b": "Give the point (no_deduct) as long as a counter variable exists and is used inside the loop to build/test the candidate name, even if its value is never updated, treating the declaration plus in-loop use as sufficient evidence of counting."
     },
     {
-        "id": "A3_increment_statement_must_exist",
-        "name": "An actual counter-advancing statement inside the loop vs merely declaring/using a counter with no increment",
-        "side_a": "Give the point (no_deduct) only when the code contains a statement that actually advances the counter on each repetition (e.g. `i++`, `count = count + 1`) located inside the repeating construct, so successive attempts use different suffixes.",
-        "side_b": "Deduct when no statement anywhere advances the counter \u2014 a declared-but-frozen counter (`int suffix = 1;` with nothing incrementing it, giving an infinite loop on the same name) or a counter used only once with no increment does not satisfy 'increment count in the context of a loop'."
+        "id": "A4_bare_name_checked_first",
+        "name": "Tries the unmodified requestedName before appending digits vs. never tests the bare name",
+        "side_a": "no_deduct \u2014 the answer explicitly tests the unsuffixed requestedName for availability and assigns it when available (e.g. `if (isAvailable(requestedName)) { username = requestedName; }`) before falling back to numbered variants.",
+        "side_b": "deduct \u2014 the answer never evaluates the bare requestedName as a candidate: it either assigns it blindly with no availability test, or jumps straight into appending numbers so the plain name can never be chosen."
     },
     {
-        "id": "A3_repeated_attempt_vs_single_fallback",
-        "name": "Code attempts names repeatedly vs makes one fixed fallback attempt (or none)",
-        "side_a": "Give the point (no_deduct) when the code sets up a repeated-attempt structure in which the counter value changes from attempt to attempt.",
-        "side_b": "Deduct when the code performs at most one fallback attempt (hard-coded `requestedName + 1`) or never builds an alternate name at all, since there is no 'context of a loop' for any increment to live in."
-    },
-    {
-        "id": "A4_counter_variable_exists_at_all",
-        "name": "An explicit numeric counter variable is declared/initialized vs. no counter at all (suffix omitted or hard-coded literal)",
-        "side_a": "Credit when the response actually declares and initializes a numeric counter variable that feeds the appended suffix (e.g. `int suffix = 1;` / `int i = 1;`), even if the surrounding loop logic is flawed (missing increment, infinite loop) \u2014 the 'initialize the count' requirement is satisfied by the declaration itself.",
-        "side_b": "Deduct when there is no counter variable to initialize: either the response appends no numeric suffix at all, or it splices a hard-coded literal (`requestedName + 1`) with no counter being declared/initialized/advanced. Absence of a count is treated as failing 'initialize the count', not as a vacuous pass."
+        "id": "A4_suffix_starts_at_one",
+        "name": "Numeric suffix sequence begins at 1 vs. begins at 0",
+        "side_a": "no_deduct \u2014 the appended counter is initialized to 1, so the first fallback candidate is requestedName+\"1\" as the problem requires.",
+        "side_b": "deduct \u2014 the appended counter starts at 0 (or any value other than 1), producing requestedName+\"0\" as the first fallback candidate."
     }
 ]

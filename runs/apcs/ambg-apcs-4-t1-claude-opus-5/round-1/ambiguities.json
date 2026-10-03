@@ -1,62 +1,50 @@
 [
     {
-        "id": "1_loop_presence",
-        "name": "Has any repetition construct over the row vs. a single hard-coded element access with no loop",
-        "side_a": "No_deduct if the response contains an actual loop (indexed or enhanced for) whose range covers the elements of board[targetRow] \u2014 the traversal exists, regardless of what the body computes.",
-        "side_b": "Deduct if the response never iterates at all and instead reads one hard-coded element (e.g., `board[0][0]`), since no traversal of board[targetRow]'s elements occurs even though a dereference does."
+        "id": "1_iterates_over_row_spaces",
+        "name": "Loops over every Space in the target row vs. no traversal at all (single hard-coded space)",
+        "side_a": "no_deduct \u2014 the answer contains an actual traversal of the row (indexed `for` over `board[targetRow].length` or enhanced `for (Space s : board[targetRow])`) that touches each Space to accumulate points and/or test color; credit even if the accumulation is buggy (resetting `sum`, early `return`, off-by-one seed).",
+        "side_b": "deduct \u2014 the answer never iterates the row: it reads a single hard-coded element (e.g. `board[0][0]`) and immediately branches on an uninitialized/never-updated flag, so no row-wide points sum or color check is ever performed."
     },
     {
-        "id": "1_static_range_vs_runtime_completion",
-        "name": "Loop header statically spans the whole row (counts) vs. must be guaranteed at runtime to visit every element",
-        "side_a": "No_deduct when the loop's declared bounds cover every index of board[targetRow], even if a conditional `return`/`break` inside the body can cut the traversal short at runtime.",
-        "side_b": "Deduct only if the loop's own range omits elements of board[targetRow]; early-exit control flow inside the body is not treated as failing to access the row."
-    },
-    {
-        "id": "3_operator_equals_vs_reference",
-        "name": "colors compared with equals() vs. compared with ==/!= reference operators",
-        "side_a": "Do not deduct when the two color values are compared using the String equals() method (including the negated form !x.equals(y)), regardless of indexing or operand-source issues.",
-        "side_b": "Deduct when the colors are compared with the reference operators == or != instead of equals(), even if the getColor() calls themselves are on valid Space objects and the result drives the logic \u2014 the sub-item's whole point is the non-reference comparison."
+        "id": "3_equals_vs_reference_operator",
+        "name": "color comparison uses equals() vs. uses ==/!= reference comparison",
+        "side_a": "Do not deduct when the two color values are compared with the equals() method (e.g., `!currentSpace.getColor().equals(firstColor)`), since the sub-item requires a non-reference String comparison.",
+        "side_b": "Deduct when the colors are compared with the reference operators == or != (e.g., `if (s.getColor() != firstColor)`), even though getColor() is correctly called on a Space and the rest of the logic is right; a reference comparison is not a correct color comparison."
     },
     {
         "id": "3_comparison_present_at_all",
-        "name": "some color comparison exists vs. no comparison of colors anywhere",
-        "side_a": "Do not deduct when the code actually contains an expression that compares two color values (even a flawed or inconsequential one).",
-        "side_b": "Deduct when the response never calls getColor() or compares colors at all \u2014 e.g., it merely declares a boolean flag such as `allSameColor = true` and branches on it without ever evaluating any Space's color."
+        "name": "a color comparison exists somewhere in the code vs. no color comparison is attempted",
+        "side_a": "Do not deduct when the code actually contains a comparison of color values anywhere in the method (even inside a loop, early-return, or flag assignment).",
+        "side_b": "Deduct when the response never calls a color method or compares colors at all \u2014 it merely declares/uses a flag such as `boolean allSameColor = true;` without any getColor() call \u2014 since there is nothing to earn the color-comparison point."
     },
     {
-        "id": "4_compilability_of_surrounding_method",
-        "name": "Sum point survives a non-compiling method vs compile errors (missing return path) void the point",
-        "side_a": "Do not deduct for the summation point as long as the init + in-loop accumulation of point values is textually present, even if the enclosing method does not compile (e.g., no return statement on every path). The sum sub-item is judged on the summation code alone, independent of whether the method body is legal Java.",
-        "side_b": "Deduct when the method as written would not compile, since the summation code can never execute as part of a valid method; a method missing a return on some path (or otherwise failing to compile) earns no credit for the sum."
+        "id": "4_retrieval_inside_loop_vs_initializer_only",
+        "name": "Point value must be fetched and added inside the loop body vs. fetching it once in the variable's initializer counts as both init and accumulation",
+        "side_a": "Deduct when the only call to the point method sits in the declaration/initializer of the points variable (`int sum = board[0][0].getPoints();`) and nothing is ever added to that variable afterwards \u2014 there is no separate initialization step and no accumulation step, so the response neither properly initializes a points accumulator nor accumulates retrieved values. Credit only when the variable is first given a seed value and point values are then fetched from spaces and combined into it inside a loop body.",
+        "side_b": "Do not deduct: the response declares and initializes a points variable and calls the point method on a space, which satisfies the two hard requirements; obtaining the value directly in the initializer is merely an incorrect/incomplete sum, which the rubric forgives."
     },
     {
         "id": "4_traversal_completeness",
-        "name": "Partial/early-terminated traversal of the row still earns the sum vs full-row traversal required",
-        "side_a": "Do not deduct when the loop may exit before visiting every space in the target row (early `return`/`break` inside the loop body), as long as each visited space's point value is added to the initialized accumulator; a truncated sum is just an incorrect sum built from obtained point values.",
-        "side_b": "Deduct unless the loop is capable of visiting every space of the target row and adding each one's points; an early return/break that abandons the remaining spaces means the response never actually sums the row's point values."
+        "name": "Partial/early-terminated traversal of the row still credits vs. the loop must sum every space in the row",
+        "side_a": "Do not deduct when the loop may stop early and therefore sums only part of the row (e.g., a `return` inside the loop body), or when the running total is reset/seeded wrongly; as long as some loop iteration adds a retrieved point value to the initialized variable, the incomplete total is just an 'incorrect sum'.",
+        "side_b": "Deduct whenever the code cannot sum all spaces of the target row \u2014 an early `return` inside the loop, a reset of the accumulator each iteration, or a nonzero seed means no genuine row total is ever produced."
     },
     {
-        "id": "5_wrong_dimension_traversal",
-        "name": "Traversal of the wrong dimension / transposed indices: counts as accessing all spaces vs. fails to access the target row's spaces",
-        "side_a": "No deduct when the loop walks a transposed or otherwise mis-chosen dimension of the 2-D array (e.g., `board[col][targetRow]` bounded by `board.length` instead of `board[targetRow][col]` bounded by `board[targetRow].length`), as long as it iterates over a full line of distinct Space objects and compares each one's color to a reference color. The row/column mix-up is an indexing defect charged elsewhere, not a failure to loop over the spaces.",
-        "side_b": "Deduct when the indices do not actually enumerate the spaces of the target row, since the loop then never accesses the spaces whose colors must be compared."
+        "id": "5_sum_accumulation_defects_scored_elsewhere",
+        "name": "Defects in the point-sum accumulation (wrong initializer, sum reset inside the loop): ignored here vs. counted as failing to 'access all spaces'",
+        "side_a": "No deduct for errors in how the running point total is built, as long as the loop visits every space of the row and compares each space's color to the reference color. A wrong sum seed (e.g., `int sum = 1;`) or a reset of the accumulator inside the loop body (`sum = 0;` before adding) is charged under the summation sub-item, not this one \u2014 the color traversal is still complete.",
+        "side_b": "Deduct whenever the loop body fails to correctly accumulate each space's points, on the theory that a space whose points are discarded (sum reset each iteration) or a total polluted by a bogus seed means the response did not truly 'access all the spaces in the row'."
     },
     {
-        "id": "5_sum_accumulation_defects_irrelevant",
-        "name": "Broken point accumulation / missing return path inside the same loop: ignored for this sub-item vs. taints the traversal",
-        "side_a": "No deduct for defects that live outside the color-comparison logic \u2014 resetting the accumulator inside the loop (`sum = 0;` as the first statement of the body), or a method with a missing return on one path \u2014 provided the loop still visits every space and compares each color to the reference color.",
-        "side_b": "Deduct when the loop body contains logic that destroys the running computation or leaves the method incomplete, treating the traversal as not genuinely 'considering all spaces'."
+        "id": "6_accumulator_integrity",
+        "name": "running-total accumulator is initialized to 0 once and only ever added to vs the total is seeded non-zero, reset inside the loop, or never accumulated at all",
+        "side_a": "Award the sub-item when the response declares a single total initialized to zero before the loop and only ever does `sum += space.getPoints()` inside the loop, so the returned value is the true sum of every visited space's points (possibly doubled).",
+        "side_b": "Deduct when the accumulator itself is broken independently of any color/bounds issue \u2014 it is seeded with a non-zero constant, is re-assigned/zeroed inside the loop body so earlier additions are lost, or there is no iteration at all and only one hard-coded space's points are used. This is 'computing the sum incorrectly' and is not covered by the same-color or bounds allowances."
     },
     {
-        "id": "6_full_row_accumulation_vs_partial_sum",
-        "name": "sum truly accumulates every space in the row vs sum is reset/single-space/truncated before the row is finished",
-        "side_a": "Award sub-item 6 when the running total is accumulated across the whole row (`sum += ...` once per space, with `sum` initialized to 0 outside the loop and the loop allowed to visit every space) so the value returned is the total of all the row's points, even if indices or the color test are flawed.",
-        "side_b": "Deduct sub-item 6 when the returned value is not the total of the row's points because the accumulator is re-initialized inside the loop, is taken from a single hard-coded space with no loop at all, or the method returns out of the middle of the loop so only a prefix of the row has been added."
-    },
-    {
-        "id": "6_missing_return_on_one_path",
-        "name": "both outcomes are actually returned vs one control path returns nothing at all",
-        "side_a": "Award sub-item 6 when every path out of the method returns a value, so the plain sum is returned in one case and the doubled sum in the other (regardless of which condition selects which).",
-        "side_b": "Deduct sub-item 6 when a control path falls off the end with no return statement (e.g., only the doubled-sum branch returns), so the non-doubled total is never produced."
+        "id": "6_early_return_truncates_sum",
+        "name": "full traversal of the row before returning vs returning early mid-loop on a color mismatch, truncating the sum",
+        "side_a": "Award the sub-item when the loop visits every space in the target row before any return, so the color decision only selects between sum and 2*sum of a complete total.",
+        "side_b": "Deduct when the method returns from inside the summation loop as soon as a color mismatch is found, so the value returned is a partial sum of only the spaces seen so far rather than the whole row's points; the 'incorrectly determine same color' allowance covers picking the wrong branch, not stopping the summation."
     }
 ]

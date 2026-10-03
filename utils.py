@@ -61,14 +61,14 @@ def load_initial_ambiguities(mode, backbone_llm):
 
             for a_i in a:
                 #Serialize from a JSON
-                _amb = Ambiguity.from_dict(a_i); _amb.r_item = item; ambiguities.add(_amb)  # item from the file it was generated for
+                ambiguities.add(Ambiguity.from_dict(a_i))
         else:
             a = generate_ambiguities(item, mode, backbone_llm)
             with open(a_dir, "w") as f:
                 json.dump(a, f, indent=4)
 
             for a_i in a:
-                _amb = Ambiguity.from_dict(a_i); _amb.r_item = item; ambiguities.add(_amb)  # item from the file it was generated for
+                ambiguities.add(Ambiguity.from_dict(a_i))
 
     return ambiguities
 

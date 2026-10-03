@@ -1,0 +1,20 @@
+[
+    {
+        "id": "A3_increment_inside_loop_body",
+        "name": "Counter is actually advanced inside the loop body vs. counter merely referenced/used inside the loop",
+        "side_a": "Give the point (no_deduct) when the loop body contains a statement that actually changes the counter's value on each iteration (`suffix++`, `intCounter++` plus re-conversion, etc.), regardless of whether the surrounding loop condition, initial suffix value, or username assignment is correct.",
+        "side_b": "Deduct when the counter is only read/concatenated inside the loop and is never advanced there (the loop body rebuilds the candidate from the same, unchanged counter value), even though a counter variable exists and is declared/initialized outside the loop."
+    },
+    {
+        "id": "A4_assigned_value_verified_available",
+        "name": "username assigned the loop-verified available candidate vs assigned a value never confirmed available",
+        "side_a": "No deduct if the field is finally set (outside/after the search) to exactly the string whose availability the loop condition confirmed \u2014 i.e., the loop runs `while (!isAvailable(candidate))` and the post-loop assignment uses that same `candidate`.",
+        "side_b": "Deduct if the value stored in `username` was never confirmed available \u2014 e.g., the assignment happens inside the loop to the already-rejected `requestedName`, or the loop exits as soon as the name is *unavailable* so the stored candidate is the failing one (or nothing is stored on some path)."
+    },
+    {
+        "id": "A4_suffix_starts_at_one",
+        "name": "numeric suffix search begins at 1 vs begins at 0",
+        "side_a": "No deduct if the first appended number tried is 1 (e.g., `String counter = \"1\";` or `int suffix = 1;` used to build the first candidate).",
+        "side_b": "Deduct if the first appended number tried is 0 (or any value other than 1), so the smallest tested suffix is wrong even though the rest of the loop is correct."
+    }
+]

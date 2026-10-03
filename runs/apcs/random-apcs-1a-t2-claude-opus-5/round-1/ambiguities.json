@@ -1,0 +1,38 @@
+[
+    {
+        "id": "A1_call_present_at_all",
+        "name": "isAvailable is actually invoked somewhere vs never invoked at all",
+        "side_a": "Do not deduct when the response contains any invocation of the availability method with a String argument \u2014 whether class-qualified (Account.isAvailable(...)), unqualified (isAvailable(...)), or this-qualified \u2014 even if the surrounding loop/assignment logic is wrong or infinite; A1 is awarded solely for making the call.",
+        "side_b": "Deduct when the response never invokes isAvailable anywhere (e.g., it just assigns the requested name straight to the instance variable), since no amount of otherwise-correct constructor code substitutes for the required call."
+    },
+    {
+        "id": "A2_recompute_candidate_in_loop",
+        "name": "Loop body rebuilds the candidate name each iteration vs. loop body only bumps the counter (name never changes)",
+        "side_a": "no_deduct \u2014 inside the loop the candidate username string is reassigned from the base name plus the current counter (e.g. `newUsername = requestedName + counter;`), so a different name is produced on every pass.",
+        "side_b": "deduct \u2014 the loop body only increments a counter (or does nothing to the name), so the candidate string tested/assigned never changes across iterations and the concatenation is formed at most once."
+    },
+    {
+        "id": "A2_condition_tests_current_candidate",
+        "name": "Availability re-checked on the varying candidate variable vs. on the fixed original parameter (or never)",
+        "side_a": "no_deduct \u2014 the availability call in the loop header is passed the mutable candidate variable that holds the numbered name (e.g. `isAvailable(newUsername)`), so each new name is actually tested.",
+        "side_b": "deduct \u2014 the availability call is made on the unchanging `requestedName` parameter, or no availability test/loop exists at all, so the generated numbered name is never checked."
+    },
+    {
+        "id": "A3_calls_isavailable_search",
+        "name": "Constructor performs an availability check/search loop vs. blind assignment of requestedName",
+        "side_a": "No deduction if the constructor actually invokes isAvailable (in an if and/or while) to test the requested name and iterate toward an available one before assigning this.username \u2014 even if the loop body is flawed (never updates the candidate, off-by-one suffix, inverted condition).",
+        "side_b": "Deduct if the constructor never calls isAvailable at all and simply assigns the requested name directly to username, so no attempt is made to find an available username."
+    },
+    {
+        "id": "A4_single_loop_from_requested_name",
+        "name": "One loop whose candidate starts at requestedName vs. if/else pre-check whose loop only searches suffixed names",
+        "side_a": "No deduction if the answer uses one unified search: a candidate variable is initialized to requestedName and the same `while (!isAvailable(...))` loop governs both the 'available immediately' and 'must add a number' cases, with a single assignment to username after the loop.",
+        "side_b": "Deduct if the answer splits the logic into an `if (isAvailable(requestedName)) ... else ...` structure where the loop only ever examines suffixed candidates (counter already at 1 before any loop test) and username is assigned separately in each branch."
+    },
+    {
+        "id": "A4_loop_condition_polarity",
+        "name": "Loop continues while name is NOT available vs. loop continues while it IS available",
+        "side_a": "No deduction if the search loop's condition is the negated availability test (`while (!isAvailable(...))`), so the loop exits on an available name.",
+        "side_b": "Deduct if the loop condition is un-negated (`while (isAvailable(...))`), so the loop exits on \u2014 and assigns \u2014 a name that is already taken."
+    }
+]

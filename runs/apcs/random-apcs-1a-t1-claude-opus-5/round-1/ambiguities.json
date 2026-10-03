@@ -1,0 +1,26 @@
+[
+    {
+        "id": "A2_candidate_recomputed_in_loop",
+        "name": "Candidate name rebuilt each iteration vs. counter bumped while tested string stays fixed",
+        "side_a": "No deduct if the string passed to isAvailable is recomputed (re-concatenated from the base name and the current counter) on every loop iteration, so successive iterations actually test different usernames.",
+        "side_b": "Deduct if the loop body only increments the counter and never rebuilds/reassigns the candidate string, so isAvailable is re-tested on the same unchanged value (non-terminating / never tries a new name)."
+    },
+    {
+        "id": "A2_suffix_ever_appended",
+        "name": "Suffix actually concatenated to the base name somewhere vs. never concatenated at all",
+        "side_a": "No deduct if the answer somewhere builds the numbered username by appending the counter to the requested name (e.g., requestedName + counter).",
+        "side_b": "Deduct if the counter variable is declared and incremented but is never concatenated to the base name anywhere, so the assigned username can only ever be the original requestedName."
+    },
+    {
+        "id": "A4_unified_loop_single_assignment",
+        "name": "One search loop with a single post-loop assignment vs. if/else special-case with an assignment in each branch",
+        "side_a": "No deduct: the constructor runs one uniform search in which the unmodified requestedName is simply the first candidate tested by the loop condition, and this.username is set exactly once after the loop terminates.",
+        "side_b": "Deduct: the constructor splits the logic into separate paths (an if/else special case for the bare name, or a loop entered with an already-suffixed name) so that this.username is written in two or more places / inside the loop rather than once at the end of a single search."
+    },
+    {
+        "id": "A4_loop_condition_vs_true_break",
+        "name": "Condition-controlled while loop vs. while(true) escaped by break",
+        "side_a": "No deduct: the availability test is expressed in the while condition so the loop terminates by its own condition.",
+        "side_b": "Deduct: the answer writes `while (true)` and relies on an internal if + `break` to exit the search."
+    }
+]

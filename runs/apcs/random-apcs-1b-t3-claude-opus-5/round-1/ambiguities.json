@@ -1,0 +1,20 @@
+[
+    {
+        "id": "B2_string_equality_operator",
+        "name": "String comparison uses .equals/char == vs reference == on String objects",
+        "side_a": "No deduct: the hyphen test compares values correctly \u2014 either a char comparison (`charAt(i+1) == '-'`, `c == '-'`) or `String.equals` (`substring(i+1,i+2).equals(\"-\")`) \u2014 so the detection logic actually fires.",
+        "side_b": "Deduct: the hyphen test compares a String object with the reference operator `==` (e.g. `username.substring(i+1,i+2) == \"-\"`), which is never true for a runtime-created substring, so the hyphen is never detected and the required behavior is never performed."
+    },
+    {
+        "id": "B3_extra_chars_consumed",
+        "name": "Loop consumes/erases characters beyond the delimiter (returned string is missing kept characters) vs. only the delimiter handling differs cosmetically",
+        "side_a": "no_deduct when every character that must survive into the shortened name is actually appended and returned \u2014 i.e., the match branch only disposes of the delimiter itself, and nothing already appended is removed. Cosmetic/syntactic slips in how the character is extracted or compared do not matter.",
+        "side_b": "deduct when the match branch swallows an extra character besides the delimiter \u2014 e.g., an extra `i++` that skips the matched/neighbouring character, or an explicit removal of a character already appended \u2014 so the string that is built and returned omits characters the specification requires it to keep. This is an algorithmic defect in *which* pieces are combined, not an excused String-method slip."
+    },
+    {
+        "id": "B3_loop_never_returns_correct_value",
+        "name": "Loop control that guarantees a runtime failure (never terminates, or indexes past the last character) vs. a loop that always terminates with in-range accesses",
+        "side_a": "no_deduct when the loop index is advanced on every path and the look-ahead access is guarded (e.g., `i < length - 1`), so the method reliably reaches its return statement with a legal index range; harmless stylistic index arithmetic is ignored.",
+        "side_b": "deduct when the loop control itself is broken so the method can never return the string: the index is not advanced in one branch (infinite loop), or the bound/look-ahead guarantees an access past the last character (`i <= username.length()`, unguarded `charAt(i + 1)`). This is a loop-logic defect in building the string, distinct from mis-calling a String method."
+    }
+]

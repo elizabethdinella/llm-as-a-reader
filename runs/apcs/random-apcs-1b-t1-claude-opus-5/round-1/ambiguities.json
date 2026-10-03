@@ -1,0 +1,26 @@
+[
+    {
+        "id": "B2_string_traversal_mechanism",
+        "name": "Traverses the String with a legal index/charAt loop vs. iterates the String directly with an enhanced for-loop (treats String as array/collection)",
+        "side_a": "No deduct: the answer walks the String using an index-based loop with charAt/substring (or any construct that is legal on a String), even if the loop bounds, the off-by-one, or the mutation logic is wrong.",
+        "side_b": "Deduct: the answer iterates the String object itself with an enhanced for-loop (e.g. `for (char c : username)`), which is not legal Java for a String and shows the traversal mechanism itself is not understood."
+    },
+    {
+        "id": "B2_invented_string_api",
+        "name": "Uses only methods that actually exist on String vs. invokes a non-existent method on the String field",
+        "side_a": "No deduct: all method calls on the String field are real String methods (charAt, substring, length, replace), even if the call is useless or its return value is discarded.",
+        "side_b": "Deduct: the answer calls a method that does not exist on String (e.g. `username.delete(character)`), inventing API rather than misusing it."
+    },
+    {
+        "id": "B3_runtime_out_of_range_index_vs_malformed_call",
+        "name": "Index value that runs off the end of the String (real bounds error) vs. merely malformed String-method call form",
+        "side_a": "No_deduct when the String method call is only malformed in form (wrong argument order, wrong count, misspelled name) but every index the algorithm actually computes stays inside [0, length()-1] given the loop bounds, or is guarded before use (e.g., `i < username.length() - 1 && ...`). Sloppy call syntax alone is the excused 'calls a String method incorrectly' case.",
+        "side_b": "Deduct when the loop bounds plus the index arithmetic make an access genuinely out of range \u2014 e.g., `charAt(i + 1)` evaluated when `i` can be the last index, or a loop condition `i <= username.length()`. This is a bounds error on a well-formed call, not a malformed call, so the excuse does not apply."
+    },
+    {
+        "id": "B3_mutate_in_place_vs_build_new_string",
+        "name": "Builds and returns a newly constructed String vs. relies on mutating the String instance variable in place",
+        "side_a": "No_deduct when the response accumulates the answer into a separate variable (String accumulator, StringBuilder) or assigns the result of an immutable String operation back before returning it, so the returned expression is a genuinely newly constructed string.",
+        "side_b": "Deduct when the response treats the String field as mutable or as a collection/array \u2014 calling a mutator-style method whose result is discarded (`username.replace(\"-\", \"\");`, `username.delete(...)`) or iterating it with an enhanced for loop as if it were char[] \u2014 so the value actually returned is the unmodified original (or an un-built accumulator). This is a defect in constructing the returned string, not an excusable call-form slip."
+    }
+]

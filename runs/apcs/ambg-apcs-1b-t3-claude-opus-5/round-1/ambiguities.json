@@ -1,0 +1,20 @@
+[
+    {
+        "id": "B2_string_eq_vs_char_eq",
+        "name": "Comparing to the dash with char equality (charAt == '-') vs reference equality on Strings (substring(...) == \"-\")",
+        "side_a": "If the answer tests for the hyphen using a primitive char comparison (e.g. `username.charAt(i + 1) == '-'`), where `==` is the semantically correct operator, give credit for the comparison even if indices/loop bounds are off.",
+        "side_b": "If the answer compares String objects with `==` (e.g. `username.substring(i + 1, i + 2) == \"-\"`) instead of `.equals(\"-\")`, withhold credit: the condition is a reference comparison that does not reliably detect the hyphen, so the separator is never recognized."
+    },
+    {
+        "id": "B3_out_of_range_index_access",
+        "name": "Indexing past the end of the string (unguarded `charAt(i + 1)` / `i <= length()`) counts as a disqualifying bounds error vs. is forgiven as an edge-case slip",
+        "side_a": "no_deduct: if the pieces of the string being concatenated and returned are the right ones, ignore the fact that the index used to inspect/extract a character can run one past the last valid index (e.g., `charAt(i + 1)` on the final character, or a loop bounded by `i <= username.length()`); treat it as a harmless edge-case slip since the intended construction is clear.",
+        "side_b": "deduct: an index expression that can reach `length()` or beyond \u2014 `username.charAt(i + 1)` with no guard that `i + 1 < username.length()`, or a loop condition `i <= username.length()` \u2014 is a genuine out-of-bounds/bounds error, so the method throws instead of returning the shortened string and B3 is lost."
+    },
+    {
+        "id": "B3_string_identity_vs_content_comparison",
+        "name": "Comparing substrings with `==` treated as an excused String-API misuse vs. as a wrong-logic comparison",
+        "side_a": "no_deduct: comparing one-character substrings with `==` instead of `.equals` is just another instance of using a String method/operator incorrectly; if the intended selection and concatenation of characters is right, give the point.",
+        "side_b": "deduct: `username.substring(i + 1, i + 2) == \"-\"` tests reference identity, so the hyphen is never detected and the method returns the unshortened name; this is a logic error in the algorithm, not an excused String-method call, and B3 is lost."
+    }
+]

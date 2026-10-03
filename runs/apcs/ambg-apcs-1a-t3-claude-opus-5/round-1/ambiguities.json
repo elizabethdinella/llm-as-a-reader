@@ -1,0 +1,38 @@
+[
+    {
+        "id": "A1_call_present_at_all",
+        "name": "isAvailable actually invoked somewhere vs never invoked at all",
+        "side_a": "Award A1 whenever the response contains at least one invocation of isAvailable (on Account/this, with a string-intended argument) anywhere in the constructor \u2014 e.g., inside an if condition or a while loop test. Formatting wrappers (answer tags, code fences) and logic errors elsewhere do not matter.",
+        "side_b": "Deduct A1 when the response never calls isAvailable at all \u2014 the constructor just assigns the requested name (or otherwise sets username) without ever testing availability; there is no call to find, so nothing can be credited no matter how well-formed the rest of the code is."
+    },
+    {
+        "id": "A2_calls_isAvailable_at_all",
+        "name": "Availability is actually tested via isAvailable vs. requested name assigned unconditionally",
+        "side_a": "no_deduct \u2014 the constructor invokes isAvailable(...) on a candidate name and only assigns username to a name that passed that test (either the original or a suffixed variant).",
+        "side_b": "deduct \u2014 the constructor never calls isAvailable at all and assigns the requested name directly to username, so no availability logic exists."
+    },
+    {
+        "id": "A3_increment_executed_in_loop_body",
+        "name": "Counter is actually advanced inside the loop body vs counter declared but never updated",
+        "side_a": "Give the point (no_deduct) when a statement that advances the counter (e.g. `i++`) actually appears inside the loop body, so each repetition uses a new suffix value.",
+        "side_b": "Deduct when the counter variable is only declared/initialized outside the loop and the loop body contains no increment (no `suffix++` or equivalent), leaving the counter frozen across iterations \u2014 merely having a counter variable plus a loop is not enough."
+    },
+    {
+        "id": "A3_any_repetition_attempted",
+        "name": "Some repeated-attempt structure with a counter exists vs no loop/counter at all",
+        "side_a": "Give the point (no_deduct) when the answer contains some repetition structure that re-tests availability with a counter-derived name.",
+        "side_b": "Deduct when the answer contains no loop and no counter whatsoever \u2014 it simply assigns the requested name \u2014 so there is nothing that could be incremented per attempt."
+    },
+    {
+        "id": "A4_base_name_tried_first",
+        "name": "Tries the unmodified requestedName (guarded by isAvailable) before appending digits vs. never tests the bare name",
+        "side_a": "No deduction if the code first calls isAvailable on the raw requestedName and assigns it unchanged when available, only falling through to the numbered-suffix search otherwise.",
+        "side_b": "Deduct if the bare requestedName is never tested with isAvailable before assignment \u2014 either it is assigned outright with no check, or the search begins immediately at requestedName + digit so the unmodified name can never be chosen."
+    },
+    {
+        "id": "A4_suffix_starts_at_one",
+        "name": "Numeric suffix search starts at 1 vs. starts at 0",
+        "side_a": "No deduction if the appended counter is initialized to 1 so the first alternative tried is requestedName + 1.",
+        "side_b": "Deduct if the counter starts at 0 (or any value other than 1), so the first alternative tried is requestedName + 0, violating the specified numbering."
+    }
+]
